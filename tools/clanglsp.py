@@ -108,6 +108,7 @@ class ClangdLspClient:
             "capabilities": {
                 "textDocument": {
                     "definition": {"dynamicRegistration": True},
+                    "declaration": {"dynamicRegistration": True},
                     "references": {"dynamicRegistration": True},
                 }
             },
@@ -118,6 +119,22 @@ class ClangdLspClient:
         response = await self.send_request("initialize", params)
         print(f"Initialize response: {response}")
         await self.send_request("initialized", {})
+
+    async def find_declaration(self, file_path: str, line: int, character: int):
+        """Send a textDocument/declaration request."""
+        file_uri = f"file://{file_path}"
+        params = {
+            "textDocument": {"uri": file_uri},
+            "position": {"line": line, "character": character},
+        }
+        response = await self.send_request("textDocument/declaration", params)
+        if "error" in response:
+            print(f"Error finding declaration: {response['error']}")
+            print(f"File: {file_path}")
+            print(f"Position: line {line}, character {character}")
+        else:
+            print(f"Declaration response: {response}")
+        return response
 
     async def open_file(self, file_path: str):
         """Send a textDocument/didOpen notification to open a file."""
@@ -170,45 +187,84 @@ class ClangdLspClient:
         # Sleep a bit to allow indexing to start/complete
         await asyncio.sleep(timeout)
 
+    def format_location_response(self, response: Dict[str, Any]) -> str:
+        """Format location response for better readability."""
+        if "error" in response:
+            return f"Error: {response['error']['message']}"
+
+        if "result" not in response or not response["result"]:
+            return "No results found"
+
+        result = response["result"]
+        if isinstance(result, list):
+            locations = result
+        else:
+            locations = [result]
+
+        formatted_results = []
+        for loc in locations:
+            if isinstance(loc, dict):
+                uri = loc.get("uri", "").replace("file://", "")
+                range_info = loc.get("range", {})
+                start = range_info.get("start", {})
+                line = start.get("line", 0) + 1  # Convert to 1-based line number
+                character = (
+                    start.get("character", 0) + 1
+                )  # Convert to 1-based character
+                formatted_results.append(
+                    f"File: {uri}, Line: {line}, Column: {character}"
+                )
+
+        return "\n".join(formatted_results)
+
 
 async def main():
-    # Workspace path and target C files
     workspace_path = "/src"
-    reference_file = f"{workspace_path}/libtiff/libtiff/tif_aux.c"
-    definition_file = f"{workspace_path}/libtiff/libtiff/tif_write.c"
+    definition_file = f"{workspace_path}/libtiff/libtiff/tif_aux.c"
+    reference_file = f"{workspace_path}/libtiff/libtiff/tif_write.c"
 
-    # Initialize the client
     client = ClangdLspClient(workspace_path)
     await client.start_server()
     await client.initialize()
 
-    # Open both files
     print("Opening files...")
     await client.open_file(definition_file)
     await client.open_file(reference_file)
-
+    
     print("Waiting for clangd to index files...")
     await client.wait_for_indexing()
 
-    # Find definition of TIFFAppendToStrip
-    print("Finding definition...")
+    # Find declaration
+    print("\nFinding declaration...")
+    declaration_response = await client.find_declaration(
+        reference_file,
+        line=932,  # 933 - 1 (0-based)
+        character=16
+    )
+    print("Declaration location:")
+    print(client.format_location_response(declaration_response))
+
+    # Find definition
+    print("\nFinding definition...")
     definition_response = await client.find_definition(
-        definition_file,  # Looking from the reference file
-        line=932,  # Line 933 - 1 (LSP uses 0-based line numbers)
-        character=16,  # Column 16
+        reference_file,
+        line=932,
+        character=16
     )
+    print("Definition location:")
+    print(client.format_location_response(definition_response))
 
-    # Find references to TIFFAppendToStrip
-    print("Finding references...")
+    # Find references
+    print("\nFinding references...")
     references_response = await client.find_references(
-        reference_file,  # Looking from the definition file
-        line=217,  # Adjust this to the actual line where TIFFVGetFieldDefaulted is defined
-        character=5,  # Adjust this to the actual column where TIFFVGetFieldDefaulted is defined
+        definition_file,
+        line=130,  # Adjust based on actual definition location
+        character=19  # Adjust based on actual definition location
     )
+    print("Reference locations:")
+    print(client.format_location_response(references_response))
 
-    # Stop the server
     await client.stop_server()
-
 
 if __name__ == "__main__":
     asyncio.run(main())

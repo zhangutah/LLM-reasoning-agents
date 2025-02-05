@@ -16,7 +16,7 @@ class ClangdLspClient:
     async def start_server(self):
         """Start the clangd LSP server."""
         self.server_process = await asyncio.create_subprocess_exec(
-            "clangd",
+            "clangd-18",
             stdin=asyncio.subprocess.PIPE,
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
@@ -60,7 +60,7 @@ class ClangdLspClient:
         print(f"Notification from server: {message}")
 
     async def send_request(
-        self, method: str, params: Dict[str, Any], timeout: float = 5.0
+        self, method: str, params: Dict[str, Any], timeout: float = 0.1
     ) -> Dict[str, Any]:
         """Send a JSON-RPC request to the server."""
         if method in ("textDocument/didOpen", "initialized"):
@@ -113,7 +113,9 @@ class ClangdLspClient:
                     "references": {"dynamicRegistration": True},
                     "callHierarchy": {"dynamicRegistration": True},
                     "typeDefinition": {"dynamicRegistration": True},
-
+                },
+                "workspace": {
+                      "symbol":{"dynamicRegistration": True},
                 }
 
             }
@@ -136,6 +138,18 @@ class ClangdLspClient:
             print(f"Position: line {line}, character {character}")
         else:
             print(f"Declaration response: {response}")
+        return response
+
+    async def find_workspace_symbols(self, symbol_name: str = ""):
+        """Send a workspace/symbol request to find all symbols in the workspace."""
+        params = {
+            "query": symbol_name,  # Empty query returns all symbols
+        }
+        response = await self.send_request("workspace/symbol", params, timeout=1)
+        if "error" in response:
+            print(f"Error finding workspace symbols: {response['error']}")
+        else:
+            print(f"Workspace symbols response: {response}")
         return response
 
     async def open_file(self, file_path: str):
@@ -221,21 +235,27 @@ class ClangdLspClient:
 
 
 async def main():
-    workspace_path = "/src/libtiff"
-    # definition_file = f"{workspace_path}/libtiff/tif_aux.c"
-    reference_file = f"{workspace_path}/tools/tiffdither.c"
+    workspace_path = "/src/bind9"
+
+    # you have to open a file 
+    definition_file = f"{workspace_path}/lib/dns/ds.c"
+    # reference_file = f"{workspace_path}/tools/tiffdither.c"
 
     client = ClangdLspClient(workspace_path, language="c++")
     await client.start_server()
     await client.initialize()
 
     print("Opening files...")
-    # await client.open_file(definition_file)
-    await client.open_file(reference_file)
+    await client.open_file(definition_file)
+    # await client.open_file(reference_file)
     
     print("Waiting for clangd to index files...")
     await client.wait_for_indexing()
 
+    all_symbol = await client.find_workspace_symbols("dns_name_fromwire")
+    print("All symbols:", all_symbol)   
+
+    exit()
     # Find declaration
     print("\nFinding declaration...")
     declaration_response = await client.find_declaration(

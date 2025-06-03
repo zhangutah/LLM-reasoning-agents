@@ -12,13 +12,12 @@ from typing import Optional
 
 class CovCollector():
 
-    def __init__(self, oss_fuzz_dir: Path,  local_project_dir:Path, project_name: str, new_project_name: str,
+    def __init__(self, oss_fuzz_dir: Path,   project_name: str, new_project_name: str,
                   project_lang: LanguageType, logger:Optional[logging.Logger]) -> None:
         
         self.logger = logger
         
         self.oss_fuzz_dir = oss_fuzz_dir
-        self.local_project_dir = local_project_dir
         self.project_name = project_name
         self.new_project_name = new_project_name      
         self.project_lang = project_lang
@@ -80,7 +79,7 @@ class CovCollector():
             raise Exception(f"Language {self.project_lang} not supported for now")
 
         # init the compiler
-        compiler = Compiler(self.oss_fuzz_dir, self. local_project_dir, self.project_name, self.new_project_name)
+        compiler = Compiler(self.oss_fuzz_dir, self.project_name, self.new_project_name)
         # compile the code
         compile_res, build_msg = compiler.compile(wrapped_code, harness_path, fuzzer_name)
         if compile_res != CompileResults.Success:

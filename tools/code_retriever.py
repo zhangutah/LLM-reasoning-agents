@@ -87,7 +87,7 @@ class CodeRetriever():
         # sed 
         if "sed: " in result:
             self.logger.warning(result)
-            return ""
+            return f"There is no such file {file_path} in the project."
         
         # add line number to each line
         return add_lineno_to_code(result, start_lineno=start_line - 1)

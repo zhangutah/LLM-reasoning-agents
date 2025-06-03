@@ -109,8 +109,8 @@ class InitGenerator:
 class CompilerWraper(Compiler):
     def __init__(self, oss_fuzz_dir: Path, project_name: str, new_project_name: str,
                      project_lang: LanguageType, harness_dict:dict[str, Path], 
-                     save_dir: Path, local_project_dir:Path, logger: logging.Logger):
-        super().__init__(oss_fuzz_dir, local_project_dir, project_name, new_project_name)
+                     save_dir: Path, logger: logging.Logger):
+        super().__init__(oss_fuzz_dir, project_name, new_project_name)
         self.logger = logger
         self.project_lang = project_lang
         self.save_dir = save_dir
@@ -367,7 +367,7 @@ class AgentFuzzer():
 
     def __init__(self, n_examples: int, example_mode: str, model_name: str, temperature: float, oss_fuzz_dir: Path, project_name: str, function_signature: str,
                  usage_token_limit: int, model_token_limit: int, run_time: int, max_fix: int, max_tool_call: int,  
-                 clear_msg_flag: bool, save_dir: Path, cache_dir: Path, local_project_dir:Path, n_run: int = 1):
+                 clear_msg_flag: bool, save_dir: Path, cache_dir: Path, n_run: int = 1):
         
         self.n_examples = n_examples
         self.example_mode = example_mode
@@ -385,7 +385,6 @@ class AgentFuzzer():
         self.max_tool_call = max_tool_call
         self.cache_dir = cache_dir
         self.clear_msg_flag = clear_msg_flag
-        self.local_project_dir = local_project_dir
 
         # random generate a string for new project name
         random_str = ''.join(random.choices("abcdefghijklmnopqrstuvwxyz", k=16))
@@ -759,7 +758,7 @@ class AgentFuzzer():
                              self.run_time,  self.save_dir,  self.logger)
         
         compiler = CompilerWraper(self.oss_fuzz_dir, self.project_name, self.new_project_name, 
-                                  self.project_lang, self.harness_pairs, self.save_dir, self.local_project_dir, self.logger)
+                                  self.project_lang, self.harness_pairs, self.save_dir, self.logger)
 
         # build the graph
         builder = StateGraph(FuzzState)

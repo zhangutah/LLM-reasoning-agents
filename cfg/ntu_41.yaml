@@ -15,8 +15,7 @@ iterations: 3
 num_processes: null # Will be set to os.cpu_count()//2 at runtime
 bench_dir: benchmark-sets/ntu
 project_name: bind9
-function_signatures: []
+function_signatures: ["dns_master_loadbuffer"]
 clear_msg_flag: true
 tool_flag: true
 method: issta
-local_project_dir: /home/yk/oss_projects

@@ -9,24 +9,17 @@ from pathlib import Path
 
 class Compiler():
 
-    def __init__(self, oss_fuzz_dir: Path, local_project_dir:Path, project_name: str, new_project_name: str):
+    def __init__(self, oss_fuzz_dir: Path, project_name: str, new_project_name: str):
 
         self.oss_fuzz_dir = oss_fuzz_dir
         self.project_name = project_name
         self.new_project_name = new_project_name
-        self.local_project_path = local_project_dir / project_name
        
         self.oss_tool = OSSFuzzUtils(oss_fuzz_dir, project_name, new_project_name)
         self.project_lang =  self.oss_tool.get_project_language()
         self.docker_tool = DockerUtils(oss_fuzz_dir, project_name, new_project_name, self.project_lang)
 
         self.build_harness_cmd = self.oss_tool.get_script_cmd("build_fuzzers")
-        if self.local_project_path.exists():
-           
-            self.new_local_path = self.oss_fuzz_dir / "projects" / self.new_project_name / self.project_name
-            # the same path will cause the build command to fail for parallel, so we need to copy the project to a new path
-            shutil.copytree(self.local_project_path, self.new_local_path , dirs_exist_ok=True)
-            self.build_harness_cmd.append(str(self.new_local_path))
 
         # self.build_harness_cmd = ["python", os.path.join(self.oss_fuzz_dir, "infra", "helper.py"),
                             # "build_fuzzers", "--clean", self.new_project_name,  "--", "-fsanitize=fuzzer", "-fsanitize=address", "-fsanitize-coverage=trace-pc-guard"]
@@ -65,19 +58,6 @@ class Compiler():
         local_harness_path = self.oss_fuzz_dir / "projects" / self.new_project_name / harness_path.name 
         save_code_to_file(harness_code, local_harness_path)
 
-        if self.local_project_path.exists():
-            # copy the harness file to the local project path
-            # search for the harness file in the local project path
-            harness_file_in_local_proj = None
-            for root, _, files in os.walk(self.new_local_path):
-                if harness_path.name in files:
-                    harness_file_in_local_proj = Path(root) / harness_path.name
-                    break
-
-            if harness_file_in_local_proj:
-                shutil.copy(local_harness_path, harness_file_in_local_proj)
-            else:
-                raise FileNotFoundError(f"Harness file {harness_path.name} not found in local project path {self.new_local_path}")
 
         # build the image
         if not self.docker_tool.build_image(self.build_image_cmd):

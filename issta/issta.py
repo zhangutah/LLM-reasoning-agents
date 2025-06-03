@@ -236,11 +236,11 @@ class ISSTAFuzzer(AgentFuzzer):
     def __init__(self, n_examples: int, example_mode: str, model_name: str, temperature:float, oss_fuzz_dir: Path, 
                  project_name: str, function_signature: str, usage_token_limit: int, 
                  model_token_limit: int, run_time: int, max_fix: int, max_tool_call: int,
-                 clear_msg_flag:bool, save_dir: Path, cache_dir: Path, local_project_dir:Path, 
+                 clear_msg_flag:bool, save_dir: Path, cache_dir: Path, 
                  n_run: int = 1, tool_flag: bool=False):
         
         super().__init__(n_examples, example_mode, model_name, temperature, oss_fuzz_dir, project_name, function_signature, usage_token_limit, model_token_limit,
-                         run_time, max_fix, max_tool_call, clear_msg_flag,  save_dir, cache_dir, local_project_dir, n_run)
+                         run_time, max_fix, max_tool_call, clear_msg_flag,  save_dir, cache_dir, n_run)
         self.n_examples = n_examples
         self.example_mode = example_mode
         self.model_token_limit = model_token_limit
@@ -407,7 +407,7 @@ class ISSTAFuzzer(AgentFuzzer):
         
     def build_graph(self) -> StateGraph:
 
-        llm = ChatOpenAI(model=self.model_name, temperature=self.temperature, disabled_params={"parallel_tool_calls": None})
+        llm = ChatOpenAI(model=self.model_name, temperature=self.temperature)
 
         code_retriever = CodeRetriever(self.oss_fuzz_dir, self.project_name, self.new_project_name, self.project_lang, self.cache_dir, self.logger)
         tools:list[StructuredTool] = []
@@ -450,7 +450,7 @@ class ISSTAFuzzer(AgentFuzzer):
         llm_code_extract: BaseChatModel = llm.with_structured_output(CodeAnswerStruct) # type: ignore
         code_formater = CodeFormatTool(llm_code_extract, EXTRACT_CODE_PROMPT)
        
-        tool_llm: BaseChatModel = llm.bind_tools(tools) # type: ignore
+        tool_llm: BaseChatModel = llm.bind_tools(tools, parallel_tool_calls=False) # type: ignore
 
 
         draft_responder = InitGenerator(tool_llm, self.max_tool_call, continue_flag=True, save_dir=self.save_dir, 
@@ -472,7 +472,7 @@ class ISSTAFuzzer(AgentFuzzer):
                              self.run_time,  self.save_dir,  self.logger)
         
         compiler = CompilerWraper(self.oss_fuzz_dir, self.project_name, self.new_project_name, self.project_lang,
-                                   self.harness_pairs, self.save_dir, self.local_project_dir, self.logger)
+                                   self.harness_pairs, self.save_dir, self.logger)
         checker = SemaCheckNode(self.oss_fuzz_dir, self.project_name, self.new_project_name, self.function_signature, self.project_lang, self.logger)
 
         # build the graph
@@ -525,7 +525,7 @@ class ISSTAFuzzer(AgentFuzzer):
             return
         
         # plot_graph(graph)
-        config = {"configurable": {"thread_id": "1"}, "recursion_limit": 100} # type: ignore
+        config = {"configurable": {"thread_id": "1"}, "recursion_limit": 200} # type: ignore
         events = graph.stream( # type: ignore
             {"messages": [("user", generator_prompt)]},
             config,

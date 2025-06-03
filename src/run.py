@@ -24,7 +24,7 @@ class Runner:
         self.cache_dir = Path(self.config.get('cache_dir', "/home/yk/code/LLM-reasoning-agents/cache/"))
         self.bench_dir = Path( self.config.get('bench_dir', os.path.join(PROJECT_PATH, "benchmark-sets", "ntu")))
         self.save_dir = Path(self.config.get('save_dir', os.path.join(PROJECT_PATH, "outputs", "issta_rank_one")))
-        self.local_project_dir = Path(self.config.get('local_project_dir', "/fake/path"))
+
         # absolute path
         if not self.save_dir.is_absolute():
             self.save_dir = PROJECT_PATH /  self.save_dir
@@ -95,14 +95,14 @@ class Runner:
     def run_one(n_examples: int, example_mode: str, model_name: str, temperature: float,  oss_fuzz_dir: Path, 
                  project_name: str, function_signature: str, usage_token_limit: int, 
                  model_token_limit: int, run_time: int, max_fix: int, max_tool_call: int,
-                 clear_msg_flag:bool, save_dir: Path, cache_dir: Path, local_project_dir:Path, n_run: int = 1, tool_flag:bool=False):
+                 clear_msg_flag:bool, save_dir: Path, cache_dir: Path, n_run: int = 1, tool_flag:bool=False):
         """Run the fuzzer on a single function."""
 
         agent_fuzzer = ISSTAFuzzer(n_examples, example_mode, model_name, temperature, oss_fuzz_dir,
                                         project_name, function_signature, usage_token_limit, 
                                         model_token_limit, run_time, max_fix,
                                         max_tool_call, clear_msg_flag, save_dir, 
-                                        cache_dir,local_project_dir, n_run, tool_flag=tool_flag)
+                                        cache_dir, n_run, tool_flag=tool_flag)
         try:
         # Your main logic here
             graph = agent_fuzzer.build_graph()
@@ -131,7 +131,7 @@ class Runner:
                         self.n_examples, self.example_mode, self.model_name, self.temperature, self.oss_fuzz_dir, 
                         project_name, function_signature, self.usage_token_limit, 
                         self.model_token_limit, self.run_time, self.max_fix, self.max_tool_call, self.clear_msg_flag,
-                        self.save_dir, self.cache_dir, self.local_project_dir, n_run, self.tool_flag))
+                        self.save_dir, self.cache_dir, n_run, self.tool_flag))
             pool.close()
             pool.join()
 
@@ -188,7 +188,7 @@ class Runner:
                     self.n_examples, self.example_mode, self.model_name, self.temperature, self.oss_fuzz_dir, 
                     self.project_name, function_signature, self.usage_token_limit, 
                     self.model_token_limit, self.run_time, self.max_fix, self.max_tool_call, 
-                    self.clear_msg_flag, self.save_dir, self.cache_dir, self.local_project_dir, n_run=i+1,  tool_flag=self.tool_flag
+                    self.clear_msg_flag, self.save_dir, self.cache_dir,  n_run=i+1,  tool_flag=self.tool_flag
                 )
 
 
@@ -198,7 +198,7 @@ if __name__ == "__main__":
     #     print("Usage: python run.py <config_path>")
     #     sys.exit(1)
 
-    config_path = "/home/yk/code/LLM-reasoning-agents/cfg/ntu_agent.yaml"
+    config_path = "/home/yk/code/LLM-reasoning-agents/cfg/ntu_41.yaml"
     runner = Runner(config_path)
     
     # Set up signal handling for graceful termination

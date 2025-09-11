@@ -15,18 +15,14 @@ from collections import defaultdict
 from agent_tools.code_tools.parsers.cpp_parser import CPPParser
 import multiprocessing
 # from functools import partial
-
+from utils.misc import logger_wrapper
 
 def parse_target_cmd(build_msg: str, fuzzer_name: str) -> str:
     for line in build_msg.splitlines():
-        if f"/out/{fuzzer_name}" in line and "clang" in line:
+        if re.search(r"-o\s+(?:[\S/]*/)?" + re.escape(fuzzer_name) + r"(?:\s+|$)", line) and "clang" in line:
             # This function extracts the target command for the given fuzzer
             return line
     return ""
-
-def add_open_hook(target_cmd: str) -> str:
-    # This function adds an open hook to the target command
-    return f"{target_cmd} && open_hook"
 
 class HarnessEval(FuzzENV):
     def __init__(self,  benchcfg: BenchConfig, function_signature: str, project_name: str, local_harness: str, n_run: int=1):
@@ -49,14 +45,17 @@ class HarnessEval(FuzzENV):
             # extract target compile cmd
             target_cmd = parse_target_cmd(build_msg, fuzzer_name)
             if not target_cmd:
-                continue
+                logger_wrapper(self.logger, "Empty Target cmd", level="error")
+                return 0,0, False
+            
             if target_cmd.startswith("+"):
                 target_cmd = target_cmd[1:].strip()
-            print(f"Target cmd: {target_cmd}") 
-
-            # add open wrap
-            target_cmd = target_cmd.replace("{}.o".format(fuzzer_name),"{}.o /src/fuzz_wrappers.o".format(fuzzer_name))
-            cmd = "$CC $CFLAGS -c /src/openwrap.c -o /src/fuzz_wrappers.o && {} -Wl,--wrap=open -Wl,--wrap=fopen".format(target_cmd)
+         
+            # add open wrap $CC $CFLAGS -c openwrapper.c -o /src/openwrapper.o
+            # mv /usr/local/bin/clang /usr/local/bin/clang.orig
+          
+            target_cmd = target_cmd.replace("{}.o".format(fuzzer_name),"{}.o /src/openwrapper.o".format(fuzzer_name))
+            cmd = "$CC $CFLAGS -c /src/openwrapper.c -o /src/openwrapper.o && {} -Wl,--wrap=open -Wl,--wrap=fopen".format(target_cmd)
 
             # write this cmd to build.sh
 
@@ -65,6 +64,7 @@ class HarnessEval(FuzzENV):
             with open(build_sh_path, "a") as f:
                 f.write(cmd + "\n")
             new_project_dir = os.path.join(self.benchcfg.oss_fuzz_dir,"projects", self.new_project_name)
+            
             # copy the openwrap.c to out dir
             shutil.copy(f"{PROJECT_PATH}/harness_agent/evaluation/openwrap.c", new_project_dir)
             copy_cmd = f"\nCOPY openwrap.c /src/openwrap.c\n"
@@ -76,26 +76,26 @@ class HarnessEval(FuzzENV):
             
             if compile_res != CompileResults.Success:
                 # Propagate the error from run_cmd
-                print(f"Error during linking with open wrap: {build_msg}")
+                logger_wrapper(self.logger, f"Compile Error during linking with open wrap: {build_msg}", level="error")
                 return 0,0, False
 
             # Run the fuzzer
             fuzz_res, _, _ = fuzzer.run_fuzzing(counter=0, fuzzer_name=fuzzer_name)
             if fuzz_res != FuzzResult.NoError:
+                logger_wrapper(self.logger, f"Error during fuzzing: {fuzz_res}", level="error")
                 return 0,0, False
             
 
             corpus_dir = Path(self.save_dir) / "corpora"
             function_name =  extract_name(self.function_signature, keep_namespace=True)
             # init the cov collector
-            cov_collector = CovCollector(self.benchcfg.oss_fuzz_dir, self.benchcfg.benchmark_dir, self.project_name, self.new_project_name, self.project_lang, None)
+            cov_collector = CovCollector(self.benchcfg.oss_fuzz_dir, self.benchcfg.benchmark_dir, self.project_name, self.new_project_name, self.project_lang, self.logger)
             # collect the coverage
             init_cov, final_cov, chenged = cov_collector.collect_coverage(self.harness_code, harness_path, fuzzer_name, function_name, corpus_dir)
             
-            # cov_collector.clean_workspace()
-            # print(f"init_cov: {init_cov} final_cov:{final_cov}, Coverage changed: {chenged}")
             return init_cov, final_cov, chenged
 
+        logger_wrapper(self.logger, f"All fuzzer compilation failed: {compile_res}", level="error")
         # Run the harness with the specified path
         return 0, 0, False
     
@@ -265,14 +265,14 @@ if __name__ == "__main__":
     benchcfg = BenchConfig(benchcfg_path)
     output_path = "/home/yk/code/LLM-reasoning-agents/outputs_ablation/claude_sonnet/code_info/agent"
     n_run = 1
-    run_agent_res(Path(output_path), benchcfg,  n_run, num_processes=8)
+    # run_agent_res(Path(output_path), benchcfg,  n_run, num_processes=8)
 
-    # function_signature = "GdkPixbuf* gdk_pixbuf_new_from_file(const char *filename, GError    **error)"
-    # project = "gdk-pixbuf"
-    # harness = "/home/yk/code/LLM-reasoning-agents/outputs_ablation/claude_sonnet/code_info/agent/gdk-pixbuf/gdk_pixbuf_new_from_file/run1_nlrqrmvrrvqfplvv/draft_fix0.txt"
-    # evaluator = HarnessEval(benchcfg=benchcfg, function_signature=function_signature, project_name=project, local_harness=harness)
-    # res = evaluator.eval_harness()
-    # if res[-1]:
-    #     print(res)
-    # else:
-    #     print("Harness evaluation failed.")
+    function_signature = "bool stun_is_command_message(const stun_buffer *)"
+    project = "coturn"
+    harness = "/home/yk/code/LLM-reasoning-agents/outputs_ablation/claude_sonnet/code_info/agent/coturn/stun_is_command_message/run1_gjneppfhcifvlxwi/draft_fix0.txt"
+    evaluator = HarnessEval(benchcfg=benchcfg, function_signature=function_signature, project_name=project, local_harness=harness)
+    res = evaluator.eval_harness()
+    if res[-1]:
+        print(res)
+    else:
+        print("Harness evaluation failed.")

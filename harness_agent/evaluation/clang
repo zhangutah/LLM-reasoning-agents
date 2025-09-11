@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+# clang shim for wrapping open/fopen etc. (only for stream_fuzzer target)
+
+REAL=$(command -v clang.orig || command -v /usr/bin/clang)
+
+WRAPOBJ="/src/openwrapper.o"
+
+WRAPFLAGS=(-Wl,--wrap=open \
+           -Wl,--wrap=open64 \
+           -Wl,--wrap=openat \
+           -Wl,--wrap=openat64 \
+           -Wl,--wrap=fopen \
+           -Wl,--wrap=fopen64 \
+           -Wl,--wrap=fdopen \
+           -Wl,--wrap=freopen)
+
+# Detect compile-only steps
+link=true
+for a in "$@"; do
+  case "$a" in
+    -c|-S|-E|-M|-MM) link=false ;;
+  esac
+done
+
+if ! $link; then
+  exec "$REAL" "$@"
+fi
+
+# Find -o <target>
+args=("$@")
+out_idx=-1
+target=""
+for i in "${!args[@]}"; do
+  if [[ "${args[$i]}" == "-o" && $((i+1)) -lt ${#args[@]} ]]; then
+    out_idx=$i
+    target="${args[$((i+1))]}"
+    break
+  fi
+done
+
+# Only wrap if building stream_fuzzer
+if [[ "$target" == *"stream_fuzzer" ]]; then
+  if (( out_idx >= 0 )); then
+    newargs=("${args[@]:0:$out_idx}" "$WRAPOBJ" "${WRAPFLAGS[@]}" "${args[@]:$out_idx}")
+    echo "[shim] linking stream_fuzzer with wrappers"
+    echo "${WRAPFLAGS[@]}"
+    exec "$REAL" "${newargs[@]}"
+  else
+    # No explicit -o, still apply wrap just in case
+    exec "$REAL" "$@" "$WRAPOBJ" "${WRAPFLAGS[@]}"
+  fi
+else
+  # For all other binaries, do not wrap
+  exec "$REAL" "$@"
+fi

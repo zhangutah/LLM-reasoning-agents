@@ -183,10 +183,6 @@ class BaseParser:
     
     def get_ref_source(self, symbol_name: str, line: int) -> str:
 
-        # remove the namespace
-        if "::" in symbol_name:
-            symbol_name = symbol_name.split("::")[-1]
-
         # find the callee node
         callee_node = None
         query = self.parser_language.query(f"({self.call_func_name}) @func_call")
@@ -202,21 +198,10 @@ class BaseParser:
             # if we can't decode the text, it is meaningless to search
             if not node.text:
                 continue
-
-            # Decode the source code to a string    
-            id_node = self.match_child_node(node, "identifier", recusive_flag=True)
-            # the function name is under function_declarator
-            if id_node and symbol_name == id_node.text.decode("utf-8", errors="ignore"): # type: ignore
-                callee_node = id_node
             
-            # source_code = node.text.decode("utf-8", errors="ignore")
-            # # function call may span multiple lines so we need to check the range
-            # if (node.start_point.row <= line and line <= node.end_point.row) and symbol_name in source_code:
-            #     print("node text: ", source_code)
-            #     print("start: ", node.start_point.row, " end: ", node.end_point.row)
-            #     print("line: ", line)
-            #     callee_node = node
-            #     break
+            callee_node = self.get_identifier_node(node, symbol_name)
+            if callee_node:
+                break
         
         if not callee_node:
             return ""
@@ -232,7 +217,48 @@ class BaseParser:
         return ""
 
         # find the upper node of the callee node, which is reference node
+
+    def match_namespace(self, ns1: list[str], ns2: list[str]) -> bool:
+        """
+        Match two namespace lists.They don't have to be exactly the same, but one should be the suffix of the other.
+        :param ns1: The first namespace list.
+        :param ns2: The second namespace list.
+        """
+        for na, nb in zip(reversed(ns1), reversed(ns2)):
+            if na != nb:
+                return False
+        return True
+
+    def get_identifier_node(self, root_node:Node, symbol_name: str) -> Optional[Node]:
+       
+         # remove the namespace
+        if "::" in symbol_name:
+            pure_symbol_name = symbol_name.split("::")[-1]
+        else:
+            pure_symbol_name = symbol_name
+
+        try:
+            # TODO C/C++ function name is the first child of the call expression
+            for identifier_str in ["identifier", "field_identifier"]:
+                id_node = self.match_child_node(root_node, identifier_str, recusive_flag=True)
+                
+                # match the function name
+                if id_node and id_node.text and pure_symbol_name == id_node.text.decode("utf-8", errors="ignore"): # type: ignore
+                    
+                    # if the function name matches, check the namespace if any
+                    call_str = root_node.text.decode("utf-8", errors="ignore") # type: ignore
+                    if "::" in call_str:
+                        # split the name space
+                        namespace = call_str.split("::")[:-1]
+                        if self.match_namespace(namespace, symbol_name.split("::")[:-1]):
+                                return id_node
+                    else:
+                        return id_node
+        except Exception:
+            pass
         
+        return None
+    
     def get_call_node(self, function_name: str, entry_node: Optional[Node] = None) -> Optional[Node]:
         if not entry_node:
             print("Entry function not found.")
@@ -248,12 +274,9 @@ class BaseParser:
             
         # Print the nodes
         for node in captures["func_call"]:
-            try:
-                # TODO C/C++ function name is the first child of the call expression
-                if node.children[0].text and function_name == node.children[0].text.decode("utf-8", errors="ignore"):
-                    return node
-            except Exception as e:
-                print("Error in parsing the function call: ", e)
+            id_node = self.get_identifier_node(node, function_name)
+            if id_node:
+                return node
         return None
 
     def get_fuzz_function_node(self, function_name: str) -> Optional[Node]:

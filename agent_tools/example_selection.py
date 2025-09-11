@@ -34,7 +34,7 @@ class LLMSelector:
 
         self.llm = llm
         self.structured_llm = llm.with_structured_output(AnswerStruct) # type: ignore
-        prompt_path = Path(f"{PROJECT_PATH}/prompts/example_selection.txt")
+        prompt_path = Path(f"{PROJECT_PATH}/harness_agent/prompts/example_selection.txt")
         self.prompt_template = prompt_path.read_text()
 
 

@@ -10,6 +10,7 @@ import json
 import shutil
 import logging
 from typing import Optional
+from utils.misc import logger_wrapper
 
 class CovCollector():
 
@@ -40,7 +41,7 @@ class CovCollector():
         # add the wrapper code to the harness code
         wrap_file = Path(f"{PROJECT_PATH}/agent_tools/fuzz_tools/{COV_WRAP_FILE_NAME}_{self.project_lang.value.lower()}.txt")
         if not wrap_file.exists():
-            print(f"Wrapper file {wrap_file} does not exist")
+            logger_wrapper(self.logger, f"Wrapper file {wrap_file} does not exist", level="error")
             return harness_code
         
         wrap_code = wrap_file.read_text()
@@ -51,7 +52,7 @@ class CovCollector():
         if fuzz_node:
             fuzz_start_row, fuzz_start_col, fuzz_end_row = fuzz_node.start_point.row, fuzz_node.start_point.column, fuzz_node.end_point.row
         else:
-            print(f"Fuzz function {function_name} not found")
+            logger_wrapper(self.logger, f"Fuzz function {function_name} not found", level="error")
             raise Exception(f"Fuzz function {function_name} not found")
         
         # add reset_sancov_counters before fuzz function
@@ -80,6 +81,7 @@ class CovCollector():
         if self.project_lang in [LanguageType.C, LanguageType.CPP]:
             wrapped_code = self.gen_wrapped_code(harness_code, function_name)
         else:
+            logger_wrapper(self.logger, f"Language {self.project_lang} not supported for now", level="error")
             raise Exception(f"Language {self.project_lang} not supported for now")
 
         # init the compiler
@@ -87,7 +89,7 @@ class CovCollector():
         # compile the code
         compile_res, build_msg = compiler.compile(wrapped_code, harness_path, fuzzer_name)
         if compile_res != CompileResults.Success:
-            print(f"Compile error: {build_msg}")
+            logger_wrapper(self.logger, f"Compile error: {build_msg}", level="error")
             return False
     
         # run fuzzer driver with testcase
@@ -115,7 +117,7 @@ class CovCollector():
 
         flag = self.recompile(harness_code, harness_path, fuzzer_name, function_name)
         if not flag:
-            print(f"Recompile error: {flag}")
+            logger_wrapper(self.logger, f"Recompile error: {flag}", level="error")
             return 0, 0, False
         # run the call back
         cmd = ["python", "cov_c.py", "--fuzzer-name", fuzzer_name, 
@@ -132,7 +134,7 @@ class CovCollector():
 
         cov_path = local_out / "cov.json"
         if not cov_path.exists():
-            print(f"Coverage file {cov_path} does not exist")
+            logger_wrapper(self.logger, f"Coverage file {cov_path} does not exist", level="error")
             return 0, 0, False
         
         with open(cov_path, "r") as f:
@@ -140,7 +142,7 @@ class CovCollector():
 
             msg = cov.get("msg", "")
             if msg != "Success":
-                print(f"Error running the coverage file: {msg}")
+                logger_wrapper(self.logger, f"Error running the coverage file: {msg}", level="error")
                 return 0, 0, False
             
             init_cov, final_cov = cov.get("init_cov", 0), cov.get("final_cov", 0)

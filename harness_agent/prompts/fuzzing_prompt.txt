@@ -10,4 +10,10 @@ Based on the above information, fix the code.
 You code must be compilable and runnable. 
 Do not change the function signature of the harness function. 
 
+{tool_prompt}
+
+The following function fuzzes {function_name}
+extern {function_signature};
+
+
 Must provide the full fixed code. 

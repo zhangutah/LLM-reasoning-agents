@@ -184,32 +184,13 @@ if __name__ == "__main__":
 
     # 
     cfg_list= [
-        # "/home/yk/code/LLM-reasoning-agents/cfg/qcoder_header_agent.yaml",
-        # "/home/yk/code/LLM-reasoning-agents/cfg/qcoder_header_oss_fuzz.yaml",
-        # "/home/yk/code/LLM-reasoning-agents/cfg/qcoder_example_public_rank.yaml",
-        #  "/home/yk/code/LLM-reasoning-agents/cfg/qcoder_example_public_random.yaml",
-        # "/home/yk/code/LLM-reasoning-agents/cfg/qcoder_example_project_rank.yaml",
-        #  "/home/yk/code/LLM-reasoning-agents/cfg/qcoder_example_project_random.yaml",
-        #  "/home/yk/code/LLM-reasoning-agents/cfg/qcoder_code_info_agent.yaml",
-        #  "/home/yk/code/LLM-reasoning-agents/cfg/qcoder_code_info_oss_fuzz.yaml",
-        #  "/home/yk/code/LLM-reasoning-agents/cfg/qcoder_code_info_issta.yaml",
-        # "/home/yk/code/LLM-reasoning-agents/cfg/claude_code_info_agent.yaml",
-        #  "/home/yk/code/LLM-reasoning-agents/cfg/claude_header_agent.yaml",
-        # "/home/yk/code/LLM-reasoning-agents/cfg/claude_header_static.yaml",
-        # "/home/yk/code/LLM-reasoning-agents/cfg/claude_header_oss_fuzz.yaml",
-        # "/home/yk/code/LLM-reasoning-agents/cfg/glm_code_info_agent.yaml"
-        # "/home/yk/code/LLM-reasoning-agents/cfg/claude_header_agent.yaml",
-        # "/home/yk/code/LLM-reasoning-agents/cfg/claude_header_no.yaml",
-        # "/home/yk/code/LLM-reasoning-agents/cfg/claude_example_public_rank.yaml",
-        # "/home/yk/code/LLM-reasoning-agents/cfg/claude_example_public_random.yaml",
-        # "/home/yk/code/LLM-reasoning-agents/cfg/claude_header_oss_fuzz.yaml"
-        # "/home/yk/code/LLM-reasoning-agents/cfg/claude_code_info_oss_fuzz.yaml",
+       
         # "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini_header_no.yaml",
         #  "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini_header_agent.yaml",
         #  "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini_header_oss_fuzz.yaml",
         # "/home/yk/code/LLM-reasoning-agents/cfg/claude_code_info_oss_fuzz.yaml",
         # "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini_example_public_rank.yaml",
-        "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini_example_public_random.yaml",
+        "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini/gpt5_mini_agent_wild.yaml",
         # "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini_code_info_agent.yaml",
         # "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini_code_info_oss_fuzz.yaml",
         #   "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini_example_project_random.yaml",

@@ -72,15 +72,15 @@ class ParserCodeRetriever():
         
         if "::" in self.symbol_name:
             # if the symbol name contains namespace, we need to remove it
-            symbol_name = self.symbol_name.split("::")[-1]
+            pure_symbol_name = self.symbol_name.split("::")[-1]
         else:
-            symbol_name = self.symbol_name
+            pure_symbol_name = self.symbol_name
             
         # Execute `find` command to recursively list files and directories
         if self.lsp_function == LSPFunction.References:
-            cmd = f"grep --binary-files=without-match -rn /src -e  '{symbol_name}('"
+            cmd = f"grep --binary-files=without-match -rn /src -e  '{pure_symbol_name}('"
         else:
-            cmd = f"grep --binary-files=without-match -rnw /src -e  {symbol_name}"
+            cmd = f"grep --binary-files=without-match -rnw /src -e  {pure_symbol_name}"
 
         results = sp.run(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT,  text=True)
         output = results.stdout.strip()
@@ -116,7 +116,7 @@ class ParserCodeRetriever():
             if self.lsp_function == LSPFunction.Definition and ";" in content:
                 continue
             # find character position
-            char_pos = content.find(symbol_name)
+            char_pos = content.find(pure_symbol_name)
             # the line number is 1-based, we need to convert it to 0-based
             filtered_lines.append((file_path, int(lineno)-1, char_pos))
 

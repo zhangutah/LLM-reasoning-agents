@@ -364,7 +364,23 @@ def fix_qwen_tool_calls(res: Any) -> Optional[AIMessage]:
         print(f"Error in fix_qwen_tool_calls: {e}")
         return None
 
-    
+
+def logger_wrapper(logger: Optional[Any], msg: str, level: str = "info") -> None:
+    """A wrapper for logging messages."""
+    if logger:
+        if level == "info":
+            logger.info(msg)
+        elif level == "error":
+            logger.error(msg)
+        elif level == "warning":
+            logger.warning(msg)
+        elif level == "debug":
+            logger.debug(msg)
+        else:
+            logger.info(msg)
+    else:
+        print(msg)
+
 if __name__ == "__main__":
 
     with open("/home/yk/code/LLM-reasoning-agents/benchmark-sets/ntu/gdk-pixbuf.yaml", 'r') as f:

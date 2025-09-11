@@ -102,7 +102,36 @@ def find_empty_symbol(oss_fuzz_dir: Path, cache_dir: Path, project_name: str = "
     except:
         pass
 
+def test_namespace_identifier_matching():
+    from agent_tools.code_tools.parsers.cpp_parser import CPPParser
+
+    code = """
+    #include <iostream>
+    namespace A {
+        void foo() {
+            std::cout << "Hello, World!" << std::endl;
+        }
+    }
+
+    extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
+        foo();
+        return 0;
+    }
+    """
+
+    parser = CPPParser(None, code)
+    call_node = parser.is_fuzz_function_called("foo")
+    assert call_node, "Function call node should not be None"
+    # print("Function call node found:", call_node.text.decode("utf-8"))
+
+    call_node_ns = parser.is_fuzz_function_called("B::foo")
+    assert call_node_ns, "Function call node with namespace should not be None"
+    # print("Function call node with namespace found:", call_node_ns.text.decode("utf-8"))
+
 if __name__ == "__main__":
+
+    test_namespace_identifier_matching()
+    exit(0)
     cache_dir = Path("/home/yk/code/LLM-reasoning-agents/cache/")
     oss_fuzz_dir = Path("/home/yk/code/oss-fuzz/")
 

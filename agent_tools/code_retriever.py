@@ -66,7 +66,7 @@ class CodeRetriever():
         except Exception as e:
             self.logger.error(f"Error stopping container: {e}")
 
-    def view_code(self, file_path: str, lineno: int, context_window: int=10, num_flag: bool=True) -> str:
+    def view_code(self, file_path: str, lineno: int, context_window: int=100, num_flag: bool=True) -> str:
         """
         View the code around the given line number for file path. This tool will return 20 lines before and after the target line.
         Args:
@@ -174,9 +174,17 @@ class CodeRetriever():
                 resp = self.get_symbol_info_retriever(symbol_name, lsp_function, Retriever.Parser)
         else:
             resp = self.get_symbol_info_retriever(symbol_name, lsp_function, retriever)
-            
+        
+        # deduplicate the response based on source_code
+        unique_sources: set[str] = set()
+        deduped_resp: list[dict[str, Any]] = []
+        for item in resp:
+            source_code = item.get("source_code", "")
+            if source_code not in unique_sources:
+                unique_sources.add(source_code)
+                deduped_resp.append(item)
         self.logger.info(f"Found {len(resp)} {lsp_function.value} for {symbol_name} with {retriever.value} retriever")
-        return resp  # No declaration found
+        return deduped_resp  # No declaration found
 
     @catch_exception
     def get_symbol_info_retriever(self, symbol_name: str, lsp_function: LSPFunction, retriever: Retriever = Retriever.LSP) -> list[dict[str, Any]]:
@@ -388,9 +396,9 @@ class CodeRetriever():
             >>> references
             "// cJSON *cJSON_Parse(const char *value) {...} // in cJSON.c\ncJSON_Parse(...); // in main.c\n..."
         """
-        if "::" in symbol_name:
-            # if the symbol name contains namespace, we need to use the full name
-            symbol_name = symbol_name.split("::")[-1]
+        # if "::" in symbol_name:
+        #     # if the symbol name contains namespace, we need to use the full name
+        #     symbol_name = symbol_name.split("::")[-1]
 
         ref_list = self.get_symbol_info(symbol_name, LSPFunction.References, retriever)
         
@@ -542,3 +550,15 @@ class CodeRetriever():
         
         # Return empty string if the symbol is not found in standard library
         return ""
+    
+    def get_symbol_header_tool(self, symbol_name: str) -> str:
+        return self.get_symbol_header(symbol_name, Retriever.Mixed)
+    def get_symbol_declaration_tool(self, symbol_name: str) -> str:
+        return self.get_symbol_declaration(symbol_name, Retriever.Mixed)
+    def get_symbol_definition_tool(self, symbol_name: str) -> str:
+        return self.get_symbol_definition(symbol_name, Retriever.Mixed)
+    def get_symbol_references_tool(self, symbol_name: str) -> str:
+        return self.get_symbol_references(symbol_name, Retriever.Parser)
+    def get_struct_related_functions_tool(self, symbol_name: str) -> str:
+        return self.get_struct_related_functions(symbol_name, Retriever.Mixed)
+  

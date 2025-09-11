@@ -374,52 +374,13 @@ class ISSTAFuzzer(FuzzENV):
             return END
         else:
             return self.FixBuilderNode
-        
-    def build_graph(self) -> StateGraph:
-        
 
-        header_tool = StructuredTool.from_function(  # type: ignore
-                func=self.code_retriever.get_symbol_header,
-                name="get_symbol_header",
-                description=self.code_retriever.get_symbol_header.__doc__,
-            )
-        definition_tool = StructuredTool.from_function( # type: ignore
-            func=self.code_retriever.get_symbol_definition,
-            name="get_symbol_definition",
-            description=self.code_retriever.get_symbol_definition.__doc__,
-        )
+    def fill_prompt(self, prompt_template: str, **kwargs: dict[str, str]) -> str:
+        for key, value in kwargs.items():
+            prompt_template = prompt_template.replace(f"{{{key}}}", value) # type: ignore
+        return prompt_template
 
-        declaration_tool = StructuredTool.from_function( # type: ignore
-            func=self.code_retriever.get_symbol_declaration,
-            name="get_symbol_declaration",
-            description=self.code_retriever.get_symbol_declaration.__doc__,
-        )
-        view_tool = StructuredTool.from_function( # type: ignore
-            func=self.code_retriever.view_code,
-            name="view_code",
-            description=self.code_retriever.view_code.__doc__,
-        )
-
-        struct_tool = StructuredTool.from_function(  # type: ignore
-            func=self.code_retriever.get_struct_related_functions,
-            name="get_struct_related_functions",
-            description=self.code_retriever.get_struct_related_functions.__doc__,
-        )
-        reference_tool = StructuredTool.from_function(  # type: ignore
-            func=self.code_retriever.get_symbol_references,
-            name="get_symbol_references",
-            description=self.code_retriever.get_symbol_references.__doc__,
-        )
-
-        # add tools
-        tools = []
-        if self.benchcfg.fixing_mode == "agent":
-            tools:list[StructuredTool] = [header_tool, definition_tool, declaration_tool, view_tool, struct_tool, reference_tool]
-        if self.benchcfg.header_mode == "agent" and self.benchcfg.fixing_mode != "agent":
-            self.logger.info("Using agent mode for header files, add the header tool")
-            tools:list[StructuredTool] = [header_tool]
-
-        llm_extract = ChatOpenAI(model="gpt-4.1-mini")
+    def load_model(self) -> BaseChatModel:
 
         if self.benchcfg.model_name.startswith("gpt"):
             if "gpt-5-mini" in self.benchcfg.model_name:
@@ -445,14 +406,65 @@ class ISSTAFuzzer(FuzzENV):
             # from langchain_ollama import ChatOllama
             # llm = ChatOllama(model=self.benchcfg.model_name, temperature=self.benchcfg.temperature, base_url=self.benchcfg.base_url, reasoning=self.benchcfg.reasoning) 
             # llm_extract = ChatOllama(model=self.benchcfg.model_name, temperature=self.benchcfg.temperature, base_url=self.benchcfg.base_url, reasoning=False) 
+        return llm
+    
+    def load_tools(self) -> list[StructuredTool]:
+
+        header_tool = StructuredTool.from_function(  # type: ignore
+                func=self.code_retriever.get_symbol_header_tool,
+                name="get_symbol_header_tool",
+                description=self.code_retriever.get_symbol_header.__doc__,
+            )
+        definition_tool = StructuredTool.from_function( # type: ignore
+            func=self.code_retriever.get_symbol_definition_tool,
+            name="get_symbol_definition_tool",
+            description=self.code_retriever.get_symbol_definition.__doc__,
+        )
+
+        declaration_tool = StructuredTool.from_function( # type: ignore
+            func=self.code_retriever.get_symbol_declaration_tool,
+            name="get_symbol_declaration_tool",
+            description=self.code_retriever.get_symbol_declaration.__doc__,
+        )
+        view_tool = StructuredTool.from_function( # type: ignore
+            func=self.code_retriever.view_code,
+            name="view_code",
+            description=self.code_retriever.view_code.__doc__,
+        )
+
+        struct_tool = StructuredTool.from_function(  # type: ignore
+            func=self.code_retriever.get_struct_related_functions_tool,
+            name="get_struct_related_functions_tool",
+            description=self.code_retriever.get_struct_related_functions.__doc__,
+        )
+        reference_tool = StructuredTool.from_function(  # type: ignore
+            func=self.code_retriever.get_symbol_references_tool,
+            name="get_symbol_references_tool",
+            description=self.code_retriever.get_symbol_references.__doc__,
+        )
+
+        # add tools
+        tools = []
+        if self.benchcfg.fixing_mode == "agent":
+            tools:list[StructuredTool] = [header_tool, definition_tool, declaration_tool, view_tool, struct_tool, reference_tool]
+        if self.benchcfg.header_mode == "agent" and self.benchcfg.fixing_mode != "agent":
+            self.logger.info("Using agent mode for header files, add the header tool")
+            tools:list[StructuredTool] = [header_tool]
+
+        return tools
+
+    
+    def build_graph(self) -> StateGraph:
+
+
+        llm_extract = ChatOpenAI(model="gpt-4.1-mini")
+        llm = self.load_model()
 
         # code formatter
         llm_code_extract: BaseChatModel = llm_extract.with_structured_output(CodeAnswerStruct) # type: ignore
         code_formater = CodeFormatTool(llm_code_extract, load_prompt_template(f"{PROJECT_PATH}/harness_agent/prompts/extract_code.txt"))
 
-        # if self.benchcfg.model_name.startswith("gpt"):
-            # tool_llm: BaseChatModel = llm.bind_tools(tools, parallel_tool_calls=False) # type: ignore
-        # else:
+        tools = self.load_tools()
         if len(tools) > 0:
             tool_llm: BaseChatModel = llm.bind_tools(tools) # type: ignore
         else:
@@ -465,8 +477,11 @@ class ISSTAFuzzer(FuzzENV):
         compile_fix_prompt = load_prompt_template(f"{PROJECT_PATH}/harness_agent/prompts/compile_prompt.txt")
         fuzz_fix_prompt = load_prompt_template(f"{PROJECT_PATH}/harness_agent/prompts/fuzzing_prompt.txt")
 
-        local_compile_fix_prompt = compile_fix_prompt + self.tool_prompt
-        local_fuzz_fix_prompt = fuzz_fix_prompt + self.tool_prompt
+        function_name = extract_name(self.function_signature, keep_namespace=False)
+        local_compile_fix_prompt =  self.fill_prompt(compile_fix_prompt, tool_prompt=self.tool_prompt,   # type: ignore
+                                                     function_signature=self.function_signature, function_name=function_name)   # type: ignore
+        local_fuzz_fix_prompt = self.fill_prompt(fuzz_fix_prompt, tool_prompt=self.tool_prompt,  # type: ignore
+                                                 function_signature=self.function_signature, function_name=function_name)  # type: ignore
 
         if self.benchcfg.fixing_mode == "oss_fuzz":
             prompt_builder = OSSFUZZFixerPromptBuilder

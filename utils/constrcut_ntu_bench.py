@@ -9,6 +9,8 @@ import yaml
 import os
 import re
 from pathlib import Path
+from utils.misc import extract_name
+
 
 logger = logging.getLogger(__name__)
 
@@ -184,4 +186,50 @@ def build_ntu_bench(bench_dir: str) -> None:
 		with open(f'/home/yk/code/fuzz-introspector/scripts/oss-fuzz-gen-e2e/workdir/oss-fuzz-gen/benchmark-sets/ntu/{project_name}.yaml', 'w') as f:
 			yaml.dump(project_yaml, f, default_flow_style=False, width=float("inf"), allow_unicode=True)  
 
-build_ntu_bench("/home/yk/code/LLM-reasoning-agents/benchmark-sets/ntu")
+
+def build_bench(text_file: str, project_name: str) -> None:
+	INTROSPECTOR_ENDPOINT = 'https://introspector.oss-fuzz.com/api'
+	INTROSPECTOR_FUNC_SIG = f'{INTROSPECTOR_ENDPOINT}/function-signature'
+
+	function_list: List[str] = []
+	with open(text_file, 'r') as f:
+		for line in f.readlines():
+			sig = line.strip()
+			# if sig.startswith("Hun"):
+			sig = "void " + sig
+			function_list.append(sig)
+	# create a yaml file for each
+	project_yaml: dict[str, Any] = {"functions": [],
+					"project": project_name}
+
+	# oss benchmark yaml path
+	oss_yaml_path = f'/home/yk/code/fuzz-introspector/scripts/oss-fuzz-gen-e2e/workdir/oss-fuzz-gen/benchmark-sets/all/{project_name}.yaml'
+	if not os.path.exists(oss_yaml_path):
+		print(f"File {oss_yaml_path} does not exist")
+	else:
+		# read oss fuzz gen yaml  to obtain the above information
+		with open(oss_yaml_path, 'r') as f:
+			oss_fuzz_gen = yaml.safe_load(f)
+			project_yaml['target_path'] = oss_fuzz_gen['target_path']
+			project_yaml['language'] = oss_fuzz_gen['language']
+			project_yaml['target_name'] = oss_fuzz_gen['target_name']
+
+	for function in function_list:
+
+		
+		project_yaml['functions'].append(
+			{
+				"name": extract_name(function),
+				"params": [],
+				"return_type": "void",
+				"signature": function
+			}
+		)
+
+	os.makedirs(f'/home/yk/code/LLM-reasoning-agents/benchmark-sets/yunhang/', exist_ok=True)
+
+	# write to yaml file
+	with open(f'/home/yk/code/LLM-reasoning-agents/benchmark-sets/yunhang/{project_name}.yaml', 'w') as f:
+		yaml.dump(project_yaml, f, default_flow_style=False, width=float("inf"), allow_unicode=True)
+
+build_bench("/home/yk/code/LLM-reasoning-agents/utils/hunspell.txt", "hunspell")

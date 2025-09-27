@@ -1,5 +1,5 @@
 
-from constants import LanguageType, FuzzResult
+from constants import LanguageType, ValResult
 import re
 from pathlib import Path
 
@@ -91,16 +91,16 @@ class FuzzLogParser():
         self.project_lang = project_lang
         # self.compile_error_extractor = CompileErrorExtractor(project_lang)
 
-    def parse_log(self, log_file: Path)-> tuple[FuzzResult, list[str], list[list[str]]]:
+    def parse_log(self, log_file: Path)-> tuple[ValResult, list[str], list[list[str]]]:
         try:
             with open(log_file, "r", encoding="utf-8", errors='ignore') as file:
                 log = file.read()
             
             return self.parse_str(log)
         except Exception as e:
-            return FuzzResult.ReadLogError, [str(e)], []
+            return ValResult.ReadLogError, [str(e)], []
     
-    def parse_str(self, log: str) -> tuple[FuzzResult, list[str], list[list[str]]]:
+    def parse_str(self, log: str) -> tuple[ValResult, list[str], list[list[str]]]:
         """Parse the log file and extract errors."""
 
         assert isinstance(log, str), "log must be a string"
@@ -130,7 +130,7 @@ class FuzzLogParser():
                         stack_list.append(one_stack)
                         one_stack = []
 
-            return FuzzResult.Crash, error_type_line, stack_list
+            return ValResult.Crash, error_type_line, stack_list
 
         # check the code coverage
         
@@ -143,12 +143,12 @@ class FuzzLogParser():
         done_cov_value = done_cov.group(1) if done_cov else None
 
         if not inited_cov_value or not done_cov_value:
-            return FuzzResult.LackCovError, [], []
+            return ValResult.LackCovError, [], []
 
         if done_cov_value == inited_cov_value:
-            return FuzzResult.ConstantCoverageError, [], []
+            return ValResult.ConstantCoverageError, [], []
         
-        return FuzzResult.NoError, [], []
+        return ValResult.NoError, [], []
 
 
 if __name__ == "__main__":

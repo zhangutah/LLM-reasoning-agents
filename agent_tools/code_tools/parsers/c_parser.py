@@ -166,7 +166,7 @@ decl_query_dict.update(common_query_dict)
 def_query_dict.update(common_query_dict)
 
 class CParser(BaseParser):
-    def __init__(self, file_path: Optional[Path], source_code: Optional[str] = None,  project_lang: LanguageType = LanguageType.C):
+    def __init__(self, file_path: Optional[Path], source_code: Optional[str] = None):
         super().__init__(file_path, source_code,  decl_query_dict, def_query_dict, func_declaration_query_dict, LanguageType.C)
 
 # Example usage

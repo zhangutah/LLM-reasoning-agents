@@ -65,7 +65,7 @@ class CodeSearch():
             return []
 
         # check if the function is called by AST
-        parser = self.parser(None, source_code,  self.project_lang)
+        parser = self.parser(None, source_code)
 
         code_snippet: list[str] = []
         for lineno in call_lines:

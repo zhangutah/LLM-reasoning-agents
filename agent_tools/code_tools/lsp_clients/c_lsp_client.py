@@ -1,12 +1,13 @@
 import json
 import os
+import urllib
 from agent_tools.code_tools.lsp_clients.clspclient_raw import ClangdLspClient
 from constants import LanguageType, LSPFunction
 from typing import Any, Optional
 from pathlib import Path
 from dataclasses import asdict
 from agent_tools.code_tools.lsp_clients.extract_functions_clang import LibclangExtractor
-
+import asyncio
 class CLSPCLient():
     def __init__(self, workdir: str,  project_lang: LanguageType):
    
@@ -96,12 +97,13 @@ class CLSPCLient():
         # match from the last namespace
         for i, (n1, n2) in enumerate(zip(reversed(name_space_list), reversed(container_ns))):
             if n1 != n2:
-                return i+1
+                return i
         
         return min(len(name_space_list), len(container_ns))
 
     async def get_workspace_symbols(self, symbol: str="") -> list[tuple[str, int, int]]:
-
+        import asyncio
+        
         client = ClangdLspClient(self.project_root, self.project_lang.value.lower())
         await client.start_server()
         await client.initialize()
@@ -125,27 +127,21 @@ class CLSPCLient():
         # have to open a file first
         await client.open_file(str(random_file))
 
-        #  Waiting for clangd to index files
+        #  Waiting for clangd to index files - increase timeout for workspace indexing
         await client.wait_for_indexing(timeout=5)
 
-     
-        # Find declaration
         if symbol == "":
             response = await client.find_workspace_symbols("")
         else:
             response = await client.find_workspace_symbols(symbol)
 
-        if not response:
-            print("Empty response. Dot close the server, it will stuck")
+        if response and response.get("result", []):
+            result = response.get("result", [])
+            await client.stop_server()
+            return result
+        else:
+            print("No workspace symbols found")
             return []
-        
-        await client.stop_server()
-
-        result = response.get("result", [])
-        if not result:
-            return []
-
-        return result
 
     async def request_workspace_symbols(self, symbol: str="") -> list[tuple[str, int, int]]:
      
@@ -158,8 +154,22 @@ class CLSPCLient():
             name_space_list = symbol_list[:-1]
 
         # Find declaration
-        response = await self.get_workspace_symbols(symbol)
+        max_retries = 3
+        retry_delay = 5.0
+        response = None
         
+        for attempt in range(max_retries):
+            response = await self.get_workspace_symbols(symbol)
+            if response:
+                break
+            # If no results and not the last attempt, wait before retrying
+            if attempt < max_retries - 1:
+                print(f"Workspace symbols request returned empty, retrying in {retry_delay}s (attempt {attempt + 1}/{max_retries})")
+                await asyncio.sleep(retry_delay)
+                retry_delay *= 1.5  # Exponential backoff
+        
+        if not response:
+            return []
         # find the one with longest namespace matching
         longest_ns_len = 0
         all_location: list[tuple[str, int, int, int]] = []
@@ -185,6 +195,9 @@ class CLSPCLient():
                 continue
 
             file_path = file_path.replace("file://", "")
+            # uri to path
+            file_path = urllib.parse.unquote(file_path)
+            
             all_location.append((file_path, location['range']['start']['line'], location['range']['start']['character'], ns_length))
         
         # remove the symbols that the namespace length is less than the longest namespace matching

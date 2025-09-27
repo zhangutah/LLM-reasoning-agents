@@ -16,6 +16,20 @@ def remove_large_log_files(directory: str, size_limit_mb: int = 1):
                 except Exception as e:
                     print(f"Error processing file {file_path}: {e}")
 
+def remove_corpus_dir(directory: str):
+    
+    dir_path = Path(directory)
+
+    for root, dirs, _ in os.walk(directory):
+        for dir_name in dirs:
+            if dir_name == "corpora":
+                dir_path = os.path.join(root, dir_name)
+                try:
+                    shutil.rmtree(dir_path)
+                    print(f"Deleted directory: {dir_path}")
+                except Exception as e:
+                    print(f"Error deleting directory {dir_path}: {e}")
+
 def remove_def_cache(directory: str):
     for path in Path(directory).rglob('*.json'):
         if path.name.endswith('declaration_lsp.json') or path.name.endswith('definition_lsp.json') or path.name.endswith('declaration_parser.json') or path.name.endswith('definition_parser.json'):
@@ -38,6 +52,9 @@ def remove_failed_dir(directory: str):
             func_dir = os.path.join(project_dir, func_name)
             for run_name in os.listdir(func_dir):
                 run_dir = os.path.join(func_dir, run_name)
+
+                if not os.path.isdir(run_dir):
+                    continue
 
                 # no building
                 if len(os.listdir(run_dir)) <= 4:
@@ -88,5 +105,6 @@ def find_empty_fixes(directory: str):
                             shutil.rmtree(run_dir)
                             
 # Example usage
-# remove_large_log_files("/home/yk/code/LLM-reasoning-agents/outputs_ablation")
-remove_run_dir("/home/yk/code/LLM-reasoning-agents/outputs_ablation/claude_sonnet/code_info/oss_fuzz", n_run=3)
+remove_corpus_dir("/home/yk/code/LLM-reasoning-agents/outputs_wild")
+# remove_large_log_files("/home/yk/code/LLM-reasoning-agents/outputs_wild/gpt5-mini/raw")
+# remove_run_dir("/home/yk/code/LLM-reasoning-agents/outputs_ablation/claude_sonnet/code_info/oss_fuzz", n_run=3)

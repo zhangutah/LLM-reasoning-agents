@@ -1,5 +1,6 @@
 import asyncio
 import json
+from pathlib import Path
 from typing import Dict, Any
 
 
@@ -17,6 +18,7 @@ class ClangdLspClient:
         """Start the clangd LSP server."""
         self.server_process = await asyncio.create_subprocess_exec(
             "clangd-18",
+            # "--resource-dir=/usr/local/lib/clang/18",
             stdin=asyncio.subprocess.PIPE,
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
@@ -33,14 +35,58 @@ class ClangdLspClient:
                 header = await self.reader.readline()
                 if not header:
                     break
-                content_length = int(header.decode().strip().split(": ")[1])
+                header_str = header.decode().strip()
+                if not header_str.startswith("Content-Length:"):
+                    print(f"Unexpected header: {header_str}")
+                    continue
+                content_length = int(header_str.split(": ")[1])
 
                 # Read the blank line
                 await self.reader.readline()
 
                 # Read the actual JSON-RPC message
-                content = await self.reader.read(content_length)
-                message = json.loads(content.decode())
+                content = b""
+                bytes_to_read = content_length
+                while bytes_to_read > 0:
+                    chunk = await self.reader.read(min(bytes_to_read, 8192))
+                    if not chunk:
+                        print(f"Connection closed while reading content. Expected {content_length} bytes, got {len(content)}")
+                        break
+                    content += chunk
+                    bytes_to_read -= len(chunk)
+                
+                if len(content) != content_length:
+                    print(f"Content length mismatch: expected {content_length}, got {len(content)}")
+                    continue
+                try:
+                    decoded_content = content.decode()
+                    message = json.loads(decoded_content)
+                except json.JSONDecodeError as json_err:
+                    print(f"JSON decode error: {json_err}")
+                    print(f"Content length: {content_length}, Actual content length: {len(content)}")
+                    print(f"Content preview (first 200 chars): {content[:200]}")
+                    print(f"Content preview (last 200 chars): {content[-200:]}")
+                    # Try to find where the JSON becomes invalid
+                    decoded_content = content.decode(errors='replace')
+                    if len(decoded_content) > 4000:
+                        print(f"Content around error position: {decoded_content[4000:4100]}")
+                    
+                    # Try to recover by finding complete JSON objects
+                    try:
+                        # Attempt to fix unterminated strings by adding closing quotes
+                        fixed_content = self._attempt_json_recovery(decoded_content)
+                        if fixed_content:
+                            message = json.loads(fixed_content)
+                            print("Successfully recovered malformed JSON")
+                        else:
+                            continue
+                    except Exception as recovery_err:
+                        print(f"JSON recovery failed: {recovery_err}")
+                        continue
+                except UnicodeDecodeError as decode_err:
+                    print(f"Unicode decode error: {decode_err}")
+                    print(f"Content length: {content_length}, Actual content length: {len(content)}")
+                    continue
 
                 # Handle responses and notifications
                 if "id" in message and message["id"] in self.pending_requests:
@@ -54,6 +100,60 @@ class ClangdLspClient:
             except Exception as e:
                 print(f"Error reading from server: {e}")
                 break
+
+    def _attempt_json_recovery(self, content: str) -> str:
+        """Attempt to recover malformed JSON by fixing common issues."""
+        try:
+            # First, try to find the last complete JSON object
+            brace_count = 0
+            last_complete_pos = -1
+            in_string = False
+            escape_next = False
+            
+            for i, char in enumerate(content):
+                if escape_next:
+                    escape_next = False
+                    continue
+                    
+                if char == '\\':
+                    escape_next = True
+                    continue
+                    
+                if char == '"' and not escape_next:
+                    in_string = not in_string
+                    continue
+                    
+                if not in_string:
+                    if char == '{':
+                        brace_count += 1
+                    elif char == '}':
+                        brace_count -= 1
+                        if brace_count == 0:
+                            last_complete_pos = i + 1
+            
+            if last_complete_pos > 0:
+                return content[:last_complete_pos]
+                
+            # If no complete object found, try to close unterminated strings
+            if content.count('"') % 2 != 0:
+                # Find the last quote and add a closing quote
+                last_quote = content.rfind('"')
+                if last_quote > 0:
+                    # Check if this quote is escaped
+                    escaped = False
+                    check_pos = last_quote - 1
+                    while check_pos >= 0 and content[check_pos] == '\\':
+                        escaped = not escaped
+                        check_pos -= 1
+                    
+                    if not escaped:
+                        # Add closing quote and brace
+                        return content[:last_quote + 1] + '"}'
+                        
+        except Exception as e:
+            print(f"Error in JSON recovery: {e}")
+            
+        return ""
 
     def _handle_notification(self, message: Dict[str, Any]):
         """Handle notifications from the server (e.g., logs, diagnostics)."""
@@ -91,15 +191,20 @@ class ClangdLspClient:
 
         try:
             # Wait for the response with a timeout
-            return await asyncio.wait_for(future, timeout)
+            response = await asyncio.wait_for(future, timeout)
+            return response
         except asyncio.TimeoutError:
-            print(f"Request '{method}' timed out after {timeout} seconds.")
-            # Return an empty dictionary on timeout
-            return {}
-        finally:
-            # Clean up the pending request if it timed out
+            print(f"Request '{method}' with params {params} timed out after {timeout} seconds.")
+            # Clean up pending request
             if self.message_id in self.pending_requests:
                 del self.pending_requests[self.message_id]
+            return {}
+        except Exception as e:
+            print(f"Error in request '{method}': {e}")
+            # Clean up pending request
+            if self.message_id in self.pending_requests:
+                del self.pending_requests[self.message_id]
+            return {}
 
     async def initialize(self):
         """Send the initialize request."""
@@ -126,7 +231,7 @@ class ClangdLspClient:
 
     async def find_declaration(self, file_path: str, line: int, character: int):
         """Send a textDocument/declaration request."""
-        file_uri = f"file://{file_path}"
+        file_uri = Path(file_path).as_uri()
         params = {
             "textDocument": {"uri": file_uri},
             "position": {"line": line, "character": character},
@@ -154,7 +259,7 @@ class ClangdLspClient:
 
     async def open_file(self, file_path: str):
         """Send a textDocument/didOpen notification to open a file."""
-        file_uri = f"file://{file_path}"
+        file_uri = Path(file_path).as_uri()
         with open(file_path, "r") as f:
             text = f.read()
 
@@ -171,7 +276,7 @@ class ClangdLspClient:
 
     async def find_definition(self, file_path: str, line: int, character: int):
         """Send a textDocument/definition request."""
-        file_uri = f"file://{file_path}"
+        file_uri = Path(file_path).as_uri()
         params = {
             "textDocument": {"uri": file_uri},
             "position": {"line": line, "character": character},
@@ -182,7 +287,7 @@ class ClangdLspClient:
 
     async def find_references(self, file_path: str, line: int, character: int):
         """Send a textDocument/references request."""
-        file_uri = f"file://{file_path}"
+        file_uri = Path(file_path).as_uri()
         params = {
             "textDocument": {"uri": file_uri},
             "position": {"line": line, "character": character},
@@ -193,10 +298,21 @@ class ClangdLspClient:
         return response
 
     async def stop_server(self):
-        """Stop the Java LSP server."""
+        """Stop the clangd LSP server."""
         if self.server_process:
+            # First try to terminate gracefully
             self.server_process.terminate()
-            await self.server_process.wait()
+            try:
+                # Wait for graceful shutdown with timeout
+                await asyncio.wait_for(self.server_process.wait(), timeout=2.0)
+            except asyncio.TimeoutError:
+                # If graceful shutdown fails, force kill
+                self.server_process.kill()
+                try:
+                    await asyncio.wait_for(self.server_process.wait(), timeout=1.0)
+                except asyncio.TimeoutError:
+                    # Process is really stuck, might be a zombie
+                    pass
 
     async def wait_for_indexing(self, timeout=5):
         """Wait for clangd to finish indexing."""

@@ -30,7 +30,7 @@ class ISSTAFixerPromptBuilder(FixerPromptBuilder):
                 break
 
         if not func_name or not func_sig:
-            self.logger.info(f"Function name not found in error message: {error_msg}")
+            self.logger.info(f"Function name not found in error message")
             return self.compile_fix_prompt.format(harness_code=add_lineno_to_code(harness_code, 1), error_msg=error_msg, project_lang=self.project_lang)
 
         comment_example = self.code_retriever.get_symbol_references(func_name, Retriever.Parser)

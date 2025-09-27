@@ -131,55 +131,6 @@ class BaseParser:
                     ret_list.append((src_code, function_name))
         
         return ret_list
-
-    # def get_related_source(self, symbol_name: str, line: int) -> tuple[str, str]:
-    #     """
-    #     Retrieve the source code of the function that calls the given symbol.
-    #     :param symbol_name: The name of the function to find.
-    #     :param line: The line number of the function's start position (0-based).
-    #     :return: The source code of the function that calls the given symbol.
-    #     """
-    #     def exec_query(query: Query, query_node: Node, symbol_name: str, line: int, identifier_name: str="type") -> str:
-    
-    #         # Execute the query
-    #         captures = query.captures(query_node)
-    #         if not captures:
-    #             return ""
-            
-    #         for source_node in captures["node_name"]:
-            
-    #             # TODO will this find the definition that calls the function?
-    #             if not source_node.text:
-    #                 continue
-    #             captures = query.captures(source_node)
-    #             if identifier_name not in captures:
-    #                 continue
-
-    #             for id_node in captures[identifier_name]:
-    #                 if not id_node.text:
-    #                     continue
-
-    #                 name = id_node.text.decode("utf-8", errors="ignore") 
-    #                 name = name.strip()
-    #                 if name.startswith("*"):
-    #                    name = name[1:].strip()  # Remove leading '*'
-    #                 if name.startswith("struct"):
-    #                     name = name[6:].strip()
-
-    #                 if name == symbol_name and  source_node.start_point.row <= line and line <= source_node.end_point.row:  
-    #                     return source_node.text.decode("utf-8", errors="ignore") 
-    #         return ""
-
-    #     for key, query in self.func_declaration_query_dict.items():
-    #         # Execute the query
-    #         query = self.parser_language.query(query)
-    #         for identifier_name in ["type", "value"]:
-    #             src_code = exec_query(query, self.tree.root_node, symbol_name, line, identifier_name)
-    #             if src_code:
-    #                 # Decode the source code to a string
-    #                 return key, src_code
-
-    #     return "", ""
     
     def get_ref_source(self, symbol_name: str, line: int) -> str:
 
@@ -313,12 +264,9 @@ class BaseParser:
             return None
         # Check the nodes
         for node in captures["func_def"]:
-
             try:
-                # TODO changed this, check whether it is correct
-                id_node = self.match_child_node(node, "identifier", recusive_flag=True)
-                # the function name is under function_declarator
-                if id_node and function_name == id_node.text.decode("utf-8", errors="ignore"): # type: ignore
+                id_node = self.get_identifier_node(node, function_name)
+                if id_node:
                     return node
             except Exception as e:
                 print("Error in parsing the function definition: ", e)

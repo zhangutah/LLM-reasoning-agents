@@ -47,7 +47,7 @@ class CovCollector():
         wrap_code = wrap_file.read_text()
         
         # find the fuzz entry
-        parser = self.parser(None, harness_code, self.project_lang)
+        parser = self.parser(None, harness_code)
         fuzz_node = parser.get_fuzz_function_node(function_name)
         if fuzz_node:
             fuzz_start_row, fuzz_start_col, fuzz_end_row = fuzz_node.start_point.row, fuzz_node.start_point.column, fuzz_node.end_point.row

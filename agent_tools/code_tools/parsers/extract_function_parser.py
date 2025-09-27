@@ -159,19 +159,16 @@ class HeaderFunctionExtractor:
         header_files = []
         # Include all supported file types if no specific language is specified
         patterns = ["**/*.h", "**/*.hpp", "**/*.hh", "**/*.hxx", "**/*.c", "**/*.cpp", "**/*.cc", "**/*.cxx"]
-        
-        # Find header files in include directory
-        include_dir = self.project_root / "include"
-        if include_dir.exists():
+
+        # Find header files in project root
+        if self.project_root.exists():
             for pattern in patterns:
-                header_files.extend(include_dir.glob(pattern))
-        
-        # Find header files in src directory
-        src_dir = self.project_root / "src"
-        if src_dir.exists():
-            for pattern in patterns:
-                header_files.extend(src_dir.glob(pattern))
-        
+                # exclude third_party
+                for file in self.project_root.glob(pattern):
+                    if "third_party" in str(file):
+                        continue
+                    header_files.append(file)
+
         return sorted(list(set(header_files)))
     
     def extract_functions_from_file(self, file_path: Path) -> List[FunctionDeclaration]:

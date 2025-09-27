@@ -13,8 +13,8 @@ from agent_tools.code_tools.parsers.extract_function_parser import HeaderFunctio
 
 
 class ParserCodeRetriever():
-    def __init__(self, workdir: str,  project_lang: LanguageType, symbol_name: str, lsp_function: LSPFunction, max_try: int = 100):
-   
+    def __init__(self, project_name: str, workdir: str,  project_lang: LanguageType, symbol_name: str, lsp_function: LSPFunction, max_try: int = 100):
+        self.project_name = project_name
         self.project_root = workdir
         self.symbol_name = symbol_name
         self.lsp_function = lsp_function
@@ -48,7 +48,7 @@ class ParserCodeRetriever():
         ret_list:list[dict[str, Any]] = []
         query_key = ""
         start_line = 0
-        parser = self.lang_parser(Path(file_path), source_code=None, project_lang=self.project_lang)
+        parser = self.lang_parser(Path(file_path), source_code=None)
         if self.lsp_function == LSPFunction.References:
             # get the full source code of the symbol
             source_code = parser.get_ref_source(self.symbol_name, lineno) # type: ignore
@@ -81,8 +81,8 @@ class ParserCodeRetriever():
             cmd = f"grep --binary-files=without-match -rn /src -e  '{pure_symbol_name}('"
         else:
             cmd = f"grep --binary-files=without-match -rnw /src -e  {pure_symbol_name}"
-
-        results = sp.run(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT,  text=True)
+        # suppress the error output
+        results = sp.run(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT,  text=True, encoding='utf-8', errors='replace')
         output = results.stdout.strip()
 
         if not output:
@@ -179,7 +179,7 @@ class ParserCodeRetriever():
 
         res_list: list[tuple[str, str]] = []
         for _path in path_list:
-            parser = self.lang_parser(Path(_path), source_code=None, project_lang=self.project_lang)
+            parser = self.lang_parser(Path(_path), source_code=None)
             res_list += parser.get_file_functions() # type: ignore
 
         ret_list: list[dict[str, Any]] = []
@@ -236,7 +236,7 @@ class ParserCodeRetriever():
         try:
             function_list: list[dict[str, Any]] = []
             # only for C/C++
-            extractor = HeaderFunctionExtractor(project_root=self.project_root, language=self.project_lang)
+            extractor = HeaderFunctionExtractor(project_root=os.path.join(self.project_root, self.project_name), language=self.project_lang)
             # Extract all functions
             all_functions = extractor.extract_all_functions()
             
@@ -254,21 +254,23 @@ class ParserCodeRetriever():
     
 def main():
     parser = argparse.ArgumentParser(description='')
-    parser.add_argument('--workdir', type=str, default="/src/igraph", help='The search directory.')
-    parser.add_argument('--lsp-function', type=str, choices=[e.value for e in LSPFunction], default="declaration", help='The LSP function name')
-    parser.add_argument('--symbol-name', type=str, default="" ,help='The function name or struct name.')
-    parser.add_argument('--lang', type=str, choices=[e.value for e in LanguageType], default="C" ,help='The project language.')
+    parser.add_argument('--project', type=str, default="cppcheck", help='The project name.')
+    parser.add_argument('--workdir', type=str, default="/src", help='The search directory.')
+    parser.add_argument('--lsp-function', type=str, choices=[e.value for e in LSPFunction], default="all_symbols", help='The LSP function name')
+    parser.add_argument('--symbol-name', type=str, default="ALL", help='The function name or struct name.')
+    parser.add_argument('--lang', type=str, choices=[e.value for e in LanguageType], default="CPP", help='The project language.')
     args = parser.parse_args()
     
 
-    lsp = ParserCodeRetriever(args.workdir, LanguageType(args.lang), args.symbol_name, LSPFunction(args.lsp_function))
-    try:
-        msg, res = lsp.get_symbol_info()
-    except Exception as e:
-        msg = f"{LSPResults.Error}: {e}"
-        res = []
+    lsp = ParserCodeRetriever(args.project, args.workdir, LanguageType(args.lang), args.symbol_name, LSPFunction(args.lsp_function))
+    # try:
+    msg, res = lsp.get_symbol_info()
+    # except Exception as e:
+        # msg = f"{LSPResults.Error}: {e}"
+        # res = []
 
     print(f"res: {len(res)} results found")
+    print(f"message: {msg}")
     if args.lsp_function == LSPFunction.StructFunctions.value:
         file_name = f"{Path(lsp.symbol_name).stem}_struct_functions_parser.json"
     else:

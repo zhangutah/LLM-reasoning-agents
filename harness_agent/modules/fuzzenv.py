@@ -45,7 +45,8 @@ class FuzzENV():
         else:
             # move the harness file to the first
             self.harness_pairs = {_fuzzer_name: _harness_path, **self.harness_pairs}
-       
+        self.logger.info(f"Show harness_fuzzer_pairs.json, content:{self.harness_pairs}")
+
     def setup_logging(self):
 
         # Create a logger
@@ -185,11 +186,10 @@ class FuzzENV():
 
             _temp_list: list[str] = []
             for file_path in all_file_path:
-                file_path = file_path.strip()
-                file_name = os.path.basename(file_path)
-                name, ext = file_name.split(".")
+                file_path = Path(file_path.strip())
+                name, ext = file_path.stem, file_path.suffix
                 if ext in ALL_FILE_EXTENSION and name == fuzzer_name:
-                    _temp_list.append(file_path)
+                    _temp_list.append(str(file_path))
                  
             if len(_temp_list) > 1:
 
@@ -232,8 +232,6 @@ class FuzzENV():
         # save the harness pairs
         with open(json_path, 'w') as f:
             json.dump(harness_fuzzer_dict, f)
-
-        self.logger.info(f"Create harness_fuzzer_pairs.json, content:{harness_fuzzer_dict}")
 
         return to_path(harness_fuzzer_dict)
 

@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Callable, Any
 import functools
 import re
-from utils.misc import add_lineno_to_code, filter_examples
+from utils.misc import add_lineno_to_code, filter_examples, extract_name
 import time
 
 def catch_exception(func: Callable[..., list[dict[str, Any]]]) -> Callable[..., list[dict[str, Any]]]:
@@ -58,6 +58,13 @@ class CodeRetriever():
             self.logger.error(f"Failed to run bear compile: {res}")
             raise Exception(f"Failed to run bear compile: {res}")
 
+    def gen_file_name(self, symbol_name: str, lsp_function: LSPFunction, retriever: Retriever) -> str:
+        if lsp_function == LSPFunction.StructFunctions:
+            file_name = f"{Path(symbol_name).stem}_{lsp_function.value}_{retriever.value}.json"
+        else:
+            file_name = f"{symbol_name}_{lsp_function.value}_{retriever.value}.json"
+        return file_name
+    
     def remove_container(self):
         # Ensure the container is stopped when the object is deleted
         try:
@@ -93,42 +100,40 @@ class CodeRetriever():
 
 
     @catch_exception
-    def call_container_code_retriever(self, symbol_name: str, lsp_function: LSPFunction, retriver: Retriever) -> list[dict[str, Any]]:
+    def call_container_code_retriever(self, symbol_name: str, lsp_function: LSPFunction, retriever: Retriever) -> list[dict[str, Any]]:
 
         compile_out_path = self.oss_fuzz_dir / "build" / "out" / self.new_project_name
         compile_out_path.mkdir(parents=True, exist_ok=True)
         workdir = self.docker_tool.run_cmd(["pwd"], volumes=None).strip()
-        if retriver == Retriever.LSP:
+        if retriever == Retriever.LSP:
             pyfile = "lsp_code_retriever"
-        elif retriver == Retriever.Parser:
+        elif retriever == Retriever.Parser:
             pyfile = "parser_code_retriever"
+            workdir = "/src"  # for parser, we need to set the workdir to /src
         else:
-            self.logger.error(f"Error: {retriver} is not supported")
+            self.logger.error(f"Error: {retriever} is not supported")
             return []
 
-        cmd_list = ["python", "-m", f"agent_tools.code_tools.{pyfile}", "--workdir", workdir, "--lsp-function", lsp_function.value,
+        cmd_list = ["python", "-m", f"agent_tools.code_tools.{pyfile}", "--project", self.project_name, "--workdir", workdir, "--lsp-function", lsp_function.value,
                     "--symbol-name", symbol_name, "--lang", self.project_lang.value]
 
         # Use exec_in_container instead of run_cmd
         if lsp_function == LSPFunction.AllSymbols:
             timeout = 300  # Increase timeout for all symbols:
         else:
-            timeout = 120  # Default timeout for other functions
+            timeout = 60  # Default timeout for other functions
 
         res_str = self.docker_tool.exec_in_container(self.container_id, cmd_list, timeout=timeout)
-        self.logger.info(f"Calling {retriver}_code_retriever to get {lsp_function} for {symbol_name}")
+        self.logger.info(f"Calling {retriever}_code_retriever to get {lsp_function} for {symbol_name}")
 
         if res_str.startswith(DockerResults.Error.value):
-            self.logger.error(f"Error in when calling {retriver}_code_retriever: {res_str}")
+            self.logger.error(f"Docker Error in when calling {retriever}_code_retriever: {res_str}")
             return []
 
-        if lsp_function == LSPFunction.StructFunctions:
-            file_name = f"{Path(symbol_name).stem}_{lsp_function.value}_{retriver.value}.json"
-        else:
-            file_name = f"{symbol_name}_{lsp_function.value}_{retriver.value}.json"
+        file_name = self.gen_file_name(symbol_name, lsp_function, retriever)
         save_path = compile_out_path / file_name
         if not save_path.exists():
-            self.logger.error(f"Error: {retriver}_code_retriever does not generate the response file: {save_path}")
+            self.logger.error(f"Retriever Error: {retriever}_code_retriever does not generate the response file: {save_path}")
             return []
         
         # read code retriver response
@@ -138,11 +143,13 @@ class CodeRetriever():
         msg, lsp_resp = res_json["message"], res_json["response"]
 
         if msg.startswith(LSPResults.Error.value):
-            self.logger.error(f"Error in when calling {retriver}_code_retriever: {msg}")
+            self.logger.error(f"Retriever Error: {retriever}_code_retriever: {msg}")
             return []
-        
+        if msg.startswith(LSPResults.NoSymbol.value):
+            self.logger.warning(f"{retriever}_code_retriever: {msg} for {symbol_name}")
+            return []
         if not lsp_resp:
-            self.logger.info(f"{retriver}_code_retriever return [], {lsp_function} for {symbol_name}")
+            self.logger.info(f"{retriever}_code_retriever return [], {lsp_function} for {symbol_name}")
             return []
         
         return lsp_resp
@@ -157,7 +164,20 @@ class CodeRetriever():
         Returns:
              list[dict]: [{"source_code":"", "file_path":"", "line":""}]
         """
-
+        if " " in symbol_name:
+            symbol_name = symbol_name.split(" ")[1]  # using the second part of the symbol name
+        
+        # fmt::v11::detail::print(FILE *, string_view)
+        # the LLM may pass the whole fuinction signature, we need to extract the symbol name
+        if "(" in symbol_name:
+            mini_name = extract_name(symbol_name, keep_namespace=True, exception_flag=False)
+            if mini_name:
+                symbol_name = mini_name
+            else:
+                self.logger.warning(f"Failed to extract symbol name from function signature: {symbol_name}")
+                # simply split by (
+                symbol_name = symbol_name.split("(")[0]
+                
         # Remove the "struct" or "class" prefix from the symbol name
         if symbol_name.startswith("struct") or symbol_name.startswith("class"):
             symbol_name = symbol_name.split(" ")[1]
@@ -195,10 +215,8 @@ class CodeRetriever():
         Returns:
              list[dict]: [{"source_code":"", "file_path":"", "line":""}]
         """
-        if lsp_function == LSPFunction.StructFunctions:
-            save_path = self.cache_dir / self.project_name / f"{Path(symbol_name).stem}_{lsp_function.value}_{retriever.value}.json"
-        else:
-            save_path = self.cache_dir / self.project_name / f"{symbol_name}_{lsp_function.value}_{retriever.value}.json"
+        file_name = self.gen_file_name(symbol_name, lsp_function, retriever)
+        save_path = self.cache_dir / self.project_name / file_name
         # get the lsp response from the cache if it exists
         if save_path.exists():
             self.logger.info(f"Getting {lsp_function} for {symbol_name} from cache")
@@ -207,7 +225,7 @@ class CodeRetriever():
         
         # call the container code retriever
         lsp_resp = self.call_container_code_retriever(symbol_name, lsp_function, retriever)
-    
+           
         if self.cache_dir.exists():
             save_path.parent.mkdir(parents=True, exist_ok=True)
             # TODO: same symbol name
@@ -346,6 +364,7 @@ class CodeRetriever():
         """
         Get the declaration of a symbol from the project. The declaration is the signature of the symbol, which does not include the body of the function or class.
         If the symbol has namespace, you must include it. For example, passing "ada::parser::parse_url<ada::url>" instead of "parse_url" as the symbol name. 
+        Do not include give the function signature or the file path, just the symbol name.
         Args:
             symbol_name (str): The name of the symbol to find the declaration for
         Returns:
@@ -365,6 +384,8 @@ class CodeRetriever():
         """
         Get the definition(s) for a specified symbol. The definition includes the full implementation of the symbol, such as a function or class. 
         If the symbol has namespace, you must include it. For example, passing "ada::parser::parse_url<ada::url>" instead of "parse_url" as the symbol name. 
+        Do not include give the function signature or the file path, just the symbol name.
+
         Args:
             symbol_name (str): The name of the symbol to look up
         Returns:
@@ -386,7 +407,9 @@ class CodeRetriever():
         
     def get_symbol_references(self, symbol_name: str, retriever: Retriever = Retriever.Parser) -> str:
         """
-        Get references to a symbol across all workspace files.
+        Get references to a symbol across all workspace files.   
+        If the symbol has namespace, you must include it. For example, passing "ada::parser::parse_url<ada::url>" instead of "parse_url" as the symbol name. 
+        Do not include give the function signature or the file path, just the symbol name.
         Args:
             symbol_name (str): The name of the symbol to find references for
         Returns:
@@ -419,7 +442,10 @@ class CodeRetriever():
         This tool is used to find potential functions to initilze and destroy the struct (symbol_name). For complicated struct, 
         it may require special functions to initialize and destroy the struct. It will search the workspace for all functions that are related to the struct name, 
         such as functions that take the struct as an argument or return the struct. 
-    
+        If the symbol has namespace, you must include it. For example, passing "ada::parser::parse_url<ada::url>" instead of "parse_url" as the symbol name. 
+        Do not include give the function signature or the file path, just the symbol name.
+
+
         Args:
             symbol_name (str): The name of the struct to find related functions for
         Returns:

@@ -34,6 +34,7 @@ class BenchConfig:
         self.usage_token_limit = self.config.get('usage_token_limit', 1000)
         self.model_token_limit = self.config.get('model_token_limit', 8096)
         self.n_examples = self.config.get('n_examples', 1)
+        self.funcs_per_project = self.config.get('funcs_per_project', 1)
         self.example_mode = self.config.get('example_mode', "rank")
         self.example_source = self.config.get('example_source', "project")
         self.iterations = self.config.get('iterations', 3)

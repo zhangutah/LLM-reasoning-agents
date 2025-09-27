@@ -138,7 +138,8 @@ class Runner:
         function_dicts = get_benchmark_functions(self.config.benchmark_dir,
                                                  allowed_projects=self.config.project_name if self.config.project_name else [],
                                                  allowed_langs=["c++", "c"],
-                                                 allowed_functions=self.config.function_signatures, func_per_project=1000)
+                                                 allowed_functions=self.config.function_signatures,
+                                                 funcs_per_project=self.config.funcs_per_project)
 
        
         start_time = time.time()
@@ -190,7 +191,7 @@ if __name__ == "__main__":
         #  "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini_header_oss_fuzz.yaml",
         # "/home/yk/code/LLM-reasoning-agents/cfg/claude_code_info_oss_fuzz.yaml",
         # "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini_example_public_rank.yaml",
-        "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini/gpt5_mini_agent_wild.yaml",
+        "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini/gpt5_mini_issta_yunhang.yaml",
         # "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini_code_info_agent.yaml",
         # "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini_code_info_oss_fuzz.yaml",
         #   "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini_example_project_random.yaml",

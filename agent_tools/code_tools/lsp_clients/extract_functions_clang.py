@@ -181,12 +181,12 @@ class LibclangExtractor:
         # Add additional system include directories
         enhanced_args += [
         #     "-x", "c++",
-        #     "-I/usr/local/include/x86_64-unknown-linux-gnu/c++/v1",
-        #     "-I/usr/local/include/c++/v1",
-        #     "-I/usr/local/lib/clang/18/include",
-        #     "-I/usr/local/include",
-        #     "-I/usr/include/x86_64-linux-gnu",
-        #     "-I/usr/include",
+            "-I/usr/local/include/x86_64-unknown-linux-gnu/c++/v1",
+            "-I/usr/local/include/c++/v1",
+            "-I/usr/local/lib/clang/18/include",
+            "-I/usr/local/include",
+            "-I/usr/include/x86_64-linux-gnu",
+            "-I/usr/include",
              "-resource-dir=/usr/local/lib/clang/18",  # explicitly tell clang resource dir
         ]
 

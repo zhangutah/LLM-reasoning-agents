@@ -110,8 +110,14 @@ func_declaration_query_dict = {
 decl_query_dict.update(common_query_dict)
 def_query_dict.update(common_query_dict)
 
+from tree_sitter import Node
+def node_text(node: Optional[Node]) -> str:
+    if node is None:
+        return ""
+    return node.text.decode('utf-8', errors='replace')  # type: ignore
+
 class CPPParser(BaseParser):
-    def __init__(self, file_path: Optional[Path], source_code: Optional[str] = None,  project_lang: LanguageType = LanguageType.CPP):
+    def __init__(self, file_path: Optional[Path], source_code: Optional[str] = None):
 
         # preprocess the file path
         # remove the macro between class and class name
@@ -133,6 +139,7 @@ class CPPParser(BaseParser):
         # check if the symbol contains the namespace
         namespace_name = ""
         if "::" in symbol_name:
+            # only consider one level namespace for now
             namespace_name = symbol_name.split("::")[-2]
             symbol_name = symbol_name.split("::")[-1]
 
@@ -163,16 +170,23 @@ class CPPParser(BaseParser):
                 
             # check if the symbol contains the namespace
             if not namespace_name or lsp_function not in [LSPFunction.Declaration, LSPFunction.Definition]:
-                return key, src_node.text.decode('utf-8'), src_node.start_point.row # type: ignore
+                return key, node_text(src_node), src_node.start_point.row 
            
             # compare the namespace name
             if lsp_function == LSPFunction.Definition:
                 
                 # situation 1: the namespace is before the function like: void A::test()
                 name_node = self.match_child_node(src_node, "namespace_identifier", recusive_flag=True)
-                # not match the namespace
-                if name_node and name_node.text.decode('utf-8') == namespace_name: # type: ignore
-                    return key, src_node.text.decode('utf-8'), src_node.start_point.row # type: ignore
+                if not name_node:
+                    name_node = self.match_child_node(src_node, "type_identifier", recusive_flag=True)
+              
+                # if exist the namespace node, then match the namespace
+                if name_node:
+                    #match the namespace
+                    if node_text(name_node) == namespace_name: 
+                        return key, node_text(src_node), src_node.start_point.row  
+                    else:
+                        return "", "", 0              
 
             # situation 2: the name space is the upper level node
             if lsp_function in [LSPFunction.Declaration, LSPFunction.Definition]:
@@ -186,11 +200,16 @@ class CPPParser(BaseParser):
                 if parent_node and parent_node.type in ["class_specifier","struct_specifier","union_specifier", "enum_specifier"]:
                     # there may be more identifier other than type_identifier 
                     name_node = self.match_child_node(parent_node, "type_identifier", recusive_flag=True)
-                    if name_node and name_node.text.decode('utf-8') == namespace_name: # type: ignore
-                        return key, src_node.text.decode('utf-8'), src_node.start_point.row # type: ignore
+                    # exist namespace node, then match the namespace
+                    if name_node:
+                        if node_text(name_node) == namespace_name: 
+                            return key, node_text(src_node), src_node.start_point.row 
+                        # not match
+                        else:
+                            return "", "", 0
                 else:
                     # the namespace is not found in the class, so we just return the source code
-                    return key, src_node.text.decode('utf-8'), src_node.start_point.row # type: ignore
+                    return key, node_text(src_node), src_node.start_point.row
             
         return "", "", 0
     
@@ -204,6 +223,6 @@ if __name__ == "__main__":
     # IGRAPH_EXPORT igraph_error_t igraph_read_graph_pajek(igraph_t *graph, FILE *instream);
     # TODO CPP is better for the above function, we should try to use CPP if C is not working
     extractor = CPPParser(file_path)
-    extracted_code = extractor.get_symbol_source("operator", line, LSPFunction.Declaration)
+    extracted_code = extractor.get_symbol_source("WriterAppender::subAppend", 71, LSPFunction.Definition)
     print("Function source code:")
     print(extracted_code)

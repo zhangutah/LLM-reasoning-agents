@@ -14,6 +14,7 @@ class LSPResults(Enum):
     Retry = "retry"
     NoResult = "no result"
     DockerError = "docker error"
+    NoSymbol = "no symbol found"
 
 class DockerResults(Enum):
     Success = "success"
@@ -47,14 +48,15 @@ class CompileResults(Enum):
     ImageError = "Build Image Error"
 
 
-class FuzzResult(Enum):
+class ValResult(Enum):
     NoError = "No Error"
     Crash = "Crash"
     RunError = "Run Error"
     ReadLogError = "Read Log Error"
     ConstantCoverageError = "Constant Coverage Error"
     LackCovError = "Lack initial coverage or the final done coverage"
-
+    NoCall = "No call"
+    Fake = "Fake Definition"
     
 class EvalResult(Enum):
     NoLogError = "Log file does not exist"
@@ -63,6 +65,8 @@ class EvalResult(Enum):
     Success = "Success"
     NoCall = "No call"
     Fake = "Fake Definition"
+    Crash = "Crash"
+    ConstantCoverageError = "Constant Coverage Error"
 
 
 

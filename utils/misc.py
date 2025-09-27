@@ -276,7 +276,7 @@ def project_statistics():
 
 
 def get_benchmark_functions(bench_dir: Path, allowed_projects:list[str] = [], 
-                            allowed_langs: list[str]=[], allowed_functions: list[str] = [], func_per_project: int=1) -> dict[str, list[str]]:
+                            allowed_langs: list[str]=[], allowed_functions: list[str] = [], funcs_per_project: int=1) -> dict[str, list[str]]:
     """Get all functions from the benchmark directory."""
 
     allowed_names: list[str] = []
@@ -317,7 +317,7 @@ def get_benchmark_functions(bench_dir: Path, allowed_projects:list[str] = [],
                 # screen the function name
                 if len(allowed_names) > 0 and function_name not in allowed_names:
                     continue
-                if count >= func_per_project:
+                if count >= funcs_per_project:
                     break
                 function_list.append(function_signature)
                 count += 1
@@ -381,6 +381,7 @@ def logger_wrapper(logger: Optional[Any], msg: str, level: str = "info") -> None
     else:
         print(msg)
 
+        
 if __name__ == "__main__":
 
     with open("/home/yk/code/LLM-reasoning-agents/benchmark-sets/ntu/gdk-pixbuf.yaml", 'r') as f:

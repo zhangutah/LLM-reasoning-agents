@@ -1,4 +1,3 @@
-# This  code reimplementation of the algorithm from the ISSTA paper
 import os
 import io
 import contextlib
@@ -7,7 +6,7 @@ import tiktoken
 import json
 from pathlib import Path
 from langgraph.graph import StateGraph, END, START  # type: ignore
-from constants import LanguageType, FuzzEntryFunctionMapping, Retriever, FuzzResult, LSPFunction, CompileResults, PROJECT_PATH
+from constants import LanguageType, FuzzEntryFunctionMapping, Retriever, ValResult, LSPFunction, CompileResults, PROJECT_PATH
 from langchain_core.tools import StructuredTool
 from langgraph.prebuilt import ToolNode # type: ignore
 from utils.misc import save_code_to_file, extract_name, load_prompt_template
@@ -18,7 +17,7 @@ from harness_agent.fixing.issta import ISSTAFixerPromptBuilder
 from harness_agent.fixing.oss_fuzz import OSSFUZZFixerPromptBuilder
 from harness_agent.modules.code_format import CodeFormatTool, CodeAnswerStruct
 from harness_agent.modules.compilation import CompilerWraper
-from harness_agent.modules.fuzzer import FuzzerWraper
+from harness_agent.modules.validation import Validation
 from harness_agent.modules.generator import HarnessGenerator
 from harness_agent.modules.fixer import CodeFixer
 from harness_agent.modules.semantic_check import SemaCheck
@@ -45,6 +44,7 @@ class FuzzState(TypedDict):
     fix_counter: int
     fuzzer_name: str
     fuzzer_path: Path
+    function_signature: str
 
 
 class SemaCheckNode:
@@ -299,19 +299,8 @@ class ISSTAFuzzer(FuzzENV):
         # TODO, no document
         # {function_document}
         function_document = ""
-
-        # function_signature = self.function_signature
-        retrieved_signature = self.code_retriever.get_symbol_info(function_name, lsp_function=LSPFunction.Declaration)
-        if len(retrieved_signature) == 0:
-            self.logger.warning(f"Can not retrieve signature for {function_name}, use the provided signature from xml")
-        elif len(retrieved_signature) > 1:
-            self.logger.warning(f"Multiple signature found for {function_name}, use the provided signature from xml")
-        else:
-            function_signature = retrieved_signature[0]["source_code"]
-            if function_signature.replace(" ", "").replace("\n", "").replace("\t", "") != self.function_signature.replace(" ", "").replace("\n", "").replace("\t", "")+";":
-                self.logger.error(f"Retrieved signature is different from the provided one: {function_signature} vs {self.function_signature}")
-
-
+        # self.code_retriever.get_symbol_info("ALL", lsp_function=LSPFunction.AllSymbols, retriever=Retriever.LSP)
+        # self.code_retriever.get_symbol_info("ALL", lsp_function=LSPFunction.AllSymbols, retriever=Retriever.Parser)
         prompt_template = prompt_template.format(header_files=header_string, function_usage=function_usage, function_document=function_document,
                                              function_signature=self.function_signature, function_name=function_name, tool_prompt=self.tool_prompt)
 
@@ -360,7 +349,7 @@ class ISSTAFuzzer(FuzzENV):
         last_message = state["messages"][-1]
 
         # print(messages)
-        if last_message.content.startswith(FuzzResult.NoError.value):
+        if last_message.content.startswith(ValResult.NoError.value):
             return self.SemanticCheckNode
         elif last_message.content.startswith(END):
             return END
@@ -496,7 +485,7 @@ class ISSTAFuzzer(FuzzENV):
         code_fixer = CodeFixer(tool_llm, self.benchcfg.max_fix, self.benchcfg.max_tool_call,  self.save_dir, self.benchcfg.cache_root,
                                  code_callback=code_formater.extract_code, logger=self.logger)
 
-        fuzzer = FuzzerWraper(self.benchcfg.oss_fuzz_dir, self.new_project_name, self.project_lang, 
+        fuzzer = Validation(self.benchcfg.oss_fuzz_dir, self.new_project_name, self.project_lang, 
                              self.benchcfg.run_time,  self.save_dir,  self.logger)
         
         if self.benchcfg.header_mode == "all":
@@ -559,9 +548,9 @@ class ISSTAFuzzer(FuzzENV):
         generator_prompt = self.build_init_prompt(generator_prompt_template)
 
         # plot_graph(graph)
-        config = {"configurable": {"thread_id": "1"}, "recursion_limit": 100} # type: ignore
+        config = {"configurable": {"thread_id": "1"}, "recursion_limit": 200} # type: ignore
         events = graph.stream( # type: ignore
-            {"messages": [("user", generator_prompt)]},
+            {"messages": [("user", generator_prompt)], "function_signature": self.function_signature},
             config,
             stream_mode="values",
         )

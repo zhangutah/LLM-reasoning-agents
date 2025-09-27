@@ -1,7 +1,7 @@
 import os
 import subprocess as sp
 from agent_tools.fuzz_tools.log_parser import FuzzLogParser
-from constants import FuzzResult, LanguageType
+from constants import ValResult, LanguageType
 import time
 from pathlib import Path
 
@@ -17,7 +17,7 @@ class FuzzerRunner():
         self.project_lang = project_lang
 
         
-    def run_fuzzing(self, counter: int, fuzzer_name: str) -> tuple[FuzzResult, list[str], list[list[str]]]:
+    def run_fuzzing(self, counter: int, fuzzer_name: str) -> tuple[ValResult, list[str], list[list[str]]]:
         # run the fuzzing
         print(f"Running fuzzer {fuzzer_name} for {self.new_project_name}...")
         # create the corpus directory

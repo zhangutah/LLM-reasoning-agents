@@ -6,7 +6,7 @@ from agent_tools.fuzz_tools.compiler import Compiler
 from harness_agent.modules.fuzzenv import FuzzENV
 from bench_cfg import BenchConfig
 from pathlib import Path
-from constants import CompileResults, EvalResult, PROJECT_PATH, LanguageType, FuzzResult
+from constants import CompileResults, EvalResult, PROJECT_PATH, LanguageType, ValResult
 from utils.misc import extract_name
 from agent_tools.fuzz_tools.cov_collecter import CovCollector
 import pickle
@@ -81,7 +81,7 @@ class HarnessEval(FuzzENV):
 
             # Run the fuzzer
             fuzz_res, _, _ = fuzzer.run_fuzzing(counter=0, fuzzer_name=fuzzer_name)
-            if fuzz_res != FuzzResult.NoError:
+            if fuzz_res != ValResult.NoError:
                 logger_wrapper(self.logger, f"Error during fuzzing: {fuzz_res}", level="error")
                 return 0,0, False
             
@@ -159,7 +159,7 @@ def get_automatic_res(work_dir: Path, project_name: str, benchcfg: BenchConfig):
     if init_cov == 0:
         return EvalResult.Failed, usage_flag
 
-    parser = CPPParser(file_path=harness_path, project_lang=LanguageType.CPP)
+    parser = CPPParser(file_path=harness_path)
 
     if parser.exist_function_definition(function_name):
         return EvalResult.Fake, usage_flag

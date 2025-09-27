@@ -118,6 +118,26 @@ def extract_all_projects(root_dir: Path) -> list[str]:
             projects.append(project_name)
     return projects
 
+def freeze_base_image(dockerfile_path: Path):
+
+    base_str = "FROM gcr.io/oss-fuzz-base/base-builder"
+    clang_hash = "@sha256:d34b94e3cf868e49d2928c76ddba41fd4154907a1a381b3a263fafffb7c3dce0"
+    content = dockerfile_path.read_text()
+    lines = content.splitlines()
+
+    new_lines: list[str] = []
+    count = 0
+    for line in lines:
+        if line.strip() == base_str:
+            line = base_str + clang_hash
+            count += 1
+        new_lines.append(line)
+
+    dockerfile_path.write_text('\n'.join(new_lines) + '\n')
+    if count != 1:
+        print(f"Warning: base image line not found or multiple found in {dockerfile_path}.")
+        return
+    
 if __name__ == '__main__':
 
     bench_dir = Path("/home/yk/code/LLM-reasoning-agents/benchmark-sets/all")
@@ -126,8 +146,8 @@ if __name__ == '__main__':
     for project in project_list:
         # if project in ["bind9", "gdk-pixbuf", "libzip", "civetweb", "inchi", "igraph"]:
             # continue
-        # if project != "gpac":
+        # if project != "bind9":
             # continue
         project_path = oss_fuzz_dir / project / "Dockerfile"
-        process_dockerfile(project_path)
+        freeze_base_image(project_path)
         # exit()

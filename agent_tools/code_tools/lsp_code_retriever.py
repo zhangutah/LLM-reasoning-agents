@@ -10,6 +10,8 @@ from agent_tools.code_tools.parsers.java_parser import JavaParser
 from constants import LanguageType, LSPFunction, LSPResults
 from typing import Any
 from pathlib import Path
+import shutil
+import urllib
 
 class LSPCodeRetriever():
     def __init__(self, workdir: str,  project_lang: LanguageType, symbol_name: str, lsp_function: LSPFunction):
@@ -41,7 +43,7 @@ class LSPCodeRetriever():
 
         query_key = ""
         start_line = 0
-        parser = self.lang_parser(Path(file_path), source_code=None, project_lang=self.project_lang)
+        parser = self.lang_parser(Path(file_path), source_code=None)
         if lsp_function == LSPFunction.References:
             # get the full source code of the symbol
             source_code = parser.get_ref_source(self.symbol_name, lineno) # type: ignore
@@ -78,6 +80,8 @@ class LSPCodeRetriever():
         ret_list: list[dict[str, Any]] = []
         for loc in response:  
             file_path = loc.get("uri", "").replace("file://", "")
+            # convert uri to file path
+            file_path = urllib.parse.unquote(file_path) # type: ignore
             range_start = loc['range']['start']
 
             source_dict = self.fectch_code(file_path, range_start['line'], lsp_function)
@@ -122,7 +126,8 @@ class LSPCodeRetriever():
             response = await self.lsp_client.request_references(file_path, lineno=lineno, charpos=charpos)
             return self.fectch_code_from_response(response, self.lsp_function)
         else:
-            raise Exception(f"Unsupported LSP function: {self.lsp_function}")
+            return []
+            # raise Exception(f"Unsupported LSP function: {self.lsp_function}")
 
     async def find_all_symbols(self) -> tuple[str, list[tuple[str, int, int]]]:
         
@@ -130,7 +135,7 @@ class LSPCodeRetriever():
         response = await self.lsp_client.request_workspace_symbols(self.symbol_name)
 
         if not response:
-            return f"{LSPResults.Error.value}, Empty Response.", []
+            return LSPResults.NoSymbol.value, []
 
         return LSPResults.Success.value, response
 
@@ -173,7 +178,8 @@ class LSPCodeRetriever():
             if len(all_symbols) == 0:
                 return msg, []
         else:
-            raise Exception(f"Language {self.project_lang} not supported.")
+            return LSPResults.Error.value + ", Unsupported language.", []
+          
         # all_symbols should be only one
         # if len(all_symbols) > 1:
             # return f"{LSPResults.Error}: More than one symbol found. {all_symbols}", []
@@ -185,9 +191,11 @@ class LSPCodeRetriever():
         for file_path, lineno, char_pos in all_symbols:
 
             if file_path.startswith("/usr/include") or file_path.startswith("/usr/local/include"):
-                print(f"Skip system header file: {file_path}")
+                # print(f"Skip system header file: {file_path}")
                 continue
             print("file_path:{}, lineno:{}, char_pos:{}".format(file_path, lineno, char_pos))
+
+            # continue
             # Define server arguments
             try:
                 response = await self.request_function(file_path,  int(lineno), int(char_pos))
@@ -195,33 +203,47 @@ class LSPCodeRetriever():
                 final_resp += response
             except Exception as e:
                 print(f"Error: {e}")
-                return f"{LSPResults.Error.value}: {e}", []
-        
+                return LSPResults.Error.value + f": {e}", []
+
         return LSPResults.Success.value, final_resp
 
-    
-async def main():
-    parser = argparse.ArgumentParser(description='')
-    parser.add_argument('--workdir', type=str, default="/src/", help='The work place that can run bear compile.')
-    parser.add_argument('--lsp-function', type=str, default="all_headers", choices=[e.value for e in LSPFunction], help='The LSP function name')
-    parser.add_argument('--symbol-name', type=str, default="", help='The function name or struct name.')
-    parser.add_argument('--lang', type=str, default="C", choices=[e.value for e in LanguageType], help='The project language.')
-    args = parser.parse_args()
 
-    # the default workdir is the current directory, since we didn't send the compile_comamnd.json to the clangd server
-    lsp = LSPCodeRetriever(args.workdir, LanguageType(args.lang), args.symbol_name, LSPFunction(args.lsp_function))
-   
-    if args.lsp_function == LSPFunction.AllSymbols.value:
+async def get_response(workdir: str, lang: str, symbol_name: str, lsp_function: str) -> tuple[str, list[dict[str, Any]]]:
+        # the default workdir is the current directory, since we didn't send the compile_comamnd.json to the clangd server
+    lsp = LSPCodeRetriever(workdir, LanguageType(lang), symbol_name, LSPFunction(lsp_function))
+
+    if lsp_function == LSPFunction.AllSymbols.value:
         msg, res = await lsp.get_all_functions()
-    elif args.lsp_function == LSPFunction.AllHeaders.value:
+    elif lsp_function == LSPFunction.AllHeaders.value:
         msg, res = await lsp.get_all_headers()
     else:
         msg, res = await lsp.get_symbol_info()
 
-    file_name = f"{lsp.symbol_name}_{lsp.lsp_function.value}_lsp.json"
+    return msg, res
+    
+async def main():
+    parser = argparse.ArgumentParser(description='')
+    parser.add_argument('--project', type=str, default="cppcheck", help='The project name.')
+    parser.add_argument('--workdir', type=str, default="/src/cppcheck", help='The work place that can run bear compile.')
+    parser.add_argument('--lsp-function', type=str, default="declaration", choices=[e.value for e in LSPFunction], help='The LSP function name')
+    parser.add_argument('--symbol-name', type=str, default="CppCheck::check", help='The function name or struct name.')
+    parser.add_argument('--lang', type=str, default="CPP", choices=[e.value for e in LanguageType], help='The project language.')
+    args = parser.parse_args()
+
+    msg, res = await get_response(args.workdir, args.lang, args.symbol_name, args.lsp_function)
+    # if the workdir is not the same as /src/project, we will retry with
+    for src_path in ["/src/{}".format(args.project), "/src"]:
+        if msg == LSPResults.NoSymbol.value and args.workdir != src_path and os.path.exists(src_path):
+            # copy the compile_commands.json to the src_path
+            if os.path.exists(f"{args.workdir}/compile_commands.json"):
+                shutil.copy(f"{args.workdir}/compile_commands.json", f"{src_path}/compile_commands.json")
+            print(f"Retry with src path: {src_path}")
+            # the default workdir is the current directory, since we didn't send the compile_comamnd.json to the clangd server
+            msg, res = await get_response(src_path, args.lang, args.symbol_name, args.lsp_function)
+
+    file_name = f"{args.symbol_name}_{args.lsp_function}_lsp.json"
     with open(os.path.join("/out", file_name), "w") as f:
         f.write(json.dumps({"message": msg, "response": res}, indent=4))
-
 
 if __name__ == "__main__":
     asyncio.run(main())

@@ -43,6 +43,15 @@ This project focuses on evaluating large language model (LLM) agents for fuzzing
 
 3. **Tools**: execution tools for LLM agents, or direct use with main function.
 
+4. **Code Statistics**: Count lines of code in the repository.
+
+   Example:
+   ```bash
+   python count_lines.py
+   ```
+
+   This will display statistics about the codebase including total lines, code lines, and blank lines by file type.
+
 ### Instructions for Building and Running the Docker Container
 
 1. **Build the Docker Image:**

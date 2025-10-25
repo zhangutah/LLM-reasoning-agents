@@ -400,6 +400,55 @@ def get_ext_lang(file_path: Path) -> Optional[LanguageType]:
         ".java": LanguageType.JAVA,
     }
     return ext_lang_mapping.get(ext, None)
+
+def count_total_lines(directory: Path, extensions: Optional[list[str]] = None, 
+                     exclude_dirs: Optional[set[str]] = None) -> dict[str, int]:
+    """
+    Count total lines of code in a directory.
+    
+    Args:
+        directory: Directory to count lines in
+        extensions: List of file extensions to include (e.g., ['.py', '.c'])
+        exclude_dirs: Set of directory names to exclude
+    
+    Returns:
+        Dictionary with 'total_lines', 'code_lines', 'blank_lines', 'file_count'
+    """
+    if exclude_dirs is None:
+        exclude_dirs = {'.git', '__pycache__', 'node_modules', '.vscode', 'venv', 'env'}
+    
+    total_lines = 0
+    blank_lines = 0
+    file_count = 0
+    
+    for root, dirs, files in os.walk(directory):
+        # Remove excluded directories from dirs to prevent walking into them
+        dirs[:] = [d for d in dirs if d not in exclude_dirs]
+        
+        for file in files:
+            filepath = Path(root) / file
+            
+            # Filter by extension if specified
+            if extensions and filepath.suffix.lower() not in extensions:
+                continue
+            
+            try:
+                with open(filepath, 'r', encoding='utf-8', errors='ignore') as f:
+                    lines = f.readlines()
+                    total_lines += len(lines)
+                    blank_lines += sum(1 for line in lines if line.strip() == '')
+                    file_count += 1
+            except Exception:
+                continue
+    
+    code_lines = total_lines - blank_lines
+    
+    return {
+        'total_lines': total_lines,
+        'code_lines': code_lines,
+        'blank_lines': blank_lines,
+        'file_count': file_count
+    }
           
 if __name__ == "__main__":
 

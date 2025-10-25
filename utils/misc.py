@@ -406,6 +406,10 @@ def count_total_lines(directory: Path, extensions: Optional[list[str]] = None,
     """
     Count total lines of code in a directory.
     
+    Note: This function provides basic line counting metrics. The name reflects
+    the primary use case of counting total lines, but it also provides additional
+    statistics like code lines, blank lines, and file count.
+    
     Args:
         directory: Directory to count lines in
         extensions: List of file extensions to include (e.g., ['.py', '.c'])

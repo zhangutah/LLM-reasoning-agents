@@ -43,13 +43,14 @@ def count_lines_by_extension(root_dir: Path, exclude_dirs: set = None) -> Dict[s
                     blank_lines = sum(1 for line in lines if line.strip() == '')
                     
                     # Simple comment detection for common file types
+                    # Note: This is a simple heuristic and may not catch all cases
                     comment_lines = 0
                     if ext in ['.py']:
                         comment_lines = sum(1 for line in lines if line.strip().startswith('#'))
                     elif ext in ['.c', '.cpp', '.cc', '.cxx', '.h', '.hpp', '.java']:
                         comment_lines = sum(1 for line in lines if line.strip().startswith('//'))
                     
-                    code_lines = total_lines - blank_lines
+                    code_lines = total_lines - blank_lines - comment_lines
                     
                     stats[ext]['files'] += 1
                     stats[ext]['lines'] += total_lines

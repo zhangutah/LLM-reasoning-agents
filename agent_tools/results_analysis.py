@@ -1,7 +1,6 @@
 import os
 from constants import EvalResult
 from collections import defaultdict
-import pickle
 from agent_tools.code_tools.parsers.cpp_parser import CPPParser
 # from agent_tools.code_tools.parsers.c_parser import CParser
 from utils.misc import extract_name
@@ -148,12 +147,42 @@ def run_agent_res(output_path: Path, semantic_mode:str, n_run:int=1):
         save_f.write(f"Success:{res_count[EvalResult.Success.value] }\n")
         save_f.write(f"Language success count: {lang_count}\n")
 
-
-    write_list_to_file(list(all_projects), output_path / f"failed_projects_{n_run}.txt")
+    all_projects = sorted(list(all_projects))
+    write_list_to_file(all_projects, output_path / f"failed_projects_{n_run}.txt")
     write_list_to_file(build_failed, output_path / f"build_failed_functions_{n_run}.txt")
     # json dump
     with open(output_path / f"success_functions_{n_run}.json", "w") as f:
             json.dump(success_json, f, indent=4)
+
+
+def get_evaluation_results(eval_path: Path):
+    
+    for project_path in sorted(eval_path.iterdir()):
+        if not project_path.is_dir():
+            continue
+
+        for function_path in project_path.iterdir():
+            if not function_path.is_dir():
+                continue
+
+            for run_dir in function_path.iterdir():
+                if not run_dir.is_dir():
+                    continue
+
+                cov_file = run_dir / "cov.txt"
+                if not cov_file.exists():
+                    continue
+
+                # cov_lines = cov_file.read_text().split("\n")
+                # init_cov = 0
+                # final_cov = 0
+                # for line in cov_lines:
+                #     if "Initial coverage" in line:
+                #         init_cov = int(line.split(":")[-1].strip())
+                #     elif "Final coverage" in line:
+                #         final_cov = int(line.split(":")[-1].strip())
+                
+                # print(f"{project_path.name}/{function_path.name}: Initial coverage: {init_cov}, Final coverage: {final_cov}")
 
 if __name__ == "__main__":
 

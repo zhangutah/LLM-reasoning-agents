@@ -33,19 +33,19 @@ class FixerPromptBuilder:
             error_msg = error_msg.split("\n", 1)[1]
         return error_msg
 
-    def build_compile_prompt(self, harness_code: str, error_msg: str)-> str:
+    def build_compile_prompt(self, harness_code: str, error_msg: str, fuzzer_path: str)-> str:
         '''
         Build the prompt for the code fixer. If you need to customize the prompt, you can override this function.
         '''
         error_msg = self.reduce_msg(error_msg)
-        return self.compile_fix_prompt.format(harness_code=add_lineno_to_code(harness_code, 1), error_msg=error_msg, project_lang=self.project_lang)
+        return self.compile_fix_prompt.format(harness_code=add_lineno_to_code(harness_code, 1), error_msg=error_msg, project_lang=self.project_lang, fuzzer_path=fuzzer_path)
 
-    def build_fuzz_prompt(self, harness_code: str, error_msg: str)-> str:
+    def build_fuzz_prompt(self, harness_code: str, error_msg: str, fuzzer_path: str)-> str:
         '''
         Build the prompt for the code fixer. If you need to customize the prompt, you can override this function.
         '''
-        return self.fuzz_fix_prompt.format(harness_code=add_lineno_to_code(harness_code, 1), error_msg=error_msg, project_lang=self.project_lang)
-    
+        return self.fuzz_fix_prompt.format(harness_code=add_lineno_to_code(harness_code, 1), error_msg=error_msg, project_lang=self.project_lang, fuzzer_path=fuzzer_path)
+
     def respond(self, state: dict[str, Any]) -> dict[str, Any]:
         fix_counter = state.get("fix_counter", 0)
         last_message = state["messages"][-1].content
@@ -53,9 +53,9 @@ class FixerPromptBuilder:
             # clear previous messages, need to build the fix prompt based on the provided template 
             state["messages"].clear()
             if last_message.startswith(CompileResults.CodeError.value):
-                fix_prompt = self.build_compile_prompt(state["harness_code"], state["build_msg"])
+                fix_prompt = self.build_compile_prompt(state["harness_code"], state["build_msg"], state["fuzzer_path"])
             else:
-                fix_prompt = self.build_fuzz_prompt(state["harness_code"], state["fuzz_msg"])
+                fix_prompt = self.build_fuzz_prompt(state["harness_code"], state["fuzz_msg"], state["fuzzer_path"])
         else:
             # keep the previous messages, just add the error message
             if last_message.startswith(CompileResults.CodeError.value):

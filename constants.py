@@ -4,8 +4,8 @@ from enum import Enum
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 # print(PROJECT_PATH)
 
-ALL_FILE_EXTENSION = ["c", "cpp", "java", "py", "cc", "cxx"]
-ALL_HEADER_EXTENSION = ["h", "hpp", "hh"]
+ALL_FILE_EXTENSION = [".c", ".cpp", ".java", ".py", ".cc", ".cxx"]
+ALL_HEADER_EXTENSION = [".h", ".hpp", ".hh"]
 
 class LSPResults(Enum):
     """Results of Language Server Protocol."""

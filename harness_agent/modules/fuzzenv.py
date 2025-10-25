@@ -27,6 +27,10 @@ class FuzzENV():
         self.new_project_name = f"run{n_run}_{random_str}"
         function_name = extract_name(function_signature, keep_namespace=True)
         function_name = function_name.replace("::", "_")  # replace namespace with underscore
+
+        if not self.create_workspace(function_name, n_run):
+            self.eailier_stop_flag = True
+            return
         self.save_dir = self.benchcfg.save_root / project_name.lower() / function_name.lower() / self.new_project_name
         self.logger = self.setup_logging()
 
@@ -46,7 +50,20 @@ class FuzzENV():
             # move the harness file to the first
             self.harness_pairs = {_fuzzer_name: _harness_path, **self.harness_pairs}
         self.logger.info(f"Show harness_fuzzer_pairs.json, content:{self.harness_pairs}")
+        self.code_retriever.set_harness_pairs(self.harness_pairs)
+        
+    def create_workspace(self, function_name: str, n_run: int) -> bool:
+        '''Create the workspace for the project/function'''
 
+        # skip existing project
+        function_dir = self.benchcfg.save_root / self.project_name.lower() / function_name.lower() 
+        if function_dir.exists():
+            for work_dir in function_dir.iterdir():
+                if work_dir.is_dir() and work_dir.name.startswith(f"run{n_run}_"):
+                    print(f"Skip existing project: {work_dir}")
+                    return False
+        return True
+                
     def setup_logging(self):
 
         # Create a logger
@@ -223,6 +240,7 @@ class FuzzENV():
         if json_path.exists():
             with open(json_path, 'r') as f:
                 harness_fuzzer_dict = json.load(f)
+            if harness_fuzzer_dict:
                 self.logger.info(f"Using Cached harness_fuzzer_pairs.json, content:{harness_fuzzer_dict}")
                 return to_path(harness_fuzzer_dict)
 

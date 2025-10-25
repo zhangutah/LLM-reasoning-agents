@@ -1,18 +1,20 @@
 import json
 import os
 import parser
-from gguf import ceil
+from math import ceil
 from agent_tools.fuzz_tools.run_fuzzer import FuzzerRunner
 from agent_tools.fuzz_tools.compiler import Compiler
 from harness_agent.modules.fuzzenv import FuzzENV
 from bench_cfg import BenchConfig
 from pathlib import Path
-from constants import CompileResults
+from constants import CompileResults, ValResult
 from utils.misc import extract_name
 from agent_tools.fuzz_tools.cov_collecter import CovCollector
 from typing import Optional
 import multiprocessing
-from utils.misc import logger_wrapper, get_ext_lang
+import psutil
+from utils.misc import logger_wrapper
+import shutil
 
 class HarnessEval(FuzzENV):
     def __init__(self,  benchcfg: BenchConfig, function_signature: str, project_name: str, local_harness: Path, n_run: int=1):
@@ -34,13 +36,22 @@ class HarnessEval(FuzzENV):
                 continue
 
             # Run the fuzzer
-            _, _, _ = fuzzer.run_fuzzing(counter=0, fuzzer_name=fuzzer_name)
-            # if fuzz_res != ValResult.NoError:
-                # logger_wrapper(self.logger, f"Error during fuzzing: {fuzz_res}", level="error")
+            fuzz_res, _, _ = fuzzer.run_fuzzing(counter=0, fuzzer_name=fuzzer_name)
+            if fuzz_res != ValResult.NoError:
+                logger_wrapper(self.logger, f"Crash when fuzzing: {fuzz_res}", level="error")
                 # return 0,0, False
+                # copy the crash file to save_dir
+                out_path = self.benchcfg.oss_fuzz_dir / "build" / "out" /self.new_project_name
+                crash_files = list(out_path.glob("crash-*"))
+                for crash_file in crash_files:
+                    dest_file = self.save_dir / crash_file.name
+                    os.makedirs(self.save_dir, exist_ok=True)
+                    shutil.copy(crash_file, dest_file)
+
+                
             logger_wrapper(self.logger, f"Collecting coverage for {fuzzer_name}", level="info")
             corpus_dir = Path(self.save_dir) / "corpora"
-            function_name =  extract_name(self.function_signature, keep_namespace=True)
+            function_name =  extract_name(self.function_signature, keep_namespace=True, exception_flag=False)
             # init the cov collector
             cov_collector = CovCollector(self.benchcfg.oss_fuzz_dir, self.benchcfg.benchmark_dir, self.project_name, self.new_project_name, self.project_lang, self.logger)
             # collect the coverage
@@ -61,6 +72,8 @@ def process_single_result(args: tuple[str, str, Path, BenchConfig]): # type: ign
     try:
         # get the evaluator
         evaluator = HarnessEval(benchcfg=benchcfg, function_signature=function_signature, project_name=project_name, local_harness=harness_file)
+        if evaluator.eailier_stop_flag:
+            return project_name, function_signature, 0, 0
         init_cov, final_cov, _ = evaluator.eval_harness()
 
         # save coverage
@@ -76,7 +89,7 @@ def process_single_result(args: tuple[str, str, Path, BenchConfig]): # type: ign
 
 def run_evaluation(output_path: Path, benchcfg:BenchConfig, n_run:int=1, num_processes:Optional[int]=None, n_partitations:int=1, partitation_id:int=0): 
     if num_processes is None:
-        num_processes = max(1, multiprocessing.cpu_count())  # Use all CPU cores
+        num_processes = max(1, psutil.cpu_count(logical=False))  # type: ignore
 
     res_json = output_path / f"success_functions_{n_run}.json"
     if not res_json.exists():
@@ -122,7 +135,7 @@ if __name__ == "__main__":
     parser  = ArgumentParser(description="Run harness evaluation in parallel.")
     parser.add_argument("--output_path", type=str, required=True, help="Path to the output directory containing success_functions.json")
     parser.add_argument("--benchcfg_path", type=str, default="/home/yk/code/LLM-reasoning-agents/cfg/eval_cfg.yaml", help="Path to the benchmark configuration YAML file")
-    parser.add_argument("--n_run", type=int, default=1, help="Run number corresponding to success_functions_{n_run}.json")
+    parser.add_argument("--n_run", type=int, default=3, help="Run number corresponding to success_functions_{n_run}.json")
     parser.add_argument("--num_processes", type=int, default=None, help="Number of parallel processes to use. Defaults to number of CPU cores minus one.")
     parser.add_argument("--n_partitations", type=int, default=1, help="Total number of partitions to divide the workload into.")
     parser.add_argument("--partitation_id", type=int, default=0, help="ID of the partition to process (0-indexed).")

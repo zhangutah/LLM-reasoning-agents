@@ -14,7 +14,7 @@ class ISSTAFixerPromptBuilder(FixerPromptBuilder):
         super().__init__(benchcfg, oss_fuzz_benchmark, project_name, new_project_name, code_retriever, logger, compile_fix_prompt, fuzz_fix_prompt, project_lang)
 
 
-    def build_compile_prompt(self, harness_code: str, error_msg: str)-> str:
+    def build_compile_prompt(self, harness_code: str, error_msg: str, fuzzer_path: str)-> str:
         '''
         Build the prompt for the code fixer. If you need to customize the prompt, you can override this function.
         '''
@@ -31,7 +31,7 @@ class ISSTAFixerPromptBuilder(FixerPromptBuilder):
 
         if not func_name or not func_sig:
             self.logger.info(f"Function name not found in error message")
-            return self.compile_fix_prompt.format(harness_code=add_lineno_to_code(harness_code, 1), error_msg=error_msg, project_lang=self.project_lang)
+            return self.compile_fix_prompt.format(harness_code=add_lineno_to_code(harness_code, 1), error_msg=error_msg, project_lang=self.project_lang, fuzzer_path=fuzzer_path)
 
         comment_example = self.code_retriever.get_symbol_references(func_name, Retriever.Parser)
     
@@ -44,9 +44,9 @@ class ISSTAFixerPromptBuilder(FixerPromptBuilder):
         # comment the example
         error_msg += comment_example
 
-        return self.compile_fix_prompt.format(harness_code=add_lineno_to_code(harness_code, 1), error_msg=error_msg, project_lang=self.project_lang)
+        return self.compile_fix_prompt.format(harness_code=add_lineno_to_code(harness_code, 1), error_msg=error_msg, project_lang=self.project_lang, fuzzer_path=fuzzer_path)
 
-    def build_fuzz_prompt(self, harness_code: str, error_msg: str)-> str:
+    def build_fuzz_prompt(self, harness_code: str, error_msg: str, fuzzer_path: str)-> str:
         '''
         Build the prompt for the code fixer. If you need to customize the prompt, you can override this function.
         '''
@@ -79,6 +79,5 @@ class ISSTAFixerPromptBuilder(FixerPromptBuilder):
                 # TODO 
                 if comment_example != "":
                     error_msg += f"\n // the usage of {func_name} is as follows: \n" + comment_example
-           
-        return self.fuzz_fix_prompt.format(harness_code=add_lineno_to_code(harness_code, 1), error_msg=error_msg, project_lang=self.project_lang)
-    
+
+        return self.fuzz_fix_prompt.format(harness_code=add_lineno_to_code(harness_code, 1), error_msg=error_msg, project_lang=self.project_lang, fuzzer_path=fuzzer_path)

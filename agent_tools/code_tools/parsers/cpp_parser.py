@@ -164,7 +164,7 @@ class CPPParser(BaseParser):
 
             # check if the src_node is the correct node filter this kind of line.  class LoggingEvent;
             if key == "classes":
-                field_node = self.match_child_node(src_node, "field_declaration_list", recusive_flag=False)
+                field_node = self.match_child_node(src_node, ["field_declaration_list"], recusive_flag=False)
                 if not field_node:
                     continue
                 
@@ -176,10 +176,10 @@ class CPPParser(BaseParser):
             if lsp_function == LSPFunction.Definition:
                 
                 # situation 1: the namespace is before the function like: void A::test()
-                name_node = self.match_child_node(src_node, "namespace_identifier", recusive_flag=True)
+                name_node = self.match_child_node(src_node, ["namespace_identifier"], recusive_flag=True)
                 if not name_node:
-                    name_node = self.match_child_node(src_node, "type_identifier", recusive_flag=True)
-              
+                    name_node = self.match_child_node(src_node, ["type_identifier"], recusive_flag=True)
+
                 # if exist the namespace node, then match the namespace
                 if name_node:
                     #match the namespace
@@ -199,7 +199,7 @@ class CPPParser(BaseParser):
                 # match the namespace
                 if parent_node and parent_node.type in ["class_specifier","struct_specifier","union_specifier", "enum_specifier"]:
                     # there may be more identifier other than type_identifier 
-                    name_node = self.match_child_node(parent_node, "type_identifier", recusive_flag=True)
+                    name_node = self.match_child_node(parent_node, ["type_identifier"], recusive_flag=True)
                     # exist namespace node, then match the namespace
                     if name_node:
                         if node_text(name_node) == namespace_name: 

@@ -118,8 +118,8 @@ class BaseParser:
                 # if we can't decode the text, it is meaningless to search
                 if not source_node.text:
                     continue
-                
-                id_node = self.match_child_node(source_node, "identifier", recusive_flag=True)
+
+                id_node = self.match_child_node(source_node, ["identifier", "field_identifier"], recusive_flag=True)
                 # the function name is under function_declarator
                 if not id_node or not id_node.text: 
                     continue
@@ -191,7 +191,7 @@ class BaseParser:
         try:
             # TODO C/C++ function name is the first child of the call expression
             for identifier_str in ["identifier", "field_identifier"]:
-                id_node = self.match_child_node(root_node, identifier_str, recusive_flag=True)
+                id_node = self.match_child_node(root_node, [identifier_str], recusive_flag=True)
                 
                 # match the function name
                 if id_node and id_node.text and pure_symbol_name == id_node.text.decode("utf-8", errors="ignore"): # type: ignore
@@ -204,7 +204,7 @@ class BaseParser:
                         # split the name space, the last element is empty
                         namespace = call_prefix.split("::")[:-1]
                         if self.match_namespace(namespace, symbol_name.split("::")[:-1]):
-                                return id_node
+                            return id_node
                     else:
                         return id_node
         except Exception:
@@ -212,6 +212,15 @@ class BaseParser:
         
         return None
     
+    def get_identifier_name(self, root_node:Node) -> str:
+
+        # TODO C/C++ function name is the first child of the call expression
+        # TODO C/C++ function name is the first child of the call expression
+        id_node = self.match_child_node(root_node, ["identifier", "field_identifier"], recusive_flag=True)
+        if id_node:
+            return id_node.text.decode("utf-8", errors="ignore") # type: ignore
+        return ""
+
     def get_call_node(self, function_name: str, entry_node: Optional[Node] = None) -> Optional[Node]:
         if not entry_node:
             print("Entry function not found.")
@@ -240,9 +249,9 @@ class BaseParser:
         """
         # TODO this only works for call fuzz function directly in the entry function
         # Fist find the Fuzz entry point
-        entry_function = FuzzEntryFunctionMapping[self.project_lang]
-        entry_node = self.get_definition_node(entry_function)
-        call_node = self.get_call_node(function_name, entry_node)
+        # entry_function = FuzzEntryFunctionMapping[self.project_lang]
+        # entry_node = self.get_definition_node(entry_function)
+        call_node = self.get_call_node(function_name, self.tree.root_node)
         if not expression_flag:
             return call_node
         
@@ -261,12 +270,39 @@ class BaseParser:
         return None
 
 
-
-      
+    def get_parent_definition_node(self, call_node:Node) -> Optional[Node]:
+        
+        # get the parent definition node of the call node
+        while call_node.parent:
+            call_node = call_node.parent
+            if call_node.type == self.func_def_name:
+                return call_node
+            # the top node
+            if call_node.type == "translation_unit":
+                break
+        return None
+    
     def is_fuzz_function_called(self, function_name: str) -> bool:
-        if self.get_fuzz_function_node(function_name):
-            return True
-        return False
+
+        
+        def_node_name = function_name
+        while def_node_name != FuzzEntryFunctionMapping[self.project_lang]:
+            call_node = self.get_call_node(def_node_name, self.tree.root_node)
+            # check if the call node is under the main function
+            if not call_node:
+                return False
+            
+            # no definition node found
+            def_node = self.get_parent_definition_node(call_node)
+            if not def_node:
+                return False
+
+            # no identifier name found
+            def_node_name = self.get_identifier_name(def_node)
+            if not def_node_name:
+                return False
+
+        return True
     
     def exist_function_definition(self, function_name: str) -> bool:
         if self.get_definition_node(function_name):
@@ -285,8 +321,12 @@ class BaseParser:
             return None
         # Check the nodes
         for node in captures["func_def"]:
+            
+            decl_node = self.match_child_node(node, ["function_declarator"], recusive_flag=True)
+            if not decl_node:
+                continue
             try:
-                id_node = self.get_identifier_node(node, function_name)
+                id_node = self.get_identifier_node(decl_node, function_name)
                 if id_node:
                     return node
             except Exception as e:
@@ -295,7 +335,7 @@ class BaseParser:
         return None
        
 
-    def match_child_node(self, node:Node, node_type:str, recusive_flag: bool=False) -> Optional[Node]:
+    def match_child_node(self, node:Node, node_type:list[str], recusive_flag: bool=False) -> Optional[Node]:
         """
         Match the fisrt child node of a given node based on the node type.
         :param node: The parent node to search within.
@@ -304,9 +344,9 @@ class BaseParser:
         :return: The matched child node or None if not found.
         """
         for child in node.children:
-            if child.type == node_type:
+            if child.type in node_type:
                 return child
-            if recusive_flag:
+            if recusive_flag and child.type != "ERROR":
                 result = self.match_child_node(child, node_type, recusive_flag)
                 if result:
                     return result

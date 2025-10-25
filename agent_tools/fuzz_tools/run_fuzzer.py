@@ -36,29 +36,57 @@ class FuzzerRunner():
                     '-len_control=0',
                         # Timeout per testcase.
                     '-timeout=30',
-                    '-detect_leaks=0'
+                    '-detect_leaks=0',
+                    '-seed=1234'
             ]
         log_file_path = self.save_dir / f"fuzzing{counter}.log"
-        try:
-            # save the fuzz log to a file
-            with open(log_file_path, "w") as log_file:
-                sp.run(command,
-                    stdout=log_file,  # Capture standard output
-                    # Important!, build fuzzer error may not appear in stderr, so redirect stderr to stdout
-                    stderr=sp.STDOUT,  # Redirect standard error to standard output
-                    text=True,  # Get output as text (str) instead of bytes
-                    check=True,
-                    timeout=self.run_timeout + 5,  # Set timeout
-                    )
+      # Define the error patterns
+        error_patterns = ['ERROR: LeakSanitizer',  'ERROR: libFuzzer:', 'ERROR: AddressSanitizer']
+        
 
-            # read the log file
+        try:
+            # Run process and filter output
+            process = sp.Popen(command,
+                stdout=sp.PIPE,
+                stderr=sp.STDOUT,
+                bufsize=0  # Unbuffered for real-time output
+            )
+            
+            with open(log_file_path, "w", encoding='utf-8', errors='ignore') as log_file:
+            
+                inited_found = False
+                done_found = False
+                crash_found = False
+                # Read line by line from binary output
+                for line_bytes in iter(process.stdout.readline, b''):
+                    # Decode with error handling - replace invalid chars
+                    line = line_bytes.decode('utf-8', errors='ignore')
+                    # log_file.write(line)
+                    # log_file.flush()
+                    if "INITED" in line:
+                        inited_found = True
+                    # Check for DONE marker  
+                    elif "DONE" in line:
+                        done_found = True
+                    elif any(error_pattern in line for error_pattern in error_patterns):
+                        crash_found = True
+                    # 
+                    if not inited_found or done_found or crash_found:
+                        log_file.write(line)
+                        log_file.flush()
+                    # Between INITED and DONE or Between INITED and CRASH, only keep lines with "#"
+                    else:
+                        if "#" in line and "cov" in line:
+                            log_file.write(line)
+                            log_file.flush()
+                            
+            process.wait(timeout=self.run_timeout + 5)
+
             return FuzzLogParser(self.project_lang).parse_log(log_file_path)
-          
+            
         except sp.TimeoutExpired:
             # sleep some time to make sure the log file is written, otherwise, some part of the log file may be missing
-            time.sleep(self.run_timeout)
+            time.sleep(1)
             return FuzzLogParser(self.project_lang).parse_log(log_file_path)
         except Exception:
-            # print(e)
-            # timeout error can also capture from the log file
             return FuzzLogParser(self.project_lang).parse_log(log_file_path)

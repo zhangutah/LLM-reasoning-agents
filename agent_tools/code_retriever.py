@@ -9,7 +9,7 @@ import functools
 import re
 from utils.misc import add_lineno_to_code, filter_examples, extract_name
 import time
-
+import subprocess as sp
 def catch_exception(func: Callable[..., list[dict[str, Any]]]) -> Callable[..., list[dict[str, Any]]]:
     @functools.wraps(func)
     def wrapper(self: Any, *args: Any, **kwargs: Any)->list[dict[str, Any]]: 
@@ -58,6 +58,9 @@ class CodeRetriever():
             self.logger.error(f"Failed to run bear compile: {res}")
             raise Exception(f"Failed to run bear compile: {res}")
 
+    def set_harness_pairs(self, harness_pairs: dict[str, Path]) -> None:
+        self.harness_pairs = harness_pairs
+
     def gen_file_name(self, symbol_name: str, lsp_function: LSPFunction, retriever: Retriever) -> str:
         if lsp_function == LSPFunction.StructFunctions:
             file_name = f"{Path(symbol_name).stem}_{lsp_function.value}_{retriever.value}.json"
@@ -73,20 +76,39 @@ class CodeRetriever():
         except Exception as e:
             self.logger.error(f"Error stopping container: {e}")
 
-    def view_code(self, file_path: str, lineno: int, context_window: int=100, num_flag: bool=True) -> str:
+ 
+    def view_code(self, file_path_str: str, lineno: int, context_window: int=100, num_flag: bool=True) -> str:
         """
-        View the code around the given line number for file path. This tool will return 20 lines before and after the target line.
+        View the code around the given line number for file path. This tool will return read [lineno-20, lineno+context_window] lines.
         Args:
-            file_path (str): The path to the file to read from, like /src/xx/xx.c
-            lineno (int): The target line number (0-indexed).
+            file_path (str): The absolute path to the file to read from, like /src/xx/xx.c
+            lineno (int): The target line number (1-indexed).
         Returns:
             str: The extracted code as a string.
         """
-        lineno += 1  # Convert to 1-indexed for sed command
+        if context_window > 100:
+            context_window = 100  # limit the context window to 100
+        file_path = Path(file_path_str).resolve(strict=False)  
+
         # Read the file from the docker container
-        start_line =  max(lineno - context_window, 1)
+        start_line =  max(lineno - 20, 1)
         end_line = lineno + context_window
         read_cmd = f"sed -n '{start_line},{end_line}p' {file_path}"
+
+        # view harness code
+        for _, harness_path in self.harness_pairs.items():
+            if file_path.name == harness_path.name:
+                # copy the harness file to the container
+                # read local harness file
+                local_harness_path = self.oss_fuzz_dir / "projects" / self.new_project_name / harness_path.name
+                read_cmd = f"sed -n '{start_line},{end_line}p' {str(local_harness_path)}"
+                result = sp.run(read_cmd,
+                   stdout=sp.PIPE,  # Capture standard output
+                    # Important!, build fuzzer error may not appear in stderr, so redirect stderr to stdout
+                   stderr=sp.STDOUT,  # Redirect standard error to standard output
+                   text=True,  # Get output as text (str) instead of bytes
+                   check=False)
+                result = result.stdout
 
         # Use exec_in_container instead of run_cmd
         result = self.docker_tool.exec_in_container(self.container_id, read_cmd)
@@ -95,7 +117,7 @@ class CodeRetriever():
             return f"There is no such file {file_path} in the project."
         if num_flag:
             # add line number to each line
-            return add_lineno_to_code(result, start_lineno=start_line - 1)
+            return add_lineno_to_code(result, start_lineno=start_line)
         return result
 
 
@@ -200,9 +222,16 @@ class CodeRetriever():
         deduped_resp: list[dict[str, Any]] = []
         for item in resp:
             source_code = item.get("source_code", "")
-            if source_code not in unique_sources:
+            # if source_code is not empty and not in unique_sources, add it to the deduped_resp
+            if source_code:
+                if source_code not in unique_sources:
+                    unique_sources.add(source_code)
+                    deduped_resp.append(item)
+            # if source_code is empty, just add it to the deduped_resp
+            else:
                 unique_sources.add(source_code)
                 deduped_resp.append(item)
+
         self.logger.info(f"Found {len(resp)} {lsp_function.value} for {symbol_name} with {retriever.value} retriever")
         return deduped_resp  # No declaration found
 
@@ -341,10 +370,10 @@ class CodeRetriever():
                 break
             ret_str += f"The {i+1}th {lsp_function.value} of {symbol_name} is:\n"
             ret_str += "file_path: {}\n".format(defi["file_path"])
-            ret_str += "line: {}\n".format(defi["line"])
-            # limit the source code length to 30 lines
+            ret_str += "line: {}\n".format(defi["line"]+1)  # line number is 0-indexed
+            # limit the source code length to 50 lines
             all_src = defi["source_code"].splitlines()
-            limited_src = "\n".join(all_src[:30])  # Limit to first 30 lines
+            limited_src = "\n".join(all_src[:50])  # Limit to first 50 lines
             if defi.get("start_line", 0) != 0:
                 ret_str +=  "source_code: \n{}\n".format(add_lineno_to_code(limited_src, defi["start_line"]))
             else:

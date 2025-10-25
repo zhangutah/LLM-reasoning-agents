@@ -44,8 +44,9 @@ class CompilerWraper(Compiler):
                 return True
             else:
                 # only for undefined reference
-                header = list(self.code_retriever.get_header_helper(function, forward=True))
-                if header and all(h.strip() in harness_code for h in header):
+                all_headers = list(self.code_retriever.get_header_helper(function, forward=True))
+                all_headers = set([header for header in all_headers if header.endswith(".h") or header.endswith(".hpp")])
+                if all_headers and all(h.strip() in harness_code for h in all_headers):
                     return True
         return False
 
@@ -117,6 +118,7 @@ class CompilerWraper(Compiler):
                 return {"messages": ("user", CompileResults.Success.value), "build_msg": all_msg, "fuzzer_name": fuzzer_name, "fuzzer_path": harness_path}
 
         # tried all harness, Unable to fix, let the LLM try 
+        self.start_index = 0 # reset for next time, it will try all harness again
         fuzzer_name, harness_path = list(self.harness_dict.items())[0]      
         compile_res, all_msg = super().compile(state["harness_code"], harness_path, fuzzer_name)
         error_msg = self.extract_error_msg(all_msg)
@@ -124,3 +126,5 @@ class CompilerWraper(Compiler):
         save_code_to_file(all_msg, self.save_dir / f"build_{fix_count}.log")
         # save raw error message
         return {"messages": ("user", CompileResults.CodeError.value), "build_msg": error_msg, "fuzzer_name": fuzzer_name, "fuzzer_path": harness_path}
+
+

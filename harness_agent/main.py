@@ -9,7 +9,7 @@ from langgraph.graph import StateGraph, END, START  # type: ignore
 from constants import LanguageType, FuzzEntryFunctionMapping, Retriever, ValResult, CompileResults, PROJECT_PATH
 from langchain_core.tools import StructuredTool
 from langgraph.prebuilt import ToolNode # type: ignore
-from utils.misc import save_code_to_file, extract_name, load_prompt_template, is_empty_json_file
+from utils.misc import save_code_to_file, extract_name, load_prompt_template, is_empty_json_file, write_list_to_file
 from harness_agent.modules.fuzzenv import FuzzENV
 from harness_agent.header.universal import HeaderCompilerWraper
 from harness_agent.fixing.raw import FixerPromptBuilder
@@ -259,6 +259,33 @@ class ISSTAFuzzer(FuzzENV):
         
         return ""
 
+    def get_project_usage(self, function_name: str) -> list[dict[str, str]]:
+        # save to cache json file
+        example_json_file = self.benchcfg.cache_root / self.project_name / f"{function_name}_references_mixed.json"
+        if example_json_file.exists() and not is_empty_json_file(example_json_file):
+            with open(example_json_file, "r") as f:
+                code_usages = json.load(f)
+            self.logger.info(f"Loaded code usages from cache: {example_json_file}")
+            return code_usages
+        
+        lsp_code_usages = self.code_retriever.get_all_symbol_references(function_name, retriever=Retriever.LSP)
+        parser_code_usages = self.code_retriever.get_all_symbol_references(function_name, retriever=Retriever.Parser)
+        code_usages = lsp_code_usages + parser_code_usages
+        # deduplicate the code usages based on source code
+        unique_sources = set()
+        unique_code_usages: list[dict[str, str]] = []
+        for usage in code_usages:
+            if usage["source_code"] and usage["source_code"] not in unique_sources:
+                unique_sources.add(usage["source_code"])
+                unique_code_usages.append(usage)
+
+        code_usages = unique_code_usages
+      
+        with open(example_json_file, "w") as f:
+            json.dump(unique_code_usages, f, indent=4)
+
+        return code_usages
+            
     def get_function_usage(self, function_name: str) -> str:
         self.logger.info(f"Using {self.benchcfg.example_source} for example source")
 
@@ -266,13 +293,8 @@ class ISSTAFuzzer(FuzzENV):
             code_usages = search_public_usage(CodeSearchAPIName.Sourcegraph, function_name, self.project_name, self.project_lang, self.benchcfg)
             example_json_file = self.benchcfg.cache_root / self.project_name / f"{function_name}_references_{CodeSearchAPIName.Sourcegraph.value}.json"
         else:
-            code_usages = self.code_retriever.get_all_symbol_references(function_name, retriever=Retriever.Mixed)
-            example_json_file = self.benchcfg.cache_root / self.project_name / f"{function_name}_references_lsp.json"
-            # read from cache
-            if is_empty_json_file(example_json_file):
-                self.logger.info(f"No cached example usages found for {function_name}, use empty string")
-                example_json_file = self.benchcfg.cache_root / self.project_name / f"{function_name}_references_parser.json"
-
+            code_usages = self.get_project_usage(function_name)
+            example_json_file = self.benchcfg.cache_root / self.project_name / f"{function_name}_references_mixed.json"
 
         if self.benchcfg.example_mode == "rank":
             self.logger.info("Using rank mode for example selection")

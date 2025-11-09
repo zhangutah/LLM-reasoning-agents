@@ -47,20 +47,35 @@ class LSPCodeRetriever():
         if lsp_function == LSPFunction.References:
             # get the full source code of the symbol
             source_code = parser.get_ref_source(self.symbol_name, lineno) # type: ignore
+            if source_code == "":
+                return []
+            return [{"source_code": source_code, "file_path": file_path, "line": lineno, "type": query_key, "start_line": start_line}]
+      
+        # for declaration and definition, we need to get the symbol name without namespace
+        if "::" in self.symbol_name:
+            symbol_name = self.symbol_name.split("::")[-1]
         else:
-            if "::" in self.symbol_name:
-                symbol_name = self.symbol_name.split("::")[-1]
-            else:
-                symbol_name = self.symbol_name
-            # since we have match the namespace when fouding the symbol, there is no need to match the namespace again
-            # the namespace matching in the parser sometimes will fail, so we just use the symbol name directly
-            query_key, source_code, start_line = parser.get_symbol_source(symbol_name, lineno, lsp_function)
+            symbol_name = self.symbol_name
+        # since we have match the namespace when finding the symbol, there is no need to match the namespace again
+        # the namespace matching in the parser sometimes will fail, so we just use the symbol name directly
+        query_key, source_code, start_line = parser.get_symbol_source(symbol_name, lineno, lsp_function)
 
-        # template header file, return empty
-        file_text  = Path(file_path).read_text(encoding="utf-8")
-        if source_code == "" and self.symbol_name not in file_text:
-            # if the source code is not found, we will return the full line of the file
-            return []
+        if lsp_function == LSPFunction.Declaration:
+            # template header file, return empty
+            file_text  = Path(file_path).read_text(encoding="utf-8")
+            if source_code == "" and self.symbol_name not in file_text:
+                # if the source code is not found, we will return the full line of the file
+                return []
+            
+        # for definition and declaration, if we can't find the source code, we will return 50 lines around the lineno
+        # since the location must be correct, the empty source code means the parser failed to find the symbol
+        if source_code == "":
+            # return 50 lines after lineno
+            lines = Path(file_path).read_text(encoding="utf-8").splitlines()
+            start_line = min(lineno-5, 0)
+            end_line = min(len(lines), lineno + 45)
+            source_code = "\n".join(lines[start_line:end_line])
+
         return [{"source_code": source_code, "file_path": file_path, "line": lineno, "type": query_key, "start_line": start_line}]
 
     def fectch_code_from_response(self, response: list[dict[str, Any]], lsp_function: LSPFunction) -> list[dict[str, Any]]:

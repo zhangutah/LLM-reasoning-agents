@@ -31,7 +31,8 @@ from langgraph.checkpoint.memory import MemorySaver
 from ossfuzz_gen import benchmark as benchmarklib
 from ossfuzz_gen.context_introspector import ContextRetriever
 from typing import Annotated
-from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI, OpenAI
+from langchain_anthropic import ChatAnthropic
 from langchain_core.language_models import BaseChatModel
 from typing_extensions import TypedDict
 from langgraph.graph.message import add_messages # type: ignore
@@ -417,13 +418,21 @@ class ISSTAFuzzer(FuzzENV):
             else:
                 llm = ChatOpenAI(model=self.benchcfg.model_name, temperature=self.benchcfg.temperature)
         elif self.benchcfg.model_name.startswith("anthropic"):
-            llm = ChatOpenAI(
-                model=self.benchcfg.model_name.split("/")[1].replace(".", "-"), # type: ignore
+               llm = ChatOpenAI(
+                api_key=os.getenv("OPENROUTER_API_KEY", ""), # type: ignore
+                base_url="https://openrouter.ai/api/v1",
+                model=self.benchcfg.model_name,
                 temperature=self.benchcfg.temperature,
-                api_key=os.getenv("ANTHROPIC_API_KEY", ""),   # type: ignore
-                base_url="https://dfirdev.voidness.work"
-                ) # type: ignore
+                 extra_body={
+                    "reasoning": {
+                        "enabled": self.benchcfg.reasoning,       # enables reasoning
+                        "max_tokens": 2000     # reasoning token budget
+                    },
+                     "strict": False
+                 }
+                )
 
+    # }
         else:
             llm = ChatOpenAI(
                 api_key=os.getenv("OPENROUTER_API_KEY", ""), # type: ignore
@@ -431,6 +440,7 @@ class ISSTAFuzzer(FuzzENV):
                 model=self.benchcfg.model_name,
                 temperature=self.benchcfg.temperature,
                 # disabled_params={"parallel_tool_calls": None}
+                
                 )
             # from langchain_ollama import ChatOllama
             # llm = ChatOllama(model=self.benchcfg.model_name, temperature=self.benchcfg.temperature, base_url=self.benchcfg.base_url, reasoning=self.benchcfg.reasoning) 
@@ -513,7 +523,7 @@ class ISSTAFuzzer(FuzzENV):
             tool_llm = llm
 
         draft_responder = HarnessGenerator(tool_llm, self.benchcfg.max_tool_call, continue_flag=True, save_dir=self.save_dir, 
-                                        code_callback=code_formater.extract_code, logger=self.logger)
+                                        code_callback=code_formater.extract_code, logger=self.logger, model_name=self.benchcfg.model_name)
 
 
         compile_fix_prompt = load_prompt_template(f"{PROJECT_PATH}/harness_agent/prompts/compile_prompt.txt")
@@ -536,7 +546,7 @@ class ISSTAFuzzer(FuzzENV):
                                         local_compile_fix_prompt, local_fuzz_fix_prompt, self.project_lang)
 
         code_fixer = CodeFixer(tool_llm, self.benchcfg.max_fix, self.benchcfg.max_tool_call,  self.save_dir, self.benchcfg.cache_root,
-                                 code_callback=code_formater.extract_code, logger=self.logger)
+                                 code_callback=code_formater.extract_code, logger=self.logger, model_name=self.benchcfg.model_name)
 
         fuzzer = Validation(self.benchcfg.oss_fuzz_dir, self.new_project_name, self.project_lang, 
                              self.benchcfg.run_time,  self.save_dir,  self.logger)

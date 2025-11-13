@@ -365,7 +365,52 @@ def fix_qwen_tool_calls(res: Any) -> Optional[AIMessage]:
         print(f"Error in fix_qwen_tool_calls: {e}")
         return None
 
+def fix_claude_tool_calls(res: Any) -> Optional[AIMessage]:
+    """
+    Fix Claude tool calls when parameters are None instead of empty JSON object.
+    Claude sometimes passes None as args when tools don't require parameters,
+    but the JSON parser expects a valid JSON string.
+    """
+    try:
+        tool_calls: list[ToolCall] = []  # Accumulate valid tool calls
+        for invalid_call in res.invalid_tool_calls:
+            function_name = invalid_call['name']
+            call_id = invalid_call['id']
+            args_value = invalid_call['args']
+            
+            # Handle None args by using empty dict
+            if args_value is None:
+                args = {}
+            else:
+                # Try to parse the args as JSON if it's a string
+                try:
+                    if isinstance(args_value, str):
+                        args = json.loads(args_value)
+                    else:
+                        # If it's already a dict or other object, use it directly
+                        args = args_value if args_value is not None else {}
+                except json.JSONDecodeError:
+                    # If JSON parsing fails, use empty dict
+                    print(f"Failed to parse args for tool {function_name}: {args_value}")
+                    args = {}
+            
+            # Create a ToolCall object with fixed args
+            tool_call = ToolCall(
+                id=call_id,
+                name=function_name,
+                args=args
+            )
+            tool_calls.append(tool_call)
+        
+        # Create a synthetic AIMessage with the corrected tool calls
+        synthetic_ai_message = AIMessage(content=res.content, tool_calls=tool_calls)
+        return synthetic_ai_message
 
+    except Exception as e:
+        print(f"Error in fix_claude_tool_calls: {e}")
+        return None
+    
+    
 def logger_wrapper(logger: Optional[Any], msg: str, level: str = "info") -> None:
     """A wrapper for logging messages."""
     if logger:

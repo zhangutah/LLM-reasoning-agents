@@ -4,12 +4,12 @@ import logging
 from typing import Callable, Any
 from utils.misc import save_code_to_file
 from pathlib import Path
-from utils.misc import fix_qwen_tool_calls
+from utils.misc import fix_qwen_tool_calls, fix_claude_tool_calls
 from langgraph.graph import END # type: ignore
 
 class HarnessGenerator:
     def __init__(self, runnable: BaseChatModel, max_tool_call: int, continue_flag: bool, 
-                 save_dir: Path, code_callback: Callable[[str], str], logger: logging.Logger):
+                 save_dir: Path, code_callback: Callable[[str], str], logger: logging.Logger, model_name: str = ""):
 
         self.runnable = runnable
         self.save_dir = save_dir
@@ -19,14 +19,20 @@ class HarnessGenerator:
         self.max_tool_call = max_tool_call
         self.continue_flag = continue_flag
         self.count_tool_call = 0 # count the number of tool calls
+        self.model_name = model_name
 
     def respond(self, state: dict[str, Any]) -> dict[str, Any]:
         # prompt is in the messages
         response = None # type: ignore
         for _ in range(3):
             response: BaseMessage = self.runnable.invoke(state["messages"])
+        
             if hasattr(response, 'invalid_tool_calls') and response.invalid_tool_calls: # type: ignore
-                response = fix_qwen_tool_calls(response)  # type: ignore
+                # Choose the appropriate fix function based on model type
+                if self.model_name.startswith("anthropic"):
+                    response = fix_claude_tool_calls(response)  # type: ignore
+                else:
+                    response = fix_qwen_tool_calls(response)  # type: ignore
             if response:
                 break
         if not response:

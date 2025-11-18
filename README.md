@@ -78,13 +78,13 @@ The system supports multiple LLM backends (OpenAI GPT, Claude) and provides conf
    OPENAI_API_KEY=your_openai_api_key
    ```
 
-4. **Set up OSS-Fuzz (optional but recommended):**
+4. **Set up OSS-Fuzz:**
    ```bash
    git clone https://github.com/google/oss-fuzz.git
    # Update oss_fuzz_dir in configuration files
    ```
    
-   **Important**: OSS-Fuzz recently updated to Clang 21, but libclang (used by clangd) currently only supports version 18. To ensure compatibility, pin the Docker base image to a previous version by modifying the Dockerfile in your target project directory:
+   **Important**: OSS-Fuzz recently updated the base docker image to Clang 21, but libclang (used by clangd) currently only supports version 18. To ensure compatibility, pin the Docker base image to a previous version by modifying the Dockerfile in your target project directory:
    
    ```dockerfile
    FROM gcr.io/oss-fuzz-base/base-builder@sha256:d34b94e3cf868e49d2928c76ddba41fd4154907a1a381b3a263fafffb7c3dce0

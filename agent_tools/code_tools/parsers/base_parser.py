@@ -46,7 +46,7 @@ class BaseParser:
         call_name_dict = {
             LanguageType.C: "call_expression",
             LanguageType.CPP: "call_expression",
-            LanguageType.JAVA: "method_call",
+            LanguageType.JAVA: "method_invocation",
         }
         func_def_name_dict = {
             LanguageType.C: "function_definition",
@@ -80,8 +80,6 @@ class BaseParser:
         :param column: The column number of the function's start position (0-based).
         :return: The full source code of the function.
         """
-
-     
         # print("language: ", self.project_lang)
         # print("parser_language: ", self.parser_language)
         # type s
@@ -239,17 +237,35 @@ class BaseParser:
             if id_node:
                 return node
         return None
+    
+    def get_definition_node(self, function_name: str) -> Optional[Node]:
+        # TODO this only test on C/C++ language
+        
+        # Define a query to find "function_definition" nodes
+        function_definition_query = self.parser_language.query(f"({self.func_def_name}) @func_def")
 
+        # Execute the query
+        captures = function_definition_query.captures(self.tree.root_node)
+        if not captures:
+            return None
+        # Check the nodes
+        for node in captures["func_def"]:
+            
+            decl_node = self.match_child_node(node, ["function_declarator"], recusive_flag=True)
+            if not decl_node:
+                continue
+            id_node = self.get_identifier_node(decl_node, function_name)
+            if id_node:
+                return node
+        
+        return None
+       
     def get_fuzz_function_node(self, function_name: str, expression_flag: bool = False) -> Optional[Node]:
         """
         Get the position of a function in the source code.
         :param function_name: The name of the function to find.
         :return: The position of the function in the source code.
         """
-        # TODO this only works for call fuzz function directly in the entry function
-        # Fist find the Fuzz entry point
-        # entry_function = FuzzEntryFunctionMapping[self.project_lang]
-        # entry_node = self.get_definition_node(entry_function)
         call_node = self.get_call_node(function_name, self.tree.root_node)
         if not expression_flag:
             return call_node
@@ -261,7 +277,9 @@ class BaseParser:
         # find parent expression node
         while call_node.parent:
             call_node = call_node.parent
-            if call_node.type in ["expression_statement", "declaration"]:
+            # local_variable_declaration for java
+            # expression_statement and declaration for C/C++
+            if call_node.type in ["expression_statement", "declaration", "variable_declarator"]:
                 return call_node
             
             if call_node.type == "translation_unit":
@@ -311,32 +329,6 @@ class BaseParser:
         if self.get_definition_node(function_name):
             return True
         return False
-
-    def get_definition_node(self, function_name: str) -> Optional[Node]:
-        # TODO this only test on C/C++ language
-        
-        # Define a query to find "function_definition" nodes
-        function_definition_query = self.parser_language.query(f"({self.func_def_name}) @func_def")
-
-        # Execute the query
-        captures = function_definition_query.captures(self.tree.root_node)
-        if not captures:
-            return None
-        # Check the nodes
-        for node in captures["func_def"]:
-            
-            decl_node = self.match_child_node(node, ["function_declarator"], recusive_flag=True)
-            if not decl_node:
-                continue
-            try:
-                id_node = self.get_identifier_node(decl_node, function_name)
-                if id_node:
-                    return node
-            except Exception as e:
-                print("Error in parsing the function definition: ", e)
-        
-        return None
-       
 
     def match_child_node(self, node:Node, node_type:list[str], recusive_flag: bool=False) -> Optional[Node]:
         """

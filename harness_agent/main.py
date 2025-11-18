@@ -31,8 +31,7 @@ from langgraph.checkpoint.memory import MemorySaver
 from ossfuzz_gen import benchmark as benchmarklib
 from ossfuzz_gen.context_introspector import ContextRetriever
 from typing import Annotated
-from langchain_openai import ChatOpenAI, OpenAI
-from langchain_anthropic import ChatAnthropic
+from langchain_openai import ChatOpenAI
 from langchain_core.language_models import BaseChatModel
 from typing_extensions import TypedDict
 from langgraph.graph.message import add_messages # type: ignore
@@ -600,12 +599,11 @@ class ISSTAFuzzer(FuzzENV):
     def run_graph(self, graph: StateGraph) -> None:
         
         # read prompt according to the project language (extension of the harness file)
-        if self.oss_tool.get_extension(None) == LanguageType.CPP:
-            generator_prompt_template = load_prompt_template(f"{PROJECT_PATH}/harness_agent/prompts/cppprompt.txt")
-        elif self.oss_tool.get_extension(None) == LanguageType.C:
-            generator_prompt_template = load_prompt_template(f"{PROJECT_PATH}/harness_agent/prompts/cprompt.txt")
+        ext_lang = self.oss_tool.get_extension(None)
+        if  ext_lang in [LanguageType.CPP, LanguageType.C, LanguageType.JAVA]:
+            generator_prompt_template = load_prompt_template(f"{PROJECT_PATH}/harness_agent/prompts/{ext_lang.value.lower()}prompt.txt")
         else:
-            return 
+            raise ValueError(f"Unsupported language for harness generation: {ext_lang}") 
         
         # build the prompt for initial generator
         generator_prompt = self.build_init_prompt(generator_prompt_template)

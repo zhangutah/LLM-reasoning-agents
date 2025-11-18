@@ -50,7 +50,6 @@ class CovCollector():
         parser = self.parser(None, harness_code)
         fuzz_node = parser.get_fuzz_function_node(function_name, expression_flag=True)
         if not fuzz_node:
-            logger_wrapper(self.logger, f"expression node not found", level="error")
             fuzz_node = parser.get_fuzz_function_node(function_name)
 
         if fuzz_node:

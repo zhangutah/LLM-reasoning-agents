@@ -1,0 +1,40 @@
+Generate a fuzz driver based the given function signature in Java language. 
+{tool_prompt}
+
+@ examples of API usage:
+{function_usage}
+
+
+Useful project headers:
+{header_files}
+
+{contexts}
+
+The following function fuzzes {function_name}
+// {function_signature};
+
+The fuzzer example can be one of the following examples:
+
+1. 
+public class ExampleFuzzer {
+    public static void fuzzerTestOneInput(byte[] input) {
+        ...
+        // Call a function of the project under test with arguments derived from
+        // input and throw an exception if something unwanted happens.
+        ...
+    }
+}
+
+2. 
+
+import com.code_intelligence.jazzer.api.FuzzedDataProvider;
+
+public class ExampleFuzzer {
+    public static void fuzzerTestOneInput(FuzzedDataProvider data) {
+        int number = data.consumeInt();
+        String string = data.consumeRemainingAsString();
+        // ...
+    }
+}
+
+Output the full driver code in reply.

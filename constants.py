@@ -31,6 +31,9 @@ class LanguageType(Enum):
     C = 'C'
     CPP = 'CPP'
     JAVA = 'Java'
+    Python = 'Python'
+    Go = 'Go'
+    Rust = "Rust"
     NONE = ''
 
 class LSPFunction(Enum):
@@ -92,6 +95,7 @@ FuzzEntryFunctionMapping: dict[LanguageType, str] = {
     LanguageType.C: "LLVMFuzzerTestOneInput",
     LanguageType.CPP: "LLVMFuzzerTestOneInput",
     LanguageType.JAVA: "fuzzerTestOneInput",
+    # LanguageType.Python: "fuzzer_test_one_input",
 }
 
 COV_WRAP_FILE_NAME = "cov_wrap_code"

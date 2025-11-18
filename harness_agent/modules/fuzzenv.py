@@ -6,7 +6,7 @@ import shutil
 import json
 from utils.misc import extract_name
 from agent_tools.code_retriever import CodeRetriever
-from constants import ALL_FILE_EXTENSION, DockerResults
+from constants import ALL_FILE_EXTENSION, DockerResults, LanguageType
 from utils.oss_fuzz_utils import OSSFuzzUtils
 from utils.docker_utils import DockerUtils
 from pathlib import Path
@@ -159,16 +159,19 @@ class FuzzENV():
             f.write(f'\nCOPY *.py  .\n')
 
             # wirte other commands
-            f.write(f'\nRUN apt install -y clangd-18\n')
-            # apt install bear
-            f.write(f'\nRUN apt install -y bear\n')
+            if self.project_lang in [LanguageType.C, LanguageType.CPP]:
+                # apt install clangd-18
+                f.write(f'\nRUN apt install -y clangd-18\n')
+                # apt install bear
+                f.write(f'\nRUN apt install -y bear\n')
+                f.write('RUN pip install "libclang==18.1.1"\n')
             # install python library
             f.write('RUN pip install "tree-sitter-c<=0.23.4"\n')
             f.write('RUN pip install "tree-sitter-cpp<=0.23.4"\n')
             f.write('RUN pip install "tree-sitter-java<=0.23.4"\n')
             f.write('RUN pip install "tree-sitter<=0.24.0"\n')
             f.write('RUN pip install "multilspy==0.0.15"\n')
-            f.write('RUN pip install "libclang==18.1.1"\n')
+         
 
     def find_fuzzers(self) -> list[str]:
         '''Find all fuzzers in the project directory'''

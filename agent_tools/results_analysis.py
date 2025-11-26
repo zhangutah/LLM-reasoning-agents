@@ -1,5 +1,5 @@
 import os
-from constants import EvalResult, LanguageType
+from constants import EvalResult, LanguageType, PROJECT_PATH
 from collections import defaultdict
 from agent_tools.code_tools.parsers.cpp_parser import CPPParser
 # from agent_tools.code_tools.parsers.c_parser import CParser
@@ -11,8 +11,8 @@ from utils.misc import write_list_to_file
 from typing import Any
 import json
 
-OSSFUZZ = Path("/home/yk/code/oss-fuzz")
-benchmark_dir = Path("/home/yk/code/LLM-reasoning-agents/benchmark-sets")
+OSSFUZZ = Path(f"{PROJECT_PATH}/code/oss-fuzz")
+benchmark_dir = Path(f"{PROJECT_PATH}/benchmark-sets")
 
 def get_language_info(project_name: str) -> str:
 

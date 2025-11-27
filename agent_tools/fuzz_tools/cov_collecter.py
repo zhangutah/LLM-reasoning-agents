@@ -10,7 +10,7 @@ import json
 import shutil
 import logging
 from typing import Optional
-from utils.misc import logger_wrapper, get_ext_lang
+from utils.misc import get_ext_lang
 
 class CovCollector():
 
@@ -41,7 +41,7 @@ class CovCollector():
         # add the wrapper code to the harness code
         wrap_file = Path(f"{PROJECT_PATH}/agent_tools/fuzz_tools/{COV_WRAP_FILE_NAME}_{harness_lang.value.lower()}.txt")
         if not wrap_file.exists():
-            logger_wrapper(self.logger, f"Wrapper file {wrap_file} does not exist", level="error")
+            self.logger.error(f"Wrapper file {wrap_file} does not exist") if self.logger else None
             return harness_code
         
         wrap_code = wrap_file.read_text()
@@ -55,7 +55,7 @@ class CovCollector():
         if fuzz_node:
             fuzz_start_row, fuzz_start_col, fuzz_end_row = fuzz_node.start_point.row, fuzz_node.start_point.column, fuzz_node.end_point.row
         else:
-            logger_wrapper(self.logger, f"Fuzz function {function_name} not found", level="error")
+            self.logger.error(f"Fuzz function {function_name} not found") if self.logger else None
             raise Exception(f"Fuzz function {function_name} not found")
         
         # add reset_sancov_counters before fuzz function
@@ -87,7 +87,7 @@ class CovCollector():
         if harness_lang in [LanguageType.C, LanguageType.CPP]:
             wrapped_code = self.gen_wrapped_code(harness_code, function_name, harness_lang)
         else:
-            logger_wrapper(self.logger, f"Language {harness_lang} not supported for now", level="error")
+            self.logger.error(f"Language {harness_lang} not supported for now") if self.logger else None
             raise Exception(f"Language {harness_lang} not supported for now")
 
         # init the compiler
@@ -95,7 +95,7 @@ class CovCollector():
         # compile the code
         compile_res, build_msg = compiler.compile_harness(wrapped_code, harness_path, fuzzer_name)
         if compile_res != CompileResults.Success:
-            logger_wrapper(self.logger, f"Compile error: {build_msg}", level="error")
+            self.logger.error(f"Compile error: msg is {build_msg}") if self.logger else None
             return False
     
         # run fuzzer driver with testcase
@@ -123,7 +123,7 @@ class CovCollector():
 
         flag = self.recompile(harness_code, harness_path, fuzzer_name, function_name)
         if not flag:
-            logger_wrapper(self.logger, f"Recompile error: {flag}", level="error")
+            self.logger.error(f"Recompile error: {flag}") if self.logger else None
             return 0, 0, False
         # run the call back
         cmd = ["python", "cov_c.py", "--fuzzer-name", fuzzer_name, 
@@ -138,13 +138,13 @@ class CovCollector():
         # we should not set the timeout too small, otherwise, the fuzzer may not finish
         msg = self.docker_utils.run_cmd(cmd, volumes=volumes, working_dir="/out", timeout=600)
         if "docker error" in msg.lower():
-            logger_wrapper(self.logger, f"Docker Error running the coverage collection: {msg}", level="error")
+            self.logger.error(f"Docker Error running the coverage collection: {msg}") if self.logger else None
             return 0, 0, False
         
         # sleep sev
         cov_path = local_out / "cov.json"
         if not cov_path.exists():
-            logger_wrapper(self.logger, f"Coverage file {cov_path} does not exist", level="error")
+            self.logger.error(f"Coverage file {cov_path} does not exist") if self.logger else None
             return 0, 0, False
         
         with open(cov_path, "r") as f:
@@ -152,7 +152,7 @@ class CovCollector():
 
             msg = cov.get("msg", "")
             if msg != "Success":
-                logger_wrapper(self.logger, f"Error running the coverage file: {msg}", level="error")
+                self.logger.error(f"Error running the coverage file: {msg}") if self.logger else None
                 return 0, 0, False
             
             init_cov, final_cov = cov.get("init_cov", 0), cov.get("final_cov", 0)

@@ -12,7 +12,6 @@ from agent_tools.fuzz_tools.cov_collecter import CovCollector
 from typing import Optional
 import multiprocessing
 import psutil
-from utils.misc import logger_wrapper
 import shutil
 
 class HarnessEval(FuzzENV):
@@ -38,7 +37,7 @@ class HarnessEval(FuzzENV):
             fuzz_res, _, _ = fuzzer.run_fuzzing(counter=0, fuzzer_name=fuzzer_name, 
                                                 ignore_crashes=self.benchcfg.ignore_crashes, no_log=self.benchcfg.no_log)
             if fuzz_res != ValResult.NoError:
-                logger_wrapper(self.logger, f"Crash when fuzzing: {fuzz_res}", level="error")
+                self.logger.error(f"Crash when fuzzing: {fuzz_res}") if self.logger else None
                 # return 0,0, False
                 # copy the crash file to save_dir
                 out_path = self.benchcfg.oss_fuzz_dir / "build" / "out" /self.new_project_name
@@ -49,9 +48,9 @@ class HarnessEval(FuzzENV):
                     shutil.copy(crash_file, dest_file)
 
                 
-            logger_wrapper(self.logger, f"Collecting coverage for {fuzzer_name}", level="info")
+            self.logger.info(f"Collecting coverage for {fuzzer_name}") if self.logger else None
             corpus_dir = Path(self.save_dir) / "corpora"
-            function_name =  extract_name(self.function_signature, keep_namespace=True, exception_flag=False, language=self.project_lang)
+            function_name = extract_name(self.function_signature, keep_namespace=True, exception_flag=False, language=self.project_lang)
             # init the cov collector
             cov_collector = CovCollector(self.benchcfg.oss_fuzz_dir, self.benchcfg.benchmark_dir, self.project_name, self.new_project_name, self.project_lang, self.logger)
             # collect the coverage
@@ -59,7 +58,7 @@ class HarnessEval(FuzzENV):
             
             return init_cov, final_cov, changed
 
-        logger_wrapper(self.logger, f"All fuzzer compilation failed: {compile_res}", level="error")
+        self.logger.error(f"All fuzzer compilation failed: {compile_res}") if self.logger else None
         # Run the harness with the specified path
         return 0, 0, False
     
@@ -87,11 +86,16 @@ def process_single_result(args: tuple[str, str, Path, BenchConfig]): # type: ign
         print(f"Error processing {project_name}/{function_signature}: {e}")
         return project_name, function_signature, 0, 0
 
-def run_evaluation(output_path: Path, benchcfg:BenchConfig, n_run:int=1, num_processes:Optional[int]=None, n_partitations:int=1, partitation_id:int=0): 
-    if num_processes is None:
-        num_processes = max(1, psutil.cpu_count(logical=False))  # type: ignore
+def run_evaluation(output_path: Path, benchcfg:BenchConfig, n_run:int=1, n_partitations:int=1, partitation_id:int=0): 
+    """Run the evaluation in parallel"""
 
-    res_json = output_path / f"success_functions_{n_run}.json"
+    # too many processes will cause docker build image and build fuzzer failed
+    total_core = psutil.cpu_count(logical=False)  
+    num_processes = (total_core // 3 *2)  # type: ignore
+    if benchcfg.num_processes is not None:
+        num_processes = min(benchcfg.num_processes, num_processes)
+
+    res_json = output_path / f"filtered_success_functions.json"
     if not res_json.exists():
         print(f"No success_functions_{n_run}.json found in {output_path.parent}, exit.")
         return
@@ -117,15 +121,6 @@ def run_evaluation(output_path: Path, benchcfg:BenchConfig, n_run:int=1, num_pro
     # Run evaluation in parallel
     with multiprocessing.Pool(processes=num_processes) as pool:
         results = pool.map(process_single_result, args_list) # type: ignore
-    
-    # Process results
-    os.makedirs(benchcfg.save_root, exist_ok=True)
-    # res_file = benchcfg.save_root / f"evaluation_{n_run}_{partitation_id}.txt"
-    
-    # with open(res_file, "w") as save_f:
-        # for project_name, function_signature, init_cov, final_cov in results: # type: ignore
-            # save_f.write(f"{project_name}/{extract_name(function_signature, keep_namespace=True, exception_flag=False)}. Initial coverage: {init_cov}, Final coverage: {final_cov}\n")
-# 
 
 if __name__ == "__main__":
 
@@ -134,14 +129,13 @@ if __name__ == "__main__":
     from argparse import ArgumentParser
 
     parser  = ArgumentParser(description="Run harness evaluation in parallel.")
-    parser.add_argument("--output_path", type=str, default=f"{PROJECT_PATH}/outputs/wild/gpt5-mini/raw", help="Path to the output directory containing success_functions.json")
+    parser.add_argument("--output_path", type=str, default=f"{PROJECT_PATH}/outputs/wild/gpt5-mini/agent", help="Path to the output directory containing success_functions.json")
     parser.add_argument("--benchcfg_path", type=str, default=f"{PROJECT_PATH}/cfg/eval_cfg.yaml", help="Path to the benchmark configuration YAML file")
     parser.add_argument("--n_run", type=int, default=3, help="Run number corresponding to success_functions_{n_run}.json")
-    parser.add_argument("--num_processes", type=int, default=None, help="Number of parallel processes to use. Defaults to number of CPU cores minus one.")
-    parser.add_argument("--n_partitations", type=int, default=1, help="Total number of partitions to divide the workload into.")
+    parser.add_argument("--n_partitations", type=int, default=8, help="Total number of partitions to divide the workload into.")
     parser.add_argument("--partitation_id", type=int, default=0, help="ID of the partition to process (0-indexed).")
     args = parser.parse_args()
 
     benchcfg = BenchConfig(args.benchcfg_path)
     run_evaluation(output_path=Path(args.output_path), benchcfg=benchcfg, n_run=args.n_run,
-                    num_processes=args.num_processes, n_partitations=args.n_partitations, partitation_id=args.partitation_id)
+                    n_partitations=args.n_partitations, partitation_id=args.partitation_id)

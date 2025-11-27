@@ -451,23 +451,6 @@ def fix_claude_tool_calls(res: Any) -> Optional[AIMessage]:
         print(f"Error in fix_claude_tool_calls: {e}")
         return None
     
-    
-def logger_wrapper(logger: Optional[Any], msg: str, level: str = "info") -> None:
-    """A wrapper for logging messages."""
-    if logger:
-        if level == "info":
-            logger.info(msg)
-        elif level == "error":
-            logger.error(msg)
-        elif level == "warning":
-            logger.warning(msg)
-        elif level == "debug":
-            logger.debug(msg)
-        else:
-            logger.info(msg)
-    else:
-        print(msg)
-
 
 def write_list_to_file(item_list: list[str], file_path: Path) -> None:
     """Write a list of items to a file, one item per line."""

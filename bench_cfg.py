@@ -14,7 +14,7 @@ class BenchConfig:
         self.config = self._load_config(config_path)
         
         # Initialize all parameters as class members with defaults from config
-        self.oss_fuzz_dir = Path(self.config.get('oss_fuzz_dir', f'~/code/oss-fuzz/'))
+        self.oss_fuzz_dir = Path(self.config.get('oss_fuzz_dir', f'/home/yk/code/oss-fuzz/'))
         self.cache_root = Path(self.config.get('cache_root', os.path.join(PROJECT_PATH, "cache")))
         self.benchmark_dir = Path( self.config.get('bench_dir', os.path.join(PROJECT_PATH, "benchmark-sets", "ntu")))
         self.save_root = Path(self.config.get('save_root', ""))

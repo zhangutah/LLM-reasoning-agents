@@ -25,10 +25,9 @@ async def main():
     parser.add_argument('--lang', type=str, default="CPP", choices=[e.value for e in LanguageType], help='The project language.')
     args = parser.parse_args()
 
-    if args.lang == LanguageType.CPP.value:
+    if args.lang in [LanguageType.CPP.value, LanguageType.C.value]:
         msg, res = await get_cpp_response(args.workdir, args.project, args.lang, args.symbol_name, args.lsp_function)
     else:
-       
         msg, res = await get_multi_response(args.workdir, args.lang, args.symbol_name, args.lsp_function)
     file_name = f"{args.symbol_name}_{args.lsp_function}_lsp.json"
     with open(os.path.join("/out", file_name), "w") as f:

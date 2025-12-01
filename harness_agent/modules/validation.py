@@ -48,11 +48,11 @@ class Validation(FuzzerRunner):
         parser = self.parser(file_path=None, source_code=state.get("harness_code", ""))
 
         function_name = extract_name(state.get("function_signature", ""), language=self.project_lang)
-        if parser.exist_function_definition(function_name):
+        if parser.is_function_defined(function_name):
             self.logger.info(f"The function {function_name} is defined in the harness code.")
             return {"messages": ("user", ValResult.Fake), "fuzz_msg": FUZZMSG.get(ValResult.Fake, "")}
         
-        if not parser.is_fuzz_function_called(function_name):
+        if not parser.is_function_called(function_name):
             self.logger.info(f"The function {function_name} is not called in the harness code.")
             return {"messages": ("user", ValResult.NoCall), "fuzz_msg": FUZZMSG.get(ValResult.NoCall, "")}
 

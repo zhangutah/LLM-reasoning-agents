@@ -135,7 +135,7 @@ The agent operates through the following pipeline:
 ## Supported Languages
 
 - **C/C++**: Full support with cscope and clangd LSP
-- **Java**: Support via Eclipse JDT.LS
+- **Java**: Working
 
 ## Contributing
 
@@ -145,7 +145,7 @@ Contributions are welcome! Please feel free to submit issues or pull requests.
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Citation
+<!-- ## Citation
 
 If you use this framework in your research, please cite:
 
@@ -156,7 +156,7 @@ If you use this framework in your research, please cite:
   year = {2025},
   url = {https://github.com/zhangutah/LLM-reasoning-agents}
 }
-```
+``` -->
 
 ## Contact
 

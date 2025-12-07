@@ -46,7 +46,6 @@ class BaseLSPCodeRetriever():
     def fectch_code(self, file_path: str, start_line: int, lsp_function: LSPFunction) -> list[dict[str, Any]]:
 
         query_key = ""
-        start_line = 0
         parser = self.lang_parser(Path(file_path), source_code=None)
         if lsp_function == LSPFunction.References:
             # get the full source code of the symbol

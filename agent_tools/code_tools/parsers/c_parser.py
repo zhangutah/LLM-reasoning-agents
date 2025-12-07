@@ -223,6 +223,10 @@ class CParser(BaseParser):
         function_type = "function"
         # may be definition 
         if not decl_node:
+            # Also check for function_definition (for .c files with function implementations)
+            decl_node = self.get_parent_node(node, "function_definition")
+        
+        if not decl_node:
             return None
         
         signature = decl_node.text.decode('utf-8') # type: ignore

@@ -159,25 +159,30 @@ class ClangdLspClient:
         """Handle notifications from the server (e.g., logs, diagnostics)."""
         print(f"Notification from server: {message}")
 
+    async def send_notification(self, method: str, params: Dict[str, Any]) -> None:
+        """Send a JSON-RPC notification to the server (no response expected)."""
+        notification = {
+            "jsonrpc": "2.0",
+            "method": method,
+            "params": params,
+        }
+        request_str = json.dumps(notification)
+        content_length = len(request_str)
+        self.writer.write(f"Content-Length: {content_length}\r\n\r\n".encode())
+        self.writer.write(request_str.encode())
+        await self.writer.drain()
+
     async def send_request(
-        self, method: str, params: Dict[str, Any], timeout: float = 0.1
+        self, method: str, params: Dict[str, Any], timeout: float = 2.0
     ) -> Dict[str, Any]:
-        """Send a JSON-RPC request to the server."""
-        if method in ("textDocument/didOpen", "initialized"):
-            self.message_id = 0
-            request = {
-                "jsonrpc": "2.0",
-                "method": method,
-                "params": params,
-            }
-        else:
-            self.message_id = self.message_id + 1
-            request = {
-                "jsonrpc": "2.0",
-                "id": self.message_id,
-                "method": method,
-                "params": params,
-            }
+        """Send a JSON-RPC request to the server and wait for response."""
+        self.message_id = self.message_id + 1
+        request = {
+            "jsonrpc": "2.0",
+            "id": self.message_id,
+            "method": method,
+            "params": params,
+        }
 
         request_str = json.dumps(request)
         content_length = len(request_str)
@@ -211,6 +216,7 @@ class ClangdLspClient:
         params = {
             "processId": None,
             "rootUri": f"file://{self.workspace_path}",
+            "rootPath": self.workspace_path,
             "capabilities": {
                 "textDocument": {
                     "definition": {"dynamicRegistration": True},
@@ -227,7 +233,8 @@ class ClangdLspClient:
         }
         response = await self.send_request("initialize", params)
         print(f"Initialize response: {response}")
-        await self.send_request("initialized", {})
+        # 'initialized' is a notification, not a request - no response expected
+        await self.send_notification("initialized", {})
 
     async def find_declaration(self, file_path: str, line: int, character: int):
         """Send a textDocument/declaration request."""
@@ -266,13 +273,14 @@ class ClangdLspClient:
         params = {
             "textDocument": {
                 "uri": file_uri,
-                "languageId": self.language,  # Changed from "java" to "c"
+                "languageId": self.language,
                 "version": 1,
                 "text": text,
             }
         }
-        response = await self.send_request("textDocument/didOpen", params)
-        print(f"Open-file response: {response}")
+        # 'textDocument/didOpen' is a notification, not a request - no response expected
+        await self.send_notification("textDocument/didOpen", params)
+        print(f"Opened file: {file_path}")
 
     async def find_definition(self, file_path: str, line: int, character: int):
         """Send a textDocument/definition request."""
@@ -309,7 +317,7 @@ class ClangdLspClient:
                 # If graceful shutdown fails, force kill
                 self.server_process.kill()
                 try:
-                    await asyncio.wait_for(self.server_process.wait(), timeout=1.0)
+                    await asyncio.wait_for(self.server_process.wait(), timeout=2.0)
                 except asyncio.TimeoutError:
                     # Process is really stuck, might be a zombie
                     pass

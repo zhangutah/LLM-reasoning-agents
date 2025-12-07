@@ -25,10 +25,12 @@ class CoverageDocker:
     
     def __init__(self, project: str, oss_fuzz_dir: Path):
         self.project = project
-        self.new_project = "{}_cov".format(project)
+        # self.new_project = "{}_cov".format(project)
+        self.new_project = project
 
         self.oss_fuzz_dir = oss_fuzz_dir
-        self.copy_project()
+        # self.copy_project()
+        self.reset_base_image()
         
         self.helper = oss_fuzz_dir / "infra" / "helper.py"
         self.build_out = oss_fuzz_dir / "build" / "out" / self.new_project
@@ -65,10 +67,26 @@ class CoverageDocker:
         
         dockerfile.write_text(new_content)
 
+    def reset_base_image(self):
+        # modify the dockerfile
+        dest_dir = self.oss_fuzz_dir / "projects" / self.project
+        dockerfile = dest_dir / "Dockerfile"
+        content = dockerfile.read_text()
+
+        # replace FROM gcr.io/oss-fuzz-base/base-builder@sha256:xxx
+        # with FROM gcr.io/oss-fuzz-base/base-builder
+        # use the latest base-builder to build coverage
+        new_content = content.replace(
+            "FROM gcr.io/oss-fuzz-base/base-builder@sha256:d34b94e3cf868e49d2928c76ddba41fd4154907a1a381b3a263fafffb7c3dce0",
+            "FROM gcr.io/oss-fuzz-base/base-builder"
+        )
+        
+        dockerfile.write_text(new_content)
+
 
     def build_cov_fuzzer(self) -> bool:
         """Step 1: Build fuzzers with sanitizer=coverage."""
-        
+        print("[*] Building coverage fuzzers...")
         cmd = ["python", str(self.helper), "build_fuzzers", 
                "--clean", "--sanitizer=coverage", self.new_project]
         if not self.docker.build_fuzzers(cmd):
@@ -79,8 +97,8 @@ class CoverageDocker:
     
     def run_coverage(self) -> bool:
         """Step 2: Run coverage collection (--no-serve)."""
-        
-        cmd = ["python", str(self.helper), "coverage", "--no-serve", self.new_project]
+        print("[*] Running coverage collection...")
+        cmd = ["python", str(self.helper), "coverage","--public", "--no-serve", self.new_project]
         try:
             subprocess.run(cmd, cwd=str(self.oss_fuzz_dir), check=True)
             return True
@@ -90,10 +108,10 @@ class CoverageDocker:
     
     def merge_profdata(self) -> bool:
         """Step 3: Merge .profraw files in Docker container."""
-
+        print("[*] Merging .profdata files...")
         # Start container
         # # Merge all profraw files for the ssh_server_fuzzer (or all of them)
-# llvm-profdata merge -sparse /out/dumps/*.profraw -o my_coverage.profdata
+        # llvm-profdata merge -sparse /out/dumps/*.profraw -o my_coverage.profdata
         cmd = ["llvm-profdata", "merge", "-sparse", "/out/dumps/*.profdata", "-o", "/out/merged.profdata"]
         msg = self.docker.run_cmd(cmd, timeout=60, volumes={self.build_out: {"bind": "/out", "mode": "rw"}})
         if msg.startswith(DockerResults.Error.value):
@@ -103,8 +121,7 @@ class CoverageDocker:
     
     def export_coverage(self) -> Optional[dict]:
         """Step 4: Export coverage with llvm-cov in Docker."""
-        
-
+        print("[*] Exporting coverage data...")
         # find fuzzers based on profdata
         res = subprocess.run(["ls", self.build_out / "dumps"], timeout=30, capture_output=True, text=True)
         if res.returncode != 0:
@@ -137,7 +154,7 @@ class CoverageDocker:
         shell_cmd = f"bash -c '{shell_cmd}'"
 
         print(shell_cmd)
-        print("[+] Exporting coverage data...")
+        print("[*] Exporting coverage data...")
         result = self.docker.run_cmd(shell_cmd, timeout=300, volumes={self.build_out: {"bind": "/out", "mode": "rw"}})
         
         if result.startswith(DockerResults.Error.value):
@@ -163,7 +180,7 @@ class CoverageDocker:
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Coverage Docker Pipeline")
-    parser.add_argument("project", help="OSS-Fuzz project name")
+    parser.add_argument("--project", help="OSS-Fuzz project name", required=True)
     parser.add_argument("--oss-fuzz", default="/home/yk/code/oss-fuzz")
 
     args = parser.parse_args()

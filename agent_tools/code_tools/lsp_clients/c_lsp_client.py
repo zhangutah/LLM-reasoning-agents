@@ -8,10 +8,13 @@ from pathlib import Path
 from dataclasses import asdict
 from agent_tools.code_tools.lsp_clients.extract_functions_clang import LibclangExtractor
 import asyncio
+import random
+
 class CLSPCLient():
-    def __init__(self, workdir: str,  project_lang: LanguageType):
+    def __init__(self, workdir: str, project_name: str, project_lang: LanguageType):
    
         self.project_root = workdir
+        self.project_name = project_name
         # self.symbol_name = symbol_name
         self.project_lang = project_lang
       
@@ -30,8 +33,6 @@ class CLSPCLient():
         """
         # cpp for C++
         client = ClangdLspClient(self.project_root, self.project_lang.value.lower())
-        await client.start_server()
-        await client.initialize()
         await client.start_server()
         await client.initialize()
         # must open the file first
@@ -113,10 +114,19 @@ class CLSPCLient():
 
         random_file: Path = Path("")
         # randomly select a file from the compile_commands.json
-        for i in range(len(compile_commands)):
+        all_indices = list(range(len(compile_commands)))
+        random.shuffle(all_indices)
+
+        excluded_dirs = ["build", "external", "third_party"]
+        for i in all_indices:
             random_file = Path(compile_commands[i]["directory"]) / compile_commands[i]["file"]
             # to normalize the path ../
             random_file = random_file.resolve()
+
+            # do include build, external, 
+
+            if any(excluded_dir in str(random_file) for excluded_dir in excluded_dirs):
+                continue
             if os.path.exists(random_file):
                 break
 
@@ -176,16 +186,16 @@ class CLSPCLient():
 
             # Important, LSP will return symbols including the symbol name 
             # eg, if we search for "foo", it will return "foo", "foo1", "foo2", etc
-            if res["name"] != symbol:
+            if res["name"] != symbol: # type: ignore
                 continue
             
             # if the symbol has namespace, we need to check if the namespace matches
 
-            ns_length = self.ns_match_length(name_space_list, res.get("containerName", ""))
+            ns_length = self.ns_match_length(name_space_list, res.get("containerName", "")) # type: ignore
             if ns_length > longest_ns_len:
                 longest_ns_len = ns_length
               
-            location = res.get("location", {})
+            location = res.get("location", {}) # type: ignore
             if not location:
                 continue
 
@@ -195,7 +205,7 @@ class CLSPCLient():
 
             file_path = file_path.replace("file://", "")
             # uri to path
-            file_path = urllib.parse.unquote(file_path)
+            file_path = urllib.parse.unquote(file_path) # type: ignore
             
             all_location.append((file_path, location['range']['start']['line'], location['range']['start']['character'], ns_length))
         
@@ -211,7 +221,7 @@ class CLSPCLient():
        
 
         # Create extractor
-        extractor = LibclangExtractor(self.project_root)
+        extractor = LibclangExtractor(self.project_root, self.project_name)
         # Process project
         extractor.get_all_functions(os.path.join(self.project_root, "compile_commands.json"))
         functions_list = [asdict(func) for func in extractor.extracted_functions.values()]

@@ -30,14 +30,15 @@ class FunctionInfo:
 class LibclangExtractor:
     """Simplified C++ function extractor using libclang and compile_commands.json"""
     
-    def __init__(self, project_root: str):
+    def __init__(self, project_root: str, project_name: str = ""):
         """
         Initialize the function extractor
         
         Args:
             project_root: Root directory of the project to filter functions
         """
-        self.project_root = Path(project_root).resolve()
+        self.project_root = str(Path(project_root).resolve())
+        self.project_name = project_name
         self.extracted_functions: Dict[str, FunctionInfo] = {}
         self.index = Index.create()
     
@@ -93,8 +94,12 @@ class LibclangExtractor:
     def _is_project_file(self, file_path: str) -> bool:
         """Check if file is within project directory"""
         try:
-            file_path = Path(file_path).resolve()
-            return str(file_path).startswith(str(self.project_root))
+            file_path = str(Path(file_path).resolve())
+            # TODO this should be tested on more oss fuzz projects
+            # project root may not the source root
+            if file_path.startswith("/src/{}".format(self.project_name)):
+                return True
+            # return file_path.startswith(self.project_root)
         except:
             return False
     
@@ -191,11 +196,17 @@ class LibclangExtractor:
         ]
 
         # Parse with compile_commands.json arguments
-        translation_unit = self.index.parse(
-            file_path,
-            args=enhanced_args,
-            options=TranslationUnit.PARSE_DETAILED_PROCESSING_RECORD
-        )
+        try:
+            translation_unit = self.index.parse(
+                file_path,
+                args=enhanced_args,
+                options=TranslationUnit.PARSE_DETAILED_PROCESSING_RECORD
+            )
+        except Exception as e:
+            print(f"Error parsing {file_path}: {e}")
+            if header_flag:
+                return set()
+            return
         
         if header_flag:
             user_headers: set[str] = set()
@@ -224,9 +235,6 @@ class LibclangExtractor:
             self._traverse_ast(translation_unit.cursor)
         else:
             print(f"Error: Failed to create translation unit for {file_path}")
-                
-        # except Exception as e:
-            # print(f"Error parsing {file_path}: {e}")
     
     def load_compile_commands(self, compile_db_path: str) -> Dict[str, tuple]:
         """Load compile_commands.json or create simple compilation args"""
@@ -262,7 +270,11 @@ class LibclangExtractor:
                     if arg in ['-o', '--output']:
                         skip_next = True
                         continue
-                    if any(skip in arg for skip in ['fuzzer', 'sanitize', 'FUZZING']):
+                    # Skip -v flag which causes verbose clang output
+                    if arg == '-v':
+                        continue
+                    # Skip fuzzer/sanitize flags but NOT include paths containing 'fuzzer'
+                    if not arg.startswith('-I') and any(skip in arg for skip in ['fuzzer', 'sanitize', 'FUZZING']):
                         continue
                     if arg.endswith('.o'):  # Skip object files
                         continue

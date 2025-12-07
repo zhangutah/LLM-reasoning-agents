@@ -15,6 +15,7 @@ import subprocess
 from pathlib import Path
 from dataclasses import dataclass, asdict
 from typing import Optional
+import os
 
 
 @dataclass 
@@ -134,21 +135,21 @@ def parse_coverage(coverage_path: Path) -> list[FunctionInfo]:
     return functions
 
 
-def filter_functions(functions: list[FunctionInfo]) -> list[FunctionInfo]:
+def filter_functions(functions: list[FunctionInfo], project: str) -> list[FunctionInfo]:
     """Filter functions based on criteria."""
     result = functions
     
-    system_prefixes = ('/usr', '/lib', 'include/c++', 'include/llvm')
-    result = [f for f in result 
-                if not any(f.source_file.startswith(p) for p in system_prefixes)]
+    # system_prefixes = ('/usr', '/lib', 'include/c++', 'include/llvm')
+    # result = [f for f in result 
+    #             if not any(f.source_file.startswith(p) for p in system_prefixes)]
     
     # not start with /src/
-    result = [f for f in result  if f.source_file.startswith('/src/')]
+    result = [f for f in result  if f.source_file.startswith('/src/{}'.format(project))]
     
     # remove third party libraries
-    third_party_indicators = ('third_party/', 'external/', 'bazel-', 'googlemock', 'googletest', 'gtest/', 'gmock/')
-    result = [f for f in result 
-                if not any(ind in f.source_file for ind in third_party_indicators)]
+    # third_party_indicators = ('third_party/', 'external/', 'bazel-', 'googlemock', 'googletest', 'gtest/', 'gmock/', "fuzz", "fuzzers")
+    # result = [f for f in result 
+    #             if not any(ind in f.source_file for ind in third_party_indicators)]
     return result
 
 
@@ -186,14 +187,15 @@ def save_functions(functions: list[FunctionInfo],
 def main():
     import argparse
     parser = argparse.ArgumentParser(description="Parse coverage JSON")
-    parser.add_argument("--cov-json", default="/home/yk/code/oss-fuzz/build/out/libpng_cov/func_coverage.json", required=False, help="Path to coverage.json")
-    parser.add_argument("--output", default="functions.json", required=False, help="Output JSON file path")
-    parser.add_argument("--project", default="libpng", required=False, help="Project name for metadata")
-    
+   
+    parser.add_argument("--project", default="libpng", required=True, help="Project name for metadata")
+    parser.add_argument("--oss-fuzz", default="/home/yk/code/oss-fuzz")
+    # parser.add_argument("--output", default="functions.json", required=False, help="Output JSON file path")
     args = parser.parse_args()
     
+    cov_json =  os.path.join(args.oss_fuzz, "build", "out", args.project, "func_coverage.json")
     # Load coverage data
-    coverage_path = Path(args.cov_json)
+    coverage_path = Path(cov_json)
     if not coverage_path.exists():
         print(f"[-] File not found: {coverage_path}")
         sys.exit(1)
@@ -203,17 +205,16 @@ def main():
     
     # Parse and filter
     functions = parse_coverage(coverage_path)
-    functions = filter_functions(functions)
-    
+
     # Determine output path
-    if args.output == "functions.json":
-        output_path = coverage_path.parent / "functions.json"
-    else:
-        output_path = Path(args.output)
-    
-    # Save and print
+    output_path = Path("/home/yk/code/LLM-reasoning-agents/project_fuzzing/projects") / args.project / "functions_all.json"
     save_functions(functions, output_path, project)
-    print(f"[+] Saved {len(functions)} functions to: {output_path}")
+   
+    functions = filter_functions(functions, project)
+    # Determine output path for filtered functions
+    filtered_output_path = Path("/home/yk/code/LLM-reasoning-agents/project_fuzzing/projects") / args.project / "functions.json"
+    save_functions(functions, filtered_output_path, project)
+    print(f"[+] Saved {len(functions)} functions to: {filtered_output_path}")
 
 
 if __name__ == "__main__":

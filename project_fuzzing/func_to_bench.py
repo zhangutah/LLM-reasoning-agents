@@ -169,7 +169,7 @@ def convert_to_benchmark_format(functions: list[dict[str, Any]], symbols: dict[s
     for func in functions:
         score = func.get('score', 0)
         
-        if score <= threshold:
+        if score < threshold:
             continue
         
         func_name = func.get('name', '')
@@ -224,12 +224,12 @@ def main():
     parser = argparse.ArgumentParser(
         description='Convert function signatures to benchmark YAML format'
     )
-    parser.add_argument('project_name', help='Project name (e.g., libssh)')
+    parser.add_argument('--project', help='Project name (e.g., libssh)')
     parser.add_argument('--threshold', type=float, default=7.0,
                        help='Minimum score threshold (default: 7.0)')
     parser.add_argument('--project-dir', default='/home/yk/code/LLM-reasoning-agents/project_fuzzing/projects',
                        help='Project directory path')
-    parser.add_argument('--cache-dir', default='/home/yk/code/LLM-reasoning-agents/cache',
+    parser.add_argument('--cache-dir', default='/home/yk/code/LLM-reasoning-agents/cache/aa_projects/',
                        help='Cache directory path')
     parser.add_argument('--output-dir', default='/home/yk/code/LLM-reasoning-agents/benchmark-sets/projects',
                        help='Output directory path')
@@ -237,23 +237,23 @@ def main():
     args = parser.parse_args()
     
     try:
-        print(f"Processing project: {args.project_name}")
+        print(f"Processing project: {args.project}")
         print(f"Score threshold: {args.threshold}")
         print()
         
         # Step 1: Load functions_scored JSON
         print("Step 1: Loading functions_scored data...")
-        scored_data = load_functions_scored(args.project_name, args.project_dir)
+        scored_data = load_functions_scored(args.project, args.project_dir)
         total_functions = len(scored_data.get('functions', []))
         print(f"  Found {total_functions} functions")
         
         # Step 2: Load symbol signatures
         print("\nStep 2: Loading symbol signatures...")
-        symbols = load_symbol_signatures(args.project_name, args.cache_dir)
+        symbols = load_symbol_signatures(args.project, args.cache_dir)
         print(f"  Loaded {len(symbols)} symbol signatures")
         
         # Step 3: Filter and convert functions
-        print(f"\nStep 3: Filtering functions with score > {args.threshold}...")
+        print(f"\nStep 3: Filtering functions with score >= {args.threshold}...")
         benchmark_functions = convert_to_benchmark_format(
             scored_data.get('functions', []),
             symbols,
@@ -272,7 +272,7 @@ def main():
         # Step 4: Save to YAML
         print("\nStep 4: Saving to YAML...")
         output_path = save_benchmark_yaml(
-            args.project_name,
+            args.project,
             benchmark_functions,
             args.output_dir
         )

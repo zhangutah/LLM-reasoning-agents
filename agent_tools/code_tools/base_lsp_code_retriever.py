@@ -15,9 +15,10 @@ import shutil
 import urllib
 
 class BaseLSPCodeRetriever():
-    def __init__(self, workdir: str,  project_lang: LanguageType, symbol_name: str, lsp_function: LSPFunction):
+    def __init__(self, workdir: str, project_name: str, project_lang: LanguageType, symbol_name: str, lsp_function: LSPFunction):
    
         self.project_root = workdir
+        self.project_name = project_name
         self.symbol_name = symbol_name
         self.lsp_function = lsp_function
         self.project_lang = project_lang
@@ -38,9 +39,9 @@ class BaseLSPCodeRetriever():
     
     def get_lsp_client(self):
         if self.project_lang in [LanguageType.C, LanguageType.CPP]:
-            return CLSPCLient(self.project_root, self.project_lang)
+            return CLSPCLient(self.project_root, self.project_name, self.project_lang)
         else:
-            return MultilspyClient(self.project_root, self.project_lang) 
+            return MultilspyClient(self.project_root, self.project_name, self.project_lang) 
         
     def fectch_code(self, file_path: str, start_line: int, lsp_function: LSPFunction) -> list[dict[str, Any]]:
 

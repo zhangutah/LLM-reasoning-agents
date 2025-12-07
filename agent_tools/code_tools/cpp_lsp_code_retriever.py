@@ -1,6 +1,8 @@
 import json
 import os
 import argparse
+
+from openai import project
 from agent_tools.code_tools.lsp_clients.c_lsp_client import CLSPCLient
 from agent_tools.code_tools.lsp_clients.multi_lsp_client import MultilspyClient
 import asyncio
@@ -16,8 +18,8 @@ import shutil
 import urllib
 
 class CPPLSPCodeRetriever(BaseLSPCodeRetriever):
-    def __init__(self, workdir: str,  project_lang: LanguageType, symbol_name: str, lsp_function: LSPFunction):
-        super().__init__(workdir, project_lang, symbol_name, lsp_function)
+    def __init__(self, workdir: str, project_name: str, project_lang: LanguageType, symbol_name: str, lsp_function: LSPFunction):
+        super().__init__(workdir, project_name, project_lang, symbol_name, lsp_function)
 
     def fectch_code_from_response(self, response: list[dict[str, Any]], lsp_function: LSPFunction) -> list[dict[str, Any]]:
         """
@@ -107,9 +109,9 @@ class CPPLSPCodeRetriever(BaseLSPCodeRetriever):
 
         return LSPResults.Success.value, response # type: ignore
 
-async def get_response_helper(workdir: str, lang: str, symbol_name: str, lsp_function: str) -> tuple[str, list[dict[str, Any]]]:
+async def get_response_helper(workdir: str,project_name: str, lang: str, symbol_name: str, lsp_function: str) -> tuple[str, list[dict[str, Any]]]:
         # the default workdir is the current directory, since we didn't send the compile_comamnd.json to the clangd server
-    lsp = CPPLSPCodeRetriever(workdir, LanguageType(lang), symbol_name, LSPFunction(lsp_function))
+    lsp = CPPLSPCodeRetriever(workdir, project_name, LanguageType(lang), symbol_name, LSPFunction(lsp_function))
 
     if lsp_function == LSPFunction.AllSymbols.value:
         msg, res = await lsp.get_all_functions()
@@ -122,7 +124,7 @@ async def get_response_helper(workdir: str, lang: str, symbol_name: str, lsp_fun
 
 async def get_cpp_response(workdir: str, project: str,  lang: str, symbol_name: str, lsp_function: str) -> tuple[str, list[dict[str, Any]]]:
    
-    msg, res = await get_response_helper(workdir, lang, symbol_name, lsp_function)
+    msg, res = await get_response_helper(workdir, project, lang, symbol_name, lsp_function)
     # if the workdir is not the same as /src/project, we will retry with
     if msg == LSPResults.NoSymbol.value:
         for src_path in ["/src/{}".format(project), "/src"]:
@@ -135,6 +137,6 @@ async def get_cpp_response(workdir: str, project: str,  lang: str, symbol_name: 
                     shutil.copy(f"{workdir}/compile_commands.json", f"{src_path}/compile_commands.json")
                 print(f"Retry with src path: {src_path}")
                 # the default workdir is the current directory, since we didn't send the compile_comamnd.json to the clangd server
-                msg, res = await get_response_helper(src_path, lang, symbol_name, lsp_function)
+                msg, res = await get_response_helper(src_path, project, lang, symbol_name, lsp_function)
 
     return msg, res 

@@ -9,7 +9,7 @@ import urllib
 from pathlib import Path
 
 class MultilspyClient():
-    def __init__(self, workdir: str,  project_lang: LanguageType):
+    def __init__(self, workdir: str, project_name: str, project_lang: LanguageType):
       
         if project_lang == LanguageType.JAVA:
             self.config = MultilspyConfig.from_dict({"code_language": "java"})

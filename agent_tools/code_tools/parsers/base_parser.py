@@ -318,9 +318,9 @@ class BaseParser:
             query = self.parser_language.query(query_str)
             captures = query.captures(self.tree.root_node)
             
-            # Check if there are captures
-            if not captures:
-                return functions
+            # Check if there are captures - continue to next query instead of returning early
+            if not captures or "identifier_name" not in captures:
+                continue
                 
             # Extract function names from captures
             for node in captures["identifier_name"]:

@@ -281,9 +281,7 @@ class CoverageScorer:
 def main():
     import argparse
     parser = argparse.ArgumentParser(description="Score functions for fuzzing value")
-    parser.add_argument("--func-json", default="/home/yk/code/LLM-reasoning-agents/project_fuzzing/projects/libssh/functions.json", 
-                        required=False, help="Path to functions.json")
-    parser.add_argument("--output", default="")
+    parser.add_argument("--project", required=True, help="Path to functions.json")
     parser.add_argument("--limit", type=int, default=10000)
     parser.add_argument("--model", default="gpt-5-mini")
     parser.add_argument("--coverage-percent", type=float, default=30.0)
@@ -293,10 +291,10 @@ def main():
     parser.add_argument("--batch-id", default="", help="Retrieve results from existing batch")
     
     args = parser.parse_args()
-    
+   
     # Load functions
-    input_path = Path(args.func_json)
-    if not input_path.exists():
+    input_path = Path("/home/yk/code/LLM-reasoning-agents/project_fuzzing/projects") / args.project / "functions.json"
+    if not os.path.exists(input_path):
         print(f"[-] File not found: {input_path}")
         sys.exit(1)
     
@@ -304,7 +302,6 @@ def main():
         data = json.load(f)
     
     functions = data.get('functions', [])
-    project = data.get('project', input_path.parent.name)
     
     # Filter if needed
     if args.coverage_percent:
@@ -323,7 +320,7 @@ def main():
         print(f"[*] Submitting batch for {min(args.limit, len(functions))} functions...")
         batch_id = scorer.submit_batch(functions, limit=args.limit)
         print(f"\n[+] Batch submitted! To retrieve results later, run:")
-        print(f"python {sys.argv[0]} {args.func_json} --batch-id {batch_id} ")
+        print(f"    python {sys.argv[0]} --project {args.project} --batch-id {batch_id}")
         return
     # Regular scoring (individual API calls)
     else:
@@ -331,14 +328,11 @@ def main():
         scored = scorer.score_all_individual(functions, limit=args.limit)
     
     # Output path
-    if args.output:
-        output_path = Path(args.output)
-    else:
-        output_path = input_path.parent / "functions_scored.json"
+    output_path = Path("/home/yk/code/LLM-reasoning-agents/project_fuzzing/projects") / args.project / "functions_scored.json"
     
     # Save
     output = {
-        'project': project,
+        'project': args.project,
         'model': args.model,
         'total_scored': len(scored),
         'high_value': len([f for f in scored if f.get('score', 0) >= 7]),
@@ -357,7 +351,7 @@ def main():
     
     # Print top functions
     print(f"\n{'='*60}")
-    print(f"Top 15 High-Value Functions ({project})")
+    print(f"Top 15 High-Value Functions ({args.project})")
     print('='*60)
     for func in scored[:15]:
         score = func.get('score', 0)

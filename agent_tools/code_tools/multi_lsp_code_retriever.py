@@ -10,8 +10,8 @@ from agent_tools.code_tools.base_lsp_code_retriever import BaseLSPCodeRetriever
 from pathlib import Path
 
 class MultiLSPCodeRetriever(BaseLSPCodeRetriever):
-    def __init__(self, workdir: str,  project_lang: LanguageType, symbol_name: str, lsp_function: LSPFunction):
-        super().__init__(workdir, project_lang, symbol_name, lsp_function)
+    def __init__(self, workdir: str, project_name: str, project_lang: LanguageType, symbol_name: str, lsp_function: LSPFunction):
+        super().__init__(workdir, project_name, project_lang, symbol_name, lsp_function)
 
     
     def fectch_code_from_response(self, response: list[dict[str, Any]], lsp_function: LSPFunction) -> list[dict[str, Any]]:
@@ -49,9 +49,9 @@ class MultiLSPCodeRetriever(BaseLSPCodeRetriever):
         return "Not implemented", []
         
 
-async def get_multi_response(workdir: str, lang: str, symbol_name: str, lsp_function: str) -> tuple[str, list[dict[str, Any]]]:
+async def get_multi_response(workdir: str, project_name: str, lang: str, symbol_name: str, lsp_function: str) -> tuple[str, list[dict[str, Any]]]:
         # the default workdir is the current directory, since we didn't send the compile_comamnd.json to the clangd server
-    lsp = MultiLSPCodeRetriever(workdir, LanguageType(lang), symbol_name, LSPFunction(lsp_function))
+    lsp = MultiLSPCodeRetriever(workdir, project_name, LanguageType(lang), symbol_name, LSPFunction(lsp_function))
 
     if lsp_function == LSPFunction.AllSymbols.value:
         msg, res = await lsp.get_all_functions()

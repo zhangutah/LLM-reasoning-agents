@@ -1,18 +1,8 @@
 import json
 import os
 import argparse
-from agent_tools.code_tools.lsp_clients.c_lsp_client import CLSPCLient
-from agent_tools.code_tools.lsp_clients.multi_lsp_client import MultilspyClient
 import asyncio
-from agent_tools.code_tools.parsers.c_parser import CParser
-from agent_tools.code_tools.parsers.cpp_parser import CPPParser
-from agent_tools.code_tools.parsers.java_parser import JavaParser
-from agent_tools.code_tools.parsers.python_parser import PythonParser
-from constants import LanguageType, LSPFunction, LSPResults
-from typing import Any
-from pathlib import Path
-import shutil
-import urllib
+from constants import LanguageType, LSPFunction
 from agent_tools.code_tools.cpp_lsp_code_retriever import get_cpp_response
 from agent_tools.code_tools.multi_lsp_code_retriever import get_multi_response
 
@@ -28,7 +18,7 @@ async def main():
     if args.lang in [LanguageType.CPP.value, LanguageType.C.value]:
         msg, res = await get_cpp_response(args.workdir, args.project, args.lang, args.symbol_name, args.lsp_function)
     else:
-        msg, res = await get_multi_response(args.workdir, args.lang, args.symbol_name, args.lsp_function)
+        msg, res = await get_multi_response(args.workdir, args.project, args.lang, args.symbol_name, args.lsp_function)
     file_name = f"{args.symbol_name}_{args.lsp_function}_lsp.json"
     with open(os.path.join("/out", file_name), "w") as f:
         f.write(json.dumps({"message": msg, "response": res}, indent=4))

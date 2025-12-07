@@ -76,10 +76,7 @@ class ParserCodeRetriever():
             pure_symbol_name = self.symbol_name
             
         # Execute `find` command to recursively list files and directories
-        if self.lsp_function == LSPFunction.References:
-            cmd = f"grep --binary-files=without-match -rnw /src -e  '{pure_symbol_name}('"
-        else:
-            cmd = f"grep --binary-files=without-match -rnw /src -e  {pure_symbol_name}"
+        cmd = f"grep --binary-files=without-match -rnw /src -e  {pure_symbol_name}"
         # suppress the error output
         results = sp.run(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT,  text=True, encoding='utf-8', errors='replace')
         output = results.stdout.strip()
@@ -114,6 +111,10 @@ class ParserCodeRetriever():
             
             if self.lsp_function == LSPFunction.Definition and ";" in content:
                 continue
+
+            if self.lsp_function == LSPFunction.References and f'{pure_symbol_name}(' not in content:
+                continue
+          
             # find character position
             char_pos = content.find(pure_symbol_name)
             # the line number is 1-based, we need to convert it to 0-based
@@ -163,7 +164,7 @@ class ParserCodeRetriever():
                     # try to find the header file with the same name in different directories
                     file_name = head_path.name.replace(head_path.suffix, ext)
                     # Search the entire workspace for header files with the given name
-                    new_list = list(Path(self.project_root).rglob(f"{file_name}"))
+                    new_list = list(Path("/src/").rglob(f"{file_name}"))
                     if new_list:
                         path_list += new_list
                         break
@@ -194,7 +195,7 @@ class ParserCodeRetriever():
             include_str = ""
             for extin in ["c", "cpp", "cc", "h", "hpp", "hxx", "java"]:
                 include_str += f" --include=*.{extin} "
-            cmd = f"grep -r {include_str} -o '{function_name}(' {self.project_root} | wc -l"
+            cmd = f"grep -r {include_str} -o '{function_name}(' /src/ | wc -l"
             
             result = sp.run(cmd, shell=True, stdout=sp.PIPE, stderr=sp.PIPE, text=True)
             if result.returncode == 0:
@@ -240,11 +241,13 @@ class ParserCodeRetriever():
                      "**/*.cc", "**/*.cxx", "**/*.c++", "**/*.java", "**/*.py"]
 
         # Find header files in project root
-        project_root = Path(self.project_root)
-        if project_root.exists():
+        for search_dir in [Path(self.project_root), Path("/src/{}".format(self.project_name))]:
+            if not search_dir.exists():
+                continue
+
             for pattern in patterns:
                 # exclude third_party
-                for file in project_root.glob(pattern):
+                for file in search_dir.glob(pattern):
                     if "third_party" in str(file):
                         continue
                     header_files.append(file)
@@ -261,7 +264,7 @@ class ParserCodeRetriever():
         
      
         for file_path in header_files:
-        
+            
             parser = self.lang_parser(Path(file_path), source_code=None)
             functions = parser.get_file_functions()
             if functions:
@@ -275,13 +278,15 @@ class ParserCodeRetriever():
         
         for _, functions in all_functions.items():
             for func in functions:
-                key = func.full_name
+                # Use just the function name for deduplication (not full signature)
+                # this is not friendly for overloaded functions, but we keep the one with shorter signature
+                key = func.name
                 if key not in unique_functions:
                     unique_functions[key] = func
                 else:
-                    # If already exists, keep the one with more complete signature
+                    # If already exists, keep the one with shorter signature (declaration, not definition with body)
                     existing_func = unique_functions[key]
-                    if len(func.signature) > len(existing_func.signature):
+                    if len(func.signature) < len(existing_func.signature):
                         unique_functions[key] = func
         
         return unique_functions

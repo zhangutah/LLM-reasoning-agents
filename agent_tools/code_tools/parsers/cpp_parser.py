@@ -216,7 +216,11 @@ class CPPParser(CParser):
             decl_node = self.get_parent_node(node, "field_declaration")
             function_type = "class_method"
         
-        # may be definition 
+        # may be definition (for .c/.cpp files with function implementations)
+        if not decl_node:
+            decl_node = self.get_parent_node(node, "function_definition")
+            function_type = "function"
+        
         if not decl_node:
             return None
         

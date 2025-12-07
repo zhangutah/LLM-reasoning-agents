@@ -61,7 +61,7 @@ class BaseLSPCodeRetriever():
             symbol_name = self.symbol_name
         # since we have match the namespace when finding the symbol, there is no need to match the namespace again
         # the namespace matching in the parser sometimes will fail, so we just use the symbol name directly
-        query_key, source_code, start_line = parser.get_symbol_source(symbol_name, start_line, lsp_function)
+        query_key, source_code, _ = parser.get_symbol_source(symbol_name, start_line, lsp_function)
 
         if lsp_function == LSPFunction.Declaration:
             # template header file, return empty
@@ -72,12 +72,21 @@ class BaseLSPCodeRetriever():
             
         # for definition and declaration, if we can't find the source code, we will return 50 lines around the lineno
         # since the location must be correct, the empty source code means the parser failed to find the symbol
+        
         if source_code == "":
+            if lsp_function == LSPFunction.Definition:
+                max_lines = 50
+            else:
+                max_lines = 10
             # return 50 lines after lineno
             lines = Path(file_path).read_text(encoding="utf-8").splitlines()
             start_line = max(start_line-5, 0)
-            end_line = min(len(lines), start_line + 50)
+            end_line = min(len(lines), start_line + max_lines)
             source_code = "\n".join(lines[start_line:end_line])
+
+            # check if the symbol_name is in the source_code, 
+            if symbol_name not in source_code:
+                return []
 
         return [{"source_code": source_code, "file_path": file_path, "type": query_key, "start_line": start_line}]
 

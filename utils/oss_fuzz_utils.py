@@ -37,7 +37,7 @@ class OSSFuzzUtils:
                             "build_fuzzers", "--clean", self.new_project_name],
 
             "build_image": ["python", os.path.join(self.ossfuzz_dir, "infra", "helper.py"),
-                            "build_image", self.new_project_name, "--pull", "--cache"]
+                            "build_image", self.new_project_name, "--pull"]
         }
         assert mode in mapping.keys()
         return mapping.get(mode) # type: ignore

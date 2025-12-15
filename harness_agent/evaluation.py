@@ -110,12 +110,17 @@ def process_single_result(args: tuple[str, str, Path, BenchConfig]): # type: ign
     remote_harness_path = Path(remote_harness_path)
 
     try:
+
         # get the evaluator
         evaluator = HarnessEval(benchcfg=benchcfg, function_signature=function_signature,
                                 project_name=project_name, local_harness=local_harness_file, n_run=1)
         if evaluator.early_exit_flag:
             return project_name, function_signature, 0, 0
         init_cov, final_cov, _ = evaluator.eval_harness(fuzzer_name=fuzzer_name, harness_path=remote_harness_path)
+
+        # copy harness file to local project dir
+        eval_harness_dir = evaluator.save_dir / "harness.txt"
+        shutil.copy(local_harness_file, eval_harness_dir)
 
         # save coverage
         cov_file = evaluator.save_dir / "cov.txt"
@@ -134,9 +139,9 @@ def run_evaluation(output_path: Path, benchcfg:BenchConfig, n_run:int=1, n_parti
     # too many processes will cause docker build image and build fuzzer failed
     total_core = psutil.cpu_count(logical=False)  
     num_processes = (total_core // 3 *2)  # type: ignore
-    if benchcfg.num_processes is not None:
-        num_processes = min(benchcfg.num_processes, num_processes)
-
+    # if benchcfg.num_processes is not None:
+        # num_processes = min(benchcfg.num_processes, num_processes) # type: ignore
+    num_processes = benchcfg.num_processes if benchcfg.num_processes is not None else num_processes
     res_json = output_path / f"success_functions_{n_run}.json"
     if not res_json.exists():
         print(f"No success_functions_{n_run}.json found in {output_path.parent}, exit.")
@@ -161,7 +166,7 @@ def run_evaluation(output_path: Path, benchcfg:BenchConfig, n_run:int=1, n_parti
         print(f"Processing partition {partitation_id + 1}/{n_partitations}, items {start_index} to {end_index - 1}")
 
     # Run evaluation in parallel
-    with multiprocessing.Pool(processes=num_processes) as pool:
+    with multiprocessing.Pool(processes=num_processes) as pool: # type: ignore
         results = pool.map(process_single_result, args_list) # type: ignore
 
 if __name__ == "__main__":
@@ -171,8 +176,8 @@ if __name__ == "__main__":
     from argparse import ArgumentParser
 
     parser  = ArgumentParser(description="Run harness evaluation in parallel.")
-    parser.add_argument("--output_path", type=str, default=f"{PROJECT_PATH}/outputs/projects/gpt5-mini/libxml2", help="Path to the output directory containing success_functions.json")
-    parser.add_argument("--benchcfg_path", type=str, default=f"{PROJECT_PATH}/cfg/gpt5_mini/projects/eval_cfg_libxml2.yaml", help="Path to the benchmark configuration YAML file")
+    parser.add_argument("--output_path", type=str, default=f"{PROJECT_PATH}/outputs/projects/gpt5-mini/mosquitto", help="Path to the output directory containing success_functions.json")
+    parser.add_argument("--benchcfg_path", type=str, default=f"{PROJECT_PATH}/cfg/gpt5_mini/projects/eval_cfg_mosquitto.yaml", help="Path to the benchmark configuration YAML file")
     parser.add_argument("--n_run", type=int, default=3, help="Run number corresponding to success_functions_{n_run}.json")
     parser.add_argument("--n_partitations", type=int, default=1, help="Total number of partitions to divide the workload into.")
     parser.add_argument("--partitation_id", type=int, default=0, help="ID of the partition to process (0-indexed).")

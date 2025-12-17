@@ -601,7 +601,7 @@ class ISSTAFuzzer(FuzzENV):
         # read prompt according to the project language (extension of the harness file)
         ext_lang = self.oss_tool.get_extension(None)
         if  ext_lang in [LanguageType.CPP, LanguageType.C, LanguageType.JAVA]:
-            generator_prompt_template = load_prompt_template(f"./prompts/{ext_lang.value.lower()}prompt.txt")
+            generator_prompt_template = load_prompt_template(f"{PROJECT_PATH}/agent/prompts/{ext_lang.value.lower()}prompt.txt")
         else:
             raise ValueError(f"Unsupported language for harness generation: {ext_lang}") 
         

@@ -1,3 +1,4 @@
+import time
 from utils.oss_fuzz_utils import OSSFuzzUtils
 from utils.docker_utils import DockerUtils
 from constants import CompileResults
@@ -103,6 +104,7 @@ class Compiler():
             if self.docker_tool.build_image(self.build_image_cmd):
                 build_flag = True
                 break
+            time.sleep(5)
         if not build_flag:
             return CompileResults.ImageError, "Failed to build image"
         

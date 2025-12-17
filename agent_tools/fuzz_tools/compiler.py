@@ -97,10 +97,13 @@ class Compiler():
         self.write_dockerfile(harness_code, harness_path, cmd)
         self.write_build_script()
 
-
-
         # build the image
-        if not self.docker_tool.build_image(self.build_image_cmd):
+        build_flag = False
+        for _ in range(3):  # try multiple times to avoid some issues
+            if self.docker_tool.build_image(self.build_image_cmd):
+                build_flag = True
+                break
+        if not build_flag:
             return CompileResults.ImageError, "Failed to build image"
         
         # recover the dockerfile, so that the harness file is not overwritten

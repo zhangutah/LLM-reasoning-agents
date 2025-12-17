@@ -30,8 +30,6 @@ class HarnessEval(FuzzENV):
         fuzzer = FuzzerRunner(oss_fuzz_dir=self.benchcfg.oss_fuzz_dir, new_project_name=self.new_project_name,
                 project_lang=self.project_lang, run_timeout=self.benchcfg.run_time, save_dir=self.save_dir)
         
-        compile_res = CompileResults.FuzzerError
-          
         compile_res, _ = compiler.compile_harness(harness_code=self.harness_code, harness_path=harness_path, fuzzer_name=fuzzer_name)
         if compile_res != CompileResults.Success:
             self.logger.error(f"Fuzzer compilation failed: {compile_res}") if self.logger else None
@@ -72,12 +70,12 @@ def extract_fuzzer_name(log_lines: list[str]) -> tuple[str, str]:
             continue
 
         # found the line
-        # Fuzz res:No Error, [] for run1_auyckfajosgnqetd:ssh_privkey_fuzzer (validation.py:61)
-        match = re.search(r'run\d+_\w+:(\w+)\s*\(', line)
+        # Fuzz res:No Error, [] for run2_tqjzjancxhnbfnka:xml_parse_fuzzer_UTF-16LE (validation.py:62)'
+        match = re.search(r'run\d+_\w+:([\w-]+)\s*\(', line)
         if match:
             fuzzer_name = match.group(1)
-        if fuzzer_name == "":
-            print("Could not find fuzzer name in log lines.")
+        assert fuzzer_name != "", f"Could not extract fuzzer name from line: {line}"
+        break
 
     #{'ssh_privkey_fuzzer': '/src/libssh/tests/fuzz/ssh_privkey_fuzzer.c'}
     for line in log_lines[::-1]:
@@ -106,11 +104,10 @@ def process_single_result(args: tuple[str, str, Path, BenchConfig]): # type: ign
         print(f"Could not extract fuzzer name from log: {agent_log_file}")
         return project_name, function_signature, 0, 0
     
-    print("harness_path:", remote_harness_path)
+    # print("harness_path:", remote_harness_path)
     remote_harness_path = Path(remote_harness_path)
 
     try:
-
         # get the evaluator
         evaluator = HarnessEval(benchcfg=benchcfg, function_signature=function_signature,
                                 project_name=project_name, local_harness=local_harness_file, n_run=1)
@@ -176,8 +173,8 @@ if __name__ == "__main__":
     from argparse import ArgumentParser
 
     parser  = ArgumentParser(description="Run harness evaluation in parallel.")
-    parser.add_argument("--output_path", type=str, default=f"{PROJECT_PATH}/outputs/projects/gpt5-mini/mosquitto", help="Path to the output directory containing success_functions.json")
-    parser.add_argument("--benchcfg_path", type=str, default=f"{PROJECT_PATH}/cfg/gpt5_mini/projects/eval_cfg_mosquitto.yaml", help="Path to the benchmark configuration YAML file")
+    parser.add_argument("--output_path", type=str, default=f"{PROJECT_PATH}/outputs/projects/gpt5-mini/expat", help="Path to the output directory containing success_functions.json")
+    parser.add_argument("--benchcfg_path", type=str, default=f"{PROJECT_PATH}/cfg/gpt5_mini/projects/eval_cfg_expat.yaml", help="Path to the benchmark configuration YAML file")
     parser.add_argument("--n_run", type=int, default=3, help="Run number corresponding to success_functions_{n_run}.json")
     parser.add_argument("--n_partitations", type=int, default=1, help="Total number of partitions to divide the workload into.")
     parser.add_argument("--partitation_id", type=int, default=0, help="ID of the partition to process (0-indexed).")

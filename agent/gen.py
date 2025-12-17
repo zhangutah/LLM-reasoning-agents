@@ -97,9 +97,9 @@ class ISSTAFuzzer(FuzzENV):
 
         self.oss_fuzz_benchmark = self.get_oss_fuzz_benchmark()
         if self.benchcfg.fixing_mode == "agent":
-            self.tool_prompt = load_prompt_template(f"{PROJECT_PATH}/harness_agent/prompts/tool_prompt.txt")
+            self.tool_prompt = load_prompt_template(f"{PROJECT_PATH}/agent/prompts/tool_prompt.txt")
         elif self.benchcfg.header_mode == "agent":
-            self.tool_prompt = load_prompt_template(f"{PROJECT_PATH}/harness_agent/prompts/header_prompt.txt")
+            self.tool_prompt = load_prompt_template(f"{PROJECT_PATH}/agent/prompts/header_prompt.txt")
         else:
             self.tool_prompt = ""
 
@@ -418,7 +418,7 @@ class ISSTAFuzzer(FuzzENV):
             else:
                 llm = ChatOpenAI(model=self.benchcfg.model_name, temperature=self.benchcfg.temperature)
         elif self.benchcfg.model_name.startswith("anthropic"):
-               llm = ChatOpenAI(
+            llm = ChatOpenAI(
                 api_key=os.getenv("OPENROUTER_API_KEY", ""), # type: ignore
                 base_url="https://openrouter.ai/api/v1",
                 model=self.benchcfg.model_name,
@@ -514,7 +514,7 @@ class ISSTAFuzzer(FuzzENV):
 
         # code formatter
         llm_code_extract: BaseChatModel = llm_extract.with_structured_output(CodeAnswerStruct) # type: ignore
-        code_formater = CodeFormatTool(llm_code_extract, load_prompt_template(f"{PROJECT_PATH}/harness_agent/prompts/extract_code.txt"))
+        code_formater = CodeFormatTool(llm_code_extract, load_prompt_template(f"{PROJECT_PATH}/agent/prompts/extract_code.txt"))
 
         tools = self.load_tools()
         if len(tools) > 0:
@@ -526,8 +526,8 @@ class ISSTAFuzzer(FuzzENV):
                                         code_callback=code_formater.extract_code, logger=self.logger, model_name=self.benchcfg.model_name)
 
 
-        compile_fix_prompt = load_prompt_template(f"{PROJECT_PATH}/harness_agent/prompts/compile_prompt.txt")
-        fuzz_fix_prompt = load_prompt_template(f"{PROJECT_PATH}/harness_agent/prompts/fuzzing_prompt.txt")
+        compile_fix_prompt = load_prompt_template(f"{PROJECT_PATH}/agent/prompts/compile_prompt.txt")
+        fuzz_fix_prompt = load_prompt_template(f"{PROJECT_PATH}/agent/prompts/fuzzing_prompt.txt")
 
         local_compile_fix_prompt =  self.fill_prompt(compile_fix_prompt, tool_prompt=self.tool_prompt,   # type: ignore
                                                      function_signature=self.function_signature)   # type: ignore
@@ -601,7 +601,7 @@ class ISSTAFuzzer(FuzzENV):
         # read prompt according to the project language (extension of the harness file)
         ext_lang = self.oss_tool.get_extension(None)
         if  ext_lang in [LanguageType.CPP, LanguageType.C, LanguageType.JAVA]:
-            generator_prompt_template = load_prompt_template(f"{PROJECT_PATH}/harness_agent/prompts/{ext_lang.value.lower()}prompt.txt")
+            generator_prompt_template = load_prompt_template(f"./prompts/{ext_lang.value.lower()}prompt.txt")
         else:
             raise ValueError(f"Unsupported language for harness generation: {ext_lang}") 
         

@@ -26,6 +26,7 @@ class FunctionInfo:
     file_path: str
     line_number: int
     signature: str
+    source_code: str = ""
 
 class LibclangExtractor:
     """Simplified C++ function extractor using libclang and compile_commands.json"""
@@ -62,13 +63,13 @@ class LibclangExtractor:
         try:
             # Get the function type
             func_type = cursor.type
-            
+
             # Get return type
             return_type = func_type.get_result().spelling if func_type.get_result() else "void"
-            
+
             # Get function name
             func_name = cursor.spelling
-            
+
             # Get parameters
             params = []
             for arg in cursor.get_arguments():
@@ -78,6 +79,11 @@ class LibclangExtractor:
                     params.append(f"{param_type} {param_name}")
                 else:
                     params.append(param_type)
+
+            # Add 'static' if the function is static
+            signature_prefix = ""
+            if hasattr(cursor, 'storage_class') and cursor.storage_class == clang.cindex.StorageClass.STATIC:
+                signature_prefix = "static "
             
             # Handle special cases for constructors and destructors
             if cursor.kind == CursorKind.CONSTRUCTOR:
@@ -85,11 +91,82 @@ class LibclangExtractor:
             elif cursor.kind == CursorKind.DESTRUCTOR:
                 return f"~{func_name}({', '.join(params)})"
             else:
-                return f"{return_type} {func_name}({', '.join(params)})"
-                
+                return f"{signature_prefix}{return_type} {func_name}({', '.join(params)})"
+
         except Exception as e:
             # Fallback to basic signature if extraction fails
             return f"{cursor.spelling}(...)"
+    
+    def _get_source_code(self, cursor) -> str:
+        """Extract the source code of a function from its extent"""
+        try:
+            extent = cursor.extent
+            start = extent.start
+            end = extent.end
+            
+            # Read the file and extract the relevant lines
+            file_path = str(start.file)
+            with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                content = f.read()
+                lines = content.splitlines(keepends=True)
+            
+            # Check if this is a function definition (has body) or declaration
+            is_definition = cursor.is_definition()
+            
+            # Extract from start line/column to end line/column (1-indexed)
+            start_line = start.line - 1
+            end_line = end.line - 1
+            start_col = start.column - 1
+            end_col = end.column - 1
+            
+            # Extract the source code
+            # Helper to extract text based on line/col indices
+            def extract_text(s_line, s_col, e_line, e_col):
+                if s_line == e_line:
+                    return lines[s_line][s_col:e_col]
+                else:
+                    parts = []
+                    parts.append(lines[s_line][s_col:])
+                    for i in range(s_line + 1, e_line):
+                        parts.append(lines[i])
+                    if e_line < len(lines):
+                        parts.append(lines[e_line][:e_col])
+                    return ''.join(parts)
+
+            source = extract_text(start_line, start_col, end_line, end_col)
+
+            # For declarations, libclang's extent may be incomplete
+            # We need to find the actual end (semicolon for decl)
+            if not is_definition:
+                # Check if the extracted source already looks complete (ends with ;)
+                # We strip whitespace/comments to check
+                trimmed = source.strip()
+                if not trimmed.endswith(';'):
+                    # Find the semicolon that ends the declaration
+                    # Start searching from the extent end position
+                    search_line = end_line
+                    search_col = end_col
+                    
+                    while search_line < len(lines) and search_line < end_line + 10:  # Limit search
+                        line_content = lines[search_line]
+                        search_start = search_col if search_line == end_line else 0
+                        
+                        # Look for semicolon
+                        semi_pos = line_content.find(';', search_start)
+                        if semi_pos != -1:
+                            # Update end positions
+                            end_line = search_line
+                            end_col = semi_pos + 1
+                            # Re-extract with new end
+                            source = extract_text(start_line, start_col, end_line, end_col)
+                            break
+                        
+                        search_line += 1
+            
+            # Strip leading/trailing whitespace but preserve internal formatting
+            return source.strip()
+        except Exception as e:
+            return ""
     
     def _is_project_file(self, file_path: str) -> bool:
         """Check if file is within project directory"""
@@ -124,13 +201,15 @@ class LibclangExtractor:
         
         namespace = self._get_namespace_class(cursor)
         signature = self._get_function_signature(cursor)
+        source_code = self._get_source_code(cursor)
         
         return FunctionInfo(
             name=cursor.spelling,
             namespace=namespace,
             file_path=file_path,
             line_number=location.line,
-            signature=signature
+            signature=signature,
+            source_code=source_code
         )
     
     def _traverse_ast(self, cursor):
@@ -141,8 +220,9 @@ class LibclangExtractor:
             # This will keep only one instance of each function signature
             key = f"{func_info.namespace}::{func_info.name}" if func_info.namespace else func_info.name
             
-            # Only add if not already present (keeps the first occurrence)
-            if key not in self.extracted_functions:
+            # Prefer definitions over declarations
+            is_definition = cursor.is_definition()
+            if key not in self.extracted_functions or is_definition:
                 self.extracted_functions[key] = func_info
         
         for child in cursor.get_children():

@@ -128,8 +128,11 @@ class Compiler():
             fuzzer_name = os.path.join(self.oss_tool.get_path("fuzzer"), fuzzer_name)
             if os.path.exists(fuzzer_name):
                 return CompileResults.Success, build_msg
+            
+            # For net-snmp, compile failed will also not generate the fuzzer but no error is raised
+            # TODO: more robust method to check compile error
             else:
-                return CompileResults.FuzzerError, build_msg
+                return CompileResults.CodeError, build_msg
 
         except sp.CalledProcessError as e:
             kill_process(process)

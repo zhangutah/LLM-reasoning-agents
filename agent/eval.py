@@ -20,12 +20,12 @@ class HarnessEval(FuzzENV):
         super().__init__(benchcfg=benchcfg, function_signature=function_signature, project_name=project_name, n_run=n_run, eval_flag=True)
         self.harness_code = local_harness.read_text()
 
-    def eval_harness(self, fuzzer_name: str, harness_path: Path) -> tuple[int, int, bool]:
+    def eval_harness(self, fuzzer_name: str, harness_path: Path, include_path_set: set[str] = set()) -> tuple[int, int, bool]:
         '''
         :param fuzzer_name: the fuzzer name associated with the harness
         :param harness_path: the path of the harness file inside the oss-fuzz project docker image
         '''
-        compiler = Compiler(self.benchcfg.oss_fuzz_dir, self.benchcfg.benchmark_dir, self.project_name, self.new_project_name)
+        compiler = Compiler(self.benchcfg.oss_fuzz_dir, self.benchcfg.benchmark_dir, self.project_name, self.new_project_name, include_path_set)
 
         fuzzer = FuzzerRunner(oss_fuzz_dir=self.benchcfg.oss_fuzz_dir, new_project_name=self.new_project_name,
                 project_lang=self.project_lang, run_timeout=self.benchcfg.run_time, save_dir=self.save_dir)
@@ -104,6 +104,12 @@ def process_single_result(args: tuple[str, str, Path, BenchConfig]): # type: ign
         print(f"Could not extract fuzzer name from log: {agent_log_file}")
         return project_name, function_signature, 0, 0
     
+    include_file = work_dir / "include_path.txt"
+    include_path_set: set[str] = set()
+    if include_file.exists():
+        for line in include_file.read_text().splitlines():
+            include_path_set.add(line.strip())
+
     # print("harness_path:", remote_harness_path)
     remote_harness_path = Path(remote_harness_path)
 
@@ -113,7 +119,7 @@ def process_single_result(args: tuple[str, str, Path, BenchConfig]): # type: ign
                                 project_name=project_name, local_harness=local_harness_file, n_run=1)
         if evaluator.early_exit_flag:
             return project_name, function_signature, 0, 0
-        init_cov, final_cov, _ = evaluator.eval_harness(fuzzer_name=fuzzer_name, harness_path=remote_harness_path)
+        init_cov, final_cov, _ = evaluator.eval_harness(fuzzer_name=fuzzer_name, harness_path=remote_harness_path, include_path_set=include_path_set)
 
         # copy harness file to local project dir
         eval_harness_dir = evaluator.save_dir / "harness.txt"
@@ -173,8 +179,8 @@ if __name__ == "__main__":
     from argparse import ArgumentParser
 
     parser  = ArgumentParser(description="Run harness evaluation in parallel.")
-    parser.add_argument("--output_path", type=str, default=f"{PROJECT_PATH}/outputs/projects/gpt5-mini/expat", help="Path to the output directory containing success_functions.json")
-    parser.add_argument("--benchcfg_path", type=str, default=f"{PROJECT_PATH}/cfg/gpt5_mini/projects/eval_cfg_expat.yaml", help="Path to the benchmark configuration YAML file")
+    parser.add_argument("--output_path", type=str, default=f"{PROJECT_PATH}/outputs/projects/gpt5-mini/libmodbus", help="Path to the output directory containing success_functions.json")
+    parser.add_argument("--benchcfg_path", type=str, default=f"{PROJECT_PATH}/cfg/gpt5_mini/projects/libmodbus_eval.yaml", help="Path to the benchmark configuration YAML file")
     parser.add_argument("--n_run", type=int, default=3, help="Run number corresponding to success_functions_{n_run}.json")
     parser.add_argument("--n_partitations", type=int, default=1, help="Total number of partitions to divide the workload into.")
     parser.add_argument("--partitation_id", type=int, default=0, help="ID of the partition to process (0-indexed).")

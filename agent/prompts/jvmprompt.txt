@@ -1,43 +1,58 @@
-Generate a fuzz driver based the given function signature in Java language. 
-{tool_prompt}
+Generate a fuzz driver based on the given function signature in CPP language. 
 
-@ examples of API usage:
+Tool Infromation:
+
+ You can call the following tools to get more information about the code.
+ Prefer higher-priority tools first; only use view_code when you already know the exact file path and a line number:
+ 
+ 1) get_symbol_definition_tool: Get the definition of a symbol (the function body or struct/class definition).
+ 2) get_symbol_references_tool: Get the references/usage of a symbol within the codebase.
+ 3) view_code: View code around a specific file path and target line. Use this only when the path and line are known; keep context_window small.
+ 4) get_file_location_tool: Get the absolute path of a file in the project codebase.
+ 5) get_driver_example_tool: Randomly select one harness file in the container and return its content. 
+
+ Guardrails:
+ - Don't call view_code repeatedly to browse; instead, first retrieve definitions/headers/references to precisely locate what you need.
+ - Avoid requesting huge windows; stay within a small context_window unless specifically needed.
+
+
+Constraints:
+- If a target method requires an Interface or Abstract Class, prioritize finding and using an existing concrete implementation from the library 
+  (e.g., look for classes named Default..., Basic..., or Simple...). DO NOT create custom mocks or inner classes.
+- Using one of the following two fuzzer style:
+    - 1.
+    public class ExampleFuzzer {{
+        public static void fuzzerTestOneInput(byte[] input) {{
+            ...
+            // Call a function of the project under test with arguments derived from
+            // input and throw an exception if something unwanted happens.
+            ...
+        }}
+    }}
+    - 2.
+    import com.code_intelligence.jazzer.api.FuzzedDataProvider;
+
+    public class ExampleFuzzer {{
+        public static void fuzzerTestOneInput(FuzzedDataProvider data) {{
+            int number = data.consumeInt();
+            String string = data.consumeRemainingAsString();
+            // ...
+        }}
+    }}
+
+
+Contexts:
+{contexts}
+
+
+Target Function Usage:
 {function_usage}
 
 
-Useful project headers:
-{header_files}
+Target Function Signature:
+{function_signature}
 
-{contexts}
+<Outputs>
+- A complete, compilable Java fuzz driver
 
-The following function fuzzes
-    {function_signature}
 
-The fuzzer example can be one of the following examples:
-
-1. 
-public class ExampleFuzzer {{
-    public static void fuzzerTestOneInput(byte[] input) {{
-        ...
-        // Call a function of the project under test with arguments derived from
-        // input and throw an exception if something unwanted happens.
-        ...
-    }}
-}}
-
-2. 
-
-import com.code_intelligence.jazzer.api.FuzzedDataProvider;
-
-public class ExampleFuzzer {{
-    public static void fuzzerTestOneInput(FuzzedDataProvider data) {{
-        int number = data.consumeInt();
-        String string = data.consumeRemainingAsString();
-        // ...
-    }}
-}}
-
-If a target method requires an Interface or Abstract Class, prioritize finding and using an existing concrete implementation from the library 
-(e.g., look for classes named Default..., Basic..., or Simple...). DO NOT create custom mocks or inner classes
-
-Output the full driver code in reply.

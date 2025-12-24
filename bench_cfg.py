@@ -50,6 +50,7 @@ class BenchConfig:
         self.compile_enhance = self.config.get('compile_enhance', False)
         # if True, only use semantic check for evaluation
         self.semantic_mode = self.config.get('semantic_mode', "both")
+        self.use_cache_harness_pairs = self.config.get('use_cache_harness_pairs', True)
 
         # for fuzzing
         self.no_log = self.config.get('no_log', False)

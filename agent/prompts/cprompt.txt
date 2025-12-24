@@ -1,19 +1,32 @@
-Generate a fuzz driver based the given function signature in C language. Output the full driver code in reply.
+Generate a fuzz driver based on the given function signature in C language. 
+
+Tool Infromation:
 {tool_prompt}
 
-@ examples of API usage:
-{function_usage}
 
-Useful project headers. For static function, include the .c/.cc/.cpp file.
+Constraints:
+- For static function, include the .c/.cc file.
+- The fuzzer entry point is: extern int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size)
+- Perform one-time initialization using static local variables
+
+Forbidden:
+- Using rand(), time(), or other nondeterministic sources
+- Using exceptions to catch crashes
+
+
+Relevant Headers:
 {header_files}
 
+Contexts:
 {contexts}
 
-The following function fuzzes
-    {function_signature};
 
-The fuzzer entry point is defined as follows:
-extern int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size);
-int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size)
+Target Function Usage:
+{function_usage}
 
-Output the Full driver code in reply.
+
+Target Function Signature:
+{function_signature}
+
+<Outputs>
+- A complete, compilable C fuzz driver

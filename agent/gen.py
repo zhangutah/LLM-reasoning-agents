@@ -311,7 +311,9 @@ class ISSTAFuzzer(FuzzENV):
         
     def build_init_prompt(self, prompt_template: str) -> str:
 
-
+        # from constants import LSPFunction
+        # self.code_retriever.get_symbol_info("All", LSPFunction.AllSymbols, Retriever.Parser)
+        # exit()
         # {function_name}
         # Remove the parameters by splitting at the first '('
         function_name = extract_name(self.function_signature, keep_namespace=True, 
@@ -502,7 +504,10 @@ class ISSTAFuzzer(FuzzENV):
         if self.benchcfg.header_mode == "agent" and self.benchcfg.fixing_mode != "agent":
             self.logger.info("Using agent mode for header files, add the header tool")
             tools:list[StructuredTool] = [header_tool]
-
+        
+        # remove the some tools for Java
+        if self.project_lang == LanguageType.JAVA:
+            tools =  [definition_tool, view_tool, location_tool, driver_tool, reference_tool]
         return tools
 
     

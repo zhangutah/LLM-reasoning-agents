@@ -174,9 +174,9 @@ class LibclangExtractor:
             file_path = str(Path(file_path).resolve())
             # TODO this should be tested on more oss fuzz projects
             # project root may not the source root
-            if file_path.startswith("/src/{}".format(self.project_name)):
+            if file_path.startswith("/src/{}".format(self.project_name)) \
+                  or file_path.startswith(self.project_root):
                 return True
-            # return file_path.startswith(self.project_root)
         except:
             return False
     

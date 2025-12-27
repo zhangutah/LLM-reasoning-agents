@@ -198,7 +198,8 @@ class DockerUtils:
                 privileged=True,
                 environment={"FUZZING_LANGUAGE": self.fuzzing_lang},
                 volumes={compile_out_path: {"bind": "/out", "mode": "rw"},
-                            os.path.join(PROJECT_PATH, "agent_tools"): {"bind": os.path.join(workdir, "agent_tools"), "mode": "rw"}
+                            os.path.join(PROJECT_PATH, "agent_tools"): {"bind": os.path.join(workdir, "agent_tools"), "mode": "ro"},
+                            os.path.join(PROJECT_PATH, "constants.py"): {"bind": os.path.join(workdir, "constants.py"), "mode": "ro"},
                          },
             )
             return container.id # type: ignore

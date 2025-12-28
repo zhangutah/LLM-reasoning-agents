@@ -154,6 +154,13 @@ class FuzzLogParser():
         done_cov = re.search(r"DONE\s+cov:\s+(\d+)", log)
         done_cov_value = done_cov.group(1) if done_cov else None
 
+        # find the last coverage values as the done_cov_value if done_cov_value is None
+        if not done_cov_value:
+            done_cov = re.findall(r"cov:\s+(\d+)", log)
+            if done_cov:
+                done_cov_value = done_cov[-1]
+
+
         if not inited_cov_value or not done_cov_value:
             return ValResult.LackCovError, [], []
 

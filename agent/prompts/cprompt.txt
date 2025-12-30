@@ -9,7 +9,7 @@ Constraints:
 - The fuzzer entry point is: extern int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size)
 - Try to identify and call the proper initialization function first. Avoid casting raw input data directly to structs (e.g., (MyStruct *)data) unless no initialization API exists.
 - Perform global library initialization (e.g., setting up logging or lookup tables) only once using static variables. 
-  However, ensure that any request-specific context or state is created and strictly destroyed within each iteration to prevent memory leaks.
+  However, ensure that any request-specific context or state is created and strictly destroyed within each iteration to prevent OOM.
 
 Forbidden:
 - Using rand(), time(), or other nondeterministic sources

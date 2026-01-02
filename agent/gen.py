@@ -565,8 +565,10 @@ class ISSTAFuzzer(FuzzENV):
             compiler = HeaderCompilerWraper(self.benchcfg.oss_fuzz_dir, self.project_name, self.new_project_name, self.code_retriever, 
                                             self.project_lang, self.harness_pairs, self.save_dir, self.benchcfg.cache_root, self.logger)
         else:
-            compiler = CompilerWraper(self.benchcfg.oss_fuzz_dir, self.benchcfg.benchmark_dir, self.project_name, self.new_project_name, self.code_retriever, self.project_lang,
-                                       self.harness_pairs, self.benchcfg.compile_enhance, self.save_dir, self.benchcfg.cache_root, self.logger)
+            compiler = CompilerWraper(self.benchcfg.oss_fuzz_dir, self.benchcfg.benchmark_dir, self.project_name, self.new_project_name,
+                                       self.code_retriever, self.project_lang, self.harness_pairs, self.benchcfg.compile_enhance,
+                                         self.save_dir, self.benchcfg.cache_root, self.logger, function_signature=self.function_signature if self.is_static else "")
+       
         checker = SemaCheckNode(self.benchcfg.oss_fuzz_dir, self.benchcfg.benchmark_dir, self.project_name, self.new_project_name, self.function_signature, self.project_lang, self.benchcfg.semantic_mode, self.logger)
 
         # build the graph

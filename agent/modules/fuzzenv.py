@@ -1,5 +1,6 @@
 import os
 import random
+import re
 from constants import PROJECT_PATH
 import logging
 import shutil
@@ -13,6 +14,14 @@ from pathlib import Path
 from bench_cfg import BenchConfig
 from utils import introspector_utils
 
+def remove_static_keyword(function_signature: str) -> tuple[str, bool]:
+    '''Remove static keyword from function signature'''
+    is_static = False
+    if "static" in function_signature:
+        is_static = True
+        function_signature = function_signature.replace("static", "      ")
+    return function_signature, is_static
+
 class FuzzENV():
 
     def __init__(self,  benchcfg: BenchConfig, function_signature: str, project_name: str, n_run: int, eval_flag: bool = False):
@@ -20,7 +29,8 @@ class FuzzENV():
         self.early_exit_flag = False
 
         self.project_name = project_name
-        self.function_signature = function_signature
+        # remove static keyword from function signature
+        self.function_signature, self.is_static = remove_static_keyword(function_signature)
         self.n_run = n_run
         # random generate a string for new project name
         random_str = ''.join(random.choices("abcdefghijklmnopqrstuvwxyz", k=16))
@@ -46,7 +56,9 @@ class FuzzENV():
         
         self.eval_flag = eval_flag
         if not self.eval_flag:
-            self.code_retriever = CodeRetriever(self.benchcfg.oss_fuzz_dir, self.project_name, self.new_project_name, self.project_lang, self.benchcfg.usage_token_limit, self.benchcfg.cache_root, self.logger)
+            self.code_retriever = CodeRetriever(self.benchcfg.oss_fuzz_dir, self.project_name, self.new_project_name, self.project_lang, 
+                                                self.benchcfg.usage_token_limit, self.benchcfg.cache_root, self.logger, 
+                                                function_signature=function_signature)
             self.harness_pairs = self.get_all_harness_fuzzer_pairs(cache=self.benchcfg.use_cache_harness_pairs)
              # set the harness pairs in code retriever
             self.code_retriever.set_harness_pairs(self.harness_pairs)
@@ -137,6 +149,8 @@ class FuzzENV():
 
         # save the function name
         with open(self.save_dir / "function.txt", 'w') as f:
+            if self.is_static:
+                f.write("static ")
             f.write(self.function_signature)
 
         self.logger.info("Function: {}".format(self.function_signature))

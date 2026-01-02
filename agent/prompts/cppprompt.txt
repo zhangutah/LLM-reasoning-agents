@@ -5,7 +5,6 @@ Tool Infromation:
 
 
 Constraints:
-- For static function, include the .c/.cc/.cpp file.
 - The fuzzer entry point is: extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size)
 - Try to identify and call the proper initialization function first. Avoid casting raw input data directly to structs (e.g., (MyStruct *)data) unless no initialization API exists.
 - Perform one-time initialization using static local variables

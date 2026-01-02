@@ -36,7 +36,8 @@ class CodeRetriever():
     '''
 
     def __init__(self, oss_fuzz_dir: Path, project_name: str, new_project_name: str, 
-                 project_lang: LanguageType, usage_token_limit: int, cache_dir: Path, logger: logging.Logger):
+                 project_lang: LanguageType, usage_token_limit: int, cache_dir: Path, 
+                 logger: logging.Logger, function_signature: str = ""):
 
         self.oss_fuzz_dir = oss_fuzz_dir
         self.project_name = project_name
@@ -45,6 +46,8 @@ class CodeRetriever():
         self.usage_token_limit = usage_token_limit
         self.cache_dir = cache_dir
         self.logger = logger
+        self.function_name = extract_name(function_signature, keep_namespace=False, language=project_lang) if function_signature else ""
+
         self.docker_tool = DockerUtils(self.oss_fuzz_dir, self.project_name, self.new_project_name, self.project_lang)
         # Start and keep the container running
         for _ in range(3):
@@ -192,6 +195,15 @@ class CodeRetriever():
         if "sed: " in result:
             self.logger.warning(result)
             return f"There is no such file {file_path} in the project."
+        
+        # Mask static for target function
+        if self.function_name:
+             lines = result.splitlines()
+             for idx, line in enumerate(lines):
+                 if "static" in line and (self.function_name in line):
+                      lines[idx] = line.replace("static", "      ")
+             result = "\n".join(lines)
+
         if num_flag:
             # add line number to each line
             return add_lineno_to_code(result, start_lineno=start_line)
@@ -537,6 +549,17 @@ class CodeRetriever():
             ret_str += "start line: {}\n".format(start_line+1)  # line number is 0-indexed
             # limit the source code length to 50 lines
             all_src = defi["source_code"].splitlines()
+            
+            # remove static keyword to avoid confusing the LLM
+            # Only if this is the target function 
+            if self.function_name and (self.function_name in symbol_name):
+                 # We only replace static in the first few lines (declaration part)
+                 # and only if it contains the function name (heuristic)
+                 for idx, line in enumerate(all_src):
+                     if idx > 5: break # assume signature is within first 5 lines
+                     if "static" in line:
+                         all_src[idx] = line.replace("static", "      ")
+
             limited_src = "\n".join(all_src[:50])  # Limit to first 50 lines
             if start_line != 0:
                 ret_str +=  "source_code: \n{}\n".format(add_lineno_to_code(limited_src, start_lineno=start_line+1))

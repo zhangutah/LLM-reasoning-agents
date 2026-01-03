@@ -1,8 +1,10 @@
 import time
+from agent_tools.code_retriever import CodeRetriever
+from bench_cfg import LanguageType
 from utils.oss_fuzz_utils import OSSFuzzUtils
 from utils.docker_utils import DockerUtils
-from constants import CompileResults
-from utils.misc import save_code_to_file, remove_color_characters, kill_process
+from constants import CompileResults, LSPFunction
+from utils.misc import extract_name, save_code_to_file, remove_color_characters, kill_process
 import subprocess as sp
 import os
 import shutil
@@ -12,12 +14,16 @@ import random
 
 class Compiler():
 
-    def __init__(self, oss_fuzz_dir: Path, benchmark_dir: Path, project_name: str, new_project_name: str, include_path: Optional[set[str]]=None):
+    def __init__(self, oss_fuzz_dir: Path, benchmark_dir: Path, project_name: str,
+                  new_project_name: str, include_path: Optional[set[str]]=None, 
+                  code_retriever: Optional[CodeRetriever]=None, function_signature: str="") -> None:
 
         self.oss_fuzz_dir = oss_fuzz_dir
         self.project_name = project_name
         self.new_project_name = new_project_name
-       
+        self.code_retriever = code_retriever
+        self.function_signature = function_signature
+        
         self.oss_tool = OSSFuzzUtils(oss_fuzz_dir, benchmark_dir, project_name, new_project_name)
         self.project_lang =  self.oss_tool.get_project_language()
         self.docker_tool = DockerUtils(oss_fuzz_dir, project_name, new_project_name, self.project_lang)
@@ -29,6 +35,78 @@ class Compiler():
         self.build_image_cmd =  self.oss_tool.get_script_cmd("build_image")
         self.include_path: set[str] = include_path if include_path else set()
 
+    def _handle_static_function(self) -> Optional[str]:
+       
+        if self.code_retriever is None:
+            return None
+        
+        if not self.function_signature:
+            return None
+            
+        func_name = extract_name(self.function_signature, keep_namespace=True, language=self.project_lang)
+        
+        # get definition
+        defs = self.code_retriever.get_symbol_info(func_name, LSPFunction.Definition)
+        if not defs:
+            return None
+        
+        target_def = defs[0]
+        file_path = target_def.get("file_path", "")
+        
+        # It is static.
+        
+        # Read the full file content
+        full_content = self.code_retriever.docker_tool.exec_in_container(self.code_retriever.container_id, f"cat {file_path}")
+        
+        if "No such file or directory" in full_content:
+             return None
+
+        lines = full_content.splitlines()
+
+        length = len(lines)
+        counts = 0
+        static_flag = False
+        # Find and modify the line containing the function definition
+        for i, line in enumerate(lines[::-1]):
+            
+            # same line
+            if f"{func_name}(" in line and  "static" in line:
+                # Remove the 'static' keyword
+                modified_line = line.replace("static", "  ")
+                lines[length-i-1] = modified_line
+                counts += 1
+                if counts == 2:
+                    break  
+                continue
+
+            if f"{func_name}(" in line:
+                static_flag = True
+                continue
+
+            # not a declaration line or definition line, no need to continue
+            if ";" in line:
+                static_flag = False
+
+            # next lines
+            if static_flag and "static" in line:
+                # check previous lines until finding static or hitting a non-declaration line 
+                modified_line = line.replace("static", "  ")
+                lines[length-i-1] = modified_line
+                # self.logger.info(f"Modified line {length-i-1} in {file_path}: {modified_line}")
+                counts += 1
+            
+                # Assuming only two occurrence needs to be modified
+                if counts == 2:
+                    break  
+        
+        modified_content = "\n".join(lines)
+        
+        # Save modified file
+        modified_filename = Path(file_path).name
+        local_modified_path = self.oss_fuzz_dir / "projects" / self.new_project_name / modified_filename
+        save_code_to_file(modified_content, local_modified_path)
+        
+        return f"COPY {modified_filename} {file_path}"
 
     def write_dockerfile(self, harness_code: str, harness_path: Path, cmd: Optional[str]=None) -> None:
         '''Copy the harness file to overwrite all existing harness files'''
@@ -87,13 +165,15 @@ class Compiler():
         with open(build_script_path, 'w') as f:
             f.writelines('\n'.join(all_lines))
         
-    def compile_harness(self,  harness_code: str, harness_path: Path, fuzzer_name: str, cmd: Optional[str]=None) -> tuple[CompileResults, str]:
+    def compile_harness(self,  harness_code: str, harness_path: Path, fuzzer_name: str) -> tuple[CompileResults, str]:
         '''Compile the generated harness code'''
 
         # Run build.sh. There are two possible outcomes:
         # 1. The code compiles successfully. 
         # 3. The code compiles but has a compile error. The code should be fixed.
-
+        cmd: Optional[str] = None
+        if self.code_retriever and self.project_lang in [LanguageType.C, LanguageType.CPP]:
+            cmd = self._handle_static_function()
         # write the dockerfile
         self.write_dockerfile(harness_code, harness_path, cmd)
         self.write_build_script()

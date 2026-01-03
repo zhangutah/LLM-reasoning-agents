@@ -4,6 +4,7 @@ from math import ceil
 from agent_tools.fuzz_tools.run_fuzzer import FuzzerRunner
 from agent_tools.fuzz_tools.compiler import Compiler
 from agent.modules.fuzzenv import FuzzENV
+from agent.modules.compilation import CompilerWraper
 from bench_cfg import BenchConfig
 from pathlib import Path
 from constants import CompileResults, ValResult, PROJECT_PATH
@@ -16,7 +17,8 @@ from utils.misc import extract_fuzzer_name
 
 class HarnessEval(FuzzENV):
     def __init__(self,  benchcfg: BenchConfig, function_signature: str, project_name: str, local_harness: Path, n_run: int=1):
-        super().__init__(benchcfg=benchcfg, function_signature=function_signature, project_name=project_name, n_run=n_run, eval_flag=True)
+        super().__init__(benchcfg=benchcfg, function_signature=function_signature, project_name=project_name, n_run=n_run,
+                          eval_flag=True)
         self.harness_code = local_harness.read_text()
 
     def eval_harness(self, fuzzer_name: str, harness_path: Path, include_path_set: set[str] = set()) -> tuple[int, int, bool]:
@@ -24,7 +26,8 @@ class HarnessEval(FuzzENV):
         :param fuzzer_name: the fuzzer name associated with the harness
         :param harness_path: the path of the harness file inside the oss-fuzz project docker image
         '''
-        compiler = Compiler(self.benchcfg.oss_fuzz_dir, self.benchcfg.benchmark_dir, self.project_name, self.new_project_name, include_path_set)
+        compiler = Compiler(self.benchcfg.oss_fuzz_dir, self.benchcfg.benchmark_dir, self.project_name,
+                             self.new_project_name, include_path_set, self.code_retriever, self.function_signature)
 
         fuzzer = FuzzerRunner(oss_fuzz_dir=self.benchcfg.oss_fuzz_dir, new_project_name=self.new_project_name,
                 project_lang=self.project_lang, run_timeout=self.benchcfg.run_time, save_dir=self.save_dir)
@@ -34,6 +37,7 @@ class HarnessEval(FuzzENV):
             self.logger.error(f"Fuzzer compilation failed: {compile_res}") if self.logger else None
             return 0, 0, False
 
+        self.logger.info(f"Start Fuzzing with {fuzzer_name} for harness at {harness_path}") if self.logger else None
         # Run the fuzzer
         fuzz_res, _, _ = fuzzer.run_fuzzing(counter=0, fuzzer_name=fuzzer_name, 
                                             ignore_crashes=self.benchcfg.ignore_crashes, no_log=self.benchcfg.no_log)
@@ -51,7 +55,7 @@ class HarnessEval(FuzzENV):
                     shutil.copy(crash_file, dest_file)
 
             
-        self.logger.info(f"Collecting coverage for {fuzzer_name}") if self.logger else None
+        self.logger.info(f"Fuzzing over. Collecting coverage for {fuzzer_name}") if self.logger else None
         corpus_dir = Path(self.save_dir) / "corpora"
         function_name = extract_name(self.function_signature, keep_namespace=True, exception_flag=False, language=self.project_lang)
         # init the cov collector
@@ -161,9 +165,9 @@ if __name__ == "__main__":
     from argparse import ArgumentParser
 
     parser  = ArgumentParser(description="Run harness evaluation in parallel.")
-    parser.add_argument("--output_path", type=str, default=f"{PROJECT_PATH}/outputs/java/gpt5-mini/agent", help="Path to the output directory containing success_functions.json")
-    parser.add_argument("--benchcfg_path", type=str, default=f"{PROJECT_PATH}/cfg/gpt5_mini/java_eval.yaml", help="Path to the benchmark configuration YAML file")
-    parser.add_argument("--n_run", type=int, default=1, help="Run number corresponding to success_functions_{n_run}.json")
+    parser.add_argument("--output_path", type=str, default=f"{PROJECT_PATH}/outputs/projects/gpt5-mini/nginx/", help="Path to the output directory containing success_functions.json")
+    parser.add_argument("--benchcfg_path", type=str, default=f"{PROJECT_PATH}/cfg/gpt5_mini/projects/nginx_eval.yaml", help="Path to the benchmark configuration YAML file")
+    parser.add_argument("--n_run", type=int, default=3, help="Run number corresponding to success_functions_{n_run}.json")
     parser.add_argument("--n_partitations", type=int, default=1, help="Total number of partitions to divide the workload into.")
     parser.add_argument("--partitation_id", type=int, default=0, help="ID of the partition to process (0-indexed).")
     args = parser.parse_args()

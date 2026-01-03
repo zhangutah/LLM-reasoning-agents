@@ -171,80 +171,6 @@ class CompilerWraper(Compiler):
             return True
         return False
 
-    def _handle_static_function(self) -> Optional[str]:
-        if not self.function_signature:
-            return None
-            
-        func_name = extract_name(self.function_signature, keep_namespace=True, language=self.project_lang)
-        
-        # get definition
-        defs = self.code_retriever.get_symbol_info(func_name, LSPFunction.Definition)
-        if not defs:
-            return None
-        
-        target_def = defs[0]
-        source_code = target_def.get("source_code", "")
-        file_path = target_def.get("file_path", "")
-        
-      
-            
-        # It is static.
-        self.logger.info(f"Detected static function {func_name} in {file_path}. Removing static keyword.")
-        
-        # Read the full file content
-        full_content = self.code_retriever.docker_tool.exec_in_container(self.code_retriever.container_id, f"cat {file_path}")
-        
-        if "No such file or directory" in full_content:
-             self.logger.error(f"Failed to read file {file_path}")
-             return None
-
-        lines = full_content.splitlines()
-
-        length = len(lines)
-        counts = 0
-        static_flag = False
-        # Find and modify the line containing the function definition
-        for i, line in enumerate(lines[::-1]):
-            
-            # same line
-            if f"{func_name}(" in line and  "static" in line:
-                # Remove the 'static' keyword
-                modified_line = line.replace("static", "  ")
-                lines[length-i-1] = modified_line
-                self.logger.info(f"Modified line {length-i-1} in {file_path}: {modified_line}")
-                counts += 1
-                if counts == 2:
-                    break  
-                continue
-
-            if f"{func_name}(" in line:
-                static_flag = True
-                continue
-
-            # not a declaration line or definition line, no need to continue
-            if ";" in line:
-                static_flag = False
-
-            # next lines
-            if static_flag and "static" in line:
-                # check previous lines until finding static or hitting a non-declaration line 
-                modified_line = line.replace("static", "  ")
-                lines[length-i-1] = modified_line
-                self.logger.info(f"Modified line {length-i-1} in {file_path}: {modified_line}")
-                counts += 1
-            
-                # Assuming only two occurrence needs to be modified
-                if counts == 2:
-                    break  
-        
-        modified_content = "\n".join(lines)
-        
-        # Save modified file
-        modified_filename = Path(file_path).name
-        local_modified_path = self.oss_fuzz_dir / "projects" / self.new_project_name / modified_filename
-        save_code_to_file(modified_content, local_modified_path)
-        
-        return f"COPY {modified_filename} {file_path}"
 
     def compile_helper(self, harness_code: str, harness_path: Path, fuzzer_name: str, fix_counter: int) -> dict[str, Any]: # type: ignore
 
@@ -254,8 +180,7 @@ class CompilerWraper(Compiler):
         # compile the harness file
         self.logger.info(f'Compile Start for draft_fix{fix_counter} using {fuzzer_name}.')
         
-        cmd = self._handle_static_function()
-        compile_res, all_msg = self.compile_harness(harness_code, harness_path, fuzzer_name, cmd=cmd)
+        compile_res, all_msg = self.compile_harness(harness_code, harness_path, fuzzer_name)
         self.logger.info(f'Compile End for draft_fix{fix_counter} using {fuzzer_name}. Res: {compile_res}')
 
         save_code_to_file(all_msg, self.save_dir / f"build_{fix_counter}.log")

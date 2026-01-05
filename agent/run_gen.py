@@ -35,6 +35,8 @@ class Runner:
                 success_data = json.load(f)
                 for proj_func in success_data.keys():
                     _, func = proj_func.split("+")
+                    # replace multiple whitespace characters with " "
+                    func = " ".join(func.split())
                     all_success_sig.append(func)
 
         return all_success_sig
@@ -48,9 +50,10 @@ class Runner:
             new_function_list: list[str] = []
            
             for func_sig in function_list:
-                if func_sig.strip() in success_func:
+                new_sig = " ".join(func_sig.split())
+                if new_sig in success_func:
                     continue
-                new_function_list.append(func_sig)
+                new_function_list.append(new_sig)
 
             function_dict[key] = new_function_list
         return function_dict
@@ -196,7 +199,7 @@ if __name__ == "__main__":
         # "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini/c_study/gpt5_mini_basic+header+definition.yaml",
         # "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini/c_study/gpt5_mini_basic+header+issta.yaml",
         # "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini/c_study/gpt5_mini_basic+header+ossfuzz.yaml"
-        "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini/projects/gpt5_mini_agent_mosquitto.yaml"
+        "/mydata/code/LLM-reasoning-agents/cfg/gpt5_mini/projects/nginx_gen.yaml"
     ]
     for config_path in cfg_list:
         runner = Runner(config_path)

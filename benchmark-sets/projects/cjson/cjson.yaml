@@ -1,0 +1,335 @@
+functions:
+- name: ''
+  params:
+  - name: value
+    type: const char *
+  - name: buffer_length
+    type: size_t
+  return_type: cJSON *
+  signature: cJSON * cJSON_ParseWithLength(const char * value, size_t buffer_length)
+- name: ''
+  params:
+  - name: value
+    type: const char *
+  - name: buffer_length
+    type: size_t
+  - name: return_parse_end
+    type: const char **
+  - name: require_null_terminated
+    type: cJSON_bool
+  return_type: cJSON *
+  signature: cJSON * cJSON_ParseWithLengthOpts(const char * value, size_t buffer_length,
+    const char ** return_parse_end, cJSON_bool require_null_terminated)
+- name: ''
+  params:
+  - name: string
+    type: unsigned char *
+  return_type: static void
+  signature: static void decode_pointer_inplace(unsigned char * string)
+- name: ''
+  params:
+  - name: object
+    type: cJSON *
+  - name: patch
+    type: const cJSON *
+  - name: case_sensitive
+    type: const cJSON_bool
+  return_type: static int
+  signature: static int apply_patch(cJSON * object, const cJSON * patch, const cJSON_bool
+    case_sensitive)
+- name: ''
+  params:
+  - name: item
+    type: const cJSON *const
+  - name: output_buffer
+    type: printbuffer *const
+  return_type: static cJSON_bool
+  signature: static cJSON_bool print_number(const cJSON *const item, printbuffer *const
+    output_buffer)
+- name: ''
+  params:
+  - name: item
+    type: cJSON *const
+  - name: input_buffer
+    type: parse_buffer *const
+  return_type: static cJSON_bool
+  signature: static cJSON_bool parse_string(cJSON *const item, parse_buffer *const
+    input_buffer)
+- name: ''
+  params:
+  - name: item
+    type: cJSON *const
+  - name: input_buffer
+    type: parse_buffer *const
+  return_type: static cJSON_bool
+  signature: static cJSON_bool parse_value(cJSON *const item, parse_buffer *const
+    input_buffer)
+- name: ''
+  params:
+  - name: item
+    type: cJSON *const
+  - name: input_buffer
+    type: parse_buffer *const
+  return_type: static cJSON_bool
+  signature: static cJSON_bool parse_array(cJSON *const item, parse_buffer *const
+    input_buffer)
+- name: ''
+  params:
+  - name: item
+    type: cJSON *const
+  - name: input_buffer
+    type: parse_buffer *const
+  return_type: static cJSON_bool
+  signature: static cJSON_bool parse_object(cJSON *const item, parse_buffer *const
+    input_buffer)
+- name: ''
+  params:
+  - name: json
+    type: char *
+  return_type: void
+  signature: void cJSON_Minify(char * json)
+- name: ''
+  params:
+  - name: object
+    type: const cJSON *const
+  - name: target
+    type: const cJSON *const
+  return_type: char *
+  signature: char * cJSONUtils_FindPointerFromObjectTo(const cJSON *const object,
+    const cJSON *const target)
+- name: ''
+  params:
+  - name: object
+    type: cJSON *const
+  - name: pointer
+    type: const char *
+  - name: case_sensitive
+    type: const cJSON_bool
+  return_type: static cJSON *
+  signature: static cJSON * get_item_from_pointer(cJSON *const object, const char
+    * pointer, const cJSON_bool case_sensitive)
+- name: ''
+  params:
+  - name: object
+    type: cJSON *
+  - name: path
+    type: const unsigned char *
+  - name: case_sensitive
+    type: const cJSON_bool
+  return_type: static cJSON *
+  signature: static cJSON * detach_path(cJSON * object, const unsigned char * path,
+    const cJSON_bool case_sensitive)
+- name: ''
+  params:
+  - name: list
+    type: cJSON *
+  - name: case_sensitive
+    type: const cJSON_bool
+  return_type: static cJSON *
+  signature: static cJSON * sort_list(cJSON * list, const cJSON_bool case_sensitive)
+- name: ''
+  params:
+  - name: a
+    type: cJSON *
+  - name: b
+    type: cJSON *
+  - name: case_sensitive
+    type: const cJSON_bool
+  return_type: static cJSON_bool
+  signature: static cJSON_bool compare_json(cJSON * a, cJSON * b, const cJSON_bool
+    case_sensitive)
+- name: ''
+  params:
+  - name: root
+    type: cJSON *const
+  - name: replacement
+    type: const cJSON
+  return_type: static void
+  signature: static void overwrite_item(cJSON *const root, const cJSON replacement)
+- name: ''
+  params:
+  - name: patches
+    type: cJSON *const
+  - name: path
+    type: const unsigned char *const
+  - name: from
+    type: cJSON *const
+  - name: to
+    type: cJSON *const
+  - name: case_sensitive
+    type: const cJSON_bool
+  return_type: static void
+  signature: static void create_patches(cJSON *const patches, const unsigned char
+    *const path, cJSON *const from, cJSON *const to, const cJSON_bool case_sensitive)
+- name: ''
+  params:
+  - name: target
+    type: cJSON *
+  - name: patch
+    type: const cJSON *const
+  - name: case_sensitive
+    type: const cJSON_bool
+  return_type: static cJSON *
+  signature: static cJSON * merge_patch(cJSON * target, const cJSON *const patch,
+    const cJSON_bool case_sensitive)
+- name: ''
+  params:
+  - name: from
+    type: cJSON *const
+  - name: to
+    type: cJSON *const
+  - name: case_sensitive
+    type: const cJSON_bool
+  return_type: static cJSON *
+  signature: static cJSON * generate_merge_patch(cJSON *const from, cJSON *const to,
+    const cJSON_bool case_sensitive)
+- name: ''
+  params:
+  - name: item
+    type: cJSON *const
+  - name: input_buffer
+    type: parse_buffer *const
+  return_type: static cJSON_bool
+  signature: static cJSON_bool parse_number(cJSON *const item, parse_buffer *const
+    input_buffer)
+- name: ''
+  params:
+  - name: p
+    type: printbuffer *const
+  - name: needed
+    type: size_t
+  return_type: static unsigned char *
+  signature: static unsigned char * ensure(printbuffer *const p, size_t needed)
+- name: ''
+  params:
+  - name: buffer
+    type: printbuffer *const
+  return_type: static void
+  signature: static void update_offset(printbuffer *const buffer)
+- name: ''
+  params:
+  - name: input_pointer
+    type: const unsigned char *const
+  - name: input_end
+    type: const unsigned char *const
+  - name: output_pointer
+    type: unsigned char **
+  return_type: static unsigned char
+  signature: static unsigned char utf16_literal_to_utf8(const unsigned char *const
+    input_pointer, const unsigned char *const input_end, unsigned char ** output_pointer)
+- name: ''
+  params:
+  - name: input
+    type: const unsigned char *const
+  - name: output_buffer
+    type: printbuffer *const
+  return_type: static cJSON_bool
+  signature: static cJSON_bool print_string_ptr(const unsigned char *const input,
+    printbuffer *const output_buffer)
+- name: ''
+  params:
+  - name: item
+    type: const cJSON *const
+  - name: output_buffer
+    type: printbuffer *const
+  return_type: static cJSON_bool
+  signature: static cJSON_bool print_value(const cJSON *const item, printbuffer *const
+    output_buffer)
+- name: ''
+  params:
+  - name: item
+    type: const cJSON *const
+  - name: output_buffer
+    type: printbuffer *const
+  return_type: static cJSON_bool
+  signature: static cJSON_bool print_object(const cJSON *const item, printbuffer *const
+    output_buffer)
+- name: ''
+  params:
+  - name: item
+    type: const cJSON *const
+  - name: format
+    type: cJSON_bool
+  - name: hooks
+    type: const internal_hooks *const
+  return_type: static unsigned char *
+  signature: static unsigned char * print(const cJSON *const item, cJSON_bool format,
+    const internal_hooks *const hooks)
+- name: ''
+  params:
+  - name: item
+    type: const cJSON *
+  - name: depth
+    type: size_t
+  - name: recurse
+    type: cJSON_bool
+  return_type: cJSON *
+  signature: cJSON * cJSON_Duplicate_rec(const cJSON * item, size_t depth, cJSON_bool
+    recurse)
+- name: ''
+  params:
+  - name: input
+    type: char **
+  - name: output
+    type: char **
+  return_type: static void
+  signature: static void minify_string(char ** input, char ** output)
+- name: ''
+  params:
+  - name: a
+    type: const cJSON *const
+  - name: b
+    type: const cJSON *const
+  - name: case_sensitive
+    type: const cJSON_bool
+  return_type: cJSON_bool
+  signature: cJSON_bool cJSON_Compare(const cJSON *const a, const cJSON *const b,
+    const cJSON_bool case_sensitive)
+- name: ''
+  params:
+  - name: object
+    type: cJSON *
+  - name: valuestring
+    type: const char *
+  return_type: char *
+  signature: char * cJSON_SetValuestring(cJSON * object, const char * valuestring)
+- name: ''
+  params:
+  - name: string
+    type: const unsigned char *const
+  return_type: static unsigned char *
+  signature: static unsigned char * cJSONUtils_strdup(const unsigned char *const string)
+- name: ''
+  params:
+  - name: name
+    type: const unsigned char *
+  - name: pointer
+    type: const unsigned char *
+  - name: case_sensitive
+    type: const cJSON_bool
+  return_type: static cJSON_bool
+  signature: static cJSON_bool compare_pointers(const unsigned char * name, const
+    unsigned char * pointer, const cJSON_bool case_sensitive)
+- name: ''
+  params:
+  - name: destination
+    type: unsigned char *
+  - name: source
+    type: const unsigned char *
+  return_type: static void
+  signature: static void encode_string_as_pointer(unsigned char * destination, const
+    unsigned char * source)
+- name: ''
+  params:
+  - name: item
+    type: const cJSON *const
+  - name: output_buffer
+    type: printbuffer *const
+  return_type: static cJSON_bool
+  signature: static cJSON_bool print_array(const cJSON *const item, printbuffer *const
+    output_buffer)
+    
+language: c
+project: cjson
+target_name: cjson_read_fuzzer 
+target_path: /src/cjson/fuzzing/cjson_read_fuzzer.c

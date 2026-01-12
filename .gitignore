@@ -165,7 +165,9 @@ results/
 **/*outputs*/
 benchmark-sets/*
 !benchmark-sets/function_0/
-!benchmark-sets/projects/cjson
+!benchmark-sets/projects/
+benchmark-sets/projects/*
+!benchmark-sets/projects/cjson/
 cache/
 cache*/
 test/

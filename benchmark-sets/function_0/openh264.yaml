@@ -1,0 +1,11 @@
+functions:
+- name: _ZN7WelsDec12CWelsDecoder18OpenDecoderThreadsEv
+  params:
+  - name: this
+    type: 'bool '
+  return_type: void
+  signature: void WelsDec::CWelsDecoder::OpenDecoderThreads()
+language: c++
+project: openh264
+target_name: decoder_fuzzer
+target_path: /src/decoder_fuzzer.cpp

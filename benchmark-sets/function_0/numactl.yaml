@@ -1,0 +1,11 @@
+functions:
+- name: numa_set_preferred_many
+  params:
+  - name: bitmask
+    type: 'bool '
+  return_type: void
+  signature: void numa_set_preferred_many(struct bitmask *)
+language: c
+project: numactl
+target_name: fuzz_parse_str
+target_path: /src/numactl/fuzz/fuzz_parse_str.c

@@ -1,0 +1,22 @@
+functions:
+- name: ZDICT_trainFromBuffer_legacy
+  params:
+  - name: dictBuffer
+    type: 'bool '
+  - name: dictBufferCapacity
+    type: size_t
+  - name: samplesBuffer
+    type: 'bool '
+  - name: samplesSizes
+    type: 'bool '
+  - name: nbSamples
+    type: int
+  - name: params
+    type: 'bool '
+  return_type: size_t
+  signature: size_t ZDICT_trainFromBuffer_legacy(void *, size_t, const void *, const
+    size_t *, unsigned int, ZDICT_legacy_params_t)
+language: c++
+project: zstd
+target_name: block_decompress
+target_path: /src/zstd/tests/fuzz/block_decompress.c

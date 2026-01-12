@@ -1,0 +1,13 @@
+functions:
+- name: TPM2_Create
+  params:
+  - name: in
+    type: 'bool '
+  - name: out
+    type: 'bool '
+  return_type: int
+  signature: TPM_RC TPM2_Create(Create_In *, Create_Out *)
+language: c++
+project: libtpms
+target_name: fuzz
+target_path: /src/libtpms/tests/fuzz.cc

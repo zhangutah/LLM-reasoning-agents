@@ -1,0 +1,18 @@
+functions:
+- name: pdf_save_document
+  params:
+  - name: ctx
+    type: 'bool '
+  - name: doc
+    type: 'bool '
+  - name: filename
+    type: 'bool '
+  - name: in_opts
+    type: 'bool '
+  return_type: void
+  signature: void pdf_save_document(fz_context *, pdf_document *, const char *, const
+    pdf_write_options *)
+language: c++
+project: mupdf
+target_name: pdf_fuzzer
+target_path: /src/pdf_fuzzer.cc

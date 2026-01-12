@@ -1,0 +1,11 @@
+functions:
+- name: _ZN11flatbuffers6Parser9SerializeEv
+  params:
+  - name: this
+    type: 'bool '
+  return_type: void
+  signature: void flatbuffers::Parser::Serialize()
+language: c++
+project: flatbuffers
+target_name: flexverifier_fuzzer
+target_path: /src/flatbuffers/tests/fuzzer/flexbuffers_verifier_fuzzer.cc

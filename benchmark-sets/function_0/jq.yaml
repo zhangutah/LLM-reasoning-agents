@@ -1,0 +1,13 @@
+functions:
+- name: jv_string_implode
+  params:
+  - name: j
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: jv jv_string_implode(jv)
+language: c
+project: jq
+target_name: jq_fuzz_load_file
+target_path: /src/jq/tests/jq_fuzz_load_file.c

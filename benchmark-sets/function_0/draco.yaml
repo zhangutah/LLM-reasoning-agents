@@ -1,0 +1,11 @@
+functions:
+- name: _ZN5draco10PointCloud26DeduplicateAttributeValuesEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool draco::PointCloud::DeduplicateAttributeValues()
+language: c++
+project: draco
+target_name: draco_mesh_decoder_without_dequantization_fuzzer
+target_path: /src/draco/src/draco/tools/fuzz/draco_mesh_decoder_without_dequantization_fuzzer.cc

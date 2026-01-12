@@ -1,0 +1,17 @@
+functions:
+- name: ptls_send
+  params:
+  - name: tls
+    type: 'bool '
+  - name: sendbuf
+    type: 'bool '
+  - name: input
+    type: 'bool '
+  - name: inlen
+    type: size_t
+  return_type: int
+  signature: int ptls_send(ptls_t *, ptls_buffer_t *, const void *, size_t)
+language: c++
+project: picotls
+target_name: fuzz-server-hello
+target_path: /src/picotls/fuzz/fuzz-server-hello.c

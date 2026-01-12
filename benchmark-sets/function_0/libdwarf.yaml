@@ -1,0 +1,24 @@
+functions:
+- name: dwarf_get_ranges_baseaddress
+  params:
+  - name: dw_dbg
+    type: 'bool '
+  - name: dw_die
+    type: 'bool '
+  - name: dw_known_base
+    type: 'bool '
+  - name: dw_baseaddress
+    type: 'bool '
+  - name: dw_at_ranges_offset_present
+    type: 'bool '
+  - name: dw_at_ranges_offset
+    type: 'bool '
+  - name: dw_error
+    type: 'bool '
+  return_type: int
+  signature: int dwarf_get_ranges_baseaddress(Dwarf_Debug, Dwarf_Die, Dwarf_Bool *,
+    Dwarf_Unsigned *, Dwarf_Bool *, Dwarf_Unsigned *, Dwarf_Error *)
+language: c
+project: libdwarf
+target_name: fuzz_crc
+target_path: /src/libdwarf/fuzz/fuzz_crc.c

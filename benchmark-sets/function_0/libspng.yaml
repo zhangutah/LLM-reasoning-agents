@@ -1,0 +1,15 @@
+functions:
+- name: spng_set_text
+  params:
+  - name: ctx
+    type: 'bool '
+  - name: text
+    type: 'bool '
+  - name: n_text
+    type: int
+  return_type: int
+  signature: int spng_set_text(spng_ctx *, struct spng_text *, uint32_t)
+language: c++
+project: libspng
+target_name: spng_write_fuzzer
+target_path: /src/libspng/tests/spng_write_fuzzer.c

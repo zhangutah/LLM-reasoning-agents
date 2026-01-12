@@ -1,0 +1,13 @@
+functions:
+- name: pn_message_data
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int pn_message_data(pn_message_t *, pn_data_t *)
+language: c++
+project: qpid-proton
+target_name: fuzz-message-decode
+target_path: /src/qpid-proton/c/tests/fuzz/fuzz-message-decode.c

@@ -1,0 +1,11 @@
+functions:
+- name: avahi_string_list_new
+  params:
+  - name: txt
+    type: 'bool '
+  return_type: void
+  signature: AvahiStringList * avahi_string_list_new(const char *, void)
+language: c++
+project: avahi
+target_name: fuzz-ini-file-parser
+target_path: /src/avahi/fuzz/fuzz-ini-file-parser.c

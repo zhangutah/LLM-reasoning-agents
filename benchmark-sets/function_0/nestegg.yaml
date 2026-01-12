@@ -1,0 +1,15 @@
+functions:
+- name: nestegg_track_seek
+  params:
+  - name: ctx
+    type: 'bool '
+  - name: track
+    type: int
+  - name: tstamp
+    type: size_t
+  return_type: int
+  signature: int nestegg_track_seek(nestegg *, unsigned int, uint64_t)
+language: c++
+project: nestegg
+target_name: fuzz
+target_path: /src/nestegg/test/fuzz.cc

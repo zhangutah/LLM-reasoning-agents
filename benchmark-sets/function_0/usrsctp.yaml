@@ -1,0 +1,18 @@
+functions:
+- name: usrsctp_connectx
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int usrsctp_connectx(struct socket *, const struct sockaddr *, int, sctp_assoc_t
+    *)
+language: c++
+project: usrsctp
+target_name: fuzzer_listen
+target_path: /src/usrsctp/fuzzer/fuzzer_listen.c

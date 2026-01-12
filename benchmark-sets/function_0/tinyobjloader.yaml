@@ -1,0 +1,29 @@
+functions:
+- name: _ZN7tinyobj7LoadObjEPNS_8attrib_tEPNSt3__16vectorINS_7shape_tENS2_9allocatorIS4_EEEEPNS3_INS_10material_tENS5_IS9_EEEEPNS2_12basic_stringIcNS2_11char_traitsIcEENS5_IcEEEESI_PKcSK_bb
+  params:
+  - name: attrib
+    type: 'bool '
+  - name: shapes
+    type: 'bool '
+  - name: materials
+    type: 'bool '
+  - name: warn
+    type: 'bool '
+  - name: err
+    type: 'bool '
+  - name: filename
+    type: 'bool '
+  - name: mtl_basedir
+    type: 'bool '
+  - name: triangulate
+    type: bool
+  - name: default_vcols_fallback
+    type: bool
+  return_type: bool
+  signature: bool tinyobj::LoadObj(struct attrib_t *, vector<tinyobj::shape_t, std::__1::allocator<tinyobj::shape_t>
+    > *, vector<tinyobj::material_t, std::__1::allocator<tinyobj::material_t> > *,
+    string *, string *, const char *, const char *, bool, bool)
+language: c++
+project: tinyobjloader
+target_name: fuzz_ParseFromString
+target_path: /src/tinyobjloader/fuzzer/fuzz_ParseFromString.cc

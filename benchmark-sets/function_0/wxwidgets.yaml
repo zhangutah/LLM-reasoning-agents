@@ -1,0 +1,11 @@
+functions:
+- name: _ZN14wxPlatformInfo22InitForCurrentPlatformEv
+  params:
+  - name: this
+    type: 'bool '
+  return_type: void
+  signature: void wxPlatformInfo::InitForCurrentPlatform()
+language: c++
+project: wxwidgets
+target_name: zip
+target_path: /src/wxwidgets/tests/fuzz/zip.cpp

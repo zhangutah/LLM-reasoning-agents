@@ -1,0 +1,11 @@
+functions:
+- name: start_timer_extra_processes
+  params:
+  - name: chd_rank
+    type: 'bool '
+  return_type: int
+  signature: int start_timer_extra_processes(int *)
+language: c
+project: opensips
+target_name: fuzz_csv_parser
+target_path: /src/opensips/parser/fuzz_csv_parser.c

@@ -1,0 +1,11 @@
+functions:
+- name: _ZN3grk20CodeStreamDecompress15decompressTilesEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool grk::CodeStreamDecompress::decompressTiles()
+language: c++
+project: grok
+target_name: grk_decompress_fuzzer
+target_path: /src/grok/tests/fuzzers/grk_decompress_fuzzer.cpp

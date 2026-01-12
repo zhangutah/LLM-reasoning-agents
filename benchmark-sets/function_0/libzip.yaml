@@ -1,0 +1,18 @@
+functions:
+- name: zip_source_window_create
+  params:
+  - name: src
+    type: 'bool '
+  - name: start
+    type: size_t
+  - name: len
+    type: size_t
+  - name: error
+    type: 'bool '
+  return_type: void
+  signature: zip_source_t * zip_source_window_create(zip_source_t *, zip_uint64_t,
+    zip_int64_t, zip_error_t *)
+language: c++
+project: libzip
+target_name: zip_write_encrypt_pkware_file_fuzzer
+target_path: /src/libzip/ossfuzz/zip_write_encrypt_pkware_file_fuzzer.c

@@ -1,0 +1,13 @@
+functions:
+- name: mg_send_file_body
+  params:
+  - name: conn
+    type: 'bool '
+  - name: path
+    type: 'bool '
+  return_type: int
+  signature: int mg_send_file_body(struct mg_connection *, const char *)
+language: c
+project: civetweb
+target_name: civetweb_fuzz3
+target_path: /src/civetweb/fuzztest/fuzzmain.c

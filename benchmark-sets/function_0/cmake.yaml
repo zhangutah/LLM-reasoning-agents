@@ -1,0 +1,16 @@
+functions:
+- name: XML_ExternalEntityParserCreate
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: XML_Parser XML_ExternalEntityParserCreate(XML_Parser, const XML_Char
+    *, const XML_Char *)
+language: c
+project: cmake
+target_name: xml_parser_fuzzer
+target_path: /src/CMake/Tests/Fuzzing/xml_parser_fuzzer.cc

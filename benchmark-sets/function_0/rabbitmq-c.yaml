@@ -1,0 +1,15 @@
+functions:
+- name: amqp_connection_close
+  params:
+  - name: state
+    type: 'bool '
+  - name: code
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: amqp_rpc_reply_t amqp_connection_close(amqp_connection_state_t, int)
+language: c
+project: rabbitmq-c
+target_name: fuzz_url
+target_path: /src/librabbitmq/fuzz/fuzz_url.c

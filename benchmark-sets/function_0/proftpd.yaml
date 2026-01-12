@@ -1,0 +1,15 @@
+functions:
+- name: core_chmod
+  params:
+  - name: cmd
+    type: 'bool '
+  - name: path
+    type: 'bool '
+  - name: mode
+    type: int
+  return_type: int
+  signature: int core_chmod(cmd_rec *, const char *, mode_t)
+language: c
+project: proftpd
+target_name: fuzzer
+target_path: /src/fuzzer.c

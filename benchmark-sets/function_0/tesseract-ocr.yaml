@@ -1,0 +1,13 @@
+functions:
+- name: _ZN9tesseract19TessBoxTextRenderer15AddImageHandlerEPNS_11TessBaseAPIE
+  params:
+  - name: this
+    type: 'bool '
+  - name: api
+    type: 'bool '
+  return_type: bool
+  signature: bool tesseract::TessBoxTextRenderer::AddImageHandler(TessBaseAPI *)
+language: c++
+project: tesseract-ocr
+target_name: fuzzer-api
+target_path: /src/tesseract/unittest/fuzzers/fuzzer-api.cpp

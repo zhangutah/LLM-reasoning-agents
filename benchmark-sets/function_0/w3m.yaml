@@ -1,0 +1,13 @@
+functions:
+- name: Stralign_left
+  params:
+  - name: s
+    type: 'bool '
+  - name: width
+    type: int
+  return_type: void
+  signature: Str Stralign_left(Str, int)
+language: c
+project: w3m
+target_name: fuzz_conv
+target_path: /src/w3m/fuzz/fuzz-conv.c

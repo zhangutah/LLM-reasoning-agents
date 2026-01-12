@@ -1,0 +1,13 @@
+functions:
+- name: pcap_findalldevs
+  params:
+  - name: alldevsp
+    type: 'bool '
+  - name: errbuf
+    type: 'bool '
+  return_type: int
+  signature: int pcap_findalldevs(pcap_if_t **, char *)
+language: c++
+project: libpcap
+target_name: fuzz_filter
+target_path: /src/libpcap/testprogs/fuzz/fuzz_filter.c

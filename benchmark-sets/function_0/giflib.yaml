@@ -1,0 +1,13 @@
+functions:
+- name: _ZN14gifProtoFuzzer8GifProto9MergeFromERKS0_
+  params:
+  - name: this
+    type: 'bool '
+  - name: from
+    type: 'bool '
+  return_type: void
+  signature: void gifProtoFuzzer::GifProto::MergeFrom(const GifProto &)
+language: c++
+project: giflib
+target_name: egif_target
+target_path: /src/egif_target.cc

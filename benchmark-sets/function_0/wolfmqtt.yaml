@@ -1,0 +1,15 @@
+functions:
+- name: MqttClient_Publish_ex
+  params:
+  - name: client
+    type: 'bool '
+  - name: publish
+    type: 'bool '
+  - name: pubCb
+    type: 'bool '
+  return_type: int
+  signature: int MqttClient_Publish_ex(MqttClient *, MqttPublish *, MqttPublishCb)
+language: c
+project: wolfmqtt
+target_name: wolfmqtt-fuzzer
+target_path: /src/wolfmqtt-fuzzers/fuzzer.cpp

@@ -1,0 +1,14 @@
+functions:
+- name: flb_config_load_config_format
+  params:
+  - name: config
+    type: 'bool '
+  - name: cf
+    type: 'bool '
+  return_type: int
+  signature: int flb_config_load_config_format(struct flb_config *, struct flb_cf
+    *)
+language: c++
+project: fluent-bit
+target_name: flb-it-fuzz-ctrace_fuzzer_OSSFUZZ
+target_path: /src/fluent-bit/tests/internal/fuzzers/ctrace_fuzzer.c

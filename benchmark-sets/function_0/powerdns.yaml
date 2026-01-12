@@ -1,0 +1,13 @@
+functions:
+- name: _ZNK6YaHTTP8HTTPBase5writeERNSt3__113basic_ostreamIcNS1_11char_traitsIcEEEE
+  params:
+  - name: this
+    type: 'bool '
+  - name: os
+    type: 'bool '
+  return_type: void
+  signature: void YaHTTP::HTTPBase::write(ostream &)
+language: c++
+project: powerdns
+target_name: fuzz_target_proxyprotocol
+target_path: /src/pdns/pdns/fuzz_proxyprotocol.cc

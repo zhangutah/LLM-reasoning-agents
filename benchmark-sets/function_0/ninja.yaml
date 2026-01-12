@@ -1,0 +1,18 @@
+functions:
+- name: _ZN14DependencyScan14RecomputeDirtyEP4NodePNSt3__16vectorIS1_NS2_9allocatorIS1_EEEEPNS2_12basic_stringIcNS2_11char_traitsIcEENS4_IcEEEE
+  params:
+  - name: this
+    type: 'bool '
+  - name: initial_node
+    type: 'bool '
+  - name: validation_nodes
+    type: 'bool '
+  - name: err
+    type: 'bool '
+  return_type: bool
+  signature: bool DependencyScan::RecomputeDirty(struct DependencyScan *, struct Node
+    *, vector<Node *, std::__1::allocator<Node *> > *, string *)
+language: c++
+project: ninja
+target_name: fuzzer
+target_path: /src/ninja/misc/manifest_fuzzer.cc

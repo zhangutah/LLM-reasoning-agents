@@ -1,0 +1,13 @@
+functions:
+- name: iterInitRes
+  params:
+  - name: res
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: IterCellsResolution iterInitRes(int)
+language: c
+project: h3
+target_name: fuzzerInternalCoordIjk
+target_path: /src/h3/src/apps/fuzzers/fuzzerInternalCoordIjk.c

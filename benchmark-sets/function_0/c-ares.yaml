@@ -1,0 +1,22 @@
+functions:
+- name: ares_gethostbyaddr
+  params:
+  - name: channel
+    type: 'bool '
+  - name: addr
+    type: 'bool '
+  - name: addrlen
+    type: int
+  - name: family
+    type: int
+  - name: callback
+    type: 'bool '
+  - name: arg
+    type: 'bool '
+  return_type: void
+  signature: void ares_gethostbyaddr(ares_channel_t *, const void *, int, int, ares_host_callback,
+    void *)
+language: c++
+project: c-ares
+target_name: ares_parse_reply_fuzzer
+target_path: /src/c-ares/test/ares-test-fuzz.c

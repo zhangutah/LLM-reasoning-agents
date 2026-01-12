@@ -1,0 +1,11 @@
+functions:
+- name: client_auto_reconnect
+  params:
+  - name: instance
+    type: 'bool '
+  return_type: int
+  signature: BOOL client_auto_reconnect(freerdp *)
+language: c
+project: freerdp
+target_name: TestFuzzCryptoCertificateDataSetPEM
+target_path: /src/FreeRDP/libfreerdp/core/test/TestFuzzCryptoCertificateDataSetPEM.c

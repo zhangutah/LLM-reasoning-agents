@@ -1,0 +1,24 @@
+functions:
+- name: pjsip_endpt_send_raw_to_uri
+  params:
+  - name: endpt
+    type: 'bool '
+  - name: p_dst_uri
+    type: 'bool '
+  - name: sel
+    type: 'bool '
+  - name: raw_data
+    type: 'bool '
+  - name: data_len
+    type: size_t
+  - name: token
+    type: 'bool '
+  - name: cb
+    type: 'bool '
+  return_type: int
+  signature: pj_status_t pjsip_endpt_send_raw_to_uri(pjsip_endpoint *, const pj_str_t
+    *, const pjsip_tpselector *, const void *, pj_size_t, void *, pjsip_tp_send_callback)
+language: c
+project: pjsip
+target_name: fuzz-vpx
+target_path: /src/pjsip/tests/fuzz/fuzz-vpx.c

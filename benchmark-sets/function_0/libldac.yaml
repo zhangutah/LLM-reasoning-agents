@@ -1,0 +1,13 @@
+functions:
+- name: ldacBT_set_eqmid
+  params:
+  - name: hLdacBT
+    type: 'bool '
+  - name: eqmid
+    type: int
+  return_type: int
+  signature: int ldacBT_set_eqmid(HANDLE_LDAC_BT, int)
+language: c++
+project: libldac
+target_name: libldac_encode_fuzzer
+target_path: /src/libldac_encode_fuzzer.cc

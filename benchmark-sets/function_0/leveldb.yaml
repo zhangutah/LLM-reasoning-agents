@@ -1,0 +1,11 @@
+functions:
+- name: _ZN7leveldb6DBImpl24TEST_NewInternalIteratorEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Iterator * leveldb::DBImpl::TEST_NewInternalIterator()
+language: c++
+project: leveldb
+target_name: fuzz_db
+target_path: /src/leveldb/fuzz_db.cc

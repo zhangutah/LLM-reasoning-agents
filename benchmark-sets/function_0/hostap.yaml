@@ -1,0 +1,11 @@
+functions:
+- name: wpa_supplicant_deinit
+  params:
+  - name: global
+    type: 'bool '
+  return_type: void
+  signature: void wpa_supplicant_deinit(struct wpa_global *)
+language: c++
+project: hostap
+target_name: json
+target_path: /src/hostap/tests/fuzzing/json/json.c

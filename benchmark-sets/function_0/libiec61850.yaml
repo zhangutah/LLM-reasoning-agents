@@ -1,0 +1,11 @@
+functions:
+- name: MmsValue_newDefaultValue
+  params:
+  - name: typeSpec
+    type: 'bool '
+  return_type: void
+  signature: MmsValue * MmsValue_newDefaultValue(const MmsVariableSpecification *)
+language: c
+project: libiec61850
+target_name: fuzz_mms_decode
+target_path: /src/libiec61850/fuzz/fuzz_mms_decode.c

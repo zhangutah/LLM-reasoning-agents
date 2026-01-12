@@ -1,0 +1,18 @@
+functions:
+- name: yajl_render_error_string
+  params:
+  - name: hand
+    type: 'bool '
+  - name: jsonText
+    type: 'bool '
+  - name: jsonTextLen
+    type: int
+  - name: verbose
+    type: int
+  return_type: void
+  signature: unsigned char * yajl_render_error_string(yajl_handle, const unsigned
+    char *, unsigned int, int)
+language: c++
+project: yajl-ruby
+target_name: json_fuzzer
+target_path: /src/yajl-ruby/fuzz/json_fuzzer.c

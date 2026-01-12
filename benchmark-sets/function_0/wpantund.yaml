@@ -1,0 +1,11 @@
+functions:
+- name: _ZN19TunnelIPv6Interface16processNetlinkFDEv
+  params:
+  - name: this
+    type: 'bool '
+  return_type: void
+  signature: void TunnelIPv6Interface::processNetlinkFD()
+language: c++
+project: wpantund
+target_name: wpantund-fuzz
+target_path: /src/wpantund/src/wpantund/wpantund-fuzz.cpp

@@ -1,0 +1,14 @@
+functions:
+- name: ZydisFormatterBufferGetString
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: ZyanStatus ZydisFormatterBufferGetString(ZydisFormatterBuffer *, ZyanString
+    **)
+language: c
+project: zydis
+target_name: ZydisFuzzReEncoding
+target_path: /src/zydis/tools/ZydisFuzzShared.c

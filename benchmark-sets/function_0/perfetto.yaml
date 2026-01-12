@@ -1,0 +1,13 @@
+functions:
+- name: _ZNK8perfetto6protos3gen11TracePacket16SerializeAsArrayEv
+  params:
+  - name: this
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: vector<unsigned char, std::__1::allocator<unsigned char> > perfetto::protos::gen::TracePacket::SerializeAsArray()
+language: c++
+project: perfetto
+target_name: shared_ring_buffer_write_fuzzer
+target_path: /src/perfetto/src/profiling/memory/shared_ring_buffer_write_fuzzer.cc

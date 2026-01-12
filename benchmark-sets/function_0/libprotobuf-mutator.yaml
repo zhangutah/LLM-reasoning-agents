@@ -1,0 +1,16 @@
+functions:
+- name: xmlTextReaderRelaxNGValidateCtxt
+  params:
+  - name: reader
+    type: 'bool '
+  - name: ctxt
+    type: 'bool '
+  - name: options
+    type: int
+  return_type: int
+  signature: int xmlTextReaderRelaxNGValidateCtxt(xmlTextReaderPtr, xmlRelaxNGValidCtxtPtr,
+    int)
+language: c++
+project: libprotobuf-mutator
+target_name: expat_example
+target_path: /src/libprotobuf-mutator/examples/expat/expat_example.cc

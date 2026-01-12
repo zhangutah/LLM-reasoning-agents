@@ -1,0 +1,11 @@
+functions:
+- name: tmp_dir
+  params:
+  - name: ret
+    type: 'bool '
+  return_type: int
+  signature: int tmp_dir(const char **)
+language: c++
+project: casync
+target_name: fuzz-compress
+target_path: /src/casync/test/fuzz/fuzz-compress.c

@@ -1,0 +1,35 @@
+functions:
+- name: mz_zip_writer_add_cfile
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: short
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: int
+  signature: mz_bool mz_zip_writer_add_cfile(mz_zip_archive *, const char *, FILE
+    *, mz_uint64, const time_t *, const void *, mz_uint16, mz_uint, const char *,
+    mz_uint, const char *, mz_uint)
+language: c
+project: miniz
+target_name: checksum_fuzzer
+target_path: /src/miniz/tests/checksum_fuzzer.c

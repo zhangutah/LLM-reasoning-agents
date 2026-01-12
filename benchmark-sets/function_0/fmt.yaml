@@ -1,0 +1,15 @@
+functions:
+- name: _ZN3fmt3v116detail5printEP8_IO_FILENS0_17basic_string_viewIcEE
+  params:
+  - name: f
+    type: 'bool '
+  - name: text
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void fmt::v11::detail::print(FILE *, string_view)
+language: c++
+project: fmt
+target_name: float-fuzzer
+target_path: /src/fmt/test/fuzzing/float.cc

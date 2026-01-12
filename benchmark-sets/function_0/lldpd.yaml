@@ -1,0 +1,11 @@
+functions:
+- name: netlink_get_interfaces
+  params:
+  - name: cfg
+    type: 'bool '
+  return_type: void
+  signature: struct interfaces_device_list * netlink_get_interfaces(struct lldpd *)
+language: c
+project: lldpd
+target_name: fuzz_sonmp
+target_path: /src/lldpd/tests/fuzz_sonmp.c

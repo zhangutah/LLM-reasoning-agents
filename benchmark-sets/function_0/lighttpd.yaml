@@ -1,0 +1,13 @@
+functions:
+- name: buffer_append_int
+  params:
+  - name: b
+    type: 'bool '
+  - name: val
+    type: size_t
+  return_type: void
+  signature: void buffer_append_int(buffer *, intmax_t)
+language: c
+project: lighttpd
+target_name: fuzz_burl
+target_path: /src/fuzz_burl.c

@@ -1,0 +1,18 @@
+functions:
+- name: proj_get_suggested_operation
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: coord
+    type: 'bool '
+  return_type: int
+  signature: int proj_get_suggested_operation(PJ_CONTEXT *, PJ_OBJ_LIST *, PJ_DIRECTION,
+    PJ_COORD)
+language: c++
+project: proj4
+target_name: proj_crs_to_crs_fuzzer
+target_path: /src/PROJ/test/fuzzers/proj_crs_to_crs_fuzzer.cpp

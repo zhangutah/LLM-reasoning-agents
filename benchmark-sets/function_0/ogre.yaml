@@ -1,0 +1,20 @@
+functions:
+- name: _ZN4Ogre12TerrainGroup17loadLegacyTerrainERKNS_10ConfigFileEllb
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: size_t
+  - name: ''
+    type: bool
+  return_type: void
+  signature: void Ogre::TerrainGroup::loadLegacyTerrain(const ConfigFile &, long,
+    long, bool)
+language: c++
+project: ogre
+target_name: stream_fuzz
+target_path: /src/stream_fuzz.cpp

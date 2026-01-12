@@ -1,0 +1,13 @@
+functions:
+- name: _ZN6snappy26UncompressAsMuchAsPossibleEPNS_6SourceEPNS_4SinkE
+  params:
+  - name: compressed
+    type: 'bool '
+  - name: uncompressed
+    type: 'bool '
+  return_type: size_t
+  signature: size_t snappy::UncompressAsMuchAsPossible(Source *, Sink *)
+language: c++
+project: snappy
+target_name: snappy_uncompress_fuzzer
+target_path: /src/snappy/snappy_uncompress_fuzzer.cc

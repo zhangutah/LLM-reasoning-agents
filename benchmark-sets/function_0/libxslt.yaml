@@ -1,0 +1,17 @@
+functions:
+- name: xmlReadDoc
+  params:
+  - name: cur
+    type: 'bool '
+  - name: URL
+    type: 'bool '
+  - name: encoding
+    type: 'bool '
+  - name: options
+    type: int
+  return_type: void
+  signature: xmlDocPtr xmlReadDoc(const xmlChar *, const char *, const char *, int)
+language: c++
+project: libxslt
+target_name: xpath
+target_path: /src/libxslt/tests/fuzz/xpath.c

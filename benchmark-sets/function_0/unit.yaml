@@ -1,0 +1,13 @@
+functions:
+- name: nxt_process_start
+  params:
+  - name: task
+    type: 'bool '
+  - name: process
+    type: 'bool '
+  return_type: int
+  signature: nxt_int_t nxt_process_start(nxt_task_t *, nxt_process_t *)
+language: c
+project: unit
+target_name: fuzz_http_controller
+target_path: /src/unit/fuzzing/nxt_http_controller_fuzz.c

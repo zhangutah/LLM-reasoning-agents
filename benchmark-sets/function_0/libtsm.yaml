@@ -1,0 +1,13 @@
+functions:
+- name: tsm_vte_set_palette
+  params:
+  - name: vte
+    type: 'bool '
+  - name: palette
+    type: 'bool '
+  return_type: int
+  signature: int tsm_vte_set_palette(struct tsm_vte *, const char *)
+language: c++
+project: libtsm
+target_name: libtsm_fuzzer
+target_path: /src/libtsm_fuzzer.c

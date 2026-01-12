@@ -1,0 +1,11 @@
+functions:
+- name: rfbStartOnHoldClient
+  params:
+  - name: cl
+    type: 'bool '
+  return_type: void
+  signature: void rfbStartOnHoldClient(rfbClientPtr)
+language: c++
+project: libvnc
+target_name: fuzz_server
+target_path: /src/libvncserver/test/fuzz_server.c

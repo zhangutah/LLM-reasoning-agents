@@ -1,0 +1,13 @@
+functions:
+- name: xmlTextReaderRelaxNGValidate
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int xmlTextReaderRelaxNGValidate(xmlTextReaderPtr, const char *)
+language: c
+project: igraph
+target_name: read_graphdb
+target_path: /src/igraph/fuzzing/read_graphdb.cpp

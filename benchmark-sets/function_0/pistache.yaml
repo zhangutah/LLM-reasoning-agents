@@ -1,0 +1,16 @@
+functions:
+- name: _ZN8Pistache4Rest7Private13RouterHandler9onRequestERKNS_4Http7RequestENS3_14ResponseWriterE
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void Pistache::Rest::Private::RouterHandler::onRequest(const Request
+    &, ResponseWriter)
+language: c++
+project: pistache
+target_name: fuzz_parsers
+target_path: /src/pistache/tests/fuzzers/fuzz_parser.cpp

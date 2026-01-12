@@ -1,0 +1,11 @@
+functions:
+- name: libssh2_channel_forward_cancel
+  params:
+  - name: listener
+    type: 'bool '
+  return_type: int
+  signature: int libssh2_channel_forward_cancel(LIBSSH2_LISTENER *)
+language: c++
+project: libssh2
+target_name: ssh2_client_fuzzer
+target_path: /src/libssh2/tests/ossfuzz/ssh2_client_fuzzer.cc

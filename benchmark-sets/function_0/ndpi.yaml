@@ -1,0 +1,15 @@
+functions:
+- name: kd_nearest_range
+  params:
+  - name: kd
+    type: 'bool '
+  - name: pos
+    type: 'bool '
+  - name: range
+    type: double
+  return_type: void
+  signature: struct kdres * kd_nearest_range(struct kdtree *, const double *, double)
+language: c++
+project: ndpi
+target_name: fuzz_gcrypt_gcm
+target_path: /src/ndpi/fuzz/fuzz_gcrypt_gcm.cpp

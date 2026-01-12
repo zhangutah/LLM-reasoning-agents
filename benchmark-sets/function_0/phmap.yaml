@@ -1,0 +1,13 @@
+functions:
+- name: _ZN5phmap4priv37ConvertDeletedToEmptyAndFullToDeletedEPam
+  params:
+  - name: ctrl
+    type: 'bool '
+  - name: capacity
+    type: size_t
+  return_type: void
+  signature: void phmap::priv::ConvertDeletedToEmptyAndFullToDeleted(ctrl_t *, size_t)
+language: c++
+project: phmap
+target_name: phashmap_fuzz
+target_path: /src/phashmap_fuzz.cc

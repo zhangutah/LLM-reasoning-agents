@@ -1,0 +1,20 @@
+functions:
+- name: aacEncEncode
+  params:
+  - name: hAacEncoder
+    type: 'bool '
+  - name: inBufDesc
+    type: 'bool '
+  - name: outBufDesc
+    type: 'bool '
+  - name: inargs
+    type: 'bool '
+  - name: outargs
+    type: 'bool '
+  return_type: int
+  signature: AACENC_ERROR aacEncEncode(const HANDLE_AACENCODER, const AACENC_BufDesc
+    *, const AACENC_BufDesc *, const AACENC_InArgs *, AACENC_OutArgs *)
+language: c++
+project: libfdk-aac
+target_name: aacDecoder_Open
+target_path: /src/aacDecoder_Open.cpp

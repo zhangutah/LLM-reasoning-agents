@@ -1,0 +1,13 @@
+functions:
+- name: _ZN4crow10HTTPParserINS_10ConnectionINS_13SocketAdaptorENS_4CrowIJEEEJEEEE11process_urlEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void crow::HTTPParser<crow::Connection<crow::SocketAdaptor, crow::Crow<>>
+    >::process_url(struct HTTPParser<crow::Connection<crow::SocketAdaptor, crow::Crow<>
+    > > *)
+language: c++
+project: crow
+target_name: b64_fuzzer
+target_path: /src/crow/tests/fuzz/b64_fuzzer.cpp

@@ -1,0 +1,12 @@
+functions:
+- name: _ZNK2pw6VectorIKSt4byteLm18446744073709551615EE4dataEv
+  params:
+  - name: this
+    type: 'bool '
+  return_type: void
+  signature: const unsigned long * pw::Vector<std::byte const, 18446744073709551615ul>::data(const
+    Vector<const unsigned long, 18446744073709551615UL> *)
+language: c++
+project: pigweed
+target_name: get_int_bounded_fuzzer
+target_path: /src/pigweed/pw_random/get_int_bounded_fuzzer.cc

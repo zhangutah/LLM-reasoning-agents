@@ -1,0 +1,11 @@
+functions:
+- name: YGNodeReset
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void YGNodeReset(YGNodeRef)
+language: c++
+project: yoga
+target_name: fuzz_layout
+target_path: /src/yoga/fuzz/FuzzLayout.cpp

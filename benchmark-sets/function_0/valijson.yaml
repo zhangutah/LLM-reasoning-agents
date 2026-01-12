@@ -1,0 +1,19 @@
+functions:
+- name: _ZNK8valijson11constraints15BasicConstraintINS0_14EnumConstraintEE5cloneEPFPvmEPFvS4_E
+  params:
+  - name: this
+    type: 'bool '
+  - name: allocFn
+    type: 'bool '
+  - name: freeFn
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: OwningPointer valijson::constraints::BasicConstraint<valijson::constraints::EnumConstraint>::clone(const
+    struct BasicConstraint<valijson::constraints::TypeConstraint> *, CustomAlloc,
+    CustomFree)
+language: c++
+project: valijson
+target_name: fuzzer
+target_path: /src/valijson/tests/fuzzing/fuzzer.cpp

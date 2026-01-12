@@ -1,0 +1,13 @@
+functions:
+- name: H5D__read
+  params:
+  - name: ''
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: herr_t H5D__read(size_t, H5D_dset_io_info_t *)
+language: c
+project: hdf5
+target_name: h5_read_fuzzer
+target_path: /src/h5_read_fuzzer.c

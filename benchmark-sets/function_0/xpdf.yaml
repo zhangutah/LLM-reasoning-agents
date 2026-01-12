@@ -1,0 +1,15 @@
+functions:
+- name: _ZN3Gfx14opSetExtGStateEP6Objecti
+  params:
+  - name: this
+    type: 'bool '
+  - name: args
+    type: 'bool '
+  - name: numArgs
+    type: int
+  return_type: void
+  signature: void Gfx::opSetExtGState(Object *, int)
+language: c++
+project: xpdf
+target_name: fuzz_zxdoc
+target_path: /src/fuzz_zxdoc.cc

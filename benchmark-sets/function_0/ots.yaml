@@ -1,0 +1,22 @@
+functions:
+- name: LZ4_compress_fast_extState_fastReset
+  params:
+  - name: state
+    type: 'bool '
+  - name: src
+    type: 'bool '
+  - name: dst
+    type: 'bool '
+  - name: srcSize
+    type: int
+  - name: dstCapacity
+    type: int
+  - name: acceleration
+    type: int
+  return_type: int
+  signature: int LZ4_compress_fast_extState_fastReset(void *, const char *, char *,
+    int, int, int)
+language: c++
+project: ots
+target_name: ots-fuzzer
+target_path: /src/ots/util/ots-fuzzer.cc

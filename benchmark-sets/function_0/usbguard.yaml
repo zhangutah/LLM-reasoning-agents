@@ -1,0 +1,18 @@
+functions:
+- name: _ZN8usbguard13AuditFileSink5writeERKNS_9LogStream6SourceENS1_5LevelERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEE
+  params:
+  - name: this
+    type: 'bool '
+  - name: source
+    type: 'bool '
+  - name: level
+    type: int
+  - name: message
+    type: 'bool '
+  return_type: void
+  signature: void usbguard::AuditFileSink::write(const struct Source &, DW_TAG_enumeration_typeLevel,
+    const string &)
+language: c++
+project: usbguard
+target_name: fuzzer-usb-descriptor
+target_path: /src/usbguard/src/Tests/Fuzzers/fuzzer-usb-descriptor.cpp

@@ -1,0 +1,13 @@
+functions:
+- name: lzma_block_encoder
+  params:
+  - name: strm
+    type: 'bool '
+  - name: block
+    type: 'bool '
+  return_type: int
+  signature: lzma_ret lzma_block_encoder(lzma_stream *, lzma_block *)
+language: c++
+project: xz
+target_name: fuzz_decode_alone
+target_path: /src/xz/tests/ossfuzz/fuzz_decode_alone.c

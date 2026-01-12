@@ -1,0 +1,13 @@
+functions:
+- name: av1_determine_sc_tools_with_encoding
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  return_type: void
+  signature: void av1_determine_sc_tools_with_encoding(AV1_COMP *, const int)
+language: c++
+project: libvips
+target_name: tiffsave_buffer_fuzzer
+target_path: /src/libvips/fuzz/generic_buffer_fuzzer.cc

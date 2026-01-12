@@ -1,0 +1,14 @@
+functions:
+- name: XML_SetBase
+  params:
+  - name: parser
+    type: 'bool '
+  - name: p
+    type: 'bool '
+  return_type: int
+  signature: DW_TAG_enumeration_typeXML_Status XML_SetBase(XML_Parser, const XML_Char
+    *)
+language: c++
+project: expat
+target_name: xml_parsebuffer_fuzzer_UTF-8
+target_path: /src/expat/expat/fuzz/xml_parsebuffer_fuzzer.c

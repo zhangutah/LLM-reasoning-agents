@@ -1,7 +1,7 @@
 # Configuration file for the NTU project
 oss_fuzz_dir: /home/yk/code/oss-fuzz/
-save_root: outputs_wild/gpt5-mini/agent/
-cache_root: /home/yk/code/LLM-reasoning-agents/cache/
+save_root: outputs/projects/gpt5-mini/cjson/
+cache_root: /home/yk/code/LLM-reasoning-agents/cache/aa_projects/
 model_name: "gpt-5-mini"
 reasoning: false
 temperature: 1
@@ -11,13 +11,13 @@ max_tool_call: 100
 usage_token_limit: 1000
 model_token_limit: 8096
 n_examples: 1
-example_mode: random 
+example_mode: rank 
 example_source: project
-iterations: 1
+iterations: 3
 num_processes: 8 # Will be set to os.cpu_count()//2 at runtime
-funcs_per_project: 1
-bench_dir: benchmark-sets/function_0
-project_name: ["libssh"]
+funcs_per_project: 10000
+bench_dir: benchmark-sets/projects/cjson
+project_name: []
 function_signatures: []
 fixing_mode: "agent"
 header_mode: "agent"

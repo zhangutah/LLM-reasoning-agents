@@ -1,0 +1,17 @@
+functions:
+- name: mpg123_feedseek
+  params:
+  - name: mh
+    type: 'bool '
+  - name: sampleoff
+    type: size_t
+  - name: whence
+    type: int
+  - name: input_offset
+    type: 'bool '
+  return_type: size_t
+  signature: off_t mpg123_feedseek(mpg123_handle *, off_t, int, off_t *)
+language: c++
+project: mpg123
+target_name: read_fuzzer
+target_path: /src/read_fuzzer.c

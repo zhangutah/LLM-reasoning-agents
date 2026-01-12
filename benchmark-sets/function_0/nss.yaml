@@ -1,0 +1,22 @@
+functions:
+- name: sqlite3_get_table
+  params:
+  - name: db
+    type: 'bool '
+  - name: zSql
+    type: 'bool '
+  - name: pazResult
+    type: 'bool '
+  - name: pnRow
+    type: 'bool '
+  - name: pnColumn
+    type: 'bool '
+  - name: pzErrMsg
+    type: 'bool '
+  return_type: int
+  signature: int sqlite3_get_table(sqlite3 *, const char *, char ***, int *, int *,
+    char **)
+language: c++
+project: nss
+target_name: certDN
+target_path: OFG_UNIQUE_PREFIX_/src/nss/fuzz/targets/certDN.cc

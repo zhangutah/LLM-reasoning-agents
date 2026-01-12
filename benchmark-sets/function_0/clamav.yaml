@@ -1,0 +1,22 @@
+functions:
+- name: cl_scandesc
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: cl_error_t cl_scandesc(int, const char *, const char **, unsigned long
+    *, const struct cl_engine *, struct cl_scan_options *)
+language: c++
+project: clamav
+target_name: clamav_scanfile_HWP3_fuzzer
+target_path: /src/clamav/fuzz/clamav_scanfile_fuzzer.cpp

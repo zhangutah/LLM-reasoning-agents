@@ -1,0 +1,23 @@
+functions:
+- name: _ZNK4pugi8xml_node5printERNSt3__113basic_ostreamIcNS1_11char_traitsIcEEEEPKcjNS_12xml_encodingEj
+  params:
+  - name: this
+    type: 'bool '
+  - name: stream
+    type: 'bool '
+  - name: indent
+    type: 'bool '
+  - name: flags
+    type: int
+  - name: encoding
+    type: int
+  - name: depth
+    type: int
+  return_type: void
+  signature: void pugi::xml_node::print(basic_ostream<char, std::__1::char_traits<char>
+    > &, const char_t *, unsigned int, DW_TAG_enumeration_typexml_encoding, unsigned
+    int)
+language: c++
+project: pugixml
+target_name: fuzz_parse
+target_path: /src/pugixml/tests/fuzz_parse.cpp

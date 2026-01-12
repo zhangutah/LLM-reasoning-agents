@@ -1,0 +1,13 @@
+functions:
+- name: magic_list
+  params:
+  - name: ms
+    type: 'bool '
+  - name: magicfile
+    type: 'bool '
+  return_type: int
+  signature: int magic_list(struct magic_set *, const char *)
+language: c++
+project: file
+target_name: magic_fuzzer_loaddb
+target_path: /src/magic_fuzzer_loaddb.cc

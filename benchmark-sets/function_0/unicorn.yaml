@@ -1,0 +1,18 @@
+functions:
+- name: decNumberPower
+  params:
+  - name: res
+    type: 'bool '
+  - name: lhs
+    type: 'bool '
+  - name: rhs
+    type: 'bool '
+  - name: set
+    type: 'bool '
+  return_type: void
+  signature: decNumber * decNumberPower(decNumber *, const decNumber *, const decNumber
+    *, decContext *)
+language: c++
+project: unicorn
+target_name: fuzz_emu_arm_thumb
+target_path: /src/unicorn/tests/fuzz/fuzz_emu_arm_thumb.c

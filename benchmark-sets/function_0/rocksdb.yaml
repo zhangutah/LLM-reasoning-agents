@@ -1,0 +1,26 @@
+functions:
+- name: _ZN7rocksdb13TransactionDB4OpenERKNS_9DBOptionsERKNS_20TransactionDBOptionsERKNSt3__112basic_stringIcNS7_11char_traitsIcEENS7_9allocatorIcEEEERKNS7_6vectorINS_22ColumnFamilyDescriptorENSB_ISH_EEEEPNSG_IPNS_18ColumnFamilyHandleENSB_ISN_EEEEPPS0_
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: Status rocksdb::TransactionDB::Open(const struct DBOptions &, const struct
+    TransactionDBOptions &, const string &, const vector<rocksdb::ColumnFamilyDescriptor,
+    std::__1::allocator<rocksdb::ColumnFamilyDescriptor> > &, vector<rocksdb::ColumnFamilyHandle
+    *, std::__1::allocator<rocksdb::ColumnFamilyHandle *> > *, TransactionDB **)
+language: c++
+project: rocksdb
+target_name: db_map_fuzzer
+target_path: /src/rocksdb/fuzz/db_map_fuzzer.cc

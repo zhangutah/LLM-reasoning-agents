@@ -1,0 +1,13 @@
+functions:
+- name: _ZNK2mu10ParserBase4EvalERi
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: value_type * mu::ParserBase::Eval(int &)
+language: c++
+project: muparser
+target_name: set_eval_fuzzer
+target_path: /src/set_eval_fuzzer.cc

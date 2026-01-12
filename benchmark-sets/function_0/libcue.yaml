@@ -1,0 +1,13 @@
+functions:
+- name: rem_get
+  params:
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: const char * rem_get(RemType, Rem *)
+language: c
+project: libcue
+target_name: fuzz
+target_path: /src/libcue/oss-fuzz/fuzz.cpp

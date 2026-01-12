@@ -1,0 +1,20 @@
+functions:
+- name: njs_error_constructor
+  params:
+  - name: vm
+    type: 'bool '
+  - name: args
+    type: 'bool '
+  - name: nargs
+    type: int
+  - name: type
+    type: size_t
+  - name: retval
+    type: 'bool '
+  return_type: int
+  signature: njs_int_t njs_error_constructor(njs_vm_t *, njs_value_t *, njs_uint_t,
+    njs_index_t, njs_value_t *)
+language: c++
+project: njs
+target_name: njs_process_script_fuzzer
+target_path: /src/njs/external/njs_shell.c

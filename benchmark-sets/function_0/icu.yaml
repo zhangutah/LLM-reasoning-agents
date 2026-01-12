@@ -1,0 +1,20 @@
+functions:
+- name: _ZNK6icu_768message217StandardFunctions8DateTime6formatEONS0_20FormattedPlaceholderEONS0_15FunctionOptionsER10UErrorCode
+  params:
+  - name: this
+    type: 'bool '
+  - name: toFormat
+    type: 'bool '
+  - name: opts
+    type: 'bool '
+  - name: errorCode
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: FormattedPlaceholder icu_76::message2::StandardFunctions::DateTime::format(DW_TAG_rvalue_reference_typeFormattedPlaceholder,
+    DW_TAG_rvalue_reference_typeFunctionOptions, UErrorCode &)
+language: c++
+project: icu
+target_name: ubidi_fuzzer
+target_path: /src/icu/icu4c/source/test/fuzzer/ubidi_fuzzer.cpp

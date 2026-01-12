@@ -1,0 +1,13 @@
+functions:
+- name: yaml_emitter_set_encoding
+  params:
+  - name: emitter
+    type: 'bool '
+  - name: encoding
+    type: int
+  return_type: void
+  signature: void yaml_emitter_set_encoding(yaml_emitter_t *, yaml_encoding_t)
+language: c++
+project: libyaml
+target_name: libyaml_emitter_fuzzer
+target_path: /src/libyaml_emitter_fuzzer.c

@@ -1,0 +1,13 @@
+functions:
+- name: _ZN7httplib6Server24process_and_close_socketEi
+  params:
+  - name: this
+    type: 'bool '
+  - name: sock
+    type: int
+  return_type: bool
+  signature: bool httplib::Server::process_and_close_socket(socket_t)
+language: c++
+project: cpp-httplib
+target_name: server_fuzzer
+target_path: /src/cpp-httplib/test/fuzzing/server_fuzzer.cc

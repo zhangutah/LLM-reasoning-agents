@@ -1,0 +1,20 @@
+functions:
+- name: h2o_send_redirect
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  return_type: void
+  signature: void h2o_send_redirect(h2o_req_t *, int, const char *, const char *,
+    size_t)
+language: c++
+project: h2o
+target_name: h2o-fuzzer-url
+target_path: /src/h2o/fuzz/driver_url.cc

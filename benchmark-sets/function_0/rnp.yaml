@@ -1,0 +1,16 @@
+functions:
+- name: _Z18pgp_decrypt_seckeyRK9pgp_key_tRK23pgp_password_provider_tRK18pgp_password_ctx_t
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: pgp_key_pkt_t * pgp_decrypt_seckey(const pgp_key_t &, const pgp_password_provider_t
+    &, const pgp_password_ctx_t &)
+language: c++
+project: rnp
+target_name: fuzz_sigimport
+target_path: /src/rnp/src/fuzzing/sigimport.c

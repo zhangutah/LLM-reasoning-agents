@@ -1,0 +1,15 @@
+functions:
+- name: _ZN5capnp13DynamicStruct7Builder5adoptENS_12StructSchema5FieldEONS_6OrphanINS_12DynamicValueEEE
+  params:
+  - name: this
+    type: 'bool '
+  - name: field
+    type: 'bool '
+  - name: orphan
+    type: 'bool '
+  return_type: void
+  signature: void capnp::DynamicStruct::Builder::adopt(Field, DW_TAG_rvalue_reference_typeOrphan<capnp::DynamicValue>)
+language: c++
+project: capnproto
+target_name: capnp-llvm-fuzzer-testcase
+target_path: /src/capnproto/c++/src/capnp/llvm-fuzzer-testcase.c++

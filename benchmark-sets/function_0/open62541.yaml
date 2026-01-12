@@ -1,0 +1,18 @@
+functions:
+- name: UA_Server_addWriterGroup
+  params:
+  - name: server
+    type: 'bool '
+  - name: connection
+    type: 'bool '
+  - name: writerGroupConfig
+    type: 'bool '
+  - name: writerGroupIdentifier
+    type: 'bool '
+  return_type: int
+  signature: UA_StatusCode UA_Server_addWriterGroup(UA_Server *, const UA_NodeId,
+    const UA_WriterGroupConfig *, UA_NodeId *)
+language: c++
+project: open62541
+target_name: fuzz_base64_decode
+target_path: /src/open62541/tests/fuzz/fuzz_base64_decode.cc

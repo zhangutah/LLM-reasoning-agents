@@ -1,0 +1,28 @@
+functions:
+- name: av1_dr_prediction_z3_sse4_1
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: size_t
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  - name: ''
+    type: int
+  return_type: void
+  signature: void av1_dr_prediction_z3_sse4_1(uint8_t *, ptrdiff_t, int, int, const
+    uint8_t *, const uint8_t *, int, int, int)
+language: c++
+project: libaom
+target_name: av1_dec_fuzzer
+target_path: /src/aom/examples/av1_dec_fuzzer.cc

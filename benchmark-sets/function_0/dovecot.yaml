@@ -1,0 +1,11 @@
+functions:
+- name: master_service_init_finish
+  params:
+  - name: service
+    type: 'bool '
+  return_type: void
+  signature: void master_service_init_finish(struct master_service *)
+language: c
+project: dovecot
+target_name: fuzz-imap-utf7
+target_path: /src/dovecot/src/lib-imap/fuzz-imap-utf7.c

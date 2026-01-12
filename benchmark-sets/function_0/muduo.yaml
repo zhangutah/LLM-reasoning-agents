@@ -1,0 +1,11 @@
+functions:
+- name: _ZN5muduo6Thread5startEv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void muduo::Thread::start()
+language: c++
+project: muduo
+target_name: muduo_http_fuzzer
+target_path: /src/muduo_http_fuzzer.cpp

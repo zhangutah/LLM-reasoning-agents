@@ -1,0 +1,11 @@
+functions:
+- name: mutate_string
+  params:
+  - name: s
+    type: 'bool '
+  return_type: void
+  signature: void mutate_string(char *)
+language: c++
+project: libfido2
+target_name: fuzz_netlink
+target_path: /src/libfido2/fuzz/libfuzzer.c

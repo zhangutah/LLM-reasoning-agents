@@ -1,0 +1,16 @@
+functions:
+- name: gps_mainloop
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: int
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int gps_mainloop(struct gps_data_t *, int, DW_TAG_subroutine_typeInfinite
+    loop *)
+language: c
+project: gpsd
+target_name: FuzzJson
+target_path: /src/gpsd/fuzzer/FuzzJson.c

@@ -1,0 +1,13 @@
+functions:
+- name: vp9_loopfilter_job
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void vp9_loopfilter_job(LFWorkerData *, VP9LfSync *)
+language: c++
+project: libvpx
+target_name: vpx_dec_fuzzer_vp8
+target_path: /src/libvpx/examples/vpx_dec_fuzzer.cc

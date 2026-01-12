@@ -1,0 +1,17 @@
+functions:
+- name: lua_yieldk
+  params:
+  - name: L
+    type: 'bool '
+  - name: nresults
+    type: int
+  - name: ctx
+    type: size_t
+  - name: k
+    type: 'bool '
+  return_type: int
+  signature: int lua_yieldk(lua_State *, int, lua_KContext, lua_KFunction)
+language: c
+project: lua
+target_name: lua_stringtonumber_test
+target_path: /src/testdir/tests/capi/lua_stringtonumber_test.c

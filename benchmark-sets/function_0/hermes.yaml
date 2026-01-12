@@ -1,0 +1,16 @@
+functions:
+- name: _ZN6hermes2vm8Debugger11runDebuggerENS1_9RunReasonERNS0_16InterpreterStateE
+  params:
+  - name: this
+    type: 'bool '
+  - name: runReason
+    type: int
+  - name: state
+    type: 'bool '
+  return_type: int
+  signature: DW_TAG_enumeration_typeExecutionStatus hermes::vm::Debugger::runDebugger(DW_TAG_enumeration_typeRunReason,
+    struct InterpreterState &)
+language: c++
+project: hermes
+target_name: fuzzer-jsi-entry
+target_path: /src/hermes/tools/fuzzers/libfuzzer/fuzzer-jsi-entry.cpp

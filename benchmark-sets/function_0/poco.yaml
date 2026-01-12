@@ -1,0 +1,11 @@
+functions:
+- name: _ZN4Poco14DateTimeFormat7isValidERKNSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEE
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: bool
+  signature: bool Poco::DateTimeFormat::isValid(const string &)
+language: c++
+project: poco
+target_name: mail_message_fuzzer
+target_path: /src/mail_message_fuzzer.cc

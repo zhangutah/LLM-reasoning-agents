@@ -1,0 +1,17 @@
+functions:
+- name: gzfwrite
+  params:
+  - name: buf
+    type: 'bool '
+  - name: size
+    type: size_t
+  - name: nitems
+    type: size_t
+  - name: file
+    type: 'bool '
+  return_type: size_t
+  signature: z_size_t gzfwrite(voidpc, z_size_t, z_size_t, gzFile)
+language: c++
+project: elfutils
+target_name: fuzz-libelf
+target_path: /src/fuzz-libelf.c

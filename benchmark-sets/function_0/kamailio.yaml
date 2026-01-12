@@ -1,0 +1,11 @@
+functions:
+- name: fix_actions
+  params:
+  - name: a
+    type: 'bool '
+  return_type: int
+  signature: int fix_actions(struct action *)
+language: c
+project: kamailio
+target_name: fuzz_uri
+target_path: /src/kamailio/misc/fuzz/fuzz_uri.c

@@ -1,0 +1,16 @@
+functions:
+- name: readstat_value_is_defined_missing
+  params:
+  - name: value
+    type: size_t
+  - name: variable
+    type: size_t
+  - name: ''
+    type: 'bool '
+  return_type: int
+  signature: int readstat_value_is_defined_missing(readstat_value_t, readstat_variable_t
+    *)
+language: c++
+project: readstat
+target_name: fuzz_compression_sav
+target_path: /src/readstat/src/fuzz/fuzz_compression_sav.c

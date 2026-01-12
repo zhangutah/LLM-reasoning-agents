@@ -1,0 +1,12 @@
+functions:
+- name: _ZN22hb_table_lazy_loader_tIN2OT4COLRELj35ELb1EE6createEP9hb_face_t
+  params:
+  - name: face
+    type: 'bool '
+  return_type: void
+  signature: hb_blob_t * hb_table_lazy_loader_t<OT::COLR, 35u, true>::create(hb_face_t
+    *)
+language: c++
+project: libass
+target_name: libass_fuzzer
+target_path: /src/libass/fuzz/fuzz.c

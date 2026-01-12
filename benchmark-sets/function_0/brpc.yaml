@@ -1,0 +1,11 @@
+functions:
+- name: _ZN4brpc6policy15DiscoveryClient13PeriodicRenewEPv
+  params:
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: void * brpc::policy::DiscoveryClient::PeriodicRenew(void *)
+language: c++
+project: brpc
+target_name: fuzz_butil
+target_path: /src/brpc/test/fuzzing/fuzz_butil.cpp

@@ -1,0 +1,11 @@
+functions:
+- name: ixmlParseBuffer
+  params:
+  - name: buffer
+    type: 'bool '
+  return_type: void
+  signature: IXML_Document * ixmlParseBuffer(const char *)
+language: c
+project: pupnp
+target_name: FuzzIxml
+target_path: /src/pupnp/fuzzer/FuzzIxml.c

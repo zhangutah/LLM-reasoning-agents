@@ -1,0 +1,22 @@
+functions:
+- name: LZ4_compress_destSize_extState
+  params:
+  - name: state
+    type: 'bool '
+  - name: src
+    type: 'bool '
+  - name: dst
+    type: 'bool '
+  - name: srcSizePtr
+    type: 'bool '
+  - name: targetDstSize
+    type: int
+  - name: acceleration
+    type: int
+  return_type: int
+  signature: int LZ4_compress_destSize_extState(void *, const char *, char *, int
+    *, int, int)
+language: c++
+project: lz4
+target_name: decompress_fuzzer
+target_path: /src/lz4/ossfuzz/decompress_fuzzer.c

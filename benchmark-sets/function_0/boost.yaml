@@ -1,0 +1,20 @@
+functions:
+- name: _ZN5boost11basic_regexIcNS_14c_regex_traitsIcEEE6assignEPKcS5_j
+  params:
+  - name: this
+    type: 'bool '
+  - name: p1
+    type: 'bool '
+  - name: p2
+    type: 'bool '
+  - name: f
+    type: int
+  return_type: void
+  signature: basic_regex<char, boost::regex_traits<char, boost::cpp_regex_traits<char>
+    > > & boost::basic_regex<char, boost::c_regex_traits<char> >::assign(basic_regex<char,
+    boost::regex_traits<char, boost::cpp_regex_traits<char> > > *, const char *, const
+    char *, flag_type)
+language: c++
+project: boost
+target_name: boost_uuid_fuzzer
+target_path: /src/boost_uuid_fuzzer.cc

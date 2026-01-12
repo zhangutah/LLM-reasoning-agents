@@ -1,0 +1,16 @@
+functions:
+- name: roaring_bitmap_lazy_or
+  params:
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  - name: ''
+    type: bool
+  return_type: void
+  signature: roaring_bitmap_t * roaring_bitmap_lazy_or(const roaring_bitmap_t *, const
+    roaring_bitmap_t *, const _Bool)
+language: c
+project: croaring
+target_name: croaring_fuzzer
+target_path: /src/croaring_fuzzer.c

@@ -1,0 +1,13 @@
+functions:
+- name: _ZNK4cctz9time_zone7versionEv
+  params:
+  - name: this
+    type: 'bool '
+  - name: ''
+    type: 'bool '
+  return_type: void
+  signature: string cctz::time_zone::version()
+language: c++
+project: cctz
+target_name: fuzz_cctz
+target_path: /src/fuzz_cctz.cc

@@ -1,0 +1,16 @@
+functions:
+- name: lyplg_ext_print_info_extension_instance
+  params:
+  - name: ctx
+    type: 'bool '
+  - name: ext
+    type: 'bool '
+  - name: flag
+    type: 'bool '
+  return_type: void
+  signature: void lyplg_ext_print_info_extension_instance(struct lyspr_ctx *, const
+    struct lysc_ext_instance *, ly_bool *)
+language: c
+project: libyang
+target_name: lys_parse_mem
+target_path: /src/libyang/tests/fuzz/lys_parse_mem.c

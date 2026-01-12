@@ -1,0 +1,13 @@
+functions:
+- name: op_open_file
+  params:
+  - name: _path
+    type: 'bool '
+  - name: _error
+    type: 'bool '
+  return_type: void
+  signature: OggOpusFile * op_open_file(const char *, int *)
+language: c
+project: opusfile
+target_name: opusfile_fuzzer
+target_path: /src/opusfile_fuzzer.c

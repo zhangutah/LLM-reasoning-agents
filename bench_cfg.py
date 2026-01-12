@@ -56,6 +56,9 @@ class BenchConfig:
         self.no_log = self.config.get('no_log', False)
         self.ignore_crashes = self.config.get('ignore_crashes', False)
 
+        # for extracting all functions from project (skip generation)
+        self.extract_all_functions = self.config.get('extract_all_functions', False)
+
     def _load_config(self, config_path: str) -> dict[str, Any]:
         """Load configuration from a YAML file."""
         with open(config_path, 'r') as f:

@@ -145,6 +145,7 @@ num_processes: 8                            # Parallel processes (default: cpu_c
 project_name: []                            # List of projects to process (empty = all)
 function_signatures: []                     # Specific functions to target (empty = all)
 funcs_per_project: 1                        # Number of functions per project
+extract_all_functions: false                # Extract all functions from project (skip generation)
 
 # ==================== Language Settings ====================
 language: "CPP"                             # Target language: CPP, C, JVM

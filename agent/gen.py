@@ -315,9 +315,15 @@ class ISSTAFuzzer(FuzzENV):
         
     def build_init_prompt(self, prompt_template: str) -> str:
 
-        # from constants import LSPFunction
-        # self.code_retriever.get_symbol_info("All", LSPFunction.AllSymbols, Retriever.Parser)
-        # exit()
+        # If extract_all_functions is enabled, extract all symbols and exit
+        if self.benchcfg.extract_all_functions:
+            from constants import LSPFunction
+            self.logger.info("Extracting all functions from project using LSP...")
+            all_symbols = self.code_retriever.get_symbol_info("All", LSPFunction.AllSymbols, Retriever.LSP)
+            print(f"Extracted Symbols:{len(all_symbols)}")
+            print("Exiting...")
+            exit(0)
+
         # {function_name}
         # Remove the parameters by splitting at the first '('
         function_name = extract_name(self.function_signature, keep_namespace=True, 
@@ -518,7 +524,7 @@ class ISSTAFuzzer(FuzzENV):
     def build_graph(self) -> StateGraph:
 
 
-        llm_extract = ChatOpenAI(model="gpt-4.1-mini")
+        llm_extract = ChatOpenAI(model="gpt-5.1-mini")
         llm = self.load_model()
 
         # code formatter

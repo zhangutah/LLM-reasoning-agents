@@ -4,7 +4,6 @@ from math import ceil
 from agent_tools.fuzz_tools.run_fuzzer import FuzzerRunner
 from agent_tools.fuzz_tools.compiler import Compiler
 from agent.modules.fuzzenv import FuzzENV
-from agent.modules.compilation import CompilerWraper
 from bench_cfg import BenchConfig
 from pathlib import Path
 from constants import CompileResults, ValResult, PROJECT_PATH

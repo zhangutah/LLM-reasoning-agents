@@ -106,7 +106,10 @@ class ISSTAFuzzer(FuzzENV):
 
         if self.project_lang == LanguageType.JAVA:
             self.tool_prompt = ""
-
+        
+        if self.code_retriever is None:
+            raise ValueError("Code retriever is not initialized in FuzzENV.")
+        
     def get_oss_fuzz_benchmark(self) -> Optional[benchmarklib.Benchmark]:
         benchmark_file =  self.benchcfg.benchmark_dir / "{}.yaml".format(self.project_name)
         benchmark_list = benchmarklib.Benchmark.from_yaml(str(benchmark_file))
@@ -142,6 +145,7 @@ class ISSTAFuzzer(FuzzENV):
         self.logger.info(f"Using {self.benchcfg.header_mode} for header files")
         
         if self.benchcfg.header_mode == "static":
+            assert self.code_retriever is not None, "Code retriever is not initialized."
             headers = self.code_retriever.get_symbol_header(function_name)
             headers = headers.splitlines()
 
@@ -272,6 +276,7 @@ class ISSTAFuzzer(FuzzENV):
             self.logger.info(f"Loaded code usages from cache: {example_json_file}")
             return code_usages
         
+        assert self.code_retriever is not None, "Code retriever is not initialized."
         lsp_code_usages = self.code_retriever.get_all_symbol_references(function_name, retriever=Retriever.LSP)
         parser_code_usages = self.code_retriever.get_all_symbol_references(function_name, retriever=Retriever.Parser)
         code_usages = lsp_code_usages + parser_code_usages
@@ -333,11 +338,13 @@ class ISSTAFuzzer(FuzzENV):
         # {function_document}
         contexts = ""
         if self.benchcfg.definition_flag:
+            assert self.code_retriever is not None, "Code retriever is not initialized."
             contexts = "The Definition of this function is as below:\n"
             contexts += self.code_retriever.get_symbol_definition(function_name)
             contexts += "\n"
 
         if self.benchcfg.driver_flag:
+            assert self.code_retriever is not None, "Code retriever is not initialized."
             contexts += "The Driver example from the same project is as below:\n"
             driver_list = self.code_retriever.get_all_driver_examples()
             for _, driver_source in driver_list:
@@ -455,6 +462,7 @@ class ISSTAFuzzer(FuzzENV):
     
     def load_tools(self) -> list[StructuredTool]:
 
+        assert self.code_retriever is not None, "Code retriever is not initialized."
         header_tool = StructuredTool.from_function(  # type: ignore
                 func=self.code_retriever.get_symbol_header_tool,
                 name="get_symbol_header_tool",
@@ -517,7 +525,7 @@ class ISSTAFuzzer(FuzzENV):
     
     def build_graph(self) -> StateGraph:
 
-
+        assert self.code_retriever is not None, "Code retriever is not initialized."
         llm_extract = ChatOpenAI(model="gpt-4.1-mini")
         llm = self.load_model()
 

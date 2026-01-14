@@ -1,6 +1,5 @@
 import os
 import random
-import re
 from constants import PROJECT_PATH
 import logging
 import shutil
@@ -201,6 +200,9 @@ class FuzzENV():
         if not fuzz_path.exists():
             fuzz_path.parent.mkdir(parents=True, exist_ok=True)
             # cache the fuzzer name
+            if not self.code_retriever:
+                raise ValueError("Code retriever is not initialized in FuzzENV.")
+            
             fuzzer_str = self.docker_tool.exec_in_container(self.code_retriever.container_id, "find /out/ -maxdepth 1 -type f")
             with open(fuzz_path, 'w') as f:
                 f.write(fuzzer_str)
@@ -295,7 +297,7 @@ class FuzzENV():
     def clean_workspace(self):
         '''Clean the workspace'''
         try:        
-            if not self.eval_flag:
+            if self.code_retriever:
                 self.code_retriever.remove_container()
 
             # first remove the out directory

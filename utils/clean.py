@@ -71,7 +71,7 @@ def remove_failed_dir(directory: str):
 
                 # no building
                 if len(os.listdir(run_dir)) <= 4:
-                    shutil.rmtree(run_dir)
+                    # shutil.rmtree(run_dir)
                     print(f"Removed directory: {run_dir}")
                     total_removed += 1
     print(f"Total removed directories for failed runs: {total_removed}")
@@ -132,7 +132,7 @@ def remove_evaluation(eval_path: Path):
                 if not work_path.name.startswith("run"):
                     print(f"wrong path evaluation dir: {work_path}")
                     continue
-                if not (work_path / "cov.txt").exists():
+                if not (work_path / "fuzzing0.log").exists():
                     shutil.rmtree(work_path)
                     print(f"Removed evaluation dir: {work_path}")
                     count += 1
@@ -179,7 +179,7 @@ def remove_empty_dir(dir: Path):
         if not project.is_dir():
             continue
         if get_file_count(project) == 0:
-            # shutil.rmtree(project)
+            shutil.rmtree(project)
             count += 1
             print(f"Removed empty dir: {project}")
             continue
@@ -189,7 +189,7 @@ def remove_empty_dir(dir: Path):
                 continue
             # remove dir without any file inside
             if get_file_count(function_path) == 0:
-                # shutil.rmtree(function_path)
+                shutil.rmtree(function_path)
                 count += 1
                 print(f"Removed empty dir: {function_path}")
                 continue
@@ -198,7 +198,7 @@ def remove_empty_dir(dir: Path):
                 if not work_path.is_dir():
                     continue
                 if get_file_count(work_path) == 0:
-                    # shutil.rmtree(work_path)
+                    shutil.rmtree(work_path)
                     count += 1
                     print(f"Removed empty dir: {work_path}")
 
@@ -232,15 +232,55 @@ def filter_eval_projects(save_path: Path, eval_path: Path, threshold: int = 50):
     with open(save_path / "filtered_success_functions.json", "w") as f:
         json.dump(filtered_data, f, indent=4)
 
+def remove_run_failed_dirs(save_path: Path, n_run: int = 3):
+
+    # read success functions
+    success_file = os.path.join(save_path, f"success_functions_{n_run}.json")
+    if not os.path.exists(success_file):
+        print(f"Success file does not exist: {success_file}")
+        return
+
+    # get success function names
+    success_funcs: set[str] = set()
+    with open(success_file, 'r') as f:
+        success_data = json.load(f)
+        for _, func_info in success_data.items():
+            func_name = Path(func_info["work_dir"]).parent.name
+            success_funcs.add(func_name)
+    # remove failed function directories
+
+    total_removed = 0
+    for project_dir in save_path.iterdir():
+        if not project_dir.is_dir():
+            continue
+        for func_dir in project_dir.iterdir():
+            if not func_dir.is_dir():
+                continue
+            func_name = func_dir.name
+            if func_name not in success_funcs:
+                shutil.rmtree(func_dir)
+                print(f"Removed failed function dir: {func_dir}")
+                total_removed += 1
+
+    print(f"Total removed directories for run{n_run} failed runs: {total_removed}")
 
 
-remove_failed_dir("/home/yk/code/LLM-reasoning-agents/outputs/projects/gpt5-mini/expat")
-# remove_empty_cache("/home/yk/code/LLM-reasoning-agents/cache")
-# remove_evaluation(Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/evaluation/gpt5-mini/libxml2"))
-# Example usage
-# remove_corpus_dir("/home/yk/code/LLM-reasoning-agents/outputs_wild")
-# remove_large_log_files("/home/yk/code/LLM-reasoning-agents/outputs_wild")
-# remove_run_dir("/home/yk/code/LLM-reasoning-agents/outputs_evaluation/gpt5-mini/agent", n_run=2)
-# filter_eval_projects(Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/gpt5-mini/libxml2/"),
-                    #  Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/evaluation/gpt5-mini/libxml2/"),
-                    #  threshold=10)
+if __name__ == "__main__":
+    remove_evaluation(Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/evaluation/gpt5-mini/mosquitto"))
+    remove_empty_dir(Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/evaluation/gpt5-mini/mosquitto"))
+    # save_path = Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/gpt5-mini/libxml2/")
+    # eval_path = Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/evaluation/gpt5-mini/libxml2/")
+
+    # filter_eval_projects(save_path, eval_path, threshold=10)
+
+    # remove_failed_dir("/home/yk/code/LLM-reasoning-agents/outputs/projects/gpt5-mini/libxml2/")
+    # remove_empty_dir(Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/gpt5-mini/net-snmp"))
+    # remove_empty_cache("/home/yk/code/LLM-reasoning-agents/cache")
+    # remove_evaluation(Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/evaluation/gpt5-mini/libxml2"))
+    # Example usage
+    # remove_corpus_dir("/home/yk/code/LLM-reasoning-agents/outputs_wild")
+    # remove_large_log_files("/home/yk/code/LLM-reasoning-agents/outputs_wild")
+    # remove_run_dir("/home/yk/code/LLM-reasoning-agents/outputs_evaluation/gpt5-mini/agent", n_run=2)
+    # filter_eval_projects(Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/gpt5-mini/libxml2/"),
+                        #  Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/evaluation/gpt5-mini/libxml2/"),
+                        #  threshold=10)

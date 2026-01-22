@@ -75,7 +75,16 @@ class LibclangExtractor:
             for arg in cursor.get_arguments():
                 param_type = arg.type.spelling if arg.type else ""
                 param_name = arg.spelling if arg.spelling else ""
-                if param_name:
+                
+                # Fix array parameter syntax: move brackets after parameter name
+                # libclang returns "type[size]" but C syntax is "type name[size]"
+                import re
+                array_match = re.search(r'^(.+?)(\[[^\]]*\])+$', param_type)
+                if array_match and param_name:
+                    base_type = array_match.group(1)
+                    array_dims = array_match.group(2)
+                    params.append(f"{base_type} {param_name}{array_dims}")
+                elif param_name:
                     params.append(f"{param_type} {param_name}")
                 else:
                     params.append(param_type)

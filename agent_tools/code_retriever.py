@@ -396,7 +396,7 @@ class CodeRetriever():
             for func in all_functions:
                 func_name = func.get("name", "")
                 namespace = func.get("namespace", "")
-                if self.match_namespace(symbol_name, func_name, namespace):
+                if not self.match_namespace(symbol_name, func_name, namespace):
                     continue
                 deduped_resp.append(
                     {

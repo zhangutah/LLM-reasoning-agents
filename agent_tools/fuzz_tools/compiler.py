@@ -11,6 +11,7 @@ import shutil
 from pathlib import Path
 from typing import Optional
 import random
+import re
 
 class Compiler():
 
@@ -48,11 +49,17 @@ class Compiler():
         # get definition
         defs = self.code_retriever.get_symbol_info(func_name, LSPFunction.Definition)
         if not defs:
+            defs = self.code_retriever.get_symbol_info(func_name, LSPFunction.Declaration)
+        if not defs:
             return None
+        
         
         target_def = defs[0]
         file_path = target_def.get("file_path", "")
-        
+        print("function information:", defs)
+        print("function signature:", self.function_signature)
+        print("function name:", func_name)
+        print(f"Modifying static function in file: {file_path}")
         # It is static.
         
         # Read the full file content
@@ -64,41 +71,58 @@ class Compiler():
         lines = full_content.splitlines()
 
         length = len(lines)
-        counts = 0
         static_flag = False
+        
+        # Use regex to match function name followed by ( with word boundary
+        # properly escape the function name for regex
+        func_pattern = re.compile(rf"\b{re.escape(func_name)}\s*\(")
+
         # Find and modify the line containing the function definition
         for i, line in enumerate(lines[::-1]):
-            
-            # same line
-            if f"{func_name}(" in line and  "static" in line:
-                # Remove the 'static' keyword
-                modified_line = line.replace("static", "  ")
-                lines[length-i-1] = modified_line
-                counts += 1
-                if counts == 2:
-                    break  
+            # search for function name
+            match = func_pattern.search(line)
+            if match:
+                # Check for assignment or other control structures indicating a call
+                preceding_text = line[:match.start()]
+                
+                # If "return", "if", "while", or ending with =, (, [, it's likely a call
+                if re.search(r"(\breturn\b|\bif\b|\bwhile\b|\bswitch\b|\bfor\b|[=\(\[])\s*$", preceding_text):
+                     static_flag = False
+                     continue
+
+                # if static is in the same line, replace it
+                if "static" in line:
+                    modified_line = line.replace("static", "      ")
+                    lines[length-i-1] = modified_line
+                    static_flag = False
+                elif ";" not in line:
+                    # If no static and no semicolon, it might be the definition header (e.g. "void func()")
+                    # Enable flag to look for static in previous lines
+                    static_flag = True
+                else:
+                    # It has semicolon but no static. Likely a call "func();" or a non-static declaration.
+                    static_flag = False
+                
                 continue
 
-            if f"{func_name}(" in line:
-                static_flag = True
-                continue
+            # Check if we need to remove static from previous lines (next in iteration)
+            if static_flag:
+                if "static" in line:
+                    should_replace = True
+                    if ";" in line:
+                        # Ensure static is after the last semicolon
+                        if line.rfind("static") < line.rfind(";"):
+                            should_replace = False
+                            static_flag = False
 
-            # not a declaration line or definition line, no need to continue
-            if ";" in line:
-                static_flag = False
+                    if should_replace:
+                        modified_line = line.replace("static", "      ")
+                        lines[length-i-1] = modified_line
+                        static_flag = False 
+                elif ";" in line:
+                     # Encountered a semicolon (end of previous statement), stop looking for static for this function
+                     static_flag = False
 
-            # next lines
-            if static_flag and "static" in line:
-                # check previous lines until finding static or hitting a non-declaration line 
-                modified_line = line.replace("static", "  ")
-                lines[length-i-1] = modified_line
-                # self.logger.info(f"Modified line {length-i-1} in {file_path}: {modified_line}")
-                counts += 1
-            
-                # Assuming only two occurrence needs to be modified
-                if counts == 2:
-                    break  
-        
         modified_content = "\n".join(lines)
         
         # Save modified file

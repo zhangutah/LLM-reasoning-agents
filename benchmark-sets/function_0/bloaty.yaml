@@ -1,15 +1,1575 @@
 functions:
-- name: _ZNK6google8protobuf7Message39InternalSerializeWithCachedSizesToArrayEPhPNS0_2io19EpsCopyOutputStreamE
+- name: AbslInternalPerThreadSemWait_lts_20250814
   params:
-  - name: ''
-    type: 'bool '
-  - name: ''
-    type: 'bool '
-  - name: ''
-    type: 'bool '
+  - name: t
+    type: absl::synchronization_internal::KernelTimeout
+  return_type: bool
+  signature: bool AbslInternalPerThreadSemWait_lts_20250814(absl::synchronization_internal::KernelTimeout)
+- name: _Z20matchSequenceOfKindsPN5swift8Demangle4NodeESt6vectorISt5tupleIJNS1_4KindEmEESaIS6_EE
+  params:
+  - name: start
+    type: swift::Demangle::NodePointer
+  - name: pattern
+    type: int
+  return_type: swift::Demangle::NodePointer
+  signature: swift::Demangle::NodePointer matchSequenceOfKinds(swift::Demangle::NodePointer, int)
+- name: _ZL14decodePunycodeSt17basic_string_viewIcSt11char_traitsIcEERN4llvm16itanium_demangle12OutputBufferE
+  params:
+  - name: Input
+    type: int
+  - name: Output
+    type: llvm::itanium_demangle::OutputBuffer &
+  return_type: bool
+  signature: bool decodePunycode(int, llvm::itanium_demangle::OutputBuffer &)
+- name: _ZL22outputSpaceIfNecessaryRN4llvm16itanium_demangle12OutputBufferE
+  params:
+  - name: OB
+    type: llvm::itanium_demangle::OutputBuffer &
   return_type: void
-  signature: uint8 * google::protobuf::Message::InternalSerializeWithCachedSizesToArray(uint8
-    *, EpsCopyOutputStream *)
+  signature: void outputSpaceIfNecessary(llvm::itanium_demangle::OutputBuffer &)
+- name: _ZL33setParentForOpaqueReturnTypeNodesRN5swift8Demangle9DemanglerEPNS0_4NodeES4_
+  params:
+  - name: D
+    type: swift::Demangle::Demangler &
+  - name: parent
+    type: swift::Demangle::Node *
+  - name: visitedNode
+    type: swift::Demangle::Node *
+  return_type: swift::Demangle::Node *
+  signature: swift::Demangle::Node * setParentForOpaqueReturnTypeNodes(swift::Demangle::Demangler &, swift::Demangle::Node
+    *, swift::Demangle::Node *)
+- name: _ZN12_GLOBAL__N_19Remangler16mangleOpaqueTypeEPN5swift8Demangle4NodeEj
+  params:
+  - name: node
+    type: swift::Demangle::Node *
+  - name: depth
+    type: unsigned int
+  return_type: swift::Demangle::ManglingError
+  signature: swift::Demangle::ManglingError Remangler::mangleOpaqueType(swift::Demangle::Node *, unsigned int)
+- name: _ZN12_GLOBAL__N_19Remangler21mangleBuiltinTypeNameEPN5swift8Demangle4NodeEj
+  params:
+  - name: node
+    type: swift::Demangle::Node *
+  - name: depth
+    type: unsigned int
+  return_type: swift::Demangle::ManglingError
+  signature: swift::Demangle::ManglingError Remangler::mangleBuiltinTypeName(swift::Demangle::Node *, unsigned int)
+- name: _ZN12_GLOBAL__N_19Remangler21mangleConstrainedTypeEPN5swift8Demangle4NodeEj
+  params:
+  - name: node
+    type: swift::Demangle::Node *
+  - name: depth
+    type: unsigned int
+  return_type: ManglingErrorOr<std::pair<int, Node *>>
+  signature: ManglingErrorOr<std::pair<int, Node *>> Remangler::mangleConstrainedType(swift::Demangle::Node *, unsigned int)
+- name: _ZN12_GLOBAL__N_19Remangler22mangleImplFunctionTypeEPN5swift8Demangle4NodeEj
+  params:
+  - name: node
+    type: swift::Demangle::Node *
+  - name: depth
+    type: unsigned int
+  return_type: swift::Demangle::ManglingError
+  signature: swift::Demangle::ManglingError Remangler::mangleImplFunctionType(swift::Demangle::Node *, unsigned int)
+- name: _ZN12_GLOBAL__N_19Remangler25mangleDependentMemberTypeEPN5swift8Demangle4NodeEj
+  params:
+  - name: node
+    type: swift::Demangle::Node *
+  - name: depth
+    type: unsigned int
+  return_type: swift::Demangle::ManglingError
+  signature: swift::Demangle::ManglingError Remangler::mangleDependentMemberType(swift::Demangle::Node *, unsigned int)
+- name: _ZN12_GLOBAL__N_19Remangler25mangleExistentialMetatypeEPN5swift8Demangle4NodeEj
+  params:
+  - name: node
+    type: swift::Demangle::Node *
+  - name: depth
+    type: unsigned int
+  return_type: swift::Demangle::ManglingError
+  signature: swift::Demangle::ManglingError Remangler::mangleExistentialMetatype(swift::Demangle::Node *, unsigned int)
+- name: _ZN12_GLOBAL__N_19Remangler26mangleOutlinedEnumTagStoreEPN5swift8Demangle4NodeEj
+  params:
+  - name: node
+    type: swift::Demangle::Node *
+  - name: depth
+    type: unsigned int
+  return_type: swift::Demangle::ManglingError
+  signature: swift::Demangle::ManglingError Remangler::mangleOutlinedEnumTagStore(swift::Demangle::Node *, unsigned int)
+- name: _ZN12_GLOBAL__N_19Remangler28mangleImplFunctionConventionEPN5swift8Demangle4NodeEj
+  params:
+  - name: node
+    type: swift::Demangle::Node *
+  - name: depth
+    type: unsigned int
+  return_type: swift::Demangle::ManglingError
+  signature: swift::Demangle::ManglingError Remangler::mangleImplFunctionConvention(swift::Demangle::Node *, unsigned int)
+- name: _ZN12_GLOBAL__N_19Remangler30mangleDifferentiabilityWitnessEPN5swift8Demangle4NodeEj
+  params:
+  - name: node
+    type: swift::Demangle::Node *
+  - name: depth
+    type: unsigned int
+  return_type: swift::Demangle::ManglingError
+  signature: swift::Demangle::ManglingError Remangler::mangleDifferentiabilityWitness(swift::Demangle::Node *, unsigned int)
+- name: _ZN12_GLOBAL__N_19Remangler34mangleExtendedExistentialTypeShapeEPN5swift8Demangle4NodeEj
+  params:
+  - name: node
+    type: swift::Demangle::Node *
+  - name: depth
+    type: unsigned int
+  return_type: swift::Demangle::ManglingError
+  signature: swift::Demangle::ManglingError Remangler::mangleExtendedExistentialTypeShape(swift::Demangle::Node *, unsigned
+    int)
+- name: _ZN12_GLOBAL__N_19Remangler37mangleFunctionSignatureSpecializationEPN5swift8Demangle4NodeEj
+  params:
+  - name: node
+    type: swift::Demangle::Node *
+  - name: depth
+    type: unsigned int
+  return_type: swift::Demangle::ManglingError
+  signature: swift::Demangle::ManglingError Remangler::mangleFunctionSignatureSpecialization(swift::Demangle::Node *, unsigned
+    int)
+- name: _ZN12_GLOBAL__N_19Remangler37mangleSymbolicExtendedExistentialTypeEPN5swift8Demangle4NodeEj
+  params:
+  - name: node
+    type: swift::Demangle::Node *
+  - name: depth
+    type: unsigned int
+  return_type: swift::Demangle::ManglingError
+  signature: swift::Demangle::ManglingError Remangler::mangleSymbolicExtendedExistentialType(swift::Demangle::Node *, unsigned
+    int)
+- name: _ZN12_GLOBAL__N_19Remangler42mangleFunctionSignatureSpecializationParamEPN5swift8Demangle4NodeEj
+  params:
+  - name: node
+    type: swift::Demangle::Node *
+  - name: depth
+    type: unsigned int
+  return_type: swift::Demangle::ManglingError
+  signature: swift::Demangle::ManglingError Remangler::mangleFunctionSignatureSpecializationParam(swift::Demangle::Node *,
+    unsigned int)
+- name: _ZN12_GLOBAL__N_19Remangler44mangleDependentGenericConformanceRequirementEPN5swift8Demangle4NodeEj
+  params:
+  - name: node
+    type: swift::Demangle::Node *
+  - name: depth
+    type: unsigned int
+  return_type: swift::Demangle::ManglingError
+  signature: swift::Demangle::ManglingError Remangler::mangleDependentGenericConformanceRequirement(swift::Demangle::Node
+    *, unsigned int)
+- name: _ZN12_GLOBAL__N_19Remangler51mangleDependentGenericInverseConformanceRequirementEPN5swift8Demangle4NodeEj
+  params:
+  - name: node
+    type: swift::Demangle::Node *
+  - name: depth
+    type: unsigned int
+  return_type: swift::Demangle::ManglingError
+  signature: swift::Demangle::ManglingError Remangler::mangleDependentGenericInverseConformanceRequirement(swift::Demangle::Node
+    *, unsigned int)
+- name: _ZN3re211SparseArrayIPNS_3NFA6ThreadEE7set_newEiRKS3_
+  params:
+  - name: i
+    type: int
+  - name: v
+    type: const Value &
+  return_type: re2::SparseArray::iterator
+  signature: re2::SparseArray::iterator re2::SparseArray::set_new(int, const Value &)
+- name: _ZN3re211SparseArrayIiE7set_newEiRKi
+  params:
+  - name: i
+    type: int
+  - name: v
+    type: const Value &
+  return_type: re2::SparseArray::iterator
+  signature: re2::SparseArray::iterator re2::SparseArray::set_new(int, const Value &)
+- name: _ZN3re214ByteMapBuilder5MergeEv
+  params: []
+  return_type: void
+  signature: void re2::ByteMapBuilder::Merge()
+- name: _ZN3re214CoalesceWalker9PostVisitEPNS_6RegexpES2_S2_PS2_i
+  params:
+  - name: re
+    type: re2::Regexp *
+  - name: parent_arg
+    type: re2::Regexp *
+  - name: pre_arg
+    type: re2::Regexp *
+  - name: child_args
+    type: re2::Regexp **
+  - name: nchild_args
+    type: int
+  return_type: re2::Regexp *
+  signature: re2::Regexp * re2::CoalesceWalker::PostVisit(re2::Regexp *, re2::Regexp *, re2::Regexp *, re2::Regexp **, int)
+- name: _ZN3re214SimplifyWalker9PostVisitEPNS_6RegexpES2_S2_PS2_i
+  params:
+  - name: re
+    type: re2::Regexp *
+  - name: parent_arg
+    type: re2::Regexp *
+  - name: pre_arg
+    type: re2::Regexp *
+  - name: child_args
+    type: re2::Regexp **
+  - name: nchild_args
+    type: int
+  return_type: re2::Regexp *
+  signature: re2::Regexp * re2::SimplifyWalker::PostVisit(re2::Regexp *, re2::Regexp *, re2::Regexp *, re2::Regexp **, int)
+- name: _ZN3re216CharClassBuilder13AddRangeFlagsEiiNS_6Regexp10ParseFlagsE
+  params:
+  - name: lo
+    type: re2::Rune
+  - name: hi
+    type: re2::Rune
+  - name: parse_flags
+    type: Regexp::ParseFlags
+  return_type: void
+  signature: void re2::CharClassBuilder::AddRangeFlags(re2::Rune, re2::Rune, Regexp::ParseFlags)
+- name: _ZN3re216RepetitionWalker8PreVisitEPNS_6RegexpEiPb
+  params:
+  - name: re
+    type: re2::Regexp *
+  - name: parent_arg
+    type: int
+  - name: stop
+    type: bool *
+  return_type: int
+  signature: int re2::RepetitionWalker::PreVisit(re2::Regexp *, int, bool *)
+- name: _ZN3re219NamedCapturesWalker8PreVisitEPNS_6RegexpEiPb
+  params:
+  - name: re
+    type: re2::Regexp *
+  - name: ignored
+    type: re2::Ignored
+  - name: stop
+    type: bool *
+  return_type: re2::Ignored
+  signature: re2::Ignored re2::NamedCapturesWalker::PreVisit(re2::Regexp *, re2::Ignored, bool *)
+- name: _ZN3re221FactorAlternationImpl6Round1EPPNS_6RegexpEiNS1_10ParseFlagsEPSt6vectorINS_6SpliceESaIS6_EE
+  params:
+  - name: sub
+    type: re2::Regexp **
+  - name: nsub
+    type: int
+  - name: flags
+    type: Regexp::ParseFlags
+  - name: splices
+    type: int *
+  return_type: void
+  signature: void re2::FactorAlternationImpl::Round1(re2::Regexp **, int, Regexp::ParseFlags, int *)
+- name: _ZN3re221FactorAlternationImpl6Round2EPPNS_6RegexpEiNS1_10ParseFlagsEPSt6vectorINS_6SpliceESaIS6_EE
+  params:
+  - name: sub
+    type: re2::Regexp **
+  - name: nsub
+    type: int
+  - name: flags
+    type: Regexp::ParseFlags
+  - name: splices
+    type: int *
+  return_type: void
+  signature: void re2::FactorAlternationImpl::Round2(re2::Regexp **, int, Regexp::ParseFlags, int *)
+- name: _ZN3re221FactorAlternationImpl6Round3EPPNS_6RegexpEiNS1_10ParseFlagsEPSt6vectorINS_6SpliceESaIS6_EE
+  params:
+  - name: sub
+    type: re2::Regexp **
+  - name: nsub
+    type: int
+  - name: flags
+    type: Regexp::ParseFlags
+  - name: splices
+    type: int *
+  return_type: void
+  signature: void re2::FactorAlternationImpl::Round3(re2::Regexp **, int, Regexp::ParseFlags, int *)
+- name: _ZN3re23DFA10StateSaver7RestoreEv
+  params: []
+  return_type: DFA::State *
+  signature: DFA::State * re2::DFA::StateSaver::Restore()
+- name: _ZN3re23DFA6SearchESt17basic_string_viewIcSt11char_traitsIcEES4_bbbPbPPKcPNS_10SparseSetTIvEE
+  params:
+  - name: text
+    type: int
+  - name: context
+    type: int
+  - name: anchored
+    type: bool
+  - name: want_earliest_match
+    type: bool
+  - name: run_forward
+    type: bool
+  - name: failed
+    type: bool *
+  - name: epp
+    type: const char **
+  - name: matches
+    type: re2::SparseSet *
+  return_type: bool
+  signature: bool re2::DFA::Search(int, int, bool, bool, bool, bool *, const char **, re2::SparseSet *)
+- name: _ZN3re23DFAC2EPNS_4ProgENS1_9MatchKindEl
+  params:
+  - name: prog
+    type: re2::Prog *
+  - name: kind
+    type: Prog::MatchKind
+  - name: max_mem
+    type: int64_t
+  return_type: void
+  signature: void re2::DFA::DFA(re2::Prog *, Prog::MatchKind, int64_t)
+- name: _ZN3re23NFA12AddToThreadqEPNS_11SparseArrayIPNS0_6ThreadEEEiiSt17basic_string_viewIcSt11char_traitsIcEEPKcS3_
+  params:
+  - name: q
+    type: re2::NFA::Threadq *
+  - name: id0
+    type: int
+  - name: c
+    type: int
+  - name: context
+    type: int
+  - name: p
+    type: const char *
+  - name: t0
+    type: re2::NFA::Thread *
+  return_type: void
+  signature: void re2::NFA::AddToThreadq(re2::NFA::Threadq *, int, int, int, const char *, re2::NFA::Thread *)
+- name: _ZN3re23NFAC2EPNS_4ProgE
+  params:
+  - name: prog
+    type: re2::Prog *
+  return_type: void
+  signature: void re2::NFA::NFA(re2::Prog *)
+- name: _ZN3re23RE210FullMatchNESt17basic_string_viewIcSt11char_traitsIcEERKS0_PKPKNS0_3ArgEi
+  params:
+  - name: text
+    type: int
+  - name: re
+    type: const re2::RE2 &
+  - name: args
+    type: const re2::RE2::Arg *const[]
+  - name: n
+    type: int
+  return_type: bool
+  signature: bool re2::RE2::FullMatchN(int, const re2::RE2 &, const re2::RE2::Arg *const[], int)
+- name: _ZN3re23RE213GlobalReplaceEPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKS0_St17basic_string_viewIcS4_E
+  params:
+  - name: str
+    type: std::string *
+  - name: re
+    type: const re2::RE2 &
+  - name: rewrite
+    type: int
+  return_type: int
+  signature: int re2::RE2::GlobalReplace(std::string *, const re2::RE2 &, int)
+- name: _ZN3re23RE215FindAndConsumeNEPSt17basic_string_viewIcSt11char_traitsIcEERKS0_PKPKNS0_3ArgEi
+  params:
+  - name: input
+    type: int *
+  - name: re
+    type: const re2::RE2 &
+  - name: args
+    type: const re2::RE2::Arg *const[]
+  - name: n
+    type: int
+  return_type: bool
+  signature: bool re2::RE2::FindAndConsumeN(int *, const re2::RE2 &, const re2::RE2::Arg *const[], int)
+- name: _ZN3re23RE27ExtractESt17basic_string_viewIcSt11char_traitsIcEERKS0_S4_PNSt7__cxx1112basic_stringIcS3_SaIcEEE
+  params:
+  - name: text
+    type: int
+  - name: re
+    type: const re2::RE2 &
+  - name: rewrite
+    type: int
+  - name: out
+    type: std::string *
+  return_type: bool
+  signature: bool re2::RE2::Extract(int, const re2::RE2 &, int, std::string *)
+- name: _ZN3re23RE2C2ESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: arg0
+    type: re2::RE2 &&
+  return_type: void
+  signature: void re2::RE2::RE2(re2::RE2 &&)
+- name: _ZN3re24Prog10CompileSetEPNS_6RegexpENS_3RE26AnchorEl
+  params:
+  - name: re
+    type: re2::Regexp *
+  - name: anchor
+    type: RE2::Anchor
+  - name: max_mem
+    type: int64_t
+  return_type: re2::Prog *
+  signature: re2::Prog * re2::Prog::CompileSet(re2::Regexp *, RE2::Anchor, int64_t)
+- name: _ZN3re24Prog11PrefixAccelEPKvm
+  params:
+  - name: data
+    type: const void *
+  - name: size
+    type: int
+  return_type: const void *
+  signature: const void * re2::Prog::PrefixAccel(const void *, int)
+- name: _ZN3re24Prog12ComputeHintsEPSt6vectorINS0_4InstESaIS2_EEii
+  params:
+  - name: flat
+    type: int *
+  - name: begin
+    type: int
+  - name: end
+    type: int
+  return_type: void
+  signature: void re2::Prog::ComputeHints(int *, int, int)
+- name: _ZN3re24Prog13MarkDominatorEiPNS_11SparseArrayIiEES3_PSt6vectorIS4_IiSaIiEESaIS6_EEPNS_10SparseSetTIvEEPS6_
+  params:
+  - name: root
+    type: int
+  - name: rootmap
+    type: SparseArray<int> *
+  - name: predmap
+    type: SparseArray<int> *
+  - name: predvec
+    type: int *
+  - name: reachable
+    type: re2::SparseSet *
+  - name: stk
+    type: int *
+  return_type: void
+  signature: void re2::Prog::MarkDominator(int, SparseArray<int> *, SparseArray<int> *, int *, re2::SparseSet *, int *)
+- name: _ZN3re24Prog14BuildEntireDFAENS0_9MatchKindERKSt8functionIFvPKibEE
+  params:
+  - name: kind
+    type: re2::Prog::MatchKind
+  - name: cb
+    type: const re2::Prog::DFAStateCallback &
+  return_type: int
+  signature: int re2::Prog::BuildEntireDFA(re2::Prog::MatchKind, const re2::Prog::DFAStateCallback &)
+- name: _ZN3re24Prog14ComputeByteMapEv
+  params: []
+  return_type: void
+  signature: void re2::Prog::ComputeByteMap()
+- name: _ZN3re24Prog14SearchBitStateESt17basic_string_viewIcSt11char_traitsIcEES4_NS0_6AnchorENS0_9MatchKindEPS4_i
+  params:
+  - name: text
+    type: int
+  - name: context
+    type: int
+  - name: anchor
+    type: re2::Prog::Anchor
+  - name: kind
+    type: re2::Prog::MatchKind
+  - name: match
+    type: int *
+  - name: nmatch
+    type: int
+  return_type: bool
+  signature: bool re2::Prog::SearchBitState(int, int, re2::Prog::Anchor, re2::Prog::MatchKind, int *, int)
+- name: _ZN3re24Prog18PossibleMatchRangeEPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_i
+  params:
+  - name: min
+    type: std::string *
+  - name: max
+    type: std::string *
+  - name: maxlen
+    type: int
+  return_type: bool
+  signature: bool re2::Prog::PossibleMatchRange(std::string *, std::string *, int)
+- name: _ZN3re24Prog6FanoutEPNS_11SparseArrayIiEE
+  params:
+  - name: fanout
+    type: SparseArray<int> *
+  return_type: void
+  signature: void re2::Prog::Fanout(SparseArray<int> *)
+- name: _ZN3re24Prog7FlattenEv
+  params: []
+  return_type: void
+  signature: void re2::Prog::Flatten()
+- name: _ZN3re24Prog9IsOnePassEv
+  params: []
+  return_type: bool
+  signature: bool re2::Prog::IsOnePass()
+- name: _ZN3re24Prog9SearchDFAESt17basic_string_viewIcSt11char_traitsIcEES4_NS0_6AnchorENS0_9MatchKindEPS4_PbPNS_10SparseSetTIvEE
+  params:
+  - name: text
+    type: int
+  - name: context
+    type: int
+  - name: anchor
+    type: re2::Prog::Anchor
+  - name: kind
+    type: re2::Prog::MatchKind
+  - name: match0
+    type: int *
+  - name: failed
+    type: bool *
+  - name: matches
+    type: re2::SparseSet *
+  return_type: bool
+  signature: bool re2::Prog::SearchDFA(int, int, re2::Prog::Anchor, re2::Prog::MatchKind, int *, bool *, re2::SparseSet *)
+- name: _ZN3re26Regexp10ParseState10PushRegexpEPS0_
+  params:
+  - name: re
+    type: re2::Regexp *
+  return_type: bool
+  signature: bool re2::Regexp::ParseState::PushRegexp(re2::Regexp *)
+- name: _ZN3re26Regexp10ParseState11PushLiteralEi
+  params:
+  - name: r
+    type: re2::Rune
+  return_type: bool
+  signature: bool re2::Regexp::ParseState::PushLiteral(re2::Rune)
+- name: _ZN3re26Regexp10ParseState12DoRightParenEv
+  params: []
+  return_type: bool
+  signature: bool re2::Regexp::ParseState::DoRightParen()
+- name: _ZN3re26Regexp10ParseState12ParseCCRangeEPSt17basic_string_viewIcSt11char_traitsIcEEPNS_9RuneRangeES5_PNS_12RegexpStatusE
+  params:
+  - name: s
+    type: int *
+  - name: rr
+    type: re2::RuneRange *
+  - name: whole_class
+    type: int
+  - name: status
+    type: re2::RegexpStatus *
+  return_type: bool
+  signature: bool re2::Regexp::ParseState::ParseCCRange(int *, re2::RuneRange *, int, re2::RegexpStatus *)
+- name: _ZN3re26Regexp10ParseState13DoVerticalBarEv
+  params: []
+  return_type: bool
+  signature: bool re2::Regexp::ParseState::DoVerticalBar()
+- name: _ZN3re26Regexp10ParseState14ParseCharClassEPSt17basic_string_viewIcSt11char_traitsIcEEPPS0_PNS_12RegexpStatusE
+  params:
+  - name: s
+    type: int *
+  - name: out_re
+    type: re2::Regexp **
+  - name: status
+    type: re2::RegexpStatus *
+  return_type: bool
+  signature: bool re2::Regexp::ParseState::ParseCharClass(int *, re2::Regexp **, re2::RegexpStatus *)
+- name: _ZN3re26Regexp10ParseState14PushRepetitionEiiSt17basic_string_viewIcSt11char_traitsIcEEb
+  params:
+  - name: min
+    type: int
+  - name: max
+    type: int
+  - name: s
+    type: int
+  - name: nongreedy
+    type: bool
+  return_type: bool
+  signature: bool re2::Regexp::ParseState::PushRepetition(int, int, int, bool)
+- name: _ZN3re26Regexp10ParseState15DoConcatenationEv
+  params: []
+  return_type: void
+  signature: void re2::Regexp::ParseState::DoConcatenation()
+- name: _ZN3re26Regexp10ParseState17MaybeConcatStringEiNS0_10ParseFlagsE
+  params:
+  - name: r
+    type: int
+  - name: flags
+    type: re2::Regexp::ParseFlags
+  return_type: bool
+  signature: bool re2::Regexp::ParseState::MaybeConcatString(int, re2::Regexp::ParseFlags)
+- name: _ZN3re26Regexp10ParseState8DoFinishEv
+  params: []
+  return_type: re2::Regexp *
+  signature: re2::Regexp * re2::Regexp::ParseState::DoFinish()
+- name: _ZN3re26Regexp20CompileToReverseProgEl
+  params:
+  - name: max_mem
+    type: int64_t
+  return_type: re2::Prog *
+  signature: re2::Prog * re2::Regexp::CompileToReverseProg(int64_t)
+- name: _ZN3re26Regexp5ParseESt17basic_string_viewIcSt11char_traitsIcEENS0_10ParseFlagsEPNS_12RegexpStatusE
+  params:
+  - name: s
+    type: int
+  - name: flags
+    type: re2::Regexp::ParseFlags
+  - name: status
+    type: re2::RegexpStatus *
+  return_type: re2::Regexp *
+  signature: re2::Regexp * re2::Regexp::Parse(int, re2::Regexp::ParseFlags, re2::RegexpStatus *)
+- name: _ZN3re26Regexp6DecrefEv
+  params: []
+  return_type: void
+  signature: void re2::Regexp::Decref()
+- name: _ZN3re26Regexp6IncrefEv
+  params: []
+  return_type: re2::Regexp *
+  signature: re2::Regexp * re2::Regexp::Incref()
+- name: _ZN3re26Regexp6WalkerINS_4FragEE15WalkExponentialEPS0_S2_i
+  params:
+  - name: re
+    type: re2::Regexp *
+  - name: top_arg
+    type: T
+  - name: max_visits
+    type: int
+  return_type: T
+  signature: T re2::Regexp::Walker::WalkExponential(re2::Regexp *, T, int)
+- name: _ZN3re26Regexp6WalkerIPNS_9Prefilter4InfoEE15WalkExponentialEPS0_S4_i
+  params:
+  - name: re
+    type: re2::Regexp *
+  - name: top_arg
+    type: T
+  - name: max_visits
+    type: int
+  return_type: T
+  signature: T re2::Regexp::Walker::WalkExponential(re2::Regexp *, T, int)
+- name: _ZN3re26Regexp6WalkerIPS0_E4WalkES2_S2_
+  params:
+  - name: re
+    type: re2::Regexp *
+  - name: top_arg
+    type: T
+  return_type: T
+  signature: T re2::Regexp::Walker::Walk(re2::Regexp *, T)
+- name: _ZN3re26Regexp6WalkerIiE4WalkEPS0_i
+  params:
+  - name: re
+    type: re2::Regexp *
+  - name: top_arg
+    type: T
+  return_type: T
+  signature: T re2::Regexp::Walker::Walk(re2::Regexp *, T)
+- name: _ZN3re26Regexp8SimplifyEv
+  params: []
+  return_type: re2::Regexp *
+  signature: re2::Regexp * re2::Regexp::Simplify()
+- name: _ZN3re26Regexp8ToStringB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string re2::Regexp::ToString()
+- name: _ZN3re28BitState6SearchESt17basic_string_viewIcSt11char_traitsIcEES4_bbPS4_i
+  params:
+  - name: text
+    type: int
+  - name: context
+    type: int
+  - name: anchored
+    type: bool
+  - name: longest
+    type: bool
+  - name: submatch
+    type: int *
+  - name: nsubmatch
+    type: int
+  return_type: bool
+  signature: bool re2::BitState::Search(int, int, bool, bool, int *, int)
+- name: _ZN3re28Compiler12AddRuneRangeEiib
+  params:
+  - name: lo
+    type: re2::Rune
+  - name: hi
+    type: re2::Rune
+  - name: foldcase
+    type: bool
+  return_type: void
+  signature: void re2::Compiler::AddRuneRange(re2::Rune, re2::Rune, bool)
+- name: _ZN3re28Compiler13Add_80_10ffffEv
+  params: []
+  return_type: void
+  signature: void re2::Compiler::Add_80_10ffff()
+- name: _ZN3re28Compiler13FindByteRangeEii
+  params:
+  - name: root
+    type: int
+  - name: id
+    type: int
+  return_type: re2::Frag
+  signature: re2::Frag re2::Compiler::FindByteRange(int, int)
+- name: _ZN3re28Compiler16AddRuneRangeUTF8Eiib
+  params:
+  - name: lo
+    type: re2::Rune
+  - name: hi
+    type: re2::Rune
+  - name: foldcase
+    type: bool
+  return_type: void
+  signature: void re2::Compiler::AddRuneRangeUTF8(re2::Rune, re2::Rune, bool)
+- name: _ZN3re28Compiler18AddSuffixRecursiveEii
+  params:
+  - name: root
+    type: int
+  - name: id
+    type: int
+  return_type: int
+  signature: int re2::Compiler::AddSuffixRecursive(int, int)
+- name: _ZN3re28Compiler4StarENS_4FragEb
+  params:
+  - name: a
+    type: re2::Frag
+  - name: nongreedy
+    type: bool
+  return_type: re2::Frag
+  signature: re2::Frag re2::Compiler::Star(re2::Frag, bool)
+- name: _ZN3re28Compiler6FinishEPNS_6RegexpE
+  params:
+  - name: re
+    type: re2::Regexp *
+  return_type: re2::Prog *
+  signature: re2::Prog * re2::Compiler::Finish(re2::Regexp *)
+- name: _ZN3re28Compiler7CompileEPNS_6RegexpEbl
+  params:
+  - name: re
+    type: re2::Regexp *
+  - name: reversed
+    type: bool
+  - name: max_mem
+    type: int64_t
+  return_type: re2::Prog *
+  signature: re2::Prog * re2::Compiler::Compile(re2::Regexp *, bool, int64_t)
+- name: _ZN3re28Compiler9AddSuffixEi
+  params:
+  - name: id
+    type: int
+  return_type: void
+  signature: void re2::Compiler::AddSuffix(int)
+- name: _ZN3re28Compiler9AllocInstEi
+  params:
+  - name: n
+    type: int
+  return_type: int
+  signature: int re2::Compiler::AllocInst(int)
+- name: _ZN3re28Compiler9PostVisitEPNS_6RegexpENS_4FragES3_PS3_i
+  params:
+  - name: re
+    type: re2::Regexp *
+  - name: arg1
+    type: re2::Frag
+  - name: arg2
+    type: re2::Frag
+  - name: child_frags
+    type: re2::Frag *
+  - name: nchild_frags
+    type: int
+  return_type: re2::Frag
+  signature: re2::Frag re2::Compiler::PostVisit(re2::Regexp *, re2::Frag, re2::Frag, re2::Frag *, int)
+- name: _ZN3re28CompilerC2Ev
+  params: []
+  return_type: void
+  signature: void re2::Compiler::Compiler()
+- name: _ZN3re29Prefilter4Info3AndEPS1_S2_
+  params:
+  - name: a
+    type: re2::Prefilter::Info *
+  - name: b
+    type: re2::Prefilter::Info *
+  return_type: Prefilter::Info *
+  signature: Prefilter::Info * re2::Prefilter::Info::And(re2::Prefilter::Info *, re2::Prefilter::Info *)
+- name: _ZN3re29Prefilter4Info6Walker9PostVisitEPNS_6RegexpEPS1_S5_PS5_i
+  params:
+  - name: re
+    type: re2::Regexp *
+  - name: parent_arg
+    type: Prefilter::Info *
+  - name: pre_arg
+    type: Prefilter::Info *
+  - name: child_args
+    type: Prefilter::Info **
+  - name: nchild_args
+    type: int
+  return_type: Prefilter::Info *
+  signature: Prefilter::Info * re2::Prefilter::Info::Walker::PostVisit(re2::Regexp *, Prefilter::Info *, Prefilter::Info *,
+    Prefilter::Info **, int)
+- name: _ZN3re29Prefilter7FromRE2EPKNS_3RE2E
+  params:
+  - name: re2
+    type: const re2::RE2 *
+  return_type: re2::Prefilter *
+  signature: re2::Prefilter * re2::Prefilter::FromRE2(const re2::RE2 *)
+- name: _ZN3re2L13IsAnchorStartEPPNS_6RegexpEi
+  params:
+  - name: pre
+    type: re2::Regexp **
+  - name: depth
+    type: int
+  return_type: bool
+  signature: bool re2::IsAnchorStart(re2::Regexp **, int)
+- name: _ZN3re2L6FanoutEPNS_4ProgEPSt6vectorIiSaIiEE
+  params:
+  - name: fanout
+    type: SparseArray<int> *
+  return_type: void
+  signature: void re2::Prog::Fanout(SparseArray<int> *)
+- name: _ZN3re2L9AddUGroupEPNS_16CharClassBuilderEPKNS_6UGroupEiNS_6Regexp10ParseFlagsE
+  params:
+  - name: cc
+    type: re2::CharClassBuilder *
+  - name: g
+    type: const re2::UGroup *
+  - name: sign
+    type: int
+  - name: parse_flags
+    type: Regexp::ParseFlags
+  return_type: void
+  signature: void re2::AddUGroup(re2::CharClassBuilder *, const re2::UGroup *, int, Regexp::ParseFlags)
+- name: _ZN4absl12lts_202508149call_onceIZN3re26Regexp6IncrefEvE3$_0JEEEvRNS0_9once_flagEOT_DpOT0_
+  params: []
+  return_type: re2::Regexp *
+  signature: re2::Regexp * re2::Regexp::Incref()
+- name: _ZN4absl12lts_202508149call_onceIZNK3re23RE219CapturingGroupNamesB5cxx11EvE3$_3JPKS3_EEEvRNS0_9once_flagEOT_DpOT0_
+  params: []
+  return_type: const int &
+  signature: const int & re2::RE2::CapturingGroupNames() const
+- name: _ZN4absl12lts_202508149call_onceIZNK3re23RE220NamedCapturingGroupsB5cxx11EvE3$_2JPKS3_EEEvRNS0_9once_flagEOT_DpOT0_
+  params: []
+  return_type: const int &
+  signature: const int & re2::RE2::NamedCapturingGroups() const
+- name: _ZN6bloaty12BloatyDoMainERKNS_7OptionsERKNS_16InputFileFactoryEPNS_12RollupOutputE
+  params:
+  - name: options
+    type: const bloaty::Options &
+  - name: file_factory
+    type: const bloaty::InputFileFactory &
+  - name: output
+    type: bloaty::RollupOutput *
+  return_type: void
+  signature: void bloaty::BloatyDoMain(const bloaty::Options &, const bloaty::InputFileFactory &, bloaty::RollupOutput *)
+- name: _ZN6bloaty12RollupOutput5PrintERKNS_13OutputOptionsEPSo
+  params:
+  - name: options
+    type: const bloaty::OutputOptions &
+  - name: out
+    type: std::ostream *
+  return_type: void
+  signature: void bloaty::RollupOutput::Print(const bloaty::OutputOptions &, std::ostream *)
+- name: _ZN6bloaty12_GLOBAL__N_111AddCatchAllEPNS_9RangeSinkE
+  params:
+  - name: sink
+    type: bloaty::RangeSink *
+  return_type: void
+  signature: void bloaty::AddCatchAll(bloaty::RangeSink *)
+- name: _ZN6bloaty12_GLOBAL__N_117ReadDWARFSectionsERKNS_9InputFileEPNS_5dwarf4FileEPNS_9RangeSinkE
+  params:
+  - name: file
+    type: const bloaty::InputFile &
+  - name: dwarf
+    type: dwarf::File *
+  - name: sink
+    type: bloaty::RangeSink *
+  return_type: void
+  signature: void bloaty::ReadDWARFSections(const bloaty::InputFile &, dwarf::File *, bloaty::RangeSink *)
+- name: _ZN6bloaty13MmapInputFile9DoTryOpenESt17basic_string_viewIcSt11char_traitsIcEERSt10unique_ptrINS_9InputFileESt14default_deleteIS6_EE
+  params:
+  - name: filename
+    type: int
+  - name: file
+    type: int &
+  return_type: bool
+  signature: bool bloaty::MmapInputFile::DoTryOpen(int, int &)
+- name: _ZN6bloaty14DoParseOptionsEbPiPPPcPNS_7OptionsEPNS_13OutputOptionsE
+  params:
+  - name: skip_unknown
+    type: bool
+  - name: argc
+    type: int *
+  - name: argv
+    type: char **[]
+  - name: options
+    type: bloaty::Options *
+  - name: output_options
+    type: bloaty::OutputOptions *
+  return_type: bool
+  signature: bool bloaty::DoParseOptions(bool, int *, char **[], bloaty::Options *, bloaty::OutputOptions *)
+- name: _ZN6bloaty16CustomDataSource5ClearEv
+  params: []
+  return_type: void
+  signature: void bloaty::CustomDataSource::Clear()
+- name: _ZN6bloaty16CustomDataSource8CopyFromERKN6google8protobuf7MessageE
+  params:
+  - name: from
+    type: const ::google::protobuf::Message &
+  return_type: void
+  signature: void bloaty::CustomDataSource::CopyFrom(const ::google::protobuf::Message &)
+- name: _ZN6bloaty16CustomDataSource8CopyFromERKS0_
+  params:
+  - name: from
+    type: const bloaty::CustomDataSource &
+  return_type: void
+  signature: void bloaty::CustomDataSource::CopyFrom(const bloaty::CustomDataSource &)
+- name: _ZN6bloaty16CustomDataSource9MergeFromERKS0_
+  params:
+  - name: from
+    type: const bloaty::CustomDataSource &
+  return_type: void
+  signature: void bloaty::CustomDataSource::MergeFrom(const bloaty::CustomDataSource &)
+- name: _ZN6bloaty16CustomDataSourceC2EPN6google8protobuf5ArenaE
+  params:
+  - name: from
+    type: const bloaty::CustomDataSource &
+  return_type: void
+  signature: void bloaty::CustomDataSource::CustomDataSource(const bloaty::CustomDataSource &)
+- name: _ZN6bloaty16ReadDWARFInlinesERKNS_5dwarf4FileEPNS_9RangeSinkEb
+  params:
+  - name: file
+    type: const dwarf::File &
+  - name: sink
+    type: bloaty::RangeSink *
+  - name: include_line
+    type: bool
+  return_type: void
+  signature: void bloaty::ReadDWARFInlines(const dwarf::File &, bloaty::RangeSink *, bool)
+- name: _ZN6bloaty18ReadEncodedPointerEhbPSt17basic_string_viewIcSt11char_traitsIcEEPKcPNS_9RangeSinkE
+  params:
+  - name: encoding
+    type: uint8_t
+  - name: is_64bit
+    type: bool
+  - name: data
+    type: int *
+  - name: data_base
+    type: const char *
+  - name: sink
+    type: bloaty::RangeSink *
+  return_type: uint64_t
+  signature: uint64_t bloaty::ReadEncodedPointer(uint8_t, bool, int *, const char *, bloaty::RangeSink *)
+- name: _ZN6bloaty18ReadGeneralDIEAttrEtNS_5dwarf9AttrValueERKNS0_2CUEPNS_10GeneralDIEE
+  params:
+  - name: tag
+    type: uint16_t
+  - name: val
+    type: dwarf::AttrValue
+  - name: cu
+    type: const dwarf::CU &
+  - name: die
+    type: bloaty::GeneralDIE *
+  return_type: void
+  signature: void bloaty::ReadGeneralDIEAttr(uint16_t, dwarf::AttrValue, const dwarf::CU &, bloaty::GeneralDIE *)
+- name: _ZN6bloaty19DisassembleFunctionB5cxx11ERKNS_15DisassemblyInfoE
+  params:
+  - name: info
+    type: const bloaty::DisassemblyInfo &
+  return_type: std::string
+  signature: std::string bloaty::DisassembleFunction(const bloaty::DisassemblyInfo &)
+- name: _ZN6bloaty25DisassembleFindReferencesERKNS_15DisassemblyInfoEPNS_9RangeSinkE
+  params:
+  - name: info
+    type: const bloaty::DisassemblyInfo &
+  - name: sink
+    type: bloaty::RangeSink *
+  return_type: void
+  signature: void bloaty::DisassembleFindReferences(const bloaty::DisassemblyInfo &, bloaty::RangeSink *)
+- name: _ZN6bloaty2pe11AddCatchAllERKNS0_6PeFileEPNS_9RangeSinkE
+  params:
+  - name: pe
+    type: const bloaty::pe::PeFile &
+  - name: sink
+    type: bloaty::RangeSink *
+  return_type: void
+  signature: void bloaty::pe::AddCatchAll(const bloaty::pe::PeFile &, bloaty::RangeSink *)
+- name: _ZN6bloaty2pe13ParseSectionsERKNS0_6PeFileEPNS_9RangeSinkE
+  params:
+  - name: pe
+    type: const bloaty::pe::PeFile &
+  - name: sink
+    type: bloaty::RangeSink *
+  return_type: void
+  signature: void bloaty::pe::ParseSections(const bloaty::pe::PeFile &, bloaty::RangeSink *)
+- name: _ZN6bloaty2pe6PeFileC2ESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: data
+    type: int
+  return_type: void
+  signature: void bloaty::pe::PeFile::PeFile(int)
+- name: _ZN6bloaty5Regex5ClearEv
+  params: []
+  return_type: void
+  signature: void bloaty::Regex::Clear()
+- name: _ZN6bloaty5Regex8CopyFromERKN6google8protobuf7MessageE
+  params:
+  - name: from
+    type: const ::google::protobuf::Message &
+  return_type: void
+  signature: void bloaty::Regex::CopyFrom(const ::google::protobuf::Message &)
+- name: _ZN6bloaty5Regex9MergeFromERKN6google8protobuf7MessageE
+  params:
+  - name: from
+    type: const ::google::protobuf::Message &
+  return_type: void
+  signature: void bloaty::Regex::MergeFrom(const ::google::protobuf::Message &)
+- name: _ZN6bloaty5Regex9MergeFromERKS0_
+  params:
+  - name: from
+    type: const bloaty::Regex &
+  return_type: void
+  signature: void bloaty::Regex::MergeFrom(const bloaty::Regex &)
+- name: _ZN6bloaty5RegexC2EPN6google8protobuf5ArenaE
+  params:
+  - name: from
+    type: const bloaty::Regex &
+  return_type: void
+  signature: void bloaty::Regex::Regex(const bloaty::Regex &)
+- name: _ZN6bloaty5RegexC2ERKS0_
+  params:
+  - name: from
+    type: const bloaty::Regex &
+  return_type: void
+  signature: void bloaty::Regex::Regex(const bloaty::Regex &)
+- name: _ZN6bloaty5dwarf13ReadRangeListERKNS0_2CUEmSt17basic_string_viewIcSt11char_traitsIcEEPNS_9RangeSinkEPS7_
+  params:
+  - name: cu
+    type: const bloaty::dwarf::CU &
+  - name: low_pc
+    type: uint64_t
+  - name: name
+    type: int
+  - name: sink
+    type: bloaty::RangeSink *
+  - name: data
+    type: int *
+  return_type: void
+  signature: void bloaty::dwarf::ReadRangeList(const bloaty::dwarf::CU &, uint64_t, int, bloaty::RangeSink *, int *)
+- name: _ZN6bloaty5dwarf14LineInfoReader12ReadLineInfoEv
+  params: []
+  return_type: bool
+  signature: bool bloaty::dwarf::LineInfoReader::ReadLineInfo()
+- name: _ZN6bloaty5dwarf14LineInfoReader12SeekToOffsetEmh
+  params:
+  - name: offset
+    type: uint64_t
+  - name: address_size
+    type: uint8_t
+  return_type: void
+  signature: void bloaty::dwarf::LineInfoReader::SeekToOffset(uint64_t, uint8_t)
+- name: _ZN6bloaty5dwarf20GetLocationListRangeENS0_20CompilationUnitSizesESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: sizes
+    type: bloaty::dwarf::CompilationUnitSizes
+  - name: available
+    type: int
+  return_type: int
+  signature: int bloaty::dwarf::GetLocationListRange(bloaty::dwarf::CompilationUnitSizes, int)
+- name: _ZN6bloaty5dwarf6CUIter6NextCUERNS0_10InfoReaderEPNS0_2CUE
+  params:
+  - name: reader
+    type: bloaty::dwarf::InfoReader &
+  - name: cu
+    type: bloaty::dwarf::CU *
+  return_type: bool
+  signature: bool bloaty::dwarf::CUIter::NextCU(bloaty::dwarf::InfoReader &, bloaty::dwarf::CU *)
+- name: _ZN6bloaty5dwarf9AttrValue25ResolveIndirectLineStringERKNS0_2CUEm
+  params:
+  - name: cu
+    type: const bloaty::dwarf::CU &
+  - name: ofs
+    type: uint64_t
+  return_type: int
+  signature: int bloaty::dwarf::AttrValue::ResolveIndirectLineString(const bloaty::dwarf::CU &, uint64_t)
+- name: _ZN6bloaty5dwarf9DIEReader12SkipChildrenERKNS0_2CUEPKNS0_11AbbrevTable6AbbrevE
+  params:
+  - name: cu
+    type: const bloaty::dwarf::CU &
+  - name: code
+    type: const AbbrevTable::Abbrev *
+  return_type: void
+  signature: void bloaty::dwarf::DIEReader::SkipChildren(const bloaty::dwarf::CU &, const AbbrevTable::Abbrev *)
+- name: _ZN6bloaty5dwarf9DIEReader8ReadCodeERKNS0_2CUE
+  params:
+  - name: cu
+    type: const bloaty::dwarf::CU &
+  return_type: const AbbrevTable::Abbrev *
+  signature: const AbbrevTable::Abbrev * bloaty::dwarf::DIEReader::ReadCode(const bloaty::dwarf::CU &)
+- name: _ZN6bloaty5machoL14CheckNotObjectEPKcPNS_9RangeSinkE
+  params:
+  - name: source
+    type: const char *
+  - name: sink
+    type: bloaty::RangeSink *
+  return_type: void
+  signature: void bloaty::macho::CheckNotObject(const char *, bloaty::RangeSink *)
+- name: _ZN6bloaty6AddDIEERKNS_5dwarf2CUERKNS_10GeneralDIEERKNS_7DualMapEPNS_9RangeSinkE
+  params:
+  - name: cu
+    type: const dwarf::CU &
+  - name: die
+    type: const bloaty::GeneralDIE &
+  - name: symbol_map
+    type: const bloaty::DualMap &
+  - name: sink
+    type: bloaty::RangeSink *
+  return_type: void
+  signature: void bloaty::AddDIE(const dwarf::CU &, const bloaty::GeneralDIE &, const bloaty::DualMap &, bloaty::RangeSink
+    *)
+- name: _ZN6bloaty6Bloaty11AddFilenameERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: filename
+    type: const std::string &
+  - name: is_base
+    type: bool
+  return_type: void
+  signature: void bloaty::Bloaty::AddFilename(const std::string &, bool)
+- name: _ZN6bloaty6Bloaty13ScanAndRollupERKNS_7OptionsEPNS_12RollupOutputE
+  params:
+  - name: options
+    type: const bloaty::Options &
+  - name: output
+    type: bloaty::RollupOutput *
+  return_type: void
+  signature: void bloaty::Bloaty::ScanAndRollup(const bloaty::Options &, bloaty::RollupOutput *)
+- name: _ZN6bloaty6Bloaty15AddDsymFilenameERKNS_7OptionsERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: options
+    type: const bloaty::Options &
+  - name: filename
+    type: const std::string &
+  return_type: void
+  signature: void bloaty::Bloaty::AddDsymFilename(const bloaty::Options &, const std::string &)
+- name: _ZN6bloaty6Bloaty15TryAutoLoadDsymERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_
+  params:
+  - name: binary_path
+    type: const std::string &
+  - name: build_id
+    type: const std::string &
+  return_type: void
+  signature: void bloaty::Bloaty::TryAutoLoadDsym(const std::string &, const std::string &)
+- name: _ZN6bloaty6Bloaty19DisassembleFunctionESt17basic_string_viewIcSt11char_traitsIcEERKNS_7OptionsEPNS_12RollupOutputE
+  params:
+  - name: function
+    type: int
+  - name: options
+    type: const bloaty::Options &
+  - name: output
+    type: bloaty::RollupOutput *
+  return_type: void
+  signature: void bloaty::Bloaty::DisassembleFunction(int, const bloaty::Options &, bloaty::RollupOutput *)
+- name: _ZN6bloaty6Bloaty22DefineCustomDataSourceERKNS_16CustomDataSourceE
+  params:
+  - name: source
+    type: const bloaty::CustomDataSource &
+  return_type: void
+  signature: void bloaty::Bloaty::DefineCustomDataSource(const bloaty::CustomDataSource &)
+- name: _ZN6bloaty6Rollup8AddSizesERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EEmb
+  params:
+  - name: names
+    type: const int &
+  - name: size
+    type: uint64_t
+  - name: is_vmsize
+    type: bool
+  return_type: void
+  signature: void bloaty::Rollup::AddSizes(const int &, uint64_t, bool)
+- name: _ZN6bloaty7Options14_InternalParseEPKcPN6google8protobuf8internal12ParseContextE
+  params:
+  - name: ptr
+    type: const char *
+  - name: ctx
+    type: ::google::protobuf::internal::ParseContext *
+  return_type: const char *
+  signature: const char * bloaty::Options::_InternalParse(const char *, ::google::protobuf::internal::ParseContext *)
+- name: _ZN6bloaty7Options16set_debug_vmaddrEm
+  params:
+  - name: value
+    type: ::google::protobuf::uint64
+  return_type: void
+  signature: void bloaty::Options::set_debug_vmaddr(::google::protobuf::uint64)
+- name: _ZN6bloaty7Options16set_dump_raw_mapEb
+  params:
+  - name: value
+    type: bool
+  return_type: void
+  signature: void bloaty::Options::set_dump_raw_map(bool)
+- name: _ZN6bloaty7Options17set_debug_fileoffEm
+  params:
+  - name: value
+    type: ::google::protobuf::uint64
+  return_type: void
+  signature: void bloaty::Options::set_debug_fileoff(::google::protobuf::uint64)
+- name: _ZN6bloaty7Options17set_verbose_levelEi
+  params:
+  - name: value
+    type: ::google::protobuf::int32
+  return_type: void
+  signature: void bloaty::Options::set_verbose_level(::google::protobuf::int32)
+- name: _ZN6bloaty7Options5ClearEv
+  params: []
+  return_type: void
+  signature: void bloaty::Options::Clear()
+- name: _ZN6bloaty7Options8CopyFromERKN6google8protobuf7MessageE
+  params:
+  - name: from
+    type: const ::google::protobuf::Message &
+  return_type: void
+  signature: void bloaty::Options::CopyFrom(const ::google::protobuf::Message &)
+- name: _ZN6bloaty7Options8CopyFromERKS0_
+  params:
+  - name: from
+    type: const bloaty::Options &
+  return_type: void
+  signature: void bloaty::Options::CopyFrom(const bloaty::Options &)
+- name: _ZN6bloaty7Options9MergeFromERKS0_
+  params:
+  - name: from
+    type: const bloaty::Options &
+  return_type: void
+  signature: void bloaty::Options::MergeFrom(const bloaty::Options &)
+- name: _ZN6bloaty7OptionsC2EPN6google8protobuf5ArenaE
+  params:
+  - name: from
+    type: const bloaty::Options &
+  return_type: void
+  signature: void bloaty::Options::Options(const bloaty::Options &)
+- name: _ZN6bloaty8DualMaps13ComputeRollupEPNS_6RollupE
+  params:
+  - name: rollup
+    type: bloaty::Rollup *
+  return_type: void
+  signature: void bloaty::DualMaps::ComputeRollup(bloaty::Rollup *)
+- name: _ZN6bloaty8DualMaps13PrintFileMapsEv
+  params: []
+  return_type: void
+  signature: void bloaty::DualMaps::PrintFileMaps()
+- name: _ZN6bloaty8RangeMap12AddDualRangeEmmmRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: addr
+    type: uint64_t
+  - name: size
+    type: uint64_t
+  - name: otheraddr
+    type: uint64_t
+  - name: val
+    type: const std::string &
+  return_type: void
+  signature: void bloaty::RangeMap::AddDualRange(uint64_t, uint64_t, uint64_t, const std::string &)
+- name: _ZN6bloaty8RangeMap23AddRangeWithTranslationEmmRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKS0_bPS0_
+  params:
+  - name: addr
+    type: uint64_t
+  - name: size
+    type: uint64_t
+  - name: val
+    type: const std::string &
+  - name: translator
+    type: const bloaty::RangeMap &
+  - name: verbose
+    type: bool
+  - name: other
+    type: bloaty::RangeMap *
+  return_type: bool
+  signature: bool bloaty::RangeMap::AddRangeWithTranslation(uint64_t, uint64_t, const std::string &, const bloaty::RangeMap
+    &, bool, bloaty::RangeMap *)
+- name: _ZN6bloaty8RangeMap8AddRangeEmmRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: addr
+    type: uint64_t
+  - name: size
+    type: uint64_t
+  - name: val
+    type: const std::string &
+  return_type: void
+  signature: void bloaty::RangeMap::AddRange(uint64_t, uint64_t, const std::string &)
+- name: _ZN6bloaty8RangeMap8CompressEv
+  params: []
+  return_type: void
+  signature: void bloaty::RangeMap::Compress()
+- name: _ZN6bloaty9RangeSink10AddVMRangeEPKcmmRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: analyzer
+    type: const char *
+  - name: vmaddr
+    type: uint64_t
+  - name: vmsize
+    type: uint64_t
+  - name: name
+    type: const std::string &
+  return_type: void
+  signature: void bloaty::RangeSink::AddVMRange(const char *, uint64_t, uint64_t, const std::string &)
+- name: _ZN6bloaty9RangeSink12AddFileRangeEPKcSt17basic_string_viewIcSt11char_traitsIcEES6_
+  params:
+  - name: analyzer
+    type: const char *
+  - name: name
+    type: int
+  - name: file_range
+    type: int
+  return_type: void
+  signature: void bloaty::RangeSink::AddFileRange(const char *, int, int)
+- name: _ZN6bloaty9RangeSink12AddFileRangeEPKcSt17basic_string_viewIcSt11char_traitsIcEEmm
+  params:
+  - name: analyzer
+    type: const char *
+  - name: name
+    type: int
+  - name: file_range
+    type: int
+  return_type: void
+  signature: void bloaty::RangeSink::AddFileRange(const char *, int, int)
+- name: _ZN6bloaty9RangeSink17TranslateFileToVMEPKc
+  params:
+  - name: ptr
+    type: const char *
+  return_type: uint64_t
+  signature: uint64_t bloaty::RangeSink::TranslateFileToVM(const char *)
+- name: _ZN6bloaty9RangeSink24AddFileRangeForFileRangeEPKcSt17basic_string_viewIcSt11char_traitsIcEES6_
+  params:
+  - name: analyzer
+    type: const char *
+  - name: from_file_range
+    type: int
+  - name: file_range
+    type: int
+  return_type: void
+  signature: void bloaty::RangeSink::AddFileRangeForFileRange(const char *, int, int)
+- name: _ZN6bloaty9RangeSink8AddRangeEPKcSt17basic_string_viewIcSt11char_traitsIcEEmmS6_
+  params:
+  - name: analyzer
+    type: const char *
+  - name: name
+    type: int
+  - name: vmaddr
+    type: uint64_t
+  - name: vmsize
+    type: uint64_t
+  - name: file_range
+    type: int
+  return_type: void
+  signature: void bloaty::RangeSink::AddRange(const char *, int, uint64_t, uint64_t, int)
+- name: _ZN6bloaty9RangeSink8AddRangeEPKcSt17basic_string_viewIcSt11char_traitsIcEEmmmm
+  params:
+  - name: analyzer
+    type: const char *
+  - name: name
+    type: int
+  - name: vmaddr
+    type: uint64_t
+  - name: vmsize
+    type: uint64_t
+  - name: file_range
+    type: int
+  return_type: void
+  signature: void bloaty::RangeSink::AddRange(const char *, int, uint64_t, uint64_t, int)
+- name: _ZN6bloaty9RunBloatyERKNS_16InputFileFactoryERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: factory
+    type: const bloaty::InputFileFactory &
+  - name: data_source
+    type: const std::string &
+  return_type: void
+  signature: void bloaty::RunBloaty(const bloaty::InputFileFactory &, const std::string &)
+- name: _ZN6bloatyL17ReadDWARFPubNamesERNS_5dwarf10InfoReaderESt17basic_string_viewIcSt11char_traitsIcEEPNS_9RangeSinkE
+  params:
+  - name: reader
+    type: dwarf::InfoReader &
+  - name: section
+    type: int
+  - name: sink
+    type: bloaty::RangeSink *
+  return_type: void
+  signature: void bloaty::ReadDWARFPubNames(dwarf::InfoReader &, int, bloaty::RangeSink *)
+- name: _ZN6bloatyL17ReadDWARFStmtListEbPNS_5dwarf14LineInfoReaderEPNS_9RangeSinkE
+  params:
+  - name: include_line
+    type: bool
+  - name: line_info_reader
+    type: dwarf::LineInfoReader *
+  - name: sink
+    type: bloaty::RangeSink *
+  return_type: void
+  signature: void bloaty::ReadDWARFStmtList(bool, dwarf::LineInfoReader *, bloaty::RangeSink *)
+- name: _ZN6bloatyL18ReadDWARFDebugInfoERNS_5dwarf10InfoReaderENS1_7SectionERKNS_7DualMapEPNS_9RangeSinkE
+  params:
+  - name: reader
+    type: dwarf::InfoReader &
+  - name: section
+    type: dwarf::InfoReader::Section
+  - name: symbol_map
+    type: const bloaty::DualMap &
+  - name: sink
+    type: bloaty::RangeSink *
+  return_type: void
+  signature: void bloaty::ReadDWARFDebugInfo(dwarf::InfoReader &, dwarf::InfoReader::Section, const bloaty::DualMap &, bloaty::RangeSink
+    *)
+- name: _ZN6bloatyL22ReadDWARFAddressRangesERKNS_5dwarf4FileEPNS_9RangeSinkE
+  params:
+  - name: file
+    type: const dwarf::File &
+  - name: sink
+    type: bloaty::RangeSink *
+  return_type: bool
+  signature: bool bloaty::ReadDWARFAddressRanges(const dwarf::File &, bloaty::RangeSink *)
+- name: _ZN6google8protobuf5ArenaC2Ev
+  params: []
+  return_type: void
+  signature: void google::protobuf::Arena::Arena()
+- name: _ZN6google8protobuf8internal11WriteVarintEjmPNS0_15UnknownFieldSetE
+  params:
+  - name: num
+    type: google::protobuf::uint32
+  - name: val
+    type: google::protobuf::uint64
+  - name: unknown
+    type: google::protobuf::UnknownFieldSet *
+  return_type: void
+  signature: void google::protobuf::internal::WriteVarint(google::protobuf::uint32, google::protobuf::uint64, google::protobuf::UnknownFieldSet
+    *)
+- name: _ZN6google8protobuf8internal14ArenaStringPtr3SetEPKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERS9_PNS0_5ArenaE
+  params:
+  - name: default_value
+    type: const ::std::string *
+  - name: value
+    type: const ::std::string &
+  - name: arena
+    type: google::protobuf::Arena *
+  return_type: void
+  signature: void google::protobuf::internal::ArenaStringPtr::Set(const ::std::string *, const ::std::string &, google::protobuf::Arena
+    *)
+- name: _ZNK3re23RE218PossibleMatchRangeEPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_i
+  params:
+  - name: min
+    type: std::string *
+  - name: max
+    type: std::string *
+  - name: maxlen
+    type: int
+  return_type: bool
+  signature: bool re2::RE2::PossibleMatchRange(std::string *, std::string *, int) const
+- name: _ZNK3re23RE219CapturingGroupNamesB5cxx11Ev
+  params: []
+  return_type: const int &
+  signature: const int & re2::RE2::CapturingGroupNames() const
+- name: _ZNK3re23RE220NamedCapturingGroupsB5cxx11Ev
+  params: []
+  return_type: const int &
+  signature: const int & re2::RE2::NamedCapturingGroups() const
+- name: _ZNK3re23RE220ReverseProgramFanoutEPSt6vectorIiSaIiEE
+  params:
+  - name: histogram
+    type: int *
+  return_type: int
+  signature: int re2::RE2::ReverseProgramFanout(int *) const
+- name: _ZNK3re23RE25MatchESt17basic_string_viewIcSt11char_traitsIcEEmmNS0_6AnchorEPS4_i
+  params:
+  - name: text
+    type: int
+  - name: startpos
+    type: int
+  - name: endpos
+    type: int
+  - name: re_anchor
+    type: re2::RE2::Anchor
+  - name: submatch
+    type: int *
+  - name: nsubmatch
+    type: int
+  return_type: bool
+  signature: bool re2::RE2::Match(int, int, int, re2::RE2::Anchor, int *, int) const
+- name: _ZNK3re29Prefilter11DebugStringB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string re2::Prefilter::DebugString() const
+- name: _ZNK6bloaty16CustomDataSource12ByteSizeLongEv
+  params: []
+  return_type: int
+  signature: int bloaty::CustomDataSource::ByteSizeLong() const
+- name: _ZNK6bloaty16CustomDataSource18_InternalSerializeEPhPN6google8protobuf2io19EpsCopyOutputStreamE
+  params:
+  - name: target
+    type: ::google::protobuf::uint8 *
+  - name: stream
+    type: ::google::protobuf::io::EpsCopyOutputStream *
+  return_type: ::google::protobuf::uint8 *
+  signature: ::google::protobuf::uint8 * bloaty::CustomDataSource::_InternalSerialize(::google::protobuf::uint8 *, ::google::protobuf::io::EpsCopyOutputStream
+    *) const
+- name: _ZNK6bloaty5Regex12ByteSizeLongEv
+  params: []
+  return_type: int
+  signature: int bloaty::Regex::ByteSizeLong() const
+- name: _ZNK6bloaty5Regex18_InternalSerializeEPhPN6google8protobuf2io19EpsCopyOutputStreamE
+  params:
+  - name: target
+    type: ::google::protobuf::uint8 *
+  - name: stream
+    type: ::google::protobuf::io::EpsCopyOutputStream *
+  return_type: ::google::protobuf::uint8 *
+  signature: ::google::protobuf::uint8 * bloaty::Regex::_InternalSerialize(::google::protobuf::uint8 *, ::google::protobuf::io::EpsCopyOutputStream
+    *) const
+- name: _ZNK6bloaty5dwarf9AttrValue7GetUintERKNS0_2CUE
+  params:
+  - name: cu
+    type: const bloaty::dwarf::CU &
+  return_type: uint64_t
+  signature: uint64_t bloaty::dwarf::AttrValue::GetUint(const bloaty::dwarf::CU &) const
+- name: _ZNK6bloaty5dwarf9AttrValue9GetStringERKNS0_2CUE
+  params:
+  - name: cu
+    type: const bloaty::dwarf::CU &
+  return_type: int
+  signature: int bloaty::dwarf::AttrValue::GetString(const bloaty::dwarf::CU &) const
+- name: _ZNK6bloaty6Bloaty17ScanAndRollupFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS_6RollupEPSt6vectorIS6_SaIS6_EE
+  params:
+  - name: filename
+    type: const std::string &
+  - name: rollup
+    type: bloaty::Rollup *
+  - name: out_build_ids
+    type: int *
+  return_type: void
+  signature: void bloaty::Bloaty::ScanAndRollupFile(const std::string &, bloaty::Rollup *, int *) const
+- name: _ZNK6bloaty6Bloaty18ScanAndRollupFilesERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EEPS9_PNS_6RollupE
+  params:
+  - name: filenames
+    type: const int &
+  - name: build_ids
+    type: int *
+  - name: rollup
+    type: bloaty::Rollup *
+  return_type: void
+  signature: void bloaty::Bloaty::ScanAndRollupFiles(const int &, int *, bloaty::Rollup *) const
+- name: _ZNK6bloaty6Rollup26CreateDiffModeRollupOutputEPS0_RKNS_7OptionsEPNS_12RollupOutputE
+  params:
+  - name: base
+    type: bloaty::Rollup *
+  - name: options
+    type: const bloaty::Options &
+  - name: output
+    type: bloaty::RollupOutput *
+  return_type: void
+  signature: void bloaty::Rollup::CreateDiffModeRollupOutput(bloaty::Rollup *, const bloaty::Options &, bloaty::RollupOutput
+    *) const
+- name: _ZNK6bloaty7Options12ByteSizeLongEv
+  params: []
+  return_type: int
+  signature: int bloaty::Options::ByteSizeLong() const
+- name: _ZNK6bloaty7Options18_InternalSerializeEPhPN6google8protobuf2io19EpsCopyOutputStreamE
+  params:
+  - name: target
+    type: ::google::protobuf::uint8 *
+  - name: stream
+    type: ::google::protobuf::io::EpsCopyOutputStream *
+  return_type: ::google::protobuf::uint8 *
+  signature: ::google::protobuf::uint8 * bloaty::Options::_InternalSerialize(::google::protobuf::uint8 *, ::google::protobuf::io::EpsCopyOutputStream
+    *) const
+- name: _ZNK6bloaty8RangeMap11CoversRangeEmm
+  params:
+  - name: addr
+    type: uint64_t
+  - name: size
+    type: uint64_t
+  return_type: bool
+  signature: bool bloaty::RangeMap::CoversRange(uint64_t, uint64_t) const
+- name: _ZNK6bloaty8RangeMap12ForEachRangeIZNKS_6Bloaty17ScanAndRollupFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS_6RollupEPSt6vectorIS8_SaIS8_EEE3$_2EEvT_
+  params:
+  - name: filename
+    type: const std::string &
+  - name: rollup
+    type: bloaty::Rollup *
+  - name: out_build_ids
+    type: int *
+  return_type: void
+  signature: void bloaty::Bloaty::ScanAndRollupFile(const std::string &, bloaty::Rollup *, int *) const
+- name: _ZNK6bloaty8RangeMap12ForEachRangeIZNKS_6Bloaty17ScanAndRollupFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS_6RollupEPSt6vectorIS8_SaIS8_EEE3$_3EEvT_
+  params:
+  - name: filename
+    type: const std::string &
+  - name: rollup
+    type: bloaty::Rollup *
+  - name: out_build_ids
+    type: int *
+  return_type: void
+  signature: void bloaty::Bloaty::ScanAndRollupFile(const std::string &, bloaty::Rollup *, int *) const
+- name: _ZNK6google8protobuf5Arena14SpaceAllocatedEv
+  params: []
+  return_type: google::protobuf::uint64
+  signature: google::protobuf::uint64 google::protobuf::Arena::SpaceAllocated() const
 language: c++
 project: bloaty
 target_name: fuzz_target

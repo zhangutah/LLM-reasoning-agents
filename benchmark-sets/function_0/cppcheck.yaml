@@ -1,12 +1,1893 @@
 functions:
+- name: _Z16getProgramMemoryPK5TokenS1_RKN9ValueFlow5ValueERK8Settings
+  params:
+  - name: tok
+    type: const Token *
+  - name: expr
+    type: const Token *
+  - name: value
+    type: const ValueFlow::Value &
+  - name: settings
+    type: const Settings &
+  return_type: ProgramMemory
+  signature: ProgramMemory getProgramMemory(const Token *, const Token *, const ValueFlow::Value &, const Settings &)
+- name: _ZL11getEnumTypePK5ScopeRK8Platform
+  params:
+  - name: scope
+    type: const Scope *
+  - name: platform
+    type: const Platform &
+  return_type: ValueType::Type
+  signature: ValueType::Type getEnumType(const Scope *, const Platform &)
+- name: _ZL12doAssignmentR9VariablesPK5TokenbPK5Scope
+  params:
+  - name: variables
+    type: Variables &
+  - name: tok
+    type: const Token *
+  - name: dereference
+    type: bool
+  - name: scope
+    type: const Scope *
+  return_type: const Token *
+  signature: const Token * doAssignment(Variables &, const Token *, bool, const Scope *)
+- name: _ZL13mergeAdjacentRNSt7__cxx114listIN9ValueFlow5ValueESaIS2_EEE
+  params:
+  - name: values
+    type: int &
+  return_type: void
+  signature: void mergeAdjacent(int &)
+- name: _ZL14isSameLifetimePK5TokenS1_
+  params:
+  - name: tok1
+    type: const Token *const
+  - name: tok2
+    type: const Token *const
+  return_type: bool
+  signature: bool isSameLifetime(const Token *const, const Token *const)
+- name: _ZL15getInitListSizePK5TokenPK9ValueTypeRK8Settingsb
+  params:
+  - name: tok
+    type: const Token *
+  - name: valueType
+    type: const ValueType *
+  - name: settings
+    type: const Settings &
+  - name: known
+    type: bool
+  return_type: int
+  signature: int getInitListSize(const Token *, const ValueType *, const Settings &, bool)
+- name: _ZL15preprocessTokenRN9simplecpp9TokenListERPKNS_5TokenERSt13unordered_mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS_5MacroESt4hashISC_ESt8equal_toISC_ESaISt4pairIKSC_SD_EEERSt6vectorISC_SaISC_EEPNS7_4listINS_6OutputESaIST_EEE
+  params:
+  - name: output
+    type: simplecpp::TokenList &
+  - name: tok1
+    type: const simplecpp::Token *&
+  - name: macros
+    type: int &
+  - name: files
+    type: int &
+  - name: outputList
+    type: int *
+  return_type: bool
+  signature: bool preprocessToken(simplecpp::TokenList &, const simplecpp::Token *&, int &, int &, int *)
+- name: _ZL16removePointValueRNSt7__cxx114listIN9ValueFlow5ValueESaIS2_EEERSt14_List_iteratorIS2_E
+  params:
+  - name: values
+    type: int &
+  - name: x
+    type: int &
+  return_type: bool
+  signature: bool removePointValue(int &, int &)
+- name: _ZL16valueFlowForwardP5TokenPKS_S2_NSt7__cxx114listIN9ValueFlow5ValueESaIS6_EEERK9TokenListR11ErrorLoggerRK8Settings14SourceLocation
+  params:
+  - name: startToken
+    type: Token *
+  - name: exprTok
+    type: const Token *
+  - name: v
+    type: ValueFlow::Value
+  - name: tokenlist
+    type: const TokenList &
+  - name: errorLogger
+    type: ErrorLogger &
+  - name: settings
+    type: const Settings &
+  - name: loc
+    type: SourceLocation
+  return_type: Analyzer::Result
+  signature: Analyzer::Result valueFlowForward(Token *, const Token *, ValueFlow::Value, const TokenList &, ErrorLogger &,
+    const Settings &, SourceLocation)
+- name: _ZL17valueFlowForLoop2PK5TokenP13ProgramMemoryS3_S3_RK8Settings
+  params:
+  - name: tok
+    type: const Token *
+  - name: memory1
+    type: ProgramMemory *
+  - name: memory2
+    type: ProgramMemory *
+  - name: memoryAfter
+    type: ProgramMemory *
+  - name: settings
+    type: const Settings &
+  return_type: bool
+  signature: bool valueFlowForLoop2(const Token *, ProgramMemory *, ProgramMemory *, ProgramMemory *, const Settings &)
+- name: _ZL17valueFlowLifetimeR9TokenListR11ErrorLoggerRK8Settings
+  params:
+  - name: tokenlist
+    type: TokenList &
+  - name: errorLogger
+    type: ErrorLogger &
+  - name: settings
+    type: const Settings &
+  return_type: void
+  signature: void valueFlowLifetime(TokenList &, ErrorLogger &, const Settings &)
+- name: _ZL21changeKnownToPossibleRNSt7__cxx114listIN9ValueFlow5ValueESaIS2_EEEi
+  params:
+  - name: values
+    type: int &
+  - name: indirect
+    type: int
+  return_type: void
+  signature: void changeKnownToPossible(int &, int)
+- name: _ZL21changePossibleToKnownRNSt7__cxx114listIN9ValueFlow5ValueESaIS2_EEEi
+  params:
+  - name: values
+    type: int &
+  - name: indirect
+    type: int
+  return_type: void
+  signature: void changePossibleToKnown(int &, int)
+- name: _ZL22setAutoTokenPropertiesP5Token
+  params:
+  - name: autoTok
+    type: Token *const
+  return_type: void
+  signature: void setAutoTokenProperties(Token *const)
+- name: _ZL22valueFlowContainerSizeRK9TokenListRK14SymbolDatabaseR11ErrorLoggerRK8SettingsRKSt3setIPK5ScopeSt4lessISD_ESaISD_EE
+  params:
+  - name: tokenlist
+    type: const TokenList &
+  - name: symboldatabase
+    type: const SymbolDatabase &
+  - name: errorLogger
+    type: ErrorLogger &
+  - name: settings
+    type: const Settings &
+  - name: skippedFunctions
+    type: const int &
+  return_type: void
+  signature: void valueFlowContainerSize(const TokenList &, const SymbolDatabase &, ErrorLogger &, const Settings &, const
+    int &)
+- name: _ZL23valueFlowFunctionReturnR9TokenListR11ErrorLoggerRK8Settings
+  params:
+  - name: tokenlist
+    type: TokenList &
+  - name: errorLogger
+    type: ErrorLogger &
+  - name: settings
+    type: const Settings &
+  return_type: void
+  signature: void valueFlowFunctionReturn(TokenList &, ErrorLogger &, const Settings &)
+- name: _ZL25valueFlowLifetimeFunctionP5TokenRK9TokenListR11ErrorLoggerRK8Settings
+  params:
+  - name: tok
+    type: Token *
+  - name: tokenlist
+    type: const TokenList &
+  - name: errorLogger
+    type: ErrorLogger &
+  - name: settings
+    type: const Settings &
+  return_type: void
+  signature: void valueFlowLifetimeFunction(Token *, const TokenList &, ErrorLogger &, const Settings &)
+- name: _ZL27programMemoryParseConditionR13ProgramMemoryPK5TokenS3_RK8Settingsb
+  params:
+  - name: pm
+    type: ProgramMemory &
+  - name: tok
+    type: const Token *
+  - name: endTok
+    type: const Token *
+  - name: settings
+    type: const Settings &
+  - name: then
+    type: bool
+  return_type: void
+  signature: void programMemoryParseCondition(ProgramMemory &, const Token *, const Token *, const Settings &, bool)
+- name: _ZL28valueFlowIsSameContainerTypeRK9ValueTypePK5TokenbRK8Settings
+  params:
+  - name: contType
+    type: const ValueType &
+  - name: tok
+    type: const Token *
+  - name: isView
+    type: bool
+  - name: settings
+    type: const Settings &
+  return_type: bool
+  signature: bool valueFlowIsSameContainerType(const ValueType &, const Token *, bool, const Settings &)
+- name: _ZL28valueFlowLifetimeConstructorP5TokenRK9TokenListR11ErrorLoggerRK8Settings
+  params:
+  - name: tok
+    type: Token *
+  - name: tokenlist
+    type: const TokenList &
+  - name: errorLogger
+    type: ErrorLogger &
+  - name: settings
+    type: const Settings &
+  return_type: void
+  signature: void valueFlowLifetimeConstructor(Token *, const TokenList &, ErrorLogger &, const Settings &)
+- name: _ZL32fillProgramMemoryFromAssignmentsR13ProgramMemoryPK5TokenRK8SettingsRKS_RKSt13unordered_mapI11ExprIdTokenN9ValueFlow5ValueENSA_4HashESt8equal_toISA_ESaISt4pairIKSA_SC_EEE
+  params:
+  - name: pm
+    type: ProgramMemory &
+  - name: tok
+    type: const Token *
+  - name: settings
+    type: const Settings &
+  - name: state
+    type: const ProgramMemory &
+  - name: vars
+    type: const int &
+  return_type: void
+  signature: void fillProgramMemoryFromAssignments(ProgramMemory &, const Token *, const Settings &, const ProgramMemory &,
+    const int &)
+- name: _ZL8evaluateRN9simplecpp9TokenListERKNS_3DUIERKSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEmSt4lessISB_ESaISt4pairIKSB_mEEE
+  params:
+  - name: expr
+    type: simplecpp::TokenList &
+  - name: dui
+    type: const simplecpp::DUI &
+  - name: sizeOfType
+    type: const int &
+  return_type: long long
+  signature: long long evaluate(simplecpp::TokenList &, const simplecpp::DUI &, const int &)
+- name: _ZL8samelinePKN9simplecpp5TokenES2_.104977
+  params:
+  - name: tok1
+    type: const simplecpp::Token *
+  - name: tok2
+    type: const simplecpp::Token *
+  return_type: bool
+  signature: bool sameline(const simplecpp::Token *, const simplecpp::Token *)
+- name: _ZL9createDUIRK8SettingsRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9Standards8LanguageE
+  params:
+  - name: mSettings
+    type: const Settings &
+  - name: cfg
+    type: const std::string &
+  - name: lang
+    type: Standards::Language
+  return_type: int
+  signature: int createDUI(const Settings &, const std::string &, Standards::Language)
+- name: _ZN11FwdAnalysis11unusedValueEPK5TokenS2_S2_
+  params:
+  - name: expr
+    type: const Token *
+  - name: startToken
+    type: const Token *
+  - name: endToken
+    type: const Token *
+  return_type: bool
+  signature: bool FwdAnalysis::unusedValue(const Token *, const Token *, const Token *)
+- name: _ZN11FwdAnalysis8reassignEPK5TokenS2_S2_
+  params:
+  - name: expr
+    type: const Token *
+  - name: startToken
+    type: const Token *
+  - name: endToken
+    type: const Token *
+  return_type: const Token *
+  signature: const Token * FwdAnalysis::reassign(const Token *, const Token *, const Token *)
+- name: _ZN12_GLOBAL__N_116ForwardTraversal10updateLoopEPK5TokenPS1_S4_S4_S4_b
+  params:
+  - name: endToken
+    type: const Token *
+  - name: endBlock
+    type: Token *
+  - name: condTok
+    type: Token *
+  - name: initTok
+    type: Token *
+  - name: stepTok
+    type: Token *
+  - name: exit
+    type: bool
+  return_type: (anonymous namespace)::ForwardTraversal::Progress
+  signature: (anonymous namespace)::ForwardTraversal::Progress ForwardTraversal::updateLoop(const Token *, Token *, Token
+    *, Token *, Token *, bool)
+- name: _ZN12_GLOBAL__N_116ForwardTraversal6updateEP5TokenN8Analyzer6ActionE
+  params:
+  - name: tok
+    type: Token *
+  - name: action
+    type: Analyzer::Action
+  return_type: (anonymous namespace)::ForwardTraversal::Progress
+  signature: (anonymous namespace)::ForwardTraversal::Progress ForwardTraversal::update(Token *, Analyzer::Action)
+- name: _ZN12_GLOBAL__N_116ReverseTraversal8traverseEP5TokenPKS1_
+  params:
+  - name: start
+    type: Token *
+  - name: end
+    type: const Token *
+  return_type: void
+  signature: void ReverseTraversal::traverse(Token *, const Token *)
+- name: _ZN12_GLOBAL__N_18Executor11executeImplEPK5Token
+  params:
+  - name: expr
+    type: const Token *
+  return_type: ValueFlow::Value
+  signature: ValueFlow::Value Executor::executeImpl(const Token *)
+- name: _ZN12Preprocessor10preprocessERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIS5_SaIS5_EERNS0_4listIN9simplecpp6OutputESaISE_EEE
+  params:
+  - name: cfg
+    type: const std::string &
+  - name: files
+    type: int &
+  - name: outputList
+    type: int &
+  return_type: simplecpp::TokenList
+  signature: simplecpp::TokenList Preprocessor::preprocess(const std::string &, int &, int &)
+- name: _ZN12Preprocessor17simplifyPragmaAsmEv
+  params: []
+  return_type: void
+  signature: void Preprocessor::simplifyPragmaAsm()
+- name: _ZN12Preprocessor7getcodeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIS5_SaIS5_EEb
+  params:
+  - name: cfg
+    type: const std::string &
+  - name: files
+    type: int &
+  - name: writeLocations
+    type: bool
+  return_type: std::string
+  signature: std::string Preprocessor::getcode(const std::string &, int &, bool)
+- name: _ZN13ImportProject14importVcxitemsERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKSt6vectorIS5_SaIS5_EERS8_INS_18SharedItemsProjectESaISD_EE
+  params:
+  - name: filename
+    type: const std::string &
+  - name: fileFilters
+    type: const int &
+  - name: cache
+    type: int &
+  return_type: ImportProject::SharedItemsProject
+  signature: ImportProject::SharedItemsProject ImportProject::importVcxitems(const std::string &, const int &, int &)
+- name: _ZN13ImportProject9parseArgsER12FileSettingsRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS8_EE
+  params:
+  - name: fs
+    type: FileSettings &
+  - name: args
+    type: const int &
+  return_type: void
+  signature: void ImportProject::parseArgs(FileSettings &, const int &)
+- name: _ZN13ProgramMemory2atEi
+  params:
+  - name: exprid
+    type: int
+  return_type: ValueFlow::Value &
+  signature: ValueFlow::Value & ProgramMemory::at(int)
+- name: _ZN13ProgramMemory7replaceES_b
+  params:
+  - name: pm
+    type: ProgramMemory
+  - name: skipUnknown
+    type: bool
+  return_type: void
+  signature: void ProgramMemory::replace(ProgramMemory, bool)
+- name: _ZN13ProgramMemory8setValueEPK5TokenRKN9ValueFlow5ValueE
+  params:
+  - name: expr
+    type: const Token *
+  - name: value
+    type: const ValueFlow::Value &
+  return_type: void
+  signature: void ProgramMemory::setValue(const Token *, const ValueFlow::Value &)
+- name: _ZN14CheckCondition27incorrectLogicOperatorErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEbbNS3_4listISt4pairIS2_S8_ESaISD_EEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: condition
+    type: const std::string &
+  - name: always
+    type: bool
+  - name: inconclusive
+    type: bool
+  - name: errors
+    type: int
+  return_type: void
+  signature: void CheckCondition::incorrectLogicOperatorError(const Token *, const std::string &, bool, bool, int)
+- name: _ZN14CheckCondition28oppositeElseIfConditionErrorEPK5TokenS2_NSt7__cxx114listISt4pairIS2_NS3_12basic_stringIcSt11char_traitsIcESaIcEEEESaISB_EEE
+  params:
+  - name: ifCond
+    type: const Token *
+  - name: elseIfCond
+    type: const Token *
+  - name: errorPath
+    type: int
+  return_type: void
+  signature: void CheckCondition::oppositeElseIfConditionError(const Token *, const Token *, int)
+- name: _ZN14SymbolDatabase23setValueTypeInTokenListEbP5Token
+  params:
+  - name: reportDebugWarnings
+    type: bool
+  - name: tokens
+    type: Token *
+  return_type: void
+  signature: void SymbolDatabase::setValueTypeInTokenList(bool, Token *)
+- name: _ZN15SuppressionList11Suppression7isMatchERKNS_12ErrorMessageE
+  params:
+  - name: errmsg
+    type: const SuppressionList::ErrorMessage &
+  return_type: bool
+  signature: bool SuppressionList::Suppression::isMatch(const SuppressionList::ErrorMessage &)
+- name: _ZN15SuppressionList12ErrorMessage16fromErrorMessageERK12ErrorMessageRKSt3setINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4lessISA_ESaISA_EE
+  params:
+  - name: msg
+    type: const ::ErrorMessage &
+  - name: macroNames
+    type: const int &
+  return_type: SuppressionList::ErrorMessage
+  signature: SuppressionList::ErrorMessage SuppressionList::ErrorMessage::fromErrorMessage(const ::ErrorMessage &, const int
+    &)
+- name: _ZN15SuppressionList14addSuppressionB5cxx11ENS_11SuppressionE
+  params:
+  - name: suppression
+    type: SuppressionList::Suppression
+  return_type: std::string
+  signature: std::string SuppressionList::addSuppression(SuppressionList::Suppression)
+- name: _ZN15SuppressionList22isSuppressedExplicitlyERKNS_12ErrorMessageEb
+  params:
+  - name: errmsg
+    type: const SuppressionList::ErrorMessage &
+  - name: global
+    type: bool
+  return_type: bool
+  signature: bool SuppressionList::isSuppressedExplicitly(const SuppressionList::ErrorMessage &, bool)
+- name: _ZN16CheckLeakAutoVar10checkScopeEPK5TokenR7VarInfoSt3setIiSt4lessIiESaIiEEi
+  params:
+  - name: startToken
+    type: const Token *const
+  - name: varInfo
+    type: VarInfo &
+  - name: notzero
+    type: int
+  - name: recursiveCount
+    type: int
+  return_type: bool
+  signature: bool CheckLeakAutoVar::checkScope(const Token *const, VarInfo &, int, int)
+- name: _ZN16StdCharBufStreamC2EPKhm
+  params:
+  - name: str
+    type: const unsigned char *
+  - name: size
+    type: std::size_t
+  return_type: void
+  signature: void StdCharBufStream::StdCharBufStream(const unsigned char *, std::size_t)
+- name: _ZN17SimpleEnableGroupI6ChecksE7disableES1_
+  params:
+  - name: group
+    type: SimpleEnableGroup<T>
+  return_type: void
+  signature: void SimpleEnableGroup::disable(SimpleEnableGroup<T>)
+- name: _ZN17SimpleEnableGroupI8SeverityE6enableES1_
+  params:
+  - name: group
+    type: SimpleEnableGroup<T>
+  return_type: void
+  signature: void SimpleEnableGroup::enable(SimpleEnableGroup<T>)
+- name: _ZN17SimpleEnableGroupI9CertaintyE10setEnabledES0_b
+  params:
+  - name: flag
+    type: T
+  - name: enabled
+    type: bool
+  return_type: void
+  signature: void SimpleEnableGroup::setEnabled(T, bool)
+- name: _ZN18CheckBufferOverrun15arrayIndexErrorEPK5TokenRKSt6vectorI9DimensionSaIS4_EERKS3_IN9ValueFlow5ValueESaISA_EE
+  params:
+  - name: tok
+    type: const Token *
+  - name: dimensions
+    type: const int &
+  - name: indexes
+    type: const int &
+  return_type: void
+  signature: void CheckBufferOverrun::arrayIndexError(const Token *, const int &, const int &)
+- name: _ZN18CheckBufferOverrun19analyseWholeProgramERKN3CTU8FileInfoERKNSt7__cxx114listIPN5Check8FileInfoESaIS8_EEERK8SettingsR11ErrorLogger
+  params:
+  - name: ctu
+    type: const CTU::FileInfo &
+  - name: fileInfo
+    type: const int &
+  - name: settings
+    type: const Settings &
+  - name: errorLogger
+    type: ErrorLogger &
+  return_type: bool
+  signature: bool CheckBufferOverrun::analyseWholeProgram(const CTU::FileInfo &, const int &, const Settings &, ErrorLogger
+    &)
+- name: _ZN18ProgramMemoryState18removeModifiedVarsEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void ProgramMemoryState::removeModifiedVars(const Token *)
+- name: _ZN18ProgramMemoryState6assumeEPK5Tokenbb
+  params:
+  - name: tok
+    type: const Token *
+  - name: b
+    type: bool
+  - name: isEmpty
+    type: bool
+  return_type: void
+  signature: void ProgramMemoryState::assume(const Token *, bool, bool)
+- name: _ZN18ProgramMemoryState7replaceE13ProgramMemoryPK5Token
+  params:
+  - name: pm
+    type: ProgramMemory
+  - name: origin
+    type: const Token *
+  return_type: void
+  signature: void ProgramMemoryState::replace(ProgramMemory, const Token *)
+- name: _ZN19AnalyzerInformation11analyzeFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_S7_mmRNS0_4listI12ErrorMessageSaIS9_EEE
+  params:
+  - name: buildDir
+    type: const std::string &
+  - name: sourcefile
+    type: const std::string &
+  - name: cfg
+    type: const std::string &
+  - name: fsFileId
+    type: std::size_t
+  - name: hash
+    type: std::size_t
+  - name: errors
+    type: int &
+  return_type: bool
+  signature: bool AnalyzerInformation::analyzeFile(const std::string &, const std::string &, const std::string &, std::size_t,
+    std::size_t, int &)
+- name: _ZN19AnalyzerInformation9reportErrERK12ErrorMessage
+  params:
+  - name: msg
+    type: const ErrorMessage &
+  return_type: void
+  signature: void AnalyzerInformation::reportErr(const ErrorMessage &)
+- name: _ZN3CTU8FileInfo10NestedCall11loadFromXmlEPKN8tinyxml210XMLElementE
+  params:
+  - name: xmlElement
+    type: const tinyxml2::XMLElement *
+  return_type: bool
+  signature: bool CTU::FileInfo::NestedCall::loadFromXml(const tinyxml2::XMLElement *)
+- name: _ZN3CTU8FileInfo11loadFromXmlEPKN8tinyxml210XMLElementE
+  params:
+  - name: xmlElement
+    type: const tinyxml2::XMLElement *
+  return_type: void
+  signature: void CTU::FileInfo::loadFromXml(const tinyxml2::XMLElement *)
+- name: _ZN3CTU8toStringERKNSt7__cxx114listINS_8FileInfo11UnsafeUsageESaIS3_EEE
+  params:
+  - name: unsafeUsage
+    type: const int &
+  return_type: std::string
+  signature: std::string CTU::toString(const int &)
+- name: _ZN5Token19addAttributeAlignasERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: a
+    type: const std::string &
+  return_type: void
+  signature: void Token::addAttributeAlignas(const std::string &)
+- name: _ZN5Token20setCppcheckAttributeENS_22CppcheckAttributesTypeEx
+  params:
+  - name: type
+    type: Token::CppcheckAttributesType
+  - name: value
+    type: MathLib::bigint
+  return_type: void
+  signature: void Token::setCppcheckAttribute(Token::CppcheckAttributesType, MathLib::bigint)
+- name: _ZN5Token7typeStrB5cxx11EPKS_
+  params:
+  - name: tok
+    type: const Token *
+  return_type: std::string
+  signature: std::string Token::typeStr(const Token *)
+- name: _ZN6LambdaC2EPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void Lambda::Lambda(const Token *)
+- name: _ZN7Library4loadEPKcS1_b
+  params:
+  - name: exename
+    type: const char[]
+  - name: path
+    type: const char[]
+  - name: debug
+    type: bool
+  return_type: Library::Error
+  signature: Library::Error Library::load(const char[], const char[], bool)
+- name: _ZN8Analyzer6ActionoRES0_
+  params:
+  - name: a
+    type: Analyzer::Action
+  return_type: Analyzer::Action &
+  signature: Analyzer::Action & Analyzer::Action::operator|=(Analyzer::Action)
+- name: _ZN8CppCheck13executeAddonsERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS6_
+  params:
+  - name: files
+    type: const int &
+  - name: file0
+    type: const std::string &
+  return_type: void
+  signature: void CppCheck::executeAddons(const int &, const std::string &)
+- name: _ZN8CppCheck19analyseWholeProgramERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_4listI15FileWithDetailsSaIS9_EEERKNS8_I12FileSettingsSaISE_EEES7_
+  params:
+  - name: buildDir
+    type: const std::string &
+  - name: files
+    type: const int &
+  - name: fileSettings
+    type: const int &
+  - name: ctuInfo
+    type: const std::string &
+  return_type: unsigned int
+  signature: unsigned int CppCheck::analyseWholeProgram(const std::string &, const int &, const int &, const std::string &)
+- name: _ZN8CppCheck5checkERK12FileSettings
+  params:
+  - name: fs
+    type: const FileSettings &
+  return_type: unsigned int
+  signature: unsigned int CppCheck::check(const FileSettings &)
 - name: _ZN8CppCheck5checkERK15FileWithDetails
   params:
-  - name: this
-    type: 'bool '
   - name: file
-    type: 'bool '
-  return_type: int
+    type: const FileWithDetails &
+  return_type: unsigned int
   signature: unsigned int CppCheck::check(const FileWithDetails &)
+- name: _ZN8picojson5valueC2EOS0_
+  params: []
+  return_type: int
+  signature: int std::error_condition::value() const
+- name: _ZN8Platform12loadFromFileERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS6_b
+  params:
+  - name: paths
+    type: const int &
+  - name: filename
+    type: const std::string &
+  - name: debug
+    type: bool
+  return_type: bool
+  signature: bool Platform::loadFromFile(const int &, const std::string &, bool)
+- name: _ZN8Platform3setERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERS5_RKSt6vectorIS5_SaIS5_EEb
+  params:
+  - name: platformstr
+    type: const std::string &
+  - name: errstr
+    type: std::string &
+  - name: paths
+    type: const int &
+  - name: debug
+    type: bool
+  return_type: bool
+  signature: bool Platform::set(const std::string &, std::string &, const int &, bool)
+- name: _ZN8Settings10addEnabledERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: str
+    type: const std::string &
+  return_type: std::string
+  signature: std::string Settings::addEnabled(const std::string &)
+- name: _ZN8Settings15loadCppcheckCfgB5cxx11ERS_R12Suppressionsb
+  params:
+  - name: settings
+    type: Settings &
+  - name: suppressions
+    type: Suppressions &
+  - name: debug
+    type: bool
+  return_type: std::string
+  signature: std::string Settings::loadCppcheckCfg(Settings &, Suppressions &, bool)
+- name: _ZN8SettingsC2Ev
+  params: []
+  return_type: void
+  signature: void Settings::Settings()
+- name: _ZN8tinyxml210XMLElement12SetAttributeEPKcS2_
+  params:
+  - name: name
+    type: const char *
+  - name: value
+    type: const char *
+  return_type: void
+  signature: void tinyxml2::XMLElement::SetAttribute(const char *, const char *)
+- name: _ZN8tinyxml210XMLElement15DeleteAttributeEPKc
+  params:
+  - name: name
+    type: const char *
+  return_type: void
+  signature: void tinyxml2::XMLElement::DeleteAttribute(const char *)
+- name: _ZN8tinyxml210XMLElement16InsertNewCommentEPKc
+  params:
+  - name: comment
+    type: const char *
+  return_type: tinyxml2::XMLComment *
+  signature: tinyxml2::XMLComment * tinyxml2::XMLElement::InsertNewComment(const char *)
+- name: _ZN8tinyxml210XMLElement16InsertNewUnknownEPKc
+  params:
+  - name: text
+    type: const char *
+  return_type: tinyxml2::XMLUnknown *
+  signature: tinyxml2::XMLUnknown * tinyxml2::XMLElement::InsertNewUnknown(const char *)
+- name: _ZN8tinyxml210XMLElement20InsertNewDeclarationEPKc
+  params:
+  - name: text
+    type: const char *
+  return_type: tinyxml2::XMLDeclaration *
+  signature: tinyxml2::XMLDeclaration * tinyxml2::XMLElement::InsertNewDeclaration(const char *)
+- name: _ZN8tinyxml210XMLElement21InsertNewChildElementEPKc
+  params:
+  - name: name
+    type: const char *
+  return_type: tinyxml2::XMLElement *
+  signature: tinyxml2::XMLElement * tinyxml2::XMLElement::InsertNewChildElement(const char *)
+- name: _ZN8tinyxml210XMLElement7SetTextEl
+  params:
+  - name: v
+    type: int64_t
+  return_type: void
+  signature: void tinyxml2::XMLElement::SetText(int64_t)
+- name: _ZN8tinyxml210XMLElement7SetTextEPKc
+  params:
+  - name: inText
+    type: const char *
+  return_type: void
+  signature: void tinyxml2::XMLElement::SetText(const char *)
+- name: _ZN8tinyxml210XMLPrinter10VisitEnterERKNS_10XMLElementEPKNS_12XMLAttributeE
+  params:
+  - name: element
+    type: const tinyxml2::XMLElement &
+  - name: attribute
+    type: const tinyxml2::XMLAttribute *
+  return_type: bool
+  signature: bool tinyxml2::XMLPrinter::VisitEnter(const tinyxml2::XMLElement &, const tinyxml2::XMLAttribute *)
+- name: _ZN8tinyxml210XMLPrinter10VisitEnterERKNS_11XMLDocumentE
+  params:
+  - name: doc
+    type: const tinyxml2::XMLDocument &
+  return_type: bool
+  signature: bool tinyxml2::XMLPrinter::VisitEnter(const tinyxml2::XMLDocument &)
+- name: _ZN8tinyxml210XMLPrinter11OpenElementEPKcb
+  params:
+  - name: name
+    type: const char *
+  - name: compactMode
+    type: bool
+  return_type: void
+  signature: void tinyxml2::XMLPrinter::OpenElement(const char *, bool)
+- name: _ZN8tinyxml210XMLPrinter12CloseElementEb
+  params:
+  - name: compactMode
+    type: bool
+  return_type: void
+  signature: void tinyxml2::XMLPrinter::CloseElement(bool)
+- name: _ZN8tinyxml210XMLPrinter5VisitERKNS_7XMLTextE
+  params:
+  - name: text
+    type: const tinyxml2::XMLText &
+  return_type: bool
+  signature: bool tinyxml2::XMLPrinter::Visit(const tinyxml2::XMLText &)
+- name: _ZN8tinyxml210XMLPrinterC2EP8_IO_FILEbi
+  params:
+  - name: file
+    type: FILE *
+  - name: compact
+    type: bool
+  - name: depth
+    type: int
+  return_type: void
+  signature: void tinyxml2::XMLPrinter::XMLPrinter(FILE *, bool, int)
+- name: _ZN8tinyxml211XMLDocument10ClearErrorEv
+  params: []
+  return_type: void
+  signature: void tinyxml2::XMLDocument::ClearError()
+- name: _ZN8tinyxml211XMLDocument10NewElementEPKc
+  params:
+  - name: name
+    type: const char *
+  return_type: tinyxml2::XMLElement *
+  signature: tinyxml2::XMLElement * tinyxml2::XMLDocument::NewElement(const char *)
+- name: _ZN8tinyxml211XMLDocument12DepthTrackerC2EPS0_
+  params:
+  - name: document
+    type: tinyxml2::XMLDocument *
+  return_type: void
+  signature: void tinyxml2::XMLDocument::DepthTracker::DepthTracker(tinyxml2::XMLDocument *)
+- name: _ZN8tinyxml211XMLDocument5ClearEv
+  params: []
+  return_type: void
+  signature: void tinyxml2::XMLDocument::Clear()
+- name: _ZN8tinyxml211XMLDocument8LoadFileEP8_IO_FILE
+  params:
+  - name: fp
+    type: FILE *
+  return_type: tinyxml2::XMLError
+  signature: tinyxml2::XMLError tinyxml2::XMLDocument::LoadFile(FILE *)
+- name: _ZN8tinyxml211XMLDocument8LoadFileEPKc
+  params:
+  - name: filename
+    type: const char *
+  return_type: tinyxml2::XMLError
+  signature: tinyxml2::XMLError tinyxml2::XMLDocument::LoadFile(const char *)
+- name: _ZN8tinyxml211XMLDocument8SaveFileEP8_IO_FILEb
+  params:
+  - name: fp
+    type: FILE *
+  - name: compact
+    type: bool
+  return_type: tinyxml2::XMLError
+  signature: tinyxml2::XMLError tinyxml2::XMLDocument::SaveFile(FILE *, bool)
+- name: _ZN8tinyxml211XMLDocument8SaveFileEPKcb
+  params:
+  - name: filename
+    type: const char *
+  - name: compact
+    type: bool
+  return_type: tinyxml2::XMLError
+  signature: tinyxml2::XMLError tinyxml2::XMLDocument::SaveFile(const char *, bool)
+- name: _ZN8tinyxml211XMLDocument9MarkInUseEPKNS_7XMLNodeE
+  params:
+  - name: node
+    type: const tinyxml2::XMLNode *const
+  return_type: void
+  signature: void tinyxml2::XMLDocument::MarkInUse(const tinyxml2::XMLNode *const)
+- name: _ZN8tinyxml212XMLAttribute12SetAttributeEm
+  params:
+  - name: v
+    type: uint64_t
+  return_type: void
+  signature: void tinyxml2::XMLAttribute::SetAttribute(uint64_t)
+- name: _ZN8tinyxml27StrPair6GetStrEv
+  params: []
+  return_type: const char *
+  signature: const char * tinyxml2::StrPair::GetStr()
+- name: _ZN8tinyxml27StrPair9ParseNameEPc
+  params:
+  - name: p
+    type: char *
+  return_type: char *
+  signature: char * tinyxml2::StrPair::ParseName(char *)
+- name: _ZN8tinyxml27XMLNode11DeleteChildEPS0_
+  params:
+  - name: node
+    type: tinyxml2::XMLNode *
+  return_type: void
+  signature: void tinyxml2::XMLNode::DeleteChild(tinyxml2::XMLNode *)
+- name: _ZN8tinyxml27XMLNode14DeleteChildrenEv
+  params: []
+  return_type: void
+  signature: void tinyxml2::XMLNode::DeleteChildren()
+- name: _ZN8tinyxml27XMLNode16InsertAfterChildEPS0_S1_
+  params:
+  - name: afterThis
+    type: tinyxml2::XMLNode *
+  - name: addThis
+    type: tinyxml2::XMLNode *
+  return_type: tinyxml2::XMLNode *
+  signature: tinyxml2::XMLNode * tinyxml2::XMLNode::InsertAfterChild(tinyxml2::XMLNode *, tinyxml2::XMLNode *)
+- name: _ZN8tinyxml27XMLNode8SetValueEPKcb
+  params:
+  - name: str
+    type: const char *
+  - name: staticMem
+    type: bool
+  return_type: void
+  signature: void tinyxml2::XMLNode::SetValue(const char *, bool)
+- name: _ZN8tinyxml28DynArrayIcLm20EE4PushEc
+  params:
+  - name: t
+    type: T
+  return_type: void
+  signature: void tinyxml2::DynArray::Push(T)
+- name: _ZN8tinyxml28DynArrayIPKcLm10EE4PushES2_
+  params:
+  - name: t
+    type: T
+  return_type: void
+  signature: void tinyxml2::DynArray::Push(T)
+- name: _ZN8tinyxml28DynArrayIPNS_7XMLNodeELm10EE4PushES2_
+  params:
+  - name: t
+    type: T
+  return_type: void
+  signature: void tinyxml2::DynArray::Push(T)
+- name: _ZN8tinyxml28DynArrayIPNS_8MemPoolTILm104EE5BlockELm10EE4PushES4_
+  params:
+  - name: t
+    type: T
+  return_type: void
+  signature: void tinyxml2::DynArray::Push(T)
+- name: _ZN8tinyxml28DynArrayIPNS_8MemPoolTILm112EE5BlockELm10EE4PushES4_
+  params:
+  - name: t
+    type: T
+  return_type: void
+  signature: void tinyxml2::DynArray::Push(T)
+- name: _ZN8tinyxml28DynArrayIPNS_8MemPoolTILm120EE5BlockELm10EE4PushES4_
+  params:
+  - name: t
+    type: T
+  return_type: void
+  signature: void tinyxml2::DynArray::Push(T)
+- name: _ZN8tinyxml28DynArrayIPNS_8MemPoolTILm80EE5BlockELm10EE4PushES4_
+  params:
+  - name: t
+    type: T
+  return_type: void
+  signature: void tinyxml2::DynArray::Push(T)
+- name: _ZN8tinyxml28MemPoolTILm104EE5AllocEv
+  params: []
+  return_type: void *
+  signature: void * tinyxml2::MemPoolT::Alloc()
+- name: _ZN8tinyxml28MemPoolTILm104EE5ClearEv
+  params: []
+  return_type: void
+  signature: void tinyxml2::XMLDocument::Clear()
+- name: _ZN8tinyxml28MemPoolTILm112EE5AllocEv
+  params: []
+  return_type: void *
+  signature: void * tinyxml2::MemPoolT::Alloc()
+- name: _ZN8tinyxml28MemPoolTILm112EE5ClearEv
+  params: []
+  return_type: void
+  signature: void tinyxml2::XMLDocument::Clear()
+- name: _ZN8tinyxml28MemPoolTILm120EE5AllocEv
+  params: []
+  return_type: void *
+  signature: void * tinyxml2::MemPoolT::Alloc()
+- name: _ZN8tinyxml28MemPoolTILm120EE5ClearEv
+  params: []
+  return_type: void
+  signature: void tinyxml2::XMLDocument::Clear()
+- name: _ZN8tinyxml28MemPoolTILm80EE5AllocEv
+  params: []
+  return_type: void *
+  signature: void * tinyxml2::MemPoolT::Alloc()
+- name: _ZN8tinyxml28MemPoolTILm80EE5ClearEv
+  params: []
+  return_type: void
+  signature: void tinyxml2::XMLDocument::Clear()
+- name: _ZN8ValuePtrI8AnalyzerEptEv
+  params: []
+  return_type: std::_Rb_tree_const_iterator::pointer
+  signature: std::_Rb_tree_const_iterator::pointer std::_Rb_tree_const_iterator::operator->() const
+- name: _ZN9CheckType27checkFloatToIntegerOverflowEPK5TokenPK9ValueTypeS5_RKNSt7__cxx114listIN9ValueFlow5ValueESaIS9_EEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: vtint
+    type: const ValueType *
+  - name: vtfloat
+    type: const ValueType *
+  - name: floatValues
+    type: const int &
+  return_type: void
+  signature: void CheckType::checkFloatToIntegerOverflow(const Token *, const ValueType *, const ValueType *, const int &)
+- name: _ZN9__gnu_cxx13new_allocatorISt10_List_nodeIZN9Tokenizer13simplifyUsingEvE5UsingEE9constructIS3_JRP5TokenS9_EEEvPT_DpOT0_
+  params: []
+  return_type: bool
+  signature: bool Tokenizer::simplifyUsing()
+- name: _ZN9__gnu_cxx5__ops10_Iter_predIZN13ImportProject14importVcxitemsERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKSt6vectorIS8_SaIS8_EERSB_INS2_18SharedItemsProjectESaISG_EEE3$_3EC2ESK_
+  params:
+  - name: filename
+    type: const std::string &
+  - name: fileFilters
+    type: const int &
+  - name: cache
+    type: int &
+  return_type: ImportProject::SharedItemsProject
+  signature: ImportProject::SharedItemsProject ImportProject::importVcxitems(const std::string &, const int &, int &)
+- name: _ZN9__gnu_cxx5__ops10_Iter_predIZN13ImportProject14importVcxitemsERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKSt6vectorIS8_SaIS8_EERSB_INS2_18SharedItemsProjectESaISG_EEE3$_3EclINS_17__normal_iteratorIPSG_SI_EEEEbT_
+  params:
+  - name: filename
+    type: const std::string &
+  - name: fileFilters
+    type: const int &
+  - name: cache
+    type: int &
+  return_type: ImportProject::SharedItemsProject
+  signature: ImportProject::SharedItemsProject ImportProject::importVcxitems(const std::string &, const int &, int &)
+- name: _ZN9__gnu_cxx5__ops10_Iter_predIZN13ImportProject9parseArgsER12FileSettingsRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISB_EEE3$_1EclISt20_List_const_iteratorISB_EEEbT_
+  params:
+  - name: fs
+    type: FileSettings &
+  - name: args
+    type: const int &
+  return_type: void
+  signature: void ImportProject::parseArgs(FileSettings &, const int &)
+- name: _ZN9__gnu_cxx5__ops10_Iter_predIZN5CheckC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE3$_0EclISt14_List_iteratorIPS2_EEEbT_
+  params:
+  - name: arg0
+    type: const Check &
+  return_type: void
+  signature: void Check::Check(const Check &)
+- name: _ZN9__gnu_cxx5__ops10_Iter_predIZN5CheckC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE3$_1EclISt14_List_iteratorIPS2_EEEbT_
+  params:
+  - name: arg0
+    type: const Check &
+  return_type: void
+  signature: void Check::Check(const Check &)
+- name: _ZN9__gnu_cxx5__ops10_Iter_predIZN5Scope25findInNestedListRecursiveERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE4$_24EclINS_17__normal_iteratorIPKPS2_St6vectorISF_SaISF_EEEEEEbT_
+  params:
+  - name: name
+    type: const std::string &
+  return_type: Scope *
+  signature: Scope * Scope::findInNestedListRecursive(const std::string &)
+- name: _ZN9__gnu_cxx5__ops10_Iter_predIZN5Token8addValueERKN9ValueFlow5ValueEE3$_6EclISt14_List_iteratorIS4_EEEbT_
+  params:
+  - name: value
+    type: const ValueFlow::Value &
+  return_type: bool
+  signature: bool Token::addValue(const ValueFlow::Value &)
+- name: _ZN9__gnu_cxx5__ops10_Iter_predIZN9TokenList15appendFileIfNewENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE3$_0EclINS_17__normal_iteratorIPKS8_St6vectorIS8_SaIS8_EEEEEEbT_
+  params:
+  - name: fileName
+    type: std::string
+  return_type: int
+  signature: int TokenList::appendFileIfNew(std::string)
+- name: _ZN9__gnu_cxx5__ops10_Iter_predIZNK14SymbolDatabase15findScopeByNameERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE4$_23EclISt20_List_const_iteratorI5ScopeEEEbT_
+  params:
+  - name: name
+    type: const std::string &
+  return_type: const Scope *
+  signature: const Scope * SymbolDatabase::findScopeByName(const std::string &) const
+- name: _ZN9__gnu_cxx5__ops10_Iter_predIZNK5Scope11getVariableERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE4$_15EclISt20_List_const_iteratorI8VariableEEEbT_
+  params:
+  - name: varname
+    type: const std::string &
+  return_type: const Variable *
+  signature: const Variable * Scope::getVariable(const std::string &) const
+- name: _ZN9__gnu_cxx5__ops10_Iter_predIZNK5Token10getValueNEExE3$_4EclISt20_List_const_iteratorIN9ValueFlow5ValueEEEEbT_
+  params:
+  - name: val
+    type: MathLib::bigint
+  return_type: const ValueFlow::Value *
+  signature: const ValueFlow::Value * Token::getValueNE(MathLib::bigint) const
+- name: _ZN9__gnu_cxx5__ops10_Iter_predIZNK5Token13getKnownValueEN9ValueFlow5Value9ValueTypeEE4$_10EclISt14_List_iteratorIS4_EEEbT_
+  params:
+  - name: t
+    type: ValueFlow::Value::ValueType
+  return_type: const ValueFlow::Value *
+  signature: const ValueFlow::Value * Token::getKnownValue(ValueFlow::Value::ValueType) const
+- name: _ZN9__gnu_cxx5__ops10_Iter_predIZNK5Token13hasKnownValueEN9ValueFlow5Value9ValueTypeEE3$_8EclISt14_List_iteratorIS4_EEEbT_
+  params:
+  - name: t
+    type: ValueFlow::Value::ValueType
+  return_type: bool
+  signature: bool Token::hasKnownValue(ValueFlow::Value::ValueType) const
+- name: _ZN9__gnu_cxx5__ops10_Iter_predIZNK5Token21getContainerSizeValueExE4$_13EclISt14_List_iteratorIN9ValueFlow5ValueEEEEbT_
+  params:
+  - name: val
+    type: MathLib::bigint
+  return_type: const ValueFlow::Value *
+  signature: const ValueFlow::Value * Token::getContainerSizeValue(MathLib::bigint) const
+- name: _ZN9__gnu_cxx5__ops10_Iter_predIZNK5Token8getValueExE4$_11EclISt14_List_iteratorIN9ValueFlow5ValueEEEEbT_
+  params:
+  - name: val
+    type: MathLib::bigint
+  return_type: const ValueFlow::Value *
+  signature: const ValueFlow::Value * Token::getValue(MathLib::bigint) const
+- name: _ZN9__gnu_cxx5__ops10_Iter_predIZNK7Library15hasAnyTypeCheckERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE3$_2EclISt17_Rb_tree_iteratorISt4pairIKSF_IS8_S8_ENS2_9TypeCheckEEEEEbT_
+  params:
+  - name: typeName
+    type: const std::string &
+  return_type: bool
+  signature: bool Library::hasAnyTypeCheck(const std::string &) const
+- name: _ZN9__gnu_cxx5__ops12_Iter_negateIZN5Token6typeOfEPKS2_PS4_E3$_7EclINS_17__normal_iteratorIPKPK8VariableSt6vectorISC_SaISC_EEEEEEbT_
+  params:
+  - name: tok
+    type: const Token *
+  - name: typeTok
+    type: const Token **
+  return_type: const ::Type *
+  signature: const ::Type * Token::typeOf(const Token *, const Token **)
+- name: _ZN9__gnu_cxx5__ops12_Iter_negateIZNK5Token14printValueFlowERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS9_EEbRSoE3$_1EclISt20_List_const_iteratorIN9ValueFlow5ValueEEEEbT_
+  params:
+  - name: files
+    type: const int &
+  - name: xml
+    type: bool
+  - name: out
+    type: std::ostream &
+  return_type: void
+  signature: void Token::printValueFlow(const int &, bool, std::ostream &) const
+- name: _ZN9PathMatch12PathIteratorppEv
+  params: []
+  return_type: void
+  signature: void PathMatch::PathIterator::operator++()
+- name: _ZN9PathMatch5matchERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_S7_NS_8FilemodeENS_6SyntaxE
+  params:
+  - name: pattern
+    type: const std::string &
+  - name: path
+    type: const std::string &
+  - name: basepath
+    type: const std::string &
+  - name: mode
+    type: PathMatch::Filemode
+  - name: syntax
+    type: PathMatch::Syntax
+  return_type: bool
+  signature: bool PathMatch::match(const std::string &, const std::string &, const std::string &, PathMatch::Filemode, PathMatch::Syntax)
+- name: _ZN9polyspace6ParserC2ERK8Settings
+  params:
+  - name: settings
+    type: const Settings &
+  return_type: void
+  signature: void polyspace::Parser::Parser(const Settings &)
+- name: _ZN9simplecpp10preprocessERNS_9TokenListERKS0_RSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISA_EERNS_13FileDataCacheERKNS_3DUIEPNS5_4listINS_6OutputESaISK_EEEPNSJ_INS_10MacroUsageESaISO_EEEPNSJ_INS_6IfCondESaISS_EEE
+  params:
+  - name: output
+    type: simplecpp::TokenList &
+  - name: rawtokens
+    type: const simplecpp::TokenList &
+  - name: files
+    type: int &
+  - name: cache
+    type: simplecpp::FileDataCache &
+  - name: dui
+    type: const simplecpp::DUI &
+  - name: outputList
+    type: int *
+  - name: macroUsage
+    type: int *
+  - name: ifCond
+    type: int *
+  return_type: void
+  signature: void simplecpp::preprocess(simplecpp::TokenList &, const simplecpp::TokenList &, int &, simplecpp::FileDataCache
+    &, const simplecpp::DUI &, int *, int *, int *)
+- name: _ZN9simplecpp13FileDataCache3getERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_RKNS_3DUIEbRSt6vectorIS6_SaIS6_EEPNS1_4listINS_6OutputESaISH_EEE
+  params:
+  - name: sourcefile
+    type: const std::string &
+  - name: header
+    type: const std::string &
+  - name: dui
+    type: const simplecpp::DUI &
+  - name: systemheader
+    type: bool
+  - name: filenames
+    type: int &
+  - name: outputList
+    type: int *
+  return_type: std::pair<simplecpp::FileData *, bool>
+  signature: std::pair<simplecpp::FileData *, bool> simplecpp::FileDataCache::get(const std::string &, const std::string &,
+    const simplecpp::DUI &, bool, int &, int *)
+- name: _ZN9simplecpp5MacroaSERKS0_
+  params:
+  - name: other
+    type: const simplecpp::Macro &
+  return_type: simplecpp::Macro &
+  signature: simplecpp::Macro & simplecpp::Macro::operator=(const simplecpp::Macro &)
+- name: _ZN9simplecpp5MacroC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_RSt6vectorIS6_SaIS6_EE
+  params:
+  - name: other
+    type: const simplecpp::Macro &
+  return_type: void
+  signature: void simplecpp::Macro::Macro(const simplecpp::Macro &)
+- name: _ZN9simplecpp5Token6setstrERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: s
+    type: const std::string &
+  return_type: void
+  signature: void simplecpp::Token::setstr(const std::string &)
+- name: _ZN9simplecpp7cleanupERNS_13FileDataCacheE
+  params:
+  - name: cache
+    type: simplecpp::FileDataCache &
+  return_type: void
+  signature: void simplecpp::cleanup(simplecpp::FileDataCache &)
+- name: _ZN9simplecpp9TokenList6Stream8readCharEv
+  params: []
+  return_type: unsigned char
+  signature: unsigned char simplecpp::TokenList::Stream::readChar()
+- name: _ZN9simplecpp9TokenList8readfileERNS0_6StreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS3_4listINS_6OutputESaISC_EEE
+  params:
+  - name: stream
+    type: simplecpp::TokenList::Stream &
+  - name: filename
+    type: const std::string &
+  - name: outputList
+    type: int *
+  return_type: void
+  signature: void simplecpp::TokenList::readfile(simplecpp::TokenList::Stream &, const std::string &, int *)
+- name: _ZN9simplecpp9TokenList9constFoldEv
+  params: []
+  return_type: void
+  signature: void simplecpp::TokenList::constFold()
+- name: _ZN9simplecpp9TokenListaSERKS0_
+  params:
+  - name: other
+    type: const simplecpp::TokenList &
+  return_type: simplecpp::TokenList &
+  signature: simplecpp::TokenList & simplecpp::TokenList::operator=(const simplecpp::TokenList &)
+- name: _ZN9simplecpp9TokenListC2ENS_4ViewERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS8_EERKS8_PNS3_4listINS_6OutputESaISF_EEE
+  params:
+  - name: other
+    type: simplecpp::TokenList &&
+  return_type: void
+  signature: void simplecpp::TokenList::TokenList(simplecpp::TokenList &&)
+- name: _ZN9TokenList12createTokensEON9simplecpp9TokenListE
+  params:
+  - name: tokenList
+    type: simplecpp::TokenList &&
+  return_type: void
+  signature: void TokenList::createTokens(simplecpp::TokenList &&)
+- name: _ZN9ValueFlow12asImpossibleENS_5ValueE
+  params:
+  - name: v
+    type: ValueFlow::Value
+  return_type: ValueFlow::Value
+  signature: ValueFlow::Value ValueFlow::asImpossible(ValueFlow::Value)
+- name: _ZN9ValueFlow9setValuesER9TokenListR14SymbolDatabaseR11ErrorLoggerRK8SettingsP16TimerResultsIntf
+  params:
+  - name: tokenlist
+    type: TokenList &
+  - name: symboldatabase
+    type: SymbolDatabase &
+  - name: errorLogger
+    type: ErrorLogger &
+  - name: settings
+    type: const Settings &
+  - name: timerResults
+    type: TimerResultsIntf *
+  return_type: void
+  signature: void ValueFlow::setValues(TokenList &, SymbolDatabase &, ErrorLogger &, const Settings &, TimerResultsIntf *)
+- name: _ZN9ValueFlowL17setTokenValueCastEP5TokenRK9ValueTypeRKNS_5ValueERK8Settings
+  params:
+  - name: parent
+    type: Token *
+  - name: valueType
+    type: const ValueType &
+  - name: value
+    type: ValueFlow::Value
+  - name: settings
+    type: const Settings &
+  return_type: void
+  signature: void ValueFlow::setTokenValueCast(Token *, const ValueType &, ValueFlow::Value, const Settings &)
+- name: _ZN9ValueType12setDebugPathEPK5Token14SourceLocationRKS3_
+  params:
+  - name: tok
+    type: const Token *
+  - name: ctx
+    type: SourceLocation
+  - name: local
+    type: const SourceLocation &
+  return_type: void
+  signature: void ValueType::setDebugPath(const Token *, SourceLocation, const SourceLocation &)
+- name: _ZN9ValueType14matchParameterEPKS_S1_
+  params:
+  - name: call
+    type: const ValueType *
+  - name: func
+    type: const ValueType *
+  return_type: ValueType::MatchResult
+  signature: ValueType::MatchResult ValueType::matchParameter(const ValueType *, const ValueType *)
+- name: _ZN9ValueType15fromLibraryTypeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERK8Settings
+  params:
+  - name: typestr
+    type: const std::string &
+  - name: settings
+    type: const Settings &
+  return_type: bool
+  signature: bool ValueType::fromLibraryType(const std::string &, const Settings &)
+- name: _ZN9Variables5aliasEiib
+  params:
+  - name: varid1
+    type: int
+  - name: varid2
+    type: int
+  - name: replace
+    type: bool
+  return_type: void
+  signature: void Variables::alias(int, int, bool)
+- name: _ZN9Variables8eraseAllEi
+  params:
+  - name: varid
+    type: int
+  return_type: void
+  signature: void Variables::eraseAll(int)
+- name: _ZN9Variables8writeAllEiPK5Token
+  params:
+  - name: varid
+    type: int
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void Variables::writeAll(int, const Token *)
+- name: _ZNK12Preprocessor16createDirectivesB5cxx11Ev
+  params: []
+  return_type: int
+  signature: int Preprocessor::createDirectives() const
+- name: _ZNK12Preprocessor17getRemarkCommentsEv
+  params: []
+  return_type: int
+  signature: int Preprocessor::getRemarkComments() const
+- name: _ZNK12TimerResults11showResultsE8ShowTime
+  params:
+  - name: mode
+    type: ShowTime
+  return_type: void
+  signature: void TimerResults::showResults(ShowTime) const
+- name: _ZNK13ProgramMemory11getIntValueEiRx
+  params:
+  - name: exprid
+    type: int
+  - name: result
+    type: MathLib::bigint &
+  return_type: bool
+  signature: bool ProgramMemory::getIntValue(int, MathLib::bigint &) const
+- name: _ZNK13ProgramMemory8hasValueEi
+  params:
+  - name: exprid
+    type: int
+  return_type: bool
+  signature: bool ProgramMemory::hasValue(int) const
+- name: _ZNK15CheckMemoryLeak17getAllocationTypeEPK5TokeniPNSt7__cxx114listIPK8FunctionSaIS7_EEE
+  params:
+  - name: tok2
+    type: const Token *
+  - name: varid
+    type: int
+  - name: callstack
+    type: int *
+  return_type: CheckMemoryLeak::AllocType
+  signature: CheckMemoryLeak::AllocType CheckMemoryLeak::getAllocationType(const Token *, int, int *) const
+- name: _ZNK15CheckMemoryLeak20mismatchAllocDeallocERKNSt7__cxx114listIPK5TokenSaIS4_EEERKNS0_12basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: callstack
+    type: const int &
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckMemoryLeak::mismatchAllocDealloc(const int &, const std::string &) const
+- name: _ZNK15CheckMemoryLeak30memleakUponReallocFailureErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_
+  params:
+  - name: tok
+    type: const Token *
+  - name: reallocfunction
+    type: const std::string &
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckMemoryLeak::memleakUponReallocFailureError(const Token *, const std::string &, const std::string &)
+    const
+- name: _ZNK15SuppressionList11Suppression12isSuppressedERKNS_12ErrorMessageE
+  params:
+  - name: errmsg
+    type: const SuppressionList::ErrorMessage &
+  return_type: SuppressionList::Suppression::Result
+  signature: SuppressionList::Suppression::Result SuppressionList::Suppression::isSuppressed(const SuppressionList::ErrorMessage
+    &) const
+- name: _ZNK15SuppressionList11Suppression7isLocalEv
+  params: []
+  return_type: bool
+  signature: bool SuppressionList::Suppression::isLocal() const
+- name: _ZNK15SuppressionList29getUnmatchedLocalSuppressionsB5cxx11ERK15FileWithDetails
+  params:
+  - name: file
+    type: const FileWithDetails &
+  return_type: int
+  signature: int SuppressionList::getUnmatchedLocalSuppressions(const FileWithDetails &) const
+- name: _ZNK17ValueFlowAnalyzer10writeValueEPN9ValueFlow5ValueEPK5TokenN8Analyzer9DirectionE
+  params:
+  - name: value
+    type: ValueFlow::Value *
+  - name: tok
+    type: const Token *
+  - name: d
+    type: Analyzer::Direction
+  return_type: void
+  signature: void ValueFlowAnalyzer::writeValue(ValueFlow::Value *, const Token *, Analyzer::Direction) const
+- name: _ZNK17ValueFlowAnalyzer16analyzeConditionEPK5Tokeni
+  params:
+  - name: tok
+    type: const Token *
+  - name: depth
+    type: int
+  return_type: ValueFlowAnalyzer::ConditionState
+  signature: ValueFlowAnalyzer::ConditionState ValueFlowAnalyzer::analyzeCondition(const Token *, int) const
+- name: _ZNK24IteratorConditionHandler5parseEPK5TokenRK8Settings
+  params:
+  - name: tok
+    type: const Token *
+  - name: arg1
+    type: const Settings &
+  return_type: int
+  signature: int IteratorConditionHandler::parse(const Token *, const Settings &) const
+- name: _ZNK3CTU8FileInfo10NestedCall11toXmlStringB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string CTU::FileInfo::NestedCall::toXmlString() const
+- name: _ZNK3CTU8FileInfo8toStringB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string CTU::FileInfo::toString() const
+- name: _ZNK5Scope12findFunctionEPK5Tokenb9Reference
+  params:
+  - name: tok
+    type: const Token *
+  - name: requireConst
+    type: bool
+  - name: ref
+    type: Reference
+  return_type: const Function *
+  signature: const Function * Scope::findFunction(const Token *, bool, Reference) const
+- name: _ZNK5Token14printValueFlowERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EEbRSo
+  params:
+  - name: files
+    type: const int &
+  - name: xml
+    type: bool
+  - name: out
+    type: std::ostream &
+  return_type: void
+  signature: void Token::printValueFlow(const int &, bool, std::ostream &) const
+- name: _ZNK5Token16hasKnownIntValueEv
+  params: []
+  return_type: bool
+  signature: bool Token::hasKnownIntValue() const
+- name: _ZNK5Token20getCppcheckAttributeENS_22CppcheckAttributesTypeERx
+  params:
+  - name: type
+    type: Token::CppcheckAttributesType
+  - name: value
+    type: MathLib::bigint &
+  return_type: bool
+  signature: bool Token::getCppcheckAttribute(Token::CppcheckAttributesType, MathLib::bigint &) const
+- name: _ZNK7Library10blockstartERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: file
+    type: const std::string &
+  return_type: const std::string &
+  signature: const std::string & Library::blockstart(const std::string &) const
+- name: _ZNK7Library10getAllocIdEPK5Tokeni
+  params:
+  - name: tok
+    type: const Token *
+  - name: arg
+    type: int
+  return_type: int
+  signature: int Library::getAllocId(const Token *, int) const
+- name: _ZNK7Library11getFunctionEPK5Token
+  params:
+  - name: ftok
+    type: const Token *
+  return_type: const Library::Function *
+  signature: const Library::Function * Library::getFunction(const Token *) const
+- name: _ZNK7Library12getDeallocIdEPK5Tokeni
+  params:
+  - name: tok
+    type: const Token *
+  - name: arg
+    type: int
+  return_type: int
+  signature: int Library::getDeallocId(const Token *, int) const
+- name: _ZNK7Library12getReallocIdEPK5Tokeni
+  params:
+  - name: tok
+    type: const Token *
+  - name: arg
+    type: int
+  return_type: int
+  signature: int Library::getReallocId(const Token *, int) const
+- name: _ZNK7Library13isIntArgValidEPK5TokenixRK8Settings
+  params:
+  - name: ftok
+    type: const Token *
+  - name: argnr
+    type: int
+  - name: argvalue
+    type: MathLib::bigint
+  - name: settings
+    type: const Settings &
+  return_type: bool
+  signature: bool Library::isIntArgValid(const Token *, int, MathLib::bigint, const Settings &) const
+- name: _ZNK7Library13isnotnoreturnEPK5Token
+  params:
+  - name: ftok
+    type: const Token *
+  return_type: bool
+  signature: bool Library::isnotnoreturn(const Token *) const
+- name: _ZNK7Library13platform_typeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_
+  params:
+  - name: name
+    type: const std::string &
+  - name: platform
+    type: const std::string &
+  return_type: const Library::PlatformType *
+  signature: const Library::PlatformType * Library::platform_type(const std::string &, const std::string &) const
+- name: _ZNK7Library14isSmartPointerEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: bool
+  signature: bool Library::isSmartPointer(const Token *) const
+- name: _ZNK7Library14isuninitargbadEPK5TokeniiPb
+  params:
+  - name: ftok
+    type: const Token *
+  - name: argnr
+    type: int
+  - name: indirect
+    type: int
+  - name: hasIndirect
+    type: bool *
+  return_type: bool
+  signature: bool Library::isuninitargbad(const Token *, int, int, bool *) const
+- name: _ZNK7Library15getArgDirectionEPK5Tokenii
+  params:
+  - name: ftok
+    type: const Token *
+  - name: argnr
+    type: int
+  - name: indirect
+    type: int
+  return_type: ArgumentChecks::Direction
+  signature: ArgumentChecks::Direction Library::getArgDirection(const Token *, int, int) const
+- name: _ZNK7Library15getFunctionNameB5cxx11EPK5Token
+  params:
+  - name: ftok
+    type: const Token *
+  return_type: std::string
+  signature: std::string Library::getFunctionName(const Token *) const
+- name: _ZNK7Library15isScopeNoReturnEPK5TokenPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: end
+    type: const Token *
+  - name: unknownFunc
+    type: std::string *
+  return_type: bool
+  signature: bool Library::isScopeNoReturn(const Token *, std::string *) const
+- name: _ZNK7Library15returnValueTypeB5cxx11EPK5Token
+  params:
+  - name: ftok
+    type: const Token *
+  return_type: const std::string &
+  signature: const std::string & Library::returnValueType(const Token *) const
+- name: _ZNK7Library16blockstartoffsetERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: file
+    type: const std::string &
+  return_type: int
+  signature: int Library::blockstartoffset(const std::string &) const
+- name: _ZNK7Library16isexportedprefixERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_
+  params:
+  - name: prefix
+    type: const std::string &
+  - name: token
+    type: const std::string &
+  return_type: bool
+  signature: bool Library::isexportedprefix(const std::string &, const std::string &) const
+- name: _ZNK7Library16isexportedsuffixERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_
+  params:
+  - name: prefix
+    type: const std::string &
+  - name: token
+    type: const std::string &
+  return_type: bool
+  signature: bool Library::isexportedsuffix(const std::string &, const std::string &) const
+- name: _ZNK7Library17isexecutableblockERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_
+  params:
+  - name: file
+    type: const std::string &
+  - name: token
+    type: const std::string &
+  return_type: bool
+  signature: bool Library::isexecutableblock(const std::string &, const std::string &) const
+- name: _ZNK7Library20isNotLibraryFunctionEPK5TokenPPKNS_8FunctionE
+  params:
+  - name: ftok
+    type: const Token *
+  - name: func
+    type: const Library::Function **
+  return_type: bool
+  signature: bool Library::isNotLibraryFunction(const Token *, const Library::Function **) const
+- name: _ZNK7Library22getContainerFromActionEPK5TokenNS_9Container6ActionE
+  params:
+  - name: tok
+    type: const Token *
+  - name: action
+    type: Container::Action
+  return_type: const Token *
+  signature: const Token * Library::getContainerFromAction(const Token *, Container::Action) const
+- name: _ZNK7Library25detectContainerOrIteratorEPK5TokenPbb
+  params:
+  - name: typeStart
+    type: const Token *
+  - name: isIterator
+    type: bool *
+  - name: withoutStd
+    type: bool
+  return_type: const Library::Container *
+  signature: const Library::Container * Library::detectContainerOrIterator(const Token *, bool *, bool) const
+- name: _ZNK7Library8blockendERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: file
+    type: const std::string &
+  return_type: const std::string &
+  signature: const std::string & Library::blockend(const std::string &) const
+- name: _ZNK8Analyzer6Action10isModifiedEv
+  params: []
+  return_type: bool
+  signature: bool Analyzer::Action::isModified() const
+- name: _ZNK8Analyzer6Action14isInconclusiveEv
+  params: []
+  return_type: bool
+  signature: bool Analyzer::Action::isInconclusive() const
+- name: _ZNK8picojson5value9serializeB5cxx11Eb
+  params: []
+  return_type: std::string
+  signature: std::string ErrorMessage::serialize() const
+- name: _ZNK8Platform16getLimitsDefinesB5cxx11EN9Standards6cstd_tE
+  params:
+  - name: cstd
+    type: Standards::cstd_t
+  return_type: std::string
+  signature: std::string Platform::getLimitsDefines(Standards::cstd_t) const
+- name: _ZNK8tinyxml210XMLElement10DoubleTextEd
+  params:
+  - name: defaultValue
+    type: double
+  return_type: double
+  signature: double tinyxml2::XMLElement::DoubleText(double) const
+- name: _ZNK8tinyxml210XMLElement12IntAttributeEPKci
+  params:
+  - name: name
+    type: const char *
+  - name: defaultValue
+    type: int
+  return_type: int
+  signature: int tinyxml2::XMLElement::IntAttribute(const char *, int) const
+- name: _ZNK8tinyxml210XMLElement12ShallowCloneEPNS_11XMLDocumentE
+  params:
+  - name: doc
+    type: tinyxml2::XMLDocument *
+  return_type: tinyxml2::XMLNode *
+  signature: tinyxml2::XMLNode * tinyxml2::XMLElement::ShallowClone(tinyxml2::XMLDocument *) const
+- name: _ZNK8tinyxml210XMLElement12UnsignedTextEj
+  params:
+  - name: defaultValue
+    type: unsigned int
+  return_type: unsigned int
+  signature: unsigned int tinyxml2::XMLElement::UnsignedText(unsigned int) const
+- name: _ZNK8tinyxml210XMLElement13BoolAttributeEPKcb
+  params:
+  - name: name
+    type: const char *
+  - name: defaultValue
+    type: bool
+  return_type: bool
+  signature: bool tinyxml2::XMLElement::BoolAttribute(const char *, bool) const
+- name: _ZNK8tinyxml210XMLElement14FloatAttributeEPKcf
+  params:
+  - name: name
+    type: const char *
+  - name: defaultValue
+    type: float
+  return_type: float
+  signature: float tinyxml2::XMLElement::FloatAttribute(const char *, float) const
+- name: _ZNK8tinyxml210XMLElement14Int64AttributeEPKcl
+  params:
+  - name: name
+    type: const char *
+  - name: defaultValue
+    type: int64_t
+  return_type: int64_t
+  signature: int64_t tinyxml2::XMLElement::Int64Attribute(const char *, int64_t) const
+- name: _ZNK8tinyxml210XMLElement14QueryInt64TextEPl
+  params:
+  - name: ival
+    type: int64_t *
+  return_type: tinyxml2::XMLError
+  signature: tinyxml2::XMLError tinyxml2::XMLElement::QueryInt64Text(int64_t *) const
+- name: _ZNK8tinyxml210XMLElement14Unsigned64TextEm
+  params:
+  - name: defaultValue
+    type: uint64_t
+  return_type: uint64_t
+  signature: uint64_t tinyxml2::XMLElement::Unsigned64Text(uint64_t) const
+- name: _ZNK8tinyxml210XMLElement15DoubleAttributeEPKcd
+  params:
+  - name: name
+    type: const char *
+  - name: defaultValue
+    type: double
+  return_type: double
+  signature: double tinyxml2::XMLElement::DoubleAttribute(const char *, double) const
+- name: _ZNK8tinyxml210XMLElement17QueryIntAttributeEPKcPi
+  params:
+  - name: name
+    type: const char *
+  - name: value
+    type: int *
+  return_type: tinyxml2::XMLError
+  signature: tinyxml2::XMLError tinyxml2::XMLElement::QueryIntAttribute(const char *, int *) const
+- name: _ZNK8tinyxml210XMLElement17UnsignedAttributeEPKcj
+  params:
+  - name: name
+    type: const char *
+  - name: defaultValue
+    type: unsigned int
+  return_type: unsigned int
+  signature: unsigned int tinyxml2::XMLElement::UnsignedAttribute(const char *, unsigned int) const
+- name: _ZNK8tinyxml210XMLElement18QueryBoolAttributeEPKcPb
+  params:
+  - name: name
+    type: const char *
+  - name: value
+    type: bool *
+  return_type: tinyxml2::XMLError
+  signature: tinyxml2::XMLError tinyxml2::XMLElement::QueryBoolAttribute(const char *, bool *) const
+- name: _ZNK8tinyxml210XMLElement19QueryFloatAttributeEPKcPf
+  params:
+  - name: name
+    type: const char *
+  - name: value
+    type: float *
+  return_type: tinyxml2::XMLError
+  signature: tinyxml2::XMLError tinyxml2::XMLElement::QueryFloatAttribute(const char *, float *) const
+- name: _ZNK8tinyxml210XMLElement19QueryInt64AttributeEPKcPl
+  params:
+  - name: name
+    type: const char *
+  - name: value
+    type: int64_t *
+  return_type: tinyxml2::XMLError
+  signature: tinyxml2::XMLError tinyxml2::XMLElement::QueryInt64Attribute(const char *, int64_t *) const
+- name: _ZNK8tinyxml210XMLElement19Unsigned64AttributeEPKcm
+  params:
+  - name: name
+    type: const char *
+  - name: defaultValue
+    type: uint64_t
+  return_type: uint64_t
+  signature: uint64_t tinyxml2::XMLElement::Unsigned64Attribute(const char *, uint64_t) const
+- name: _ZNK8tinyxml210XMLElement20QueryDoubleAttributeEPKcPd
+  params:
+  - name: name
+    type: const char *
+  - name: value
+    type: double *
+  return_type: tinyxml2::XMLError
+  signature: tinyxml2::XMLError tinyxml2::XMLElement::QueryDoubleAttribute(const char *, double *) const
+- name: _ZNK8tinyxml210XMLElement22QueryUnsignedAttributeEPKcPj
+  params:
+  - name: name
+    type: const char *
+  - name: value
+    type: unsigned int *
+  return_type: tinyxml2::XMLError
+  signature: tinyxml2::XMLError tinyxml2::XMLElement::QueryUnsignedAttribute(const char *, unsigned int *) const
+- name: _ZNK8tinyxml210XMLElement24QueryUnsigned64AttributeEPKcPm
+  params:
+  - name: name
+    type: const char *
+  - name: value
+    type: uint64_t *
+  return_type: tinyxml2::XMLError
+  signature: tinyxml2::XMLError tinyxml2::XMLElement::QueryUnsigned64Attribute(const char *, uint64_t *) const
+- name: _ZNK8tinyxml210XMLElement7IntTextEi
+  params:
+  - name: defaultValue
+    type: int
+  return_type: int
+  signature: int tinyxml2::XMLElement::IntText(int) const
+- name: _ZNK8tinyxml210XMLElement8BoolTextEb
+  params:
+  - name: defaultValue
+    type: bool
+  return_type: bool
+  signature: bool tinyxml2::XMLElement::BoolText(bool) const
+- name: _ZNK8tinyxml210XMLElement9FloatTextEf
+  params:
+  - name: defaultValue
+    type: float
+  return_type: float
+  signature: float tinyxml2::XMLElement::FloatText(float) const
+- name: _ZNK8tinyxml210XMLElement9Int64TextEl
+  params:
+  - name: defaultValue
+    type: int64_t
+  return_type: int64_t
+  signature: int64_t tinyxml2::XMLElement::Int64Text(int64_t) const
+- name: _ZNK8tinyxml210XMLPrinter4CStrEv
+  params: []
+  return_type: const char *
+  signature: const char * tinyxml2::XMLPrinter::CStr() const
+- name: _ZNK8tinyxml211XMLDocument10PrintErrorEv
+  params: []
+  return_type: void
+  signature: void tinyxml2::XMLDocument::PrintError() const
+- name: _ZNK8tinyxml211XMLDocument8DeepCopyEPS0_
+  params:
+  - name: target
+    type: tinyxml2::XMLDocument *
+  return_type: void
+  signature: void tinyxml2::XMLDocument::DeepCopy(tinyxml2::XMLDocument *) const
+- name: _ZNK8tinyxml211XMLDocument8ErrorStrEv
+  params: []
+  return_type: const char *
+  signature: const char * tinyxml2::XMLDocument::ErrorStr() const
+- name: _ZNK8tinyxml212XMLAttribute14QueryBoolValueEPb
+  params:
+  - name: value
+    type: bool *
+  return_type: tinyxml2::XMLError
+  signature: tinyxml2::XMLError tinyxml2::XMLAttribute::QueryBoolValue(bool *) const
+- name: _ZNK8tinyxml27XMLNode17ChildElementCountEPKc
+  params:
+  - name: value
+    type: const char *
+  return_type: int
+  signature: int tinyxml2::XMLNode::ChildElementCount(const char *) const
+- name: _ZNK8tinyxml27XMLNode17FirstChildElementEPKc
+  params:
+  - name: name
+    type: const char *
+  return_type: const tinyxml2::XMLElement *
+  signature: const tinyxml2::XMLElement * tinyxml2::XMLNode::FirstChildElement(const char *) const
+- name: _ZNK8tinyxml27XMLText12ShallowCloneEPNS_11XMLDocumentE
+  params:
+  - name: doc
+    type: tinyxml2::XMLDocument *
+  return_type: tinyxml2::XMLNode *
+  signature: tinyxml2::XMLNode * tinyxml2::XMLText::ShallowClone(tinyxml2::XMLDocument *) const
+- name: _ZNK8ValuePtrI10InferModelEptEv
+  params: []
+  return_type: std::_Rb_tree_const_iterator::pointer
+  signature: std::_Rb_tree_const_iterator::pointer std::_Rb_tree_const_iterator::operator->() const
+- name: _ZNK8ValuePtrI13ValueFlowPassEptEv
+  params: []
+  return_type: std::_Rb_tree_const_iterator::pointer
+  signature: std::_Rb_tree_const_iterator::pointer std::_Rb_tree_const_iterator::operator->() const
+- name: _ZNK8ValuePtrI16ConditionHandlerEptEv
+  params: []
+  return_type: std::_Rb_tree_const_iterator::pointer
+  signature: std::_Rb_tree_const_iterator::pointer std::_Rb_tree_const_iterator::operator->() const
+- name: _ZNK9polyspace6Parser5parseERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiS8_
+  params:
+  - name: comment
+    type: const std::string &
+  - name: line
+    type: int
+  - name: filename
+    type: const std::string &
+  return_type: int
+  signature: int polyspace::Parser::parse(const std::string &, int, const std::string &) const
+- name: _ZNK9simplecpp9TokenList4dumpEb
+  params:
+  - name: linenrs
+    type: bool
+  return_type: void
+  signature: void simplecpp::TokenList::dump(bool) const
+- name: _ZNK9Tokenizer4dumpERSo
+  params:
+  - name: out
+    type: std::ostream &
+  return_type: void
+  signature: void Tokenizer::dump(std::ostream &) const
+- name: _ZNK9ValueFlow5Value10isNonValueEv
+  params: []
+  return_type: bool
+  signature: bool ValueFlow::Value::isNonValue() const
+- name: _ZNSt7__cxx114listIN9ValueFlow5ValueESaIS2_EE9remove_ifIZN5Token8addValueERKS2_E3$_5EEvT_
+  params:
+  - name: value
+    type: const ValueFlow::Value &
+  return_type: bool
+  signature: bool Token::addValue(const ValueFlow::Value &)
 language: c++
 project: cppcheck
 target_name: oss-fuzz-client

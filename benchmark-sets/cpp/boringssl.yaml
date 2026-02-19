@@ -1,0 +1,1788 @@
+functions:
+- name: _ZN7testing8internal30GetBoolAssertionFailureMessageB5cxx11ERKNS_15AssertionResultEPKcS5_S5_
+  params:
+  - name: assertion_result
+    type: const testing::AssertionResult &
+  - name: expression_text
+    type: const char *
+  - name: actual_predicate_value
+    type: const char *
+  - name: expected_predicate_value
+    type: const char *
+  return_type: std::string
+  signature: std::string testing::internal::GetBoolAssertionFailureMessage(const testing::AssertionResult &, const char *,
+    const char *, const char *)
+- name: _ZN4bssl13InplaceVectorIhLm8EE9TryAppendENS_4SpanIKhLm18446744073709551615EEE
+  params:
+  - name: in
+    type: int
+  return_type: bool
+  signature: bool bssl::InplaceVector::TryAppend(int)
+- name: _ZN7testing8internal21UniversalTersePrinterI5BytesE5PrintERKS2_PSo
+  params:
+  - name: str
+    type: wchar_t *
+  - name: os
+    type: ::std::ostream *
+  return_type: void
+  signature: void testing::internal::UniversalTersePrinter::Print(wchar_t *, ::std::ostream *)
+- name: _ZN7testing8internal16UniversalPrinterI5BytesE5PrintERKS2_PSo
+  params:
+  - name: str
+    type: wchar_t *
+  - name: os
+    type: ::std::ostream *
+  return_type: void
+  signature: void testing::internal::UniversalTersePrinter::Print(wchar_t *, ::std::ostream *)
+- name: _ZSt13__invoke_implIvZN4bssl38ASN1Test_StringByCustomNIDThreads_Test8TestBodyEvE4$_12JEET_St14__invoke_otherOT0_DpOT1_
+  params: []
+  return_type: void
+  signature: void testing::internal::FailureTest::TestBody()
+- name: _ZSt13__invoke_implIvZN4bssl38ASN1Test_StringByCustomNIDThreads_Test8TestBodyEvE4$_11JEET_St14__invoke_otherOT0_DpOT1_
+  params: []
+  return_type: void
+  signature: void testing::internal::FailureTest::TestBody()
+- name: _ZN4bssl12_GLOBAL__N_143ECCurveTest_IgnoreOct2PointReturnValue_Test8TestBodyEv
+  params: []
+  return_type: void
+  signature: void bssl::ECCurveTest_IgnoreOct2PointReturnValue_Test::TestBody()
+- name: _ZN7testing8internal26ParameterizedTestSuiteInfoI10Base64TestE13RegisterTestsEv
+  params: []
+  return_type: void
+  signature: void testing::internal::ParameterizedTestSuiteRegistry::RegisterTests()
+- name: _ZNK7testing8internal30ValuesInIteratorRangeGeneratorI16Base64TestVectorE8Iterator6EqualsERKNS0_22ParamIteratorInterfaceIS2_EE
+  params:
+  - name: other
+    type: const ParamIteratorInterface<To> &
+  return_type: bool
+  signature: bool testing::internal::ParamGeneratorConverter::Iterator::Equals(const ParamIteratorInterface<To> &) const
+- name: _ZNK7testing8internal30ValuesInIteratorRangeGeneratorIbE8Iterator6EqualsERKNS0_22ParamIteratorInterfaceIbEE
+  params:
+  - name: other
+    type: const ParamIteratorInterface<To> &
+  return_type: bool
+  signature: bool testing::internal::ParamGeneratorConverter::Iterator::Equals(const ParamIteratorInterface<To> &) const
+- name: _ZN4bssl8ScopedFDaSES0_
+  params:
+  - name: other
+    type: bssl::ScopedFD
+  return_type: bssl::ScopedFD &
+  signature: bssl::ScopedFD & bssl::ScopedFD::operator=(bssl::ScopedFD)
+- name: _ZN4bssl12_GLOBAL__N_114ListenLoopbackEi
+  params:
+  - name: backlog
+    type: int
+  return_type: bssl::(anonymous namespace)::OwnedSocket
+  signature: bssl::(anonymous namespace)::OwnedSocket bssl::ListenLoopback(int)
+- name: _ZN4bssl12_GLOBAL__N_111OwnedSocketaSEOS1_
+  params:
+  - name: other
+    type: bssl::(anonymous namespace)::OwnedSocket &&
+  return_type: bssl::(anonymous namespace)::OwnedSocket &
+  signature: bssl::(anonymous namespace)::OwnedSocket & bssl::OwnedSocket::operator=(bssl::(anonymous namespace)::OwnedSocket
+    &&)
+- name: _ZN7testing7MatcherIRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEC2EPKNS_16MatcherInterfaceIS8_EE
+  params:
+  - name: s
+    type: const char *
+  return_type: void
+  signature: void testing::Matcher::Matcher(const char *)
+- name: _ZN4bssl5iovec8internal15CopySpanToIOVecENS_4SpanIKhLm18446744073709551615EEE15crypto_iovec_stNS2_IKS5_Lm18446744073709551615EEE
+  params:
+  - name: out
+    type: int
+  - name: head
+    type: CRYPTO_IOVEC
+  - name: rest
+    type: int
+  return_type: void
+  signature: void bssl::iovec::internal::CopySpanToIOVec(int, CRYPTO_IOVEC, int)
+- name: _ZN4bssl13InplaceVectorIhLm16EE9TryAppendENS_4SpanIKhLm18446744073709551615EEE
+  params:
+  - name: in
+    type: int
+  return_type: bool
+  signature: bool bssl::InplaceVector::TryAppend(int)
+- name: _ZN4bssl10spake2plus8Verifier4InitENS_4SpanIKhLm18446744073709551615EEES4_S4_S4_S4_S4_
+  params:
+  - name: context
+    type: int
+  - name: id_prover
+    type: int
+  - name: id_verifier
+    type: int
+  - name: w0
+    type: int
+  - name: registration_record
+    type: int
+  - name: y
+    type: int
+  return_type: bool
+  signature: bool bssl::spake2plus::Verifier::Init(int, int, int, int, int, int)
+- name: _ZNK4bssl4SpanIhLm18446744073709551615EE5firstEm
+  params:
+  - name: len
+    type: int
+  return_type: int
+  signature: int bssl::Span::first(int) const
+- name: _ZN4bssl8CopySpanENS_4SpanIKhLm18446744073709551615EEENS0_IhLm18446744073709551615EEE
+  params:
+  - name: from
+    type: int
+  - name: to
+    type: int
+  return_type: void
+  signature: void bssl::CopySpan(int, int)
+- name: _ZNK4bssl4SpanIhLm16EE5firstEm
+  params:
+  - name: len
+    type: int
+  return_type: int
+  signature: int bssl::Span::first(int) const
+- name: _ZN4bssl13InplaceVectorIhLm16EE6AppendENS_4SpanIKhLm18446744073709551615EEE
+  params:
+  - name: in
+    type: int
+  return_type: void
+  signature: void bssl::InplaceVector::Append(int)
+- name: _ZNK4bssl12_GLOBAL__N_110TestIOVecs6iovecsEv
+  params: []
+  return_type: int
+  signature: int bssl::TestIOVecs::iovecs() const
+- name: _ZN4bssl12_GLOBAL__N_131PerAEADTest_AliasedBuffers_Test8TestBodyEv
+  params: []
+  return_type: void
+  signature: void bssl::PerAEADTest_AliasedBuffers_Test::TestBody()
+- name: _ZN4bssl12_GLOBAL__N_130PerAEADTest_TruncatedTags_Test8TestBodyEv
+  params: []
+  return_type: void
+  signature: void bssl::PerAEADTest_TruncatedTags_Test::TestBody()
+- name: _ZNK4bssl12_GLOBAL__N_110TestIOVecs5ivecsEv
+  params: []
+  return_type: int
+  signature: int bssl::TestIOVecs::ivecs() const
+- name: _ZNK4bssl4SpanIKhLm12EE4lastEm
+  params:
+  - name: len
+    type: int
+  return_type: int
+  signature: int bssl::Span::last(int) const
+- name: _ZN4bssl12_GLOBAL__N_114CipherFileTestEP8FileTest
+  params:
+  - name: t
+    type: FileTest *
+  return_type: void
+  signature: void bssl::CipherFileTest(FileTest *)
+- name: _ZN7testing8internal21UniversalTersePrinterISt23_Rb_tree_const_iteratorISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt6vectorIS3_IS9_S9_ESaISC_EEEEE5PrintERKSG_PSo
+  params:
+  - name: str
+    type: wchar_t *
+  - name: os
+    type: ::std::ostream *
+  return_type: void
+  signature: void testing::internal::UniversalTersePrinter::Print(wchar_t *, ::std::ostream *)
+- name: _ZN7testing8internal16UniversalPrinterISt23_Rb_tree_const_iteratorISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt6vectorIS3_IS9_S9_ESaISC_EEEEE5PrintERKSG_PSo
+  params:
+  - name: str
+    type: wchar_t *
+  - name: os
+    type: ::std::ostream *
+  return_type: void
+  signature: void testing::internal::UniversalTersePrinter::Print(wchar_t *, ::std::ostream *)
+- name: _ZL17RunWycheproofTestP8FileTest
+  params:
+  - name: t
+    type: FileTest *
+  return_type: void
+  signature: void RunWycheproofTest(FileTest *)
+- name: _ZN4bssl12_GLOBAL__N_117ExpectECGroupOnlyEPK11evp_pkey_sti
+  params:
+  - name: pkey
+    type: const EVP_PKEY *
+  - name: nid
+    type: int
+  return_type: void
+  signature: void bssl::ExpectECGroupOnly(const EVP_PKEY *, int)
+- name: _ZN4bssl12_GLOBAL__N_119ExpectECGroupAndKeyEPK11evp_pkey_sti
+  params:
+  - name: pkey
+    type: const EVP_PKEY *
+  - name: nid
+    type: int
+  return_type: void
+  signature: void bssl::ExpectECGroupAndKey(const EVP_PKEY *, int)
+- name: _ZN4bssl12_GLOBAL__N_110TestModMulEPNS0_14BIGNUMFileTestEP10bignum_ctx
+  params:
+  - name: t
+    type: bssl::(anonymous namespace)::BIGNUMFileTest *
+  - name: ctx
+    type: BN_CTX *
+  return_type: void
+  signature: void bssl::TestModMul(bssl::(anonymous namespace)::BIGNUMFileTest *, BN_CTX *)
+- name: _ZN4bssl12_GLOBAL__N_137ECCurveTest_SetInvalidPrivateKey_Test8TestBodyEv
+  params: []
+  return_type: void
+  signature: void bssl::ECCurveTest_SetInvalidPrivateKey_Test::TestBody()
+- name: _ZN4bssl12_GLOBAL__N_110TestModExpEPNS0_14BIGNUMFileTestEP10bignum_ctx
+  params:
+  - name: t
+    type: bssl::(anonymous namespace)::BIGNUMFileTest *
+  - name: ctx
+    type: BN_CTX *
+  return_type: void
+  signature: void bssl::TestModExp(bssl::(anonymous namespace)::BIGNUMFileTest *, BN_CTX *)
+- name: _ZNK7testing8internal30ValuesInIteratorRangeGeneratorIiE8Iterator6EqualsERKNS0_22ParamIteratorInterfaceIiEE
+  params:
+  - name: other
+    type: const ParamIteratorInterface<To> &
+  return_type: bool
+  signature: bool testing::internal::ParamGeneratorConverter::Iterator::Equals(const ParamIteratorInterface<To> &) const
+- name: _ZN4bssl12_GLOBAL__N_137P256NistzSelectImplTest_SelectW5_Test8TestBodyEv
+  params: []
+  return_type: void
+  signature: void bssl::P256NistzSelectImplTest_SelectW5_Test::TestBody()
+- name: _ZNK4bssl12_GLOBAL__N_114HPKETestVector6VerifyEv
+  params: []
+  return_type: void
+  signature: void bssl::HPKETestVector::Verify() const
+- name: _ZN4bssl12_GLOBAL__N_113KyberFileTestEP8FileTest
+  params:
+  - name: t
+    type: FileTest *
+  return_type: void
+  signature: void bssl::KyberFileTest(FileTest *)
+- name: _ZN4bssl13InplaceVectorIiLm4EE21TryResizeForOverwriteEm
+  params:
+  - name: new_size
+    type: int
+  return_type: bool
+  signature: bool bssl::InplaceVector::TryResizeForOverwrite(int)
+- name: _ZN4bssl13InplaceVectorIiLm4EE8PushBackEi
+  params:
+  - name: val
+    type: T
+  return_type: T &
+  signature: T & bssl::InplaceVector::PushBack(T)
+- name: _ZN4bssl8internaleqENS_4SpanIKiLm18446744073709551615EEES3_
+  params:
+  - name: lhs
+    type: int
+  - name: rhs
+    type: int
+  return_type: bool
+  signature: bool bssl::internal::operator==(int, int)
+- name: _ZNK4bssl4SpanIiLm5EE5firstEm
+  params:
+  - name: len
+    type: int
+  return_type: int
+  signature: int bssl::Span::first(int) const
+- name: _ZN4bssl13InplaceVectorIiLm4EE18ResizeForOverwriteEm
+  params:
+  - name: size
+    type: int
+  return_type: void
+  signature: void bssl::InplaceVector::ResizeForOverwrite(int)
+- name: _ZN4bssl13InplaceVectorIiLm4EE8CopyFromENS_4SpanIKiLm18446744073709551615EEE
+  params:
+  - name: in
+    type: int
+  return_type: void
+  signature: void bssl::InplaceVector::CopyFrom(int)
+- name: _ZN4bssl13InplaceVectorISt10unique_ptrIiSt14default_deleteIiEELm4EEaSEOS5_
+  params:
+  - name: other
+    type: StackAllocatedMovable<T, CleanupRet, init, cleanup, move> &&
+  return_type: StackAllocatedMovable<T, CleanupRet, init, cleanup, move> &
+  signature: StackAllocatedMovable<T, CleanupRet, init, cleanup, move> & bssl::internal::StackAllocatedMovable::operator=(StackAllocatedMovable<T,
+    CleanupRet, init, cleanup, move> &&)
+- name: _ZN4bssl13InplaceVectorISt10unique_ptrIiSt14default_deleteIiEELm4EE8PushBackES4_
+  params:
+  - name: val
+    type: T
+  return_type: T &
+  signature: T & bssl::InplaceVector::PushBack(T)
+- name: _ZN4bssl13InplaceVectorISt6vectorIiSaIiEELm4EEaSERKS4_
+  params:
+  - name: other
+    type: StackAllocatedMovable<T, CleanupRet, init, cleanup, move> &&
+  return_type: StackAllocatedMovable<T, CleanupRet, init, cleanup, move> &
+  signature: StackAllocatedMovable<T, CleanupRet, init, cleanup, move> & bssl::internal::StackAllocatedMovable::operator=(StackAllocatedMovable<T,
+    CleanupRet, init, cleanup, move> &&)
+- name: _ZN4bssl13InplaceVectorISt6vectorIiSaIiEELm4EEaSEOS4_
+  params:
+  - name: other
+    type: StackAllocatedMovable<T, CleanupRet, init, cleanup, move> &&
+  return_type: StackAllocatedMovable<T, CleanupRet, init, cleanup, move> &
+  signature: StackAllocatedMovable<T, CleanupRet, init, cleanup, move> & bssl::internal::StackAllocatedMovable::operator=(StackAllocatedMovable<T,
+    CleanupRet, init, cleanup, move> &&)
+- name: _ZN4bssl13InplaceVectorISt6vectorIiSaIiEELm4EE8PushBackES3_
+  params:
+  - name: val
+    type: T
+  return_type: T &
+  signature: T & bssl::InplaceVector::PushBack(T)
+- name: _ZN7testing8internal21UniversalTersePrinterIN4bssl4SpanIKSt6vectorIiSaIiEELm18446744073709551615EEEE5PrintERKS8_PSo
+  params:
+  - name: str
+    type: wchar_t *
+  - name: os
+    type: ::std::ostream *
+  return_type: void
+  signature: void testing::internal::UniversalTersePrinter::Print(wchar_t *, ::std::ostream *)
+- name: _ZN7testing8internal16UniversalPrinterIN4bssl4SpanIKSt6vectorIiSaIiEELm18446744073709551615EEEE5PrintERKS8_PSo
+  params:
+  - name: str
+    type: wchar_t *
+  - name: os
+    type: ::std::ostream *
+  return_type: void
+  signature: void testing::internal::UniversalTersePrinter::Print(wchar_t *, ::std::ostream *)
+- name: _ZN4bssl8internaleqENS_4SpanIKSt6vectorIiSaIiEELm18446744073709551615EEES6_
+  params:
+  - name: lhs
+    type: int
+  - name: rhs
+    type: int
+  return_type: bool
+  signature: bool bssl::internal::operator==(int, int)
+- name: _ZN7testing8internal21UniversalTersePrinterIN4bssl4SpanISt6vectorIiSaIiEELm18446744073709551615EEEE5PrintERKS7_PSo
+  params:
+  - name: str
+    type: wchar_t *
+  - name: os
+    type: ::std::ostream *
+  return_type: void
+  signature: void testing::internal::UniversalTersePrinter::Print(wchar_t *, ::std::ostream *)
+- name: _ZN7testing8internal16UniversalPrinterIN4bssl4SpanISt6vectorIiSaIiEELm18446744073709551615EEEE5PrintERKS7_PSo
+  params:
+  - name: str
+    type: wchar_t *
+  - name: os
+    type: ::std::ostream *
+  return_type: void
+  signature: void testing::internal::UniversalTersePrinter::Print(wchar_t *, ::std::ostream *)
+- name: _ZN4bssl13InplaceVectorISt6vectorIiSaIiEELm4EE6ResizeEm
+  params:
+  - name: size
+    type: int
+  return_type: void
+  signature: void bssl::InplaceVector::Resize(int)
+- name: _ZN4bssl13InplaceVectorISt6vectorIiSaIiEELm4EE6AppendENS_4SpanIKS3_Lm18446744073709551615EEE
+  params:
+  - name: in
+    type: int
+  return_type: void
+  signature: void bssl::InplaceVector::Append(int)
+- name: _ZN4bssl13InplaceVectorISt6vectorIiSaIiEELm4EE8CopyFromENS_4SpanIKS3_Lm18446744073709551615EEE
+  params:
+  - name: in
+    type: int
+  return_type: void
+  signature: void bssl::InplaceVector::CopyFrom(int)
+- name: _ZN7testing8internal21UniversalTersePrinterIN4bssl4SpanIiLm4EEEE5PrintERKS4_PSo
+  params:
+  - name: str
+    type: wchar_t *
+  - name: os
+    type: ::std::ostream *
+  return_type: void
+  signature: void testing::internal::UniversalTersePrinter::Print(wchar_t *, ::std::ostream *)
+- name: _ZN7testing8internal16UniversalPrinterIN4bssl4SpanIiLm4EEEE5PrintERKS4_PSo
+  params:
+  - name: str
+    type: wchar_t *
+  - name: os
+    type: ::std::ostream *
+  return_type: void
+  signature: void testing::internal::UniversalTersePrinter::Print(wchar_t *, ::std::ostream *)
+- name: _ZN7testing8internal21UniversalTersePrinterIN4bssl4SpanIiLm18446744073709551615EEEE5PrintERKS4_PSo
+  params:
+  - name: str
+    type: wchar_t *
+  - name: os
+    type: ::std::ostream *
+  return_type: void
+  signature: void testing::internal::UniversalTersePrinter::Print(wchar_t *, ::std::ostream *)
+- name: _ZN7testing8internal16UniversalPrinterIN4bssl4SpanIiLm18446744073709551615EEEE5PrintERKS4_PSo
+  params:
+  - name: str
+    type: wchar_t *
+  - name: os
+    type: ::std::ostream *
+  return_type: void
+  signature: void testing::internal::UniversalTersePrinter::Print(wchar_t *, ::std::ostream *)
+- name: _ZN4bssl13InplaceVectorIiLm4EEaSERKS1_
+  params:
+  - name: other
+    type: StackAllocatedMovable<T, CleanupRet, init, cleanup, move> &&
+  return_type: StackAllocatedMovable<T, CleanupRet, init, cleanup, move> &
+  signature: StackAllocatedMovable<T, CleanupRet, init, cleanup, move> & bssl::internal::StackAllocatedMovable::operator=(StackAllocatedMovable<T,
+    CleanupRet, init, cleanup, move> &&)
+- name: _ZN7testing8internal21UniversalTersePrinterIN4bssl4SpanIiLm3EEEE5PrintERKS4_PSo
+  params:
+  - name: str
+    type: wchar_t *
+  - name: os
+    type: ::std::ostream *
+  return_type: void
+  signature: void testing::internal::UniversalTersePrinter::Print(wchar_t *, ::std::ostream *)
+- name: _ZN7testing8internal16UniversalPrinterIN4bssl4SpanIiLm3EEEE5PrintERKS4_PSo
+  params:
+  - name: str
+    type: wchar_t *
+  - name: os
+    type: ::std::ostream *
+  return_type: void
+  signature: void testing::internal::UniversalTersePrinter::Print(wchar_t *, ::std::ostream *)
+- name: _ZN4bssl6VectorIiE4PushEi
+  params:
+  - name: elem
+    type: T
+  return_type: bool
+  signature: bool bssl::Vector::Push(T)
+- name: _ZN4bssl6VectorImE4PushEm
+  params:
+  - name: elem
+    type: T
+  return_type: bool
+  signature: bool bssl::Vector::Push(T)
+- name: PEM_X509_INFO_read_bio
+  params:
+  - name: bp
+    type: BIO *
+  - name: sk
+    type: struct stack_st_X509_INFO *
+  - name: cb
+    type: pem_password_cb *
+  - name: u
+    type: void *
+  return_type: struct stack_st_X509_INFO *
+  signature: struct stack_st_X509_INFO * PEM_X509_INFO_read_bio(BIO *, struct stack_st_X509_INFO *, pem_password_cb *, void
+    *)
+- name: _ZN4bssl5ArrayIhE5ResetEv
+  params: []
+  return_type: void
+  signature: void bssl::internal::StackAllocatedMovable::Reset()
+- name: _ZN4bssl5ArrayIhE4InitEm
+  params:
+  - name: new_size
+    type: int
+  return_type: bool
+  signature: bool bssl::Array::Init(int)
+- name: _ZL15TestCertReparseN4bssl4SpanIKhLm18446744073709551615EEE
+  params:
+  - name: der
+    type: int
+  return_type: void
+  signature: void TestCertReparse(int)
+- name: _ZL14TestCRLReparseN4bssl4SpanIKhLm18446744073709551615EEE
+  params:
+  - name: der
+    type: int
+  return_type: void
+  signature: void TestCRLReparse(int)
+- name: _ZL17ExpectPKCS12ParseN4bssl4SpanIKhLm18446744073709551615EEEP11evp_pkey_stP7x509_stRKSt6vectorIS6_SaIS6_EE
+  params:
+  - name: in
+    type: int
+  - name: expect_key
+    type: EVP_PKEY *
+  - name: expect_cert
+    type: X509 *
+  - name: expect_ca_certs
+    type: const int &
+  return_type: void
+  signature: void ExpectPKCS12Parse(int, EVP_PKEY *, X509 *, const int &)
+- name: _ZN4bssl12_GLOBAL__N_112SPAKEPLUSRun3RunEv
+  params: []
+  return_type: bool
+  signature: bool bssl::SPAKEPLUSRun::Run()
+- name: _ZN4bssl12_GLOBAL__N_164gtest_TrustTokenAllBadKeyTestTrustTokenBadKeyTest_EvalGenerator_Ev
+  params: []
+  return_type: int
+  signature: int bssl::gtest_TrustTokenAllBadKeyTestTrustTokenBadKeyTest_EvalGenerator_()
+- name: _ZNK7testing8internal30ValuesInIteratorRangeGeneratorIPK21trust_token_method_stE8Iterator6EqualsERKNS0_22ParamIteratorInterfaceIS4_EE
+  params:
+  - name: other
+    type: const ParamIteratorInterface<To> &
+  return_type: bool
+  signature: bool testing::internal::ParamGeneratorConverter::Iterator::Equals(const ParamIteratorInterface<To> &) const
+- name: _ZNK7testing8internal25CartesianProductGeneratorIJPK21trust_token_method_stbbiEE12IteratorImplISt16integer_sequenceImJLm0ELm1ELm2ELm3EEEE6EqualsERKNS0_22ParamIteratorInterfaceISt5tupleIJS4_bbiEEEE
+  params:
+  - name: other
+    type: const ParamIteratorInterface<To> &
+  return_type: bool
+  signature: bool testing::internal::ParamGeneratorConverter::Iterator::Equals(const ParamIteratorInterface<To> &) const
+- name: _ZN4bssl12_GLOBAL__N_140TrustTokenProtocolTest_InvalidToken_Test8TestBodyEv
+  params: []
+  return_type: void
+  signature: void bssl::TrustTokenProtocolTest_InvalidToken_Test::TestBody()
+- name: _ZN4bssl12_GLOBAL__N_145TrustTokenMetadataTest_SetAndGetMetadata_Test8TestBodyEv
+  params: []
+  return_type: void
+  signature: void bssl::TrustTokenMetadataTest_SetAndGetMetadata_Test::TestBody()
+- name: _ZN4bssl12_GLOBAL__N_146TrustTokenProtocolTest_IssuedWithBadKeyID_Test8TestBodyEv
+  params: []
+  return_type: void
+  signature: void bssl::TrustTokenProtocolTest_IssuedWithBadKeyID_Test::TestBody()
+- name: _ZN4bssl12_GLOBAL__N_168gtest_TrustTokenAllMetadataTestTrustTokenMetadataTest_EvalGenerator_Ev
+  params: []
+  return_type: int
+  signature: int bssl::gtest_TrustTokenAllMetadataTestTrustTokenMetadataTest_EvalGenerator_()
+- name: _ZNK7testing8internal25CartesianProductGeneratorIJPK21trust_token_method_stbibEE12IteratorImplISt16integer_sequenceImJLm0ELm1ELm2ELm3EEEE6EqualsERKNS0_22ParamIteratorInterfaceISt5tupleIJS4_bibEEEE
+  params:
+  - name: other
+    type: const ParamIteratorInterface<To> &
+  return_type: bool
+  signature: bool testing::internal::ParamGeneratorConverter::Iterator::Equals(const ParamIteratorInterface<To> &) const
+- name: _ZN4bssl12_GLOBAL__N_168gtest_TrustTokenAllProtocolTestTrustTokenProtocolTest_EvalGenerator_Ev
+  params: []
+  return_type: int
+  signature: int bssl::gtest_TrustTokenAllProtocolTestTrustTokenProtocolTest_EvalGenerator_()
+- name: _ZN7testing8internal25CartesianProductGeneratorIJPK21trust_token_method_stbEE12IteratorImplISt16integer_sequenceImJLm0ELm1EEEE7AdvanceEv
+  params: []
+  return_type: void
+  signature: void testing::internal::ParamGeneratorConverter::Iterator::Advance()
+- name: _ZNK7testing8internal25CartesianProductGeneratorIJPK21trust_token_method_stbEE12IteratorImplISt16integer_sequenceImJLm0ELm1EEEE6EqualsERKNS0_22ParamIteratorInterfaceISt5tupleIJS4_bEEEE
+  params:
+  - name: other
+    type: const ParamIteratorInterface<To> &
+  return_type: bool
+  signature: bool testing::internal::ParamGeneratorConverter::Iterator::Equals(const ParamIteratorInterface<To> &) const
+- name: _ZN4bssl8abi_test8internalL11CheckUnwindEPNS1_12UnwindCursorE
+  params:
+  - name: cursor
+    type: bssl::abi_test::internal::UnwindCursor *
+  return_type: void
+  signature: void bssl::abi_test::internal::CheckUnwind(bssl::abi_test::internal::UnwindCursor *)
+- name: _ZN4bssl8abi_test8internal12UnwindCursor8ToStringEv
+  params: []
+  return_type: const char *
+  signature: const char * bssl::abi_test::internal::UnwindCursor::ToString()
+- name: _ZNK4bssl8abi_test8internal14UnwindStatusOrImE2okEv
+  params: []
+  return_type: bool
+  signature: bool bssl::TLS12ServerParams::ok() const
+- name: _ZNK4bssl8abi_test8internal14UnwindStatusOrImE5ErrorEv
+  params: []
+  return_type: const char *
+  signature: const char * bssl::abi_test::internal::UnwindStatusOr::Error() const
+- name: _ZN4bssl8abi_test8internal12UnwindCursor5GetIPEv
+  params: []
+  return_type: UnwindStatusOr<bssl::crypto_word_t>
+  signature: UnwindStatusOr<bssl::crypto_word_t> bssl::abi_test::internal::UnwindCursor::GetIP()
+- name: _ZN4bssl8abi_test8internal12UnwindCursorC2EP10ucontext_t
+  params:
+  - name: ctx
+    type: unw_context_t *
+  return_type: void
+  signature: void bssl::abi_test::internal::UnwindCursor::UnwindCursor(unw_context_t *)
+- name: _ZN4bssl8abi_test8internalL11TrapHandlerEiP9siginfo_tPv
+  params:
+  - name: sig
+    type: int
+  - name: info
+    type: siginfo_t *
+  - name: ucontext_v
+    type: void *
+  return_type: void
+  signature: void bssl::abi_test::internal::TrapHandler(int, siginfo_t *, void *)
+- name: _ZN4bssl8abi_test8internal13RunTrampolineEPNS0_6ResultEmPKmmb
+  params:
+  - name: out
+    type: bssl::abi_test::Result *
+  - name: func
+    type: bssl::crypto_word_t
+  - name: argv
+    type: const bssl::crypto_word_t *
+  - name: argc
+    type: int
+  - name: unwind
+    type: bool
+  return_type: bssl::crypto_word_t
+  signature: bssl::crypto_word_t bssl::abi_test::internal::RunTrampoline(bssl::abi_test::Result *, bssl::crypto_word_t, const
+    bssl::crypto_word_t *, int, bool)
+- name: _Z12FileTestMainRKN8FileTest7OptionsE
+  params:
+  - name: opts
+    type: const FileTest::Options &
+  return_type: int
+  signature: int FileTestMain(const FileTest::Options &)
+- name: _ZN7testingL24TestPartNonfatallyFailedERKNS_14TestPartResultE
+  params:
+  - name: result
+    type: const testing::TestPartResult &
+  return_type: bool
+  signature: bool testing::TestPartNonfatallyFailed(const testing::TestPartResult &)
+- name: _ZN7testing8internal24HasNewFatalFailureHelper20ReportTestPartResultERKNS_14TestPartResultE
+  params:
+  - name: result
+    type: const testing::TestPartResult &
+  return_type: void
+  signature: void testing::internal::HasNewFatalFailureHelper::ReportTestPartResult(const testing::TestPartResult &)
+- name: _ZN4bssl12_GLOBAL__N_116TemporaryHashDir14AddCRLWithHashEjP11X509_crl_st
+  params:
+  - name: hash
+    type: uint32_t
+  - name: crl
+    type: X509_CRL *
+  return_type: bool
+  signature: bool bssl::TemporaryHashDir::AddCRLWithHash(uint32_t, X509_CRL *)
+- name: _ZN4bssl12_GLOBAL__N_116TemporaryHashDir4InitEv
+  params: []
+  return_type: bool
+  signature: bool bssl::TemporaryHashDir::Init()
+- name: _ZN4bssl13TemporaryFile4InitESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: content
+    type: int
+  return_type: bool
+  signature: bool bssl::TemporaryFile::Init(int)
+- name: _ZN7testing8internal11ThreadLocalIPNS_8SequenceEE3setERKS3_
+  params:
+  - name: value
+    type: const T &
+  return_type: void
+  signature: void testing::internal::ThreadLocal::set(const T &)
+- name: _ZNK7testing8internal11ThreadLocalIPNS_8SequenceEE7pointerEv
+  params: []
+  return_type: T *
+  signature: T * testing::internal::ThreadLocal::ValueHolder::pointer()
+- name: _ZNK7testing8internal11ThreadLocalIPNS_8SequenceEE3getEv
+  params: []
+  return_type: const T *
+  signature: const T * bssl::internal::StackAllocatedMovable::get() const
+- name: _ZN7testing8internal25UntypedFunctionMockerBase32VerifyAndClearExpectationsLockedEv
+  params: []
+  return_type: bool
+  signature: bool testing::internal::UntypedFunctionMockerBase::VerifyAndClearExpectationsLocked()
+- name: _ZNK7testing8internal15ExpectationBase18DescribeLocationToEPSo
+  params:
+  - name: os
+    type: ::std::ostream *
+  return_type: void
+  signature: void testing::internal::ExpectationBase::DescribeLocationTo(::std::ostream *) const
+- name: _ZNK7testing8internal15ExpectationBase19DescribeCallCountToEPSo
+  params:
+  - name: os
+    type: ::std::ostream *
+  return_type: void
+  signature: void testing::internal::ExpectationBase::DescribeCallCountTo(::std::ostream *) const
+- name: _ZN7testing8internalL19ParseGoogleMockFlagEPKcS2_Pi
+  params:
+  - name: str
+    type: const char *
+  - name: flag_name
+    type: const char *
+  - name: value
+    type: int32_t *
+  return_type: bool
+  signature: bool testing::internal::ParseGoogleMockFlag(const char *, const char *, int32_t *)
+- name: _ZNK7testing8internal13FloatingPointIfE6is_nanEv
+  params: []
+  return_type: bool
+  signature: bool testing::internal::FloatingPoint::is_nan() const
+- name: _ZNK7testing8internal13FloatingPointIfE12AlmostEqualsERKS2_
+  params:
+  - name: rhs
+    type: const FloatingPoint<RawType> &
+  return_type: bool
+  signature: bool testing::internal::FloatingPoint::AlmostEquals(const FloatingPoint<RawType> &) const
+- name: _ZN7testing8internal11ThreadLocalIPNS_31TestPartResultReporterInterfaceEE3setERKS3_
+  params:
+  - name: value
+    type: const T &
+  return_type: void
+  signature: void testing::internal::ThreadLocal::set(const T &)
+- name: _ZNK7testing8internal11ThreadLocalIPNS_31TestPartResultReporterInterfaceEE7pointerEv
+  params: []
+  return_type: T *
+  signature: T * testing::internal::ThreadLocal::ValueHolder::pointer()
+- name: _ZNK7testing8internal11ThreadLocalIPNS_31TestPartResultReporterInterfaceEE3getEv
+  params: []
+  return_type: const T *
+  signature: const T * bssl::internal::StackAllocatedMovable::get() const
+- name: _ZN7testing8internal15GetUnitTestImplEv
+  params: []
+  return_type: testing::internal::UnitTestImpl *
+  signature: testing::internal::UnitTestImpl * testing::internal::GetUnitTestImpl()
+- name: _ZNK7testing8internal12AssertHelperaSERKNS_7MessageE
+  params:
+  - name: message
+    type: const testing::Message &
+  return_type: void
+  signature: void testing::internal::AssertHelper::operator=(const testing::Message &) const
+- name: _ZN7testing8internal26GoogleTestFailureExceptionC2ERKNS_14TestPartResultE
+  params:
+  - name: failure
+    type: const testing::TestPartResult &
+  return_type: void
+  signature: void testing::internal::GoogleTestFailureException::GoogleTestFailureException(const testing::TestPartResult
+    &)
+- name: _ZN7testing8internalL13HasOneFailureEPKcS2_S2_RKNS_19TestPartResultArrayENS_14TestPartResult4TypeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: arg0
+    type: const char *
+  - name: arg1
+    type: const char *
+  - name: arg2
+    type: const char *
+  - name: results
+    type: const testing::TestPartResultArray &
+  - name: type
+    type: TestPartResult::Type
+  - name: substr
+    type: const std::string &
+  return_type: testing::AssertionResult
+  signature: testing::AssertionResult testing::internal::HasOneFailure(const char *, const char *, const char *, const testing::TestPartResultArray
+    &, TestPartResult::Type, const std::string &)
+- name: _ZN7testing8internal12UnitTestImpl41GetTestPartResultReporterForCurrentThreadEv
+  params: []
+  return_type: testing::TestPartResultReporterInterface *
+  signature: testing::TestPartResultReporterInterface * testing::internal::UnitTestImpl::GetTestPartResultReporterForCurrentThread()
+- name: _ZN7testing8internal12UnitTestImpl17gtest_trace_stackEv
+  params: []
+  return_type: int &
+  signature: int & testing::internal::UnitTestImpl::gtest_trace_stack()
+- name: _ZN7testing8internal11ThreadLocalISt6vectorINS0_9TraceInfoESaIS3_EEE7pointerEv
+  params: []
+  return_type: T *
+  signature: T * testing::internal::ThreadLocal::ValueHolder::pointer()
+- name: _ZN7testing8internal12UnitTestImpl19PostFlagParsingInitEv
+  params: []
+  return_type: void
+  signature: void testing::internal::UnitTestImpl::PostFlagParsingInit()
+- name: _ZN4bssl15SetupGoogleTestEv
+  params: []
+  return_type: void
+  signature: void bssl::SetupGoogleTest()
+- name: _ZN7testing18TestEventListeners6AppendEPNS_17TestEventListenerE
+  params:
+  - name: listener
+    type: testing::TestEventListener *
+  return_type: void
+  signature: void testing::TestEventListeners::Append(testing::TestEventListener *)
+- name: _ZN7testing18TestEventListeners7ReleaseEPNS_17TestEventListenerE
+  params:
+  - name: listener
+    type: testing::TestEventListener *
+  return_type: testing::TestEventListener *
+  signature: testing::TestEventListener * testing::TestEventListeners::Release(testing::TestEventListener *)
+- name: _ZN7testing8internal26BriefUnitTestResultPrinter18OnTestIterationEndERKNS_8UnitTestEi
+  params:
+  - name: unit_test
+    type: const testing::UnitTest &
+  - name: arg1
+    type: int
+  return_type: void
+  signature: void testing::internal::BriefUnitTestResultPrinter::OnTestIterationEnd(const testing::UnitTest &, int)
+- name: _ZN7testing8internal27PrettyUnitTestResultPrinter18OnTestIterationEndERKNS_8UnitTestEi
+  params:
+  - name: unit_test
+    type: const testing::UnitTest &
+  - name: arg1
+    type: int
+  return_type: void
+  signature: void testing::internal::PrettyUnitTestResultPrinter::OnTestIterationEnd(const testing::UnitTest &, int)
+- name: _ZNK7testing8UnitTest21reportable_test_countEv
+  params: []
+  return_type: int
+  signature: int testing::UnitTest::reportable_test_count() const
+- name: _ZNK7testing8UnitTest30reportable_disabled_test_countEv
+  params: []
+  return_type: int
+  signature: int testing::UnitTest::reportable_disabled_test_count() const
+- name: _ZNK7testing8UnitTest12GetTestSuiteEi
+  params:
+  - name: i
+    type: int
+  return_type: const testing::TestSuite *
+  signature: const testing::TestSuite * testing::UnitTest::GetTestSuite(int) const
+- name: _ZNK7testing8UnitTest22total_test_suite_countEv
+  params: []
+  return_type: int
+  signature: int testing::UnitTest::total_test_suite_count() const
+- name: _ZNK7testing8UnitTest17failed_test_countEv
+  params: []
+  return_type: int
+  signature: int testing::UnitTest::failed_test_count() const
+- name: _ZNK7testing8UnitTest6PassedEv
+  params: []
+  return_type: bool
+  signature: bool testing::UnitTest::Passed() const
+- name: _ZNK7testing8internal12UnitTestImpl6PassedEv
+  params: []
+  return_type: bool
+  signature: bool testing::internal::UnitTestImpl::Passed() const
+- name: _ZNK7testing8internal12UnitTestImpl6FailedEv
+  params: []
+  return_type: bool
+  signature: bool testing::internal::UnitTestImpl::Failed() const
+- name: _ZNK7testing8UnitTest18ad_hoc_test_resultEv
+  params: []
+  return_type: const testing::TestResult &
+  signature: const testing::TestResult & testing::UnitTest::ad_hoc_test_result() const
+- name: _ZNK7testing10TestResult7SkippedEv
+  params: []
+  return_type: bool
+  signature: bool testing::TestResult::Skipped() const
+- name: _ZNK7testing8UnitTest18skipped_test_countEv
+  params: []
+  return_type: int
+  signature: int testing::UnitTest::skipped_test_count() const
+- name: _ZNK7testing8UnitTest21successful_test_countEv
+  params: []
+  return_type: int
+  signature: int testing::UnitTest::successful_test_count() const
+- name: _ZN7testing8internal27PrettyUnitTestResultPrinter9OnTestEndERKNS_8TestInfoE
+  params:
+  - name: test_info
+    type: const testing::TestInfo &
+  return_type: void
+  signature: void testing::internal::PrettyUnitTestResultPrinter::OnTestEnd(const testing::TestInfo &)
+- name: _ZNK7testing8UnitTest12elapsed_timeEv
+  params: []
+  return_type: internal::TimeInMillis
+  signature: internal::TimeInMillis testing::UnitTest::elapsed_time() const
+- name: _ZNK7testing8UnitTest23test_suite_to_run_countEv
+  params: []
+  return_type: int
+  signature: int testing::UnitTest::test_suite_to_run_count() const
+- name: _ZNK7testing8UnitTest17test_to_run_countEv
+  params: []
+  return_type: int
+  signature: int testing::UnitTest::test_to_run_count() const
+- name: _ZN7testing8internal26BriefUnitTestResultPrinter16OnTestPartResultERKNS_14TestPartResultE
+  params:
+  - name: result
+    type: const testing::TestPartResult &
+  return_type: void
+  signature: void testing::internal::BriefUnitTestResultPrinter::OnTestPartResult(const testing::TestPartResult &)
+- name: _ZNK7testing8UnitTest11random_seedEv
+  params: []
+  return_type: int
+  signature: int testing::UnitTest::random_seed() const
+- name: _ZN7testing8internal13ExecDeathTest10AssumeRoleEv
+  params: []
+  return_type: DeathTest::TestRole
+  signature: DeathTest::TestRole testing::internal::ExecDeathTest::AssumeRole()
+- name: _ZN7testing8internal9DeathTestC2Ev
+  params: []
+  return_type: void
+  signature: void testing::internal::DeathTest::DeathTest()
+- name: _ZN7testing8internalL17GetCapturedStreamB5cxx11EPPNS0_14CapturedStreamE
+  params:
+  - name: captured_stream
+    type: testing::internal::CapturedStream **
+  return_type: std::string
+  signature: std::string testing::internal::GetCapturedStream(testing::internal::CapturedStream **)
+- name: _ZNK7testing8internal11MatcherBaseIRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE7MatchesES9_
+  params:
+  - name: x
+    type: const T &
+  return_type: bool
+  signature: bool testing::internal::MatcherBase::Matches(const T &) const
+- name: _ZN7testing8internal16ForkingDeathTest4WaitEv
+  params: []
+  return_type: int
+  signature: int testing::internal::ForkingDeathTest::Wait()
+- name: _ZN7testing8internal12UnitTestImpl32SuppressTestEventsIfInSubprocessEv
+  params: []
+  return_type: void
+  signature: void testing::internal::UnitTestImpl::SuppressTestEventsIfInSubprocess()
+- name: _ZN7testing18TestEventListeners23SuppressEventForwardingEb
+  params:
+  - name: suppress
+    type: bool
+  return_type: void
+  signature: void testing::TestEventListeners::SuppressEventForwarding(bool)
+- name: _ZN7testing8internal15UnitTestOptions27GetAbsolutePathToOutputFileB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string testing::internal::UnitTestOptions::GetAbsolutePathToOutputFile()
+- name: _ZNK7testing8internal8FilePath14RemoveFileNameEv
+  params: []
+  return_type: testing::internal::FilePath
+  signature: testing::internal::FilePath testing::internal::FilePath::RemoveFileName() const
+- name: _ZN7testing4Test18HasNonfatalFailureEv
+  params: []
+  return_type: bool
+  signature: bool testing::Test::HasNonfatalFailure()
+- name: _ZN7testing8internal35DefaultGlobalTestPartResultReporter20ReportTestPartResultERKNS_14TestPartResultE
+  params:
+  - name: result
+    type: const testing::TestPartResult &
+  return_type: void
+  signature: void testing::internal::DefaultGlobalTestPartResultReporter::ReportTestPartResult(const testing::TestPartResult
+    &)
+- name: _ZN7testing8internal12UnitTestImpl11RunAllTestsEv
+  params: []
+  return_type: bool
+  signature: bool testing::internal::UnitTestImpl::RunAllTests()
+- name: _ZN7testing8internal17StreamingListener16OnTestProgramEndERKNS_8UnitTestE
+  params:
+  - name: unit_test
+    type: const testing::UnitTest &
+  return_type: void
+  signature: void testing::internal::StreamingListener::OnTestProgramEnd(const testing::UnitTest &)
+- name: _ZN7testing8internal17StreamingListenerC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES9_
+  params:
+  - name: arg0
+    type: const testing::internal::StreamingListener &
+  return_type: void
+  signature: void testing::internal::StreamingListener::StreamingListener(const testing::internal::StreamingListener &)
+- name: _ZNK7testing8UnitTest15start_timestampEv
+  params: []
+  return_type: internal::TimeInMillis
+  signature: internal::TimeInMillis testing::UnitTest::start_timestamp() const
+- name: _ZN7testing8internalL18OpenFileForWritingERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: output_file
+    type: const std::string &
+  return_type: FILE *
+  signature: FILE * testing::internal::OpenFileForWriting(const std::string &)
+- name: _ZNK7testing8internal8FilePath28CreateDirectoriesRecursivelyEv
+  params: []
+  return_type: bool
+  signature: bool testing::internal::FilePath::CreateDirectoriesRecursively() const
+- name: _ZN7testing8internal8FilePathC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: pathname
+    type: std::string
+  return_type: void
+  signature: void testing::internal::FilePath::FilePath(std::string)
+- name: _ZN7testingL29GetCurrentExecutableDirectoryB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string testing::GetCurrentExecutableDirectory()
+- name: _ZN7testing8internal12UnitTestImpl18ConfigureXmlOutputEv
+  params: []
+  return_type: void
+  signature: void testing::internal::UnitTestImpl::ConfigureXmlOutput()
+- name: _ZN7testing8internal24GetCurrentExecutableNameEv
+  params: []
+  return_type: testing::internal::FilePath
+  signature: testing::internal::FilePath testing::internal::GetCurrentExecutableName()
+- name: _ZN7testing8internal8FilePath22GenerateUniqueFileNameERKS1_S3_PKc
+  params:
+  - name: directory
+    type: const testing::internal::FilePath &
+  - name: base_name
+    type: const testing::internal::FilePath &
+  - name: extension
+    type: const char *
+  return_type: testing::internal::FilePath
+  signature: testing::internal::FilePath testing::internal::FilePath::GenerateUniqueFileName(const testing::internal::FilePath
+    &, const testing::internal::FilePath &, const char *)
+- name: _ZN7testing8internal8FilePath11ConcatPathsERKS1_S3_
+  params:
+  - name: directory
+    type: const testing::internal::FilePath &
+  - name: relative_path
+    type: const testing::internal::FilePath &
+  return_type: testing::internal::FilePath
+  signature: testing::internal::FilePath testing::internal::FilePath::ConcatPaths(const testing::internal::FilePath &, const
+    testing::internal::FilePath &)
+- name: _ZNK7testing8internal8FilePath15IsRootDirectoryEv
+  params: []
+  return_type: bool
+  signature: bool testing::internal::FilePath::IsRootDirectory() const
+- name: _ZN7testing8internal12UnitTestImpl26RegisterParameterizedTestsEv
+  params: []
+  return_type: void
+  signature: void testing::internal::UnitTestImpl::RegisterParameterizedTests()
+- name: _ZN7testing8internal33GetIgnoredParameterizedTestSuitesB5cxx11Ev
+  params: []
+  return_type: int *
+  signature: int * testing::internal::GetIgnoredParameterizedTestSuites()
+- name: _ZN7testing8internal12UnitTestImpl12ShuffleTestsEv
+  params: []
+  return_type: void
+  signature: void testing::internal::UnitTestImpl::ShuffleTests()
+- name: _ZNK7testing8UnitTest16total_test_countEv
+  params: []
+  return_type: int
+  signature: int testing::UnitTest::total_test_count() const
+- name: _ZN7testing8UnitTest27parameterized_test_registryEv
+  params: []
+  return_type: internal::ParameterizedTestSuiteRegistry &
+  signature: internal::ParameterizedTestSuiteRegistry & testing::UnitTest::parameterized_test_registry()
+- name: _ZNK7testing8UnitTest17current_test_caseEv
+  params: []
+  return_type: const testing::TestCase *
+  signature: const testing::TestCase * testing::UnitTest::current_test_case() const
+- name: _ZN7testing4Test15HasFatalFailureEv
+  params: []
+  return_type: bool
+  signature: bool testing::Test::HasFatalFailure()
+- name: _ZNK7testing10TestResult15HasFatalFailureEv
+  params: []
+  return_type: bool
+  signature: bool testing::TestResult::HasFatalFailure() const
+- name: _ZN7testing8UnitTest3RunEv
+  params: []
+  return_type: int
+  signature: int testing::UnitTest::Run()
+- name: _Z13RUN_ALL_TESTSv
+  params: []
+  return_type: int
+  signature: int RUN_ALL_TESTS()
+- name: _ZN7testing8internal12UnitTestImpl14RecordPropertyERKNS_12TestPropertyE
+  params:
+  - name: test_property
+    type: const testing::TestProperty &
+  return_type: void
+  signature: void testing::internal::UnitTestImpl::RecordProperty(const testing::TestProperty &)
+- name: _ZNK7testing8UnitTest11GetTestCaseEi
+  params:
+  - name: i
+    type: int
+  return_type: const testing::TestCase *
+  signature: const testing::TestCase * testing::UnitTest::GetTestCase(int) const
+- name: _ZNK7testing8UnitTest19disabled_test_countEv
+  params: []
+  return_type: int
+  signature: int testing::UnitTest::disabled_test_count() const
+- name: _ZNK7testing9TestSuite19disabled_test_countEv
+  params: []
+  return_type: int
+  signature: int testing::TestSuite::disabled_test_count() const
+- name: _ZNK7testing8UnitTest26successful_test_case_countEv
+  params: []
+  return_type: int
+  signature: int testing::UnitTest::successful_test_case_count() const
+- name: _ZNK7testing10TestResult18HasNonfatalFailureEv
+  params: []
+  return_type: bool
+  signature: bool testing::TestResult::HasNonfatalFailure() const
+- name: _ZN7testing4Test14RecordPropertyERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_
+  params:
+  - name: key
+    type: const std::string &
+  - name: value
+    type: const std::string &
+  return_type: void
+  signature: void testing::Test::RecordProperty(const std::string &, const std::string &)
+- name: _ZN7testing8internal13edit_distance21CalculateOptimalEditsERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS8_EESC_
+  params:
+  - name: left
+    type: const int &
+  - name: right
+    type: const int &
+  return_type: int
+  signature: int testing::internal::edit_distance::CalculateOptimalEdits(const int &, const int &)
+- name: _ZN7testing8internal12UnitTestImpl41SetTestPartResultReporterForCurrentThreadEPNS_31TestPartResultReporterInterfaceE
+  params:
+  - name: reporter
+    type: testing::TestPartResultReporterInterface *
+  return_type: void
+  signature: void testing::internal::UnitTestImpl::SetTestPartResultReporterForCurrentThread(testing::TestPartResultReporterInterface
+    *)
+- name: _ZN7testing32ScopedFakeTestPartResultReporter20ReportTestPartResultERKNS_14TestPartResultE
+  params:
+  - name: result
+    type: const testing::TestPartResult &
+  return_type: void
+  signature: void testing::ScopedFakeTestPartResultReporter::ReportTestPartResult(const testing::TestPartResult &)
+- name: _ZN7testing32ScopedFakeTestPartResultReporterC2ENS0_13InterceptModeEPNS_19TestPartResultArrayE
+  params:
+  - name: intercept_mode
+    type: testing::ScopedFakeTestPartResultReporter::InterceptMode
+  - name: result
+    type: testing::TestPartResultArray *
+  return_type: void
+  signature: void testing::ScopedFakeTestPartResultReporter::ScopedFakeTestPartResultReporter(testing::ScopedFakeTestPartResultReporter::InterceptMode,
+    testing::TestPartResultArray *)
+- name: _ZN7testing8internal47RegisterTypeParameterizedTestSuiteInstantiationEPKc
+  params:
+  - name: case_name
+    type: const char *
+  return_type: void
+  signature: void testing::internal::RegisterTypeParameterizedTestSuiteInstantiation(const char *)
+- name: _ZN7testing8internal34RegisterTypeParameterizedTestSuiteEPKcNS0_12CodeLocationE
+  params:
+  - name: test_suite_name
+    type: const char *
+  - name: code_location
+    type: testing::internal::CodeLocation
+  return_type: void
+  signature: void testing::internal::RegisterTypeParameterizedTestSuite(const char *, testing::internal::CodeLocation)
+- name: _ZN7testing7MatcherISt17basic_string_viewIcSt11char_traitsIcEEEC2ES4_
+  params:
+  - name: s
+    type: const char *
+  return_type: void
+  signature: void testing::Matcher::Matcher(const char *)
+- name: _ZN7testing7MatcherIRKSt17basic_string_viewIcSt11char_traitsIcEEEC2ES4_
+  params:
+  - name: s
+    type: const char *
+  return_type: void
+  signature: void testing::Matcher::Matcher(const char *)
+- name: _ZN7testing7MatcherINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEC2EPKc
+  params:
+  - name: s
+    type: const char *
+  return_type: void
+  signature: void testing::Matcher::Matcher(const char *)
+- name: _ZN7testing7MatcherIRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEC2EPKc
+  params:
+  - name: s
+    type: const char *
+  return_type: void
+  signature: void testing::Matcher::Matcher(const char *)
+- name: _ZN7testing8internal9DeathTest6CreateEPKcNS_7MatcherIRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEES3_iPPS1_
+  params:
+  - name: statement
+    type: const char *
+  - name: matcher
+    type: Matcher<const std::string &>
+  - name: file
+    type: const char *
+  - name: line
+    type: int
+  - name: test
+    type: testing::internal::DeathTest **
+  return_type: bool
+  signature: bool testing::internal::DeathTest::Create(const char *, Matcher<const std::string &>, const char *, int, testing::internal::DeathTest
+    **)
+- name: _ZN4bssl7entropy12_GLOBAL__N_119MemoryAccessSampler4NextEPm
+  params:
+  - name: out
+    type: uint64_t *
+  return_type: bool
+  signature: bool bssl::entropy::MemoryAccessSampler::Next(uint64_t *)
+- name: EC_KEY_free
+  params:
+  - name: key
+    type: EC_KEY *
+  return_type: void
+  signature: void EC_KEY_free(EC_KEY *)
+- name: EC_GROUP_free
+  params:
+  - name: group
+    type: EC_GROUP *
+  return_type: void
+  signature: void EC_GROUP_free(EC_GROUP *)
+- name: _ZL29EVP_DecryptFinal_ex2_internalP17evp_cipher_ctx_stPhPmm
+  params:
+  - name: ctx
+    type: EVP_CIPHER_CTX *
+  - name: out
+    type: unsigned char *
+  - name: out_len
+    type: int *
+  - name: max_out_len
+    type: int
+  return_type: int
+  signature: int EVP_DecryptFinal_ex2_internal(EVP_CIPHER_CTX *, unsigned char *, int *, int)
+- name: _ZL29EVP_EncryptUpdate_ex_internalP17evp_cipher_ctx_stPhPmmPKhm
+  params:
+  - name: ctx
+    type: EVP_CIPHER_CTX *
+  - name: out
+    type: uint8_t *
+  - name: out_len
+    type: int *
+  - name: max_out_len
+    type: int
+  - name: in
+    type: const uint8_t *
+  - name: in_len
+    type: int
+  return_type: int
+  signature: int EVP_EncryptUpdate_ex_internal(EVP_CIPHER_CTX *, uint8_t *, int *, int, const uint8_t *, int)
+- name: _ZL7aes_ctrPK16aead_aes_eax_ctxN4bssl4SpanIK15crypto_iovec_stLm18446744073709551615EEEPKh
+  params:
+  - name: aes_ctx
+    type: const struct aead_aes_eax_ctx *
+  - name: iovecs
+    type: int
+  - name: n
+    type: const uint8_t[16]
+  return_type: void
+  signature: void aes_ctr(const struct aead_aes_eax_ctx *, int, const uint8_t[16])
+- name: _ZN4bssl13InplaceVectorI15crypto_iovec_stLm16EE8CopyFromENS_4SpanIKS1_Lm18446744073709551615EEE
+  params:
+  - name: in
+    type: int
+  return_type: void
+  signature: void bssl::InplaceVector::CopyFrom(int)
+- name: _ZN4bssl13InplaceVectorI15crypto_iovec_stLm16EE11TryCopyFromENS_4SpanIKS1_Lm18446744073709551615EEE
+  params:
+  - name: in
+    type: int
+  return_type: bool
+  signature: bool bssl::InplaceVector::TryCopyFrom(int)
+- name: _ZN4bssl6VectorISt10unique_ptrI9bignum_stNS_8internal7DeleterEEE4PushES5_
+  params:
+  - name: elem
+    type: T
+  return_type: bool
+  signature: bool bssl::Vector::Push(T)
+- name: DH_free
+  params:
+  - name: dh
+    type: DH *
+  return_type: void
+  signature: void DH_free(DH *)
+- name: EC_GROUP_dup
+  params:
+  - name: group
+    type: const EC_GROUP *
+  return_type: EC_GROUP *
+  signature: EC_GROUP * EC_GROUP_dup(const EC_GROUP *)
+- name: _ZN4bssl8internal11DeleterImplINS_7RSAImplEvE4FreeEPS2_
+  params:
+  - name: data
+    type: KeyData<Traits> *
+  return_type: void
+  signature: void KeyData::Free(KeyData<Traits> *)
+- name: BN_CTX_get
+  params:
+  - name: ctx
+    type: BN_CTX *
+  return_type: BIGNUM *
+  signature: BIGNUM * BN_CTX_get(BN_CTX *)
+- name: BN_CTX_free
+  params:
+  - name: ctx
+    type: BN_CTX *
+  return_type: void
+  signature: void BN_CTX_free(BN_CTX *)
+- name: _ZL17ccm128_init_statePK14ccm128_contextP12ccm128_statePK10aes_key_stN4bssl4SpanIKhLm18446744073709551615EEENS8_IK14crypto_ivec_stLm18446744073709551615EEEm
+  params:
+  - name: ctx
+    type: const struct ccm128_context *
+  - name: state
+    type: struct ccm128_state *
+  - name: key
+    type: const AES_KEY *
+  - name: nonce
+    type: int
+  - name: aadvecs
+    type: int
+  - name: plaintext_len
+    type: int
+  return_type: int
+  signature: int ccm128_init_state(const struct ccm128_context *, struct ccm128_state *, const AES_KEY *, int, int, int)
+- name: _ZL24aead_aes_gcm_tls12_sealvPK15evp_aead_ctx_stN4bssl4SpanIK15crypto_iovec_stLm18446744073709551615EEENS3_IhLm18446744073709551615EEEPmNS3_IKhLm18446744073709551615EEENS3_IK14crypto_ivec_stLm18446744073709551615EEE
+  params:
+  - name: ctx
+    type: const EVP_AEAD_CTX *
+  - name: iovecs
+    type: int
+  - name: out_tag
+    type: int
+  - name: out_tag_len
+    type: int *
+  - name: nonce
+    type: int
+  - name: aadvecs
+    type: int
+  return_type: int
+  signature: int aead_aes_gcm_tls12_sealv(const EVP_AEAD_CTX *, int, int, int *, int, int)
+- name: _ZNK4bssl4SpanIhLm64EE5firstEm
+  params:
+  - name: len
+    type: int
+  return_type: int
+  signature: int bssl::Span::first(int) const
+- name: EVP_AEAD_CTX_openv_detached
+  params:
+  - name: ctx
+    type: const EVP_AEAD_CTX *
+  - name: iovec
+    type: const CRYPTO_IOVEC *
+  - name: num_iovec
+    type: int
+  - name: nonce
+    type: const uint8_t *
+  - name: nonce_len
+    type: int
+  - name: in_tag
+    type: const uint8_t *
+  - name: in_tag_len
+    type: int
+  - name: aadvec
+    type: const CRYPTO_IVEC *
+  - name: num_aadvec
+    type: int
+  return_type: int
+  signature: int EVP_AEAD_CTX_openv_detached(const EVP_AEAD_CTX *, const CRYPTO_IOVEC *, int, const uint8_t *, int, const
+    uint8_t *, int, const CRYPTO_IVEC *, int)
+- name: EVP_AEAD_CTX_openv
+  params:
+  - name: ctx
+    type: const EVP_AEAD_CTX *
+  - name: iovec
+    type: const CRYPTO_IOVEC *
+  - name: num_iovec
+    type: int
+  - name: out_total_bytes
+    type: int *
+  - name: nonce
+    type: const uint8_t *
+  - name: nonce_len
+    type: int
+  - name: aadvec
+    type: const CRYPTO_IVEC *
+  - name: num_aadvec
+    type: int
+  return_type: int
+  signature: int EVP_AEAD_CTX_openv(const EVP_AEAD_CTX *, const CRYPTO_IOVEC *, int, int *, const uint8_t *, int, const CRYPTO_IVEC
+    *, int)
+- name: RSA_up_ref
+  params:
+  - name: rsa
+    type: RSA *
+  return_type: int
+  signature: int RSA_up_ref(RSA *)
+- name: EC_KEY_up_ref
+  params:
+  - name: key
+    type: EC_KEY *
+  return_type: int
+  signature: int EC_KEY_up_ref(EC_KEY *)
+- name: DH_up_ref
+  params:
+  - name: dh
+    type: DH *
+  return_type: int
+  signature: int DH_up_ref(DH *)
+- name: BN_CTX_end
+  params:
+  - name: ctx
+    type: BN_CTX *
+  return_type: void
+  signature: void BN_CTX_end(BN_CTX *)
+- name: X509_parse_with_algorithms
+  params:
+  - name: buf
+    type: CRYPTO_BUFFER *
+  - name: algs
+    type: const EVP_PKEY_ALG *const *
+  - name: num_algs
+    type: int
+  return_type: X509 *
+  signature: X509 * X509_parse_with_algorithms(CRYPTO_BUFFER *, const EVP_PKEY_ALG *const *, int)
+- name: _ZL25asn1_d2i_ex_primitive_cbsPP13ASN1_VALUE_stP6cbs_stPK12ASN1_ITEM_stiic
+  params:
+  - name: pval
+    type: ASN1_VALUE **
+  - name: cbs
+    type: CBS *
+  - name: it
+    type: const ASN1_ITEM *
+  - name: tag
+    type: int
+  - name: aclass
+    type: int
+  - name: opt
+    type: char
+  return_type: int
+  signature: int asn1_d2i_ex_primitive_cbs(ASN1_VALUE **, CBS *, const ASN1_ITEM *, int, int, char)
+- name: _ZN4bssl14asn1_parse_anyEP6cbs_stP12asn1_type_st
+  params:
+  - name: cbs
+    type: CBS *
+  - name: out
+    type: ASN1_TYPE *
+  return_type: int
+  signature: int bssl::asn1_parse_any(CBS *, ASN1_TYPE *)
+- name: _ZN4bssl13asn1_enc_freeEPP13ASN1_VALUE_stPK12ASN1_ITEM_st
+  params:
+  - name: pval
+    type: ASN1_VALUE **
+  - name: it
+    type: const ASN1_ITEM *
+  return_type: void
+  signature: void bssl::asn1_enc_free(ASN1_VALUE **, const ASN1_ITEM *)
+- name: BIO_free
+  params:
+  - name: bio
+    type: BIO *
+  return_type: int
+  signature: int BIO_free(BIO *)
+- name: BIO_up_ref
+  params:
+  - name: bio
+    type: BIO *
+  return_type: int
+  signature: int BIO_up_ref(BIO *)
+- name: _ZL18aead_aes_eax_sealvPK15evp_aead_ctx_stN4bssl4SpanIK15crypto_iovec_stLm18446744073709551615EEENS3_IhLm18446744073709551615EEEPmNS3_IKhLm18446744073709551615EEENS3_IK14crypto_ivec_stLm18446744073709551615EEE
+  params:
+  - name: ctx
+    type: const EVP_AEAD_CTX *
+  - name: iovecs
+    type: int
+  - name: out_tag
+    type: int
+  - name: out_tag_len
+    type: int *
+  - name: nonce
+    type: int
+  - name: aadvecs
+    type: int
+  return_type: int
+  signature: int aead_aes_eax_sealv(const EVP_AEAD_CTX *, int, int, int *, int, int)
+- name: _ZL32chacha20_poly1305_openv_detachedPKhN4bssl4SpanIK15crypto_iovec_stLm18446744073709551615EEENS2_IS_Lm18446744073709551615EEES6_NS2_IK14crypto_ivec_stLm18446744073709551615EEEm
+  params:
+  - name: key
+    type: const uint8_t *
+  - name: iovecs
+    type: int
+  - name: nonce
+    type: int
+  - name: in_tag
+    type: int
+  - name: aadvecs
+    type: int
+  - name: tag_len
+    type: int
+  return_type: int
+  signature: int chacha20_poly1305_openv_detached(const uint8_t *, int, int, int, int, int)
+- name: _ZN4bssl13InplaceVectorIhLm64EE6AppendENS_4SpanIKhLm18446744073709551615EEE
+  params:
+  - name: in
+    type: int
+  return_type: void
+  signature: void bssl::InplaceVector::Append(int)
+- name: _ZNK4bssl4SpanIhLm8EE5firstEm
+  params:
+  - name: len
+    type: int
+  return_type: int
+  signature: int bssl::Span::first(int) const
+- name: _ZN4bssl13InplaceVectorIhLm8EE6AppendENS_4SpanIKhLm18446744073709551615EEE
+  params:
+  - name: in
+    type: int
+  return_type: void
+  signature: void bssl::InplaceVector::Append(int)
+- name: _ZNK4bssl4SpanIhLm320EE5firstEm
+  params:
+  - name: len
+    type: int
+  return_type: int
+  signature: int bssl::Span::first(int) const
+- name: _ZL14aead_tls_openvPK15evp_aead_ctx_stN4bssl4SpanIK15crypto_iovec_stLm18446744073709551615EEEPmNS3_IKhLm18446744073709551615EEENS3_IK14crypto_ivec_stLm18446744073709551615EEE
+  params:
+  - name: ctx
+    type: const EVP_AEAD_CTX *
+  - name: iovecs
+    type: int
+  - name: out_total_bytes
+    type: int *
+  - name: nonce
+    type: int
+  - name: aadvecs
+    type: int
+  return_type: int
+  signature: int aead_tls_openv(const EVP_AEAD_CTX *, int, int *, int, int)
+- name: CMS_ContentInfo_free
+  params:
+  - name: cms
+    type: CMS_ContentInfo *
+  return_type: void
+  signature: void CMS_ContentInfo_free(CMS_ContentInfo *)
+- name: _ZL10value_freeP13conf_value_st
+  params:
+  - name: value
+    type: CONF_VALUE *
+  return_type: void
+  signature: void value_free(CONF_VALUE *)
+- name: BN_get_rfc3526_prime_8192
+  params:
+  - name: ret
+    type: BIGNUM *
+  return_type: BIGNUM *
+  signature: BIGNUM * BN_get_rfc3526_prime_8192(BIGNUM *)
+- name: BN_get_rfc3526_prime_6144
+  params:
+  - name: ret
+    type: BIGNUM *
+  return_type: BIGNUM *
+  signature: BIGNUM * BN_get_rfc3526_prime_6144(BIGNUM *)
+- name: BN_get_rfc3526_prime_4096
+  params:
+  - name: ret
+    type: BIGNUM *
+  return_type: BIGNUM *
+  signature: BIGNUM * BN_get_rfc3526_prime_4096(BIGNUM *)
+- name: BN_get_rfc3526_prime_3072
+  params:
+  - name: ret
+    type: BIGNUM *
+  return_type: BIGNUM *
+  signature: BIGNUM * BN_get_rfc3526_prime_3072(BIGNUM *)
+- name: BN_get_rfc3526_prime_2048
+  params:
+  - name: ret
+    type: BIGNUM *
+  return_type: BIGNUM *
+  signature: BIGNUM * BN_get_rfc3526_prime_2048(BIGNUM *)
+- name: BN_get_rfc3526_prime_1536
+  params:
+  - name: ret
+    type: BIGNUM *
+  return_type: BIGNUM *
+  signature: BIGNUM * BN_get_rfc3526_prime_1536(BIGNUM *)
+- name: _ZNK4bssl4SpanIKhLm9EE5firstEm
+  params:
+  - name: len
+    type: int
+  return_type: int
+  signature: int bssl::Span::first(int) const
+- name: _ZL17cbs_to_digest_nidPK6cbs_st
+  params:
+  - name: cbs
+    type: const CBS *
+  return_type: int
+  signature: int cbs_to_digest_nid(const CBS *)
+- name: _ZN4bssl8internal11DeleterImplINS_7DSAImplEvE4FreeEPS2_
+  params:
+  - name: data
+    type: KeyData<Traits> *
+  return_type: void
+  signature: void KeyData::Free(KeyData<Traits> *)
+- name: DSA_up_ref
+  params:
+  - name: dsa
+    type: DSA *
+  return_type: int
+  signature: int DSA_up_ref(DSA *)
+- name: DSA_parse_public_key
+  params:
+  - name: cbs
+    type: CBS *
+  return_type: DSA *
+  signature: DSA * DSA_parse_public_key(CBS *)
+- name: EC_KEY_parse_private_key
+  params:
+  - name: cbs
+    type: CBS *
+  - name: group
+    type: const EC_GROUP *
+  return_type: EC_KEY *
+  signature: EC_KEY * EC_KEY_parse_private_key(CBS *, const EC_GROUP *)
+- name: _ZN4bssl24ec_key_parse_private_keyEP6cbs_stPK11ec_group_stNS_4SpanIKS4_Lm18446744073709551615EEE
+  params:
+  - name: cbs
+    type: CBS *
+  - name: group
+    type: const EC_GROUP *
+  - name: allowed_groups
+    type: int
+  return_type: EC_KEY *
+  signature: EC_KEY * bssl::ec_key_parse_private_key(CBS *, const EC_GROUP *, int)
+- name: _ZN4bssl23ec_key_parse_parametersEP6cbs_stNS_4SpanIKPK11ec_group_stLm18446744073709551615EEE
+  params:
+  - name: cbs
+    type: CBS *
+  - name: allowed_groups
+    type: int
+  return_type: const EC_GROUP *
+  signature: const EC_GROUP * bssl::ec_key_parse_parameters(CBS *, int)
+- name: EVP_PKEY_free
+  params:
+  - name: pkey
+    type: EVP_PKEY *
+  return_type: void
+  signature: void EVP_PKEY_free(EVP_PKEY *)
+- name: EVP_PKEY_from_private_key_info
+  params:
+  - name: in
+    type: const uint8_t *
+  - name: len
+    type: int
+  - name: algs
+    type: const EVP_PKEY_ALG *const *
+  - name: num_algs
+    type: int
+  return_type: EVP_PKEY *
+  signature: EVP_PKEY * EVP_PKEY_from_private_key_info(const uint8_t *, int, const EVP_PKEY_ALG *const *, int)
+- name: _ZL10parse_spkiP6cbs_stPK15evp_pkey_alg_st
+  params:
+  - name: cbs
+    type: CBS *
+  - name: alg
+    type: const EVP_PKEY_ALG *
+  return_type: int
+  signature: int parse_spki(CBS *, const EVP_PKEY_ALG *)
+- name: EVP_PKEY_CTX_free
+  params:
+  - name: ctx
+    type: EVP_PKEY_CTX *
+  return_type: void
+  signature: void EVP_PKEY_CTX_free(EVP_PKEY_CTX *)
+- name: _ZL15pkey_dh_cleanupPN4bssl10EvpPkeyCtxE
+  params:
+  - name: ctx
+    type: bssl::EvpPkeyCtx *
+  return_type: void
+  signature: void pkey_dh_cleanup(bssl::EvpPkeyCtx *)
+- name: _ZN12_GLOBAL__N_117eckey_priv_decodeEPK15evp_pkey_alg_stPN4bssl7EvpPkeyEP6cbs_stS7_
+  params:
+  - name: alg
+    type: const EVP_PKEY_ALG *
+  - name: out
+    type: bssl::EvpPkey *
+  - name: params
+    type: CBS *
+  - name: key
+    type: CBS *
+  return_type: bssl::evp_decode_result_t
+  signature: bssl::evp_decode_result_t eckey_priv_decode(const EVP_PKEY_ALG *, bssl::EvpPkey *, CBS *, CBS *)
+- name: _ZN12_GLOBAL__N_112ed25519_freeEPN4bssl7EvpPkeyE
+  params:
+  - name: pkey
+    type: bssl::EvpPkey *
+  return_type: void
+  signature: void ed25519_free(bssl::EvpPkey *)
+- name: _ZL14X509_PKEY_freeP14private_key_st
+  params:
+  - name: x
+    type: X509_PKEY *
+  return_type: void
+  signature: void X509_PKEY_free(X509_PKEY *)
+- name: _ZN4bssl10RefCountedINS_6DHImplEE14DecRefInternalEv
+  params: []
+  return_type: void
+  signature: void bssl::RefCounted::DecRefInternal()
+- name: _ZN4bssl10RefCountedINS_7DSAImplEE13UpRefInternalEv
+  params: []
+  return_type: void
+  signature: void bssl::RefCounted::UpRefInternal()
+- name: _ZN4bssl20rsa_parse_pss_paramsEP6cbs_stPNS_16rsa_pss_params_tEi
+  params:
+  - name: cbs
+    type: CBS *
+  - name: out
+    type: bssl::rsa_pss_params_t *
+  - name: allow_explicit_trailer
+    type: int
+  return_type: int
+  signature: int bssl::rsa_parse_pss_params(CBS *, bssl::rsa_pss_params_t *, int)
+- name: _ZN12_GLOBAL__N_121rsa_decode_pss_paramsEN4bssl16rsa_pss_params_tEP6cbs_st
+  params:
+  - name: expected
+    type: bssl::rsa_pss_params_t
+  - name: params
+    type: CBS *
+  return_type: bssl::evp_decode_result_t
+  signature: bssl::evp_decode_result_t rsa_decode_pss_params(bssl::rsa_pss_params_t, CBS *)
+- name: _ZN4bssl22rsa_marshal_pss_paramsEP6cbb_stNS_16rsa_pss_params_tE
+  params:
+  - name: cbb
+    type: CBB *
+  - name: params
+    type: bssl::rsa_pss_params_t
+  return_type: int
+  signature: int bssl::rsa_marshal_pss_params(CBB *, bssl::rsa_pss_params_t)
+- name: TRUST_TOKEN_free
+  params:
+  - name: token
+    type: TRUST_TOKEN *
+  return_type: void
+  signature: void TRUST_TOKEN_free(TRUST_TOKEN *)
+- name: _ZL16by_dir_hash_freePN4bssl20lookup_dir_hashes_stE
+  params:
+  - name: hash
+    type: bssl::BY_DIR_HASH *
+  return_type: void
+  signature: void by_dir_hash_free(bssl::BY_DIR_HASH *)
+- name: _ZN4bssl6VectorIPK13v3_ext_methodE4PushES3_
+  params:
+  - name: elem
+    type: T
+  return_type: bool
+  signature: bool bssl::Vector::Push(T)
+- name: X509V3_EXT_get_nid
+  params:
+  - name: nid
+    type: int
+  return_type: const X509V3_EXT_METHOD *
+  signature: const X509V3_EXT_METHOD * X509V3_EXT_get_nid(int)
+- name: X509V3_EXT_add
+  params:
+  - name: ext
+    type: X509V3_EXT_METHOD *
+  return_type: int
+  signature: int X509V3_EXT_add(X509V3_EXT_METHOD *)
+- name: _ZL21v2i_BASIC_CONSTRAINTSPK13v3_ext_methodPK10v3_ext_ctxPK19stack_st_CONF_VALUE
+  params:
+  - name: method
+    type: const X509V3_EXT_METHOD *
+  - name: ctx
+    type: const X509V3_CTX *
+  - name: values
+    type: const struct stack_st_CONF_VALUE *
+  return_type: void *
+  signature: void * v2i_BASIC_CONSTRAINTS(const X509V3_EXT_METHOD *, const X509V3_CTX *, const struct stack_st_CONF_VALUE
+    *)
+- name: X509_STORE_free
+  params:
+  - name: store
+    type: X509_STORE *
+  return_type: void
+  signature: void X509_STORE_free(X509_STORE *)
+- name: X509_STORE_up_ref
+  params:
+  - name: store
+    type: X509_STORE *
+  return_type: int
+  signature: int X509_STORE_up_ref(X509_STORE *)
+- name: _ZL19X509_ALGOR_parse_cbPP13ASN1_VALUE_stP6cbs_stPK12ASN1_ITEM_sti
+  params:
+  - name: pval
+    type: ASN1_VALUE **
+  - name: cbs
+    type: CBS *
+  - name: it
+    type: const ASN1_ITEM *
+  - name: opt
+    type: int
+  return_type: int
+  signature: int X509_ALGOR_parse_cb(ASN1_VALUE **, CBS *, const ASN1_ITEM *, int)
+- name: _ZN4bssl23x509_sign_to_bit_stringEP13env_md_ctx_stP14asn1_string_stNS_4SpanIKhLm18446744073709551615EEE
+  params:
+  - name: ctx
+    type: EVP_MD_CTX *
+  - name: out
+    type: ASN1_BIT_STRING *
+  - name: in
+    type: int
+  return_type: int
+  signature: int bssl::x509_sign_to_bit_string(EVP_MD_CTX *, ASN1_BIT_STRING *, int)
+- name: _ZN4bssl26x509_name_invalidate_cacheEP12X509_name_st
+  params:
+  - name: name
+    type: X509_NAME *
+  return_type: void
+  signature: void bssl::x509_name_invalidate_cache(X509_NAME *)
+- name: _ZN4bssl16x509_pubkey_set1EP14X509_pubkey_stP11evp_pkey_st
+  params:
+  - name: key
+    type: X509_PUBKEY *
+  - name: pkey
+    type: EVP_PKEY *
+  return_type: int
+  signature: int bssl::x509_pubkey_set1(X509_PUBKEY *, EVP_PKEY *)
+- name: X509_free
+  params:
+  - name: x509
+    type: X509 *
+  return_type: void
+  signature: void X509_free(X509 *)
+- name: X509_up_ref
+  params:
+  - name: x509
+    type: X509 *
+  return_type: int
+  signature: int X509_up_ref(X509 *)
+language: c++
+project: boringssl
+target_name: crypto_test
+target_path: /src/boringssl/crypto/crypto_test.cc

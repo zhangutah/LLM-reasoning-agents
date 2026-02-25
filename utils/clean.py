@@ -266,8 +266,8 @@ def remove_run_failed_dirs(save_path: Path, n_run: int = 3):
 
 
 if __name__ == "__main__":
-    remove_evaluation(Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/evaluation/gpt5-mini/mosquitto"))
-    remove_empty_dir(Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/evaluation/gpt5-mini/mosquitto"))
+    # remove_evaluation(Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/evaluation/gpt5-mini/mosquitto"))
+    # remove_empty_dir(Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/evaluation/gpt5-mini/mosquitto"))
     # save_path = Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/gpt5-mini/libxml2/")
     # eval_path = Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/evaluation/gpt5-mini/libxml2/")
 
@@ -280,7 +280,7 @@ if __name__ == "__main__":
     # Example usage
     # remove_corpus_dir("/home/yk/code/LLM-reasoning-agents/outputs_wild")
     # remove_large_log_files("/home/yk/code/LLM-reasoning-agents/outputs_wild")
-    # remove_run_dir("/home/yk/code/LLM-reasoning-agents/outputs_evaluation/gpt5-mini/agent", n_run=2)
+    remove_run_dir("/home/yk/code/LLM-reasoning-agents/outputs/projects/gpt5-mini/openldap", n_run=2)
     # filter_eval_projects(Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/gpt5-mini/libxml2/"),
                         #  Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/evaluation/gpt5-mini/libxml2/"),
                         #  threshold=10)

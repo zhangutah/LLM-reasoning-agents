@@ -65,6 +65,7 @@ class LLMName(Enum):
     GPT4OMINI = "gpt-4o-mini"
     GPT5 = "gpt-5"
     GPT5MINI = "gpt-5-mini"
+    GPT52 = "gpt-5.2"
     
 class CoverageScorer:
     """Score functions using LLM."""
@@ -77,7 +78,7 @@ class CoverageScorer:
     def setup_client(self):
         """Load or switch LLM model."""
        
-        if self.model == LLMName.GPT5MINI.value:
+        if self.model in [LLMName.GPT5MINI.value, LLMName.GPT5.value]:
             self.temperature = 1.0
         else:
             self.temperature = 0.1
@@ -298,8 +299,8 @@ def main():
     import argparse
     parser = argparse.ArgumentParser(description="Score functions for fuzzing value")
     parser.add_argument("--project", required=True, help="Path to functions.json")
-    parser.add_argument("--cache", default="/home/yk/code/LLM-reasoning-agents/cache/aa_projects", help="Path to lsp function")
-    parser.add_argument("--limit", type=int, default=10000)
+    parser.add_argument("--cache", default="/home/yk/code/LLM-reasoning-agents/cache/aa_projects/", help="Path to lsp function")
+    parser.add_argument("--limit", type=int, default=20000)
     parser.add_argument("--model", default="gpt-5-mini")
     parser.add_argument("--coverage-percent", type=float, default=None, help="Only score functions with coverage percent <= this value")
     parser.add_argument("--execute-count", type=float, default=None, help="Delay between individual API calls (seconds)")
@@ -365,6 +366,8 @@ def main():
         output['batch_id'] = args.batch_id
         output_path = output_path.with_name(f"{output_path.stem}_{args.batch_id}{output_path.suffix}")
 
+    if not output_path.parent.exists():
+        os.makedirs(output_path.parent)
     with open(output_path, 'w') as f:
         json.dump(output, f, indent=2)
     

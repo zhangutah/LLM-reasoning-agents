@@ -1,11 +1,9 @@
-from itertools import count
-import stat
-from constants import LanguageType, CompileResults, ValResult, LSPFunction
+from constants import LanguageType, CompileResults, ValResult
 import re
 import logging
 from typing import Any, Optional
 from agent_tools.fuzz_tools.log_parser import CompileErrorExtractor, FuzzLogParser
-from utils.misc import save_code_to_file, extract_name
+from utils.misc import save_code_to_file
 from agent_tools.fuzz_tools.compiler import Compiler
 from agent_tools.code_retriever import CodeRetriever
 from pathlib import Path

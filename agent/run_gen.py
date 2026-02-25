@@ -191,7 +191,6 @@ if __name__ == "__main__":
 
     # 
     cfg_list= [
-       
         #  "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini/c_study/gpt5_mini_basic.yaml",
         #  "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini/c_study/gpt5_mini_basic+header.yaml",
         # "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini/c_study/gpt5_mini_basic+header+driver.yaml",
@@ -199,7 +198,7 @@ if __name__ == "__main__":
         # "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini/c_study/gpt5_mini_basic+header+definition.yaml",
         # "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini/c_study/gpt5_mini_basic+header+issta.yaml",
         # "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini/c_study/gpt5_mini_basic+header+ossfuzz.yaml"
-        "/mydata/code/LLM-reasoning-agents/cfg/gpt5_mini/projects/nginx_gen.yaml"
+        "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini/projects/openldap_gen.yaml"
     ]
     for config_path in cfg_list:
         runner = Runner(config_path)

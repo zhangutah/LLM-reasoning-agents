@@ -26,7 +26,8 @@ class HarnessEval(FuzzENV):
         :param harness_path: the path of the harness file inside the oss-fuzz project docker image
         '''
         compiler = Compiler(self.benchcfg.oss_fuzz_dir, self.benchcfg.benchmark_dir, self.project_name,
-                             self.new_project_name, include_path_set, self.code_retriever, self.function_signature)
+                             self.new_project_name, include_path=include_path_set, code_retriever=self.code_retriever,
+                              function_signature=self.function_signature)
 
         fuzzer = FuzzerRunner(oss_fuzz_dir=self.benchcfg.oss_fuzz_dir, new_project_name=self.new_project_name,
                 project_lang=self.project_lang, run_timeout=self.benchcfg.run_time, save_dir=self.save_dir)
@@ -164,8 +165,8 @@ if __name__ == "__main__":
     from argparse import ArgumentParser
 
     parser  = ArgumentParser(description="Run harness evaluation in parallel.")
-    parser.add_argument("--output_path", type=str, default=f"{PROJECT_PATH}/outputs/projects/gpt5-mini/nginx/", help="Path to the output directory containing success_functions.json")
-    parser.add_argument("--benchcfg_path", type=str, default=f"{PROJECT_PATH}/cfg/gpt5_mini/projects/nginx_eval.yaml", help="Path to the benchmark configuration YAML file")
+    parser.add_argument("--output_path", type=str, default=f"{PROJECT_PATH}/outputs/projects/gpt5-mini/openldap", help="Path to the output directory containing success_functions.json")
+    parser.add_argument("--benchcfg_path", type=str, default=f"{PROJECT_PATH}/cfg/gpt5_mini/projects/openldap_eval.yaml", help="Path to the benchmark configuration YAML file")
     parser.add_argument("--n_run", type=int, default=3, help="Run number corresponding to success_functions_{n_run}.json")
     parser.add_argument("--n_partitations", type=int, default=1, help="Total number of partitions to divide the workload into.")
     parser.add_argument("--partitation_id", type=int, default=0, help="ID of the partition to process (0-indexed).")

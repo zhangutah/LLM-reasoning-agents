@@ -543,10 +543,10 @@ class CodeRetriever():
             if i >= 5:
                 self.logger.warning(f"More than 5 {lsp_function.value} found for {symbol_name},Only the first 5 retults are returned")
                 break
-            start_line = max(defi.get("start_line", 0), defi.get("line", 0))
+            start_line = max(defi.get("start_line", 1), defi.get("line", 1))
             ret_str += f"The {i+1}th {lsp_function.value} of {symbol_name} is:\n"
             ret_str += "file_path: {}\n".format(defi["file_path"])
-            ret_str += "start line: {}\n".format(start_line+1)  # line number is 0-indexed
+            ret_str += "start line: {}\n".format(start_line)  # line number is 0-indexed
             # limit the source code length to 50 lines
             all_src = defi["source_code"].splitlines()
             
@@ -562,7 +562,7 @@ class CodeRetriever():
 
             limited_src = "\n".join(all_src[:50])  # Limit to first 50 lines
             if start_line != 0:
-                ret_str +=  "source_code: \n{}\n".format(add_lineno_to_code(limited_src, start_lineno=start_line+1))
+                ret_str +=  "source_code: \n{}\n".format(add_lineno_to_code(limited_src, start_lineno=start_line))
             else:
                 ret_str += "source_code: \n{}\n".format(limited_src)
 

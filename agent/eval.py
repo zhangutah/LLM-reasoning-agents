@@ -60,7 +60,8 @@ class HarnessEval(FuzzENV):
         function_name = extract_name(self.function_signature, keep_namespace=True, exception_flag=False, language=self.project_lang)
         # init the cov collector
         cov_collector = CovCollector(self.benchcfg.oss_fuzz_dir, self.benchcfg.benchmark_dir, self.project_name,
-                                      self.new_project_name, self.project_lang, self.logger)
+                                      self.new_project_name,  project_lang=self.project_lang, include_path=include_path_set, 
+                                      code_retriever=self.code_retriever, function_signature=self.function_signature,  logger=self.logger)
         # collect the coverage
         init_cov, final_cov, changed = cov_collector.collect_coverage(self.harness_code, harness_path, fuzzer_name, function_name, corpus_dir)
         
@@ -165,8 +166,8 @@ if __name__ == "__main__":
     from argparse import ArgumentParser
 
     parser  = ArgumentParser(description="Run harness evaluation in parallel.")
-    parser.add_argument("--output_path", type=str, default=f"{PROJECT_PATH}/outputs/projects/gpt5-mini/openldap", help="Path to the output directory containing success_functions.json")
-    parser.add_argument("--benchcfg_path", type=str, default=f"{PROJECT_PATH}/cfg/gpt5_mini/projects/openldap_eval.yaml", help="Path to the benchmark configuration YAML file")
+    parser.add_argument("--output_path", type=str, default=f"{PROJECT_PATH}/outputs/projects/gpt5-mini/lcms", help="Path to the output directory containing success_functions.json")
+    parser.add_argument("--benchcfg_path", type=str, default=f"{PROJECT_PATH}/cfg/gpt5_mini/projects/lcms_eval.yaml", help="Path to the benchmark configuration YAML file")
     parser.add_argument("--n_run", type=int, default=3, help="Run number corresponding to success_functions_{n_run}.json")
     parser.add_argument("--n_partitations", type=int, default=1, help="Total number of partitions to divide the workload into.")
     parser.add_argument("--partitation_id", type=int, default=0, help="ID of the partition to process (0-indexed).")

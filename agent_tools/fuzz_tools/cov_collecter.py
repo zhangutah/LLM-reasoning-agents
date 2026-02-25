@@ -11,11 +11,13 @@ import shutil
 import logging
 from typing import Optional
 from utils.misc import get_ext_lang
+from agent_tools.code_retriever import CodeRetriever
 
 class CovCollector():
 
-    def __init__(self, oss_fuzz_dir: Path, benchmark_dir: Path, project_name: str, new_project_name: str,
-                  project_lang: LanguageType, logger:Optional[logging.Logger]) -> None:
+    def __init__(self, oss_fuzz_dir: Path, benchmark_dir: Path, project_name: str, new_project_name: str, project_lang: LanguageType, 
+                  include_path: Optional[set[str]]=None, code_retriever: Optional[CodeRetriever]=None, function_signature: str="", 
+                  logger:Optional[logging.Logger]=None) -> None:
         
         self.logger = logger
         
@@ -24,6 +26,9 @@ class CovCollector():
         self.project_name = project_name
         self.new_project_name = new_project_name      
         self.project_lang = project_lang
+        self.include_path: set[str] = include_path if include_path else set()
+        self.code_retriever = code_retriever
+        self.function_signature = function_signature
         self.docker_utils = DockerUtils(oss_fuzz_dir, project_name, new_project_name, project_lang)
         self.parser = self.get_language_parser()
 
@@ -155,7 +160,8 @@ class CovCollector():
             raise Exception(f"Language {harness_lang} not supported for now")
 
         # init the compiler
-        compiler = Compiler(self.oss_fuzz_dir, self.benchmark_dir,self.project_name, self.new_project_name)
+        compiler = Compiler(self.oss_fuzz_dir, self.benchmark_dir,self.project_name, self.new_project_name, include_path=self.include_path,
+                             code_retriever=self.code_retriever, function_signature=self.function_signature)
         # compile the code
         compile_res, build_msg = compiler.compile_harness(wrapped_code, harness_path, fuzzer_name)
         if compile_res != CompileResults.Success:

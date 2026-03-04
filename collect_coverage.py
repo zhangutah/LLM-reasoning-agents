@@ -53,6 +53,8 @@ def collect(eval_dir: str, output: str | None = None):
         if coverage is None:
             print(f"Warning: no 'Final coverage' in {cov_path}", file=sys.stderr)
             continue
+        if coverage == 0:
+            continue
         if signature is None:
             print(f"Warning: no function.txt in {run_dir}", file=sys.stderr)
             continue

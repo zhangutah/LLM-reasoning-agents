@@ -238,6 +238,6 @@ if __name__ == "__main__":
     # print(f"Evaluation result: {eval_res}")
     # get_evaluation_results(Path("/home/yk/code/LLM-reasoning-agents/outputs_evaluation/gpt5-mini/agent"))
     # get_evaluation_results(Path("/home/yk/code/LLM-reasoning-agents/outputs_evaluation/gpt5-mini/raw"))
-    # get_evaluation_results(Path("/home/yk/code/LLM-reasoning-agents/outputs/projects/evaluation/gpt5-mini/net-snmp"))
-    run_agent_res(Path("/home/yk/code/LLM-reasoning-agents/outputs/java/gpt5-mini/agent"), semantic_mode="gen", n_run=1, language=LanguageType.JAVA)
+    get_evaluation_results(Path("./outputs_cpp/gpt5-mini/evaluation_bloaty_full"))
+    # run_agent_res(Path("/home/yk/code/LLM-reasoning-agents/outputs/java/gpt5-mini/agent"), semantic_mode="gen", n_run=1, language=LanguageType.JAVA)
     # run_oss_fuzz_res()

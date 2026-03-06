@@ -55,15 +55,15 @@ class HarnessEval(FuzzENV):
                     shutil.copy(crash_file, dest_file)
             
         self.logger.info(f"Collecting coverage for {fuzzer_name}") if self.logger else None
-        corpus_dir = Path(self.save_dir) / "corpora"
-        function_name = extract_name(self.function_signature, keep_namespace=True, exception_flag=False, language=self.project_lang)
+        # corpus_dir = Path(self.save_dir) / "corpora"
+        # function_name = extract_name(self.function_signature, keep_namespace=True, exception_flag=False, language=self.project_lang)
         # init the cov collector
-        cov_collector = CovCollector(self.benchcfg.oss_fuzz_dir, self.benchcfg.benchmark_dir, self.project_name,
-                                      self.new_project_name, self.project_lang, self.logger)
+        # cov_collector = CovCollector(self.benchcfg.oss_fuzz_dir, self.benchcfg.benchmark_dir, self.project_name,
+                                    #   self.new_project_name, self.project_lang, self.logger)
         # collect the coverage
-        init_cov, final_cov, changed = cov_collector.collect_coverage(self.harness_code, harness_path, fuzzer_name, function_name, corpus_dir)
+        # init_cov, final_cov, changed = cov_collector.collect_coverage(self.harness_code, harness_path, fuzzer_name, function_name, corpus_dir)
         
-        return init_cov, final_cov, changed
+        return 0, 0, 0
 
 
 

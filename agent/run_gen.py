@@ -197,7 +197,8 @@ if __name__ == "__main__":
         # "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini/c_study/gpt5_mini_basic+header+issta.yaml",
         # "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini/c_study/gpt5_mini_basic+header+ossfuzz.yaml",
         # "/home/yk/code/LLM-reasoning-agents/cfg/gpt5_mini/projects/gpt5_mini_agent_mosquitto.yaml",
-        "/mydata/data/fuzzing/harnessgen/LLM-reasoning-agents/cfg/gpt5_mini/gpt5_mini_agent_cpp.yaml"
+        "/mydata/data/fuzzing/harnessgen/LLM-reasoning-agents/cfg/gpt5_mini/gpt5_mini_agent_cpp_issta.yaml"
+        # "/mydata/data/fuzzing/harnessgen/LLM-reasoning-agents/cfg/gpt5_mini/gpt5_mini_agent_cpp.yaml"
     ]
     for config_path in cfg_list:
         runner = Runner(config_path)

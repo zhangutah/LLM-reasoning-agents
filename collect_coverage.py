@@ -16,15 +16,36 @@ from pathlib import Path
 
 
 def parse_final_coverage(cov_path: Path) -> int | None:
-    """Extract 'Final coverage' value from a cov.txt file."""
+    """Extract 'Final coverage' value from a cov.txt file.
+
+    Falls back to parsing fuzzing0.log if cov.txt reports 0.
+    """
     try:
         text = cov_path.read_text()
         m = re.search(r"Final coverage:\s*(\d+)", text)
         if m:
-            return int(m.group(1))
+            cov = int(m.group(1))
+            if cov > 0:
+                return cov
+            return _parse_fuzzing_log(cov_path.parent) or cov
     except Exception:
         pass
     return None
+
+
+def _parse_fuzzing_log(run_dir: Path) -> int | None:
+    """Extract coverage from the last 'cov:' line in fuzzing0.log."""
+    log_path = run_dir / "fuzzing0.log"
+    try:
+        text = log_path.read_text()
+    except Exception:
+        return None
+    last_cov = None
+    for line in text.splitlines():
+        m = re.search(r"\bcov:\s*(\d+)\b", line)
+        if m:
+            last_cov = int(m.group(1))
+    return last_cov
 
 
 def read_signature(func_path: Path) -> str | None:
@@ -54,6 +75,7 @@ def collect(eval_dir: str, output: str | None = None):
             print(f"Warning: no 'Final coverage' in {cov_path}", file=sys.stderr)
             continue
         if coverage == 0:
+            print(f"Warning: zero coverage even after fallback in {run_dir}", file=sys.stderr)
             continue
         if signature is None:
             print(f"Warning: no function.txt in {run_dir}", file=sys.stderr)

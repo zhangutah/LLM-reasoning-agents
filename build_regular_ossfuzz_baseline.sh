@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
-PROJECTS="bloaty cppcheck hunspell libraw qpdf"
+# PROJECTS="bloaty cppcheck hunspell libraw qpdf"
+PROJECTS="capnproto draco boringssl muduo exiv2"
 # boringssl
 FUZZ_TIME="${FUZZ_TIME:-3600}"
 ROUND_NUM="${ROUND_NUM:-1}"

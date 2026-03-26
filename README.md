@@ -1,9 +1,6 @@
 # LLM Reasoning Agents for Fuzzing
 
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/zhangutah/LLM-reasoning-agents)
-
-
 A comprehensive framework for evaluating and deploying Large Language Model (LLM) agents in automated fuzzing tasks. This project leverages state-of-the-art LLMs to automatically generate fuzz harnesses, analyze codebases, and fix compilation errors in fuzzing campaigns targeting C/C++ and Java projects.
 
 ## Overview

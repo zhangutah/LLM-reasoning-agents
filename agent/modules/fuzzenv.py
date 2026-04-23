@@ -4,7 +4,7 @@ from constants import PROJECT_PATH
 import logging
 import shutil
 import json
-from utils.misc import extract_name
+from utils.misc import extract_name, function_dir_name
 from agent_tools.code_retriever import CodeRetriever
 from constants import ALL_FILE_EXTENSION, DockerResults
 from utils.oss_fuzz_utils import OSSFuzzUtils
@@ -36,13 +36,13 @@ class FuzzENV():
         self.new_project_name = f"run{n_run}_{random_str}"
 
         # benchcfg language does not differentiate c and cpp
-        function_name = extract_name(function_signature, keep_namespace=True, language=self.benchcfg.language)
-        function_name = function_name.replace("::", "_")  # replace namespace with underscore
+        # Hash-suffixed dir name disambiguates overloads (e.g. C++ Fit(int*) vs Fit(float*))
+        func_dir = function_dir_name(function_signature, language=self.benchcfg.language)
 
-        if self.exist_workspace(function_name, n_run):
+        if self.exist_workspace(func_dir, n_run):
             self.early_exit_flag = True
             return
-        self.save_dir = self.benchcfg.save_root / project_name.lower() / function_name.lower() / self.new_project_name
+        self.save_dir = self.benchcfg.save_root / project_name.lower() / func_dir / self.new_project_name
         self.logger = self.setup_logging()
 
         self.oss_tool = OSSFuzzUtils(self.benchcfg.oss_fuzz_dir, self.benchcfg.benchmark_dir, self.project_name, self.new_project_name)
@@ -87,11 +87,11 @@ class FuzzENV():
         harness_fuzzer_dict = self.find_harnesses(fuzzer_list)
         return harness_fuzzer_dict
 
-    def exist_workspace(self, function_name: str, n_run: int) -> bool:
+    def exist_workspace(self, func_dir_name: str, n_run: int) -> bool:
         '''Create the workspace for the project/function'''
 
         # skip existing project
-        function_dir = self.benchcfg.save_root / self.project_name.lower() / function_name.lower() 
+        function_dir = self.benchcfg.save_root / self.project_name.lower() / func_dir_name
         if function_dir.exists():
             for work_dir in function_dir.iterdir():
                 if work_dir.is_dir() and work_dir.name.startswith(f"run{n_run}_"):

@@ -1,4 +1,5 @@
 import ast
+import hashlib
 import os
 from matplotlib import pyplot as plt
 import io
@@ -163,7 +164,17 @@ def extract_name(function_signature: str, keep_namespace: bool=False,
         if "::" in stripped_name:
             stripped_name = stripped_name.split("::")[-1]
     return stripped_name
-            
+
+
+def function_dir_name(function_signature: str, language: LanguageType = LanguageType.CPP) -> str:
+    # Disambiguates C++/Java overloads that share a qualified name but differ in
+    # parameter list (e.g. tesseract::DetLineFit::Fit has three overloads).
+    name = extract_name(function_signature, keep_namespace=True, language=language)
+    name = name.replace("::", "_").lower()
+    normalized = " ".join(function_signature.split())
+    sig_hash = hashlib.sha1(normalized.encode("utf-8")).hexdigest()[:8]
+    return f"{name}_{sig_hash}"
+
 
 def save_code_to_file(code: str, file_path: Path) -> None:
     '''Save the code to the file'''

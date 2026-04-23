@@ -4,7 +4,7 @@ import sys
 import time
 import yaml
 from multiprocessing import Pool
-from utils.misc import extract_name, get_benchmark_functions
+from utils.misc import extract_name, function_dir_name, get_benchmark_functions
 from utils.oss_fuzz_utils import OSSFuzzUtils
 from agent.gen import ISSTAFuzzer
 from agent_tools.results_analysis import run_agent_res
@@ -86,10 +86,9 @@ class Runner:
     
 
     def has_run(self, function_signature: str, project_name: str, n_run: int, language: LanguageType) -> bool:
-        function_name = extract_name(function_signature, keep_namespace=True, language=language)
-        function_name = function_name.replace("::", "_")  # replace namespace with underscore
-        save_dir = self.config.save_root / project_name.lower() / function_name.lower() 
-        
+        # Must match the dir scheme used by FuzzENV so overloads get separate dirs
+        save_dir = self.config.save_root / project_name.lower() / function_dir_name(function_signature, language=language)
+
         if not save_dir.exists():
             return False
         

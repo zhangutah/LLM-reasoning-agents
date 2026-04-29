@@ -1,4 +1,5 @@
 import os
+import re
 import subprocess as sp
 from agent_tools.fuzz_tools.log_parser import FuzzLogParser
 from constants import ValResult, LanguageType
@@ -6,6 +7,17 @@ import time
 from pathlib import Path
 from typing import Any
 import threading
+
+# Anchored libFuzzer markers — substring matching falsely fires on random fuzz
+# input filenames (e.g. "/tmp/libxml2_fuzz_8DONEa") and on attacker-controlled
+# bytes echoed to stderr, which permanently disables the log filter.
+_LF_STATUS_RE = re.compile(r'^#\d+\s+(INITED|DONE|NEW|REDUCE|pulse)\b')
+_LF_CRASH_RE = re.compile(
+    r'^==\d+==\s*ERROR: (AddressSanitizer|LeakSanitizer|MemorySanitizer|UndefinedBehaviorSanitizer)'
+    r'|^ERROR: libFuzzer:'
+    r'|^==\s*Java Exception'
+)
+_MAX_LINE_BYTES = 64 * 1024
 
 def kill_process(process: Any):
     try:
@@ -31,30 +43,39 @@ class FuzzerRunner():
             Runs the fuzzer and captures its output. 
             If you fuzz for a long time (1 hour is fine), you should consider disabling the output log as it may grow large.
         """
-        def write_log(process: Any, log_file: Any, error_patterns: list[str]):
+        def write_log(process: Any, log_file: Any):
             inited_found = False
             done_found = False
             crash_found = False
             # Read line by line from binary output, this will invalid the timeout of wait
             # if the fuzzer donot stop after timeout and continue to output, we need to kill it manually
             for line_bytes in iter(process.stdout.readline, b''): # type: ignore
+                # Cap line length: some harnesses (e.g. libssh prompt loops, lcms NUL streams)
+                # emit GBs without a newline, so readline() can return multi-GB strings.
+                if len(line_bytes) > _MAX_LINE_BYTES:
+                    line_bytes = line_bytes[:_MAX_LINE_BYTES] + b'... [line truncated]\n'
                 # Decode with error handling - replace invalid chars
                 line = line_bytes.decode('utf-8', errors='ignore') # type: ignore
-                if "INITED" in line:
-                    inited_found = True
-                # Check for DONE marker  
-                elif "DONE" in line:
-                    done_found = True
-                elif any(error_pattern in line for error_pattern in error_patterns):
+                # Anchored matches against libFuzzer's own line format — substring
+                # matching false-fires on random fuzz input filenames containing
+                # "DONE"/"INITED" and permanently disables the filter.
+                status = _LF_STATUS_RE.match(line)
+                if status:
+                    tag = status.group(1)
+                    if tag == 'INITED':
+                        inited_found = True
+                    elif tag == 'DONE':
+                        done_found = True
+                elif _LF_CRASH_RE.match(line):
                     crash_found = True
-                # 
+                #
                 try:
                     if not inited_found or done_found or crash_found:
                         log_file.write(line)
                         log_file.flush()
                     # Between INITED and DONE or Between INITED and CRASH, only keep lines with "#"
                     else:
-                        if "#" in line and "cov" in line:
+                        if status is not None:
                             log_file.write(line)
                             log_file.flush()
                 except ValueError:
@@ -88,8 +109,6 @@ class FuzzerRunner():
             command.append('-fork=1')
 
         log_file_path = self.save_dir / f"fuzzing{counter}.log"
-      # Define the error patterns
-        error_patterns = ['ERROR: LeakSanitizer',  'ERROR: libFuzzer:', 'ERROR: AddressSanitizer', "== Java Exception"]
         log_file = open(log_file_path, "w", encoding='utf-8', errors='ignore')
         process = None
         reader_thread = None
@@ -105,7 +124,7 @@ class FuzzerRunner():
             )
             if not no_log:
                 # Start reading in a separate thread
-                reader_thread = threading.Thread(target=write_log, args=(process, log_file, error_patterns), daemon=True)
+                reader_thread = threading.Thread(target=write_log, args=(process, log_file), daemon=True)
                 reader_thread.start()
                 
             # Wait for timeout

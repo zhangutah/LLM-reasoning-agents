@@ -683,7 +683,18 @@ class CodeRetriever():
        
         for header in all_headers:
             res_list += self.get_symbol_info(header, LSPFunction.StructFunctions, Retriever.Parser)
-        
+
+        bare_name = symbol_name.split("::")[-1]
+        name_pat = re.compile(rf"\b{re.escape(bare_name)}\b")
+        filtered = [r for r in res_list if name_pat.search(r.get("source_code", ""))]
+        if filtered:
+            res_list = filtered
+        else:
+            self.logger.warning(
+                f"No signature in declaring header mentions {bare_name}; "
+                f"returning unfiltered header functions."
+            )
+
         res_list.sort(key=lambda x: x.get("count", 1), reverse=True)
         name_str = ""
         

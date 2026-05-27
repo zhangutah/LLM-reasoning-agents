@@ -1,0 +1,1228 @@
+functions:
+- name: _ZN6crypto4tink10JwtHmacKey7Builder5BuildENS0_21PartialKeyAccessTokenE
+  params:
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<JwtHmacKey>
+  signature: absl::StatusOr<JwtHmacKey> crypto::tink::JwtHmacKey::Builder::Build(crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink10KmsClients8LocalGetESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: key_uri
+    type: int
+  return_type: absl::StatusOr<const KmsClient *>
+  signature: absl::StatusOr<const KmsClient *> crypto::tink::KmsClients::LocalGet(int)
+- name: _ZN6crypto4tink10XAesGcmKey6CreateENS0_17XAesGcmParametersERKNS0_14RestrictedDataESt8optionalIiENS0_21PartialKeyAccessTokenE
+  params:
+  - name: parameters
+    type: crypto::tink::XAesGcmParameters
+  - name: key_bytes
+    type: const crypto::tink::RestrictedData &
+  - name: id_requirement
+    type: absl::optional<int32_t>
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<XAesGcmKey>
+  signature: absl::StatusOr<XAesGcmKey> crypto::tink::XAesGcmKey::Create(crypto::tink::XAesGcmParameters, const crypto::tink::RestrictedData
+    &, absl::optional<int32_t>, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink12AesGcmSivKey6CreateERKNS0_19AesGcmSivParametersERKNS0_14RestrictedDataESt8optionalIiENS0_21PartialKeyAccessTokenE
+  params:
+  - name: parameters
+    type: const crypto::tink::AesGcmSivParameters &
+  - name: key_bytes
+    type: const crypto::tink::RestrictedData &
+  - name: id_requirement
+    type: absl::optional<int>
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<AesGcmSivKey>
+  signature: absl::StatusOr<AesGcmSivKey> crypto::tink::AesGcmSivKey::Create(const crypto::tink::AesGcmSivParameters &, const
+    crypto::tink::RestrictedData &, absl::optional<int>, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink12_GLOBAL__N_115SubtleCurveTypeENS0_15EcdsaParameters9CurveTypeE
+  params:
+  - name: curve_type
+    type: EcdsaParameters::CurveType
+  return_type: absl::StatusOr<subtle::EllipticCurveType>
+  signature: absl::StatusOr<subtle::EllipticCurveType> crypto::tink::SubtleCurveType(EcdsaParameters::CurveType)
+- name: _ZN6crypto4tink12_GLOBAL__N_115SubtleCurveTypeENS0_15EciesParameters9CurveTypeE
+  params:
+  - name: curve_type
+    type: EciesParameters::CurveType
+  return_type: absl::StatusOr<subtle::EllipticCurveType>
+  signature: absl::StatusOr<subtle::EllipticCurveType> crypto::tink::SubtleCurveType(EciesParameters::CurveType)
+- name: _ZN6crypto4tink12_GLOBAL__N_115SubtleCurveTypeENS0_18JwtEcdsaParameters9AlgorithmE
+  params:
+  - name: algorithm
+    type: JwtEcdsaParameters::Algorithm
+  return_type: absl::StatusOr<subtle::EllipticCurveType>
+  signature: absl::StatusOr<subtle::EllipticCurveType> crypto::tink::SubtleCurveType(JwtEcdsaParameters::Algorithm)
+- name: _ZN6crypto4tink12_GLOBAL__N_115ValidateKeyPairERKNS0_10BigIntegerES4_RKNS0_14RestrictedDataES7_S7_S7_S7_S7_NS0_21PartialKeyAccessTokenE
+  params:
+  - name: public_exponent
+    type: const crypto::tink::BigInteger &
+  - name: modulus
+    type: const crypto::tink::BigInteger &
+  - name: p
+    type: const crypto::tink::RestrictedData &
+  - name: q
+    type: const crypto::tink::RestrictedData &
+  - name: d
+    type: const crypto::tink::RestrictedData &
+  - name: dp
+    type: const crypto::tink::RestrictedData &
+  - name: dq
+    type: const crypto::tink::RestrictedData &
+  - name: q_inv
+    type: const crypto::tink::RestrictedData &
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::Status
+  signature: absl::Status crypto::tink::ValidateKeyPair(const crypto::tink::BigInteger &, const crypto::tink::BigInteger &,
+    const crypto::tink::RestrictedData &, const crypto::tink::RestrictedData &, const crypto::tink::RestrictedData &, const
+    crypto::tink::RestrictedData &, const crypto::tink::RestrictedData &, const crypto::tink::RestrictedData &, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink12_GLOBAL__N_115ValidateKeyPairERKNS0_14EcdsaPublicKeyERKNS0_14RestrictedDataENS0_21PartialKeyAccessTokenE
+  params:
+  - name: public_key
+    type: const crypto::tink::EcdsaPublicKey &
+  - name: private_key_value
+    type: const crypto::tink::RestrictedData &
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::Status
+  signature: absl::Status crypto::tink::ValidateKeyPair(const crypto::tink::EcdsaPublicKey &, const crypto::tink::RestrictedData
+    &, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink12_GLOBAL__N_115ValidateKeyPairERKNS0_17JwtEcdsaPublicKeyERKNS0_14RestrictedDataENS0_21PartialKeyAccessTokenE
+  params:
+  - name: public_key
+    type: const crypto::tink::JwtEcdsaPublicKey &
+  - name: private_key_value
+    type: const crypto::tink::RestrictedData &
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::Status
+  signature: absl::Status crypto::tink::ValidateKeyPair(const crypto::tink::JwtEcdsaPublicKey &, const crypto::tink::RestrictedData
+    &, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink12_GLOBAL__N_119ComputeOutputPrefixB5cxx11ENS0_23LegacyKmsAeadParameters7VariantESt8optionalIiE
+  params:
+  - name: variant
+    type: LegacyKmsAeadParameters::Variant
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::ComputeOutputPrefix(LegacyKmsAeadParameters::Variant, absl::optional<int>)
+- name: _ZN6crypto4tink12_GLOBAL__N_119ComputeOutputPrefixB5cxx11ENS0_26ChaCha20Poly1305Parameters7VariantESt8optionalIiE
+  params:
+  - name: variant
+    type: ChaCha20Poly1305Parameters::Variant
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::ComputeOutputPrefix(ChaCha20Poly1305Parameters::Variant, absl::optional<int>)
+- name: _ZN6crypto4tink12_GLOBAL__N_119ComputeOutputPrefixB5cxx11ENS0_27XChaCha20Poly1305Parameters7VariantESt8optionalIiE
+  params:
+  - name: variant
+    type: XChaCha20Poly1305Parameters::Variant
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::ComputeOutputPrefix(XChaCha20Poly1305Parameters::Variant, absl::optional<int>)
+- name: _ZN6crypto4tink12_GLOBAL__N_119ComputeOutputPrefixB5cxx11ENS0_31LegacyKmsEnvelopeAeadParameters7VariantESt8optionalIiE
+  params:
+  - name: variant
+    type: LegacyKmsEnvelopeAeadParameters::Variant
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::ComputeOutputPrefix(LegacyKmsEnvelopeAeadParameters::Variant, absl::optional<int>)
+- name: _ZN6crypto4tink12_GLOBAL__N_119ComputeOutputPrefixB5cxx11ERKNS0_14HpkeParametersESt8optionalIiE
+  params:
+  - name: parameters
+    type: const crypto::tink::HpkeParameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::ComputeOutputPrefix(const crypto::tink::HpkeParameters &, absl::optional<int>)
+- name: _ZN6crypto4tink12_GLOBAL__N_119ComputeOutputPrefixB5cxx11ERKNS0_15EcdsaParametersESt8optionalIiE
+  params:
+  - name: parameters
+    type: const crypto::tink::EcdsaParameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::ComputeOutputPrefix(const crypto::tink::EcdsaParameters &, absl::optional<int>)
+- name: _ZN6crypto4tink12_GLOBAL__N_119ComputeOutputPrefixB5cxx11ERKNS0_15EciesParametersESt8optionalIiE
+  params:
+  - name: parameters
+    type: const crypto::tink::EciesParameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::ComputeOutputPrefix(const crypto::tink::EciesParameters &, absl::optional<int>)
+- name: _ZN6crypto4tink12_GLOBAL__N_119ComputeOutputPrefixB5cxx11ERKNS0_15MlDsaParametersESt8optionalIiE
+  params:
+  - name: parameters
+    type: const crypto::tink::MlDsaParameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::ComputeOutputPrefix(const crypto::tink::MlDsaParameters &, absl::optional<int>)
+- name: _ZN6crypto4tink12_GLOBAL__N_119ComputeOutputPrefixB5cxx11ERKNS0_16AesEaxParametersESt8optionalIiE
+  params:
+  - name: parameters
+    type: const crypto::tink::AesEaxParameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::ComputeOutputPrefix(const crypto::tink::AesEaxParameters &, absl::optional<int>)
+- name: _ZN6crypto4tink12_GLOBAL__N_119ComputeOutputPrefixB5cxx11ERKNS0_16AesGcmParametersESt8optionalIiE
+  params:
+  - name: parameters
+    type: const crypto::tink::AesGcmParameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::ComputeOutputPrefix(const crypto::tink::AesGcmParameters &, absl::optional<int>)
+- name: _ZN6crypto4tink12_GLOBAL__N_119ComputeOutputPrefixB5cxx11ERKNS0_16AesSivParametersESt8optionalIiE
+  params:
+  - name: parameters
+    type: const crypto::tink::AesSivParameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::ComputeOutputPrefix(const crypto::tink::AesSivParameters &, absl::optional<int>)
+- name: _ZN6crypto4tink12_GLOBAL__N_119ComputeOutputPrefixB5cxx11ERKNS0_16SlhDsaParametersESt8optionalIiE
+  params:
+  - name: parameters
+    type: const crypto::tink::SlhDsaParameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::ComputeOutputPrefix(const crypto::tink::SlhDsaParameters &, absl::optional<int>)
+- name: _ZN6crypto4tink12_GLOBAL__N_119ComputeOutputPrefixB5cxx11ERKNS0_17Ed25519ParametersESt8optionalIiE
+  params:
+  - name: parameters
+    type: const crypto::tink::Ed25519Parameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::ComputeOutputPrefix(const crypto::tink::Ed25519Parameters &, absl::optional<int>)
+- name: _ZN6crypto4tink12_GLOBAL__N_119ComputeOutputPrefixB5cxx11ERKNS0_17XAesGcmParametersESt8optionalIiE
+  params:
+  - name: parameters
+    type: const crypto::tink::XAesGcmParameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::ComputeOutputPrefix(const crypto::tink::XAesGcmParameters &, absl::optional<int>)
+- name: _ZN6crypto4tink12_GLOBAL__N_119ComputeOutputPrefixB5cxx11ERKNS0_19AesGcmSivParametersESt8optionalIiE
+  params:
+  - name: parameters
+    type: const crypto::tink::AesGcmSivParameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::ComputeOutputPrefix(const crypto::tink::AesGcmSivParameters &, absl::optional<int>)
+- name: _ZN6crypto4tink12_GLOBAL__N_119ComputeOutputPrefixB5cxx11ERKNS0_19RsaSsaPssParametersESt8optionalIiE
+  params:
+  - name: parameters
+    type: const crypto::tink::RsaSsaPssParameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::ComputeOutputPrefix(const crypto::tink::RsaSsaPssParameters &, absl::optional<int>)
+- name: _ZN6crypto4tink12_GLOBAL__N_119ComputeOutputPrefixB5cxx11ERKNS0_21RsaSsaPkcs1ParametersESt8optionalIiE
+  params:
+  - name: parameters
+    type: const crypto::tink::RsaSsaPkcs1Parameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::ComputeOutputPrefix(const crypto::tink::RsaSsaPkcs1Parameters &, absl::optional<int>)
+- name: _ZN6crypto4tink12_GLOBAL__N_119ComputeOutputPrefixB5cxx11ERKNS0_24AesCtrHmacAeadParametersESt8optionalIiE
+  params:
+  - name: parameters
+    type: const crypto::tink::AesCtrHmacAeadParameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::ComputeOutputPrefix(const crypto::tink::AesCtrHmacAeadParameters &,
+    absl::optional<int>)
+- name: _ZN6crypto4tink12_GLOBAL__N_119ValidateNistKeyPairERKNS0_14EciesPublicKeyERKNS0_14RestrictedDataENS0_21PartialKeyAccessTokenE
+  params:
+  - name: public_key
+    type: const crypto::tink::EciesPublicKey &
+  - name: private_key_value
+    type: const crypto::tink::RestrictedData &
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::Status
+  signature: absl::Status crypto::tink::ValidateNistKeyPair(const crypto::tink::EciesPublicKey &, const crypto::tink::RestrictedData
+    &, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink12_GLOBAL__N_121ValidateAudienceClaimERKN6google8protobuf6StructE
+  params:
+  - name: json_proto
+    type: const google::protobuf::Struct &
+  return_type: absl::Status
+  signature: absl::Status crypto::tink::ValidateAudienceClaim(const google::protobuf::Struct &)
+- name: _ZN6crypto4tink12_GLOBAL__N_121ValidateX25519KeyPairERKNS0_14EciesPublicKeyERKNS0_14RestrictedDataENS0_21PartialKeyAccessTokenE
+  params:
+  - name: public_key
+    type: const crypto::tink::EciesPublicKey &
+  - name: private_key_bytes
+    type: const crypto::tink::RestrictedData &
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::Status
+  signature: absl::Status crypto::tink::ValidateX25519KeyPair(const crypto::tink::EciesPublicKey &, const crypto::tink::RestrictedData
+    &, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink13HpkePublicKey6CreateERKNS0_14HpkeParametersESt17basic_string_viewIcSt11char_traitsIcEESt8optionalIiENS0_21PartialKeyAccessTokenE
+  params:
+  - name: parameters
+    type: const crypto::tink::HpkeParameters &
+  - name: public_key_bytes
+    type: int
+  - name: id_requirement
+    type: absl::optional<int>
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<HpkePublicKey>
+  signature: absl::StatusOr<HpkePublicKey> crypto::tink::HpkePublicKey::Create(const crypto::tink::HpkeParameters &, int,
+    absl::optional<int>, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink13RawJwtBuilder11AddAudienceESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: audience
+    type: int
+  return_type: crypto::tink::RawJwtBuilder &
+  signature: crypto::tink::RawJwtBuilder & crypto::tink::RawJwtBuilder::AddAudience(int)
+- name: _ZN6crypto4tink13RawJwtBuilder12AddNullClaimESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: crypto::tink::RawJwtBuilder &
+  signature: crypto::tink::RawJwtBuilder & crypto::tink::RawJwtBuilder::AddNullClaim(int)
+- name: _ZN6crypto4tink13RawJwtBuilder12SetAudiencesESt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS8_EE
+  params:
+  - name: audiences
+    type: int
+  return_type: crypto::tink::RawJwtBuilder &
+  signature: crypto::tink::RawJwtBuilder & crypto::tink::RawJwtBuilder::SetAudiences(int)
+- name: _ZN6crypto4tink13RawJwtBuilder14AddNumberClaimESt17basic_string_viewIcSt11char_traitsIcEEd
+  params:
+  - name: name
+    type: int
+  - name: double_value
+    type: double
+  return_type: crypto::tink::RawJwtBuilder &
+  signature: crypto::tink::RawJwtBuilder & crypto::tink::RawJwtBuilder::AddNumberClaim(int, double)
+- name: _ZN6crypto4tink13RawJwtBuilder14AddStringClaimESt17basic_string_viewIcSt11char_traitsIcEES5_
+  params:
+  - name: name
+    type: int
+  - name: string_value
+    type: int
+  return_type: crypto::tink::RawJwtBuilder &
+  signature: crypto::tink::RawJwtBuilder & crypto::tink::RawJwtBuilder::AddStringClaim(int, int)
+- name: _ZN6crypto4tink13RawJwtBuilder15AddBooleanClaimESt17basic_string_viewIcSt11char_traitsIcEEb
+  params:
+  - name: name
+    type: int
+  - name: bool_value
+    type: bool
+  return_type: crypto::tink::RawJwtBuilder &
+  signature: crypto::tink::RawJwtBuilder & crypto::tink::RawJwtBuilder::AddBooleanClaim(int, bool)
+- name: _ZN6crypto4tink13RawJwtBuilder17AddJsonArrayClaimESt17basic_string_viewIcSt11char_traitsIcEES5_
+  params:
+  - name: name
+    type: int
+  - name: array_value
+    type: int
+  return_type: crypto::tink::RawJwtBuilder &
+  signature: crypto::tink::RawJwtBuilder & crypto::tink::RawJwtBuilder::AddJsonArrayClaim(int, int)
+- name: _ZN6crypto4tink13RawJwtBuilder18AddJsonObjectClaimESt17basic_string_viewIcSt11char_traitsIcEES5_
+  params:
+  - name: name
+    type: int
+  - name: object_value
+    type: int
+  return_type: crypto::tink::RawJwtBuilder &
+  signature: crypto::tink::RawJwtBuilder & crypto::tink::RawJwtBuilder::AddJsonObjectClaim(int, int)
+- name: _ZN6crypto4tink14EciesPublicKey18CreateForNistCurveERKNS0_15EciesParametersERKNS0_7EcPointESt8optionalIiENS0_21PartialKeyAccessTokenE
+  params:
+  - name: parameters
+    type: const crypto::tink::EciesParameters &
+  - name: point
+    type: const crypto::tink::EcPoint &
+  - name: id_requirement
+    type: absl::optional<int>
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<EciesPublicKey>
+  signature: absl::StatusOr<EciesPublicKey> crypto::tink::EciesPublicKey::CreateForNistCurve(const crypto::tink::EciesParameters
+    &, const crypto::tink::EcPoint &, absl::optional<int>, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink14EciesPublicKey20CreateForCurveX25519ERKNS0_15EciesParametersESt17basic_string_viewIcSt11char_traitsIcEESt8optionalIiENS0_21PartialKeyAccessTokenE
+  params:
+  - name: parameters
+    type: const crypto::tink::EciesParameters &
+  - name: public_key_bytes
+    type: int
+  - name: id_requirement
+    type: absl::optional<int>
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<EciesPublicKey>
+  signature: absl::StatusOr<EciesPublicKey> crypto::tink::EciesPublicKey::CreateForCurveX25519(const crypto::tink::EciesParameters
+    &, int, absl::optional<int>, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink15EciesPrivateKey18CreateForNistCurveERKNS0_14EciesPublicKeyERKNS0_14RestrictedDataENS0_21PartialKeyAccessTokenE
+  params:
+  - name: public_key
+    type: const crypto::tink::EciesPublicKey &
+  - name: private_key_value
+    type: const crypto::tink::RestrictedData &
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<EciesPrivateKey>
+  signature: absl::StatusOr<EciesPrivateKey> crypto::tink::EciesPrivateKey::CreateForNistCurve(const crypto::tink::EciesPublicKey
+    &, const crypto::tink::RestrictedData &, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink15EciesPrivateKey18CreateForNistCurveERKNS0_14EciesPublicKeyERKNS0_20RestrictedBigIntegerENS0_21PartialKeyAccessTokenE
+  params:
+  - name: public_key
+    type: const crypto::tink::EciesPublicKey &
+  - name: private_key_value
+    type: const crypto::tink::RestrictedBigInteger &
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<EciesPrivateKey>
+  signature: absl::StatusOr<EciesPrivateKey> crypto::tink::EciesPrivateKey::CreateForNistCurve(const crypto::tink::EciesPublicKey
+    &, const crypto::tink::RestrictedBigInteger &, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink15EciesPrivateKey20CreateForCurveX25519ERKNS0_14EciesPublicKeyERKNS0_14RestrictedDataENS0_21PartialKeyAccessTokenE
+  params:
+  - name: public_key
+    type: const crypto::tink::EciesPublicKey &
+  - name: private_key_bytes
+    type: const crypto::tink::RestrictedData &
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<EciesPrivateKey>
+  signature: absl::StatusOr<EciesPrivateKey> crypto::tink::EciesPrivateKey::CreateForCurveX25519(const crypto::tink::EciesPublicKey
+    &, const crypto::tink::RestrictedData &, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink15MlDsaParameters6CreateENS1_8InstanceENS1_7VariantE
+  params:
+  - name: instance
+    type: crypto::tink::MlDsaParameters::Instance
+  - name: variant
+    type: crypto::tink::MlDsaParameters::Variant
+  return_type: absl::StatusOr<MlDsaParameters>
+  signature: absl::StatusOr<MlDsaParameters> crypto::tink::MlDsaParameters::Create(crypto::tink::MlDsaParameters::Instance,
+    crypto::tink::MlDsaParameters::Variant)
+- name: _ZN6crypto4tink15MlDsaPrivateKey8Create87ERKNS0_14MlDsaPublicKeyERKNS0_14RestrictedDataENS0_21PartialKeyAccessTokenE
+  params:
+  - name: public_key
+    type: const crypto::tink::MlDsaPublicKey &
+  - name: private_seed_bytes
+    type: const crypto::tink::RestrictedData &
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<MlDsaPrivateKey>
+  signature: absl::StatusOr<MlDsaPrivateKey> crypto::tink::MlDsaPrivateKey::Create87(const crypto::tink::MlDsaPublicKey &,
+    const crypto::tink::RestrictedData &, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink16AesSivParameters6CreateEiNS1_7VariantE
+  params:
+  - name: key_size_in_bytes
+    type: int
+  - name: variant
+    type: crypto::tink::AesSivParameters::Variant
+  return_type: absl::StatusOr<AesSivParameters>
+  signature: absl::StatusOr<AesSivParameters> crypto::tink::AesSivParameters::Create(int, crypto::tink::AesSivParameters::Variant)
+- name: _ZN6crypto4tink16LegacyKmsAeadKey6CreateERKNS0_23LegacyKmsAeadParametersESt8optionalIiE
+  params:
+  - name: parameters
+    type: const crypto::tink::LegacyKmsAeadParameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<LegacyKmsAeadKey>
+  signature: absl::StatusOr<LegacyKmsAeadKey> crypto::tink::LegacyKmsAeadKey::Create(const crypto::tink::LegacyKmsAeadParameters
+    &, absl::optional<int>)
+- name: _ZN6crypto4tink16SlhDsaParameters6CreateENS1_8HashTypeEiNS1_13SignatureTypeENS1_7VariantE
+  params:
+  - name: hash_type
+    type: crypto::tink::SlhDsaParameters::HashType
+  - name: private_key_size_in_bytes
+    type: int
+  - name: signature_type
+    type: crypto::tink::SlhDsaParameters::SignatureType
+  - name: variant
+    type: crypto::tink::SlhDsaParameters::Variant
+  return_type: absl::StatusOr<SlhDsaParameters>
+  signature: absl::StatusOr<SlhDsaParameters> crypto::tink::SlhDsaParameters::Create(crypto::tink::SlhDsaParameters::HashType,
+    int, crypto::tink::SlhDsaParameters::SignatureType, crypto::tink::SlhDsaParameters::Variant)
+- name: _ZN6crypto4tink16SlhDsaPrivateKey6CreateERKNS0_15SlhDsaPublicKeyERKNS0_14RestrictedDataENS0_21PartialKeyAccessTokenE
+  params:
+  - name: public_key
+    type: const crypto::tink::SlhDsaPublicKey &
+  - name: private_key_bytes
+    type: const crypto::tink::RestrictedData &
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<SlhDsaPrivateKey>
+  signature: absl::StatusOr<SlhDsaPrivateKey> crypto::tink::SlhDsaPrivateKey::Create(const crypto::tink::SlhDsaPublicKey &,
+    const crypto::tink::RestrictedData &, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink17AesCtrHmacAeadKey7Builder5BuildENS0_21PartialKeyAccessTokenE
+  params:
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<AesCtrHmacAeadKey>
+  signature: absl::StatusOr<AesCtrHmacAeadKey> crypto::tink::AesCtrHmacAeadKey::Builder::Build(crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink17JwtEcdsaPublicKey7Builder5BuildENS0_21PartialKeyAccessTokenE
+  params:
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<JwtEcdsaPublicKey>
+  signature: absl::StatusOr<JwtEcdsaPublicKey> crypto::tink::JwtEcdsaPublicKey::Builder::Build(crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink17JwtHmacParameters6CreateEiNS1_11KidStrategyENS1_9AlgorithmE
+  params:
+  - name: key_size_in_bytes
+    type: int
+  - name: kid_strategy
+    type: crypto::tink::JwtHmacParameters::KidStrategy
+  - name: algorithm
+    type: crypto::tink::JwtHmacParameters::Algorithm
+  return_type: absl::StatusOr<JwtHmacParameters>
+  signature: absl::StatusOr<JwtHmacParameters> crypto::tink::JwtHmacParameters::Create(int, crypto::tink::JwtHmacParameters::KidStrategy,
+    crypto::tink::JwtHmacParameters::Algorithm)
+- name: _ZN6crypto4tink17XAesGcmParameters6CreateENS1_7VariantEi
+  params:
+  - name: variant
+    type: crypto::tink::XAesGcmParameters::Variant
+  - name: salt_size_bytes
+    type: int
+  return_type: absl::StatusOr<XAesGcmParameters>
+  signature: absl::StatusOr<XAesGcmParameters> crypto::tink::XAesGcmParameters::Create(crypto::tink::XAesGcmParameters::Variant,
+    int)
+- name: _ZN6crypto4tink18JwtEcdsaParameters6CreateENS1_11KidStrategyENS1_9AlgorithmE
+  params:
+  - name: kid_strategy
+    type: crypto::tink::JwtEcdsaParameters::KidStrategy
+  - name: algorithm
+    type: crypto::tink::JwtEcdsaParameters::Algorithm
+  return_type: absl::StatusOr<JwtEcdsaParameters>
+  signature: absl::StatusOr<JwtEcdsaParameters> crypto::tink::JwtEcdsaParameters::Create(crypto::tink::JwtEcdsaParameters::KidStrategy,
+    crypto::tink::JwtEcdsaParameters::Algorithm)
+- name: _ZN6crypto4tink18JwtEcdsaPrivateKey26CreateAllowNonConstantTimeERKNS0_17JwtEcdsaPublicKeyERKNS0_14RestrictedDataENS0_21PartialKeyAccessTokenE
+  params:
+  - name: public_key
+    type: const crypto::tink::JwtEcdsaPublicKey &
+  - name: private_key_value
+    type: const crypto::tink::RestrictedData &
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<JwtEcdsaPrivateKey>
+  signature: absl::StatusOr<JwtEcdsaPrivateKey> crypto::tink::JwtEcdsaPrivateKey::CreateAllowNonConstantTime(const crypto::tink::JwtEcdsaPublicKey
+    &, const crypto::tink::RestrictedData &, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink18JwtEcdsaPrivateKey6CreateERKNS0_17JwtEcdsaPublicKeyERKNS0_14RestrictedDataENS0_21PartialKeyAccessTokenE
+  params:
+  - name: public_key
+    type: const crypto::tink::JwtEcdsaPublicKey &
+  - name: private_key_value
+    type: const crypto::tink::RestrictedData &
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<JwtEcdsaPrivateKey>
+  signature: absl::StatusOr<JwtEcdsaPrivateKey> crypto::tink::JwtEcdsaPrivateKey::Create(const crypto::tink::JwtEcdsaPublicKey
+    &, const crypto::tink::RestrictedData &, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink18JwtEcdsaPrivateKey6CreateERKNS0_17JwtEcdsaPublicKeyERKNS0_20RestrictedBigIntegerENS0_21PartialKeyAccessTokenE
+  params:
+  - name: public_key
+    type: const crypto::tink::JwtEcdsaPublicKey &
+  - name: private_key_value
+    type: const crypto::tink::RestrictedBigInteger &
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<JwtEcdsaPrivateKey>
+  signature: absl::StatusOr<JwtEcdsaPrivateKey> crypto::tink::JwtEcdsaPrivateKey::Create(const crypto::tink::JwtEcdsaPublicKey
+    &, const crypto::tink::RestrictedBigInteger &, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink19AesGcmSivParameters6CreateEiNS1_7VariantE
+  params:
+  - name: key_size_in_bytes
+    type: int
+  - name: variant
+    type: crypto::tink::AesGcmSivParameters::Variant
+  return_type: absl::StatusOr<AesGcmSivParameters>
+  signature: absl::StatusOr<AesGcmSivParameters> crypto::tink::AesGcmSivParameters::Create(int, crypto::tink::AesGcmSivParameters::Variant)
+- name: _ZN6crypto4tink19ChaCha20Poly1305Key6CreateENS0_26ChaCha20Poly1305Parameters7VariantERKNS0_14RestrictedDataESt8optionalIiENS0_21PartialKeyAccessTokenE
+  params:
+  - name: variant
+    type: ChaCha20Poly1305Parameters::Variant
+  - name: key_bytes
+    type: const crypto::tink::RestrictedData &
+  - name: id_requirement
+    type: absl::optional<int>
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<ChaCha20Poly1305Key>
+  signature: absl::StatusOr<ChaCha20Poly1305Key> crypto::tink::ChaCha20Poly1305Key::Create(ChaCha20Poly1305Parameters::Variant,
+    const crypto::tink::RestrictedData &, absl::optional<int>, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink20XChaCha20Poly1305Key6CreateENS0_27XChaCha20Poly1305Parameters7VariantERKNS0_14RestrictedDataESt8optionalIiENS0_21PartialKeyAccessTokenE
+  params:
+  - name: variant
+    type: XChaCha20Poly1305Parameters::Variant
+  - name: key_bytes
+    type: const crypto::tink::RestrictedData &
+  - name: id_requirement
+    type: absl::optional<int>
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<XChaCha20Poly1305Key>
+  signature: absl::StatusOr<XChaCha20Poly1305Key> crypto::tink::XChaCha20Poly1305Key::Create(XChaCha20Poly1305Parameters::Variant,
+    const crypto::tink::RestrictedData &, absl::optional<int>, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink21JwtRsaSsaPssPublicKey7Builder5BuildENS0_21PartialKeyAccessTokenE
+  params:
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<JwtRsaSsaPssPublicKey>
+  signature: absl::StatusOr<JwtRsaSsaPssPublicKey> crypto::tink::JwtRsaSsaPssPublicKey::Builder::Build(crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink22JwtRsaSsaPssPrivateKey7Builder25BuildAllowNonConstantTimeENS0_21PartialKeyAccessTokenE
+  params:
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<JwtRsaSsaPssPrivateKey>
+  signature: absl::StatusOr<JwtRsaSsaPssPrivateKey> crypto::tink::JwtRsaSsaPssPrivateKey::Builder::BuildAllowNonConstantTime(crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink22JwtRsaSsaPssPrivateKey7Builder5BuildENS0_21PartialKeyAccessTokenE
+  params:
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<JwtRsaSsaPssPrivateKey>
+  signature: absl::StatusOr<JwtRsaSsaPssPrivateKey> crypto::tink::JwtRsaSsaPssPrivateKey::Builder::Build(crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink23JwtRsaSsaPkcs1PublicKey7Builder5BuildENS0_21PartialKeyAccessTokenE
+  params:
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<JwtRsaSsaPkcs1PublicKey>
+  signature: absl::StatusOr<JwtRsaSsaPkcs1PublicKey> crypto::tink::JwtRsaSsaPkcs1PublicKey::Builder::Build(crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink23LegacyKmsAeadParameters6CreateESt17basic_string_viewIcSt11char_traitsIcEENS1_7VariantE
+  params:
+  - name: key_uri
+    type: int
+  - name: variant
+    type: crypto::tink::LegacyKmsAeadParameters::Variant
+  return_type: absl::StatusOr<LegacyKmsAeadParameters>
+  signature: absl::StatusOr<LegacyKmsAeadParameters> crypto::tink::LegacyKmsAeadParameters::Create(int, crypto::tink::LegacyKmsAeadParameters::Variant)
+- name: _ZN6crypto4tink24CompositeMlDsaParameters6CreateENS1_13MlDsaInstanceENS1_18ClassicalAlgorithmENS1_7VariantE
+  params:
+  - name: ml_dsa_instance
+    type: crypto::tink::CompositeMlDsaParameters::MlDsaInstance
+  - name: classical_algorithm
+    type: crypto::tink::CompositeMlDsaParameters::ClassicalAlgorithm
+  - name: variant
+    type: crypto::tink::CompositeMlDsaParameters::Variant
+  return_type: absl::StatusOr<CompositeMlDsaParameters>
+  signature: absl::StatusOr<CompositeMlDsaParameters> crypto::tink::CompositeMlDsaParameters::Create(crypto::tink::CompositeMlDsaParameters::MlDsaInstance,
+    crypto::tink::CompositeMlDsaParameters::ClassicalAlgorithm, crypto::tink::CompositeMlDsaParameters::Variant)
+- name: _ZN6crypto4tink24JwtRsaSsaPkcs1PrivateKey7Builder25BuildAllowNonConstantTimeENS0_21PartialKeyAccessTokenE
+  params:
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<JwtRsaSsaPkcs1PrivateKey>
+  signature: absl::StatusOr<JwtRsaSsaPkcs1PrivateKey> crypto::tink::JwtRsaSsaPkcs1PrivateKey::Builder::BuildAllowNonConstantTime(crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink24JwtRsaSsaPkcs1PrivateKey7Builder5BuildENS0_21PartialKeyAccessTokenE
+  params:
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<JwtRsaSsaPkcs1PrivateKey>
+  signature: absl::StatusOr<JwtRsaSsaPkcs1PrivateKey> crypto::tink::JwtRsaSsaPkcs1PrivateKey::Builder::Build(crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink24LegacyKmsEnvelopeAeadKey6CreateERKNS0_31LegacyKmsEnvelopeAeadParametersESt8optionalIiE
+  params:
+  - name: parameters
+    type: const crypto::tink::LegacyKmsEnvelopeAeadParameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: absl::StatusOr<LegacyKmsEnvelopeAeadKey>
+  signature: absl::StatusOr<LegacyKmsEnvelopeAeadKey> crypto::tink::LegacyKmsEnvelopeAeadKey::Create(const crypto::tink::LegacyKmsEnvelopeAeadParameters
+    &, absl::optional<int>)
+- name: _ZN6crypto4tink24PrfBasedKeyDerivationKey6CreateERKNS0_31PrfBasedKeyDerivationParametersERKNS0_6PrfKeyESt8optionalIiENS0_21PartialKeyAccessTokenE
+  params:
+  - name: parameters
+    type: const crypto::tink::PrfBasedKeyDerivationParameters &
+  - name: prf_key
+    type: const crypto::tink::PrfKey &
+  - name: id_requirement
+    type: absl::optional<int>
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<PrfBasedKeyDerivationKey>
+  signature: absl::StatusOr<PrfBasedKeyDerivationKey> crypto::tink::PrfBasedKeyDerivationKey::Create(const crypto::tink::PrfBasedKeyDerivationParameters
+    &, const crypto::tink::PrfKey &, absl::optional<int>, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink26ChaCha20Poly1305Parameters6CreateENS1_7VariantE
+  params:
+  - name: variant
+    type: crypto::tink::ChaCha20Poly1305Parameters::Variant
+  return_type: absl::StatusOr<ChaCha20Poly1305Parameters>
+  signature: absl::StatusOr<ChaCha20Poly1305Parameters> crypto::tink::ChaCha20Poly1305Parameters::Create(crypto::tink::ChaCha20Poly1305Parameters::Variant)
+- name: _ZN6crypto4tink27XChaCha20Poly1305Parameters6CreateENS1_7VariantE
+  params:
+  - name: variant
+    type: crypto::tink::XChaCha20Poly1305Parameters::Variant
+  return_type: absl::StatusOr<XChaCha20Poly1305Parameters>
+  signature: absl::StatusOr<XChaCha20Poly1305Parameters> crypto::tink::XChaCha20Poly1305Parameters::Create(crypto::tink::XChaCha20Poly1305Parameters::Variant)
+- name: _ZN6crypto4tink31LegacyKmsEnvelopeAeadParameters6CreateESt17basic_string_viewIcSt11char_traitsIcEENS1_7VariantENS1_18DekParsingStrategyERKNS0_14AeadParametersE
+  params:
+  - name: key_uri
+    type: int
+  - name: variant
+    type: crypto::tink::LegacyKmsEnvelopeAeadParameters::Variant
+  - name: dek_parsing_strategy
+    type: crypto::tink::LegacyKmsEnvelopeAeadParameters::DekParsingStrategy
+  - name: dek_parameters
+    type: const crypto::tink::AeadParameters &
+  return_type: absl::StatusOr<LegacyKmsEnvelopeAeadParameters>
+  signature: absl::StatusOr<LegacyKmsEnvelopeAeadParameters> crypto::tink::LegacyKmsEnvelopeAeadParameters::Create(int, crypto::tink::LegacyKmsEnvelopeAeadParameters::Variant,
+    crypto::tink::LegacyKmsEnvelopeAeadParameters::DekParsingStrategy, const crypto::tink::AeadParameters &)
+- name: _ZN6crypto4tink4util16FileOutputStream4NextEPPv
+  params:
+  - name: data
+    type: void **
+  return_type: absl::StatusOr<int>
+  signature: absl::StatusOr<int> crypto::tink::util::FileOutputStream::Next(void **)
+- name: _ZN6crypto4tink6RawJwt8FromJsonESt8optionalINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEESt17basic_string_viewIcS6_E
+  params:
+  - name: type_header
+    type: absl::optional<std::string>
+  - name: json_payload
+    type: int
+  return_type: absl::StatusOr<RawJwt>
+  signature: absl::StatusOr<RawJwt> crypto::tink::RawJwt::FromJson(absl::optional<std::string>, int)
+- name: _ZN6crypto4tink6RawJwtC2Ev
+  params:
+  - name: type_header
+    type: absl::optional<std::string>
+  - name: json_proto
+    type: google::protobuf::Struct
+  return_type: void
+  signature: void crypto::tink::RawJwt::RawJwt(absl::optional<std::string>, google::protobuf::Struct)
+- name: _ZN6crypto4tink6subtle12_GLOBAL__N_110InitAesKeyERKSt6vectorIhNS0_4util8internal19SanitizingAllocatorIhEEE
+  params:
+  - name: key
+    type: const crypto::tink::SecretData &
+  return_type: absl::StatusOr<util::SecretUniquePtr<AES_KEY>>
+  signature: absl::StatusOr<util::SecretUniquePtr<AES_KEY>> crypto::tink::subtle::InitAesKey(const crypto::tink::SecretData
+    &)
+- name: _ZN6crypto4tink6subtle12_GLOBAL__N_115ConvertHashTypeENS0_15EcdsaParameters8HashTypeE
+  params:
+  - name: hash_type
+    type: EcdsaParameters::HashType
+  return_type: absl::StatusOr<HashType>
+  signature: absl::StatusOr<HashType> crypto::tink::subtle::ConvertHashType(EcdsaParameters::HashType)
+- name: _ZN6crypto4tink6subtle12_GLOBAL__N_122EcKeyToSslEcPrivateKeyERKNS0_8internal5EcKeyEP9ec_key_st
+  params:
+  - name: subtle_ec_key
+    type: const SubtleUtilBoringSSL::EcKey &
+  - name: openssl_ec_key
+    type: EC_KEY *
+  return_type: absl::Status
+  signature: absl::Status crypto::tink::subtle::EcKeyToSslEcPrivateKey(const SubtleUtilBoringSSL::EcKey &, EC_KEY *)
+- name: _ZN6crypto4tink6subtle12_GLOBAL__N_124ConvertSignatureEncodingENS0_15EcdsaParameters17SignatureEncodingE
+  params:
+  - name: signature_encoding
+    type: EcdsaParameters::SignatureEncoding
+  return_type: absl::StatusOr<EcdsaSignatureEncoding>
+  signature: absl::StatusOr<EcdsaSignatureEncoding> crypto::tink::subtle::ConvertSignatureEncoding(EcdsaParameters::SignatureEncoding)
+- name: _ZN6crypto4tink6subtle12_GLOBAL__N_18ToSubtleENS0_19RsaSsaPssParameters8HashTypeE
+  params:
+  - name: hash_type
+    type: crypto::tink::RsaSsaPssParameters::HashType
+  return_type: absl::StatusOr<subtle::HashType>
+  signature: absl::StatusOr<subtle::HashType> crypto::tink::subtle::ToSubtle(crypto::tink::RsaSsaPssParameters::HashType)
+- name: _ZN6crypto4tink6subtle21VerifyMacOutputStreamC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt10unique_ptrINS0_8internal11StatefulMacESt14default_deleteISD_EE
+  params:
+  - name: expected
+    type: const std::string &
+  - name: mac
+    type: int
+  return_type: void
+  signature: void crypto::tink::subtle::VerifyMacOutputStream::VerifyMacOutputStream(const std::string &, int)
+- name: _ZN6crypto4tink6subtle22ComputeMacOutputStream10NextBufferEPPv
+  params:
+  - name: buffer
+    type: void **
+  return_type: absl::StatusOr<int>
+  signature: absl::StatusOr<int> crypto::tink::subtle::ComputeMacOutputStream::NextBuffer(void **)
+- name: _ZN6crypto4tink6subtle22ComputeMacOutputStreamC2ESt10unique_ptrINS0_8internal11StatefulMacESt14default_deleteIS5_EE
+  params:
+  - name: mac
+    type: int
+  return_type: void
+  signature: void crypto::tink::subtle::ComputeMacOutputStream::ComputeMacOutputStream(int)
+- name: _ZN6crypto4tink6subtle29StreamingAeadDecryptingStream3NewESt10unique_ptrINS1_22StreamSegmentDecrypterESt14default_deleteIS4_EES3_INS0_11InputStreamES5_IS8_EE
+  params:
+  - name: segment_decrypter
+    type: int
+  - name: ciphertext_source
+    type: int
+  return_type: int
+  signature: int crypto::tink::subtle::StreamingAeadDecryptingStream::New(int, int)
+- name: _ZN6crypto4tink6subtle29StreamingAeadDecryptingStream4NextEPPKv
+  params:
+  - name: data
+    type: const void **
+  return_type: absl::StatusOr<int>
+  signature: absl::StatusOr<int> crypto::tink::subtle::StreamingAeadDecryptingStream::Next(const void **)
+- name: _ZN6crypto4tink6subtle29StreamingAeadEncryptingStream3NewESt10unique_ptrINS1_22StreamSegmentEncrypterESt14default_deleteIS4_EES3_INS0_12OutputStreamES5_IS8_EE
+  params:
+  - name: segment_encrypter
+    type: int
+  - name: ciphertext_destination
+    type: int
+  return_type: int
+  signature: int crypto::tink::subtle::StreamingAeadEncryptingStream::New(int, int)
+- name: _ZN6crypto4tink6subtle32AesGcmHkdfStreamSegmentDecrypter14DecryptSegmentERKSt6vectorIhSaIhEElbPS5_
+  params:
+  - name: ciphertext
+    type: const int &
+  - name: segment_number
+    type: int64_t
+  - name: is_last_segment
+    type: bool
+  - name: plaintext_buffer
+    type: int *
+  return_type: absl::Status
+  signature: absl::Status crypto::tink::subtle::AesGcmHkdfStreamSegmentDecrypter::DecryptSegment(const int &, int64_t, bool,
+    int *)
+- name: _ZN6crypto4tink6subtle32AesGcmHkdfStreamSegmentDecrypter3NewENS2_6ParamsE
+  params:
+  - name: params
+    type: crypto::tink::subtle::AesGcmHkdfStreamSegmentDecrypter::Params
+  return_type: int
+  signature: int crypto::tink::subtle::AesGcmHkdfStreamSegmentDecrypter::New(crypto::tink::subtle::AesGcmHkdfStreamSegmentDecrypter::Params)
+- name: _ZN6crypto4tink6subtle32AesGcmHkdfStreamSegmentDecrypter4InitERKSt6vectorIhSaIhEE
+  params:
+  - name: header
+    type: const int &
+  return_type: absl::Status
+  signature: absl::Status crypto::tink::subtle::AesGcmHkdfStreamSegmentDecrypter::Init(const int &)
+- name: _ZN6crypto4tink6subtle9PemParser17WriteEcPrivateKeyB5cxx11ERKNS0_8internal5EcKeyE
+  params:
+  - name: ec_key
+    type: const SubtleUtilBoringSSL::EcKey &
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::subtle::PemParser::WriteEcPrivateKey(const SubtleUtilBoringSSL::EcKey
+    &)
+- name: _ZN6crypto4tink6subtle9PemParser17WriteRsaPublicKeyB5cxx11ERKNS0_8internal12RsaPublicKeyE
+  params:
+  - name: rsa_public_key
+    type: const internal::RsaPublicKey &
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::subtle::PemParser::WriteRsaPublicKey(const internal::RsaPublicKey &)
+- name: _ZN6crypto4tink6subtle9PemParser18WriteRsaPrivateKeyB5cxx11ERKNS0_8internal13RsaPrivateKeyE
+  params:
+  - name: rsa_private_key
+    type: const internal::RsaPrivateKey &
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::subtle::PemParser::WriteRsaPrivateKey(const internal::RsaPrivateKey
+    &)
+- name: _ZN6crypto4tink8internal12_GLOBAL__N_112SslNewEvpKeyENS2_14SslEvpPkeyTypeE
+  params:
+  - name: key_type
+    type: crypto::tink::internal::(anonymous namespace)::SslEvpPkeyType
+  return_type: int
+  signature: int crypto::tink::internal::SslNewEvpKey(crypto::tink::internal::(anonymous namespace)::SslEvpPkeyType)
+- name: _ZN6crypto4tink8internal12_GLOBAL__N_112_GLOBAL__N_122SslNewKeyPairFromEcKeyENS2_14SslEvpPkeyTypeERK11evp_pkey_stN4absl12lts_202601074SpanIhEESB_
+  params:
+  - name: key_type
+    type: crypto::tink::internal::(anonymous namespace)::SslEvpPkeyType
+  - name: evp_key
+    type: const EVP_PKEY &
+  - name: priv_key
+    type: absl::Span<uint8_t>
+  - name: pub_key
+    type: absl::Span<uint8_t>
+  return_type: absl::Status
+  signature: absl::Status crypto::tink::internal::SslNewKeyPairFromEcKey(crypto::tink::internal::(anonymous namespace)::SslEvpPkeyType,
+    const EVP_PKEY &, absl::Span<uint8_t>, absl::Span<uint8_t>)
+- name: _ZN6crypto4tink8internal12_GLOBAL__N_116CloneCmacContextERK11CMAC_CTX_st
+  params:
+  - name: cmac_ctx
+    type: const CMAC_CTX &
+  return_type: int
+  signature: int crypto::tink::internal::CloneCmacContext(const CMAC_CTX &)
+- name: _ZN6crypto4tink8internal12_GLOBAL__N_118EcKeyFromX25519KeyEPKNS1_9X25519KeyE
+  params:
+  - name: x25519_key
+    type: const crypto::tink::internal::X25519Key *
+  return_type: crypto::tink::internal::EcKey
+  signature: crypto::tink::internal::EcKey crypto::tink::internal::EcKeyFromX25519Key(const crypto::tink::internal::X25519Key
+    *)
+- name: _ZN6crypto4tink8internal13NewRsaKeyPairEiPK9bignum_stPNS1_13RsaPrivateKeyEPNS1_12RsaPublicKeyE
+  params:
+  - name: modulus_size_in_bits
+    type: int
+  - name: e
+    type: const BIGNUM *
+  - name: private_key
+    type: crypto::tink::internal::RsaPrivateKey *
+  - name: public_key
+    type: crypto::tink::internal::RsaPublicKey *
+  return_type: absl::Status
+  signature: absl::Status crypto::tink::internal::NewRsaKeyPair(int, const BIGNUM *, crypto::tink::internal::RsaPrivateKey
+    *, crypto::tink::internal::RsaPublicKey *)
+- name: _ZN6crypto4tink8internal13proto_parsing12_GLOBAL__N_119ConsumeVarintForTagERNS2_12ParsingStateERj
+  params:
+  - name: parsing_state
+    type: crypto::tink::internal::proto_parsing::ParsingState &
+  - name: result
+    type: uint32_t &
+  return_type: bool
+  signature: bool crypto::tink::internal::proto_parsing::ConsumeVarintForTag(crypto::tink::internal::proto_parsing::ParsingState
+    &, uint32_t &)
+- name: _ZN6crypto4tink8internal13proto_testing15FieldWithNumber12IsSubMessageERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISA_EE
+  params:
+  - name: s
+    type: const int &
+  return_type: std::string
+  signature: std::string crypto::tink::internal::proto_testing::FieldWithNumber::IsSubMessage(const int &)
+- name: _ZN6crypto4tink8internal13proto_testing16SerializeMessageESt17basic_string_viewIcSt11char_traitsIcEERKSt6vectorINSt7__cxx1112basic_stringIcS5_SaIcEEESaISB_EENS1_17KeyMaterialTypeTPENS1_18OutputPrefixTypeTPESt8optionalIiE
+  params:
+  - name: type_url
+    type: int
+  - name: v
+    type: const int &
+  - name: key_material_type
+    type: crypto::tink::internal::KeyMaterialTypeTP
+  - name: output_prefix_type
+    type: crypto::tink::internal::OutputPrefixTypeTP
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: crypto::tink::internal::ProtoKeySerialization
+  signature: crypto::tink::internal::ProtoKeySerialization crypto::tink::internal::proto_testing::SerializeMessage(int, const
+    int &, crypto::tink::internal::KeyMaterialTypeTP, crypto::tink::internal::OutputPrefixTypeTP, absl::optional<int>)
+- name: _ZN6crypto4tink8internal14CreateEcdsaKeyERKNS0_15EcdsaParametersESt8optionalIiE
+  params:
+  - name: params
+    type: const crypto::tink::EcdsaParameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: int
+  signature: int crypto::tink::internal::CreateEcdsaKey(const crypto::tink::EcdsaParameters &, absl::optional<int>)
+- name: _ZN6crypto4tink8internal16CreateEd25519KeyERKNS0_17Ed25519ParametersESt8optionalIiE
+  params:
+  - name: params
+    type: const crypto::tink::Ed25519Parameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: int
+  signature: int crypto::tink::internal::CreateEd25519Key(const crypto::tink::Ed25519Parameters &, absl::optional<int>)
+- name: _ZN6crypto4tink8internal17RsaPublicKeyToRsaERKNS1_12RsaPublicKeyE
+  params:
+  - name: public_key
+    type: const crypto::tink::internal::RsaPublicKey &
+  return_type: int
+  signature: int crypto::tink::internal::RsaPublicKeyToRsa(const crypto::tink::internal::RsaPublicKey &)
+- name: _ZN6crypto4tink8internal18CreateRsaSsaPssKeyERKNS0_19RsaSsaPssParametersESt8optionalIiE
+  params:
+  - name: params
+    type: const crypto::tink::RsaSsaPssParameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: int
+  signature: int crypto::tink::internal::CreateRsaSsaPssKey(const crypto::tink::RsaSsaPssParameters &, absl::optional<int>)
+- name: _ZN6crypto4tink8internal18RsaPrivateKeyToRsaERKNS1_13RsaPrivateKeyE
+  params:
+  - name: private_key
+    type: const crypto::tink::internal::RsaPrivateKey &
+  return_type: int
+  signature: int crypto::tink::internal::RsaPrivateKeyToRsa(const crypto::tink::internal::RsaPrivateKey &)
+- name: _ZN6crypto4tink8internal19EvpHashFromHashTypeENS0_6subtle8HashTypeE
+  params:
+  - name: hash_type
+    type: subtle::HashType
+  return_type: absl::StatusOr<const EVP_MD *>
+  signature: absl::StatusOr<const EVP_MD *> crypto::tink::internal::EvpHashFromHashType(subtle::HashType)
+- name: _ZN6crypto4tink8internal20CreateRsaSsaPkcs1KeyERKNS0_21RsaSsaPkcs1ParametersESt8optionalIiE
+  params:
+  - name: params
+    type: const crypto::tink::RsaSsaPkcs1Parameters &
+  - name: id_requirement
+    type: absl::optional<int>
+  return_type: int
+  signature: int crypto::tink::internal::CreateRsaSsaPkcs1Key(const crypto::tink::RsaSsaPkcs1Parameters &, absl::optional<int>)
+- name: _ZN6crypto4tink8internal23NewMlDsaVerifyBoringSslENS0_14MlDsaPublicKeyE
+  params:
+  - name: public_key
+    type: crypto::tink::MlDsaPublicKey
+  return_type: int
+  signature: int crypto::tink::internal::NewMlDsaVerifyBoringSsl(crypto::tink::MlDsaPublicKey)
+- name: _ZN6crypto4tink8internal23ZeroCopyAesGcmBoringSsl3NewERKSt6vectorIhNS0_4util8internal19SanitizingAllocatorIhEEE
+  params:
+  - name: key
+    type: const crypto::tink::SecretData &
+  return_type: int
+  signature: int crypto::tink::internal::ZeroCopyAesGcmBoringSsl::New(const crypto::tink::SecretData &)
+- name: _ZN6crypto4tink8internal25ValidateRsaPublicExponentEPK9bignum_st
+  params:
+  - name: exponent
+    type: const BIGNUM *
+  return_type: absl::Status
+  signature: absl::Status crypto::tink::internal::ValidateRsaPublicExponent(const BIGNUM *)
+- name: _ZN6crypto4tink8internal32NewMlDsaSignWithContextBoringSslENS0_15MlDsaPrivateKeyESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: private_key
+    type: crypto::tink::MlDsaPrivateKey
+  - name: context
+    type: int
+  return_type: int
+  signature: int crypto::tink::internal::NewMlDsaSignWithContextBoringSsl(crypto::tink::MlDsaPrivateKey, int)
+- name: _ZN6crypto4tink9AesEaxKey6CreateERKNS0_16AesEaxParametersERKNS0_14RestrictedDataESt8optionalIiENS0_21PartialKeyAccessTokenE
+  params:
+  - name: parameters
+    type: const crypto::tink::AesEaxParameters &
+  - name: key_bytes
+    type: const crypto::tink::RestrictedData &
+  - name: id_requirement
+    type: absl::optional<int>
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<AesEaxKey>
+  signature: absl::StatusOr<AesEaxKey> crypto::tink::AesEaxKey::Create(const crypto::tink::AesEaxParameters &, const crypto::tink::RestrictedData
+    &, absl::optional<int>, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink9AesGcmKey6CreateERKNS0_16AesGcmParametersERKNS0_14RestrictedDataESt8optionalIiENS0_21PartialKeyAccessTokenE
+  params:
+  - name: parameters
+    type: const crypto::tink::AesGcmParameters &
+  - name: key_bytes
+    type: const crypto::tink::RestrictedData &
+  - name: id_requirement
+    type: absl::optional<int>
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<AesGcmKey>
+  signature: absl::StatusOr<AesGcmKey> crypto::tink::AesGcmKey::Create(const crypto::tink::AesGcmParameters &, const crypto::tink::RestrictedData
+    &, absl::optional<int>, crypto::tink::PartialKeyAccessToken)
+- name: _ZN6crypto4tink9AesSivKey6CreateERKNS0_16AesSivParametersERKNS0_14RestrictedDataESt8optionalIiENS0_21PartialKeyAccessTokenE
+  params:
+  - name: parameters
+    type: const crypto::tink::AesSivParameters &
+  - name: key_bytes
+    type: const crypto::tink::RestrictedData &
+  - name: id_requirement
+    type: absl::optional<int>
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::StatusOr<AesSivKey>
+  signature: absl::StatusOr<AesSivKey> crypto::tink::AesSivKey::Create(const crypto::tink::AesSivParameters &, const crypto::tink::RestrictedData
+    &, absl::optional<int>, crypto::tink::PartialKeyAccessToken)
+- name: _ZNK6crypto4tink11VerifiedJwt11IsNullClaimESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: bool
+  signature: bool crypto::tink::VerifiedJwt::IsNullClaim(int) const
+- name: _ZNK6crypto4tink11VerifiedJwt14GetNumberClaimESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: absl::StatusOr<double>
+  signature: absl::StatusOr<double> crypto::tink::VerifiedJwt::GetNumberClaim(int) const
+- name: _ZNK6crypto4tink11VerifiedJwt14GetStringClaimB5cxx11ESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::VerifiedJwt::GetStringClaim(int) const
+- name: _ZNK6crypto4tink11VerifiedJwt14HasNumberClaimESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: bool
+  signature: bool crypto::tink::VerifiedJwt::HasNumberClaim(int) const
+- name: _ZNK6crypto4tink11VerifiedJwt14HasStringClaimESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: bool
+  signature: bool crypto::tink::VerifiedJwt::HasStringClaim(int) const
+- name: _ZNK6crypto4tink11VerifiedJwt15GetBooleanClaimESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: absl::StatusOr<bool>
+  signature: absl::StatusOr<bool> crypto::tink::VerifiedJwt::GetBooleanClaim(int) const
+- name: _ZNK6crypto4tink11VerifiedJwt15HasBooleanClaimESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: bool
+  signature: bool crypto::tink::VerifiedJwt::HasBooleanClaim(int) const
+- name: _ZNK6crypto4tink11VerifiedJwt17GetJsonArrayClaimB5cxx11ESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::VerifiedJwt::GetJsonArrayClaim(int) const
+- name: _ZNK6crypto4tink11VerifiedJwt17HasJsonArrayClaimESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: bool
+  signature: bool crypto::tink::VerifiedJwt::HasJsonArrayClaim(int) const
+- name: _ZNK6crypto4tink11VerifiedJwt18GetJsonObjectClaimB5cxx11ESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::VerifiedJwt::GetJsonObjectClaim(int) const
+- name: _ZNK6crypto4tink11VerifiedJwt18HasJsonObjectClaimESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: bool
+  signature: bool crypto::tink::VerifiedJwt::HasJsonObjectClaim(int) const
+- name: _ZNK6crypto4tink12AesGcmSivKeyeqERKNS0_3KeyE
+  params:
+  - name: other
+    type: const crypto::tink::Key &
+  return_type: bool
+  signature: bool crypto::tink::AesGcmSivKey::operator==(const crypto::tink::Key &) const
+- name: _ZNK6crypto4tink12JwtValidator14ValidateIssuerERKNS0_6RawJwtE
+  params:
+  - name: raw_jwt
+    type: const crypto::tink::RawJwt &
+  return_type: absl::Status
+  signature: absl::Status crypto::tink::JwtValidator::ValidateIssuer(const crypto::tink::RawJwt &) const
+- name: _ZNK6crypto4tink12JwtValidator17ValidateAudiencesERKNS0_6RawJwtE
+  params:
+  - name: raw_jwt
+    type: const crypto::tink::RawJwt &
+  return_type: absl::Status
+  signature: absl::Status crypto::tink::JwtValidator::ValidateAudiences(const crypto::tink::RawJwt &) const
+- name: _ZNK6crypto4tink12JwtValidator18ValidateTimestampsERKNS0_6RawJwtE
+  params:
+  - name: raw_jwt
+    type: const crypto::tink::RawJwt &
+  return_type: absl::Status
+  signature: absl::Status crypto::tink::JwtValidator::ValidateTimestamps(const crypto::tink::RawJwt &) const
+- name: _ZNK6crypto4tink12JwtValidator18ValidateTypeHeaderERKNS0_6RawJwtE
+  params:
+  - name: raw_jwt
+    type: const crypto::tink::RawJwt &
+  return_type: absl::Status
+  signature: absl::Status crypto::tink::JwtValidator::ValidateTypeHeader(const crypto::tink::RawJwt &) const
+- name: _ZNK6crypto4tink13HpkePublicKeyeqERKNS0_3KeyE
+  params:
+  - name: other
+    type: const crypto::tink::Key &
+  return_type: bool
+  signature: bool crypto::tink::HpkePublicKey::operator==(const crypto::tink::Key &) const
+- name: _ZNK6crypto4tink15EciesPrivateKey22GetNistPrivateKeyValueENS0_21PartialKeyAccessTokenE
+  params:
+  - name: token
+    type: crypto::tink::PartialKeyAccessToken
+  return_type: absl::optional<RestrictedBigInteger>
+  signature: absl::optional<RestrictedBigInteger> crypto::tink::EciesPrivateKey::GetNistPrivateKeyValue(crypto::tink::PartialKeyAccessToken)
+    const
+- name: _ZNK6crypto4tink16LegacyKmsAeadKeyeqERKNS0_3KeyE
+  params:
+  - name: other
+    type: const crypto::tink::Key &
+  return_type: bool
+  signature: bool crypto::tink::LegacyKmsAeadKey::operator==(const crypto::tink::Key &) const
+- name: _ZNK6crypto4tink17AesCtrHmacAeadKeyeqERKNS0_3KeyE
+  params:
+  - name: other
+    type: const crypto::tink::Key &
+  return_type: bool
+  signature: bool crypto::tink::AesCtrHmacAeadKey::operator==(const crypto::tink::Key &) const
+- name: _ZNK6crypto4tink19ChaCha20Poly1305KeyeqERKNS0_3KeyE
+  params:
+  - name: other
+    type: const crypto::tink::Key &
+  return_type: bool
+  signature: bool crypto::tink::ChaCha20Poly1305Key::operator==(const crypto::tink::Key &) const
+- name: _ZNK6crypto4tink20XChaCha20Poly1305KeyeqERKNS0_3KeyE
+  params:
+  - name: other
+    type: const crypto::tink::Key &
+  return_type: bool
+  signature: bool crypto::tink::XChaCha20Poly1305Key::operator==(const crypto::tink::Key &) const
+- name: _ZNK6crypto4tink24LegacyKmsEnvelopeAeadKeyeqERKNS0_3KeyE
+  params:
+  - name: other
+    type: const crypto::tink::Key &
+  return_type: bool
+  signature: bool crypto::tink::LegacyKmsEnvelopeAeadKey::operator==(const crypto::tink::Key &) const
+- name: _ZNK6crypto4tink24PrfBasedKeyDerivationKeyeqERKNS0_3KeyE
+  params:
+  - name: other
+    type: const crypto::tink::Key &
+  return_type: bool
+  signature: bool crypto::tink::PrfBasedKeyDerivationKey::operator==(const crypto::tink::Key &) const
+- name: _ZNK6crypto4tink6RawJwt14GetNumberClaimESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: absl::StatusOr<double>
+  signature: absl::StatusOr<double> crypto::tink::RawJwt::GetNumberClaim(int) const
+- name: _ZNK6crypto4tink6RawJwt15GetBooleanClaimESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: absl::StatusOr<bool>
+  signature: absl::StatusOr<bool> crypto::tink::RawJwt::GetBooleanClaim(int) const
+- name: _ZNK6crypto4tink6RawJwt17GetJsonArrayClaimB5cxx11ESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::RawJwt::GetJsonArrayClaim(int) const
+- name: _ZNK6crypto4tink6RawJwt17HasJsonArrayClaimESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: bool
+  signature: bool crypto::tink::RawJwt::HasJsonArrayClaim(int) const
+- name: _ZNK6crypto4tink6RawJwt18GetJsonObjectClaimB5cxx11ESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: absl::StatusOr<std::string>
+  signature: absl::StatusOr<std::string> crypto::tink::RawJwt::GetJsonObjectClaim(int) const
+- name: _ZNK6crypto4tink6subtle16StreamingMacImpl24NewVerifyMacOutputStreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: mac_value
+    type: const std::string &
+  return_type: int
+  signature: int crypto::tink::subtle::StreamingMacImpl::NewVerifyMacOutputStream(const std::string &) const
+- name: _ZNK6crypto4tink8internal12_GLOBAL__N_120CordXAesGcmBoringSsl7DecryptEN4absl12lts_202601074CordES6_
+  params:
+  - name: ciphertext
+    type: absl::Cord
+  - name: associated_data
+    type: absl::Cord
+  return_type: absl::StatusOr<absl::Cord>
+  signature: absl::StatusOr<absl::Cord> crypto::tink::internal::CordXAesGcmBoringSsl::Decrypt(absl::Cord, absl::Cord) const
+- name: _ZNK6crypto4tink8internal12_GLOBAL__N_120CordXAesGcmBoringSsl7EncryptEN4absl12lts_202601074CordES6_
+  params:
+  - name: plaintext
+    type: absl::Cord
+  - name: associated_data
+    type: absl::Cord
+  return_type: absl::StatusOr<absl::Cord>
+  signature: absl::StatusOr<absl::Cord> crypto::tink::internal::CordXAesGcmBoringSsl::Encrypt(absl::Cord, absl::Cord) const
+- name: _ZNK6crypto4tink9AesEaxKeyeqERKNS0_3KeyE
+  params:
+  - name: other
+    type: const crypto::tink::Key &
+  return_type: bool
+  signature: bool crypto::tink::AesEaxKey::operator==(const crypto::tink::Key &) const
+- name: _ZNK6crypto4tink9AesGcmKeyeqERKNS0_3KeyE
+  params:
+  - name: other
+    type: const crypto::tink::Key &
+  return_type: bool
+  signature: bool crypto::tink::AesGcmKey::operator==(const crypto::tink::Key &) const
+- name: _ZNK6crypto4tink9AesSivKeyeqERKNS0_3KeyE
+  params:
+  - name: other
+    type: const crypto::tink::Key &
+  return_type: bool
+  signature: bool crypto::tink::AesSivKey::operator==(const crypto::tink::Key &) const
+language: c++
+project: tink-cc
+target_name: tink_encrypt_decrypt_fuzzer
+target_path: /src/tink-cc/fuzzing/tink_encrypt_decrypt_fuzzer.cc

@@ -1,0 +1,899 @@
+functions:
+- name: _ZN14capnproto_test5capnp4test13TestMoreStuff6Server7getHeldEN5capnp11CallContextINS2_13GetHeldParamsENS2_14GetHeldResultsEEE
+  params:
+  - name: arg0
+    type: capnproto_test::capnp::test::TestMoreStuff::Server::GetHeldContext
+  return_type: ::kj::Promise<void>
+  signature: ::kj::Promise<void> capnproto_test::capnp::test::TestMoreStuff::Server::getHeld(capnproto_test::capnp::test::TestMoreStuff::Server::GetHeldContext)
+- name: _ZN14capnproto_test5capnp4test13TestStreaming6Server12finishStreamEN5capnp11CallContextINS2_18FinishStreamParamsENS2_19FinishStreamResultsEEE
+  params:
+  - name: arg0
+    type: capnproto_test::capnp::test::TestStreaming::Server::FinishStreamContext
+  return_type: ::kj::Promise<void>
+  signature: ::kj::Promise<void> capnproto_test::capnp::test::TestStreaming::Server::finishStream(capnproto_test::capnp::test::TestStreaming::Server::FinishStreamContext)
+- name: _ZN14capnproto_test5capnp4test18TestKeywordMethods6Server12dispatchCallEmtN5capnp11CallContextINS4_10AnyPointerES6_EE
+  params:
+  - name: interfaceId
+    type: uint64_t
+  - name: methodId
+    type: uint16_t
+  - name: context
+    type: ::capnp::CallContext< ::capnp::AnyPointer, ::capnp::AnyPointer>
+  return_type: ::capnp::Capability::Server::DispatchCallResult
+  signature: ::capnp::Capability::Server::DispatchCallResult capnproto_test::capnp::test::TestKeywordMethods::Server::dispatchCall(uint64_t,
+    uint16_t, ::capnp::CallContext< ::capnp::AnyPointer, ::capnp::AnyPointer>)
+- name: _ZN14capnproto_test5capnp4test24TestImplicitMethodParams6Server12dispatchCallEmtN5capnp11CallContextINS4_10AnyPointerES6_EE
+  params:
+  - name: interfaceId
+    type: uint64_t
+  - name: methodId
+    type: uint16_t
+  - name: context
+    type: ::capnp::CallContext< ::capnp::AnyPointer, ::capnp::AnyPointer>
+  return_type: ::capnp::Capability::Server::DispatchCallResult
+  signature: ::capnp::Capability::Server::DispatchCallResult capnproto_test::capnp::test::TestImplicitMethodParams::Server::dispatchCall(uint64_t,
+    uint16_t, ::capnp::CallContext< ::capnp::AnyPointer, ::capnp::AnyPointer>)
+- name: _ZN2kj1_13NullableValueIN5capnp4json20DiscriminatorOptions6ReaderEEaSEOS5_
+  params:
+  - name: arg0
+    type: ContextImpl<Func> &&
+  return_type: ContextImpl<Func> &
+  signature: ContextImpl<Func> & kj::_::Debug::ContextImpl::operator=(ContextImpl<Func> &&)
+- name: _ZN2kj1_15FreePromiseNodeINS0_18AdapterPromiseNodeI9siginfo_tNS_13UnixEventPort20SignalPromiseAdapterEEELb1EE4freeEPS6_
+  params:
+  - name: ptr
+    type: T *
+  return_type: void
+  signature: void kj::_::FreePromiseNode::free(T *)
+- name: _ZN2kj11MainBuilder16addOptionWithArgESt16initializer_listINS0_10OptionNameEENS_8FunctionIFNS0_8ValidityENS_9StringPtrEEEES6_S6_
+  params:
+  - name: names
+    type: std::initializer_list<OptionName>
+  - name: callback
+    type: Function<kj::MainBuilder::Validity (kj::StringPtr)>
+  - name: argumentTitle
+    type: kj::StringPtr
+  - name: helpText
+    type: kj::StringPtr
+  return_type: kj::MainBuilder &
+  signature: kj::MainBuilder & kj::MainBuilder::addOptionWithArg(std::initializer_list<OptionName>, Function<kj::MainBuilder::Validity
+    (kj::StringPtr)>, kj::StringPtr, kj::StringPtr)
+- name: _ZN2kj11MainBuilder4Impl9addOptionESt16initializer_listINS0_10OptionNameEEbNS_9StringPtrE
+  params:
+  - name: names
+    type: std::initializer_list<OptionName>
+  - name: hasArg
+    type: bool
+  - name: helpText
+    type: kj::StringPtr
+  return_type: kj::MainBuilder::Impl::Option &
+  signature: kj::MainBuilder::Impl::Option & kj::MainBuilder::Impl::addOption(std::initializer_list<OptionName>, bool, kj::StringPtr)
+- name: _ZN2kj11MainBuilder9addOptionESt16initializer_listINS0_10OptionNameEENS_8FunctionIFNS0_8ValidityEvEEENS_9StringPtrE
+  params:
+  - name: names
+    type: std::initializer_list<OptionName>
+  - name: callback
+    type: Function<kj::MainBuilder::Validity ()>
+  - name: helpText
+    type: kj::StringPtr
+  return_type: kj::MainBuilder &
+  signature: kj::MainBuilder & kj::MainBuilder::addOption(std::initializer_list<OptionName>, Function<kj::MainBuilder::Validity
+    ()>, kj::StringPtr)
+- name: _ZN2kj11MainBuilderC2ERNS_14ProcessContextENS_9StringPtrES3_S3_
+  params:
+  - name: context
+    type: kj::ProcessContext &
+  - name: version
+    type: kj::StringPtr
+  - name: briefDescription
+    type: kj::StringPtr
+  - name: extendedDescription
+    type: kj::StringPtr
+  return_type: void
+  signature: void kj::MainBuilder::MainBuilder(kj::ProcessContext &, kj::StringPtr, kj::StringPtr, kj::StringPtr)
+- name: _ZN2kj14runMainAndExitERNS_14ProcessContextEONS_8FunctionIFvNS_9StringPtrENS_8ArrayPtrIKS3_EEEEEiPPc
+  params:
+  - name: context
+    type: kj::ProcessContext &
+  - name: func
+    type: kj::MainFunc &&
+  - name: argc
+    type: int
+  - name: argv
+    type: char *[]
+  return_type: int
+  signature: int kj::runMainAndExit(kj::ProcessContext &, kj::MainFunc &&, int, char *[])
+- name: _ZN2kj1_5Mutex4lockENS1_11ExclusivityENS_5MaybeINS_8QuantityIlNS0_15NanosecondLabelEEEEENS_18NoopSourceLocationE
+  params:
+  - name: exclusivity
+    type: kj::_::Mutex::Exclusivity
+  - name: timeout
+    type: Maybe<kj::Duration>
+  - name: location
+    type: kj::LockSourceLocationArg
+  return_type: bool
+  signature: bool kj::_::Mutex::lock(kj::_::Mutex::Exclusivity, Maybe<kj::Duration>, kj::LockSourceLocationArg)
+- name: _ZN2kj1_5Mutex4waitERNS1_9PredicateENS_5MaybeINS_8QuantityIlNS0_15NanosecondLabelEEEEENS_18NoopSourceLocationE
+  params:
+  - name: predicate
+    type: kj::_::Mutex::Predicate &
+  - name: timeout
+    type: Maybe<kj::Duration>
+  - name: location
+    type: kj::LockSourceLocationArg
+  return_type: void
+  signature: void kj::_::Mutex::wait(kj::_::Mutex::Predicate &, Maybe<kj::Duration>, kj::LockSourceLocationArg)
+- name: _ZN2kj18trimSourceFilenameENS_9StringPtrE
+  params:
+  - name: filename
+    type: kj::StringPtr
+  return_type: kj::StringPtr
+  signature: kj::StringPtr kj::trimSourceFilename(kj::StringPtr)
+- name: _ZN2kj19decodeBinaryCEscapeENS_8ArrayPtrIKcEEb
+  params:
+  - name: text
+    type: ArrayPtr<const char>
+  - name: nulTerminate
+    type: bool
+  return_type: EncodingResult<Array<kj::byte>>
+  signature: EncodingResult<Array<kj::byte>> kj::decodeBinaryCEscape(ArrayPtr<const char>, bool)
+- name: _ZN2kj24decodeBinaryUriComponentENS_8ArrayPtrIKcEENS_16DecodeUriOptionsE
+  params:
+  - name: text
+    type: ArrayPtr<const char>
+  - name: options
+    type: kj::DecodeUriOptions
+  return_type: EncodingResult<Array<kj::byte>>
+  signature: EncodingResult<Array<kj::byte>> kj::decodeBinaryUriComponent(ArrayPtr<const char>, kj::DecodeUriOptions)
+- name: _ZN2kj5Arena4copyINS_8FunctionIFNS_11MainBuilder8ValidityENS_9StringPtrEEEEEERT_OS8_
+  params:
+  - name: errorMessage
+    type: kj::String &&
+  return_type: void
+  signature: void kj::MainBuilder::Validity::Validity(kj::String &&)
+- name: _ZN2kj5Arena4copyINS_8FunctionIFNS_11MainBuilder8ValidityEvEEEEERT_OS7_
+  params:
+  - name: errorMessage
+    type: kj::String &&
+  return_type: void
+  signature: void kj::MainBuilder::Validity::Validity(kj::String &&)
+- name: _ZN2kj5MaybeIN5capnp4json20DiscriminatorOptions6ReaderEEaSEOS4_
+  params:
+  - name: arg0
+    type: ContextImpl<Func> &&
+  return_type: ContextImpl<Func> &
+  signature: ContextImpl<Func> & kj::_::Debug::ContextImpl::operator=(ContextImpl<Func> &&)
+- name: _ZN2kj5MaybeIN5capnp8ResponseINS1_13DynamicStructEEEEaSEOS5_
+  params:
+  - name: arg0
+    type: ContextImpl<Func> &&
+  return_type: ContextImpl<Func> &
+  signature: ContextImpl<Func> & kj::_::Debug::ContextImpl::operator=(ContextImpl<Func> &&)
+- name: _ZN2kj9TimerImpl18timeoutToNextEventENS_8AbsoluteINS_8QuantityIlNS_1_15NanosecondLabelEEENS3_9TimeLabelEEES5_m
+  params:
+  - name: start
+    type: kj::TimePoint
+  - name: unit
+    type: kj::Duration
+  - name: max
+    type: uint64_t
+  return_type: Maybe<uint64_t>
+  signature: Maybe<uint64_t> kj::TimerImpl::timeoutToNextEvent(kj::TimePoint, kj::Duration, uint64_t)
+- name: _ZN2kj9TimerImpl9advanceToENS_8AbsoluteINS_8QuantityIlNS_1_15NanosecondLabelEEENS3_9TimeLabelEEE
+  params:
+  - name: newTime
+    type: kj::TimePoint
+  return_type: void
+  signature: void kj::TimerImpl::advanceTo(kj::TimePoint)
+- name: _ZN5capnp1_11ReaderArena13tryGetSegmentEN2kj2IdIjNS0_7SegmentEEE
+  params:
+  - name: id
+    type: capnp::_::SegmentId
+  return_type: capnp::_::SegmentReader *
+  signature: capnp::_::SegmentReader * capnp::_::ReaderArena::tryGetSegment(capnp::_::SegmentId)
+- name: _ZN5capnp1_11ReaderArenaC2EPNS_13MessageReaderEN2kj8ArrayPtrIKNS_4wordEEE
+  params:
+  - name: message
+    type: capnp::MessageReader *
+  return_type: void
+  signature: void capnp::_::ReaderArena::ReaderArena(capnp::MessageReader *)
+- name: _ZN5capnp1_11ReaderArenaC2EPNS_13MessageReaderEPKNS_4wordEj
+  params:
+  - name: message
+    type: capnp::MessageReader *
+  return_type: void
+  signature: void capnp::_::ReaderArena::ReaderArena(capnp::MessageReader *)
+- name: _ZN5capnp1_11ReadLimiter7canReadEmPNS0_5ArenaE
+  params:
+  - name: amount
+    type: capnp::WordCount64
+  - name: arena
+    type: capnp::_::Arena *
+  return_type: bool
+  signature: bool capnp::_::ReadLimiter::canRead(capnp::WordCount64, capnp::_::Arena *)
+- name: _ZN5capnp1_12BuilderArena18addExternalSegmentEN2kj8ArrayPtrIKNS_4wordEEE
+  params:
+  - name: content
+    type: kj::ArrayPtr<const word>
+  return_type: capnp::_::SegmentBuilder *
+  signature: capnp::_::SegmentBuilder * capnp::_::BuilderArena::addExternalSegment(kj::ArrayPtr<const word>)
+- name: _ZN5capnp1_12BuilderArena8allocateEj
+  params:
+  - name: amount
+    type: capnp::SegmentWordCount
+  return_type: BuilderArena::AllocateResult
+  signature: BuilderArena::AllocateResult capnp::_::BuilderArena::allocate(capnp::SegmentWordCount)
+- name: _ZN5capnp1_12_GLOBAL__N_122dynamicInitTestMessageENS_13DynamicStruct7BuilderE
+  params:
+  - name: builder
+    type: DynamicStruct::Builder
+  return_type: void
+  signature: void capnp::_::dynamicInitTestMessage(DynamicStruct::Builder)
+- name: _ZN5capnp1_12_GLOBAL__N_123dynamicInitListDefaultsENS_13DynamicStruct7BuilderE
+  params:
+  - name: builder
+    type: DynamicStruct::Builder
+  return_type: void
+  signature: void capnp::_::dynamicInitListDefaults(DynamicStruct::Builder)
+- name: _ZN5capnp1_13OrphanBuilder12asStructListENS0_10StructSizeE
+  params:
+  - name: elementSize
+    type: capnp::_::StructSize
+  return_type: capnp::_::ListBuilder
+  signature: capnp::_::ListBuilder capnp::_::OrphanBuilder::asStructList(capnp::_::StructSize)
+- name: _ZN5capnp1_13OrphanBuilder12truncateTextEj
+  params:
+  - name: size
+    type: capnp::ElementCount
+  return_type: void
+  signature: void capnp::_::OrphanBuilder::truncateText(capnp::ElementCount)
+- name: _ZN5capnp1_13OrphanBuilder21referenceExternalDataEPNS0_12BuilderArenaENS_4Data6ReaderE
+  params:
+  - name: arena
+    type: capnp::_::BuilderArena *
+  - name: data
+    type: Data::Reader
+  return_type: capnp::_::OrphanBuilder
+  signature: capnp::_::OrphanBuilder capnp::_::OrphanBuilder::referenceExternalData(capnp::_::BuilderArena *, Data::Reader)
+- name: _ZN5capnp1_13OrphanBuilder4copyEPNS0_12BuilderArenaEPNS0_15CapTableBuilderENS_4Text6ReaderE
+  params:
+  - name: arena
+    type: capnp::_::BuilderArena *
+  - name: capTable
+    type: capnp::_::CapTableBuilder *
+  - name: copyFrom
+    type: Text::Reader
+  return_type: capnp::_::OrphanBuilder
+  signature: capnp::_::OrphanBuilder capnp::_::OrphanBuilder::copy(capnp::_::BuilderArena *, capnp::_::CapTableBuilder *,
+    Text::Reader)
+- name: _ZN5capnp1_13SegmentReader11checkObjectEPKNS_4wordEj
+  params:
+  - name: start
+    type: const capnp::word *
+  - name: size
+    type: int
+  return_type: bool
+  signature: bool capnp::_::SegmentReader::checkObject(const capnp::word *, int)
+- name: _ZN5capnp1_13SegmentReaderC2EPNS0_5ArenaEN2kj2IdIjNS0_7SegmentEEEPKNS_4wordEjPNS0_11ReadLimiterE
+  params:
+  - name: arena
+    type: capnp::_::Arena *
+  - name: id
+    type: capnp::_::SegmentId
+  - name: ptr
+    type: const capnp::word *
+  - name: size
+    type: capnp::SegmentWordCount
+  - name: readLimiter
+    type: capnp::_::ReadLimiter *
+  return_type: void
+  signature: void capnp::_::SegmentReader::SegmentReader(capnp::_::Arena *, capnp::_::SegmentId, const capnp::word *, capnp::SegmentWordCount,
+    capnp::_::ReadLimiter *)
+- name: _ZN5capnp1_14PointerHelpersINS_13DynamicStructELNS_4KindE7EE10getDynamicENS0_13PointerReaderENS_12StructSchemaE
+  params:
+  - name: reader
+    type: capnp::_::PointerReader
+  - name: schema
+    type: capnp::StructSchema
+  return_type: DynamicStruct::Reader
+  signature: DynamicStruct::Reader capnp::_::PointerHelpers::getDynamic(capnp::_::PointerReader, capnp::StructSchema)
+- name: _ZN5capnp11DynamicEnumC2ENS_10EnumSchema9EnumerantE
+  params:
+  - name: schema
+    type: capnp::EnumSchema
+  - name: value
+    type: uint16_t
+  return_type: void
+  signature: void capnp::DynamicEnum::DynamicEnum(capnp::EnumSchema, uint16_t)
+- name: _ZN5capnp11DynamicList7Builder3setEjRKNS_12DynamicValue6ReaderE
+  params:
+  - name: index
+    type: capnp::uint
+  - name: value
+    type: const DynamicValue::Reader &
+  return_type: void
+  signature: void capnp::DynamicList::Builder::set(capnp::uint, const DynamicValue::Reader &)
+- name: _ZN5capnp11DynamicList7Builder4initEjj
+  params:
+  - name: index
+    type: capnp::uint
+  - name: size
+    type: capnp::uint
+  return_type: DynamicValue::Builder
+  signature: DynamicValue::Builder capnp::DynamicList::Builder::init(capnp::uint, capnp::uint)
+- name: _ZN5capnp11DynamicList7Builder5adoptEjONS_6OrphanINS_12DynamicValueEEE
+  params:
+  - name: index
+    type: capnp::uint
+  - name: orphan
+    type: Orphan<capnp::DynamicValue> &&
+  return_type: void
+  signature: void capnp::DynamicList::Builder::adopt(capnp::uint, Orphan<capnp::DynamicValue> &&)
+- name: _ZN5capnp11DynamicList7Builder6disownEj
+  params:
+  - name: index
+    type: capnp::uint
+  return_type: Orphan<capnp::DynamicValue>
+  signature: Orphan<capnp::DynamicValue> capnp::DynamicList::Builder::disown(capnp::uint)
+- name: _ZN5capnp11DynamicList7BuilderixEj
+  params:
+  - name: index
+    type: capnp::uint
+  return_type: DynamicValue::Builder
+  signature: DynamicValue::Builder capnp::DynamicList::Builder::operator[](capnp::uint)
+- name: _ZN5capnp11prettyPrintENS_11DynamicList7BuilderE
+  params:
+  - name: value
+    type: DynamicList::Builder
+  return_type: kj::StringTree
+  signature: kj::StringTree capnp::prettyPrint(DynamicList::Builder)
+- name: _ZN5capnp11prettyPrintENS_13DynamicStruct7BuilderE
+  params:
+  - name: value
+    type: DynamicStruct::Builder
+  return_type: kj::StringTree
+  signature: kj::StringTree capnp::prettyPrint(DynamicStruct::Builder)
+- name: _ZN5capnp1_20initDynamicTestListsENS_13DynamicStruct7BuilderE
+  params:
+  - name: builder
+    type: DynamicStruct::Builder
+  return_type: void
+  signature: void capnp::_::initDynamicTestLists(DynamicStruct::Builder)
+- name: _ZN5capnp1_21checkDynamicTestListsENS_13DynamicStruct6ReaderE
+  params:
+  - name: reader
+    type: DynamicStruct::Reader
+  return_type: void
+  signature: void capnp::_::checkDynamicTestLists(DynamicStruct::Reader)
+- name: _ZN5capnp1_21checkDynamicTestListsENS_13DynamicStruct7BuilderE
+  params:
+  - name: builder
+    type: DynamicStruct::Builder
+  return_type: void
+  signature: void capnp::_::checkDynamicTestLists(DynamicStruct::Builder)
+- name: _ZN5capnp1_22initDynamicTestMessageENS_13DynamicStruct7BuilderE
+  params:
+  - name: builder
+    type: DynamicStruct::Builder
+  return_type: void
+  signature: void capnp::_::initDynamicTestMessage(DynamicStruct::Builder)
+- name: _ZN5capnp1_23CapabilityServerSetBase22getLocalServerInternalERNS_10Capability6ClientE
+  params:
+  - name: client
+    type: Capability::Client &
+  return_type: kj::Promise<void *>
+  signature: kj::Promise<void *> capnp::_::CapabilityServerSetBase::getLocalServerInternal(Capability::Client &)
+- name: _ZN5capnp1_23checkDynamicTestMessageENS_13DynamicStruct6ReaderE
+  params:
+  - name: reader
+    type: DynamicStruct::Reader
+  return_type: void
+  signature: void capnp::_::checkDynamicTestMessage(DynamicStruct::Reader)
+- name: _ZN5capnp1_23checkDynamicTestMessageENS_13DynamicStruct7BuilderE
+  params:
+  - name: builder
+    type: DynamicStruct::Builder
+  return_type: void
+  signature: void capnp::_::checkDynamicTestMessage(DynamicStruct::Builder)
+- name: _ZN5capnp12DynamicValue6ReaderaSEOS1_
+  params:
+  - name: other
+    type: capnp::DynamicValue::Reader &&
+  return_type: capnp::DynamicValue::Reader &
+  signature: capnp::DynamicValue::Reader & capnp::DynamicValue::Reader::operator=(capnp::DynamicValue::Reader &&)
+- name: _ZN5capnp12DynamicValue6ReaderaSERKS1_
+  params:
+  - name: other
+    type: const capnp::DynamicValue::Reader &
+  return_type: capnp::DynamicValue::Reader &
+  signature: capnp::DynamicValue::Reader & capnp::DynamicValue::Reader::operator=(const capnp::DynamicValue::Reader &)
+- name: _ZN5capnp12DynamicValue6ReaderC2ENS_11ConstSchemaE
+  params:
+  - name: value
+    type: const char *
+  return_type: void
+  signature: void capnp::DynamicValue::Reader::Reader(const char *)
+- name: _ZN5capnp12DynamicValue7BuilderaSEOS1_
+  params:
+  - name: other
+    type: capnp::DynamicValue::Builder &&
+  return_type: capnp::DynamicValue::Builder &
+  signature: capnp::DynamicValue::Builder & capnp::DynamicValue::Builder::operator=(capnp::DynamicValue::Builder &&)
+- name: _ZN5capnp12DynamicValue7BuilderaSERS1_
+  params:
+  - name: other
+    type: capnp::DynamicValue::Builder &
+  return_type: capnp::DynamicValue::Builder &
+  signature: capnp::DynamicValue::Builder & capnp::DynamicValue::Builder::operator=(capnp::DynamicValue::Builder &)
+- name: _ZN5capnp12_GLOBAL__N_15printERKNS_12DynamicValue6ReaderENS_6schema4Type5WhichENS0_6IndentENS0_9PrintModeE
+  params:
+  - name: value
+    type: const DynamicValue::Reader &
+  - name: which
+    type: schema::Type::Which
+  - name: indent
+    type: capnp::(anonymous namespace)::Indent
+  - name: mode
+    type: capnp::(anonymous namespace)::PrintMode
+  return_type: kj::StringTree
+  signature: kj::StringTree capnp::print(const DynamicValue::Reader &, schema::Type::Which, capnp::(anonymous namespace)::Indent,
+    capnp::(anonymous namespace)::PrintMode)
+- name: _ZN5capnp12_GLOBAL__N_19stringifyENS_12DynamicValue6ReaderE
+  params:
+  - name: value
+    type: DynamicValue::Reader
+  return_type: kj::StringTree
+  signature: kj::StringTree capnp::stringify(DynamicValue::Reader)
+- name: _ZN5capnp12SchemaLoader4Impl10loadNativeEPKNS_1_9RawSchemaE
+  params:
+  - name: nativeSchema
+    type: const _::RawSchema *
+  return_type: _::RawSchema *
+  signature: _::RawSchema * capnp::SchemaLoader::Impl::loadNative(const _::RawSchema *)
+- name: _ZN5capnp12SchemaLoader4Impl17makeUncheckedNodeENS_6schema4Node6ReaderE
+  params:
+  - name: node
+    type: schema::Node::Reader
+  return_type: kj::ArrayPtr<word>
+  signature: kj::ArrayPtr<word> capnp::SchemaLoader::Impl::makeUncheckedNode(schema::Node::Reader)
+- name: _ZN5capnp12SchemaLoader4Impl4loadERKNS_6schema4Node6ReaderEb
+  params:
+  - name: reader
+    type: const schema::Node::Reader &
+  - name: isPlaceholder
+    type: bool
+  return_type: _::RawSchema *
+  signature: _::RawSchema * capnp::SchemaLoader::Impl::load(const schema::Node::Reader &, bool)
+- name: _ZN5capnp12SchemaLoader9Validator19makeMemberInfoArrayEPj
+  params:
+  - name: count
+    type: uint32_t *
+  return_type: const uint16_t *
+  signature: const uint16_t * capnp::SchemaLoader::Validator::makeMemberInfoArray(uint32_t *)
+- name: _ZN5capnp1_30checkDynamicTestMessageAllZeroENS_13DynamicStruct6ReaderE
+  params:
+  - name: reader
+    type: DynamicStruct::Reader
+  return_type: void
+  signature: void capnp::_::checkDynamicTestMessageAllZero(DynamicStruct::Reader)
+- name: _ZN5capnp1_30checkDynamicTestMessageAllZeroENS_13DynamicStruct7BuilderE
+  params:
+  - name: builder
+    type: DynamicStruct::Builder
+  return_type: void
+  signature: void capnp::_::checkDynamicTestMessageAllZero(DynamicStruct::Builder)
+- name: _ZN5capnp13DynamicStruct7Builder3getENS_12StructSchema5FieldE
+  params:
+  - name: field
+    type: StructSchema::Field
+  return_type: DynamicValue::Builder
+  signature: DynamicValue::Builder capnp::DynamicStruct::Builder::get(StructSchema::Field)
+- name: _ZN5capnp13DynamicStruct7Builder3hasEN2kj9StringPtrENS_7HasModeE
+  params:
+  - name: name
+    type: kj::StringPtr
+  - name: mode
+    type: capnp::HasMode
+  return_type: bool
+  signature: bool capnp::DynamicStruct::Builder::has(kj::StringPtr, capnp::HasMode)
+- name: _ZN5capnp13DynamicStruct7Builder3setEN2kj9StringPtrERKNS_12DynamicValue6ReaderE
+  params:
+  - name: name
+    type: kj::StringPtr
+  - name: value
+    type: const DynamicValue::Reader &
+  return_type: void
+  signature: void capnp::DynamicStruct::Builder::set(kj::StringPtr, const DynamicValue::Reader &)
+- name: _ZN5capnp13DynamicStruct7Builder3setENS_12StructSchema5FieldERKNS_12DynamicValue6ReaderE
+  params:
+  - name: field
+    type: StructSchema::Field
+  - name: value
+    type: const DynamicValue::Reader &
+  return_type: void
+  signature: void capnp::DynamicStruct::Builder::set(StructSchema::Field, const DynamicValue::Reader &)
+- name: _ZN5capnp13DynamicStruct7Builder4initEN2kj9StringPtrE
+  params:
+  - name: name
+    type: kj::StringPtr
+  return_type: DynamicValue::Builder
+  signature: DynamicValue::Builder capnp::DynamicStruct::Builder::init(kj::StringPtr)
+- name: _ZN5capnp13DynamicStruct7Builder4initEN2kj9StringPtrEj
+  params:
+  - name: name
+    type: kj::StringPtr
+  - name: size
+    type: capnp::uint
+  return_type: DynamicValue::Builder
+  signature: DynamicValue::Builder capnp::DynamicStruct::Builder::init(kj::StringPtr, capnp::uint)
+- name: _ZN5capnp13DynamicStruct7Builder5adoptEN2kj9StringPtrEONS_6OrphanINS_12DynamicValueEEE
+  params:
+  - name: name
+    type: kj::StringPtr
+  - name: orphan
+    type: Orphan<capnp::DynamicValue> &&
+  return_type: void
+  signature: void capnp::DynamicStruct::Builder::adopt(kj::StringPtr, Orphan<capnp::DynamicValue> &&)
+- name: _ZN5capnp13DynamicStruct7Builder5adoptENS_12StructSchema5FieldEONS_6OrphanINS_12DynamicValueEEE
+  params:
+  - name: field
+    type: StructSchema::Field
+  - name: orphan
+    type: Orphan<capnp::DynamicValue> &&
+  return_type: void
+  signature: void capnp::DynamicStruct::Builder::adopt(StructSchema::Field, Orphan<capnp::DynamicValue> &&)
+- name: _ZN5capnp13DynamicStruct7Builder5clearENS_12StructSchema5FieldE
+  params:
+  - name: field
+    type: StructSchema::Field
+  return_type: void
+  signature: void capnp::DynamicStruct::Builder::clear(StructSchema::Field)
+- name: _ZN5capnp13DynamicStruct7Builder6disownENS_12StructSchema5FieldE
+  params:
+  - name: field
+    type: StructSchema::Field
+  return_type: Orphan<capnp::DynamicValue>
+  signature: Orphan<capnp::DynamicValue> capnp::DynamicStruct::Builder::disown(StructSchema::Field)
+- name: _ZN5capnp17DynamicCapability6Client10newRequestEN2kj9StringPtrENS2_5MaybeINS_11MessageSizeEEE
+  params:
+  - name: methodName
+    type: kj::StringPtr
+  - name: sizeHint
+    type: kj::Maybe<MessageSize>
+  return_type: Request<capnp::DynamicStruct, capnp::DynamicStruct>
+  signature: Request<capnp::DynamicStruct, capnp::DynamicStruct> capnp::DynamicCapability::Client::newRequest(kj::StringPtr,
+    kj::Maybe<MessageSize>)
+- name: _ZN5capnp17DynamicCapability6Client10newRequestENS_15InterfaceSchema6MethodEN2kj5MaybeINS_11MessageSizeEEE
+  params:
+  - name: method
+    type: InterfaceSchema::Method
+  - name: sizeHint
+    type: kj::Maybe<MessageSize>
+  return_type: Request<capnp::DynamicStruct, capnp::DynamicStruct>
+  signature: Request<capnp::DynamicStruct, capnp::DynamicStruct> capnp::DynamicCapability::Client::newRequest(InterfaceSchema::Method,
+    kj::Maybe<MessageSize>)
+- name: _ZN5capnp6OrphanINS_12DynamicValueEEC2ENS1_7BuilderEONS_1_13OrphanBuilderE
+  params:
+  - name: builder
+    type: _::OrphanBuilder &&
+  return_type: void
+  signature: void capnp::Orphan::Orphan(_::OrphanBuilder &&)
+- name: _ZN5capnp6schema5Field7Ordinal7Builder11setExplicitEt
+  params:
+  - name: value
+    type: ::uint16_t
+  return_type: void
+  signature: void capnp::schema::Field::Ordinal::Builder::setExplicit(::uint16_t)
+- name: _ZN5capnp9JsonCodec14addTypeHandlerENS_10EnumSchemaERNS0_7HandlerINS_11DynamicEnumELNS_5StyleE0EEE
+  params:
+  - name: handler
+    type: int &
+  return_type: void
+  signature: void capnp::JsonCodec::addTypeHandler(int &)
+- name: _ZN5capnp9JsonCodec16AnnotatedHandler14FlattenedFieldC2EN2kj9StringPtrES4_NS3_5OneOfIJNS_12StructSchema5FieldENS_4TypeEEEENS_12DynamicValue6ReaderE
+  params:
+  - name: prefix
+    type: kj::StringPtr
+  - name: name
+    type: kj::StringPtr
+  - name: type
+    type: kj::OneOf<StructSchema::Field, Type>
+  - name: value
+    type: DynamicValue::Reader
+  return_type: void
+  signature: void capnp::JsonCodec::AnnotatedHandler::FlattenedField::FlattenedField(kj::StringPtr, kj::StringPtr, kj::OneOf<StructSchema::Field,
+    Type>, DynamicValue::Reader)
+- name: _ZN5capnp9JsonCodec16AnnotatedHandlerC2ERS0_NS_12StructSchemaEN2kj5MaybeINS_4json20DiscriminatorOptions6ReaderEEENS5_INS4_9StringPtrEEERNS4_6VectorINS_6SchemaEEE
+  params:
+  - name: codec
+    type: capnp::JsonCodec &
+  - name: schema
+    type: capnp::StructSchema
+  - name: discriminator
+    type: kj::Maybe<json::DiscriminatorOptions::Reader>
+  - name: unionDeclName
+    type: kj::Maybe<kj::StringPtr>
+  - name: dependencies
+    type: kj::Vector<Schema> &
+  return_type: void
+  signature: void capnp::JsonCodec::AnnotatedHandler::AnnotatedHandler(capnp::JsonCodec &, capnp::StructSchema, kj::Maybe<json::DiscriminatorOptions::Reader>,
+    kj::Maybe<kj::StringPtr>, kj::Vector<Schema> &)
+- name: _ZN5capnp9Orphanage17NewOrphanListImplINS_4DataEE5applyEPNS_1_12BuilderArenaEPNS4_15CapTableBuilderEj
+  params:
+  - name: arena
+    type: _::BuilderArena *
+  - name: capTable
+    type: _::CapTableBuilder *
+  - name: size
+    type: capnp::uint
+  return_type: _::OrphanBuilder
+  signature: _::OrphanBuilder capnp::Orphanage::NewOrphanListImpl::apply(_::BuilderArena *, _::CapTableBuilder *, capnp::uint)
+- name: _ZN5capnp9RpcSystemINS_3rpc8twoparty5VatIdEE7restoreENS3_6ReaderENS_10AnyPointer6ReaderE
+  params:
+  - name: hostId
+    type: typename VatId::Reader
+  - name: objectId
+    type: AnyPointer::Reader
+  return_type: Capability::Client
+  signature: Capability::Client capnp::RpcSystem::restore(typename VatId::Reader, AnyPointer::Reader)
+- name: _ZN5capnpmlEN2kj1_11StringifierERKNS_12DynamicValue7BuilderE
+  params:
+  - name: arg0
+    type: ::kj::_::Stringifier
+  - name: value
+    type: const DynamicValue::Builder &
+  return_type: kj::StringTree
+  signature: kj::StringTree capnp::operator*(::kj::_::Stringifier, const DynamicValue::Builder &)
+- name: _ZNK2kj11MainBuilder4Impl18OptionDisplayOrderclEPKNS1_6OptionES5_
+  params:
+  - name: a
+    type: const kj::MainBuilder::Impl::Option *
+  - name: b
+    type: const kj::MainBuilder::Impl::Option *
+  return_type: bool
+  signature: bool kj::MainBuilder::Impl::OptionDisplayOrder::operator()(const kj::MainBuilder::Impl::Option *, const kj::MainBuilder::Impl::Option
+    *) const
+- name: _ZNK2kj12_GLOBAL__N_110DiskHandle13tryOpenSubdirENS_7PathPtrE
+  params:
+  - name: path
+    type: kj::PathPtr
+  return_type: int
+  signature: int kj::DiskHandle::tryOpenSubdir(kj::PathPtr) const
+- name: _ZNK2kj12_GLOBAL__N_110DiskHandle19tryOpenFileInternalENS_7PathPtrENS_9WriteModeEb
+  params:
+  - name: path
+    type: kj::PathPtr
+  - name: mode
+    type: kj::WriteMode
+  - name: append
+    type: bool
+  return_type: Maybe<kj::AutoCloseFd>
+  signature: Maybe<kj::AutoCloseFd> kj::DiskHandle::tryOpenFileInternal(kj::PathPtr, kj::WriteMode, bool) const
+- name: _ZNK2kj12_GLOBAL__N_110DiskHandle20createNamedTemporaryENS_7PathPtrENS_9WriteModeENS_8FunctionIFiNS_9StringPtrEEEE
+  params:
+  - name: finalName
+    type: kj::PathPtr
+  - name: mode
+    type: kj::WriteMode
+  - name: tryCreate
+    type: Function<int (kj::StringPtr)>
+  return_type: kj::Maybe<String>
+  signature: kj::Maybe<String> kj::DiskHandle::createNamedTemporary(kj::PathPtr, kj::WriteMode, Function<int (kj::StringPtr)>)
+    const
+- name: _ZNK2kj12_GLOBAL__N_110DiskHandle20tryCommitReplacementENS_9StringPtrEiS2_NS_9WriteModeEPi
+  params:
+  - name: toPath
+    type: kj::StringPtr
+  - name: fromDirFd
+    type: int
+  - name: fromPath
+    type: kj::StringPtr
+  - name: mode
+    type: kj::WriteMode
+  - name: errorReason
+    type: int *
+  return_type: bool
+  signature: bool kj::DiskHandle::tryCommitReplacement(kj::StringPtr, int, kj::StringPtr, kj::WriteMode, int *) const
+- name: _ZNK2kj12MutexGuardedISt5dequeIPNS_1_10FiberStackESaIS4_EEE13lockExclusiveENS_18NoopSourceLocationE
+  params:
+  - name: location
+    type: kj::LockSourceLocationArg
+  return_type: Locked<T>
+  signature: Locked<T> kj::MutexGuarded::lockExclusive(kj::LockSourceLocationArg) const
+- name: _ZNK2kj8AbsoluteINS_8QuantityIlNS_1_15NanosecondLabelEEENS2_9DateLabelEEplERKS4_
+  params:
+  - name: other
+    type: const capnp::MessageSize &
+  return_type: capnp::MessageSize
+  signature: capnp::MessageSize capnp::MessageSize::operator+(const capnp::MessageSize &) const
+- name: _ZNK2kj8AbsoluteINS_8QuantityIlNS_1_15NanosecondLabelEEENS2_9TimeLabelEEmiERKS6_
+  params:
+  - name: other
+    type: const MappedIterator<Inner, Mapping> &
+  return_type: int
+  signature: int kj::MappedIterator::operator-(const MappedIterator<Inner, Mapping> &) const
+- name: _ZNK2kj8AbsoluteINS_8QuantityIlNS_1_15NanosecondLabelEEENS2_9TimeLabelEEplERKS4_
+  params:
+  - name: other
+    type: const capnp::MessageSize &
+  return_type: capnp::MessageSize
+  signature: capnp::MessageSize capnp::MessageSize::operator+(const capnp::MessageSize &) const
+- name: _ZNK5capnp10EnumSchema18getEnumerantByNameEN2kj9StringPtrE
+  params:
+  - name: name
+    type: kj::StringPtr
+  return_type: capnp::EnumSchema::Enumerant
+  signature: capnp::EnumSchema::Enumerant capnp::EnumSchema::getEnumerantByName(kj::StringPtr) const
+- name: _ZNK5capnp11DynamicList6ReaderixEj
+  params:
+  - name: index
+    type: capnp::uint
+  return_type: DynamicValue::Reader
+  signature: DynamicValue::Reader capnp::DynamicList::Reader::operator[](capnp::uint) const
+- name: _ZNK5capnp12StructSchema22getFieldByDiscriminantEt
+  params:
+  - name: discriminant
+    type: uint16_t
+  return_type: kj::Maybe<Field>
+  signature: kj::Maybe<Field> capnp::StructSchema::getFieldByDiscriminant(uint16_t) const
+- name: _ZNK5capnp13DynamicStruct6Reader3getENS_12StructSchema5FieldE
+  params:
+  - name: field
+    type: StructSchema::Field
+  return_type: DynamicValue::Reader
+  signature: DynamicValue::Reader capnp::DynamicStruct::Reader::get(StructSchema::Field) const
+- name: _ZNK5capnp15InterfaceSchema15getMethodByNameEN2kj9StringPtrE
+  params:
+  - name: name
+    type: kj::StringPtr
+  return_type: capnp::InterfaceSchema::Method
+  signature: capnp::InterfaceSchema::Method capnp::InterfaceSchema::getMethodByName(kj::StringPtr) const
+- name: _ZNK5capnp9JsonCodec10HexHandler6decodeERKS0_NS_4json5Value6ReaderENS_9OrphanageE
+  params:
+  - name: codec
+    type: const capnp::JsonCodec &
+  - name: input
+    type: JsonValue::Reader
+  - name: orphanage
+    type: capnp::Orphanage
+  return_type: Orphan<capnp::Data>
+  signature: Orphan<capnp::Data> capnp::JsonCodec::HexHandler::decode(const capnp::JsonCodec &, JsonValue::Reader, capnp::Orphanage)
+    const
+- name: _ZNK5capnp9JsonCodec11decodeArrayENS_4ListINS_4json5ValueELNS_4KindE3EE6ReaderENS_10ListSchemaENS_9OrphanageE
+  params:
+  - name: input
+    type: int
+  - name: type
+    type: capnp::ListSchema
+  - name: orphanage
+    type: capnp::Orphanage
+  return_type: Orphan<capnp::DynamicList>
+  signature: Orphan<capnp::DynamicList> capnp::JsonCodec::decodeArray(int, capnp::ListSchema, capnp::Orphanage) const
+- name: _ZNK5capnp9JsonCodec16AnnotatedHandler6decodeERKS0_NS_4json5Value6ReaderENS_13DynamicStruct7BuilderE
+  params:
+  - name: codec
+    type: const capnp::JsonCodec &
+  - name: input
+    type: JsonValue::Reader
+  - name: output
+    type: DynamicStruct::Builder
+  return_type: void
+  signature: void capnp::JsonCodec::AnnotatedHandler::decode(const capnp::JsonCodec &, JsonValue::Reader, DynamicStruct::Builder)
+    const
+- name: _ZNK5capnp9JsonCodec16AnnotatedHandler6encodeERKS0_NS_13DynamicStruct6ReaderENS_4json5Value7BuilderE
+  params:
+  - name: codec
+    type: const capnp::JsonCodec &
+  - name: input
+    type: DynamicStruct::Reader
+  - name: output
+    type: JsonValue::Builder
+  return_type: void
+  signature: void capnp::JsonCodec::AnnotatedHandler::encode(const capnp::JsonCodec &, DynamicStruct::Reader, JsonValue::Builder)
+    const
+- name: _ZNK5capnp9JsonCodec16JsonValueHandler6decodeERKS0_NS_4json5Value6ReaderENS_13DynamicStruct7BuilderE
+  params:
+  - name: codec
+    type: const capnp::JsonCodec &
+  - name: input
+    type: JsonValue::Reader
+  - name: output
+    type: DynamicStruct::Builder
+  return_type: void
+  signature: void capnp::JsonCodec::JsonValueHandler::decode(const capnp::JsonCodec &, JsonValue::Reader, DynamicStruct::Builder)
+    const
+- name: _ZNK5capnp9JsonCodec16JsonValueHandler6encodeERKS0_NS_13DynamicStruct6ReaderENS_4json5Value7BuilderE
+  params:
+  - name: codec
+    type: const capnp::JsonCodec &
+  - name: input
+    type: DynamicStruct::Reader
+  - name: output
+    type: JsonValue::Builder
+  return_type: void
+  signature: void capnp::JsonCodec::JsonValueHandler::encode(const capnp::JsonCodec &, DynamicStruct::Reader, JsonValue::Builder)
+    const
+- name: _ZNK5capnp9JsonCodec20AnnotatedEnumHandler6encodeERKS0_NS_11DynamicEnumENS_4json5Value7BuilderE
+  params:
+  - name: codec
+    type: const capnp::JsonCodec &
+  - name: input
+    type: capnp::DynamicEnum
+  - name: output
+    type: JsonValue::Builder
+  return_type: void
+  signature: void capnp::JsonCodec::AnnotatedEnumHandler::encode(const capnp::JsonCodec &, capnp::DynamicEnum, JsonValue::Builder)
+    const
+- name: _ZNK5capnp9JsonCodec6decodeEN2kj8ArrayPtrIKcEENS_13DynamicStruct7BuilderE
+  params:
+  - name: input
+    type: kj::ArrayPtr<const char>
+  - name: output
+    type: DynamicStruct::Builder
+  return_type: void
+  signature: void capnp::JsonCodec::decode(kj::ArrayPtr<const char>, DynamicStruct::Builder) const
+- name: _ZNK5capnp9JsonCodec6decodeEN2kj8ArrayPtrIKcEENS_4TypeENS_9OrphanageE
+  params:
+  - name: input
+    type: kj::ArrayPtr<const char>
+  - name: type
+    type: capnp::Type
+  - name: orphanage
+    type: capnp::Orphanage
+  return_type: Orphan<capnp::DynamicValue>
+  signature: Orphan<capnp::DynamicValue> capnp::JsonCodec::decode(kj::ArrayPtr<const char>, capnp::Type, capnp::Orphanage)
+    const
+- name: _ZNK5capnp9JsonCodec6decodeENS_4json5Value6ReaderENS_13DynamicStruct7BuilderE
+  params:
+  - name: input
+    type: JsonValue::Reader
+  - name: output
+    type: DynamicStruct::Builder
+  return_type: void
+  signature: void capnp::JsonCodec::decode(JsonValue::Reader, DynamicStruct::Builder) const
+- name: _ZNK5capnp9JsonCodec6decodeENS_4json5Value6ReaderENS_4TypeENS_9OrphanageE
+  params:
+  - name: input
+    type: JsonValue::Reader
+  - name: type
+    type: capnp::Type
+  - name: orphanage
+    type: capnp::Orphanage
+  return_type: Orphan<capnp::DynamicValue>
+  signature: Orphan<capnp::DynamicValue> capnp::JsonCodec::decode(JsonValue::Reader, capnp::Type, capnp::Orphanage) const
+- name: _ZNK5capnp9JsonCodec6encodeENS_12DynamicValue6ReaderENS_4TypeE
+  params:
+  - name: value
+    type: DynamicValue::Reader
+  - name: type
+    type: capnp::Type
+  return_type: kj::String
+  signature: kj::String capnp::JsonCodec::encode(DynamicValue::Reader, capnp::Type) const
+- name: _ZNK5capnp9JsonCodec6encodeENS_12DynamicValue6ReaderENS_4TypeENS_4json5Value7BuilderE
+  params:
+  - name: input
+    type: DynamicValue::Reader
+  - name: type
+    type: capnp::Type
+  - name: output
+    type: JsonValue::Builder
+  return_type: void
+  signature: void capnp::JsonCodec::encode(DynamicValue::Reader, capnp::Type, JsonValue::Builder) const
+- name: _ZNK5capnp9Orphanage9newOrphanENS_10ListSchemaEj
+  params:
+  - name: schema
+    type: capnp::ListSchema
+  - name: size
+    type: capnp::uint
+  return_type: Orphan<capnp::DynamicList>
+  signature: Orphan<capnp::DynamicList> capnp::Orphanage::newOrphan(capnp::ListSchema, capnp::uint) const
+- name: _ZNKR2kj5MaybeINS_8AbsoluteINS_8QuantityIlNS_1_15NanosecondLabelEEENS3_9DateLabelEEEE9orDefaultERKS7_
+  params:
+  - name: defaultValue
+    type: const T &
+  return_type: const T &
+  signature: const T & kj::Maybe::orDefault(const T &) const
+language: c++
+project: capnproto
+target_name: capnp-llvm-fuzzer-testcase
+target_path: /src/capnproto/c++/src/capnp/llvm-fuzzer-testcase.c++

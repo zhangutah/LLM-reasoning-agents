@@ -1,0 +1,4025 @@
+functions:
+- name: _ZN4wabt10Decompiler10WrapBinaryERSt6vectorINS0_5ValueESaIS2_EESt17basic_string_viewIcSt11char_traitsIcEEbNS0_10PrecedenceE
+  params:
+  - name: args
+    type: int &
+  - name: infix
+    type: int
+  - name: indent_right
+    type: bool
+  - name: precedence
+    type: wabt::Decompiler::Precedence
+  return_type: wabt::Decompiler::Value
+  signature: wabt::Decompiler::Value wabt::Decompiler::WrapBinary(int &, int, bool, wabt::Decompiler::Precedence)
+- name: _ZN4wabt10Decompiler11IndentValueERNS0_5ValueEmSt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: val
+    type: wabt::Decompiler::Value &
+  - name: amount
+    type: int
+  - name: first_indent
+    type: int
+  return_type: void
+  signature: void wabt::Decompiler::IndentValue(wabt::Decompiler::Value &, int, int)
+- name: _ZN4wabt10Decompiler13DecompileExprERKNS_4NodeEPS2_
+  params:
+  - name: n
+    type: const wabt::Node &
+  - name: parent
+    type: const wabt::Node *
+  return_type: wabt::Decompiler::Value
+  signature: wabt::Decompiler::Value wabt::Decompiler::DecompileExpr(const wabt::Node &, const wabt::Node *)
+- name: _ZN4wabt10Decompiler13OpcodeToTokenB5cxx11ENS_6OpcodeE
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  return_type: std::string
+  signature: std::string wabt::Decompiler::OpcodeToToken(wabt::Opcode)
+- name: _ZN4wabt10Decompiler15BracketIfNeededERNS0_5ValueENS0_10PrecedenceE
+  params:
+  - name: val
+    type: wabt::Decompiler::Value &
+  - name: parent_precedence
+    type: wabt::Decompiler::Precedence
+  return_type: void
+  signature: void wabt::Decompiler::BracketIfNeeded(wabt::Decompiler::Value &, wabt::Decompiler::Precedence)
+- name: _ZN4wabt10Decompiler17CheckImportExportERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS_12ExternalKindEjSt17basic_string_viewIcS4_E
+  params:
+  - name: s
+    type: std::string &
+  - name: kind
+    type: wabt::ExternalKind
+  - name: index
+    type: wabt::Index
+  - name: name
+    type: int
+  return_type: bool
+  signature: bool wabt::Decompiler::CheckImportExport(std::string &, wabt::ExternalKind, wabt::Index, int)
+- name: _ZN4wabt10Decompiler7InitExpB5cxx11ERKNS_14intrusive_listINS_4ExprEEE
+  params:
+  - name: el
+    type: const wabt::ExprList &
+  return_type: std::string
+  signature: std::string wabt::Decompiler::InitExp(const wabt::ExprList &)
+- name: _ZN4wabt10Decompiler9LoadStoreERNS0_5ValueERKNS_4NodeEmNS_6OpcodeEmNS_4TypeE
+  params:
+  - name: val
+    type: wabt::Decompiler::Value &
+  - name: addr_exp
+    type: const wabt::Node &
+  - name: offset
+    type: uint64_t
+  - name: opc
+    type: wabt::Opcode
+  - name: align
+    type: wabt::Address
+  - name: op_type
+    type: wabt::Type
+  return_type: void
+  signature: void wabt::Decompiler::LoadStore(wabt::Decompiler::Value &, const wabt::Node &, uint64_t, wabt::Opcode, wabt::Address,
+    wabt::Type)
+- name: _ZN4wabt10Decompiler9LocalDeclERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS_4TypeE
+  params:
+  - name: name
+    type: const std::string &
+  - name: t
+    type: wabt::Type
+  return_type: std::string
+  signature: std::string wabt::Decompiler::LocalDecl(const std::string &, wabt::Type)
+- name: _ZN4wabt10DecompilerC2ERKNS_6ModuleERKNS_16DecompileOptionsE
+  params:
+  - name: module
+    type: const wabt::Module &
+  - name: options
+    type: const wabt::DecompileOptions &
+  return_type: void
+  signature: void wabt::Decompiler::Decompiler(const wabt::Module &, const wabt::DecompileOptions &)
+- name: _ZN4wabt10TraceScopeC2EPKc
+  params:
+  - name: method
+    type: const char *
+  return_type: void
+  signature: void wabt::TraceScope::TraceScope(const char *)
+- name: _ZN4wabt10WastParser10ParseConstEPNS_5ConstENS0_9ConstTypeE
+  params:
+  - name: const_
+    type: wabt::Const *
+  - name: const_type
+    type: wabt::WastParser::ConstType
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseConst(wabt::Const *, wabt::WastParser::ConstType)
+- name: _ZN4wabt10WastParser10ParseInstrEPNS_14intrusive_listINS_4ExprEEE
+  params:
+  - name: exprs
+    type: wabt::ExprList *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseInstr(wabt::ExprList *)
+- name: _ZN4wabt10WastParser11ParseActionEPSt10unique_ptrINS_6ActionESt14default_deleteIS2_EE
+  params:
+  - name: out_action
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseAction(int *)
+- name: _ZN4wabt10WastParser11ParseEitherEPSt6vectorINS_5ConstESaIS2_EE
+  params:
+  - name: alternatives
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseEither(int *)
+- name: _ZN4wabt10WastParser11ParseLimitsEPNS_6LimitsE
+  params:
+  - name: out_limits
+    type: wabt::Limits *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseLimits(wabt::Limits *)
+- name: _ZN4wabt10WastParser11ParseModuleEPSt10unique_ptrINS_6ModuleESt14default_deleteIS2_EE
+  params:
+  - name: out_module
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseModule(int *)
+- name: _ZN4wabt10WastParser11ParseScriptEPSt10unique_ptrINS_6ScriptESt14default_deleteIS2_EE
+  params:
+  - name: out_script
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseScript(int *)
+- name: _ZN4wabt10WastParser11ParseVarOptEPNS_3VarES1_
+  params:
+  - name: out_var
+    type: wabt::Var *
+  - name: default_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseVarOpt(wabt::Var *, wabt::Var)
+- name: _ZN4wabt10WastParser12ParseCommandEPNS_6ScriptEPSt10unique_ptrINS_7CommandESt14default_deleteIS4_EE
+  params:
+  - name: script
+    type: wabt::Script *
+  - name: out_command
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseCommand(wabt::Script *, int *)
+- name: _ZN4wabt10WastParser12ParseRefKindEPNS_3VarE
+  params:
+  - name: out_type
+    type: wabt::Var *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseRefKind(wabt::Var *)
+- name: _ZN4wabt10WastParser13ErrorExpectedERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EEPKc
+  params:
+  - name: expected
+    type: const int &
+  - name: example
+    type: const char *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ErrorExpected(const int &, const char *)
+- name: _ZN4wabt10WastParser13ParseTextListEPSt6vectorIhSaIhEE
+  params:
+  - name: out_data
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseTextList(int *)
+- name: _ZN4wabt10WastParser14ParseConstListEPSt6vectorINS_5ConstESaIS2_EENS0_9ConstTypeE
+  params:
+  - name: consts
+    type: int *
+  - name: type
+    type: wabt::WastParser::ConstType
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseConstList(int *, wabt::WastParser::ConstType)
+- name: _ZN4wabt10WastParser14ParseExternrefEPNS_5ConstE
+  params:
+  - name: const_
+    type: wabt::Const *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseExternref(wabt::Const *)
+- name: _ZN4wabt10WastParser14ParseFieldListEPSt6vectorINS_5FieldESaIS2_EE
+  params:
+  - name: fields
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseFieldList(int *)
+- name: _ZN4wabt10WastParser14ParseInstrListEPNS_14intrusive_listINS_4ExprEEE
+  params:
+  - name: exprs
+    type: wabt::ExprList *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseInstrList(wabt::ExprList *)
+- name: _ZN4wabt10WastParser15ParseBlockInstrEPSt10unique_ptrINS_4ExprESt14default_deleteIS2_EE
+  params:
+  - name: out_expr
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseBlockInstr(int *)
+- name: _ZN4wabt10WastParser15ParseGlobalTypeEPNS_6GlobalE
+  params:
+  - name: global
+    type: wabt::Global *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseGlobalType(wabt::Global *)
+- name: _ZN4wabt10WastParser15ParseOffsetExprEPNS_14intrusive_listINS_4ExprEEE
+  params:
+  - name: out_expr_list
+    type: wabt::ExprList *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseOffsetExpr(wabt::ExprList *)
+- name: _ZN4wabt10WastParser15ParsePlainInstrEPSt10unique_ptrINS_4ExprESt14default_deleteIS2_EE
+  params:
+  - name: out_expr
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParsePlainInstr(int *)
+- name: _ZN4wabt10WastParser15ParseQuotedTextEPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: text
+    type: std::string *
+  - name: check_utf8
+    type: bool
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseQuotedText(std::string *, bool)
+- name: _ZN4wabt10WastParser15ParseRefTypeOptEPNS_3VarERNS_6ResultE
+  params:
+  - name: out_type
+    type: wabt::Var *
+  - name: result
+    type: wabt::Result &
+  return_type: bool
+  signature: bool wabt::WastParser::ParseRefTypeOpt(wabt::Var *, wabt::Result &)
+- name: _ZN4wabt10WastParser16ParseCommandListEPNS_6ScriptEPSt6vectorISt10unique_ptrINS_7CommandESt14default_deleteIS5_EESaIS8_EE
+  params:
+  - name: script
+    type: wabt::Script *
+  - name: commands
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseCommandList(wabt::Script *, int *)
+- name: _ZN4wabt10WastParser16ParseModuleFieldEPNS_6ModuleE
+  params:
+  - name: module
+    type: wabt::Module *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseModuleField(wabt::Module *)
+- name: _ZN4wabt10WastParser17ParseScriptModuleEPSt10unique_ptrINS_12ScriptModuleESt14default_deleteIS2_EE
+  params:
+  - name: out_module
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseScriptModule(int *)
+- name: _ZN4wabt10WastParser18ParseCatchExprListEPSt6vectorINS_5CatchESaIS2_EE
+  params:
+  - name: catches
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseCatchExprList(int *)
+- name: _ZN4wabt10WastParser18ParseFuncSignatureEPNS_13FuncSignatureEPNS_11BindingHashE
+  params:
+  - name: sig
+    type: wabt::FuncSignature *
+  - name: param_bindings
+    type: wabt::BindingHash *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseFuncSignature(wabt::FuncSignature *, wabt::BindingHash *)
+- name: _ZN4wabt10WastParser18ParseModuleCommandEPNS_6ScriptEPSt10unique_ptrINS_7CommandESt14default_deleteIS4_EE
+  params:
+  - name: script
+    type: wabt::Script *
+  - name: out_command
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseModuleCommand(wabt::Script *, int *)
+- name: _ZN4wabt10WastParser18ParseOffsetExprOptEPNS_14intrusive_listINS_4ExprEEE
+  params:
+  - name: out_expr_list
+    type: wabt::ExprList *
+  return_type: bool
+  signature: bool wabt::WastParser::ParseOffsetExprOpt(wabt::ExprList *)
+- name: _ZN4wabt10WastParser18ParseSimdV128ConstEPNS_5ConstENS_9TokenTypeENS0_9ConstTypeE
+  params:
+  - name: const_
+    type: wabt::Const *
+  - name: token_type
+    type: wabt::TokenType
+  - name: const_type
+    type: wabt::WastParser::ConstType
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseSimdV128Const(wabt::Const *, wabt::TokenType, wabt::WastParser::ConstType)
+- name: _ZN4wabt10WastParser19ParseExpectedValuesEPSt10unique_ptrINS_11ExpectationESt14default_deleteIS2_EE
+  params:
+  - name: expectation
+    type: wabt::ExpectationPtr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseExpectedValues(wabt::ExpectationPtr *)
+- name: _ZN4wabt10WastParser19ParseTagModuleFieldEPNS_6ModuleE
+  params:
+  - name: module
+    type: wabt::Module *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseTagModuleField(wabt::Module *)
+- name: _ZN4wabt10WastParser20ParseDataModuleFieldEPNS_6ModuleE
+  params:
+  - name: module
+    type: wabt::Module *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseDataModuleField(wabt::Module *)
+- name: _ZN4wabt10WastParser20ParseElemModuleFieldEPNS_6ModuleE
+  params:
+  - name: module
+    type: wabt::Module *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseElemModuleField(wabt::Module *)
+- name: _ZN4wabt10WastParser20ParseFuncModuleFieldEPNS_6ModuleE
+  params:
+  - name: module
+    type: wabt::Module *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseFuncModuleField(wabt::Module *)
+- name: _ZN4wabt10WastParser20ParseModuleFieldListEPNS_6ModuleE
+  params:
+  - name: module
+    type: wabt::Module *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseModuleFieldList(wabt::Module *)
+- name: _ZN4wabt10WastParser20ParseRegisterCommandEPSt10unique_ptrINS_7CommandESt14default_deleteIS2_EE
+  params:
+  - name: out_command
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseRegisterCommand(int *)
+- name: _ZN4wabt10WastParser20ParseTypeModuleFieldEPNS_6ModuleE
+  params:
+  - name: module
+    type: wabt::Module *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseTypeModuleField(wabt::Module *)
+- name: _ZN4wabt10WastParser20ResolveTargetRefTypeERKNS_6ModuleEPNS_4TypeERKNS_3VarEPSt6vectorINS_5ErrorESaISA_EE
+  params:
+  - name: module
+    type: const wabt::Module &
+  - name: type
+    type: wabt::Type *
+  - name: var
+    type: const wabt::Var &
+  - name: errors
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ResolveTargetRefType(const wabt::Module &, wabt::Type *, const wabt::Var &, int
+    *)
+- name: _ZN4wabt10WastParser21ParseTableModuleFieldEPNS_6ModuleE
+  params:
+  - name: module
+    type: wabt::Module *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseTableModuleField(wabt::Module *)
+- name: _ZN4wabt10WastParser22ParseAssertTrapCommandEPSt10unique_ptrINS_7CommandESt14default_deleteIS2_EE
+  params:
+  - name: out_command
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseAssertTrapCommand(int *)
+- name: _ZN4wabt10WastParser22ParseExportModuleFieldEPNS_6ModuleE
+  params:
+  - name: module
+    type: wabt::Module *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseExportModuleField(wabt::Module *)
+- name: _ZN4wabt10WastParser22ParseGlobalModuleFieldEPNS_6ModuleE
+  params:
+  - name: module
+    type: wabt::Module *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseGlobalModuleField(wabt::Module *)
+- name: _ZN4wabt10WastParser22ParseImportModuleFieldEPNS_6ModuleE
+  params:
+  - name: module
+    type: wabt::Module *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseImportModuleField(wabt::Module *)
+- name: _ZN4wabt10WastParser23ParseBoundValueTypeListENS_9TokenTypeEPSt6vectorINS_4TypeESaIS3_EEPNS_11BindingHashEPS2_INS0_12ReferenceVarESaIS9_EEj
+  params:
+  - name: token
+    type: wabt::TokenType
+  - name: types
+    type: int *
+  - name: bindings
+    type: wabt::BindingHash *
+  - name: type_vars
+    type: wabt::WastParser::ReferenceVars *
+  - name: binding_index_offset
+    type: wabt::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseBoundValueTypeList(wabt::TokenType, int *, wabt::BindingHash *, wabt::WastParser::ReferenceVars
+    *, wabt::Index)
+- name: _ZN4wabt10WastParser24ParseAssertReturnCommandEPSt10unique_ptrINS_7CommandESt14default_deleteIS2_EE
+  params:
+  - name: out_command
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseAssertReturnCommand(int *)
+- name: _ZN4wabt10WastParser25ParseAssertInvalidCommandEPSt10unique_ptrINS_7CommandESt14default_deleteIS2_EE
+  params:
+  - name: out_command
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseAssertInvalidCommand(int *)
+- name: _ZN4wabt10WastParser25ParseTerminatingInstrListEPNS_14intrusive_listINS_4ExprEEE
+  params:
+  - name: exprs
+    type: wabt::ExprList *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseTerminatingInstrList(wabt::ExprList *)
+- name: _ZN4wabt10WastParser25ParseUnboundFuncSignatureEPNS_13FuncSignatureE
+  params:
+  - name: sig
+    type: wabt::FuncSignature *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseUnboundFuncSignature(wabt::FuncSignature *)
+- name: _ZN4wabt10WastParser27ParseAssertExceptionCommandEPSt10unique_ptrINS_7CommandESt14default_deleteIS2_EE
+  params:
+  - name: out_command
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseAssertExceptionCommand(int *)
+- name: _ZN4wabt10WastParser27ParseAssertMalformedCommandEPSt10unique_ptrINS_7CommandESt14default_deleteIS2_EE
+  params:
+  - name: out_command
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseAssertMalformedCommand(int *)
+- name: _ZN4wabt10WastParser28ParseAssertExhaustionCommandEPSt10unique_ptrINS_7CommandESt14default_deleteIS2_EE
+  params:
+  - name: out_command
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseAssertExhaustionCommand(int *)
+- name: _ZN4wabt10WastParser28ParseAssertUnlinkableCommandEPSt10unique_ptrINS_7CommandESt14default_deleteIS2_EE
+  params:
+  - name: out_command
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseAssertUnlinkableCommand(int *)
+- name: _ZN4wabt10WastParser28ParseCustomSectionAnnotationEPNS_6ModuleE
+  params:
+  - name: module
+    type: wabt::Module *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseCustomSectionAnnotation(wabt::Module *)
+- name: _ZN4wabt10WastParser4PeekEm
+  params:
+  - name: n
+    type: int
+  return_type: wabt::TokenType
+  signature: wabt::TokenType wabt::WastParser::Peek(int)
+- name: _ZN4wabt10WastParser5ErrorENS_8LocationEPKcz
+  params:
+  - name: loc
+    type: wabt::Location
+  - name: format
+    type: const char *
+  return_type: void
+  signature: void wabt::WastParser::Error(wabt::Location, const char *)
+- name: _ZN4wabt10WastParser5MatchENS_9TokenTypeE
+  params:
+  - name: type
+    type: wabt::TokenType
+  return_type: bool
+  signature: bool wabt::WastParser::Match(wabt::TokenType)
+- name: _ZN4wabt10WastParser8ParseF32EPNS_5ConstENS0_9ConstTypeE
+  params:
+  - name: const_
+    type: wabt::Const *
+  - name: const_type
+    type: wabt::WastParser::ConstType
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseF32(wabt::Const *, wabt::WastParser::ConstType)
+- name: _ZN4wabt10WastParser8ParseF64EPNS_5ConstENS0_9ConstTypeE
+  params:
+  - name: const_
+    type: wabt::Const *
+  - name: const_type
+    type: wabt::WastParser::ConstType
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseF64(wabt::Const *, wabt::WastParser::ConstType)
+- name: _ZN4wabt10WastParser8ParseVarEPNS_3VarE
+  params:
+  - name: out_var
+    type: wabt::Var *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseVar(wabt::Var *)
+- name: _ZN4wabt10WastParser9MatchLparENS_9TokenTypeE
+  params:
+  - name: type
+    type: wabt::TokenType
+  return_type: bool
+  signature: bool wabt::WastParser::MatchLpar(wabt::TokenType)
+- name: _ZN4wabt10WastParser9ParseExprEPNS_14intrusive_listINS_4ExprEEE
+  params:
+  - name: exprs
+    type: wabt::ExprList *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WastParser::ParseExpr(wabt::ExprList *)
+- name: _ZN4wabt10WastParser9VarToTypeERKNS_3VarEPNS_4TypeE
+  params:
+  - name: var
+    type: const wabt::Var &
+  - name: type
+    type: wabt::Type *
+  return_type: void
+  signature: void wabt::WastParser::VarToType(const wabt::Var &, wabt::Type *)
+- name: _ZN4wabt10WastParserC2EPNS_9WastLexerEPSt6vectorINS_5ErrorESaIS4_EEPNS_16WastParseOptionsE
+  params:
+  - name: lexer
+    type: wabt::WastLexer *
+  - name: errors
+    type: int *
+  - name: options
+    type: wabt::WastParseOptions *
+  return_type: void
+  signature: void wabt::WastParser::WastParser(wabt::WastLexer *, int *, wabt::WastParseOptions *)
+- name: _ZN4wabt11ExprVisitor12PushExprlistENS0_5StateEPNS_4ExprERNS_14intrusive_listIS2_EE
+  params:
+  - name: state
+    type: wabt::ExprVisitor::State
+  - name: arg1
+    type: wabt::Expr *
+  - name: arg2
+    type: wabt::ExprList &
+  return_type: void
+  signature: void wabt::ExprVisitor::PushExprlist(wabt::ExprVisitor::State, wabt::Expr *, wabt::ExprList &)
+- name: _ZN4wabt11ExprVisitor13VisitExprListERNS_14intrusive_listINS_4ExprEEE
+  params:
+  - name: arg0
+    type: wabt::ExprList &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::ExprVisitor::VisitExprList(wabt::ExprList &)
+- name: _ZN4wabt11ExprVisitor18HandleDefaultStateEPNS_4ExprE
+  params:
+  - name: arg0
+    type: wabt::Expr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::ExprVisitor::HandleDefaultState(wabt::Expr *)
+- name: _ZN4wabt11ExprVisitor9VisitExprEPNS_4ExprE
+  params:
+  - name: arg0
+    type: wabt::Expr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::ExprVisitor::VisitExpr(wabt::Expr *)
+- name: _ZN4wabt11ExprVisitor9VisitFuncEPNS_4FuncE
+  params:
+  - name: arg0
+    type: wabt::Func *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::ExprVisitor::VisitFunc(wabt::Func *)
+- name: _ZN4wabt11LexerSource9ReadRangeENS_5RangeImEEPSt6vectorIcSaIcEE
+  params:
+  - name: arg0
+    type: int
+  - name: out_data
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::LexerSource::ReadRange(int, int *)
+- name: _ZN4wabt11ModuleFieldC2ENS_15ModuleFieldTypeERKNS_8LocationE
+  params:
+  - name: type
+    type: wabt::ModuleFieldType
+  - name: loc
+    type: const wabt::Location &
+  return_type: void
+  signature: void wabt::ModuleField::ModuleField(wabt::ModuleFieldType, const wabt::Location &)
+- name: _ZN4wabt11TypeChecker10OnBrOnNullEj
+  params:
+  - name: depth
+    type: wabt::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::OnBrOnNull(wabt::Index)
+- name: _ZN4wabt11TypeChecker11OnTableGrowENS_4TypeERKNS_6LimitsE
+  params:
+  - name: elem_type
+    type: wabt::Type
+  - name: limits
+    type: const wabt::Limits &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::OnTableGrow(wabt::Type, const wabt::Limits &)
+- name: _ZN4wabt11TypeChecker11OnTableSizeERKNS_6LimitsE
+  params:
+  - name: limits
+    type: const wabt::Limits &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::OnTableSize(const wabt::Limits &)
+- name: _ZN4wabt11TypeChecker12CheckOpcode3ENS_6OpcodeEPKNS_6LimitsES4_S4_
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: limits1
+    type: const wabt::Limits *
+  - name: limits2
+    type: const wabt::Limits *
+  - name: limits3
+    type: const wabt::Limits *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::CheckOpcode3(wabt::Opcode, const wabt::Limits *, const wabt::Limits *, const
+    wabt::Limits *)
+- name: _ZN4wabt11TypeChecker12CheckOpcode4ENS_6OpcodeEPKNS_6LimitsES4_S4_S4_
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: limits1
+    type: const wabt::Limits *
+  - name: limits2
+    type: const wabt::Limits *
+  - name: limits3
+    type: const wabt::Limits *
+  - name: limits4
+    type: const wabt::Limits *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::CheckOpcode4(wabt::Opcode, const wabt::Limits *, const wabt::Limits *, const
+    wabt::Limits *, const wabt::Limits *)
+- name: _ZN4wabt11TypeChecker12OnAtomicLoadENS_6OpcodeERKNS_6LimitsE
+  params:
+  - name: arg0
+    type: wabt::Opcode
+  - name: limits
+    type: const wabt::Limits &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::OnAtomicLoad(wabt::Opcode, const wabt::Limits &)
+- name: _ZN4wabt11TypeChecker12OnMemoryCopyERKNS_6LimitsES3_
+  params:
+  - name: dst_limits
+    type: const wabt::Limits &
+  - name: src_limits
+    type: const wabt::Limits &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::OnMemoryCopy(const wabt::Limits &, const wabt::Limits &)
+- name: _ZN4wabt11TypeChecker12OnQuaternaryENS_6OpcodeE
+  params:
+  - name: arg0
+    type: wabt::Opcode
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::OnQuaternary(wabt::Opcode)
+- name: _ZN4wabt11TypeChecker12OnReturnCallERKSt6vectorINS_4TypeESaIS2_EES6_
+  params:
+  - name: param_types
+    type: const int &
+  - name: result_types
+    type: const int &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::OnReturnCall(const int &, const int &)
+- name: _ZN4wabt11TypeChecker13OnRefFuncExprEj
+  params:
+  - name: func_type
+    type: wabt::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::OnRefFuncExpr(wabt::Index)
+- name: _ZN4wabt11TypeChecker15GetRethrowLabelEjPPNS0_5LabelE
+  params:
+  - name: depth
+    type: wabt::Index
+  - name: out_label
+    type: wabt::TypeChecker::Label **
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::GetRethrowLabel(wabt::Index, wabt::TypeChecker::Label **)
+- name: _ZN4wabt11TypeChecker15OnBrTableTargetEj
+  params:
+  - name: depth
+    type: wabt::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::OnBrTableTarget(wabt::Index)
+- name: _ZN4wabt11TypeChecker15OnSimdStoreLaneENS_6OpcodeERKNS_6LimitsEm
+  params:
+  - name: arg0
+    type: wabt::Opcode
+  - name: limits
+    type: const wabt::Limits &
+  - name: arg2
+    type: uint64_t
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::OnSimdStoreLane(wabt::Opcode, const wabt::Limits &, uint64_t)
+- name: _ZN4wabt11TypeChecker16PopAndCheck1TypeENS_4TypeEPKc
+  params:
+  - name: expected
+    type: wabt::Type
+  - name: desc
+    type: const char *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::PopAndCheck1Type(wabt::Type, const char *)
+- name: _ZN4wabt11TypeChecker17PopAndCheck2TypesENS_4TypeES1_PKc
+  params:
+  - name: expected1
+    type: wabt::Type
+  - name: expected2
+    type: wabt::Type
+  - name: desc
+    type: const char *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::PopAndCheck2Types(wabt::Type, wabt::Type, const char *)
+- name: _ZN4wabt11TypeChecker17PopAndCheck3TypesENS_4TypeES1_S1_PKc
+  params:
+  - name: expected1
+    type: wabt::Type
+  - name: expected2
+    type: wabt::Type
+  - name: expected3
+    type: wabt::Type
+  - name: desc
+    type: const char *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::PopAndCheck3Types(wabt::Type, wabt::Type, wabt::Type, const char *)
+- name: _ZN4wabt11TypeChecker17PopAndCheck4TypesENS_4TypeES1_S1_S1_PKc
+  params:
+  - name: expected1
+    type: wabt::Type
+  - name: expected2
+    type: wabt::Type
+  - name: expected3
+    type: wabt::Type
+  - name: expected4
+    type: wabt::Type
+  - name: desc
+    type: const char *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::PopAndCheck4Types(wabt::Type, wabt::Type, wabt::Type, wabt::Type, const char
+    *)
+- name: _ZN4wabt11TypeChecker20CheckReturnSignatureERKSt6vectorINS_4TypeESaIS2_EES6_PKc
+  params:
+  - name: sig
+    type: const int &
+  - name: expected
+    type: const int &
+  - name: desc
+    type: const char *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::CheckReturnSignature(const int &, const int &, const char *)
+- name: _ZN4wabt11TypeChecker21PopAndCheckReturnCallERKSt6vectorINS_4TypeESaIS2_EEPKc
+  params:
+  - name: result_types
+    type: const int &
+  - name: desc
+    type: const char *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::PopAndCheckReturnCall(const int &, const char *)
+- name: _ZN4wabt11TypeChecker5OnEndEPNS0_5LabelEPKcS4_
+  params:
+  - name: label
+    type: wabt::TypeChecker::Label *
+  - name: sig_desc
+    type: const char *
+  - name: end_desc
+    type: const char *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::OnEnd(wabt::TypeChecker::Label *, const char *, const char *)
+- name: _ZN4wabt11TypeChecker5OnTryERKSt6vectorINS_4TypeESaIS2_EES6_
+  params:
+  - name: param_types
+    type: const int &
+  - name: result_types
+    type: const int &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::OnTry(const int &, const int &)
+- name: _ZN4wabt11TypeChecker7OnCatchERKSt6vectorINS_4TypeESaIS2_EE
+  params:
+  - name: sig
+    type: const int &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::OnCatch(const int &)
+- name: _ZN4wabt11TypeChecker7OnStoreENS_6OpcodeERKNS_6LimitsE
+  params:
+  - name: arg0
+    type: wabt::Opcode
+  - name: limits
+    type: const wabt::Limits &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::OnStore(wabt::Opcode, const wabt::Limits &)
+- name: _ZN4wabt11TypeChecker8OnSelectERKSt6vectorINS_4TypeESaIS2_EE
+  params:
+  - name: result_types
+    type: const int &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::OnSelect(const int &)
+- name: _ZN4wabt11TypeChecker9OnCallRefENS_4TypeERKSt6vectorIS1_SaIS1_EES6_
+  params:
+  - name: type
+    type: wabt::Type
+  - name: param_types
+    type: const int &
+  - name: result_types
+    type: const int &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::OnCallRef(wabt::Type, const int &, const int &)
+- name: _ZN4wabt11TypeChecker9OnRethrowEj
+  params:
+  - name: depth
+    type: wabt::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::TypeChecker::OnRethrow(wabt::Index)
+- name: _ZN4wabt11WriteOpcodeEPNS_6StreamENS_6OpcodeE
+  params:
+  - name: stream
+    type: wabt::Stream *
+  - name: opcode
+    type: wabt::Opcode
+  return_type: void
+  signature: void wabt::WriteOpcode(wabt::Stream *, wabt::Opcode)
+- name: _ZN4wabt12MemoryStreamC2EOSt10unique_ptrINS_12OutputBufferESt14default_deleteIS2_EEPNS_6StreamE
+  params:
+  - name: arg0
+    type: int &&
+  - name: log_stream
+    type: wabt::Stream *
+  return_type: void
+  signature: void wabt::MemoryStream::MemoryStream(int &&, wabt::Stream *)
+- name: _ZN4wabt12OptionParser14HandleArgumentEPmPKc
+  params:
+  - name: arg_index
+    type: int *
+  - name: arg_value
+    type: const char *
+  return_type: void
+  signature: void wabt::OptionParser::HandleArgument(int *, const char *)
+- name: _ZN4wabt12OptionParser5ParseEiPPc
+  params:
+  - name: argc
+    type: int
+  - name: argv
+    type: char *[]
+  return_type: void
+  signature: void wabt::OptionParser::Parse(int, char *[])
+- name: _ZN4wabt12ParseUint128EPKcS1_P4v128
+  params:
+  - name: s
+    type: const char *
+  - name: end
+    type: const char *
+  - name: out
+    type: v128 *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::ParseUint128(const char *, const char *, v128 *)
+- name: _ZN4wabt12TryTableExprC2ERKNS_8LocationE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  return_type: void
+  signature: void wabt::TryTableExpr::TryTableExpr(const wabt::Location &)
+- name: _ZN4wabt12WriteUint128EPcm4v128
+  params:
+  - name: buffer
+    type: char *
+  - name: size
+    type: int
+  - name: bits
+    type: v128
+  return_type: void
+  signature: void wabt::WriteUint128(char *, int, v128)
+- name: _ZN4wabt12_GLOBAL__N_111SymbolTable8PopulateEPKNS_6ModuleE
+  params:
+  - name: module
+    type: const wabt::Module *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SymbolTable::Populate(const wabt::Module *)
+- name: _ZN4wabt12_GLOBAL__N_112BinaryReader10PrintErrorEPKcz
+  params:
+  - name: format
+    type: const char *
+  return_type: void
+  signature: void wabt::BinaryReader::PrintError(const char *)
+- name: _ZN4wabt12_GLOBAL__N_112BinaryReader10ReadMemoryEPNS_6LimitsEPj
+  params:
+  - name: out_page_limits
+    type: wabt::Limits *
+  - name: out_page_size
+    type: uint32_t *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::BinaryReader::ReadMemory(wabt::Limits *, uint32_t *)
+- name: _ZN4wabt12_GLOBAL__N_112BinaryReader11IsBlockTypeENS_4TypeE
+  params:
+  - name: type
+    type: wabt::Type
+  return_type: bool
+  signature: bool wabt::BinaryReader::IsBlockType(wabt::Type)
+- name: _ZN4wabt12_GLOBAL__N_112BinaryReader11ReadAddressEPmjPKc
+  params:
+  - name: out_value
+    type: wabt::Address *
+  - name: memory
+    type: wabt::Index
+  - name: desc
+    type: const char *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::BinaryReader::ReadAddress(wabt::Address *, wabt::Index, const char *)
+- name: _ZN4wabt12_GLOBAL__N_112BinaryReader12ReadSectionsERKNS1_19ReadSectionsOptionsE
+  params:
+  - name: options
+    type: const wabt::(anonymous namespace)::BinaryReader::ReadSectionsOptions &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::BinaryReader::ReadSections(const wabt::(anonymous namespace)::BinaryReader::ReadSectionsOptions
+    &)
+- name: _ZN4wabt12_GLOBAL__N_112BinaryReader14IsConcreteTypeENS_4TypeE
+  params:
+  - name: type
+    type: wabt::Type
+  return_type: bool
+  signature: bool wabt::BinaryReader::IsConcreteType(wabt::Type)
+- name: _ZN4wabt12_GLOBAL__N_112BinaryReader22ReportUnexpectedOpcodeENS_6OpcodeEPKc
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: where
+    type: const char *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::BinaryReader::ReportUnexpectedOpcode(wabt::Opcode, const char *)
+- name: _ZN4wabt12_GLOBAL__N_112BinaryReader8ReadTypeEPNS_4TypeEPKc
+  params:
+  - name: out_value
+    type: wabt::Type *
+  - name: desc
+    type: const char *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::BinaryReader::ReadType(wabt::Type *, const char *)
+- name: _ZN4wabt12_GLOBAL__N_112BinaryWriter11WriteImportEPKNS_6ImportE
+  params:
+  - name: import
+    type: const wabt::Import *
+  return_type: void
+  signature: void wabt::BinaryWriter::WriteImport(const wabt::Import *)
+- name: _ZN4wabt12_GLOBAL__N_112BinaryWriter11WriteMemoryEPKNS_6MemoryE
+  params:
+  - name: memory
+    type: const wabt::Memory *
+  return_type: void
+  signature: void wabt::BinaryWriter::WriteMemory(const wabt::Memory *)
+- name: _ZN4wabt12_GLOBAL__N_112BinaryWriter13GetLocalIndexEPKNS_4FuncERKNS_3VarE
+  params:
+  - name: func
+    type: const wabt::Func *
+  - name: var
+    type: const wabt::Var &
+  return_type: wabt::Index
+  signature: wabt::Index wabt::BinaryWriter::GetLocalIndex(const wabt::Func *, const wabt::Var &)
+- name: _ZN4wabt12_GLOBAL__N_112BinaryWriter14WriteBlockDeclERKNS_15FuncDeclarationE
+  params:
+  - name: decl
+    type: const wabt::BlockDeclaration &
+  return_type: void
+  signature: void wabt::BinaryWriter::WriteBlockDecl(const wabt::BlockDeclaration &)
+- name: _ZN4wabt12_GLOBAL__N_112BinaryWriter15WriteFuncLocalsEPKNS_4FuncERKNS_10LocalTypesE
+  params:
+  - name: func
+    type: const wabt::Func *
+  - name: local_types
+    type: const wabt::LocalTypes &
+  return_type: void
+  signature: void wabt::BinaryWriter::WriteFuncLocals(const wabt::Func *, const wabt::LocalTypes &)
+- name: _ZN4wabt12_GLOBAL__N_112BinaryWriter16GetLabelVarDepthEPKNS_3VarE
+  params:
+  - name: var
+    type: const wabt::Var *
+  return_type: wabt::Index
+  signature: wabt::Index wabt::BinaryWriter::GetLabelVarDepth(const wabt::Var *)
+- name: _ZN4wabt12_GLOBAL__N_112BinaryWriter25WriteTableNumberWithRelocEjPKc
+  params:
+  - name: value
+    type: wabt::Index
+  - name: desc
+    type: const char *
+  return_type: void
+  signature: void wabt::BinaryWriter::WriteTableNumberWithReloc(wabt::Index, const char *)
+- name: _ZN4wabt12_GLOBAL__N_112BinaryWriter9WriteExprEPKNS_4FuncEPKNS_4ExprE
+  params:
+  - name: func
+    type: const wabt::Func *
+  - name: expr
+    type: const wabt::Expr *
+  return_type: void
+  signature: void wabt::BinaryWriter::WriteExpr(const wabt::Func *, const wabt::Expr *)
+- name: _ZN4wabt12_GLOBAL__N_112NameResolver12VisitCommandEPNS_7CommandE
+  params:
+  - name: command
+    type: wabt::Command *
+  return_type: void
+  signature: void wabt::NameResolver::VisitCommand(wabt::Command *)
+- name: _ZN4wabt12_GLOBAL__N_112NameResolver17BeginTryTableExprEPNS_12TryTableExprE
+  params:
+  - name: expr
+    type: wabt::TryTableExpr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::NameResolver::BeginTryTableExpr(wabt::TryTableExpr *)
+- name: _ZN4wabt12_GLOBAL__N_112NameResolver17VisitScriptModuleEPNS_12ScriptModuleE
+  params:
+  - name: script_module
+    type: wabt::ScriptModule *
+  return_type: void
+  signature: void wabt::NameResolver::VisitScriptModule(wabt::ScriptModule *)
+- name: _ZN4wabt12_GLOBAL__N_112NameResolver22CheckDuplicateBindingsEPKNS_11BindingHashEPKc
+  params:
+  - name: bindings
+    type: const wabt::BindingHash *
+  - name: desc
+    type: const char *
+  return_type: void
+  signature: void wabt::NameResolver::CheckDuplicateBindings(const wabt::BindingHash *, const char *)
+- name: _ZN4wabt12_GLOBAL__N_113NameGenerator11VisitExportEPNS_6ExportE
+  params:
+  - name: export_
+    type: wabt::Export *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::NameGenerator::VisitExport(wabt::Export *)
+- name: _ZN4wabt12_GLOBAL__N_113NameGenerator25GenerateAndBindLocalNamesEPNS_4FuncE
+  params:
+  - name: func
+    type: wabt::Func *
+  return_type: void
+  signature: void wabt::NameGenerator::GenerateAndBindLocalNames(wabt::Func *)
+- name: _ZN4wabt12_GLOBAL__N_113NameGenerator9VisitFuncEjPNS_4FuncE
+  params:
+  - name: func_index
+    type: wabt::Index
+  - name: func
+    type: wabt::Func *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::NameGenerator::VisitFunc(wabt::Index, wabt::Func *)
+- name: _ZN4wabt12_GLOBAL__N_114BinaryReaderIR11OnCatchExprEj
+  params:
+  - name: except_index
+    type: wabt::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::BinaryReaderIR::OnCatchExpr(wabt::Index)
+- name: _ZN4wabt12_GLOBAL__N_114BinaryReaderIR11OnLocalDeclEjjNS_4TypeE
+  params:
+  - name: decl_index
+    type: wabt::Index
+  - name: count
+    type: wabt::Index
+  - name: type
+    type: wabt::Type
+  return_type: wabt::Result
+  signature: wabt::Result wabt::BinaryReaderIR::OnLocalDecl(wabt::Index, wabt::Index, wabt::Type)
+- name: _ZN4wabt12_GLOBAL__N_115ScriptValidator11CheckActionEPKNS_6ActionE
+  params:
+  - name: action
+    type: const wabt::Action *
+  return_type: ScriptValidator::ActionResult
+  signature: ScriptValidator::ActionResult wabt::ScriptValidator::CheckAction(const wabt::Action *)
+- name: _ZN4wabt12_GLOBAL__N_115ScriptValidator11CheckInvokeEPKNS_12InvokeActionE
+  params:
+  - name: action
+    type: const wabt::InvokeAction *
+  return_type: const int *
+  signature: const int * wabt::ScriptValidator::CheckInvoke(const wabt::InvokeAction *)
+- name: _ZN4wabt12_GLOBAL__N_115ScriptValidator12CheckCommandEPKNS_7CommandE
+  params:
+  - name: command
+    type: const wabt::Command *
+  return_type: void
+  signature: void wabt::ScriptValidator::CheckCommand(const wabt::Command *)
+- name: _ZN4wabt12_GLOBAL__N_115ScriptValidator14CheckTypeIndexEPKNS_8LocationENS_4TypeES5_PKcjS7_
+  params:
+  - name: loc
+    type: const wabt::Location *
+  - name: actual
+    type: wabt::Type
+  - name: expected
+    type: wabt::Type
+  - name: desc
+    type: const char *
+  - name: index
+    type: wabt::Index
+  - name: index_kind
+    type: const char *
+  return_type: void
+  signature: void wabt::ScriptValidator::CheckTypeIndex(const wabt::Location *, wabt::Type, wabt::Type, const char *, wabt::Index,
+    const char *)
+- name: _ZN4wabt12_GLOBAL__N_115ScriptValidator8CheckGetEPKNS_9GetActionEPNS_4TypeE
+  params:
+  - name: action
+    type: const wabt::GetAction *
+  - name: out_type
+    type: wabt::Type *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::ScriptValidator::CheckGet(const wabt::GetAction *, wabt::Type *)
+- name: _ZN4wabt12_GLOBAL__N_116BinaryWriterSpec10WriteConstERKNS_5ConstE
+  params:
+  - name: const_
+    type: const wabt::Const &
+  return_type: void
+  signature: void wabt::BinaryWriterSpec::WriteConst(const wabt::Const &)
+- name: _ZN4wabt12_GLOBAL__N_116BinaryWriterSpec11WriteActionERKNS_6ActionE
+  params:
+  - name: action
+    type: const wabt::Action &
+  return_type: void
+  signature: void wabt::BinaryWriterSpec::WriteAction(const wabt::Action &)
+- name: _ZN4wabt12_GLOBAL__N_116BinaryWriterSpec21WriteActionResultTypeERKNS_6ActionE
+  params:
+  - name: action
+    type: const wabt::Action &
+  return_type: void
+  signature: void wabt::BinaryWriterSpec::WriteActionResultType(const wabt::Action &)
+- name: _ZN4wabt12_GLOBAL__N_124AppendInlineExportFieldsEPNS_6ModuleEPNS_14intrusive_listINS_11ModuleFieldEEEj
+  params:
+  - name: module
+    type: wabt::Module *
+  - name: fields
+    type: wabt::ModuleFieldList *
+  - name: index
+    type: wabt::Index
+  return_type: void
+  signature: void wabt::AppendInlineExportFields(wabt::Module *, wabt::ModuleFieldList *, wabt::Index)
+- name: _ZN4wabt12_GLOBAL__N_133ResolveFuncTypeWithEmptySignatureERKNS_6ModuleEPNS_15FuncDeclarationE
+  params:
+  - name: module
+    type: const wabt::Module &
+  - name: decl
+    type: wabt::FuncDeclaration *
+  return_type: bool
+  signature: bool wabt::ResolveFuncTypeWithEmptySignature(const wabt::Module &, wabt::FuncDeclaration *)
+- name: _ZN4wabt12_GLOBAL__N_135ResolveFuncTypesExprVisitorDelegate12BeginTryExprEPNS_7TryExprE
+  params:
+  - name: expr
+    type: wabt::TryExpr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::ResolveFuncTypesExprVisitorDelegate::BeginTryExpr(wabt::TryExpr *)
+- name: _ZN4wabt12_GLOBAL__N_135ResolveFuncTypesExprVisitorDelegate23ResolveBlockDeclarationERKNS_8LocationEPNS_15FuncDeclarationE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: decl
+    type: wabt::BlockDeclaration *
+  return_type: void
+  signature: void wabt::ResolveFuncTypesExprVisitorDelegate::ResolveBlockDeclaration(const wabt::Location &, wabt::BlockDeclaration
+    *)
+- name: _ZN4wabt12_GLOBAL__N_136ResolveImplicitlyDefinedFunctionTypeERKNS_8LocationEPNS_6ModuleERKNS_15FuncDeclarationE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: module
+    type: wabt::Module *
+  - name: decl
+    type: const wabt::FuncDeclaration &
+  return_type: void
+  signature: void wabt::ResolveImplicitlyDefinedFunctionType(const wabt::Location &, wabt::Module *, const wabt::FuncDeclaration
+    &)
+- name: _ZN4wabt12_GLOBAL__N_17CWriter12WriteExportsENS1_12CWriterPhaseE
+  params:
+  - name: kind
+    type: wabt::(anonymous namespace)::CWriter::CWriterPhase
+  return_type: void
+  signature: void wabt::CWriter::WriteExports(wabt::(anonymous namespace)::CWriter::CWriterPhase)
+- name: _ZN4wabt12_GLOBAL__N_17CWriter13WriteInitExprERKNS_14intrusive_listINS_4ExprEEE
+  params:
+  - name: expr_list
+    type: const wabt::ExprList &
+  return_type: void
+  signature: void wabt::CWriter::WriteInitExpr(const wabt::ExprList &)
+- name: _ZN4wabt12_GLOBAL__N_17CWriter13WriteTryCatchERKNS_7TryExprE
+  params:
+  - name: tryexpr
+    type: const wabt::TryExpr &
+  return_type: void
+  signature: void wabt::CWriter::WriteTryCatch(const wabt::TryExpr &)
+- name: _ZN4wabt12_GLOBAL__N_17CWriter20WriteSimpleUnaryExprENS_6OpcodeEPKc
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: op
+    type: const char *
+  return_type: void
+  signature: void wabt::CWriter::WriteSimpleUnaryExpr(wabt::Opcode, const char *)
+- name: _ZN4wabt12_GLOBAL__N_17CWriter5WriteENS_4TypeE
+  params:
+  - name: type
+    type: wabt::Type
+  return_type: void
+  signature: void wabt::CWriter::Write(wabt::Type)
+- name: _ZN4wabt12_GLOBAL__N_17CWriter5WriteERKNS0_9GotoLabelE
+  params:
+  - name: goto_label
+    type: const wabt::(anonymous namespace)::GotoLabel &
+  return_type: void
+  signature: void wabt::CWriter::Write(const wabt::(anonymous namespace)::GotoLabel &)
+- name: _ZN4wabt12_GLOBAL__N_17CWriter5WriteERKNS_10TableCatchE
+  params:
+  - name: c
+    type: const wabt::TableCatch &
+  return_type: void
+  signature: void wabt::CWriter::Write(const wabt::TableCatch &)
+- name: _ZN4wabt12_GLOBAL__N_17CWriter5WriteERKNS_13LoadStoreExprILNS_8ExprTypeE0EEE
+  params:
+  - name: expr
+    type: const wabt::AtomicLoadExpr &
+  return_type: void
+  signature: void wabt::CWriter::Write(const wabt::AtomicLoadExpr &)
+- name: _ZN4wabt12_GLOBAL__N_17CWriter5WriteERKNS_14intrusive_listINS_4ExprEEE
+  params:
+  - name: exprs
+    type: const wabt::ExprList &
+  return_type: void
+  signature: void wabt::CWriter::Write(const wabt::ExprList &)
+- name: _ZN4wabt12_GLOBAL__N_17CWriter5WriteERKNS_17SimdShuffleOpExprE
+  params:
+  - name: expr
+    type: const wabt::SimdShuffleOpExpr &
+  return_type: void
+  signature: void wabt::CWriter::Write(const wabt::SimdShuffleOpExpr &)
+- name: _ZN4wabt12_GLOBAL__N_19Validator10OnLoadExprEPNS_13LoadStoreExprILNS_8ExprTypeE26EEE
+  params:
+  - name: expr
+    type: wabt::LoadExpr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::Validator::OnLoadExpr(wabt::LoadExpr *)
+- name: _ZN4wabt12_GLOBAL__N_19Validator11BeginIfExprEPNS_6IfExprE
+  params:
+  - name: expr
+    type: wabt::IfExpr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::Validator::BeginIfExpr(wabt::IfExpr *)
+- name: _ZN4wabt12_GLOBAL__N_19Validator11OnCatchExprEPNS_7TryExprEPNS_5CatchE
+  params:
+  - name: arg0
+    type: wabt::TryExpr *
+  - name: catch_
+    type: wabt::Catch *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::Validator::OnCatchExpr(wabt::TryExpr *, wabt::Catch *)
+- name: _ZN4wabt12_GLOBAL__N_19Validator11OnStoreExprEPNS_13LoadStoreExprILNS_8ExprTypeE54EEE
+  params:
+  - name: expr
+    type: wabt::StoreExpr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::Validator::OnStoreExpr(wabt::StoreExpr *)
+- name: _ZN4wabt12_GLOBAL__N_19Validator12BeginTryExprEPNS_7TryExprE
+  params:
+  - name: expr
+    type: wabt::TryExpr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::Validator::BeginTryExpr(wabt::TryExpr *)
+- name: _ZN4wabt12_GLOBAL__N_19Validator12OnSelectExprEPNS_10SelectExprE
+  params:
+  - name: expr
+    type: wabt::SelectExpr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::Validator::OnSelectExpr(wabt::SelectExpr *)
+- name: _ZN4wabt12_GLOBAL__N_19Validator14OnLocalGetExprEPNS_7VarExprILNS_8ExprTypeE27EEE
+  params:
+  - name: expr
+    type: wabt::LocalGetExpr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::Validator::OnLocalGetExpr(wabt::LocalGetExpr *)
+- name: _ZN4wabt12_GLOBAL__N_19Validator15AfterIfTrueExprEPNS_6IfExprE
+  params:
+  - name: expr
+    type: wabt::IfExpr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::Validator::AfterIfTrueExpr(wabt::IfExpr *)
+- name: _ZN4wabt12_GLOBAL__N_19Validator15OnGlobalGetExprEPNS_7VarExprILNS_8ExprTypeE23EEE
+  params:
+  - name: expr
+    type: wabt::GlobalGetExpr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::Validator::OnGlobalGetExpr(wabt::GlobalGetExpr *)
+- name: _ZN4wabt12_GLOBAL__N_19Validator15OnGlobalSetExprEPNS_7VarExprILNS_8ExprTypeE24EEE
+  params:
+  - name: expr
+    type: wabt::GlobalSetExpr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::Validator::OnGlobalSetExpr(wabt::GlobalSetExpr *)
+- name: _ZN4wabt12_GLOBAL__N_19Validator16OnQuaternaryExprEPNS_10OpcodeExprILNS_8ExprTypeE8EEE
+  params:
+  - name: expr
+    type: wabt::QuaternaryExpr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::Validator::OnQuaternaryExpr(wabt::QuaternaryExpr *)
+- name: _ZN4wabt12_GLOBAL__N_19Validator17OnUnreachableExprEPNS_9ExprMixinILNS_8ExprTypeE69EEE
+  params:
+  - name: expr
+    type: wabt::UnreachableExpr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::Validator::OnUnreachableExpr(wabt::UnreachableExpr *)
+- name: _ZN4wabt12_GLOBAL__N_19Validator9EndIfExprEPNS_6IfExprE
+  params:
+  - name: expr
+    type: wabt::IfExpr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::Validator::EndIfExpr(wabt::IfExpr *)
+- name: _ZN4wabt12_GLOBAL__N_19WatWriter16WriteElemSegmentERKNS_11ElemSegmentE
+  params:
+  - name: segment
+    type: const wabt::ElemSegment &
+  return_type: void
+  signature: void wabt::WatWriter::WriteElemSegment(const wabt::ElemSegment &)
+- name: _ZN4wabt12_GLOBAL__N_19WatWriter19ExprVisitorDelegate11OnCatchExprEPNS_7TryExprEPNS_5CatchE
+  params:
+  - name: expr
+    type: wabt::TryExpr *
+  - name: catch_
+    type: wabt::Catch *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WatWriter::ExprVisitorDelegate::OnCatchExpr(wabt::TryExpr *, wabt::Catch *)
+- name: _ZN4wabt12_GLOBAL__N_19WatWriter19ExprVisitorDelegate15OnTableCopyExprEPNS_13TableCopyExprE
+  params:
+  - name: expr
+    type: wabt::TableCopyExpr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WatWriter::ExprVisitorDelegate::OnTableCopyExpr(wabt::TableCopyExpr *)
+- name: _ZN4wabt12_GLOBAL__N_19WatWriter19ExprVisitorDelegate17BeginTryTableExprEPNS_12TryTableExprE
+  params:
+  - name: expr
+    type: wabt::TryTableExpr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::WatWriter::ExprVisitorDelegate::BeginTryTableExpr(wabt::TryTableExpr *)
+- name: _ZN4wabt14ParseWatModuleEPNS_9WastLexerEPSt10unique_ptrINS_6ModuleESt14default_deleteIS3_EEPSt6vectorINS_5ErrorESaIS9_EEPNS_16WastParseOptionsE
+  params:
+  - name: lexer
+    type: wabt::WastLexer *
+  - name: out_module
+    type: int *
+  - name: errors
+    type: int *
+  - name: options
+    type: wabt::WastParseOptions *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::ParseWatModule(wabt::WastLexer *, int *, int *, wabt::WastParseOptions *)
+- name: _ZN4wabt14TagModuleFieldC2ERKNS_8LocationESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: name
+    type: int
+  return_type: void
+  signature: void wabt::TagModuleField::TagModuleField(const wabt::Location &, int)
+- name: _ZN4wabt14intrusive_listINS_4ExprEE6spliceENS2_8iteratorERS2_
+  params:
+  - name: pos
+    type: wabt::intrusive_list::iterator
+  - name: other
+    type: intrusive_list<T> &
+  - name: first
+    type: wabt::intrusive_list::iterator
+  - name: last
+    type: wabt::intrusive_list::iterator
+  return_type: void
+  signature: void wabt::intrusive_list::splice(wabt::intrusive_list::iterator, intrusive_list<T> &, wabt::intrusive_list::iterator,
+    wabt::intrusive_list::iterator)
+- name: _ZN4wabt14intrusive_listINS_4ExprEE6spliceENS2_8iteratorERS2_S3_S3_
+  params:
+  - name: pos
+    type: wabt::intrusive_list::iterator
+  - name: other
+    type: intrusive_list<T> &
+  - name: first
+    type: wabt::intrusive_list::iterator
+  - name: last
+    type: wabt::intrusive_list::iterator
+  return_type: void
+  signature: void wabt::intrusive_list::splice(wabt::intrusive_list::iterator, intrusive_list<T> &, wabt::intrusive_list::iterator,
+    wabt::intrusive_list::iterator)
+- name: _ZN4wabt14intrusive_listINS_4ExprEEaSEOS2_
+  params:
+  - name: arg0
+    type: wabt::FileStream &&
+  return_type: wabt::FileStream &
+  signature: wabt::FileStream & wabt::FileStream::operator=(wabt::FileStream &&)
+- name: _ZN4wabt15FuncModuleFieldC2ERKNS_8LocationESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: name
+    type: int
+  return_type: void
+  signature: void wabt::FuncModuleField::FuncModuleField(const wabt::Location &, int)
+- name: _ZN4wabt15ParseWastScriptEPNS_9WastLexerEPSt10unique_ptrINS_6ScriptESt14default_deleteIS3_EEPSt6vectorINS_5ErrorESaIS9_EEPNS_16WastParseOptionsE
+  params:
+  - name: lexer
+    type: wabt::WastLexer *
+  - name: out_script
+    type: int *
+  - name: errors
+    type: int *
+  - name: options
+    type: wabt::WastParseOptions *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::ParseWastScript(wabt::WastLexer *, int *, int *, wabt::WastParseOptions *)
+- name: _ZN4wabt15SharedValidator10CheckInstrENS_6OpcodeERKNS_8LocationE
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: loc
+    type: const wabt::Location &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::CheckInstr(wabt::Opcode, const wabt::Location &)
+- name: _ZN4wabt15SharedValidator10EndBrTableERKNS_8LocationE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::EndBrTable(const wabt::Location &)
+- name: _ZN4wabt15SharedValidator10OnBrOnNullERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: depth
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnBrOnNull(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator10OnDataDropERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: segment_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnDataDrop(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator10OnDelegateERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: depth
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnDelegate(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator10OnElemDropERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: segment_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnElemDrop(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator10OnFuncTypeERKNS_8LocationEjPKNS_4TypeEjS6_j
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: param_count
+    type: wabt::Index
+  - name: param_types
+    type: const wabt::Type *
+  - name: result_count
+    type: wabt::Index
+  - name: result_types
+    type: const wabt::Type *
+  - name: type_index
+    type: wabt::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnFuncType(const wabt::Location &, wabt::Index, const wabt::Type *, wabt::Index,
+    const wabt::Type *, wabt::Index)
+- name: _ZN4wabt15SharedValidator10OnLoadZeroERKNS_8LocationENS_6OpcodeENS_3VarEmm
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::Var
+  - name: alignment
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnLoadZero(const wabt::Location &, wabt::Opcode, wabt::Var, wabt::Address,
+    wabt::Address)
+- name: _ZN4wabt15SharedValidator10OnLocalGetERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: local_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnLocalGet(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator10OnLocalSetERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: local_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnLocalSet(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator10OnLocalTeeERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: local_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnLocalTee(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator10OnTableGetERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: table_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnTableGet(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator10OnTableSetERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: table_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnTableSet(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator10OnThrowRefERKNS_8LocationE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnThrowRef(const wabt::Location &)
+- name: _ZN4wabt15SharedValidator11EndTryTableERKNS_8LocationENS_4TypeE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: sig_type
+    type: wabt::Type
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::EndTryTable(const wabt::Location &, wabt::Type)
+- name: _ZN4wabt15SharedValidator11OnArrayTypeERKNS_8LocationENS_7TypeMutE
+  params:
+  - name: arg0
+    type: const wabt::Location &
+  - name: field
+    type: wabt::TypeMut
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnArrayType(const wabt::Location &, wabt::TypeMut)
+- name: _ZN4wabt15SharedValidator11OnAtomicRmwERKNS_8LocationENS_6OpcodeENS_3VarEmm
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::Var
+  - name: alignment
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnAtomicRmw(const wabt::Location &, wabt::Opcode, wabt::Var, wabt::Address,
+    wabt::Address)
+- name: _ZN4wabt15SharedValidator11OnGlobalGetERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: global_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnGlobalGet(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator11OnGlobalSetERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: global_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnGlobalSet(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator11OnRefIsNullERKNS_8LocationE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnRefIsNull(const wabt::Location &)
+- name: _ZN4wabt15SharedValidator11OnTableCopyERKNS_8LocationENS_3VarES4_
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: dst_var
+    type: wabt::Var
+  - name: src_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnTableCopy(const wabt::Location &, wabt::Var, wabt::Var)
+- name: _ZN4wabt15SharedValidator11OnTableFillERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: table_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnTableFill(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator11OnTableGrowERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: table_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnTableGrow(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator11OnTableInitERKNS_8LocationENS_3VarES4_
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: segment_var
+    type: wabt::Var
+  - name: table_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnTableInit(const wabt::Location &, wabt::Var, wabt::Var)
+- name: _ZN4wabt15SharedValidator11OnTableSizeERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: table_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnTableSize(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator12BeginBrTableERKNS_8LocationE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::BeginBrTable(const wabt::Location &)
+- name: _ZN4wabt15SharedValidator12OnAtomicLoadERKNS_8LocationENS_6OpcodeENS_3VarEmm
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::Var
+  - name: alignment
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnAtomicLoad(const wabt::Location &, wabt::Opcode, wabt::Var, wabt::Address,
+    wabt::Address)
+- name: _ZN4wabt15SharedValidator12OnAtomicWaitERKNS_8LocationENS_6OpcodeENS_3VarEmm
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::Var
+  - name: alignment
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnAtomicWait(const wabt::Location &, wabt::Opcode, wabt::Var, wabt::Address,
+    wabt::Address)
+- name: _ZN4wabt15SharedValidator12OnMemoryCopyERKNS_8LocationENS_3VarES4_
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: destmemidx
+    type: wabt::Var
+  - name: srcmemidx
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnMemoryCopy(const wabt::Location &, wabt::Var, wabt::Var)
+- name: _ZN4wabt15SharedValidator12OnMemoryFillERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: memidx
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnMemoryFill(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator12OnMemoryGrowERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: memidx
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnMemoryGrow(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator12OnMemoryInitERKNS_8LocationENS_3VarES4_
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: segment_var
+    type: wabt::Var
+  - name: memidx
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnMemoryInit(const wabt::Location &, wabt::Var, wabt::Var)
+- name: _ZN4wabt15SharedValidator12OnMemorySizeERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: memidx
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnMemorySize(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator12OnQuaternaryERKNS_8LocationENS_6OpcodeE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: opcode
+    type: wabt::Opcode
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnQuaternary(const wabt::Location &, wabt::Opcode)
+- name: _ZN4wabt15SharedValidator12OnReturnCallERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: func_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnReturnCall(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator12OnSimdLaneOpERKNS_8LocationENS_6OpcodeEm
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: opcode
+    type: wabt::Opcode
+  - name: value
+    type: uint64_t
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnSimdLaneOp(const wabt::Location &, wabt::Opcode, uint64_t)
+- name: _ZN4wabt15SharedValidator12OnStructTypeERKNS_8LocationEjPNS_7TypeMutE
+  params:
+  - name: arg0
+    type: const wabt::Location &
+  - name: field_count
+    type: wabt::Index
+  - name: fields
+    type: wabt::TypeMut *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnStructType(const wabt::Location &, wabt::Index, wabt::TypeMut *)
+- name: _ZN4wabt15SharedValidator13BeginInitExprERKNS_8LocationENS_4TypeE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: type
+    type: wabt::Type
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::BeginInitExpr(const wabt::Location &, wabt::Type)
+- name: _ZN4wabt15SharedValidator13BeginTryTableERKNS_8LocationENS_4TypeE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: sig_type
+    type: wabt::Type
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::BeginTryTable(const wabt::Location &, wabt::Type)
+- name: _ZN4wabt15SharedValidator13CheckTagIndexENS_3VarEPNS0_7TagTypeE
+  params:
+  - name: tag_var
+    type: wabt::Var
+  - name: out
+    type: wabt::SharedValidator::TagType *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::CheckTagIndex(wabt::Var, wabt::SharedValidator::TagType *)
+- name: _ZN4wabt15SharedValidator13GetCatchCountEjPj
+  params:
+  - name: depth
+    type: wabt::Index
+  - name: out_count
+    type: wabt::Index *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::GetCatchCount(wabt::Index, wabt::Index *)
+- name: _ZN4wabt15SharedValidator13OnAtomicFenceERKNS_8LocationEj
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: consistency_model
+    type: uint32_t
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnAtomicFence(const wabt::Location &, uint32_t)
+- name: _ZN4wabt15SharedValidator13OnAtomicStoreERKNS_8LocationENS_6OpcodeENS_3VarEmm
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::Var
+  - name: alignment
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnAtomicStore(const wabt::Location &, wabt::Opcode, wabt::Var, wabt::Address,
+    wabt::Address)
+- name: _ZN4wabt15SharedValidator13OnBrOnNonNullERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: depth
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnBrOnNonNull(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator13OnElemSegmentERKNS_8LocationENS_3VarENS_11SegmentKindE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: table_var
+    type: wabt::Var
+  - name: kind
+    type: wabt::SegmentKind
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnElemSegment(const wabt::Location &, wabt::Var, wabt::SegmentKind)
+- name: _ZN4wabt15SharedValidator13OnUnreachableERKNS_8LocationE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnUnreachable(const wabt::Location &)
+- name: _ZN4wabt15SharedValidator14CheckFuncIndexENS_3VarEPNS_11TypeChecker8FuncTypeE
+  params:
+  - name: func_var
+    type: wabt::Var
+  - name: out
+    type: wabt::SharedValidator::FuncType *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::CheckFuncIndex(wabt::Var, wabt::SharedValidator::FuncType *)
+- name: _ZN4wabt15SharedValidator14OnAtomicNotifyERKNS_8LocationENS_6OpcodeENS_3VarEmm
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::Var
+  - name: alignment
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnAtomicNotify(const wabt::Location &, wabt::Opcode, wabt::Var, wabt::Address,
+    wabt::Address)
+- name: _ZN4wabt15SharedValidator14OnCallIndirectERKNS_8LocationENS_3VarES4_
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: sig_var
+    type: wabt::Var
+  - name: table_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnCallIndirect(const wabt::Location &, wabt::Var, wabt::Var)
+- name: _ZN4wabt15SharedValidator14OnGlobalImportERKNS_8LocationENS_4TypeEb
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: type
+    type: wabt::Type
+  - name: mutable_
+    type: bool
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnGlobalImport(const wabt::Location &, wabt::Type, bool)
+- name: _ZN4wabt15SharedValidator14OnRefAsNonNullERKNS_8LocationE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnRefAsNonNull(const wabt::Location &)
+- name: _ZN4wabt15SharedValidator14OnSimdLoadLaneERKNS_8LocationENS_6OpcodeENS_3VarEmmm
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::Var
+  - name: alignment
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  - name: value
+    type: uint64_t
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnSimdLoadLane(const wabt::Location &, wabt::Opcode, wabt::Var, wabt::Address,
+    wabt::Address, uint64_t)
+- name: _ZN4wabt15SharedValidator15CheckLocalIndexENS_3VarEPNS_4TypeE
+  params:
+  - name: local_var
+    type: wabt::Var
+  - name: out_type
+    type: wabt::Type *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::CheckLocalIndex(wabt::Var, wabt::Type *)
+- name: _ZN4wabt15SharedValidator15CheckTableIndexENS_3VarEPNS0_9TableTypeE
+  params:
+  - name: table_var
+    type: wabt::Var
+  - name: out
+    type: wabt::SharedValidator::TableType *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::CheckTableIndex(wabt::Var, wabt::SharedValidator::TableType *)
+- name: _ZN4wabt15SharedValidator15EndFunctionBodyERKNS_8LocationE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::EndFunctionBody(const wabt::Location &)
+- name: _ZN4wabt15SharedValidator15OnBrTableTargetERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: depth
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnBrTableTarget(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator15OnReturnCallRefERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: function_type_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnReturnCallRef(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator15OnSimdShuffleOpERKNS_8LocationENS_6OpcodeE4v128
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: opcode
+    type: wabt::Opcode
+  - name: value
+    type: v128
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnSimdShuffleOp(const wabt::Location &, wabt::Opcode, v128)
+- name: _ZN4wabt15SharedValidator15OnSimdStoreLaneERKNS_8LocationENS_6OpcodeENS_3VarEmmm
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::Var
+  - name: alignment
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  - name: value
+    type: uint64_t
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnSimdStoreLane(const wabt::Location &, wabt::Opcode, wabt::Var, wabt::Address,
+    wabt::Address, uint64_t)
+- name: _ZN4wabt15SharedValidator15OnTryTableCatchERKNS_8LocationERKNS_10TableCatchE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: catch_
+    type: const wabt::TableCatch &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnTryTableCatch(const wabt::Location &, const wabt::TableCatch &)
+- name: _ZN4wabt15SharedValidator16CheckGlobalIndexENS_3VarEPNS0_10GlobalTypeE
+  params:
+  - name: global_var
+    type: wabt::Var
+  - name: out
+    type: wabt::SharedValidator::GlobalType *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::CheckGlobalIndex(wabt::Var, wabt::SharedValidator::GlobalType *)
+- name: _ZN4wabt15SharedValidator16CheckMemoryIndexENS_3VarEPNS0_10MemoryTypeE
+  params:
+  - name: memory_var
+    type: wabt::Var
+  - name: out
+    type: wabt::SharedValidator::MemoryType *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::CheckMemoryIndex(wabt::Var, wabt::SharedValidator::MemoryType *)
+- name: _ZN4wabt15SharedValidator17BeginFunctionBodyERKNS_8LocationEj
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: func_index
+    type: wabt::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::BeginFunctionBody(const wabt::Location &, wabt::Index)
+- name: _ZN4wabt15SharedValidator18OnAtomicRmwCmpxchgERKNS_8LocationENS_6OpcodeENS_3VarEmm
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::Var
+  - name: alignment
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnAtomicRmwCmpxchg(const wabt::Location &, wabt::Opcode, wabt::Var, wabt::Address,
+    wabt::Address)
+- name: _ZN4wabt15SharedValidator19CheckBlockSignatureERKNS_8LocationENS_6OpcodeENS_4TypeEPSt6vectorIS5_SaIS5_EES9_
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: opcode
+    type: wabt::Opcode
+  - name: sig_type
+    type: wabt::Type
+  - name: out_param_types
+    type: int *
+  - name: out_result_types
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::CheckBlockSignature(const wabt::Location &, wabt::Opcode, wabt::Type, int
+    *, int *)
+- name: _ZN4wabt15SharedValidator20OnReturnCallIndirectERKNS_8LocationENS_3VarES4_
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: sig_var
+    type: wabt::Var
+  - name: table_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnReturnCallIndirect(const wabt::Location &, wabt::Var, wabt::Var)
+- name: _ZN4wabt15SharedValidator21CheckDataSegmentIndexENS_3VarE
+  params:
+  - name: data_segment_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::CheckDataSegmentIndex(wabt::Var)
+- name: _ZN4wabt15SharedValidator21CheckElemSegmentIndexENS_3VarEPNS0_8ElemTypeE
+  params:
+  - name: elem_segment_var
+    type: wabt::Var
+  - name: out
+    type: wabt::SharedValidator::ElemType *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::CheckElemSegmentIndex(wabt::Var, wabt::SharedValidator::ElemType *)
+- name: _ZN4wabt15SharedValidator4OnBrERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: depth
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnBr(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator4OnIfERKNS_8LocationENS_4TypeE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: sig_type
+    type: wabt::Type
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnIf(const wabt::Location &, wabt::Type)
+- name: _ZN4wabt15SharedValidator5OnEndERKNS_8LocationE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnEnd(const wabt::Location &)
+- name: _ZN4wabt15SharedValidator5OnTryERKNS_8LocationENS_4TypeE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: sig_type
+    type: wabt::Type
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnTry(const wabt::Location &, wabt::Type)
+- name: _ZN4wabt15SharedValidator6OnBrIfERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: depth
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnBrIf(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator6OnCallERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: func_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnCall(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator6OnDropERKNS_8LocationE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnDrop(const wabt::Location &)
+- name: _ZN4wabt15SharedValidator6OnElseERKNS_8LocationE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnElse(const wabt::Location &)
+- name: _ZN4wabt15SharedValidator6OnLoopERKNS_8LocationENS_4TypeE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: sig_type
+    type: wabt::Type
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnLoop(const wabt::Location &, wabt::Type)
+- name: _ZN4wabt15SharedValidator7OnBlockERKNS_8LocationENS_4TypeE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: sig_type
+    type: wabt::Type
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnBlock(const wabt::Location &, wabt::Type)
+- name: _ZN4wabt15SharedValidator7OnCatchERKNS_8LocationENS_3VarEb
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: tag_var
+    type: wabt::Var
+  - name: is_catch_all
+    type: bool
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnCatch(const wabt::Location &, wabt::Var, bool)
+- name: _ZN4wabt15SharedValidator7OnConstERKNS_8LocationENS_4TypeE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: type
+    type: wabt::Type
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnConst(const wabt::Location &, wabt::Type)
+- name: _ZN4wabt15SharedValidator7OnStoreERKNS_8LocationENS_6OpcodeENS_3VarEmm
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::Var
+  - name: alignment
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnStore(const wabt::Location &, wabt::Opcode, wabt::Var, wabt::Address, wabt::Address)
+- name: _ZN4wabt15SharedValidator7OnTableERKNS_8LocationENS_4TypeERKNS_6LimitsENS_17TableImportStatusENS_19TableInitExprStatusE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: elem_type
+    type: wabt::Type
+  - name: limits
+    type: const wabt::Limits &
+  - name: import_status
+    type: wabt::TableImportStatus
+  - name: init_provided
+    type: wabt::TableInitExprStatus
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnTable(const wabt::Location &, wabt::Type, const wabt::Limits &, wabt::TableImportStatus,
+    wabt::TableInitExprStatus)
+- name: _ZN4wabt15SharedValidator7OnThrowERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: tag_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnThrow(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator7OnUnaryERKNS_8LocationENS_6OpcodeE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: opcode
+    type: wabt::Opcode
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnUnary(const wabt::Location &, wabt::Opcode)
+- name: _ZN4wabt15SharedValidator8OnBinaryERKNS_8LocationENS_6OpcodeE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: opcode
+    type: wabt::Opcode
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnBinary(const wabt::Location &, wabt::Opcode)
+- name: _ZN4wabt15SharedValidator8OnGlobalERKNS_8LocationENS_4TypeEb
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: type
+    type: wabt::Type
+  - name: mutable_
+    type: bool
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnGlobal(const wabt::Location &, wabt::Type, bool)
+- name: _ZN4wabt15SharedValidator8OnMemoryERKNS_8LocationERKNS_6LimitsEj
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: limits
+    type: const wabt::Limits &
+  - name: page_size
+    type: uint32_t
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnMemory(const wabt::Location &, const wabt::Limits &, uint32_t)
+- name: _ZN4wabt15SharedValidator8OnReturnERKNS_8LocationE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnReturn(const wabt::Location &)
+- name: _ZN4wabt15SharedValidator8OnSelectERKNS_8LocationEjPNS_4TypeE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: result_count
+    type: wabt::Index
+  - name: result_types
+    type: wabt::Type *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnSelect(const wabt::Location &, wabt::Index, wabt::Type *)
+- name: _ZN4wabt15SharedValidator9OnCallRefERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: function_type_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnCallRef(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator9OnCompareERKNS_8LocationENS_6OpcodeE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: opcode
+    type: wabt::Opcode
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnCompare(const wabt::Location &, wabt::Opcode)
+- name: _ZN4wabt15SharedValidator9OnConvertERKNS_8LocationENS_6OpcodeE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: opcode
+    type: wabt::Opcode
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnConvert(const wabt::Location &, wabt::Opcode)
+- name: _ZN4wabt15SharedValidator9OnRefFuncERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: func_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnRefFunc(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator9OnRefNullERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: func_type_var
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnRefNull(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator9OnRethrowERKNS_8LocationENS_3VarE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: depth
+    type: wabt::Var
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnRethrow(const wabt::Location &, wabt::Var)
+- name: _ZN4wabt15SharedValidator9OnTernaryERKNS_8LocationENS_6OpcodeE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: opcode
+    type: wabt::Opcode
+  return_type: wabt::Result
+  signature: wabt::Result wabt::SharedValidator::OnTernary(const wabt::Location &, wabt::Opcode)
+- name: _ZN4wabt15SharedValidatorC2EPSt6vectorINS_5ErrorESaIS2_EESt17basic_string_viewIcSt11char_traitsIcEERKNS_15ValidateOptionsE
+  params:
+  - name: errors
+    type: int *
+  - name: filename
+    type: int
+  - name: options
+    type: const wabt::ValidateOptions &
+  return_type: void
+  signature: void wabt::SharedValidator::SharedValidator(int *, int, const wabt::ValidateOptions &)
+- name: _ZN4wabt16CallIndirectExprC2ERKNS_8LocationE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  return_type: void
+  signature: void wabt::CallIndirectExpr::CallIndirectExpr(const wabt::Location &)
+- name: _ZN4wabt16RenameToContentsERSt6vectorIPNS_11DataSegmentESaIS2_EERNS_11BindingHashE
+  params:
+  - name: segs
+    type: int &
+  - name: bh
+    type: wabt::BindingHash &
+  return_type: void
+  signature: void wabt::RenameToContents(int &, wabt::BindingHash &)
+- name: _ZN4wabt16SimdLoadLaneExprC2ENS_6OpcodeENS_3VarEmmmRKNS_8LocationE
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::Var
+  - name: align
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  - name: val
+    type: uint64_t
+  - name: loc
+    type: const wabt::Location &
+  return_type: void
+  signature: void wabt::SimdLoadLaneExpr::SimdLoadLaneExpr(wabt::Opcode, wabt::Var, wabt::Address, wabt::Address, uint64_t,
+    const wabt::Location &)
+- name: _ZN4wabt16TableModuleFieldC2ERKNS_8LocationESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: name
+    type: int
+  return_type: void
+  signature: void wabt::TableModuleField::TableModuleField(const wabt::Location &, int)
+- name: _ZN4wabt17ExportModuleFieldC2ERKNS_8LocationE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  return_type: void
+  signature: void wabt::ExportModuleField::ExportModuleField(const wabt::Location &)
+- name: _ZN4wabt17GlobalModuleFieldC2ERKNS_8LocationESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: name
+    type: int
+  return_type: void
+  signature: void wabt::GlobalModuleField::GlobalModuleField(const wabt::Location &, int)
+- name: _ZN4wabt17LoadStoreTracking5TrackERKNS_4NodeE
+  params:
+  - name: n
+    type: const wabt::Node &
+  return_type: void
+  signature: void wabt::LoadStoreTracking::Track(const wabt::Node &)
+- name: _ZN4wabt17LoadStoreTracking9LoadStoreEmNS_6OpcodeENS_4TypeEmRKNS_4NodeE
+  params:
+  - name: offset
+    type: uint64_t
+  - name: opc
+    type: wabt::Opcode
+  - name: type
+    type: wabt::Type
+  - name: align
+    type: wabt::Address
+  - name: addr_exp
+    type: const wabt::Node &
+  return_type: void
+  signature: void wabt::LoadStoreTracking::LoadStore(uint64_t, wabt::Opcode, wabt::Type, wabt::Address, const wabt::Node &)
+- name: _ZN4wabt17MemoryModuleFieldC2ERKNS_8LocationESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: name
+    type: int
+  return_type: void
+  signature: void wabt::MemoryModuleField::MemoryModuleField(const wabt::Location &, int)
+- name: _ZN4wabt17ReadBinaryOptionsC2Ev
+  params:
+  - name: features
+    type: const wabt::Features &
+  - name: log_stream
+    type: wabt::Stream *
+  - name: read_debug_names
+    type: bool
+  - name: stop_on_first_error
+    type: bool
+  - name: fail_on_custom_section_error
+    type: bool
+  return_type: void
+  signature: void wabt::ReadBinaryOptions::ReadBinaryOptions(const wabt::Features &, wabt::Stream *, bool, bool, bool)
+- name: _ZN4wabt17SimdStoreLaneExprC2ENS_6OpcodeENS_3VarEmmmRKNS_8LocationE
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::Var
+  - name: align
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  - name: val
+    type: uint64_t
+  - name: loc
+    type: const wabt::Location &
+  return_type: void
+  signature: void wabt::SimdStoreLaneExpr::SimdStoreLaneExpr(wabt::Opcode, wabt::Var, wabt::Address, wabt::Address, uint64_t,
+    const wabt::Location &)
+- name: _ZN4wabt19BinaryReaderLogging10OnSetStateEPKNS_20BinaryReaderDelegate5StateE
+  params:
+  - name: s
+    type: const wabt::BinaryReaderDelegate::State *
+  return_type: void
+  signature: void wabt::BinaryReaderLogging::OnSetState(const wabt::BinaryReaderDelegate::State *)
+- name: _ZN4wabt19BinaryReaderLogging11OnThrowExprEj
+  params:
+  - name: value
+    type: wabt::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::BinaryReaderLogging::OnThrowExpr(wabt::Index)
+- name: _ZN4wabt19BinaryReaderLogging12OnStructTypeEjjPNS_7TypeMutE
+  params:
+  - name: index
+    type: wabt::Index
+  - name: field_count
+    type: wabt::Index
+  - name: fields
+    type: wabt::TypeMut *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::BinaryReaderLogging::OnStructType(wabt::Index, wabt::Index, wabt::TypeMut *)
+- name: _ZN4wabt19BinaryReaderLogging16BeginDataSectionEm
+  params:
+  - name: size
+    type: int
+  return_type: wabt::Result
+  signature: wabt::Result wabt::BinaryReaderLogging::BeginDataSection(int)
+- name: _ZN4wabt19BinaryReaderLogging18OnSimdLoadLaneExprENS_6OpcodeEjmmm
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::Index
+  - name: alignment_log2
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  - name: value
+    type: uint64_t
+  return_type: wabt::Result
+  signature: wabt::Result wabt::BinaryReaderLogging::OnSimdLoadLaneExpr(wabt::Opcode, wabt::Index, wabt::Address, wabt::Address,
+    uint64_t)
+- name: _ZN4wabt19BinaryReaderLogging7LogTypeENS_4TypeE
+  params:
+  - name: type
+    type: wabt::Type
+  return_type: void
+  signature: void wabt::BinaryReaderLogging::LogType(wabt::Type)
+- name: _ZN4wabt19BinaryReaderLogging8LogFieldENS_7TypeMutE
+  params:
+  - name: field
+    type: wabt::TypeMut
+  return_type: void
+  signature: void wabt::BinaryReaderLogging::LogField(wabt::TypeMut)
+- name: _ZN4wabt19BinaryReaderLogging8LogTypesERSt6vectorINS_4TypeESaIS2_EE
+  params:
+  - name: types
+    type: int &
+  return_type: void
+  signature: void wabt::BinaryReaderLogging::LogTypes(int &)
+- name: _ZN4wabt19BinaryReaderLoggingC2EPNS_6StreamEPNS_20BinaryReaderDelegateE
+  params:
+  - name: stream
+    type: wabt::Stream *
+  - name: forward
+    type: wabt::BinaryReaderDelegate *
+  return_type: void
+  signature: void wabt::BinaryReaderLogging::BinaryReaderLogging(wabt::Stream *, wabt::BinaryReaderDelegate *)
+- name: _ZN4wabt20FormatErrorsToStringERKSt6vectorINS_5ErrorESaIS1_EENS_8Location4TypeEPNS_21LexerSourceLineFinderERKNS_5ColorERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS_11PrintHeaderEi
+  params:
+  - name: errors
+    type: const int &
+  - name: location_type
+    type: Location::Type
+  - name: line_finder
+    type: wabt::LexerSourceLineFinder *
+  - name: color
+    type: const wabt::Color &
+  - name: header
+    type: const std::string &
+  - name: print_header
+    type: wabt::PrintHeader
+  - name: source_line_max_length
+    type: int
+  return_type: std::string
+  signature: std::string wabt::FormatErrorsToString(const int &, Location::Type, wabt::LexerSourceLineFinder *, const wabt::Color
+    &, const std::string &, wabt::PrintHeader, int)
+- name: _ZN4wabt21LexerSourceLineFinder13GetSourceLineERKNS_8LocationEmPNS0_10SourceLineE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: max_line_length
+    type: int
+  - name: out_source_line
+    type: wabt::LexerSourceLineFinder::SourceLine *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::LexerSourceLineFinder::GetSourceLine(const wabt::Location &, int, wabt::LexerSourceLineFinder::SourceLine
+    *)
+- name: _ZN4wabt21LexerSourceLineFinder14GetLineOffsetsEiPNS_5RangeImEE
+  params:
+  - name: line
+    type: int
+  - name: out_offsets
+    type: int *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::LexerSourceLineFinder::GetLineOffsets(int, int *)
+- name: _ZN4wabt21LexerSourceLineFinder22ClampSourceLineOffsetsENS_5RangeImEENS1_IjEEm
+  params:
+  - name: line_offset_range
+    type: int
+  - name: column_range
+    type: wabt::ColumnRange
+  - name: max_line_length
+    type: int
+  return_type: int
+  signature: int wabt::LexerSourceLineFinder::ClampSourceLineOffsets(int, wabt::ColumnRange, int)
+- name: _ZN4wabt21LexerSourceLineFinderC2ESt10unique_ptrINS_11LexerSourceESt14default_deleteIS2_EE
+  params:
+  - name: arg0
+    type: int
+  return_type: void
+  signature: void wabt::LexerSourceLineFinder::LexerSourceLineFinder(int)
+- name: _ZN4wabt22DataSegmentModuleFieldC2ERKNS_8LocationESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: name
+    type: int
+  return_type: void
+  signature: void wabt::DataSegmentModuleField::DataSegmentModuleField(const wabt::Location &, int)
+- name: _ZN4wabt22ElemSegmentModuleFieldC2ERKNS_8LocationESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: loc
+    type: const wabt::Location &
+  - name: name
+    type: int
+  return_type: void
+  signature: void wabt::ElemSegmentModuleField::ElemSegmentModuleField(const wabt::Location &, int)
+- name: _ZN4wabt3AST10InsertNodeENS_8NodeTypeENS_8ExprTypeEPKNS_4ExprEj
+  params:
+  - name: ntype
+    type: wabt::NodeType
+  - name: etype
+    type: wabt::ExprType
+  - name: e
+    type: const wabt::Expr *
+  - name: nargs
+    type: wabt::Index
+  return_type: wabt::Node &
+  signature: wabt::Node & wabt::AST::InsertNode(wabt::NodeType, wabt::ExprType, const wabt::Expr *, wabt::Index)
+- name: _ZN4wabt3AST9ConstructERKNS_14intrusive_listINS_4ExprEEEjjb
+  params:
+  - name: es
+    type: const wabt::ExprList &
+  - name: nresults
+    type: wabt::Index
+  - name: nparams
+    type: wabt::Index
+  - name: is_function_body
+    type: bool
+  return_type: void
+  signature: void wabt::AST::Construct(const wabt::ExprList &, wabt::Index, wabt::Index, bool)
+- name: _ZN4wabt3AST9ConstructERKNS_4ExprE
+  params:
+  - name: e
+    type: const wabt::Expr &
+  return_type: void
+  signature: void wabt::AST::Construct(const wabt::Expr &)
+- name: _ZN4wabt3ASTC2ERNS_13ModuleContextEPKNS_4FuncE
+  params:
+  - name: mc
+    type: wabt::ModuleContext &
+  - name: f
+    type: const wabt::Func *
+  return_type: void
+  signature: void wabt::AST::AST(wabt::ModuleContext &, const wabt::Func *)
+- name: _ZN4wabt3Var8set_nameEONSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: arg0
+    type: std::string &&
+  return_type: void
+  signature: void wabt::Var::set_name(std::string &&)
+- name: _ZN4wabt3Var8set_nameESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: arg0
+    type: int
+  return_type: void
+  signature: void wabt::Var::set_name(int)
+- name: _ZN4wabt3VarC2ERKS0_
+  params:
+  - name: arg0
+    type: const wabt::Var &
+  return_type: void
+  signature: void wabt::Var::Var(const wabt::Var &)
+- name: _ZN4wabt3VarC2Ev
+  params:
+  - name: arg0
+    type: const wabt::Var &
+  return_type: void
+  signature: void wabt::Var::Var(const wabt::Var &)
+- name: _ZN4wabt3VaraSERKS0_
+  params:
+  - name: arg0
+    type: const wabt::Var &
+  return_type: wabt::Var &
+  signature: wabt::Var & wabt::Var::operator=(const wabt::Var &)
+- name: _ZN4wabt4ExprC2ENS_8ExprTypeERKNS_8LocationE
+  params:
+  - name: type
+    type: wabt::ExprType
+  - name: loc
+    type: const wabt::Location &
+  return_type: void
+  signature: void wabt::Expr::Expr(wabt::ExprType, const wabt::Location &)
+- name: _ZN4wabt4FuncC2ESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: void
+  signature: void wabt::Func::Func(int)
+- name: _ZN4wabt5Const11set_v128_u8Eih
+  params:
+  - name: lane
+    type: int
+  - name: x
+    type: uint8_t
+  return_type: void
+  signature: void wabt::Const::set_v128_u8(int, uint8_t)
+- name: _ZN4wabt5Const12set_v128_u16Eit
+  params:
+  - name: lane
+    type: int
+  - name: x
+    type: uint16_t
+  return_type: void
+  signature: void wabt::Const::set_v128_u16(int, uint16_t)
+- name: _ZN4wabt5Const12set_v128_u32Eij
+  params:
+  - name: lane
+    type: int
+  - name: x
+    type: uint32_t
+  return_type: void
+  signature: void wabt::Const::set_v128_u32(int, uint32_t)
+- name: _ZN4wabt5Const12set_v128_u64Eim
+  params:
+  - name: lane
+    type: int
+  - name: x
+    type: uint64_t
+  return_type: void
+  signature: void wabt::Const::set_v128_u64(int, uint64_t)
+- name: _ZN4wabt5Const3I64EmRKNS_8LocationE
+  params:
+  - name: val
+    type: uint64_t
+  - name: loc
+    type: const wabt::Location &
+  return_type: wabt::Const
+  signature: wabt::Const wabt::Const::I64(uint64_t, const wabt::Location &)
+- name: _ZN4wabt5Const4V128E4v128RKNS_8LocationE
+  params:
+  - name: val
+    type: v128
+  - name: loc
+    type: const wabt::Location &
+  return_type: wabt::Const
+  signature: wabt::Const wabt::Const::V128(v128, const wabt::Location &)
+- name: _ZN4wabt5TokenC2ENS_8LocationENS_9TokenTypeENS_4TypeE
+  params:
+  - name: arg0
+    type: wabt::Location
+  - name: arg1
+    type: wabt::TokenType
+  - name: arg2
+    type: const wabt::Literal &
+  return_type: void
+  signature: void wabt::Token::Token(wabt::Location, wabt::TokenType, const wabt::Literal &)
+- name: _ZN4wabt5TokenC2ENS_8LocationENS_9TokenTypeENS_6OpcodeE
+  params:
+  - name: arg0
+    type: wabt::Location
+  - name: arg1
+    type: wabt::TokenType
+  - name: arg2
+    type: const wabt::Literal &
+  return_type: void
+  signature: void wabt::Token::Token(wabt::Location, wabt::TokenType, const wabt::Literal &)
+- name: _ZN4wabt5TokenC2ENS_8LocationENS_9TokenTypeERKNS_7LiteralE
+  params:
+  - name: arg0
+    type: wabt::Location
+  - name: arg1
+    type: wabt::TokenType
+  - name: arg2
+    type: const wabt::Literal &
+  return_type: void
+  signature: void wabt::Token::Token(wabt::Location, wabt::TokenType, const wabt::Literal &)
+- name: _ZN4wabt6Module11AppendFieldESt10unique_ptrINS_11ModuleFieldESt14default_deleteIS2_EE
+  params:
+  - name: arg0
+    type: int
+  return_type: void
+  signature: void wabt::Module::AppendField(int)
+- name: _ZN4wabt6Module11AppendFieldESt10unique_ptrINS_15FuncModuleFieldESt14default_deleteIS2_EE
+  params:
+  - name: arg0
+    type: int
+  return_type: void
+  signature: void wabt::Module::AppendField(int)
+- name: _ZN4wabt6Module11AppendFieldESt10unique_ptrINS_17ImportModuleFieldESt14default_deleteIS2_EE
+  params:
+  - name: arg0
+    type: int
+  return_type: void
+  signature: void wabt::Module::AppendField(int)
+- name: _ZN4wabt6Module12AppendFieldsEPNS_14intrusive_listINS_11ModuleFieldEEE
+  params:
+  - name: arg0
+    type: wabt::ModuleFieldList *
+  return_type: void
+  signature: void wabt::Module::AppendFields(wabt::ModuleFieldList *)
+- name: _ZN4wabt6Module14GetElemSegmentERKNS_3VarE
+  params:
+  - name: arg0
+    type: const wabt::Var &
+  return_type: wabt::ElemSegment *
+  signature: wabt::ElemSegment * wabt::Module::GetElemSegment(const wabt::Var &)
+- name: _ZN4wabt6ModuleC2Ev
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: arg1
+    type: wabt::interp::ModuleDesc
+  return_type: void
+  signature: void wabt::interp::Module::Module(wabt::interp::Store &, wabt::interp::ModuleDesc)
+- name: _ZN4wabt6interp10GlobalTypeC2ENS_4TypeENS0_10MutabilityE
+  params:
+  - name: type
+    type: wabt::interp::ValueType
+  - name: mut
+    type: wabt::interp::Mutability
+  return_type: void
+  signature: void wabt::interp::GlobalType::GlobalType(wabt::interp::ValueType, wabt::interp::Mutability)
+- name: _ZN4wabt6interp11DefinedFunc3NewERNS0_5StoreENS0_3RefENS0_8FuncDescE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: instance
+    type: wabt::interp::Ref
+  - name: arg2
+    type: wabt::interp::FuncDesc
+  return_type: DefinedFunc::Ptr
+  signature: DefinedFunc::Ptr wabt::interp::DefinedFunc::New(wabt::interp::Store &, wabt::interp::Ref, wabt::interp::FuncDesc)
+- name: _ZN4wabt6interp11DefinedFunc5MatchERNS0_5StoreERKNS0_10ImportTypeEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: arg1
+    type: const wabt::interp::ImportType &
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::DefinedFunc::Match(wabt::interp::Store &, const wabt::interp::ImportType &, Trap::Ptr
+    *)
+- name: _ZN4wabt6interp11DefinedFunc6DoCallERNS0_6ThreadERKSt6vectorINS0_5ValueESaIS5_EERS7_PNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: thread
+    type: wabt::interp::Thread &
+  - name: params
+    type: const int &
+  - name: results
+    type: int &
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::DefinedFunc::DoCall(wabt::interp::Thread &, const int &, int &, Trap::Ptr *)
+- name: _ZN4wabt6interp11DefinedFuncC2ERNS0_5StoreENS0_3RefENS0_8FuncDescE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: instance
+    type: wabt::interp::Ref
+  - name: arg2
+    type: wabt::interp::FuncDesc
+  return_type: void
+  signature: void wabt::interp::DefinedFunc::DefinedFunc(wabt::interp::Store &, wabt::interp::Ref, wabt::interp::FuncDesc)
+- name: _ZN4wabt6interp11ElemSegmentC2ERNS0_5StoreEPKNS0_8ElemDescERNS0_6RefPtrINS0_8InstanceEEE
+  params:
+  - name: store
+    type: wabt::interp::Store &
+  - name: arg1
+    type: const wabt::interp::ElemDesc *
+  - name: arg2
+    type: RefPtr<wabt::interp::Instance> &
+  return_type: void
+  signature: void wabt::interp::ElemSegment::ElemSegment(wabt::interp::Store &, const wabt::interp::ElemDesc *, RefPtr<wabt::interp::Instance>
+    &)
+- name: _ZN4wabt6interp11IsReferenceENS_4TypeE
+  params:
+  - name: arg0
+    type: wabt::interp::ValueType
+  return_type: bool
+  signature: bool wabt::interp::IsReference(wabt::interp::ValueType)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp10BeginTableEjNS_4TypeEPKNS_6LimitsENS_19TableInitExprStatusE
+  params:
+  - name: index
+    type: wabt::interp::Index
+  - name: elem_type
+    type: wabt::Type
+  - name: elem_limits
+    type: const wabt::Limits *
+  - name: init_provided
+    type: wabt::TableInitExprStatus
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::BeginTable(wabt::interp::Index, wabt::Type, const wabt::Limits
+    *, wabt::TableInitExprStatus)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp10OnBrIfExprEj
+  params:
+  - name: depth
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnBrIfExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp10OnCallExprEj
+  params:
+  - name: func_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnCallExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp10OnFuncTypeEjjPNS_4TypeEjS4_
+  params:
+  - name: index
+    type: wabt::interp::Index
+  - name: param_count
+    type: wabt::interp::Index
+  - name: param_types
+    type: wabt::Type *
+  - name: result_count
+    type: wabt::interp::Index
+  - name: result_types
+    type: wabt::Type *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnFuncType(wabt::interp::Index, wabt::interp::Index, wabt::Type
+    *, wabt::interp::Index, wabt::Type *)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp10OnFunctionEjj
+  params:
+  - name: index
+    type: wabt::interp::Index
+  - name: sig_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnFunction(wabt::interp::Index, wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp10OnLoopExprENS_4TypeE
+  params:
+  - name: sig_type
+    type: wabt::Type
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnLoopExpr(wabt::Type)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp11BeginGlobalEjNS_4TypeEb
+  params:
+  - name: index
+    type: wabt::interp::Index
+  - name: type
+    type: wabt::Type
+  - name: mutable_
+    type: bool
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::BeginGlobal(wabt::interp::Index, wabt::Type, bool)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp11OnBlockExprENS_4TypeE
+  params:
+  - name: sig_type
+    type: wabt::Type
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnBlockExpr(wabt::Type)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp11OnDataCountEj
+  params:
+  - name: count
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnDataCount(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp11OnLocalDeclEjjNS_4TypeE
+  params:
+  - name: decl_index
+    type: wabt::interp::Index
+  - name: count
+    type: wabt::interp::Index
+  - name: type
+    type: wabt::Type
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnLocalDecl(wabt::interp::Index, wabt::interp::Index, wabt::Type)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp11OnThrowExprEj
+  params:
+  - name: tag_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnThrowExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp11OnUnaryExprENS_6OpcodeE
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnUnaryExpr(wabt::Opcode)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp12OnBinaryExprENS_6OpcodeE
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnBinaryExpr(wabt::Opcode)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp13OnBrTableExprEjPjj
+  params:
+  - name: num_targets
+    type: wabt::interp::Index
+  - name: target_depths
+    type: wabt::interp::Index *
+  - name: default_target_depth
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnBrTableExpr(wabt::interp::Index, wabt::interp::Index *, wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp13OnCallRefExprENS_4TypeE
+  params:
+  - name: sig_type
+    type: wabt::Type
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnCallRefExpr(wabt::Type)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp13OnCompareExprENS_6OpcodeE
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnCompareExpr(wabt::Opcode)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp13OnConvertExprENS_6OpcodeE
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnConvertExpr(wabt::Opcode)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp13OnRefFuncExprEj
+  params:
+  - name: func_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnRefFuncExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp13OnRefNullExprENS_4TypeE
+  params:
+  - name: type
+    type: wabt::Type
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnRefNullExpr(wabt::Type)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp13OnRethrowExprEj
+  params:
+  - name: depth
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnRethrowExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp13OnTernaryExprENS_6OpcodeE
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnTernaryExpr(wabt::Opcode)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp14OnBrOnNullExprEj
+  params:
+  - name: depth
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnBrOnNullExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp14OnDataDropExprEj
+  params:
+  - name: segment_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnDataDropExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp14OnDelegateExprEj
+  params:
+  - name: depth
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnDelegateExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp14OnElemDropExprEj
+  params:
+  - name: segment_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnElemDropExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp14OnI64ConstExprEm
+  params:
+  - name: value
+    type: uint64_t
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnI64ConstExpr(uint64_t)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp14OnLoadZeroExprENS_6OpcodeEjmm
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::interp::Index
+  - name: align_log2
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnLoadZeroExpr(wabt::Opcode, wabt::interp::Index, wabt::Address,
+    wabt::Address)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp14OnLocalSetExprEj
+  params:
+  - name: local_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnLocalSetExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp14OnLocalTeeExprEj
+  params:
+  - name: local_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnLocalTeeExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp14OnTableGetExprEj
+  params:
+  - name: table_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnTableGetExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp14OnTableSetExprEj
+  params:
+  - name: table_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnTableSetExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp15EndFunctionBodyEj
+  params:
+  - name: index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::EndFunctionBody(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp15OnAtomicRmwExprENS_6OpcodeEjmm
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::interp::Index
+  - name: align_log2
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnAtomicRmwExpr(wabt::Opcode, wabt::interp::Index, wabt::Address,
+    wabt::Address)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp15OnLoadSplatExprENS_6OpcodeEjmm
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::interp::Index
+  - name: align_log2
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnLoadSplatExpr(wabt::Opcode, wabt::interp::Index, wabt::Address,
+    wabt::Address)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp15OnStartFunctionEj
+  params:
+  - name: func_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnStartFunction(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp15OnTableCopyExprEjj
+  params:
+  - name: dst_index
+    type: wabt::interp::Index
+  - name: src_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnTableCopyExpr(wabt::interp::Index, wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp15OnTableFillExprEj
+  params:
+  - name: table_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnTableFillExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp15OnTableGrowExprEj
+  params:
+  - name: table_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnTableGrowExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp15OnTableInitExprEjj
+  params:
+  - name: segment_index
+    type: wabt::interp::Index
+  - name: table_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnTableInitExpr(wabt::interp::Index, wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp15OnTableSizeExprEj
+  params:
+  - name: table_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnTableSizeExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp16BeginDataSegmentEjjh
+  params:
+  - name: index
+    type: wabt::interp::Index
+  - name: memory_index
+    type: wabt::interp::Index
+  - name: flags
+    type: uint8_t
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::BeginDataSegment(wabt::interp::Index, wabt::interp::Index, uint8_t)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp16BeginElemSegmentEjjh
+  params:
+  - name: index
+    type: wabt::interp::Index
+  - name: table_index
+    type: wabt::interp::Index
+  - name: flags
+    type: uint8_t
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::BeginElemSegment(wabt::interp::Index, wabt::interp::Index, uint8_t)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp16EndTableInitExprEj
+  params:
+  - name: index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::EndTableInitExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp16OnAtomicLoadExprENS_6OpcodeEjmm
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::interp::Index
+  - name: align_log2
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnAtomicLoadExpr(wabt::Opcode, wabt::interp::Index, wabt::Address,
+    wabt::Address)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp16OnAtomicWaitExprENS_6OpcodeEjmm
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::interp::Index
+  - name: align_log2
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnAtomicWaitExpr(wabt::Opcode, wabt::interp::Index, wabt::Address,
+    wabt::Address)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp16OnMemoryCopyExprEjj
+  params:
+  - name: destmemidx
+    type: wabt::interp::Index
+  - name: srcmemidx
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnMemoryCopyExpr(wabt::interp::Index, wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp16OnMemoryFillExprEj
+  params:
+  - name: memidx
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnMemoryFillExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp16OnMemoryGrowExprEj
+  params:
+  - name: memidx
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnMemoryGrowExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp16OnMemoryInitExprEjj
+  params:
+  - name: segment_index
+    type: wabt::interp::Index
+  - name: memidx
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnMemoryInitExpr(wabt::interp::Index, wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp16OnMemorySizeExprEj
+  params:
+  - name: memidx
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnMemorySizeExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp16OnReturnCallExprEj
+  params:
+  - name: func_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnReturnCallExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp16OnSimdLaneOpExprENS_6OpcodeEm
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: value
+    type: uint64_t
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnSimdLaneOpExpr(wabt::Opcode, uint64_t)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp17OnAtomicFenceExprEj
+  params:
+  - name: consistency_model
+    type: uint32_t
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnAtomicFenceExpr(uint32_t)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp17OnAtomicStoreExprENS_6OpcodeEjmm
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::interp::Index
+  - name: align_log2
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnAtomicStoreExpr(wabt::Opcode, wabt::interp::Index, wabt::Address,
+    wabt::Address)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp17OnBrOnNonNullExprEj
+  params:
+  - name: depth
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnBrOnNonNullExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp18OnAtomicNotifyExprENS_6OpcodeEjmm
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::interp::Index
+  - name: align_log2
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnAtomicNotifyExpr(wabt::Opcode, wabt::interp::Index, wabt::Address,
+    wabt::Address)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp18OnCallIndirectExprEjj
+  params:
+  - name: sig_index
+    type: wabt::interp::Index
+  - name: table_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnCallIndirectExpr(wabt::interp::Index, wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp18OnSimdLoadLaneExprENS_6OpcodeEjmmm
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::interp::Index
+  - name: alignment_log2
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  - name: value
+    type: uint64_t
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnSimdLoadLaneExpr(wabt::Opcode, wabt::interp::Index, wabt::Address,
+    wabt::Address, uint64_t)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp19OnReturnCallRefExprENS_4TypeE
+  params:
+  - name: sig_type
+    type: wabt::Type
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnReturnCallRefExpr(wabt::Type)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp19OnSimdShuffleOpExprENS_6OpcodeE4v128
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: value
+    type: v128
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnSimdShuffleOpExpr(wabt::Opcode, v128)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp19OnSimdStoreLaneExprENS_6OpcodeEjmmm
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::interp::Index
+  - name: alignment_log2
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  - name: value
+    type: uint64_t
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnSimdStoreLaneExpr(wabt::Opcode, wabt::interp::Index, wabt::Address,
+    wabt::Address, uint64_t)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp21OnElemSegmentElemTypeEjNS_4TypeE
+  params:
+  - name: index
+    type: wabt::interp::Index
+  - name: elem_type
+    type: wabt::Type
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnElemSegmentElemType(wabt::interp::Index, wabt::Type)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp22OnAtomicRmwCmpxchgExprENS_6OpcodeEjmm
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  - name: memidx
+    type: wabt::interp::Index
+  - name: align_log2
+    type: wabt::Address
+  - name: offset
+    type: wabt::Address
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnAtomicRmwCmpxchgExpr(wabt::Opcode, wabt::interp::Index, wabt::Address,
+    wabt::Address)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp24OnReturnCallIndirectExprEjj
+  params:
+  - name: sig_index
+    type: wabt::interp::Index
+  - name: table_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnReturnCallIndirectExpr(wabt::interp::Index, wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp8OnBrExprEj
+  params:
+  - name: depth
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnBrExpr(wabt::interp::Index)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp8OnMemoryEjPKNS_6LimitsEj
+  params:
+  - name: index
+    type: wabt::interp::Index
+  - name: limits
+    type: const wabt::Limits *
+  - name: page_size
+    type: uint32_t
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnMemory(wabt::interp::Index, const wabt::Limits *, uint32_t)
+- name: _ZN4wabt6interp12_GLOBAL__N_118BinaryReaderInterp9OnTagTypeEjj
+  params:
+  - name: index
+    type: wabt::interp::Index
+  - name: sig_index
+    type: wabt::interp::Index
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::BinaryReaderInterp::OnTagType(wabt::interp::Index, wabt::interp::Index)
+- name: _ZN4wabt6interp3Tag3NewERNS0_5StoreENS0_7TagTypeE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: arg1
+    type: wabt::interp::TagType
+  return_type: Tag::Ptr
+  signature: Tag::Ptr wabt::interp::Tag::New(wabt::interp::Store &, wabt::interp::TagType)
+- name: _ZN4wabt6interp3Tag5MatchERNS0_5StoreERKNS0_10ImportTypeEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: arg1
+    type: const wabt::interp::ImportType &
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::Tag::Match(wabt::interp::Store &, const wabt::interp::ImportType &, Trap::Ptr *)
+- name: _ZN4wabt6interp4FuncC2ENS0_10ObjectKindENS0_8FuncTypeE
+  params:
+  - name: arg0
+    type: wabt::interp::ObjectKind
+  - name: arg1
+    type: wabt::interp::FuncType
+  return_type: void
+  signature: void wabt::interp::Func::Func(wabt::interp::ObjectKind, wabt::interp::FuncType)
+- name: _ZN4wabt6interp4Trap3NewERNS0_5StoreERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKSt6vectorINS0_5FrameESaISD_EE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: msg
+    type: const std::string &
+  - name: trace
+    type: const int &
+  return_type: Trap::Ptr
+  signature: Trap::Ptr wabt::interp::Trap::New(wabt::interp::Store &, const std::string &, const int &)
+- name: _ZN4wabt6interp4Trap4MarkERNS0_5StoreE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  return_type: void
+  signature: void wabt::interp::Trap::Mark(wabt::interp::Store &)
+- name: _ZN4wabt6interp5MatchERKNS0_10MemoryTypeES3_PNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: expected
+    type: const wabt::interp::MemoryType &
+  - name: actual
+    type: const wabt::interp::MemoryType &
+  - name: out_msg
+    type: std::string *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::Match(const wabt::interp::MemoryType &, const wabt::interp::MemoryType &, std::string
+    *)
+- name: _ZN4wabt6interp5Store10DeleteRootEm
+  params:
+  - name: arg0
+    type: int
+  return_type: void
+  signature: void wabt::interp::Store::DeleteRoot(int)
+- name: _ZN4wabt6interp5Store8CopyRootEm
+  params:
+  - name: arg0
+    type: int
+  return_type: int
+  signature: int wabt::interp::Store::CopyRoot(int)
+- name: _ZN4wabt6interp5StoreC2ERKNS_8FeaturesE
+  params:
+  - name: arg0
+    type: const wabt::interp::Store &
+  return_type: void
+  signature: void wabt::interp::Store::Store(const wabt::interp::Store &)
+- name: _ZN4wabt6interp5Table3NewERNS0_5StoreENS0_9TableTypeENS0_3RefE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: arg1
+    type: wabt::interp::TableType
+  - name: arg2
+    type: wabt::interp::Ref
+  return_type: Table::Ptr
+  signature: Table::Ptr wabt::interp::Table::New(wabt::interp::Store &, wabt::interp::TableType, wabt::interp::Ref)
+- name: _ZN4wabt6interp5Table4FillERNS0_5StoreEjNS0_3RefEj
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: offset
+    type: wabt::interp::u32
+  - name: arg2
+    type: wabt::interp::Ref
+  - name: size
+    type: wabt::interp::u32
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::Table::Fill(wabt::interp::Store &, wabt::interp::u32, wabt::interp::Ref, wabt::interp::u32)
+- name: _ZN4wabt6interp5Table4GrowERNS0_5StoreEjNS0_3RefE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: count
+    type: wabt::interp::u32
+  - name: arg2
+    type: wabt::interp::Ref
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::Table::Grow(wabt::interp::Store &, wabt::interp::u32, wabt::interp::Ref)
+- name: _ZN4wabt6interp5Table4InitERNS0_5StoreEjRKNS0_11ElemSegmentEjj
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: dst_offset
+    type: wabt::interp::u32
+  - name: arg2
+    type: const wabt::interp::ElemSegment &
+  - name: src_offset
+    type: wabt::interp::u32
+  - name: size
+    type: wabt::interp::u32
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::Table::Init(wabt::interp::Store &, wabt::interp::u32, const wabt::interp::ElemSegment
+    &, wabt::interp::u32, wabt::interp::u32)
+- name: _ZN4wabt6interp5Table4MarkERNS0_5StoreE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  return_type: void
+  signature: void wabt::interp::Table::Mark(wabt::interp::Store &)
+- name: _ZN4wabt6interp5Table5MatchERNS0_5StoreERKNS0_10ImportTypeEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: arg1
+    type: const wabt::interp::ImportType &
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::Table::Match(wabt::interp::Store &, const wabt::interp::ImportType &, Trap::Ptr *)
+- name: _ZN4wabt6interp5Value4MakeENS0_3RefE
+  params:
+  - name: arg0
+    type: wabt::interp::Ref
+  return_type: wabt::interp::Value
+  signature: wabt::interp::Value wabt::interp::Value::Make(wabt::interp::Ref)
+- name: _ZN4wabt6interp6ExternC2ENS0_10ObjectKindE
+  params:
+  - name: arg0
+    type: wabt::interp::ObjectKind
+  return_type: void
+  signature: void wabt::interp::Extern::Extern(wabt::interp::ObjectKind)
+- name: _ZN4wabt6interp6Global3NewERNS0_5StoreENS0_10GlobalTypeENS0_5ValueE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: arg1
+    type: wabt::interp::GlobalType
+  - name: arg2
+    type: wabt::interp::Value
+  return_type: Global::Ptr
+  signature: Global::Ptr wabt::interp::Global::New(wabt::interp::Store &, wabt::interp::GlobalType, wabt::interp::Value)
+- name: _ZN4wabt6interp6Global3SetERNS0_5StoreENS0_3RefE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: arg1
+    type: wabt::interp::Ref
+  return_type: void
+  signature: void wabt::interp::Global::Set(wabt::interp::Store &, wabt::interp::Ref)
+- name: _ZN4wabt6interp6Global5MatchERNS0_5StoreERKNS0_10ImportTypeEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: arg1
+    type: const wabt::interp::ImportType &
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::Global::Match(wabt::interp::Store &, const wabt::interp::ImportType &, Trap::Ptr *)
+- name: _ZN4wabt6interp6Memory3NewERNS0_5StoreENS0_10MemoryTypeE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: arg1
+    type: wabt::interp::MemoryType
+  return_type: Memory::Ptr
+  signature: Memory::Ptr wabt::interp::Memory::New(wabt::interp::Store &, wabt::interp::MemoryType)
+- name: _ZN4wabt6interp6Memory4CopyERS1_mRKS1_mm
+  params:
+  - name: dst
+    type: wabt::interp::Memory &
+  - name: dst_offset
+    type: wabt::interp::u64
+  - name: src
+    type: const wabt::interp::Memory &
+  - name: src_offset
+    type: wabt::interp::u64
+  - name: size
+    type: wabt::interp::u64
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::Memory::Copy(wabt::interp::Memory &, wabt::interp::u64, const wabt::interp::Memory
+    &, wabt::interp::u64, wabt::interp::u64)
+- name: _ZN4wabt6interp6Memory4FillEmhm
+  params:
+  - name: offset
+    type: wabt::interp::u64
+  - name: value
+    type: wabt::interp::u8
+  - name: size
+    type: wabt::interp::u64
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::Memory::Fill(wabt::interp::u64, wabt::interp::u8, wabt::interp::u64)
+- name: _ZN4wabt6interp6Memory4GrowEm
+  params:
+  - name: pages
+    type: wabt::interp::u64
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::Memory::Grow(wabt::interp::u64)
+- name: _ZN4wabt6interp6Memory4InitEmRKNS0_11DataSegmentEmm
+  params:
+  - name: dst_offset
+    type: wabt::interp::u64
+  - name: arg1
+    type: const wabt::interp::DataSegment &
+  - name: src_offset
+    type: wabt::interp::u64
+  - name: size
+    type: wabt::interp::u64
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::Memory::Init(wabt::interp::u64, const wabt::interp::DataSegment &, wabt::interp::u64,
+    wabt::interp::u64)
+- name: _ZN4wabt6interp6Memory5MatchERNS0_5StoreERKNS0_10ImportTypeEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: arg1
+    type: const wabt::interp::ImportType &
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::Memory::Match(wabt::interp::Store &, const wabt::interp::ImportType &, Trap::Ptr *)
+- name: _ZN4wabt6interp6ModuleC2ERNS0_5StoreENS0_10ModuleDescE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: arg1
+    type: wabt::interp::ModuleDesc
+  return_type: void
+  signature: void wabt::interp::Module::Module(wabt::interp::Store &, wabt::interp::ModuleDesc)
+- name: _ZN4wabt6interp6RefPtrINS0_4TrapEEaSEOS3_
+  params:
+  - name: arg0
+    type: wabt::FileStream &&
+  return_type: wabt::FileStream &
+  signature: wabt::FileStream & wabt::FileStream::operator=(wabt::FileStream &&)
+- name: _ZN4wabt6interp6Thread10DoDataDropENS0_5InstrE
+  params:
+  - name: arg0
+    type: wabt::interp::Instr
+  return_type: wabt::interp::RunResult
+  signature: wabt::interp::RunResult wabt::interp::Thread::DoDataDrop(wabt::interp::Instr)
+- name: _ZN4wabt6interp6Thread10DoElemDropENS0_5InstrE
+  params:
+  - name: arg0
+    type: wabt::interp::Instr
+  return_type: wabt::interp::RunResult
+  signature: wabt::interp::RunResult wabt::interp::Thread::DoElemDrop(wabt::interp::Instr)
+- name: _ZN4wabt6interp6Thread10DoTableGetENS0_5InstrEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: arg0
+    type: wabt::interp::Instr
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::interp::RunResult
+  signature: wabt::interp::RunResult wabt::interp::Thread::DoTableGet(wabt::interp::Instr, Trap::Ptr *)
+- name: _ZN4wabt6interp6Thread10DoTableSetENS0_5InstrEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: arg0
+    type: wabt::interp::Instr
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::interp::RunResult
+  signature: wabt::interp::RunResult wabt::interp::Thread::DoTableSet(wabt::interp::Instr, Trap::Ptr *)
+- name: _ZN4wabt6interp6Thread11DoTableCopyENS0_5InstrEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: arg0
+    type: wabt::interp::Instr
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::interp::RunResult
+  signature: wabt::interp::RunResult wabt::interp::Thread::DoTableCopy(wabt::interp::Instr, Trap::Ptr *)
+- name: _ZN4wabt6interp6Thread11DoTableGrowENS0_5InstrEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: arg0
+    type: wabt::interp::Instr
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::interp::RunResult
+  signature: wabt::interp::RunResult wabt::interp::Thread::DoTableGrow(wabt::interp::Instr, Trap::Ptr *)
+- name: _ZN4wabt6interp6Thread11DoTableInitENS0_5InstrEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: arg0
+    type: wabt::interp::Instr
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::interp::RunResult
+  signature: wabt::interp::RunResult wabt::interp::Thread::DoTableInit(wabt::interp::Instr, Trap::Ptr *)
+- name: _ZN4wabt6interp6Thread11TraceSource4PickB5cxx11EjNS0_5InstrE
+  params:
+  - name: arg0
+    type: wabt::interp::Index
+  - name: arg1
+    type: wabt::interp::Instr
+  return_type: std::string
+  signature: std::string wabt::interp::Thread::TraceSource::Pick(wabt::interp::Index, wabt::interp::Instr)
+- name: _ZN4wabt6interp6Thread11TraceSourceC2EPS1_
+  params:
+  - name: arg0
+    type: wabt::interp::Thread *
+  return_type: void
+  signature: void wabt::interp::Thread::TraceSource::TraceSource(wabt::interp::Thread *)
+- name: _ZN4wabt6interp6Thread12DoMemoryCopyENS0_5InstrEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: arg0
+    type: wabt::interp::Instr
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::interp::RunResult
+  signature: wabt::interp::RunResult wabt::interp::Thread::DoMemoryCopy(wabt::interp::Instr, Trap::Ptr *)
+- name: _ZN4wabt6interp6Thread12DoMemoryFillENS0_5InstrEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: arg0
+    type: wabt::interp::Instr
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::interp::RunResult
+  signature: wabt::interp::RunResult wabt::interp::Thread::DoMemoryFill(wabt::interp::Instr, Trap::Ptr *)
+- name: _ZN4wabt6interp6Thread12DoMemoryInitENS0_5InstrEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: arg0
+    type: wabt::interp::Instr
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::interp::RunResult
+  signature: wabt::interp::RunResult wabt::interp::Thread::DoMemoryInit(wabt::interp::Instr, Trap::Ptr *)
+- name: _ZN4wabt6interp6Thread12StepInternalEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::interp::RunResult
+  signature: wabt::interp::RunResult wabt::interp::Thread::StepInternal(Trap::Ptr *)
+- name: _ZN4wabt6interp6Thread13DoSimdShuffleENS0_5InstrE
+  params:
+  - name: arg0
+    type: wabt::interp::Instr
+  return_type: wabt::interp::RunResult
+  signature: wabt::interp::RunResult wabt::interp::Thread::DoSimdShuffle(wabt::interp::Instr)
+- name: _ZN4wabt6interp6Thread3RunEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::interp::RunResult
+  signature: wabt::interp::RunResult wabt::interp::Thread::Run(Trap::Ptr *)
+- name: _ZN4wabt6interp6Thread3RunEiPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: num_instructions
+    type: int
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::interp::RunResult
+  signature: wabt::interp::RunResult wabt::interp::Thread::Run(int, Trap::Ptr *)
+- name: _ZN4wabt6interp6Thread6DoCallERKNS0_6RefPtrINS0_4FuncEEEPNS2_INS0_4TrapEEE
+  params:
+  - name: arg0
+    type: const Func::Ptr &
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::interp::RunResult
+  signature: wabt::interp::RunResult wabt::interp::Thread::DoCall(const Func::Ptr &, Trap::Ptr *)
+- name: _ZN4wabt6interp6Thread7DoThrowENS0_6RefPtrINS0_9ExceptionEEE
+  params:
+  - name: exn_ref
+    type: Exception::Ptr
+  return_type: wabt::interp::RunResult
+  signature: wabt::interp::RunResult wabt::interp::Thread::DoThrow(Exception::Ptr)
+- name: _ZN4wabt6interp6Thread7PushPtrERKNS0_6RefPtrINS0_5TableEEEm
+  params:
+  - name: table
+    type: const Table::Ptr &
+  - name: value
+    type: wabt::interp::u64
+  return_type: void
+  signature: void wabt::interp::Thread::PushPtr(const Table::Ptr &, wabt::interp::u64)
+- name: _ZN4wabt6interp6Thread7PushPtrERKNS0_6RefPtrINS0_6MemoryEEEm
+  params:
+  - name: memory
+    type: const Memory::Ptr &
+  - name: value
+    type: wabt::interp::u64
+  return_type: void
+  signature: void wabt::interp::Thread::PushPtr(const Memory::Ptr &, wabt::interp::u64)
+- name: _ZN4wabt6interp6Thread8PushCallERKNS0_11DefinedFuncEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: arg0
+    type: const wabt::interp::DefinedFunc &
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::interp::RunResult
+  signature: wabt::interp::RunResult wabt::interp::Thread::PushCall(const wabt::interp::DefinedFunc &, Trap::Ptr *)
+- name: _ZN4wabt6interp6Thread8PushCallERKNS0_8HostFuncEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: arg0
+    type: const wabt::interp::HostFunc &
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::interp::RunResult
+  signature: wabt::interp::RunResult wabt::interp::Thread::PushCall(const wabt::interp::HostFunc &, Trap::Ptr *)
+- name: _ZN4wabt6interp6ThreadC2ERNS0_5StoreEPNS_6StreamE
+  params:
+  - name: store
+    type: wabt::interp::Store &
+  - name: trace_stream
+    type: wabt::Stream *
+  return_type: void
+  signature: void wabt::interp::Thread::Thread(wabt::interp::Store &, wabt::Stream *)
+- name: _ZN4wabt6interp8Instance11InstantiateERNS0_5StoreENS0_3RefERKSt6vectorIS4_SaIS4_EEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: module
+    type: wabt::interp::Ref
+  - name: imports
+    type: const int &
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: Instance::Ptr
+  signature: Instance::Ptr wabt::interp::Instance::Instantiate(wabt::interp::Store &, wabt::interp::Ref, const int &, Trap::Ptr
+    *)
+- name: _ZN4wabt6interp8Instance12CallInitFuncERNS0_5StoreENS0_3RefEPNS0_5ValueEPNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: func_ref
+    type: const wabt::interp::Ref
+  - name: result
+    type: wabt::interp::Value *
+  - name: out_trap
+    type: Trap::Ptr *
+  return_type: wabt::Result
+  signature: wabt::Result wabt::interp::Instance::CallInitFunc(wabt::interp::Store &, const wabt::interp::Ref, wabt::interp::Value
+    *, Trap::Ptr *)
+- name: _ZN4wabt6interp8Instance4MarkERNS0_5StoreE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  return_type: void
+  signature: void wabt::interp::Instance::Mark(wabt::interp::Store &)
+- name: _ZN4wabt6interp9Exception3NewERNS0_5StoreENS0_3RefERSt6vectorINS0_5ValueESaIS6_EE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  - name: tag
+    type: wabt::interp::Ref
+  - name: args
+    type: int &
+  return_type: Exception::Ptr
+  signature: Exception::Ptr wabt::interp::Exception::New(wabt::interp::Store &, wabt::interp::Ref, int &)
+- name: _ZN4wabt6interp9Exception4MarkERNS0_5StoreE
+  params:
+  - name: arg0
+    type: wabt::interp::Store &
+  return_type: void
+  signature: void wabt::interp::Exception::Mark(wabt::interp::Store &)
+- name: _ZN4wabt6interp9WriteTrapEPNS_6StreamEPKcRKNS0_6RefPtrINS0_4TrapEEE
+  params:
+  - name: stream
+    type: wabt::Stream *
+  - name: desc
+    type: const char *
+  - name: trap
+    type: const Trap::Ptr &
+  return_type: void
+  signature: void wabt::interp::WriteTrap(wabt::Stream *, const char *, const Trap::Ptr &)
+- name: _ZN4wabt8Features10AddOptionsEPNS_12OptionParserE
+  params:
+  - name: arg0
+    type: wabt::OptionParser *
+  return_type: void
+  signature: void wabt::Features::AddOptions(wabt::OptionParser *)
+- name: _ZN4wabt8Features27set_wide_arithmetic_enabledEb
+  params:
+  - name: value
+    type: bool
+  return_type: void
+  signature: void wabt::Features::set_wide_arithmetic_enabled(bool)
+- name: _ZN4wabt8FuncTypeC2ESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: void
+  signature: void wabt::FuncType::FuncType(int)
+- name: _ZN4wabt9ArrayTypeC2ESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: name
+    type: int
+  return_type: void
+  signature: void wabt::ArrayType::ArrayType(int)
+- name: _ZN4wabt9DecompileB5cxx11ERKNS_6ModuleERKNS_16DecompileOptionsE
+  params:
+  - name: module
+    type: const wabt::Module &
+  - name: options
+    type: const wabt::DecompileOptions &
+  return_type: std::string
+  signature: std::string wabt::Decompile(const wabt::Module &, const wabt::DecompileOptions &)
+- name: _ZN4wabt9WastLexer12LiteralTokenENS_9TokenTypeENS_11LiteralTypeE
+  params:
+  - name: arg0
+    type: wabt::TokenType
+  - name: arg1
+    type: wabt::LiteralType
+  return_type: wabt::Token
+  signature: wabt::Token wabt::WastLexer::LiteralToken(wabt::TokenType, wabt::LiteralType)
+- name: _ZN4wabt9WastLexer14GetStringTokenENS_9TokenTypeE
+  params:
+  - name: arg0
+    type: wabt::TokenType
+  return_type: wabt::Token
+  signature: wabt::Token wabt::WastLexer::GetStringToken(wabt::TokenType)
+- name: _ZN4wabt9WastLexer17GetHexNumberTokenENS_9TokenTypeE
+  params:
+  - name: arg0
+    type: wabt::TokenType
+  return_type: wabt::Token
+  signature: wabt::Token wabt::WastLexer::GetHexNumberToken(wabt::TokenType)
+- name: _ZN4wabt9WastLexer17GetNameEqNumTokenESt17basic_string_viewIcSt11char_traitsIcEENS_9TokenTypeE
+  params:
+  - name: name
+    type: int
+  - name: arg1
+    type: wabt::TokenType
+  return_type: wabt::Token
+  signature: wabt::Token wabt::WastLexer::GetNameEqNumToken(int, wabt::TokenType)
+- name: _ZN4wabt9WriteTypeEPNS_6StreamENS_4TypeEPKc
+  params:
+  - name: stream
+    type: wabt::Stream *
+  - name: type
+    type: wabt::Type
+  - name: desc
+    type: const char *
+  return_type: void
+  signature: void wabt::WriteType(wabt::Stream *, wabt::Type, const char *)
+- name: _ZNK4wabt11BindingHash14FindDuplicatesESt8functionIFvRKSt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS_7BindingEESD_EE
+  params:
+  - name: callback
+    type: wabt::BindingHash::DuplicateCallback
+  return_type: void
+  signature: void wabt::BindingHash::FindDuplicates(wabt::BindingHash::DuplicateCallback) const
+- name: _ZNK4wabt13ModuleContext12GetExprArityERKNS_4ExprE
+  params:
+  - name: expr
+    type: const wabt::Expr &
+  return_type: wabt::ModuleContext::Arities
+  signature: wabt::ModuleContext::Arities wabt::ModuleContext::GetExprArity(const wabt::Expr &) const
+- name: _ZNK4wabt15FuncDeclaration12GetParamTypeEj
+  params:
+  - name: index
+    type: wabt::Index
+  return_type: wabt::Type
+  signature: wabt::Type wabt::FuncDeclaration::GetParamType(wabt::Index) const
+- name: _ZNK4wabt15SharedValidator15ValidInitOpcodeENS_6OpcodeE
+  params:
+  - name: opcode
+    type: wabt::Opcode
+  return_type: bool
+  signature: bool wabt::SharedValidator::ValidInitOpcode(wabt::Opcode) const
+- name: _ZNK4wabt17LoadStoreTracking11GenTypeDeclERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: name
+    type: const std::string &
+  return_type: std::string
+  signature: std::string wabt::LoadStoreTracking::GenTypeDecl(const std::string &) const
+- name: _ZNK4wabt4Func12GetLocalTypeERKNS_3VarE
+  params:
+  - name: var
+    type: const wabt::Var &
+  return_type: wabt::Type
+  signature: wabt::Type wabt::Func::GetLocalType(const wabt::Var &) const
+- name: _ZNK4wabt4Func12GetParamTypeEj
+  params:
+  - name: index
+    type: wabt::Index
+  return_type: wabt::Type
+  signature: wabt::Type wabt::Func::GetParamType(wabt::Index) const
+- name: _ZNK4wabt4Func13GetResultTypeEj
+  params:
+  - name: index
+    type: wabt::Index
+  return_type: wabt::Type
+  signature: wabt::Type wabt::Func::GetResultType(wabt::Index) const
+- name: _ZNK4wabt6Module11GetFuncTypeERKNS_3VarE
+  params:
+  - name: arg0
+    type: const wabt::Var &
+  return_type: const wabt::FuncType *
+  signature: const wabt::FuncType * wabt::Module::GetFuncType(const wabt::Var &) const
+- name: _ZNK4wabt6Module14GetDataSegmentERKNS_3VarE
+  params:
+  - name: arg0
+    type: const wabt::Var &
+  return_type: const wabt::DataSegment *
+  signature: const wabt::DataSegment * wabt::Module::GetDataSegment(const wabt::Var &) const
+- name: _ZNK4wabt6Module14GetElemSegmentERKNS_3VarE
+  params:
+  - name: arg0
+    type: const wabt::Var &
+  return_type: const wabt::ElemSegment *
+  signature: const wabt::ElemSegment * wabt::Module::GetElemSegment(const wabt::Var &) const
+- name: _ZNK4wabt6Module16GetFuncTypeIndexERKNS_13FuncSignatureE
+  params:
+  - name: arg0
+    type: const wabt::FuncSignature &
+  return_type: wabt::Index
+  signature: wabt::Index wabt::Module::GetFuncTypeIndex(const wabt::FuncSignature &) const
+- name: _ZNK4wabt6Module7GetFuncERKNS_3VarE
+  params:
+  - name: arg0
+    type: const wabt::Var &
+  return_type: const wabt::Func *
+  signature: const wabt::Func * wabt::Module::GetFunc(const wabt::Var &) const
+- name: _ZNK4wabt6Module8GetTableERKNS_3VarE
+  params:
+  - name: arg0
+    type: const wabt::Var &
+  return_type: const wabt::Table *
+  signature: const wabt::Table * wabt::Module::GetTable(const wabt::Var &) const
+- name: _ZNK4wabt6Module9GetExportESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: arg0
+    type: int
+  return_type: const wabt::Export *
+  signature: const wabt::Export * wabt::Module::GetExport(int) const
+- name: _ZNK4wabt6Module9GetGlobalERKNS_3VarE
+  params:
+  - name: arg0
+    type: const wabt::Var &
+  return_type: const wabt::Global *
+  signature: const wabt::Global * wabt::Module::GetGlobal(const wabt::Var &) const
+- name: _ZNK4wabt6Module9GetMemoryERKNS_3VarE
+  params:
+  - name: arg0
+    type: const wabt::Var &
+  return_type: const wabt::Memory *
+  signature: const wabt::Memory * wabt::Module::GetMemory(const wabt::Var &) const
+- name: _ZNK4wabt6Opcode9IsEnabledERKNS_8FeaturesE
+  params:
+  - name: features
+    type: const wabt::Features &
+  return_type: bool
+  signature: bool wabt::Opcode::IsEnabled(const wabt::Features &) const
+- name: _ZNK4wabt6Script9GetModuleERKNS_3VarE
+  params:
+  - name: arg0
+    type: const wabt::Var &
+  return_type: const wabt::Module *
+  signature: const wabt::Module * wabt::Script::GetModule(const wabt::Var &) const
+- name: _ZNK4wabt6interp11ElemSegment12IsValidRangeEjj
+  params:
+  - name: offset
+    type: wabt::interp::u32
+  - name: size
+    type: wabt::interp::u32
+  return_type: bool
+  signature: bool wabt::interp::ElemSegment::IsValidRange(wabt::interp::u32, wabt::interp::u32) const
+- name: _ZNK4wabt6interp5Store12HasValueTypeENS0_3RefENS_4TypeE
+  params:
+  - name: arg0
+    type: wabt::interp::Ref
+  - name: arg1
+    type: wabt::interp::ValueType
+  return_type: bool
+  signature: bool wabt::interp::Store::HasValueType(wabt::interp::Ref, wabt::interp::ValueType) const
+- name: _ZNK4wabt6interp7Istream11DisassembleEPNS_6StreamEj
+  params:
+  - name: arg0
+    type: wabt::Stream *
+  - name: arg1
+    type: wabt::interp::Istream::Offset
+  return_type: wabt::interp::Istream::Offset
+  signature: wabt::interp::Istream::Offset wabt::interp::Istream::Disassemble(wabt::Stream *, wabt::interp::Istream::Offset)
+    const
+language: c++
+project: wabt
+target_name: wat2wasm_fuzzer
+target_path: /src/wabt/fuzzers/wat2wasm_fuzzer.cc

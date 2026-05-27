@@ -1,0 +1,2888 @@
+functions:
+- name: _ZN9BitStream5resetEv
+  params: []
+  return_type: void
+  signature: void BitStream::reset()
+- name: _ZN4qpdf2is12OffsetBuffer18findAndSkipNextEOLEv
+  params: []
+  return_type: qpdf_offset_t
+  signature: qpdf_offset_t qpdf::is::OffsetBuffer::findAndSkipNextEOL()
+- name: _ZNK4qpdf2is12OffsetBuffer7getNameB5cxx11Ev
+  params: []
+  return_type: const std::string &
+  signature: const std::string & qpdf::is::OffsetBuffer::getName() const
+- name: _ZN4qpdf2is12OffsetBuffer4tellEv
+  params: []
+  return_type: qpdf_offset_t
+  signature: qpdf_offset_t qpdf::is::OffsetBuffer::tell()
+- name: _ZN4qpdf2is12OffsetBuffer4seekExi
+  params:
+  - name: offset
+    type: qpdf_offset_t
+  - name: whence
+    type: int
+  return_type: void
+  signature: void qpdf::is::OffsetBuffer::seek(qpdf_offset_t, int)
+- name: _ZN4qpdf2is12OffsetBuffer6rewindEv
+  params: []
+  return_type: void
+  signature: void qpdf::is::OffsetBuffer::rewind()
+- name: _ZN4qpdf2is12OffsetBuffer4readEPcm
+  params:
+  - name: buffer
+    type: char *
+  - name: length
+    type: int
+  return_type: int
+  signature: int qpdf::is::OffsetBuffer::read(char *, int)
+- name: _ZN4qpdf2is12OffsetBuffer8unreadChEc
+  params:
+  - name: ch
+    type: char
+  return_type: void
+  signature: void qpdf::is::OffsetBuffer::unreadCh(char)
+- name: _ZN11InputSource8findLastEPKcxmRNS_6FinderE
+  params:
+  - name: start_chars
+    type: const char *
+  - name: offset
+    type: qpdf_offset_t
+  - name: len
+    type: int
+  - name: finder
+    type: InputSource::Finder &
+  return_type: bool
+  signature: bool InputSource::findLast(const char *, qpdf_offset_t, int, InputSource::Finder &)
+- name: _ZN11InputSource9findFirstEPKcxmRNS_6FinderE
+  params:
+  - name: start_chars
+    type: const char *
+  - name: offset
+    type: qpdf_offset_t
+  - name: len
+    type: int
+  - name: finder
+    type: InputSource::Finder &
+  return_type: bool
+  signature: bool InputSource::findFirst(const char *, qpdf_offset_t, int, InputSource::Finder &)
+- name: _ZN11InputSource9read_lineB5cxx11Emx
+  params:
+  - name: count
+    type: int
+  - name: at
+    type: qpdf_offset_t
+  return_type: std::string
+  signature: std::string InputSource::read_line(int, qpdf_offset_t)
+- name: _ZN11InputSource9read_lineERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEmx
+  params:
+  - name: count
+    type: int
+  - name: at
+    type: qpdf_offset_t
+  return_type: std::string
+  signature: std::string InputSource::read_line(int, qpdf_offset_t)
+- name: _ZN11InputSource4readERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEmx
+  params:
+  - name: count
+    type: int
+  - name: at
+    type: qpdf_offset_t
+  return_type: std::string
+  signature: std::string InputSource::read(int, qpdf_offset_t)
+- name: _ZN4JSON11checkSchemaES_mRNSt7__cxx114listINS0_12basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EEE
+  params:
+  - name: schema
+    type: JSON
+  - name: errors
+    type: int &
+  return_type: bool
+  signature: bool JSON::checkSchema(JSON, int &)
+- name: _ZNK4JSON7getBoolERb
+  params:
+  - name: value
+    type: bool &
+  return_type: bool
+  signature: bool JSON::getBool(bool &) const
+- name: _ZNK4JSON9getNumberERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: value
+    type: std::string &
+  return_type: bool
+  signature: bool JSON::getNumber(std::string &) const
+- name: _ZNK4JSON9getStringERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: utf8
+    type: std::string &
+  return_type: bool
+  signature: bool JSON::getString(std::string &) const
+- name: _ZN3MD523encodeDataIncrementallyEPKcm
+  params:
+  - name: input_data
+    type: int
+  return_type: void
+  signature: void MD5::encodeDataIncrementally(int)
+- name: _ZN3MD510encodeFileEPKcx
+  params:
+  - name: filename
+    type: const char *
+  - name: up_to_offset
+    type: qpdf_offset_t
+  return_type: void
+  signature: void MD5::encodeFile(const char *, qpdf_offset_t)
+- name: _ZN3MD56digestEPh
+  params:
+  - name: result
+    type: MD5::Digest
+  return_type: void
+  signature: void MD5::digest(MD5::Digest)
+- name: _ZN3MD512encodeStringEPKc
+  params:
+  - name: str
+    type: const char *
+  return_type: void
+  signature: void MD5::encodeString(const char *)
+- name: _ZN4QPDF3Doc8Resolver8resolvedEPS_10QPDFObjGen
+  params:
+  - name: qpdf
+    type: QPDF *
+  - name: og
+    type: QPDFObjGen
+  return_type: const std::shared_ptr<QPDFObject> &
+  signature: const std::shared_ptr<QPDFObject> & QPDF::Doc::Resolver::resolved(QPDF *, QPDFObjGen)
+- name: _ZNK10QPDFObject11getTypeCodeEv
+  params: []
+  return_type: qpdf_object_type_e
+  signature: qpdf_object_type_e QPDFObject::getTypeCode() const
+- name: _ZN4qpdf10BaseHandle6assignE18qpdf_object_type_eRKS0_
+  params:
+  - name: required
+    type: qpdf_object_type_e
+  - name: other
+    type: const qpdf::BaseHandle &
+  return_type: void
+  signature: void qpdf::BaseHandle::assign(qpdf_object_type_e, const qpdf::BaseHandle &)
+- name: _ZN4qpdf10BaseHandle6assignE18qpdf_object_type_eOS0_
+  params:
+  - name: required
+    type: qpdf_object_type_e
+  - name: other
+    type: qpdf::BaseHandle &&
+  return_type: void
+  signature: void qpdf::BaseHandle::assign(qpdf_object_type_e, qpdf::BaseHandle &&)
+- name: _ZN26QPDFNumberTreeObjectHelper4findExb
+  params:
+  - name: key
+    type: QPDFNumberTreeObjectHelper::numtree_number
+  - name: return_prev_if_not_found
+    type: bool
+  return_type: QPDFNumberTreeObjectHelper::iterator
+  signature: QPDFNumberTreeObjectHelper::iterator QPDFNumberTreeObjectHelper::find(QPDFNumberTreeObjectHelper::numtree_number,
+    bool)
+- name: _ZN24QPDFNameTreeObjectHelper4findERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: key
+    type: const std::string &
+  - name: return_prev_if_not_found
+    type: bool
+  return_type: QPDFNameTreeObjectHelper::iterator
+  signature: QPDFNameTreeObjectHelper::iterator QPDFNameTreeObjectHelper::find(const std::string &, bool)
+- name: _ZNK10PDFVersion10getVersionERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERi
+  params:
+  - name: version
+    type: std::string &
+  - name: extension_level
+    type: int &
+  return_type: void
+  signature: void PDFVersion::getVersion(std::string &, int &) const
+- name: _ZN10Disconnect10disconnectEv
+  params: []
+  return_type: void
+  signature: void Disconnect::disconnect()
+- name: _ZNK4qpdf6Stream6streamEv
+  params: []
+  return_type: QPDF_Stream::Members *
+  signature: QPDF_Stream::Members * qpdf::Stream::stream() const
+- name: _ZNK4QPDF3Doc6Common10damagedPDFERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEExS9_
+  params:
+  - name: object
+    type: const std::string &
+  - name: offset
+    type: qpdf_offset_t
+  - name: message
+    type: const std::string &
+  return_type: QPDFExc
+  signature: QPDFExc QPDF::Doc::Common::damagedPDF(const std::string &, qpdf_offset_t, const std::string &) const
+- name: _ZNK4QPDF3Doc7Objects12root_checkedEv
+  params: []
+  return_type: bool
+  signature: bool QPDF::Doc::Objects::root_checked() const
+- name: _ZN4QPDF3Doc7Objects12root_checkedEb
+  params:
+  - name: val
+    type: bool
+  return_type: void
+  signature: void QPDF::Doc::Objects::root_checked(bool)
+- name: _ZN4QPDF4warnERK7QPDFExc
+  params:
+  - name: e
+    type: const QPDFExc &
+  return_type: void
+  signature: void QPDF::warn(const QPDFExc &)
+- name: _ZN4QPDF3Doc6Common4warnERK7QPDFExc
+  params:
+  - name: e
+    type: const QPDFExc &
+  return_type: void
+  signature: void QPDF::Doc::Common::warn(const QPDFExc &)
+- name: _ZN4QPDF3Doc6Common11stopOnErrorERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: message
+    type: const std::string &
+  return_type: void
+  signature: void QPDF::Doc::Common::stopOnError(const std::string &)
+- name: _ZNK4QPDF3Doc6Common10damagedPDFERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES9_
+  params:
+  - name: object
+    type: const std::string &
+  - name: message
+    type: const std::string &
+  return_type: QPDFExc
+  signature: QPDFExc QPDF::Doc::Common::damagedPDF(const std::string &, const std::string &) const
+- name: _ZNK4QPDF3Doc5Pages41ever_pushed_inherited_attributes_to_pagesEv
+  params: []
+  return_type: bool
+  signature: bool QPDF::Doc::Pages::ever_pushed_inherited_attributes_to_pages() const
+- name: _ZNK4QPDF3Doc5Pages25ever_called_get_all_pagesEv
+  params: []
+  return_type: bool
+  signature: bool QPDF::Doc::Pages::ever_called_get_all_pages() const
+- name: _ZN4QPDF3Doc6Common10damagedPDFER11InputSourceRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEExSB_
+  params:
+  - name: input
+    type: InputSource &
+  - name: object
+    type: const std::string &
+  - name: offset
+    type: qpdf_offset_t
+  - name: message
+    type: const std::string &
+  return_type: QPDFExc
+  signature: QPDFExc QPDF::Doc::Common::damagedPDF(InputSource &, const std::string &, qpdf_offset_t, const std::string &)
+- name: _ZN11InputSource4readB5cxx11Emx
+  params:
+  - name: count
+    type: int
+  - name: at
+    type: qpdf_offset_t
+  return_type: std::string
+  signature: std::string InputSource::read(int, qpdf_offset_t)
+- name: _ZNK10QPDFObjGen7unparseB5cxx11Ec
+  params:
+  - name: separator
+    type: char
+  return_type: std::string
+  signature: std::string QPDFObjGen::unparse(char) const
+- name: _ZN4QPDF3Doc7Objects10xref_tableEv
+  params: []
+  return_type: const int &
+  signature: const int & QPDF::Doc::Objects::xref_table()
+- name: _ZN4QPDF3Doc7Objects7Foreign6Copier6copiedERK16QPDFObjectHandle
+  params:
+  - name: foreign
+    type: const QPDFObjectHandle &
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDF::Doc::Objects::Foreign::Copier::copied(const QPDFObjectHandle &)
+- name: _ZN4QPDF3Doc7Objects7Foreign6copierERK16QPDFObjectHandle
+  params:
+  - name: foreign
+    type: const QPDFObjectHandle &
+  return_type: QPDF::Doc::Objects::Foreign::Copier &
+  signature: QPDF::Doc::Objects::Foreign::Copier & QPDF::Doc::Objects::Foreign::copier(const QPDFObjectHandle &)
+- name: _ZN4QPDF3Doc7Objects7Foreign6copiedERK16QPDFObjectHandle
+  params:
+  - name: foreign
+    type: const QPDFObjectHandle &
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDF::Doc::Objects::Foreign::copied(const QPDFObjectHandle &)
+- name: _ZN4QPDF3Doc7Objects7foreignEv
+  params: []
+  return_type: QPDF::Doc::Objects::Foreign &
+  signature: QPDF::Doc::Objects::Foreign & QPDF::Doc::Objects::foreign()
+- name: _ZN4QPDF17copyForeignObjectE16QPDFObjectHandle
+  params:
+  - name: foreign
+    type: QPDFObjectHandle
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDF::copyForeignObject(QPDFObjectHandle)
+- name: _ZN4QPDF9getObjectEii
+  params:
+  - name: objid
+    type: int
+  - name: generation
+    type: int
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDF::getObject(int, int)
+- name: _ZN4qpdf3Doc6Config19immediate_copy_fromEb
+  params:
+  - name: val
+    type: bool
+  return_type: qpdf::Doc::Config &
+  signature: qpdf::Doc::Config & qpdf::Doc::Config::immediate_copy_from(bool)
+- name: _ZN4qpdf3Doc6Config17surpress_recoveryEb
+  params:
+  - name: val
+    type: bool
+  return_type: qpdf::Doc::Config &
+  signature: qpdf::Doc::Config & qpdf::Doc::Config::surpress_recovery(bool)
+- name: _ZN4QPDF18setAttemptRecoveryEb
+  params:
+  - name: arg0
+    type: bool
+  return_type: void
+  signature: void QPDF::setAttemptRecovery(bool)
+- name: _ZN4qpdf3Doc6Config12max_warningsEm
+  params:
+  - name: val
+    type: int
+  return_type: qpdf::Doc::Config &
+  signature: qpdf::Doc::Config & qpdf::Doc::Config::max_warnings(int)
+- name: _ZN4qpdf3Doc6Config17suppress_warningsEb
+  params:
+  - name: val
+    type: bool
+  return_type: qpdf::Doc::Config &
+  signature: qpdf::Doc::Config & qpdf::Doc::Config::suppress_warnings(bool)
+- name: _ZN4QPDF19setSuppressWarningsEb
+  params:
+  - name: arg0
+    type: bool
+  return_type: void
+  signature: void QPDF::setSuppressWarnings(bool)
+- name: _ZN4QPDF9setLoggerESt10shared_ptrI10QPDFLoggerE
+  params:
+  - name: arg0
+    type: std::shared_ptr<QPDFLogger>
+  return_type: void
+  signature: void QPDF::setLogger(std::shared_ptr<QPDFLogger>)
+- name: _ZN4qpdf3Doc6Config19ignore_xref_streamsEb
+  params:
+  - name: val
+    type: bool
+  return_type: qpdf::Doc::Config &
+  signature: qpdf::Doc::Config & qpdf::Doc::Config::ignore_xref_streams(bool)
+- name: _ZN4QPDF20setIgnoreXRefStreamsEb
+  params:
+  - name: arg0
+    type: bool
+  return_type: void
+  signature: void QPDF::setIgnoreXRefStreams(bool)
+- name: _ZN4qpdf3Doc6Config19password_is_hex_keyEb
+  params:
+  - name: val
+    type: bool
+  return_type: qpdf::Doc::Config &
+  signature: qpdf::Doc::Config & qpdf::Doc::Config::password_is_hex_key(bool)
+- name: _ZN4QPDF11processFileEPKcS1_
+  params:
+  - name: filename
+    type: const char *
+  - name: password
+    type: const char *
+  return_type: void
+  signature: void QPDF::processFile(const char *, const char *)
+- name: _ZN4QPDF3Doc13init_acroformEv
+  params: []
+  return_type: void
+  signature: void QPDF::Doc::init_acroform()
+- name: _ZN4qpdf4impl8AcroForm8validateEb
+  params:
+  - name: repair
+    type: bool
+  return_type: void
+  signature: void qpdf::impl::AcroForm::validate(bool)
+- name: _ZN4qpdf4impl8AcroForm15invalidateCacheEv
+  params: []
+  return_type: void
+  signature: void qpdf::impl::AcroForm::invalidateCache()
+- name: _ZN4qpdf4impl8AcroForm7analyzeEv
+  params: []
+  return_type: void
+  signature: void qpdf::impl::AcroForm::analyze()
+- name: _ZN4QPDF3Doc5Pages5beginEv
+  params: []
+  return_type: int
+  signature: int QPDF::Doc::Pages::begin()
+- name: _ZN4QPDF3Doc5Pages3endEv
+  params: []
+  return_type: int
+  signature: int QPDF::Doc::Pages::end()
+- name: _ZN4QPDF3Doc5Pages3allEv
+  params: []
+  return_type: const int &
+  signature: const int & QPDF::Doc::Pages::all()
+- name: _ZNK4qpdf4impl8FormNode1TEv
+  params: []
+  return_type: qpdf::String
+  signature: qpdf::String qpdf::impl::FormNode::T() const
+- name: _ZNK4qpdf4impl8FormNode4KidsEv
+  params: []
+  return_type: qpdf::Array
+  signature: qpdf::Array qpdf::impl::FormNode::Kids() const
+- name: _ZNK4qpdf10BaseHandle3getERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: key
+    type: const std::string &
+  return_type: const QPDFObjectHandle &
+  signature: const QPDFObjectHandle & qpdf::BaseHandle::get(const std::string &) const
+- name: _ZNK4qpdf4impl8FormNode2FTEb
+  params:
+  - name: inherit
+    type: bool
+  return_type: qpdf::Name
+  signature: qpdf::Name qpdf::impl::FormNode::FT(bool) const
+- name: _ZN4qpdf4impl8AcroForm18setNeedAppearancesEb
+  params:
+  - name: val
+    type: bool
+  return_type: void
+  signature: void qpdf::impl::AcroForm::setNeedAppearances(bool)
+- name: _ZN4QPDF3Doc13no_inspectionEv
+  params: []
+  return_type: void
+  signature: void QPDF::Doc::no_inspection()
+- name: _ZN4qpdf4impl8AcroForm20fixCopiedAnnotationsE16QPDFObjectHandleS2_RS1_PSt3setI10QPDFObjGenSt4lessIS5_ESaIS5_EE
+  params:
+  - name: to_page
+    type: QPDFObjectHandle
+  - name: from_page
+    type: QPDFObjectHandle
+  - name: from_afdh
+    type: qpdf::impl::AcroForm &
+  - name: added_fields
+    type: int *
+  return_type: void
+  signature: void qpdf::impl::AcroForm::fixCopiedAnnotations(QPDFObjectHandle, QPDFObjectHandle, qpdf::impl::AcroForm &, int
+    *)
+- name: _ZN4qpdf4impl8AcroForm20transformAnnotationsE16QPDFObjectHandleRSt6vectorIS2_SaIS2_EES6_RSt3setI10QPDFObjGenSt4lessIS8_ESaIS8_EERK10QPDFMatrixP4QPDFPS1_PS2_
+  params:
+  - name: a_old_annots
+    type: QPDFObjectHandle
+  - name: new_annots
+    type: int &
+  - name: new_fields
+    type: int &
+  - name: old_fields
+    type: int &
+  - name: cm
+    type: const QPDFMatrix &
+  - name: from_qpdf
+    type: QPDF *
+  - name: from_afdh
+    type: qpdf::impl::AcroForm *
+  - name: new_page
+    type: QPDFObjectHandle *
+  return_type: void
+  signature: void qpdf::impl::AcroForm::transformAnnotations(QPDFObjectHandle, int &, int &, int &, const QPDFMatrix &, QPDF
+    *, qpdf::impl::AcroForm *, QPDFObjectHandle *)
+- name: _ZN4qpdf4impl8AcroForm22addAndRenameFormFieldsESt6vectorI16QPDFObjectHandleSaIS3_EE
+  params:
+  - name: fields
+    type: int
+  return_type: void
+  signature: void qpdf::impl::AcroForm::addAndRenameFormFields(int)
+- name: _ZN4qpdf4impl8AcroForm26getFieldsWithQualifiedNameERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: name
+    type: const std::string &
+  return_type: int
+  signature: int qpdf::impl::AcroForm::getFieldsWithQualifiedName(const std::string &)
+- name: _ZN4qpdf4impl8AcroForm12addFormFieldE25QPDFFormFieldObjectHelper
+  params:
+  - name: ff
+    type: QPDFFormFieldObjectHelper
+  return_type: void
+  signature: void qpdf::impl::AcroForm::addFormField(QPDFFormFieldObjectHelper)
+- name: _ZN4qpdf4impl8AcroForm22adjustAppearanceStreamE16QPDFObjectHandleSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES3_IS9_S9_St4lessIS9_ESaISt4pairIKS9_S9_EEESB_SaISC_ISD_SG_EEE
+  params:
+  - name: stream
+    type: QPDFObjectHandle
+  - name: dr_map
+    type: int
+  return_type: void
+  signature: void qpdf::impl::AcroForm::adjustAppearanceStream(QPDFObjectHandle, int)
+- name: _ZN4QPDF3Doc11acroform_dhEv
+  params: []
+  return_type: QPDFAcroFormDocumentHelper &
+  signature: QPDFAcroFormDocumentHelper & QPDF::Doc::acroform_dh()
+- name: _ZN4qpdf4impl8AcroForm24disableDigitalSignaturesEv
+  params: []
+  return_type: void
+  signature: void qpdf::impl::AcroForm::disableDigitalSignatures()
+- name: _ZN4qpdf4impl8AcroForm13getFormFieldsEv
+  params: []
+  return_type: int
+  signature: int qpdf::impl::AcroForm::getFormFields()
+- name: _ZN4qpdf4impl8AcroForm16removeFormFieldsERKSt3setI10QPDFObjGenSt4lessIS3_ESaIS3_EE
+  params:
+  - name: to_remove
+    type: const int &
+  return_type: void
+  signature: void qpdf::impl::AcroForm::removeFormFields(const int &)
+- name: _ZN4qpdf4impl8AcroForm27generateAppearancesIfNeededEv
+  params: []
+  return_type: void
+  signature: void qpdf::impl::AcroForm::generateAppearancesIfNeeded()
+- name: _ZN4qpdf4impl8AcroForm22getAnnotationsForFieldE25QPDFFormFieldObjectHelper
+  params:
+  - name: h
+    type: QPDFFormFieldObjectHelper
+  return_type: int
+  signature: int qpdf::impl::AcroForm::getAnnotationsForField(QPDFFormFieldObjectHelper)
+- name: _ZN4qpdf4impl8AcroForm16setFormFieldNameE25QPDFFormFieldObjectHelperRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: ff
+    type: QPDFFormFieldObjectHelper
+  - name: name
+    type: const std::string &
+  return_type: void
+  signature: void qpdf::impl::AcroForm::setFormFieldName(QPDFFormFieldObjectHelper, const std::string &)
+- name: _ZN26QPDFAnnotationObjectHelper19getAppearanceStreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_
+  params:
+  - name: which
+    type: const std::string &
+  - name: state
+    type: const std::string &
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDFAnnotationObjectHelper::getAppearanceStream(const std::string &, const std::string &)
+- name: _ZN16QPDFObjectHelper2ohEv
+  params: []
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDFObjectHelper::oh()
+- name: _ZN26QPDFAnnotationObjectHelper8getFlagsEv
+  params: []
+  return_type: int
+  signature: int QPDFAnnotationObjectHelper::getFlags()
+- name: _ZN26QPDFAnnotationObjectHelper23getAppearanceDictionaryEv
+  params: []
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDFAnnotationObjectHelper::getAppearanceDictionary()
+- name: _ZN26QPDFAnnotationObjectHelper18getAppearanceStateB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string QPDFAnnotationObjectHelper::getAppearanceState()
+- name: _ZN18QPDFCryptoProvider27setDefaultProvider_internalERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: name
+    type: const std::string &
+  return_type: void
+  signature: void QPDFCryptoProvider::setDefaultProvider_internal(const std::string &)
+- name: _ZNK18QPDFCryptoProvider16getImpl_internalERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: name
+    type: const std::string &
+  return_type: std::shared_ptr<QPDFCryptoImpl>
+  signature: std::shared_ptr<QPDFCryptoImpl> QPDFCryptoProvider::getImpl_internal(const std::string &) const
+- name: _ZN24QPDFEFStreamObjectHelper8setParamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERK16QPDFObjectHandle
+  params:
+  - name: pkey
+    type: const std::string &
+  - name: arg1
+    type: const QPDFObjectHandle &
+  return_type: void
+  signature: void QPDFEFStreamObjectHelper::setParam(const std::string &, const QPDFObjectHandle &)
+- name: _ZN24QPDFEFStreamObjectHelper8getParamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: pkey
+    type: const std::string &
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDFEFStreamObjectHelper::getParam(const std::string &)
+- name: _ZN30QPDFEmbeddedFileDocumentHelper8validateEb
+  params:
+  - name: repair
+    type: bool
+  return_type: void
+  signature: void QPDFEmbeddedFileDocumentHelper::validate(bool)
+- name: _ZNK30QPDFEmbeddedFileDocumentHelper16hasEmbeddedFilesEv
+  params: []
+  return_type: bool
+  signature: bool QPDFEmbeddedFileDocumentHelper::hasEmbeddedFiles() const
+- name: _ZN30QPDFEmbeddedFileDocumentHelper17initEmbeddedFilesEv
+  params: []
+  return_type: void
+  signature: void QPDFEmbeddedFileDocumentHelper::initEmbeddedFiles()
+- name: _ZN4QPDF3Doc14embedded_filesEv
+  params: []
+  return_type: QPDFEmbeddedFileDocumentHelper &
+  signature: QPDFEmbeddedFileDocumentHelper & QPDF::Doc::embedded_files()
+- name: _ZNK7QPDFExc16getMessageDetailB5cxx11Ev
+  params: []
+  return_type: const std::string &
+  signature: const std::string & QPDFExc::getMessageDetail() const
+- name: _ZNK7QPDFExc15getFilePositionEv
+  params: []
+  return_type: qpdf_offset_t
+  signature: qpdf_offset_t QPDFExc::getFilePosition() const
+- name: _ZNK7QPDFExc11getFilenameB5cxx11Ev
+  params: []
+  return_type: const std::string &
+  signature: const std::string & QPDFExc::getFilename() const
+- name: _ZNK7QPDFExc12getErrorCodeEv
+  params: []
+  return_type: qpdf_error_code_e
+  signature: qpdf_error_code_e QPDFExc::getErrorCode() const
+- name: _ZN24QPDFFileSpecObjectHelper14createFileSpecER4QPDFRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE24QPDFEFStreamObjectHelper
+  params:
+  - name: qpdf
+    type: QPDF &
+  - name: filename
+    type: const std::string &
+  - name: arg2
+    type: QPDFEFStreamObjectHelper
+  return_type: QPDFFileSpecObjectHelper
+  signature: QPDFFileSpecObjectHelper QPDFFileSpecObjectHelper::createFileSpec(QPDF &, const std::string &, QPDFEFStreamObjectHelper)
+- name: _ZN4qpdf4impl8FormNode22generateTextAppearanceER26QPDFAnnotationObjectHelper
+  params:
+  - name: arg0
+    type: QPDFAnnotationObjectHelper &
+  return_type: void
+  signature: void qpdf::impl::FormNode::generateTextAppearance(QPDFAnnotationObjectHelper &)
+- name: _ZNK4qpdf4impl8FormNode18default_appearanceB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string qpdf::impl::FormNode::default_appearance() const
+- name: _ZNK4qpdf4impl8FormNode5valueB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string qpdf::impl::FormNode::value() const
+- name: _ZN4qpdf4impl8FormNode19getDefaultResourcesEv
+  params: []
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle qpdf::impl::FormNode::getDefaultResources()
+- name: _ZN4qpdf4impl8FormNode8isChoiceEv
+  params: []
+  return_type: bool
+  signature: bool qpdf::impl::FormNode::isChoice()
+- name: _ZN4qpdf4impl8FormNode8getFlagsEv
+  params: []
+  return_type: int
+  signature: int qpdf::impl::FormNode::getFlags()
+- name: _ZN4qpdf4impl8FormNode10getChoicesB5cxx11Ev
+  params: []
+  return_type: int
+  signature: int qpdf::impl::FormNode::getChoices()
+- name: _ZNK4qpdf4impl8FormNode9inheritedERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: name
+    type: const std::string &
+  - name: acroform
+    type: bool
+  return_type: const QPDFObjectHandle &
+  signature: const QPDFObjectHandle & qpdf::impl::FormNode::inherited(const std::string &, bool) const
+- name: _ZN4qpdf4impl8FormNode6ParentEv
+  params: []
+  return_type: qpdf::impl::FormNode
+  signature: qpdf::impl::FormNode qpdf::impl::FormNode::Parent()
+- name: _ZNK4qpdf4impl8FormNode13from_AcroFormERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: name
+    type: const std::string &
+  return_type: const QPDFObjectHandle &
+  signature: const QPDFObjectHandle & qpdf::impl::FormNode::from_AcroForm(const std::string &) const
+- name: _ZNK4qpdf4impl8FormNode18inheritable_stringERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: name
+    type: const std::string &
+  return_type: std::string
+  signature: std::string qpdf::impl::FormNode::inheritable_string(const std::string &) const
+- name: _ZN4qpdf4impl8FormNode18generateAppearanceER26QPDFAnnotationObjectHelper
+  params:
+  - name: arg0
+    type: QPDFAnnotationObjectHelper &
+  return_type: void
+  signature: void qpdf::impl::FormNode::generateAppearance(QPDFAnnotationObjectHelper &)
+- name: _ZN4qpdf4impl8FormNode4setVERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: utf8_value
+    type: const std::string &
+  - name: need_appearances
+    type: bool
+  return_type: void
+  signature: void qpdf::impl::FormNode::setV(const std::string &, bool)
+- name: _ZN4qpdf4impl8FormNode4setVE16QPDFObjectHandleb
+  params:
+  - name: value
+    type: QPDFObjectHandle
+  - name: need_appearances
+    type: bool
+  return_type: void
+  signature: void qpdf::impl::FormNode::setV(QPDFObjectHandle, bool)
+- name: _ZN4qpdf4impl8FormNode10isCheckboxEv
+  params: []
+  return_type: bool
+  signature: bool qpdf::impl::FormNode::isCheckbox()
+- name: _ZN4qpdf4impl8FormNode16setCheckBoxValueEb
+  params:
+  - name: value
+    type: bool
+  return_type: void
+  signature: void qpdf::impl::FormNode::setCheckBoxValue(bool)
+- name: _ZN4qpdf4impl8FormNode13isRadioButtonEv
+  params: []
+  return_type: bool
+  signature: bool qpdf::impl::FormNode::isRadioButton()
+- name: _ZN4qpdf4impl8FormNode19setRadioButtonValueERKNS_4NameE
+  params:
+  - name: name
+    type: const qpdf::Name &
+  return_type: void
+  signature: void qpdf::impl::FormNode::setRadioButtonValue(const qpdf::Name &)
+- name: _ZN4qpdf4impl8FormNode12isPushbuttonEv
+  params: []
+  return_type: bool
+  signature: bool qpdf::impl::FormNode::isPushbutton()
+- name: _ZN4qpdf4impl8FormNode17setFieldAttributeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE16QPDFObjectHandle
+  params:
+  - name: key
+    type: const std::string &
+  - name: value
+    type: QPDFObjectHandle
+  return_type: void
+  signature: void qpdf::impl::FormNode::setFieldAttribute(const std::string &, QPDFObjectHandle)
+- name: _ZN4QPDF3Doc8acroformEv
+  params: []
+  return_type: impl::AcroForm &
+  signature: impl::AcroForm & QPDF::Doc::acroform()
+- name: _ZN4qpdf4impl8FormNode17setFieldAttributeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES9_
+  params:
+  - name: key
+    type: const std::string &
+  - name: utf8_value
+    type: const std::string &
+  return_type: void
+  signature: void qpdf::impl::FormNode::setFieldAttribute(const std::string &, const std::string &)
+- name: _ZN4qpdf4impl8FormNode9isCheckedEv
+  params: []
+  return_type: bool
+  signature: bool qpdf::impl::FormNode::isChecked()
+- name: _ZN4qpdf4impl8FormNode6isTextEv
+  params: []
+  return_type: bool
+  signature: bool qpdf::impl::FormNode::isText()
+- name: _ZN4qpdf4impl8FormNode11getQuaddingEv
+  params: []
+  return_type: int
+  signature: int qpdf::impl::FormNode::getQuadding()
+- name: _ZNK4qpdf4impl8FormNode13default_valueB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string qpdf::impl::FormNode::default_value() const
+- name: _ZNK4qpdf4impl8FormNode2DVEb
+  params:
+  - name: inherit
+    type: bool
+  return_type: const QPDFObjectHandle &
+  signature: const QPDFObjectHandle & qpdf::impl::FormNode::DV(bool) const
+- name: _ZNK4qpdf4impl8FormNode2TMEv
+  params: []
+  return_type: qpdf::String
+  signature: qpdf::String qpdf::impl::FormNode::TM() const
+- name: _ZNK4qpdf4impl8FormNode12mapping_nameB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string qpdf::impl::FormNode::mapping_name() const
+- name: _ZNK4qpdf4impl8FormNode16alternative_nameB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string qpdf::impl::FormNode::alternative_name() const
+- name: _ZNK4qpdf4impl8FormNode2TUEv
+  params: []
+  return_type: qpdf::String
+  signature: qpdf::String qpdf::impl::FormNode::TU() const
+- name: _ZNK4qpdf4impl8FormNode12partial_nameB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string qpdf::impl::FormNode::partial_name() const
+- name: _ZN4qpdf4impl8FormNode10root_fieldEPb
+  params:
+  - name: is_different
+    type: bool *
+  return_type: qpdf::impl::FormNode
+  signature: qpdf::impl::FormNode qpdf::impl::FormNode::root_field(bool *)
+- name: _ZN7QPDFJob9Selection8passwordENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: password
+    type: std::string
+  return_type: void
+  signature: void QPDFJob::Selection::password(std::string)
+- name: _ZN7QPDFJob6Inputs13new_selectionERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_S8_
+  params:
+  - name: filename
+    type: const std::string &
+  - name: password
+    type: const std::string &
+  - name: range
+    type: const std::string &
+  return_type: void
+  signature: void QPDFJob::Inputs::new_selection(const std::string &, const std::string &, const std::string &)
+- name: _ZN7QPDFJob6Inputs13new_selectionERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: filename
+    type: const std::string &
+  return_type: QPDFJob::Selection &
+  signature: QPDFJob::Selection & QPDFJob::Inputs::new_selection(const std::string &)
+- name: _ZN7QPDFJob6Inputs7processERS_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERNS_5InputE
+  params:
+  - name: job
+    type: QPDFJob &
+  - name: filename
+    type: const std::string &
+  - name: input
+    type: QPDFJob::Input &
+  return_type: void
+  signature: void QPDFJob::Inputs::process(QPDFJob &, const std::string &, QPDFJob::Input &)
+- name: _ZN7QPDFJob6Inputs11infile_nameERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: name
+    type: const std::string &
+  return_type: void
+  signature: void QPDFJob::Inputs::infile_name(const std::string &)
+- name: _ZN7QPDFJob9writeQPDFER4QPDF
+  params:
+  - name: qpdf
+    type: QPDF &
+  return_type: void
+  signature: void QPDFJob::writeQPDF(QPDF &)
+- name: _ZN7QPDFJob12doInspectionER4QPDF
+  params:
+  - name: pdf
+    type: QPDF &
+  return_type: void
+  signature: void QPDFJob::doInspection(QPDF &)
+- name: _ZN7QPDFJob12doSplitPagesER4QPDF
+  params:
+  - name: pdf
+    type: QPDF &
+  return_type: void
+  signature: void QPDFJob::doSplitPages(QPDF &)
+- name: _ZN7QPDFJob12writeOutfileER4QPDF
+  params:
+  - name: pdf
+    type: QPDF &
+  return_type: void
+  signature: void QPDFJob::writeOutfile(QPDF &)
+- name: _ZN7QPDFJob15handlePageSpecsER4QPDF
+  params:
+  - name: pdf
+    type: QPDF &
+  return_type: void
+  signature: void QPDFJob::handlePageSpecs(QPDF &)
+- name: _ZN7QPDFJob15handleRotationsER4QPDF
+  params:
+  - name: pdf
+    type: QPDF &
+  return_type: void
+  signature: void QPDFJob::handleRotations(QPDF &)
+- name: _ZN7QPDFJob18handleUnderOverlayER4QPDF
+  params:
+  - name: pdf
+    type: QPDF &
+  return_type: void
+  signature: void QPDFJob::handleUnderOverlay(QPDF &)
+- name: _ZN7QPDFJob21handleTransformationsER4QPDF
+  params:
+  - name: pdf
+    type: QPDF &
+  return_type: void
+  signature: void QPDFJob::handleTransformations(QPDF &)
+- name: _ZN7QPDFJob13parseNumrangeEPKci
+  params:
+  - name: range
+    type: const char *
+  - name: max
+    type: int
+  return_type: int
+  signature: int QPDFJob::parseNumrange(const char *, int)
+- name: _ZN7QPDFJob22parseRotationParameterERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: arg0
+    type: const std::string &
+  return_type: void
+  signature: void QPDFJob::parseRotationParameter(const std::string &)
+- name: _ZN7QPDFJob9setLoggerESt10shared_ptrI10QPDFLoggerE
+  params:
+  - name: arg0
+    type: std::shared_ptr<QPDFLogger>
+  return_type: void
+  signature: void QPDFJob::setLogger(std::shared_ptr<QPDFLogger>)
+- name: _ZN7QPDFJob16setMessagePrefixERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: arg0
+    type: const std::string &
+  return_type: void
+  signature: void QPDFJob::setMessagePrefix(const std::string &)
+- name: _ZN4qpdf6Writer6Config14object_streamsE20qpdf_object_stream_e
+  params:
+  - name: val
+    type: qpdf_object_stream_e
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::object_streams(qpdf_object_stream_e)
+- name: _ZN4qpdf6Writer6Config9static_idEb
+  params:
+  - name: val
+    type: bool
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::static_id(bool)
+- name: _ZN7QPDFJob6Config10splitPagesERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: parameter
+    type: const std::string &
+  return_type: QPDFJob::Config *
+  signature: QPDFJob::Config * QPDFJob::Config::splitPages(const std::string &)
+- name: _ZN4qpdf6Writer6Config16recompress_flateEb
+  params:
+  - name: val
+    type: bool
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::recompress_flate(bool)
+- name: _ZN4qpdf6Writer6Config21preserve_unreferencedEb
+  params:
+  - name: val
+    type: bool
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::preserve_unreferenced(bool)
+- name: _ZN4qpdf6Writer6Config17normalize_contentEb
+  params:
+  - name: val
+    type: bool
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::normalize_content(bool)
+- name: _ZN4qpdf6Writer6Config22no_original_object_idsEb
+  params:
+  - name: val
+    type: bool
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::no_original_object_ids(bool)
+- name: _ZN4qpdf6Writer6Config24newline_before_endstreamEb
+  params:
+  - name: val
+    type: bool
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::newline_before_endstream(bool)
+- name: _ZN4qpdf6Writer6Config15linearize_pass1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: val
+    type: const std::string &
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::linearize_pass1(const std::string &)
+- name: _ZN4qpdf6Writer6Config20default_decode_levelE26qpdf_stream_decode_level_e
+  params:
+  - name: val
+    type: qpdf_stream_decode_level_e
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::default_decode_level(qpdf_stream_decode_level_e)
+- name: _ZN4qpdf6Writer6Config16deterministic_idEb
+  params:
+  - name: val
+    type: bool
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::deterministic_id(bool)
+- name: _ZN4qpdf3Doc6Config10check_modeEb
+  params:
+  - name: val
+    type: bool
+  return_type: qpdf::Doc::Config &
+  signature: qpdf::Doc::Config & qpdf::Doc::Config::check_mode(bool)
+- name: _ZN7QPDFJob18initializeFromJsonERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: json
+    type: const std::string &
+  - name: partial
+    type: bool
+  return_type: void
+  signature: void QPDFJob::initializeFromJson(const std::string &, bool)
+- name: _ZN10QPDFLogger7setSaveESt10shared_ptrI8PipelineEb
+  params:
+  - name: arg0
+    type: std::shared_ptr<Pipeline>
+  - name: only_if_not_set
+    type: bool
+  return_type: void
+  signature: void QPDFLogger::setSave(std::shared_ptr<Pipeline>, bool)
+- name: _ZN10QPDFLogger11throwIfNullESt10shared_ptrI8PipelineEb
+  params:
+  - name: arg0
+    type: std::shared_ptr<Pipeline>
+  - name: null_okay
+    type: bool
+  return_type: std::shared_ptr<Pipeline>
+  signature: std::shared_ptr<Pipeline> QPDFLogger::throwIfNull(std::shared_ptr<Pipeline>, bool)
+- name: _ZN10QPDFLogger7getWarnEb
+  params:
+  - name: null_okay
+    type: bool
+  return_type: std::shared_ptr<Pipeline>
+  signature: std::shared_ptr<Pipeline> QPDFLogger::getWarn(bool)
+- name: _ZN10QPDFLogger4warnEPKc
+  params:
+  - name: arg0
+    type: const char *
+  return_type: void
+  signature: void QPDFLogger::warn(const char *)
+- name: _ZN10QPDFLogger7getInfoEb
+  params:
+  - name: null_okay
+    type: bool
+  return_type: std::shared_ptr<Pipeline>
+  signature: std::shared_ptr<Pipeline> QPDFLogger::getInfo(bool)
+- name: _ZN10QPDFLogger4infoEPKc
+  params:
+  - name: arg0
+    type: const char *
+  return_type: void
+  signature: void QPDFLogger::info(const char *)
+- name: _ZNK10QPDFMatrix18transformRectangleEN16QPDFObjectHandle9RectangleE
+  params:
+  - name: r
+    type: QPDFObjectHandle::Rectangle
+  return_type: QPDFObjectHandle::Rectangle
+  signature: QPDFObjectHandle::Rectangle QPDFMatrix::transformRectangle(QPDFObjectHandle::Rectangle) const
+- name: _ZNK10QPDFMatrix9transformEddRdS0_
+  params:
+  - name: x
+    type: double
+  - name: y
+    type: double
+  - name: xp
+    type: double &
+  - name: yp
+    type: double &
+  return_type: void
+  signature: void QPDFMatrix::transform(double, double, double &, double &) const
+- name: _ZN10QPDFMatrix9rotatex90Ei
+  params:
+  - name: angle
+    type: int
+  return_type: void
+  signature: void QPDFMatrix::rotatex90(int)
+- name: _ZN10QPDFMatrix6concatERKS_
+  params:
+  - name: other
+    type: const QPDFMatrix &
+  return_type: void
+  signature: void QPDFMatrix::concat(const QPDFMatrix &)
+- name: _ZN10QPDFMatrix9translateEdd
+  params:
+  - name: tx
+    type: double
+  - name: ty
+    type: double
+  return_type: void
+  signature: void QPDFMatrix::translate(double, double)
+- name: _ZN10QPDFMatrix5scaleEdd
+  params:
+  - name: sx
+    type: double
+  - name: sy
+    type: double
+  return_type: void
+  signature: void QPDFMatrix::scale(double, double)
+- name: _ZNK10QPDFMatrix7unparseB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string QPDFMatrix::unparse() const
+- name: _ZN10QPDFObject14getDescriptionB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string QPDFObject::getDescription()
+- name: _ZN16QPDFObjectHandle26arrayOrStreamToStreamArrayERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERS5_
+  params:
+  - name: description
+    type: const std::string &
+  - name: all_description
+    type: std::string &
+  return_type: int
+  signature: int QPDFObjectHandle::arrayOrStreamToStreamArray(const std::string &, std::string &)
+- name: _ZN10QPDFObject9getObjGenEv
+  params: []
+  return_type: QPDFObjGen
+  signature: QPDFObjGen QPDFObject::getObjGen()
+- name: _ZNK4qpdf7Integer5valueEv
+  params: []
+  return_type: int64_t
+  signature: int64_t qpdf::Integer::value() const
+- name: _ZNK4qpdf10BaseHandle13invalid_errorERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: method
+    type: const std::string &
+  return_type: std::invalid_argument
+  signature: std::invalid_argument qpdf::BaseHandle::invalid_error(const std::string &) const
+- name: _ZN16QPDFObjectHandle5parseEP4QPDFRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES9_
+  params:
+  - name: context
+    type: QPDF *
+  - name: object_str
+    type: const std::string &
+  - name: object_description
+    type: const std::string &
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDFObjectHandle::parse(QPDF *, const std::string &, const std::string &)
+- name: _ZN10QPDFObject7getQPDFEv
+  params: []
+  return_type: QPDF *
+  signature: QPDF * QPDFObject::getQPDF()
+- name: _ZNK16QPDFObjectHandle18isDictionaryOfTypeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_
+  params:
+  - name: type
+    type: const std::string &
+  - name: subtype
+    type: const std::string &
+  return_type: bool
+  signature: bool QPDFObjectHandle::isDictionaryOfType(const std::string &, const std::string &) const
+- name: _ZNK16QPDFObjectHandle14isStreamOfTypeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_
+  params:
+  - name: type
+    type: const std::string &
+  - name: subtype
+    type: const std::string &
+  return_type: bool
+  signature: bool QPDFObjectHandle::isStreamOfType(const std::string &, const std::string &) const
+- name: _ZNK16QPDFObjectHandle11typeWarningEPKcRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: expected_type
+    type: const char *
+  - name: warning
+    type: const std::string &
+  return_type: void
+  signature: void QPDFObjectHandle::typeWarning(const char *, const std::string &) const
+- name: _ZNK16QPDFObjectHandle10assertTypeEPKcb
+  params:
+  - name: type_name
+    type: const char *
+  - name: istype
+    type: bool
+  return_type: void
+  signature: void QPDFObjectHandle::assertType(const char *, bool) const
+- name: _ZNK16QPDFObjectHandle13objectWarningERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: warning
+    type: const std::string &
+  return_type: void
+  signature: void QPDFObjectHandle::objectWarning(const std::string &) const
+- name: _ZNK4qpdf10BaseHandle4warnERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: warning
+    type: const std::string &
+  return_type: void
+  signature: void qpdf::BaseHandle::warn(const std::string &) const
+- name: _ZN16QPDFObjectHandle10makeDirectERN10QPDFObjGen3setEb
+  params:
+  - name: visited
+    type: QPDFObjGen::set &
+  - name: stop_at_streams
+    type: bool
+  return_type: void
+  signature: void QPDFObjectHandle::makeDirect(QPDFObjGen::set &, bool)
+- name: _ZNK4qpdf10BaseHandle4copyEb
+  params:
+  - name: shallow
+    type: bool
+  return_type: std::shared_ptr<QPDFObject>
+  signature: std::shared_ptr<QPDFObject> qpdf::BaseHandle::copy(bool) const
+- name: _ZN10QPDFObject14hasDescriptionEv
+  params: []
+  return_type: bool
+  signature: bool QPDFObject::hasDescription()
+- name: _ZN10QPDFObject14setDescriptionEP4QPDFRSt10shared_ptrISt7variantIJNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS_10JSON_DescrENS_10ChildDescrENS_14ObjStreamDescrEEEEx
+  params:
+  - name: qpdf_p
+    type: QPDF *
+  - name: description
+    type: std::shared_ptr<Description> &
+  - name: offset
+    type: qpdf_offset_t
+  return_type: void
+  signature: void QPDFObject::setDescription(QPDF *, std::shared_ptr<Description> &, qpdf_offset_t)
+- name: _ZN16QPDFObjectHandle8newArrayERK10QPDFMatrix
+  params:
+  - name: arg0
+    type: const QPDFMatrix &
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDFObjectHandle::newArray(const QPDFMatrix &)
+- name: _ZN16QPDFObjectHandle8newArrayERKNS_6MatrixE
+  params:
+  - name: arg0
+    type: const QPDFObjectHandle::Matrix &
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDFObjectHandle::newArray(const QPDFObjectHandle::Matrix &)
+- name: _ZN16QPDFObjectHandle8newArrayERKNS_9RectangleE
+  params:
+  - name: arg0
+    type: const QPDFObjectHandle::Rectangle &
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDFObjectHandle::newArray(const QPDFObjectHandle::Rectangle &)
+- name: _ZNK16QPDFObjectHandle7getQPDFERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: error_msg
+    type: const std::string &
+  return_type: QPDF &
+  signature: QPDF & QPDFObjectHandle::getQPDF(const std::string &) const
+- name: _ZNK10QPDFObject14getStringValueB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string QPDFObject::getStringValue() const
+- name: _ZNK10QPDFObject19getResolvedTypeCodeEv
+  params: []
+  return_type: qpdf_object_type_e
+  signature: qpdf_object_type_e QPDFObject::getResolvedTypeCode() const
+- name: _ZN16QPDFObjectHandle27parseContentStream_internalERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS_15ParserCallbacksE
+  params:
+  - name: description
+    type: const std::string &
+  - name: callbacks
+    type: QPDFObjectHandle::ParserCallbacks *
+  return_type: void
+  signature: void QPDFObjectHandle::parseContentStream_internal(const std::string &, QPDFObjectHandle::ParserCallbacks *)
+- name: _ZNK16QPDFObjectHandle13getValueAsIntERi
+  params:
+  - name: arg0
+    type: int &
+  return_type: bool
+  signature: bool QPDFObjectHandle::getValueAsInt(int &) const
+- name: _ZN16QPDFObjectHandle14QPDFArrayItems3endEv
+  params: []
+  return_type: QPDFObjectHandle::QPDFArrayItems::iterator
+  signature: QPDFObjectHandle::QPDFArrayItems::iterator QPDFObjectHandle::QPDFArrayItems::end()
+- name: _ZN16QPDFObjectHandle14QPDFArrayItems5beginEv
+  params: []
+  return_type: QPDFObjectHandle::QPDFArrayItems::iterator
+  signature: QPDFObjectHandle::QPDFArrayItems::iterator QPDFObjectHandle::QPDFArrayItems::begin()
+- name: _ZNK16QPDFObjectHandle21getUniqueResourceNameERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERiPSt3setIS5_St4lessIS5_ESaIS5_EE
+  params:
+  - name: prefix
+    type: const std::string &
+  - name: min_suffix
+    type: int &
+  - name: resource_names
+    type: int *
+  return_type: std::string
+  signature: std::string QPDFObjectHandle::getUniqueResourceName(const std::string &, int &, int *) const
+- name: _ZNK16QPDFObjectHandle15isNameAndEqualsERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: name
+    type: const std::string &
+  return_type: bool
+  signature: bool QPDFObjectHandle::isNameAndEquals(const std::string &) const
+- name: _ZNK4qpdf6String10utf8_valueB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string qpdf::String::utf8_value() const
+- name: _ZNK4qpdf6String5valueB5cxx11Ev
+  params: []
+  return_type: const std::string &
+  signature: const std::string & qpdf::String::value() const
+- name: _ZNK16QPDFObjectHandle16getValueAsNumberERd
+  params:
+  - name: arg0
+    type: double &
+  return_type: bool
+  signature: bool QPDFObjectHandle::getValueAsNumber(double &) const
+- name: _ZN4qpdf10BaseHandle10disconnectEb
+  params:
+  - name: only_direct
+    type: bool
+  return_type: void
+  signature: void qpdf::BaseHandle::disconnect(bool)
+- name: _ZN16QPDFObjectHandle11TokenFilter10writeTokenERKN13QPDFTokenizer5TokenE
+  params:
+  - name: arg0
+    type: const QPDFTokenizer::Token &
+  return_type: void
+  signature: void QPDFObjectHandle::TokenFilter::writeToken(const QPDFTokenizer::Token &)
+- name: _ZN16QPDFObjectHandle11TokenFilter5writeEPKcm
+  params:
+  - name: str
+    type: const std::string &
+  return_type: void
+  signature: void QPDFObjectHandle::TokenFilter::write(const std::string &)
+- name: _ZN16QPDFObjectHandle11TokenFilter5writeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: str
+    type: const std::string &
+  return_type: void
+  signature: void QPDFObjectHandle::TokenFilter::write(const std::string &)
+- name: _ZN25QPDFOutlineDocumentHelper16resolveNamedDestE16QPDFObjectHandle
+  params:
+  - name: name
+    type: QPDFObjectHandle
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDFOutlineDocumentHelper::resolveNamedDest(QPDFObjectHandle)
+- name: _ZN25QPDFOutlineDocumentHelper16initializeByPageEv
+  params: []
+  return_type: void
+  signature: void QPDFOutlineDocumentHelper::initializeByPage()
+- name: _ZN23QPDFOutlineObjectHelper8Accessor6createE16QPDFObjectHandleR25QPDFOutlineDocumentHelperi
+  params:
+  - name: oh
+    type: QPDFObjectHandle
+  - name: dh
+    type: QPDFOutlineDocumentHelper &
+  - name: depth
+    type: int
+  return_type: QPDFOutlineObjectHelper
+  signature: QPDFOutlineObjectHelper QPDFOutlineObjectHelper::Accessor::create(QPDFObjectHandle, QPDFOutlineDocumentHelper
+    &, int)
+- name: _ZN25QPDFOutlineDocumentHelper8validateEb
+  params:
+  - name: repair
+    type: bool
+  return_type: void
+  signature: void QPDFOutlineDocumentHelper::validate(bool)
+- name: _ZN25QPDFOutlineDocumentHelper8Accessor9checkSeenERS_10QPDFObjGen
+  params:
+  - name: dh
+    type: QPDFOutlineDocumentHelper &
+  - name: og
+    type: QPDFObjGen
+  return_type: bool
+  signature: bool QPDFOutlineDocumentHelper::Accessor::checkSeen(QPDFOutlineDocumentHelper &, QPDFObjGen)
+- name: _ZN23QPDFOutlineObjectHelper7getDestEv
+  params: []
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDFOutlineObjectHelper::getDest()
+- name: _ZN27QPDFPageLabelDocumentHelper15getLabelForPageEx
+  params:
+  - name: page_idx
+    type: long long
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDFPageLabelDocumentHelper::getLabelForPage(long long)
+- name: _ZN27QPDFPageLabelDocumentHelper13hasPageLabelsEv
+  params: []
+  return_type: bool
+  signature: bool QPDFPageLabelDocumentHelper::hasPageLabels()
+- name: _ZN27QPDFPageLabelDocumentHelper8validateEb
+  params:
+  - name: repair
+    type: bool
+  return_type: void
+  signature: void QPDFPageLabelDocumentHelper::validate(bool)
+- name: _ZN20QPDFPageObjectHelper13parseContentsEPN16QPDFObjectHandle15ParserCallbacksE
+  params:
+  - name: callbacks
+    type: QPDFObjectHandle::ParserCallbacks *
+  return_type: void
+  signature: void QPDFPageObjectHelper::parseContents(QPDFObjectHandle::ParserCallbacks *)
+- name: _ZN18QPDFDocumentHelper7getQPDFEv
+  params: []
+  return_type: QPDF &
+  signature: QPDF & QPDFDocumentHelper::getQPDF()
+- name: _ZN20QPDFPageObjectHelper16placeFormXObjectE16QPDFObjectHandleRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS0_9RectangleER10QPDFMatrixbbb
+  params:
+  - name: fo
+    type: QPDFObjectHandle
+  - name: name
+    type: const std::string &
+  - name: rect
+    type: QPDFObjectHandle::Rectangle
+  - name: cm
+    type: QPDFMatrix &
+  - name: invert_transformations
+    type: bool
+  - name: allow_shrink
+    type: bool
+  - name: allow_expand
+    type: bool
+  return_type: std::string
+  signature: std::string QPDFPageObjectHelper::placeFormXObject(QPDFObjectHandle, const std::string &, QPDFObjectHandle::Rectangle,
+    QPDFMatrix &, bool, bool, bool)
+- name: _ZN20QPDFPageObjectHelper32getMatrixForFormXObjectPlacementE16QPDFObjectHandleNS0_9RectangleEbbb
+  params:
+  - name: fo
+    type: QPDFObjectHandle
+  - name: rect
+    type: QPDFObjectHandle::Rectangle
+  - name: invert_transformations
+    type: bool
+  - name: allow_shrink
+    type: bool
+  - name: allow_expand
+    type: bool
+  return_type: QPDFMatrix
+  signature: QPDFMatrix QPDFPageObjectHelper::getMatrixForFormXObjectPlacement(QPDFObjectHandle, QPDFObjectHandle::Rectangle,
+    bool, bool, bool)
+- name: _ZN20QPDFPageObjectHelper27getMatrixForTransformationsEb
+  params:
+  - name: invert
+    type: bool
+  return_type: QPDFObjectHandle::Matrix
+  signature: QPDFObjectHandle::Matrix QPDFPageObjectHelper::getMatrixForTransformations(bool)
+- name: _ZN20QPDFPageObjectHelper10getTrimBoxEbb
+  params:
+  - name: copy_if_shared
+    type: bool
+  - name: copy_if_fallback
+    type: bool
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDFPageObjectHelper::getTrimBox(bool, bool)
+- name: _ZN20QPDFPageObjectHelper9getImagesB5cxx11Ev
+  params: []
+  return_type: int
+  signature: int QPDFPageObjectHelper::getImages()
+- name: _ZN4qpdf4impl6Parser25check_too_many_bad_tokensEv
+  params: []
+  return_type: void
+  signature: void qpdf::impl::Parser::check_too_many_bad_tokens()
+- name: _ZN4qpdf4impl6Parser3addEOSt10shared_ptrI10QPDFObjectE
+  params:
+  - name: obj
+    type: std::shared_ptr<QPDFObject> &&
+  return_type: void
+  signature: void qpdf::impl::Parser::add(std::shared_ptr<QPDFObject> &&)
+- name: _ZN4qpdf4impl6Parser5parseEb
+  params:
+  - name: content_stream
+    type: bool
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle qpdf::impl::Parser::parse(bool)
+- name: _ZN4qpdf4impl6Parser5parseER11InputSourceRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEP4QPDF
+  params:
+  - name: input
+    type: InputSource &
+  - name: object_description
+    type: const std::string &
+  - name: context
+    type: QPDF *
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle qpdf::impl::Parser::parse(InputSource &, const std::string &, QPDF *)
+- name: _ZN11InputSource8fastReadERc
+  params:
+  - name: ch
+    type: char &
+  return_type: bool
+  signature: bool InputSource::fastRead(char &)
+- name: _ZN4qpdf9Tokenizer15handleCharacterEc
+  params:
+  - name: arg0
+    type: char
+  return_type: void
+  signature: void qpdf::Tokenizer::handleCharacter(char)
+- name: _ZN11InputSource10fastUnreadEb
+  params:
+  - name: back
+    type: bool
+  return_type: void
+  signature: void InputSource::fastUnread(bool)
+- name: _ZN4qpdf9Tokenizer16presentCharacterEc
+  params:
+  - name: ch
+    type: char
+  return_type: void
+  signature: void qpdf::Tokenizer::presentCharacter(char)
+- name: _ZN4qpdf9Tokenizer9readTokenER11InputSourceRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEbm
+  params:
+  - name: input
+    type: InputSource &
+  - name: context
+    type: const std::string &
+  - name: allow_bad
+    type: bool
+  - name: max_len
+    type: int
+  return_type: QPDFTokenizer::Token
+  signature: QPDFTokenizer::Token qpdf::Tokenizer::readToken(InputSource &, const std::string &, bool, int)
+- name: _ZN4qpdf9Tokenizer8getTokenERN13QPDFTokenizer5TokenERbRc
+  params:
+  - name: token
+    type: QPDFTokenizer::Token &
+  - name: unread_char
+    type: bool &
+  - name: ch
+    type: char &
+  return_type: bool
+  signature: bool qpdf::Tokenizer::getToken(QPDFTokenizer::Token &, bool &, char &)
+- name: _ZN4qpdf9Tokenizer6findEIER11InputSource
+  params:
+  - name: input
+    type: InputSource &
+  return_type: void
+  signature: void qpdf::Tokenizer::findEI(InputSource &)
+- name: _ZN4qpdf4impl6Writer18will_filter_streamE16QPDFObjectHandlePNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: stream
+    type: QPDFObjectHandle
+  - name: stream_data
+    type: std::string *
+  return_type: std::tuple<const bool, const bool, const bool>
+  signature: std::tuple<const bool, const bool, const bool> qpdf::impl::Writer::will_filter_stream(QPDFObjectHandle, std::string
+    *)
+- name: _ZN8ObjTableIN10QPDFWriter6ObjectEE7elementEm
+  params:
+  - name: idx
+    type: int
+  return_type: const T &
+  signature: const T & ObjTable::element(int) const
+- name: _ZN8ObjTableIN10QPDFWriter9NewObjectEE7elementEm
+  params:
+  - name: idx
+    type: int
+  return_type: const T &
+  signature: const T & ObjTable::element(int) const
+- name: _ZN4QPDF3Doc13linearizationEv
+  params: []
+  return_type: QPDF::Doc::Linearization &
+  signature: QPDF::Doc::Linearization & QPDF::Doc::linearization()
+- name: _ZN4qpdf4impl6Writer18enqueueObjectsPCLmEv
+  params: []
+  return_type: void
+  signature: void qpdf::impl::Writer::enqueueObjectsPCLm()
+- name: _ZN4qpdf4impl6Writer7enqueueERK16QPDFObjectHandle
+  params:
+  - name: object
+    type: const QPDFObjectHandle &
+  return_type: void
+  signature: void qpdf::impl::Writer::enqueue(const QPDFObjectHandle &)
+- name: _ZN4qpdf4impl6Writer15trimmed_trailerEv
+  params: []
+  return_type: qpdf::Dictionary
+  signature: qpdf::Dictionary qpdf::impl::Writer::trimmed_trailer()
+- name: _ZN4qpdf4impl6Writer29assignCompressedObjectNumbersE10QPDFObjGen
+  params:
+  - name: og
+    type: QPDFObjGen
+  return_type: void
+  signature: void qpdf::impl::Writer::assignCompressedObjectNumbers(QPDFObjGen)
+- name: _ZN4qpdf4impl6Writer22enqueueObjectsStandardEv
+  params: []
+  return_type: void
+  signature: void qpdf::impl::Writer::enqueueObjectsStandard()
+- name: _ZN4qpdf4impl6Writer26calculateXrefStreamPaddingEx
+  params:
+  - name: xref_bytes
+    type: qpdf_offset_t
+  return_type: int
+  signature: int qpdf::impl::Writer::calculateXrefStreamPadding(qpdf_offset_t)
+- name: _ZN4qpdf4impl6Writer15writeXRefStreamEiixNS1_9trailer_eEiiixixxbi
+  params:
+  - name: xref_id
+    type: int
+  - name: max_id
+    type: int
+  - name: max_offset
+    type: qpdf_offset_t
+  - name: which
+    type: qpdf::impl::Writer::trailer_e
+  - name: first
+    type: int
+  - name: last
+    type: int
+  - name: size
+    type: int
+  - name: prev
+    type: qpdf_offset_t
+  - name: hint_id
+    type: int
+  - name: hint_offset
+    type: qpdf_offset_t
+  - name: hint_length
+    type: qpdf_offset_t
+  - name: skip_compression
+    type: bool
+  - name: linearization_pass
+    type: int
+  return_type: qpdf_offset_t
+  signature: qpdf_offset_t qpdf::impl::Writer::writeXRefStream(int, int, qpdf_offset_t, qpdf::impl::Writer::trailer_e, int,
+    int, int, qpdf_offset_t, int, qpdf_offset_t, qpdf_offset_t, bool, int)
+- name: _ZN4qpdf4impl6Writer11bytesNeededEx
+  params:
+  - name: n
+    type: long long
+  return_type: unsigned int
+  signature: unsigned int qpdf::impl::Writer::bytesNeeded(long long)
+- name: _ZN4qpdf4impl6Writer11writeBinaryEyj
+  params:
+  - name: val
+    type: unsigned long long
+  - name: bytes
+    type: unsigned int
+  return_type: void
+  signature: void qpdf::impl::Writer::writeBinary(unsigned long long, unsigned int)
+- name: _ZN4qpdf4impl6Writer10openObjectEi
+  params:
+  - name: objid
+    type: int
+  return_type: int
+  signature: int qpdf::impl::Writer::openObject(int)
+- name: _ZN4qpdf4impl6Writer5writeESt17basic_string_viewIcSt11char_traitsIcEE
+  params: []
+  return_type: void
+  signature: void qpdf::impl::Writer::write()
+- name: _ZN4qpdf4impl6Writer12writeTrailerENS1_9trailer_eEibxi
+  params:
+  - name: which
+    type: qpdf::impl::Writer::trailer_e
+  - name: size
+    type: int
+  - name: xref_stream
+    type: bool
+  - name: prev
+    type: qpdf_offset_t
+  - name: linearization_pass
+    type: int
+  return_type: void
+  signature: void qpdf::impl::Writer::writeTrailer(qpdf::impl::Writer::trailer_e, int, bool, qpdf_offset_t, int)
+- name: _ZN4qpdf4impl6Writer11closeObjectEi
+  params:
+  - name: objid
+    type: int
+  return_type: void
+  signature: void qpdf::impl::Writer::closeObject(int)
+- name: _ZN4qpdf4impl6Writer10write_nameERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: str
+    type: const std::string &
+  return_type: impl::Writer &
+  signature: impl::Writer & qpdf::impl::Writer::write_name(const std::string &)
+- name: _ZN4qpdf4impl6Writer5writeEmc
+  params: []
+  return_type: void
+  signature: void qpdf::impl::Writer::write()
+- name: _ZN4qpdf4impl6Writer12unparseChildERK16QPDFObjectHandlemi
+  params:
+  - name: child
+    type: const QPDFObjectHandle &
+  - name: level
+    type: int
+  - name: flags
+    type: int
+  return_type: void
+  signature: void qpdf::impl::Writer::unparseChild(const QPDFObjectHandle &, int, int)
+- name: _ZN4qpdf4impl6Writer14getOriginalID1B5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string qpdf::impl::Writer::getOriginalID1()
+- name: _ZN4qpdf4impl6Writer26computeDeterministicIDDataEv
+  params: []
+  return_type: void
+  signature: void qpdf::impl::Writer::computeDeterministicIDData()
+- name: _ZN4qpdf4impl6Writer10generateIDEb
+  params:
+  - name: encrypted
+    type: bool
+  return_type: void
+  signature: void qpdf::impl::Writer::generateID(bool)
+- name: _ZN4qpdf4impl6Writer12write_stringERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: str
+    type: const std::string &
+  - name: force_binary
+    type: bool
+  return_type: impl::Writer &
+  signature: impl::Writer & qpdf::impl::Writer::write_string(const std::string &, bool)
+- name: _ZN4qpdf4impl6Writer13unparseObjectE16QPDFObjectHandlemimb
+  params:
+  - name: object
+    type: QPDFObjectHandle
+  - name: level
+    type: int
+  - name: flags
+    type: int
+  - name: stream_length
+    type: int
+  - name: compress
+    type: bool
+  return_type: void
+  signature: void qpdf::impl::Writer::unparseObject(QPDFObjectHandle, int, int, int, bool)
+- name: _ZN4qpdf4impl6Writer21adjustAESStreamLengthERm
+  params:
+  - name: length
+    type: int &
+  return_type: void
+  signature: void qpdf::impl::Writer::adjustAESStreamLength(int &)
+- name: _ZN4qpdf4impl6Writer15write_encryptedESt17basic_string_viewIcSt11char_traitsIcEE
+  params:
+  - name: str
+    type: int
+  return_type: impl::Writer &
+  signature: impl::Writer & qpdf::impl::Writer::write_encrypted(int)
+- name: _ZN4qpdf4impl6Writer15writeXRefStreamEiixNS1_9trailer_eEiii
+  params:
+  - name: objid
+    type: int
+  - name: max_id
+    type: int
+  - name: max_offset
+    type: qpdf_offset_t
+  - name: which
+    type: qpdf::impl::Writer::trailer_e
+  - name: first
+    type: int
+  - name: last
+    type: int
+  - name: size
+    type: int
+  return_type: qpdf_offset_t
+  signature: qpdf_offset_t qpdf::impl::Writer::writeXRefStream(int, int, qpdf_offset_t, qpdf::impl::Writer::trailer_e, int,
+    int, int)
+- name: _ZN4qpdf4impl6Writer14writeXRefTableENS1_9trailer_eEiiixbixxi
+  params:
+  - name: which
+    type: qpdf::impl::Writer::trailer_e
+  - name: first
+    type: int
+  - name: last
+    type: int
+  - name: size
+    type: int
+  - name: prev
+    type: qpdf_offset_t
+  - name: suppress_offsets
+    type: bool
+  - name: hint_id
+    type: int
+  - name: hint_offset
+    type: qpdf_offset_t
+  - name: hint_length
+    type: qpdf_offset_t
+  - name: linearization_pass
+    type: int
+  return_type: qpdf_offset_t
+  signature: qpdf_offset_t qpdf::impl::Writer::writeXRefTable(qpdf::impl::Writer::trailer_e, int, int, int, qpdf_offset_t,
+    bool, int, qpdf_offset_t, qpdf_offset_t, int)
+- name: _ZN4qpdf4impl6Writer14writeXRefTableENS1_9trailer_eEiii
+  params:
+  - name: which
+    type: qpdf::impl::Writer::trailer_e
+  - name: first
+    type: int
+  - name: last
+    type: int
+  - name: size
+    type: int
+  return_type: qpdf_offset_t
+  signature: qpdf_offset_t qpdf::impl::Writer::writeXRefTable(qpdf::impl::Writer::trailer_e, int, int, int)
+- name: _ZN4qpdf4impl6Writer15writeHintStreamEi
+  params:
+  - name: hint_id
+    type: int
+  return_type: void
+  signature: void qpdf::impl::Writer::writeHintStream(int)
+- name: _ZN4qpdf4impl6Writer10setDataKeyEi
+  params:
+  - name: objid
+    type: int
+  return_type: void
+  signature: void qpdf::impl::Writer::setDataKey(int)
+- name: _ZN4qpdf4impl6Writer11writeHeaderEv
+  params: []
+  return_type: void
+  signature: void qpdf::impl::Writer::writeHeader()
+- name: _ZN4qpdf4impl6Writer12doWriteSetupEv
+  params: []
+  return_type: void
+  signature: void qpdf::impl::Writer::doWriteSetup()
+- name: _ZN4qpdf6Writer6Config3qdfEb
+  params:
+  - name: val
+    type: bool
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::qdf(bool)
+- name: _ZN4qpdf6Writer6Config19preserve_encryptionEb
+  params:
+  - name: val
+    type: bool
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::preserve_encryption(bool)
+- name: _ZN4qpdf4impl6Writer24copyEncryptionParametersER4QPDF
+  params:
+  - name: qpdf
+    type: QPDF &
+  return_type: void
+  signature: void qpdf::impl::Writer::copyEncryptionParameters(QPDF &)
+- name: _ZNK4qpdf4impl6Writer12parseVersionERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERiSA_
+  params:
+  - name: version
+    type: const std::string &
+  - name: major
+    type: int &
+  - name: minor
+    type: int &
+  return_type: void
+  signature: void qpdf::impl::Writer::parseVersion(const std::string &, int &, int &) const
+- name: _ZN4qpdf4impl6Writer29disableIncompatibleEncryptionEiii
+  params:
+  - name: major
+    type: int
+  - name: minor
+    type: int
+  - name: extension_level
+    type: int
+  return_type: void
+  signature: void qpdf::impl::Writer::disableIncompatibleEncryption(int, int, int)
+- name: _ZNK4qpdf4impl6Writer15compareVersionsEiiii
+  params:
+  - name: major1
+    type: int
+  - name: minor1
+    type: int
+  - name: major2
+    type: int
+  - name: minor2
+    type: int
+  return_type: int
+  signature: int qpdf::impl::Writer::compareVersions(int, int, int, int) const
+- name: _ZN4qpdf4impl6Writer24initializeSpecialStreamsEv
+  params: []
+  return_type: void
+  signature: void qpdf::impl::Writer::initializeSpecialStreams()
+- name: _ZN4qpdf4impl6Writer16initializeTablesEm
+  params:
+  - name: extra
+    type: int
+  return_type: void
+  signature: void qpdf::impl::Writer::initializeTables(int)
+- name: _ZN4qpdf4impl6Writer21preserveObjectStreamsEv
+  params: []
+  return_type: void
+  signature: void qpdf::impl::Writer::preserveObjectStreams()
+- name: _ZN4qpdf4impl6Writer21generateObjectStreamsEv
+  params: []
+  return_type: void
+  signature: void qpdf::impl::Writer::generateObjectStreams()
+- name: _ZN4qpdf4impl6Writer20setMinimumPDFVersionERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi
+  params:
+  - name: version
+    type: const std::string &
+  - name: extension_level
+    type: int
+  return_type: void
+  signature: void qpdf::impl::Writer::setMinimumPDFVersion(const std::string &, int)
+- name: _ZN4qpdf6Writer6Config15encrypt_use_aesEb
+  params:
+  - name: val
+    type: bool
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::encrypt_use_aes(bool)
+- name: _ZN4qpdf4impl6Writer27setEncryptionMinimumVersionEv
+  params: []
+  return_type: void
+  signature: void qpdf::impl::Writer::setEncryptionMinimumVersion()
+- name: _ZNK4qpdf6Writer6Config5usageERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: msg
+    type: const std::string &
+  return_type: void
+  signature: void qpdf::Writer::Config::usage(const std::string &) const
+- name: _ZN4qpdf6Writer6Config16compress_streamsEb
+  params:
+  - name: val
+    type: bool
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::compress_streams(bool)
+- name: _ZN4qpdf6Writer6Config12decode_levelE26qpdf_stream_decode_level_e
+  params:
+  - name: val
+    type: qpdf_stream_decode_level_e
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::decode_level(qpdf_stream_decode_level_e)
+- name: _ZN4qpdf4impl6Writer25writeEncryptionDictionaryEv
+  params: []
+  return_type: void
+  signature: void qpdf::impl::Writer::writeEncryptionDictionary()
+- name: _ZN4qpdf4impl6Writer11enqueuePartERSt6vectorI16QPDFObjectHandleSaIS3_EE
+  params:
+  - name: part
+    type: int &
+  return_type: void
+  signature: void qpdf::impl::Writer::enqueuePart(int &)
+- name: _ZN4qpdf4impl6Writer19getWrittenXRefTableEv
+  params: []
+  return_type: int
+  signature: int qpdf::impl::Writer::getWrittenXRefTable()
+- name: _ZN4qpdf4impl6Writer13writeStandardEv
+  params: []
+  return_type: void
+  signature: void qpdf::impl::Writer::writeStandard()
+- name: _ZN4qpdf4impl6Writer11writeObjectE16QPDFObjectHandlei
+  params:
+  - name: object
+    type: QPDFObjectHandle
+  - name: object_stream_index
+    type: int
+  return_type: void
+  signature: void qpdf::impl::Writer::writeObject(QPDFObjectHandle, int)
+- name: _ZN4qpdf4impl6Writer17writeObjectStreamE16QPDFObjectHandle
+  params:
+  - name: object
+    type: QPDFObjectHandle
+  return_type: void
+  signature: void qpdf::impl::Writer::writeObjectStream(QPDFObjectHandle)
+- name: _ZN4qpdf4impl6Writer16indicateProgressEbb
+  params:
+  - name: decrement
+    type: bool
+  - name: finished
+    type: bool
+  return_type: void
+  signature: void qpdf::impl::Writer::indicateProgress(bool, bool)
+- name: _ZN4qpdf4impl6Writer24writeObjectStreamOffsetsERSt6vectorIxSaIxEEi
+  params:
+  - name: offsets
+    type: int &
+  - name: first_obj
+    type: int
+  return_type: void
+  signature: void qpdf::impl::Writer::writeObjectStreamOffsets(int &, int)
+- name: _ZN4qpdf4impl6Writer15writeLinearizedEv
+  params: []
+  return_type: void
+  signature: void qpdf::impl::Writer::writeLinearized()
+- name: _ZN4qpdf4impl6Writer5writeEv
+  params: []
+  return_type: void
+  signature: void qpdf::impl::Writer::write()
+- name: _ZN4qpdf4impl6Writer19prepareFileForWriteEv
+  params: []
+  return_type: void
+  signature: void qpdf::impl::Writer::prepareFileForWrite()
+- name: _ZN4qpdf4impl6Writer31interpretR3EncryptionParametersEbbbbbb15qpdf_r3_print_e16qpdf_r3_modify_e
+  params:
+  - name: allow_accessibility
+    type: bool
+  - name: allow_extract
+    type: bool
+  - name: allow_assemble
+    type: bool
+  - name: allow_annotate_and_form
+    type: bool
+  - name: allow_form_filling
+    type: bool
+  - name: allow_modify_other
+    type: bool
+  - name: print
+    type: qpdf_r3_print_e
+  - name: modify
+    type: qpdf_r3_modify_e
+  return_type: void
+  signature: void qpdf::impl::Writer::interpretR3EncryptionParameters(bool, bool, bool, bool, bool, bool, qpdf_r3_print_e,
+    qpdf_r3_modify_e)
+- name: _ZN4qpdf4impl6Writer23setEncryptionParametersEPKcS3_
+  params:
+  - name: user_password
+    type: const char *
+  - name: owner_password
+    type: const char *
+  return_type: void
+  signature: void qpdf::impl::Writer::setEncryptionParameters(const char *, const char *)
+- name: _ZN4qpdf6Writer6Config4pclmEb
+  params:
+  - name: val
+    type: bool
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::pclm(bool)
+- name: _ZN4qpdf6Writer6Config9linearizeEb
+  params:
+  - name: val
+    type: bool
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::linearize(bool)
+- name: _ZN4qpdf6Writer6Config17extra_header_textERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: val
+    type: const std::string &
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::extra_header_text(const std::string &)
+- name: _ZN4qpdf6Writer6Config18forced_pdf_versionERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi
+  params:
+  - name: val
+    type: const std::string &
+  - name: ext
+    type: int
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::forced_pdf_version(const std::string &, int)
+- name: _ZN4qpdf6Writer6Config11stream_dataE18qpdf_stream_data_e
+  params:
+  - name: val
+    type: qpdf_stream_data_e
+  return_type: qpdf::Writer::Config &
+  signature: qpdf::Writer::Config & qpdf::Writer::Config::stream_data(qpdf_stream_data_e)
+- name: _ZN10QPDFObject19setChildDescriptionEP4QPDFSt10shared_ptrIS_ERKSt17basic_string_viewIcSt11char_traitsIcEENSt7__cxx1112basic_stringIcS6_SaIcEEE
+  params:
+  - name: a_qpdf
+    type: QPDF *
+  - name: parent
+    type: std::shared_ptr<QPDFObject>
+  - name: static_descr
+    type: const int &
+  - name: var_descr
+    type: std::string
+  return_type: void
+  signature: void QPDFObject::setChildDescription(QPDF *, std::shared_ptr<QPDFObject>, const int &, std::string)
+- name: _ZNK10QPDF_Array4sizeEv
+  params: []
+  return_type: int
+  signature: int QPDF_Array::size() const
+- name: _ZN16QPDFObjectHandle9eraseItemEi
+  params:
+  - name: at
+    type: int
+  return_type: void
+  signature: void QPDFObjectHandle::eraseItem(int)
+- name: _ZN4qpdf5Array5eraseEi
+  params:
+  - name: at
+    type: int
+  return_type: bool
+  signature: bool qpdf::Array::erase(int)
+- name: _ZN4qpdf5Array5eraseEm
+  params:
+  - name: at
+    type: int
+  return_type: bool
+  signature: bool qpdf::Array::erase(int)
+- name: _ZNK4qpdf5Array5arrayEv
+  params: []
+  return_type: QPDF_Array *
+  signature: QPDF_Array * qpdf::Array::array() const
+- name: _ZNK4qpdf5Array4sizeEv
+  params: []
+  return_type: int
+  signature: int qpdf::Array::size() const
+- name: _ZN16QPDFObjectHandle10appendItemERKS_
+  params:
+  - name: item
+    type: const QPDFObjectHandle &
+  return_type: void
+  signature: void QPDFObjectHandle::appendItem(const QPDFObjectHandle &)
+- name: _ZN4qpdf5Array9push_backERK16QPDFObjectHandle
+  params:
+  - name: item
+    type: const QPDFObjectHandle &
+  return_type: void
+  signature: void qpdf::Array::push_back(const QPDFObjectHandle &)
+- name: _ZNK4qpdf5Array14checkOwnershipERK16QPDFObjectHandle
+  params:
+  - name: item
+    type: const QPDFObjectHandle &
+  return_type: void
+  signature: void qpdf::Array::checkOwnership(const QPDFObjectHandle &) const
+- name: _ZN16QPDFObjectHandle10insertItemEiRKS_
+  params:
+  - name: at
+    type: int
+  - name: item
+    type: const QPDFObjectHandle &
+  return_type: void
+  signature: void QPDFObjectHandle::insertItem(int, const QPDFObjectHandle &)
+- name: _ZN4qpdf5Array6insertEiRK16QPDFObjectHandle
+  params:
+  - name: at
+    type: int
+  - name: item
+    type: const QPDFObjectHandle &
+  return_type: bool
+  signature: bool qpdf::Array::insert(int, const QPDFObjectHandle &)
+- name: _ZN4qpdf5Array6insertEmRK16QPDFObjectHandle
+  params:
+  - name: at
+    type: int
+  - name: item
+    type: const QPDFObjectHandle &
+  return_type: bool
+  signature: bool qpdf::Array::insert(int, const QPDFObjectHandle &)
+- name: _ZN4qpdf5Array13setFromVectorERKSt6vectorI16QPDFObjectHandleSaIS2_EE
+  params:
+  - name: items
+    type: const int &
+  return_type: void
+  signature: void qpdf::Array::setFromVector(const int &)
+- name: _ZN4qpdf5Array3setEiRK16QPDFObjectHandle
+  params:
+  - name: at
+    type: int
+  - name: oh
+    type: const QPDFObjectHandle &
+  return_type: bool
+  signature: bool qpdf::Array::set(int, const QPDFObjectHandle &)
+- name: _ZN4qpdf5Array3setEmRK16QPDFObjectHandle
+  params:
+  - name: at
+    type: int
+  - name: oh
+    type: const QPDFObjectHandle &
+  return_type: bool
+  signature: bool qpdf::Array::set(int, const QPDFObjectHandle &)
+- name: _ZNK4qpdf5Array11getAsVectorEv
+  params: []
+  return_type: int
+  signature: int qpdf::Array::getAsVector() const
+- name: _ZN4qpdf5Array5beginEv
+  params: []
+  return_type: int
+  signature: int qpdf::Array::begin()
+- name: _ZN4qpdf5Array3endEv
+  params: []
+  return_type: int
+  signature: int qpdf::Array::end()
+- name: _ZNK4qpdf5Array3getEm
+  params:
+  - name: n
+    type: int
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle qpdf::Array::get(int) const
+- name: _ZNK4qpdf5Array4nullEv
+  params: []
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle qpdf::Array::null() const
+- name: _ZN16QPDFObjectHandle9removeKeyERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: key
+    type: const std::string &
+  return_type: void
+  signature: void QPDFObjectHandle::removeKey(const std::string &)
+- name: _ZN16QPDFObjectHandle18removeKeyAndGetOldERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: key
+    type: const std::string &
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDFObjectHandle::removeKeyAndGetOld(const std::string &)
+- name: _ZNK16QPDFObjectHandle14checkOwnershipERKS_
+  params:
+  - name: arg0
+    type: const QPDFObjectHandle &
+  return_type: void
+  signature: void QPDFObjectHandle::checkOwnership(const QPDFObjectHandle &) const
+- name: _ZN4qpdf14BaseDictionary7replaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE16QPDFObjectHandle
+  params:
+  - name: key
+    type: const std::string &
+  - name: value
+    type: QPDFObjectHandle
+  return_type: void
+  signature: void qpdf::BaseDictionary::replace(const std::string &, QPDFObjectHandle)
+- name: _ZN4qpdf10BaseHandle7replaceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE16QPDFObjectHandle
+  params:
+  - name: key
+    type: const std::string &
+  - name: value
+    type: QPDFObjectHandle
+  return_type: bool
+  signature: bool qpdf::BaseHandle::replace(const std::string &, QPDFObjectHandle)
+- name: _ZN16QPDFObjectHandle19replaceKeyAndGetNewERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKS_
+  params:
+  - name: key
+    type: const std::string &
+  - name: value
+    type: const QPDFObjectHandle &
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDFObjectHandle::replaceKeyAndGetNew(const std::string &, const QPDFObjectHandle &)
+- name: _ZNK16QPDFObjectHandle6getKeyERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: arg0
+    type: const std::string &
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDFObjectHandle::getKey(const std::string &) const
+- name: _ZNK4qpdf10BaseHandle8containsERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: key
+    type: const std::string &
+  return_type: bool
+  signature: bool qpdf::BaseHandle::contains(const std::string &) const
+- name: _ZNK4qpdf6Stream9getLengthEv
+  params: []
+  return_type: int
+  signature: int qpdf::Stream::getLength() const
+- name: _ZN4qpdf6Stream4copyEv
+  params: []
+  return_type: qpdf::Stream
+  signature: qpdf::Stream qpdf::Stream::copy()
+- name: _ZN4qpdf6Stream12copy_data_toERS0_
+  params:
+  - name: target
+    type: qpdf::Stream &
+  return_type: void
+  signature: void qpdf::Stream::copy_data_to(qpdf::Stream &)
+- name: _ZN4QPDF3Doc7objectsEv
+  params: []
+  return_type: QPDF::Doc::Objects &
+  signature: QPDF::Doc::Objects & QPDF::Doc::objects()
+- name: _ZN4QPDF3Doc7Objects7streamsEv
+  params: []
+  return_type: QPDF::Doc::Objects::Streams &
+  signature: QPDF::Doc::Objects::Streams & QPDF::Doc::Objects::streams()
+- name: _ZN4QPDF3Doc6configEv
+  params: []
+  return_type: qpdf::Doc::Config &
+  signature: qpdf::Doc::Config & QPDF::Doc::config()
+- name: _ZN4qpdf6Stream16getRawStreamDataB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string qpdf::Stream::getRawStreamData()
+- name: _ZN4qpdf6Stream17replaceStreamDataEONSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERK16QPDFObjectHandleSA_
+  params:
+  - name: data
+    type: std::string &&
+  - name: filter
+    type: const QPDFObjectHandle &
+  - name: decode_parms
+    type: const QPDFObjectHandle &
+  return_type: void
+  signature: void qpdf::Stream::replaceStreamData(std::string &&, const QPDFObjectHandle &, const QPDFObjectHandle &)
+- name: _ZN4qpdf6Stream17replaceStreamDataESt10shared_ptrI6BufferERK16QPDFObjectHandleS6_
+  params:
+  - name: data
+    type: std::shared_ptr<Buffer>
+  - name: filter
+    type: const QPDFObjectHandle &
+  - name: decode_parms
+    type: const QPDFObjectHandle &
+  return_type: void
+  signature: void qpdf::Stream::replaceStreamData(std::shared_ptr<Buffer>, const QPDFObjectHandle &, const QPDFObjectHandle
+    &)
+- name: _ZN4QPDF3Doc7Objects7Streams6Copier13register_copyERN4qpdf6StreamES6_b
+  params:
+  - name: dest
+    type: qpdf::Stream &
+  - name: source
+    type: qpdf::Stream &
+  - name: provider
+    type: bool
+  return_type: void
+  signature: void QPDF::Doc::Objects::Streams::Copier::register_copy(qpdf::Stream &, qpdf::Stream &, bool)
+- name: _ZN4qpdf6Stream17replaceFilterDataERK16QPDFObjectHandleS3_m
+  params:
+  - name: filter
+    type: const QPDFObjectHandle &
+  - name: decode_parms
+    type: const QPDFObjectHandle &
+  - name: length
+    type: int
+  return_type: void
+  signature: void qpdf::Stream::replaceFilterData(const QPDFObjectHandle &, const QPDFObjectHandle &, int)
+- name: _ZN4qpdf6Stream13getStreamDataB5cxx11E26qpdf_stream_decode_level_e
+  params:
+  - name: level
+    type: qpdf_stream_decode_level_e
+  return_type: std::string
+  signature: std::string qpdf::Stream::getStreamData(qpdf_stream_decode_level_e)
+- name: _ZNK4qpdf6Stream14isDataModifiedEv
+  params: []
+  return_type: bool
+  signature: bool qpdf::Stream::isDataModified() const
+- name: _ZNK4qpdf6Stream16getFilterOnWriteEv
+  params: []
+  return_type: bool
+  signature: bool qpdf::Stream::getFilterOnWrite() const
+- name: _ZN4qpdf6Stream16setFilterOnWriteEb
+  params:
+  - name: val
+    type: bool
+  return_type: void
+  signature: void qpdf::Stream::setFilterOnWrite(bool)
+- name: _ZN4qpdf6Stream18setDictDescriptionEv
+  params: []
+  return_type: void
+  signature: void qpdf::Stream::setDictDescription()
+- name: _ZN11QPDF_String7unparseB5cxx11Eb
+  params:
+  - name: force_binary
+    type: bool
+  return_type: std::string
+  signature: std::string QPDF_String::unparse(bool)
+- name: _ZNK4QPDF20EncryptionParameters1PEm
+  params:
+  - name: bit
+    type: int
+  return_type: bool
+  signature: bool QPDF::EncryptionParameters::P(int) const
+- name: _ZN4QPDF3Doc10Encryption18compute_parametersB5cxx11EPKcS3_
+  params:
+  - name: user_password
+    type: const char *
+  - name: owner_password
+    type: const char *
+  return_type: std::string
+  signature: std::string QPDF::Doc::Encryption::compute_parameters(const char *, const char *)
+- name: _ZN4QPDF3Doc10Encryption22compute_encryption_O_UEPKcS3_
+  params:
+  - name: user_password
+    type: const char *
+  - name: owner_password
+    type: const char *
+  return_type: void
+  signature: void QPDF::Doc::Encryption::compute_encryption_O_U(const char *, const char *)
+- name: _ZNK4QPDF3Doc10Encryption22compute_encryption_keyERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: password
+    type: const std::string &
+  return_type: std::string
+  signature: std::string QPDF::Doc::Encryption::compute_encryption_key(const std::string &) const
+- name: _ZN4QPDF3Doc10Encryption32compute_encryption_parameters_V5B5cxx11EPKcS3_
+  params:
+  - name: user_password
+    type: const char *
+  - name: owner_password
+    type: const char *
+  return_type: std::string
+  signature: std::string QPDF::Doc::Encryption::compute_encryption_parameters_V5(const char *, const char *)
+- name: _ZNK4QPDF3Doc10Encryption28compute_Perms_value_V5_clearB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string QPDF::Doc::Encryption::compute_Perms_value_V5_clear() const
+- name: _ZNK4QPDF3Doc10Encryption4getPEv
+  params: []
+  return_type: int
+  signature: int QPDF::Doc::Encryption::getP() const
+- name: _ZNK4QPDF3Doc10Encryption18getEncryptMetadataEv
+  params: []
+  return_type: bool
+  signature: bool QPDF::Doc::Encryption::getEncryptMetadata() const
+- name: _ZNK4QPDF3Doc10Encryption4getREv
+  params: []
+  return_type: int
+  signature: int QPDF::Doc::Encryption::getR() const
+- name: _ZNK4QPDF3Doc10Encryption4getVEv
+  params: []
+  return_type: int
+  signature: int QPDF::Doc::Encryption::getV() const
+- name: _ZNK4QPDF3Doc10Encryption36recover_encryption_key_with_passwordERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: password
+    type: const std::string &
+  return_type: std::string
+  signature: std::string QPDF::Doc::Encryption::recover_encryption_key_with_password(const std::string &) const
+- name: _ZNK4QPDF3Doc10Encryption36compute_encryption_key_from_passwordERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: password
+    type: const std::string &
+  return_type: std::string
+  signature: std::string QPDF::Doc::Encryption::compute_encryption_key_from_password(const std::string &) const
+- name: _ZNK4QPDF3Doc10Encryption4getOB5cxx11Ev
+  params: []
+  return_type: const std::string &
+  signature: const std::string & QPDF::Doc::Encryption::getO() const
+- name: _ZNK4QPDF3Doc10Encryption14getLengthBytesEv
+  params: []
+  return_type: int
+  signature: int QPDF::Doc::Encryption::getLengthBytes() const
+- name: _ZNK4QPDF3Doc10Encryption36recover_encryption_key_with_passwordERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERb
+  params:
+  - name: password
+    type: const std::string &
+  - name: perms_valid
+    type: bool &
+  return_type: std::string
+  signature: std::string QPDF::Doc::Encryption::recover_encryption_key_with_password(const std::string &, bool &) const
+- name: _ZNK4QPDF3Doc10Encryption23check_owner_password_V5ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: owner_password
+    type: const std::string &
+  return_type: bool
+  signature: bool QPDF::Doc::Encryption::check_owner_password_V5(const std::string &) const
+- name: _ZNK4QPDF3Doc10Encryption4getUB5cxx11Ev
+  params: []
+  return_type: const std::string &
+  signature: const std::string & QPDF::Doc::Encryption::getU() const
+- name: _ZNK4QPDF3Doc10Encryption5getOEB5cxx11Ev
+  params: []
+  return_type: const std::string &
+  signature: const std::string & QPDF::Doc::Encryption::getOE() const
+- name: _ZNK4QPDF3Doc10Encryption22check_user_password_V5ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: user_password
+    type: const std::string &
+  return_type: bool
+  signature: bool QPDF::Doc::Encryption::check_user_password_V5(const std::string &) const
+- name: _ZNK4QPDF3Doc10Encryption5getUEB5cxx11Ev
+  params: []
+  return_type: const std::string &
+  signature: const std::string & QPDF::Doc::Encryption::getUE() const
+- name: _ZNK4QPDF3Doc10Encryption8getPermsB5cxx11Ev
+  params: []
+  return_type: const std::string &
+  signature: const std::string & QPDF::Doc::Encryption::getPerms() const
+- name: _ZNK4QPDF3Doc10Encryption15compute_O_valueERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES9_
+  params:
+  - name: user_password
+    type: const std::string &
+  - name: owner_password
+    type: const std::string &
+  return_type: std::string
+  signature: std::string QPDF::Doc::Encryption::compute_O_value(const std::string &, const std::string &) const
+- name: _ZN4QPDF20EncryptionParameters10initializeERS_
+  params:
+  - name: qpdf
+    type: QPDF &
+  return_type: void
+  signature: void QPDF::EncryptionParameters::initialize(QPDF &)
+- name: _ZNK4QPDF3Doc10Encryption20check_owner_passwordERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKS7_
+  params:
+  - name: user_password
+    type: std::string &
+  - name: owner_password
+    type: const std::string &
+  return_type: bool
+  signature: bool QPDF::Doc::Encryption::check_owner_password(std::string &, const std::string &) const
+- name: _ZNK4QPDF3Doc10Encryption19check_user_passwordERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: user_password
+    type: const std::string &
+  return_type: bool
+  signature: bool QPDF::Doc::Encryption::check_user_password(const std::string &) const
+- name: _ZNK4QPDF3Doc10Encryption22check_user_password_V4ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: user_password
+    type: const std::string &
+  return_type: bool
+  signature: bool QPDF::Doc::Encryption::check_user_password_V4(const std::string &) const
+- name: _ZNK4QPDF3Doc10Encryption23check_owner_password_V4ERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKS7_
+  params:
+  - name: user_password
+    type: std::string &
+  - name: owner_password
+    type: const std::string &
+  return_type: bool
+  signature: bool QPDF::Doc::Encryption::check_owner_password_V4(std::string &, const std::string &) const
+- name: _ZN4QPDF3Doc10Encryption6setId1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: val
+    type: const std::string &
+  return_type: void
+  signature: void QPDF::Doc::Encryption::setId1(const std::string &)
+- name: _ZN4QPDF3Doc10Encryption4setPEmb
+  params:
+  - name: val
+    type: unsigned long
+  return_type: void
+  signature: void QPDF::Doc::Encryption::setP(unsigned long)
+- name: _ZN4QPDF14updateFromJSONERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: json_file
+    type: const std::string &
+  return_type: void
+  signature: void QPDF::updateFromJSON(const std::string &)
+- name: _ZNK8ObjTableIN10QPDFWriter9NewObjectEE7elementEm
+  params:
+  - name: idx
+    type: int
+  return_type: const T &
+  signature: const T & ObjTable::element(int) const
+- name: _ZN4QPDF3Doc13Linearization21getUncompressedObjectER16QPDFObjectHandleRKN10QPDFWriter8ObjTableE
+  params:
+  - name: arg0
+    type: QPDFObjectHandle &
+  - name: obj
+    type: const QPDFWriter::ObjTable &
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDF::Doc::Linearization::getUncompressedObject(QPDFObjectHandle &, const QPDFWriter::ObjTable
+    &)
+- name: _ZNK8ObjTableIN10QPDFWriter6ObjectEE7elementEm
+  params:
+  - name: idx
+    type: int
+  return_type: const T &
+  signature: const T & ObjTable::element(int) const
+- name: _ZN4QPDF3Doc13Linearization21getUncompressedObjectER16QPDFObjectHandleRKSt3mapIiiSt4lessIiESaISt4pairIKiiEEE
+  params:
+  - name: arg0
+    type: QPDFObjectHandle &
+  - name: obj
+    type: const QPDFWriter::ObjTable &
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDF::Doc::Linearization::getUncompressedObject(QPDFObjectHandle &, const QPDFWriter::ObjTable
+    &)
+- name: _ZN4QPDF3Doc5Pages5emptyEv
+  params: []
+  return_type: bool
+  signature: bool QPDF::Doc::Pages::empty()
+- name: _ZN4QPDF3Doc13Linearization20calculateHPageOffsetERKN10QPDFWriter11NewObjTableERKNS2_8ObjTableE
+  params:
+  - name: new_obj
+    type: const QPDFWriter::NewObjTable &
+  - name: obj
+    type: const QPDFWriter::ObjTable &
+  return_type: void
+  signature: void QPDF::Doc::Linearization::calculateHPageOffset(const QPDFWriter::NewObjTable &, const QPDFWriter::ObjTable
+    &)
+- name: _ZN4QPDF3Doc13Linearization22calculateHSharedObjectERKN10QPDFWriter11NewObjTableERKNS2_8ObjTableE
+  params:
+  - name: new_obj
+    type: const QPDFWriter::NewObjTable &
+  - name: obj
+    type: const QPDFWriter::ObjTable &
+  return_type: void
+  signature: void QPDF::Doc::Linearization::calculateHSharedObject(const QPDFWriter::NewObjTable &, const QPDFWriter::ObjTable
+    &)
+- name: _ZN4QPDF3Doc13Linearization17calculateHOutlineERKN10QPDFWriter11NewObjTableERKNS2_8ObjTableE
+  params:
+  - name: new_obj
+    type: const QPDFWriter::NewObjTable &
+  - name: obj
+    type: const QPDFWriter::ObjTable &
+  return_type: void
+  signature: void QPDF::Doc::Linearization::calculateHOutline(const QPDFWriter::NewObjTable &, const QPDFWriter::ObjTable
+    &)
+- name: _ZN4QPDF3Doc13Linearization29dumpLinearizationDataInternalEv
+  params: []
+  return_type: void
+  signature: void QPDF::Doc::Linearization::dumpLinearizationDataInternal()
+- name: _ZN4QPDF3Doc13Linearization9show_dataEv
+  params: []
+  return_type: void
+  signature: void QPDF::Doc::Linearization::show_data()
+- name: _ZN4QPDF3Doc13Linearization21readLinearizationDataEv
+  params: []
+  return_type: void
+  signature: void QPDF::Doc::Linearization::readLinearizationData()
+- name: _ZN4QPDF3Doc13Linearization26checkLinearizationInternalEv
+  params: []
+  return_type: void
+  signature: void QPDF::Doc::Linearization::checkLinearizationInternal()
+- name: _ZN4QPDF3Doc13Linearization10linearizedEv
+  params: []
+  return_type: bool
+  signature: bool QPDF::Doc::Linearization::linearized()
+- name: _ZN4QPDF3Doc13Linearization5checkEv
+  params: []
+  return_type: bool
+  signature: bool QPDF::Doc::Linearization::check()
+- name: _ZN4QPDF12removeObjectE10QPDFObjGen
+  params:
+  - name: og
+    type: QPDFObjGen
+  return_type: void
+  signature: void QPDF::removeObject(QPDFObjGen)
+- name: _ZN10QPDFObject9setObjGenEP4QPDF10QPDFObjGen
+  params:
+  - name: a_qpdf
+    type: QPDF *
+  - name: a_og
+    type: QPDFObjGen
+  return_type: void
+  signature: void QPDFObject::setObjGen(QPDF *, QPDFObjGen)
+- name: _ZN4QPDF21fixDanglingReferencesEb
+  params:
+  - name: force
+    type: bool
+  return_type: void
+  signature: void QPDF::fixDanglingReferences(bool)
+- name: _ZN4QPDF3Doc7Objects16resolveXRefTableEv
+  params: []
+  return_type: bool
+  signature: bool QPDF::Doc::Objects::resolveXRefTable()
+- name: _ZN4QPDF3Doc7Objects12isUnresolvedE10QPDFObjGen
+  params:
+  - name: og
+    type: QPDFObjGen
+  return_type: bool
+  signature: bool QPDF::Doc::Objects::isUnresolved(QPDFObjGen)
+- name: _ZN4QPDF3Doc7Objects11updateCacheE10QPDFObjGenRKSt10shared_ptrI10QPDFObjectExxb
+  params:
+  - name: og
+    type: QPDFObjGen
+  - name: object
+    type: const std::shared_ptr<QPDFObject> &
+  - name: end_before_space
+    type: qpdf_offset_t
+  - name: end_after_space
+    type: qpdf_offset_t
+  - name: destroy
+    type: bool
+  return_type: void
+  signature: void QPDF::Doc::Objects::updateCache(QPDFObjGen, const std::shared_ptr<QPDFObject> &, qpdf_offset_t, qpdf_offset_t,
+    bool)
+- name: _ZNK13QPDFXRefEntry7getTypeEv
+  params: []
+  return_type: int
+  signature: int QPDFXRefEntry::getType() const
+- name: _ZNK13QPDFXRefEntry9getOffsetEv
+  params: []
+  return_type: qpdf_offset_t
+  signature: qpdf_offset_t QPDFXRefEntry::getOffset() const
+- name: _ZN4QPDF3Doc7Objects18readObjectAtOffsetEbxRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE10QPDFObjGen
+  params:
+  - name: attempt_recovery
+    type: bool
+  - name: offset
+    type: qpdf_offset_t
+  - name: description
+    type: const std::string &
+  - name: exp_og
+    type: QPDFObjGen
+  return_type: void
+  signature: void QPDF::Doc::Objects::readObjectAtOffset(bool, qpdf_offset_t, const std::string &, QPDFObjGen)
+- name: _ZNK13QPDFXRefEntry18getObjStreamNumberEv
+  params: []
+  return_type: int
+  signature: int QPDFXRefEntry::getObjStreamNumber() const
+- name: _ZN4QPDF3Doc7Objects22resolveObjectsInStreamEi
+  params:
+  - name: obj_stream_number
+    type: int
+  return_type: void
+  signature: void QPDF::Doc::Objects::resolveObjectsInStream(int)
+- name: _ZN10QPDFObject21setDefaultDescriptionEP4QPDFRK10QPDFObjGen
+  params:
+  - name: a_qpdf
+    type: QPDF *
+  - name: a_og
+    type: const QPDFObjGen &
+  return_type: void
+  signature: void QPDFObject::setDefaultDescription(QPDF *, const QPDFObjGen &)
+- name: _ZN4QPDF3Doc7Objects9readTokenER11InputSourcem
+  params:
+  - name: input
+    type: InputSource &
+  - name: max_len
+    type: int
+  return_type: QPDFTokenizer::Token
+  signature: QPDFTokenizer::Token QPDF::Doc::Objects::readToken(InputSource &, int)
+- name: _ZN4QPDF3Doc7Objects9read_xrefExb
+  params:
+  - name: offset
+    type: qpdf_offset_t
+  - name: in_stream_recovery
+    type: bool
+  return_type: void
+  signature: void QPDF::Doc::Objects::read_xref(qpdf_offset_t, bool)
+- name: _ZN4QPDF9getObjectE10QPDFObjGen
+  params:
+  - name: arg0
+    type: QPDFObjGen
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDF::getObject(QPDFObjGen)
+- name: _ZN10QPDFObject7move_toERSt10shared_ptrIS_Eb
+  params:
+  - name: o
+    type: std::shared_ptr<QPDFObject> &
+  - name: destroy
+    type: bool
+  return_type: void
+  signature: void QPDFObject::move_to(std::shared_ptr<QPDFObject> &, bool)
+- name: _ZN10QPDFObject8swapWithESt10shared_ptrIS_E
+  params:
+  - name: o
+    type: std::shared_ptr<QPDFObject>
+  return_type: void
+  signature: void QPDFObject::swapWith(std::shared_ptr<QPDFObject>)
+- name: _ZN4QPDF11swapObjectsE10QPDFObjGenS0_
+  params:
+  - name: og1
+    type: QPDFObjGen
+  - name: og2
+    type: QPDFObjGen
+  return_type: void
+  signature: void QPDF::swapObjects(QPDFObjGen, QPDFObjGen)
+- name: _ZN4QPDF13replaceObjectE10QPDFObjGen16QPDFObjectHandle
+  params:
+  - name: og
+    type: QPDFObjGen
+  - name: arg1
+    type: QPDFObjectHandle
+  return_type: void
+  signature: void QPDF::replaceObject(QPDFObjGen, QPDFObjectHandle)
+- name: _ZN4QPDF3Doc7Objects26makeIndirectFromQPDFObjectERKSt10shared_ptrI10QPDFObjectE
+  params:
+  - name: obj
+    type: const std::shared_ptr<QPDFObject> &
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDF::Doc::Objects::makeIndirectFromQPDFObject(const std::shared_ptr<QPDFObject> &)
+- name: _ZN4QPDF3Doc7Objects10nextObjGenEv
+  params: []
+  return_type: QPDFObjGen
+  signature: QPDFObjGen QPDF::Doc::Objects::nextObjGen()
+- name: _ZN4QPDF3Doc7Objects11newIndirectE10QPDFObjGenRKSt10shared_ptrI10QPDFObjectE
+  params:
+  - name: arg0
+    type: QPDFObjGen
+  - name: arg1
+    type: const std::shared_ptr<QPDFObject> &
+  return_type: QPDFObjectHandle
+  signature: QPDFObjectHandle QPDF::Doc::Objects::newIndirect(QPDFObjGen, const std::shared_ptr<QPDFObject> &)
+- name: _ZNK13QPDFXRefEntry17getObjStreamIndexEv
+  params: []
+  return_type: int
+  signature: int QPDFXRefEntry::getObjStreamIndex() const
+- name: _ZN4QPDF3Doc5Pages28flatten_annotations_for_pageER20QPDFPageObjectHelperR16QPDFObjectHandleRN4qpdf4impl8AcroFormEii
+  params:
+  - name: page
+    type: QPDFPageObjectHelper &
+  - name: resources
+    type: QPDFObjectHandle &
+  - name: afdh
+    type: impl::AcroForm &
+  - name: required_flags
+    type: int
+  - name: forbidden_flags
+    type: int
+  return_type: void
+  signature: void QPDF::Doc::Pages::flatten_annotations_for_page(QPDFPageObjectHelper &, QPDFObjectHandle &, impl::AcroForm
+    &, int, int)
+- name: _ZN4QPDF3Doc5Pages19flatten_annotationsEii
+  params:
+  - name: required_flags
+    type: int
+  - name: forbidden_flags
+    type: int
+  return_type: void
+  signature: void QPDF::Doc::Pages::flatten_annotations(int, int)
+- name: _ZN4QPDF10removePageE16QPDFObjectHandle
+  params:
+  - name: page
+    type: QPDFObjectHandle
+  return_type: void
+  signature: void QPDF::removePage(QPDFObjectHandle)
+- name: _ZN4QPDF3Doc5Pages5eraseER16QPDFObjectHandle
+  params:
+  - name: page
+    type: QPDFObjectHandle &
+  return_type: void
+  signature: void QPDF::Doc::Pages::erase(QPDFObjectHandle &)
+- name: _ZN4QPDF8findPageER16QPDFObjectHandle
+  params:
+  - name: page
+    type: QPDFObjectHandle &
+  return_type: int
+  signature: int QPDF::findPage(QPDFObjectHandle &)
+- name: _ZN4QPDF3Doc5Pages19insertPageobjToPageERK16QPDFObjectHandleib
+  params:
+  - name: obj
+    type: const QPDFObjectHandle &
+  - name: pos
+    type: int
+  - name: check_duplicate
+    type: bool
+  return_type: void
+  signature: void QPDF::Doc::Pages::insertPageobjToPage(const QPDFObjectHandle &, int, bool)
+- name: _ZN4QPDF8findPageE10QPDFObjGen
+  params:
+  - name: og
+    type: QPDFObjGen
+  return_type: int
+  signature: int QPDF::findPage(QPDFObjGen)
+- name: _ZN4QPDF3Doc5Pages4findE10QPDFObjGen
+  params:
+  - name: og
+    type: QPDFObjGen
+  return_type: int
+  signature: int QPDF::Doc::Pages::find(QPDFObjGen)
+- name: _ZN4QPDF3Doc5Pages16flattenPagesTreeEv
+  params: []
+  return_type: void
+  signature: void QPDF::Doc::Pages::flattenPagesTree()
+- name: _ZN4QPDF3Doc5Pages5cacheEv
+  params: []
+  return_type: const int &
+  signature: const int & QPDF::Doc::Pages::cache()
+- name: _ZN4QPDF3Doc5Pages37pushInheritedAttributesToPageInternalE16QPDFObjectHandleRSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt6vectorIS2_SaIS2_EESt4lessIS9_ESaISt4pairIKS9_SC_EEEbb
+  params:
+  - name: arg0
+    type: QPDFObjectHandle
+  - name: arg1
+    type: int &
+  - name: allow_changes
+    type: bool
+  - name: warn_skipped_keys
+    type: bool
+  return_type: void
+  signature: void QPDF::Doc::Pages::pushInheritedAttributesToPageInternal(QPDFObjectHandle, int &, bool, bool)
+- name: _ZN4QPDF9addPageAtE16QPDFObjectHandlebS0_
+  params:
+  - name: newpage
+    type: QPDFObjectHandle
+  - name: before
+    type: bool
+  - name: refpage
+    type: QPDFObjectHandle
+  return_type: void
+  signature: void QPDF::addPageAt(QPDFObjectHandle, bool, QPDFObjectHandle)
+- name: _ZN4QPDF3Doc5Pages6insertE16QPDFObjectHandlei
+  params:
+  - name: newpage
+    type: QPDFObjectHandle
+  - name: pos
+    type: int
+  return_type: void
+  signature: void QPDF::Doc::Pages::insert(QPDFObjectHandle, int)
+- name: _ZN4QPDF3Doc5Pages6insertERK16QPDFObjectHandlem
+  params:
+  - name: newpage
+    type: const QPDFObjectHandle &
+  - name: pos
+    type: int
+  return_type: void
+  signature: void QPDF::Doc::Pages::insert(const QPDFObjectHandle &, int)
+- name: _ZN22QPDFPageDocumentHelper11getAllPagesEv
+  params: []
+  return_type: int
+  signature: int QPDFPageDocumentHelper::getAllPages()
+- name: _ZN4QPDF3Doc5Pages12update_cacheEv
+  params: []
+  return_type: void
+  signature: void QPDF::Doc::Pages::update_cache()
+- name: _ZN5QUtil20qpdf_time_to_iso8601B5cxx11ERKNS_8QPDFTimeE
+  params:
+  - name: arg0
+    type: const QUtil::QPDFTime &
+  return_type: std::string
+  signature: std::string QUtil::qpdf_time_to_iso8601(const QUtil::QPDFTime &)
+- name: _ZN5QUtil21qpdf_time_to_pdf_timeB5cxx11ERKNS_8QPDFTimeE
+  params:
+  - name: arg0
+    type: const QUtil::QPDFTime &
+  return_type: std::string
+  signature: std::string QUtil::qpdf_time_to_pdf_time(const QUtil::QPDFTime &)
+- name: _ZN14AES_PDF_native6updateEPhS0_
+  params:
+  - name: in_data
+    type: unsigned char *
+  - name: out_data
+    type: unsigned char *
+  return_type: void
+  signature: void AES_PDF_native::update(unsigned char *, unsigned char *)
+- name: _ZN10MD5_native6digestEPh
+  params:
+  - name: arg0
+    type: MD5_native::Digest
+  return_type: void
+  signature: void MD5_native::digest(MD5_native::Digest)
+- name: _ZN10MD5_native6updateEPhm
+  params:
+  - name: arg0
+    type: unsigned char *
+  - name: arg1
+    type: int
+  return_type: void
+  signature: void MD5_native::update(unsigned char *, int)
+- name: _ZN10RC4_native7processEPKhmPh
+  params:
+  - name: in_data
+    type: const unsigned char *
+  - name: len
+    type: int
+  - name: out_data
+    type: unsigned char *
+  return_type: void
+  signature: void RC4_native::process(const unsigned char *, int, unsigned char *)
+- name: _ZN11SHA2_native12getRawDigestB5cxx11Ev
+  params: []
+  return_type: std::string
+  signature: std::string SHA2_native::getRawDigest()
+- name: _ZN11SHA2_native7badBitsEv
+  params: []
+  return_type: void
+  signature: void SHA2_native::badBits()
+- name: _ZN11SHA2_native8finalizeEv
+  params: []
+  return_type: void
+  signature: void SHA2_native::finalize()
+- name: _ZN11SHA2_native6updateEPKhm
+  params:
+  - name: arg0
+    type: const unsigned char *const
+  - name: arg1
+    type: int
+  return_type: void
+  signature: void SHA2_native::update(const unsigned char *const, int)
+language: c++
+project: qpdf
+target_name: qpdf_fuzzer
+target_path: /src/qpdf/fuzz/qpdf_fuzzer.cc

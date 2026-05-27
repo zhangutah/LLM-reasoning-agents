@@ -1,0 +1,2128 @@
+functions:
+- name: _ZNK4Ogre10ConfigFile11getSettingsERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: section
+    type: const Ogre::String &
+  return_type: const Ogre::ConfigFile::SettingsMultiMap &
+  signature: const Ogre::ConfigFile::SettingsMultiMap & Ogre::ConfigFile::getSettings(const Ogre::String &) const
+- name: _ZNK4Ogre10ConfigFile10getSettingERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_S8_
+  params:
+  - name: key
+    type: const Ogre::String &
+  - name: section
+    type: const Ogre::String &
+  - name: defaultValue
+    type: const Ogre::String &
+  return_type: Ogre::String
+  signature: Ogre::String Ogre::ConfigFile::getSetting(const Ogre::String &, const Ogre::String &, const Ogre::String &) const
+- name: _ZNK4Ogre20ResourceGroupManager12openResourceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_PNS_8ResourceEb
+  params:
+  - name: resourceName
+    type: const Ogre::String &
+  - name: groupName
+    type: const Ogre::String &
+  - name: resourceBeingLoaded
+    type: Ogre::Resource *
+  - name: throwOnFailure
+    type: bool
+  return_type: Ogre::DataStreamPtr
+  signature: Ogre::DataStreamPtr Ogre::ResourceGroupManager::openResource(const Ogre::String &, const Ogre::String &, Ogre::Resource
+    *, bool) const
+- name: _ZN4Ogre10ConfigFile4loadERKNS_9SharedPtrINS_10DataStreamEEERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: stream
+    type: const Ogre::DataStreamPtr &
+  - name: separators
+    type: const Ogre::String &
+  - name: trimWhitespace
+    type: bool
+  return_type: void
+  signature: void Ogre::ConfigFile::load(const Ogre::DataStreamPtr &, const Ogre::String &, bool)
+- name: _ZN4Ogre10ConfigFile22loadFromResourceSystemERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_S8_b
+  params:
+  - name: filename
+    type: const Ogre::String &
+  - name: resourceGroup
+    type: const Ogre::String &
+  - name: separators
+    type: const Ogre::String &
+  - name: trimWhitespace
+    type: bool
+  return_type: void
+  signature: void Ogre::ConfigFile::loadFromResourceSystem(const Ogre::String &, const Ogre::String &, const Ogre::String
+    &, bool)
+- name: _ZN4Ogre10ConfigFile10loadDirectERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_b
+  params:
+  - name: filename
+    type: const Ogre::String &
+  - name: separators
+    type: const Ogre::String &
+  - name: trimWhitespace
+    type: bool
+  return_type: void
+  signature: void Ogre::ConfigFile::loadDirect(const Ogre::String &, const Ogre::String &, bool)
+- name: _ZN4Ogre10ConfigFile4loadERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_b
+  params:
+  - name: filename
+    type: const Ogre::String &
+  - name: separators
+    type: const Ogre::String &
+  - name: trimWhitespace
+    type: bool
+  return_type: void
+  signature: void Ogre::ConfigFile::load(const Ogre::String &, const Ogre::String &, bool)
+- name: _ZNK4Ogre10DataStream4sizeEv
+  params: []
+  return_type: int
+  signature: int Ogre::DataStream::size() const
+- name: _ZN4Ogre8PixelBox14setConsecutiveEv
+  params: []
+  return_type: void
+  signature: void Ogre::PixelBox::setConsecutive()
+- name: _ZNK4Ogre3Box8getWidthEv
+  params: []
+  return_type: Ogre::uint32
+  signature: Ogre::uint32 Ogre::Box::getWidth() const
+- name: _ZNK4Ogre3Box9getHeightEv
+  params: []
+  return_type: Ogre::uint32
+  signature: Ogre::uint32 Ogre::Box::getHeight() const
+- name: _ZNK4Ogre11ColourValuemlEf
+  params:
+  - name: fScalar
+    type: const float
+  return_type: Ogre::ColourValue
+  signature: Ogre::ColourValue Ogre::ColourValue::operator*(const float) const
+- name: _ZNK4Ogre8PixelBox10getRowSkipEv
+  params: []
+  return_type: int
+  signature: int Ogre::PixelBox::getRowSkip() const
+- name: _ZNK4Ogre5Image7hasFlagENS_10ImageFlagsE
+  params:
+  - name: imgFlag
+    type: const Ogre::ImageFlags
+  return_type: bool
+  signature: bool Ogre::Image::hasFlag(const Ogre::ImageFlags) const
+- name: _ZN4Ogre5Image4loadERKNS_9SharedPtrINS_10DataStreamEEENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: stream
+    type: const Ogre::DataStreamPtr &
+  - name: type
+    type: Ogre::String
+  return_type: Ogre::Image &
+  signature: Ogre::Image & Ogre::Image::load(const Ogre::DataStreamPtr &, Ogre::String)
+- name: _ZN4Ogre5Image22combineTwoImagesAsRGBAERKS0_S2_NS_11PixelFormatE
+  params:
+  - name: rgb
+    type: const Ogre::Image &
+  - name: alpha
+    type: const Ogre::Image &
+  - name: format
+    type: Ogre::PixelFormat
+  return_type: Ogre::Image &
+  signature: Ogre::Image & Ogre::Image::combineTwoImagesAsRGBA(const Ogre::Image &, const Ogre::Image &, Ogre::PixelFormat)
+- name: _ZN4Ogre5Image10freeMemoryEv
+  params: []
+  return_type: void
+  signature: void Ogre::Image::freeMemory()
+- name: _ZNK4Ogre5Image8getWidthEv
+  params: []
+  return_type: Ogre::uint32
+  signature: Ogre::uint32 Ogre::Image::getWidth() const
+- name: _ZNK4Ogre5Image9getHeightEv
+  params: []
+  return_type: Ogre::uint32
+  signature: Ogre::uint32 Ogre::Image::getHeight() const
+- name: _ZNK4Ogre5Image8getDepthEv
+  params: []
+  return_type: Ogre::uint32
+  signature: Ogre::uint32 Ogre::Image::getDepth() const
+- name: _ZNK4Ogre5Image13getNumMipmapsEv
+  params: []
+  return_type: Ogre::uint32
+  signature: Ogre::uint32 Ogre::Image::getNumMipmaps() const
+- name: _ZNK4Ogre5Image11getNumFacesEv
+  params: []
+  return_type: Ogre::uint32
+  signature: Ogre::uint32 Ogre::Image::getNumFaces() const
+- name: _ZNK4Ogre5Image9getFormatEv
+  params: []
+  return_type: Ogre::PixelFormat
+  signature: Ogre::PixelFormat Ogre::Image::getFormat() const
+- name: _ZN4Ogre5Image6createENS_11PixelFormatEjjjjj
+  params:
+  - name: format
+    type: Ogre::PixelFormat
+  - name: width
+    type: Ogre::uint32
+  - name: height
+    type: Ogre::uint32
+  - name: depth
+    type: Ogre::uint32
+  - name: numFaces
+    type: Ogre::uint32
+  - name: numMipMaps
+    type: Ogre::uint32
+  return_type: void
+  signature: void Ogre::Image::create(Ogre::PixelFormat, Ogre::uint32, Ogre::uint32, Ogre::uint32, Ogre::uint32, Ogre::uint32)
+- name: _ZNK4Ogre5Image11getPixelBoxEjj
+  params:
+  - name: face
+    type: Ogre::uint32
+  - name: mipmap
+    type: Ogre::uint32
+  return_type: Ogre::PixelBox
+  signature: Ogre::PixelBox Ogre::Image::getPixelBox(Ogre::uint32, Ogre::uint32) const
+- name: _ZN4Ogre9PixelUtil12unpackColourEPNS_11ColourValueENS_11PixelFormatEPKv
+  params:
+  - name: colour
+    type: Ogre::ColourValue *
+  - name: pf
+    type: Ogre::PixelFormat
+  - name: src
+    type: const void *
+  return_type: void
+  signature: void Ogre::PixelUtil::unpackColour(Ogre::ColourValue *, Ogre::PixelFormat, const void *)
+- name: _ZN4Ogre9PixelUtil10packColourERKNS_11ColourValueENS_11PixelFormatEPv
+  params:
+  - name: colour
+    type: const Ogre::ColourValue &
+  - name: pf
+    type: const Ogre::PixelFormat
+  - name: dest
+    type: void *
+  return_type: void
+  signature: void Ogre::PixelUtil::packColour(const Ogre::ColourValue &, const Ogre::PixelFormat, void *)
+- name: _ZN4Ogre5Image16loadDynamicImageEPhjjjNS_11PixelFormatEbjj
+  params:
+  - name: data
+    type: Ogre::uchar *
+  - name: width
+    type: Ogre::uint32
+  - name: height
+    type: Ogre::uint32
+  - name: depth
+    type: Ogre::uint32
+  - name: format
+    type: Ogre::PixelFormat
+  - name: autoDelete
+    type: bool
+  - name: numFaces
+    type: Ogre::uint32
+  - name: numMipMaps
+    type: Ogre::uint32
+  return_type: Ogre::Image &
+  signature: Ogre::Image & Ogre::Image::loadDynamicImage(Ogre::uchar *, Ogre::uint32, Ogre::uint32, Ogre::uint32, Ogre::PixelFormat,
+    bool, Ogre::uint32, Ogre::uint32)
+- name: _ZN4Ogre10DataStream7getNameB5cxx11Ev
+  params: []
+  return_type: const Ogre::String &
+  signature: const Ogre::String & Ogre::DataStream::getName()
+- name: _ZN4Ogre5Image4loadERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_
+  params:
+  - name: filename
+    type: const Ogre::String &
+  - name: groupName
+    type: const Ogre::String &
+  return_type: Ogre::Image &
+  signature: Ogre::Image & Ogre::Image::load(const Ogre::String &, const Ogre::String &)
+- name: _ZN4Ogre5Image7getDataEjjj
+  params:
+  - name: x
+    type: Ogre::uint32
+  - name: y
+    type: Ogre::uint32
+  - name: z
+    type: Ogre::uint32
+  return_type: Ogre::uchar *
+  signature: Ogre::uchar * Ogre::Image::getData(Ogre::uint32, Ogre::uint32, Ogre::uint32)
+- name: _ZN4Ogre5Image11setColourAtERKNS_11ColourValueEjjj
+  params:
+  - name: cv
+    type: const Ogre::ColourValue &
+  - name: x
+    type: Ogre::uint32
+  - name: y
+    type: Ogre::uint32
+  - name: z
+    type: Ogre::uint32
+  return_type: void
+  signature: void Ogre::Image::setColourAt(const Ogre::ColourValue &, Ogre::uint32, Ogre::uint32, Ogre::uint32)
+- name: _ZNK4Ogre5Image7getDataEjjj
+  params:
+  - name: x
+    type: Ogre::uint32
+  - name: y
+    type: Ogre::uint32
+  - name: z
+    type: Ogre::uint32
+  return_type: const Ogre::uchar *
+  signature: const Ogre::uchar * Ogre::Image::getData(Ogre::uint32, Ogre::uint32, Ogre::uint32) const
+- name: _ZNK4Ogre5Image11getColourAtEjjj
+  params:
+  - name: x
+    type: Ogre::uint32
+  - name: y
+    type: Ogre::uint32
+  - name: z
+    type: Ogre::uint32
+  return_type: Ogre::ColourValue
+  signature: Ogre::ColourValue Ogre::Image::getColourAt(Ogre::uint32, Ogre::uint32, Ogre::uint32) const
+- name: _ZN4Ogre15LinearResampler5scaleERKNS_8PixelBoxES3_
+  params:
+  - name: src
+    type: const Ogre::PixelBox &
+  - name: dst
+    type: const Ogre::PixelBox &
+  return_type: void
+  signature: void Ogre::LinearResampler::scale(const Ogre::PixelBox &, const Ogre::PixelBox &)
+- name: _ZNK4Ogre3Box8getDepthEv
+  params: []
+  return_type: Ogre::uint32
+  signature: Ogre::uint32 Ogre::Box::getDepth() const
+- name: _ZN4Ogre23LinearResampler_Float325scaleERKNS_8PixelBoxES3_
+  params:
+  - name: src
+    type: const Ogre::PixelBox &
+  - name: dst
+    type: const Ogre::PixelBox &
+  return_type: void
+  signature: void Ogre::LinearResampler_Float32::scale(const Ogre::PixelBox &, const Ogre::PixelBox &)
+- name: _ZN4Ogre20LinearResampler_ByteILj4EE5scaleERKNS_8PixelBoxES4_
+  params:
+  - name: src
+    type: const Ogre::PixelBox &
+  - name: dst
+    type: const Ogre::PixelBox &
+  - name: filter
+    type: Ogre::Image::Filter
+  return_type: void
+  signature: void Ogre::Image::scale(const Ogre::PixelBox &, const Ogre::PixelBox &, Ogre::Image::Filter)
+- name: _ZN4Ogre20LinearResampler_ByteILj3EE5scaleERKNS_8PixelBoxES4_
+  params:
+  - name: src
+    type: const Ogre::PixelBox &
+  - name: dst
+    type: const Ogre::PixelBox &
+  - name: filter
+    type: Ogre::Image::Filter
+  return_type: void
+  signature: void Ogre::Image::scale(const Ogre::PixelBox &, const Ogre::PixelBox &, Ogre::Image::Filter)
+- name: _ZN4Ogre20LinearResampler_ByteILj2EE5scaleERKNS_8PixelBoxES4_
+  params:
+  - name: src
+    type: const Ogre::PixelBox &
+  - name: dst
+    type: const Ogre::PixelBox &
+  - name: filter
+    type: Ogre::Image::Filter
+  return_type: void
+  signature: void Ogre::Image::scale(const Ogre::PixelBox &, const Ogre::PixelBox &, Ogre::Image::Filter)
+- name: _ZN4Ogre20LinearResampler_ByteILj1EE5scaleERKNS_8PixelBoxES4_
+  params:
+  - name: src
+    type: const Ogre::PixelBox &
+  - name: dst
+    type: const Ogre::PixelBox &
+  - name: filter
+    type: Ogre::Image::Filter
+  return_type: void
+  signature: void Ogre::Image::scale(const Ogre::PixelBox &, const Ogre::PixelBox &, Ogre::Image::Filter)
+- name: _ZN4Ogre16NearestResamplerILj16EE5scaleERKNS_8PixelBoxES4_
+  params:
+  - name: src
+    type: const Ogre::PixelBox &
+  - name: dst
+    type: const Ogre::PixelBox &
+  - name: filter
+    type: Ogre::Image::Filter
+  return_type: void
+  signature: void Ogre::Image::scale(const Ogre::PixelBox &, const Ogre::PixelBox &, Ogre::Image::Filter)
+- name: _ZN4Ogre16NearestResamplerILj12EE5scaleERKNS_8PixelBoxES4_
+  params:
+  - name: src
+    type: const Ogre::PixelBox &
+  - name: dst
+    type: const Ogre::PixelBox &
+  - name: filter
+    type: Ogre::Image::Filter
+  return_type: void
+  signature: void Ogre::Image::scale(const Ogre::PixelBox &, const Ogre::PixelBox &, Ogre::Image::Filter)
+- name: _ZN4Ogre16NearestResamplerILj8EE5scaleERKNS_8PixelBoxES4_
+  params:
+  - name: src
+    type: const Ogre::PixelBox &
+  - name: dst
+    type: const Ogre::PixelBox &
+  - name: filter
+    type: Ogre::Image::Filter
+  return_type: void
+  signature: void Ogre::Image::scale(const Ogre::PixelBox &, const Ogre::PixelBox &, Ogre::Image::Filter)
+- name: _ZN4Ogre16NearestResamplerILj6EE5scaleERKNS_8PixelBoxES4_
+  params:
+  - name: src
+    type: const Ogre::PixelBox &
+  - name: dst
+    type: const Ogre::PixelBox &
+  - name: filter
+    type: Ogre::Image::Filter
+  return_type: void
+  signature: void Ogre::Image::scale(const Ogre::PixelBox &, const Ogre::PixelBox &, Ogre::Image::Filter)
+- name: _ZN4Ogre16NearestResamplerILj4EE5scaleERKNS_8PixelBoxES4_
+  params:
+  - name: src
+    type: const Ogre::PixelBox &
+  - name: dst
+    type: const Ogre::PixelBox &
+  - name: filter
+    type: Ogre::Image::Filter
+  return_type: void
+  signature: void Ogre::Image::scale(const Ogre::PixelBox &, const Ogre::PixelBox &, Ogre::Image::Filter)
+- name: _ZN4Ogre16NearestResamplerILj3EE5scaleERKNS_8PixelBoxES4_
+  params:
+  - name: src
+    type: const Ogre::PixelBox &
+  - name: dst
+    type: const Ogre::PixelBox &
+  - name: filter
+    type: Ogre::Image::Filter
+  return_type: void
+  signature: void Ogre::Image::scale(const Ogre::PixelBox &, const Ogre::PixelBox &, Ogre::Image::Filter)
+- name: _ZN4Ogre16NearestResamplerILj2EE5scaleERKNS_8PixelBoxES4_
+  params:
+  - name: src
+    type: const Ogre::PixelBox &
+  - name: dst
+    type: const Ogre::PixelBox &
+  - name: filter
+    type: Ogre::Image::Filter
+  return_type: void
+  signature: void Ogre::Image::scale(const Ogre::PixelBox &, const Ogre::PixelBox &, Ogre::Image::Filter)
+- name: _ZN4Ogre16NearestResamplerILj1EE5scaleERKNS_8PixelBoxES4_
+  params:
+  - name: src
+    type: const Ogre::PixelBox &
+  - name: dst
+    type: const Ogre::PixelBox &
+  - name: filter
+    type: Ogre::Image::Filter
+  return_type: void
+  signature: void Ogre::Image::scale(const Ogre::PixelBox &, const Ogre::PixelBox &, Ogre::Image::Filter)
+- name: _ZN4Ogre5Image5scaleERKNS_8PixelBoxES3_NS0_6FilterE
+  params:
+  - name: src
+    type: const Ogre::PixelBox &
+  - name: dst
+    type: const Ogre::PixelBox &
+  - name: filter
+    type: Ogre::Image::Filter
+  return_type: void
+  signature: void Ogre::Image::scale(const Ogre::PixelBox &, const Ogre::PixelBox &, Ogre::Image::Filter)
+- name: _ZN4Ogre5Image4saveERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: filename
+    type: const Ogre::String &
+  return_type: void
+  signature: void Ogre::Image::save(const Ogre::String &)
+- name: _ZN4Ogre5Image11loadRawDataERKNS_9SharedPtrINS_10DataStreamEEEjjjNS_11PixelFormatEjj
+  params:
+  - name: stream
+    type: const Ogre::DataStreamPtr &
+  - name: width
+    type: Ogre::uint32
+  - name: height
+    type: Ogre::uint32
+  - name: depth
+    type: Ogre::uint32
+  - name: format
+    type: Ogre::PixelFormat
+  - name: numFaces
+    type: Ogre::uint32
+  - name: numMipMaps
+    type: Ogre::uint32
+  return_type: Ogre::Image &
+  signature: Ogre::Image & Ogre::Image::loadRawData(const Ogre::DataStreamPtr &, Ogre::uint32, Ogre::uint32, Ogre::uint32,
+    Ogre::PixelFormat, Ogre::uint32, Ogre::uint32)
+- name: _ZNK4Ogre5Image7getSizeEv
+  params: []
+  return_type: int
+  signature: int Ogre::Image::getSize() const
+- name: _ZNK4Ogre11ColourValue9getAsABGREv
+  params: []
+  return_type: Ogre::ABGR
+  signature: Ogre::ABGR Ogre::ColourValue::getAsABGR() const
+- name: _ZN4Ogre10LogManager14setMinLogLevelENS_15LogMessageLevelE
+  params:
+  - name: lml
+    type: Ogre::LogMessageLevel
+  return_type: void
+  signature: void Ogre::LogManager::setMinLogLevel(Ogre::LogMessageLevel)
+- name: _ZN4Ogre10LogManager6streamENS_15LogMessageLevelEb
+  params:
+  - name: lml
+    type: Ogre::LogMessageLevel
+  - name: maskDebug
+    type: bool
+  return_type: Log::Stream
+  signature: Log::Stream Ogre::LogManager::stream(Ogre::LogMessageLevel, bool)
+- name: _ZN4Ogre10LogManager10logMessageERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS_15LogMessageLevelEb
+  params:
+  - name: message
+    type: const Ogre::String &
+  - name: lml
+    type: Ogre::LogMessageLevel
+  - name: maskDebug
+    type: bool
+  return_type: void
+  signature: void Ogre::LogManager::logMessage(const Ogre::String &, Ogre::LogMessageLevel, bool)
+- name: _ZN4Ogre10LogManager10destroyLogEPNS_3LogE
+  params:
+  - name: log
+    type: Ogre::Log *
+  return_type: void
+  signature: void Ogre::LogManager::destroyLog(Ogre::Log *)
+- name: _ZN4Ogre10LogManager10destroyLogERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: name
+    type: const Ogre::String &
+  return_type: void
+  signature: void Ogre::LogManager::destroyLog(const Ogre::String &)
+- name: _ZN4Ogre10LogManager9createLogERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEbbb
+  params:
+  - name: name
+    type: const Ogre::String &
+  - name: defaultLog
+    type: bool
+  - name: debuggerOutput
+    type: bool
+  - name: suppressFileOutput
+    type: bool
+  return_type: Ogre::Log *
+  signature: Ogre::Log * Ogre::LogManager::createLog(const Ogre::String &, bool, bool, bool)
+- name: _ZN4Ogre3Log6streamENS_15LogMessageLevelEb
+  params:
+  - name: lml
+    type: Ogre::LogMessageLevel
+  - name: maskDebug
+    type: bool
+  return_type: Ogre::Log::Stream
+  signature: Ogre::Log::Stream Ogre::Log::stream(Ogre::LogMessageLevel, bool)
+- name: _ZN4Ogre3Log12setLogDetailENS_12LoggingLevelE
+  params:
+  - name: ll
+    type: Ogre::LoggingLevel
+  return_type: void
+  signature: void Ogre::Log::setLogDetail(Ogre::LoggingLevel)
+- name: _ZN4Ogre3Log14setMinLogLevelENS_15LogMessageLevelE
+  params:
+  - name: lml
+    type: Ogre::LogMessageLevel
+  return_type: void
+  signature: void Ogre::Log::setMinLogLevel(Ogre::LogMessageLevel)
+- name: _ZNK4Ogre10VectorBaseILi3EiE3ptrEv
+  params: []
+  return_type: const float *
+  signature: const float * Ogre::ColourValue::ptr() const
+- name: _ZN4Ogre9PixelUtil21bulkPixelVerticalFlipERKNS_8PixelBoxE
+  params:
+  - name: box
+    type: const Ogre::PixelBox &
+  return_type: void
+  signature: void Ogre::PixelUtil::bulkPixelVerticalFlip(const Ogre::PixelBox &)
+- name: _ZNK4Ogre8PixelBox23getTopLeftFrontPixelPtrEv
+  params: []
+  return_type: Ogre::uchar *
+  signature: Ogre::uchar * Ogre::PixelBox::getTopLeftFrontPixelPtr() const
+- name: _ZNK4Ogre8PixelBox13isConsecutiveEv
+  params: []
+  return_type: bool
+  signature: bool Ogre::PixelBox::isConsecutive() const
+- name: _ZNK4Ogre3Box7getSizeEv
+  params: []
+  return_type: Ogre::Vector3i
+  signature: Ogre::Vector3i Ogre::Box::getSize() const
+- name: _ZN4Ogre9PixelUtil19bulkPixelConversionERKNS_8PixelBoxES3_
+  params:
+  - name: src
+    type: const Ogre::PixelBox &
+  - name: dst
+    type: const Ogre::PixelBox &
+  return_type: void
+  signature: void Ogre::PixelUtil::bulkPixelConversion(const Ogre::PixelBox &, const Ogre::PixelBox &)
+- name: _ZNK4Ogre8PixelBox18getConsecutiveSizeEv
+  params: []
+  return_type: int
+  signature: int Ogre::PixelBox::getConsecutiveSize() const
+- name: _ZNK4Ogre3Box8containsERKS0_
+  params:
+  - name: def
+    type: const Ogre::Box &
+  return_type: bool
+  signature: bool Ogre::Box::contains(const Ogre::Box &) const
+- name: _ZNK4Ogre8PixelBox12getSubVolumeERKNS_3BoxEb
+  params:
+  - name: def
+    type: const Ogre::Box &
+  - name: resetOrigin
+    type: bool
+  return_type: Ogre::PixelBox
+  signature: Ogre::PixelBox Ogre::PixelBox::getSubVolume(const Ogre::Box &, bool) const
+- name: _ZNK4Ogre20ResourceGroupManager16getResourceGroupERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: name
+    type: const Ogre::String &
+  - name: throwOnFailure
+    type: bool
+  return_type: Ogre::ResourceGroupManager::ResourceGroup *
+  signature: Ogre::ResourceGroupManager::ResourceGroup * Ogre::ResourceGroupManager::getResourceGroup(const Ogre::String &,
+    bool) const
+- name: _ZNK4Ogre20ResourceGroupManager27isResourceGroupInGlobalPoolERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: name
+    type: const Ogre::String &
+  return_type: bool
+  signature: bool Ogre::ResourceGroupManager::isResourceGroupInGlobalPool(const Ogre::String &) const
+- name: _ZNK4Ogre7Archive7getNameB5cxx11Ev
+  params: []
+  return_type: const Ogre::String &
+  signature: const Ogre::String & Ogre::Archive::getName() const
+- name: _ZNK4Ogre20ResourceGroupManager27findGroupContainingResourceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: filename
+    type: const Ogre::String &
+  return_type: const Ogre::String &
+  signature: const Ogre::String & Ogre::ResourceGroupManager::findGroupContainingResource(const Ogre::String &) const
+- name: _ZNK4Ogre20ResourceGroupManager28resourceExistsInAnyGroupImplERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: filename
+    type: const Ogre::String &
+  return_type: std::pair<Archive *, ResourceGroup *>
+  signature: std::pair<Archive *, ResourceGroup *> Ogre::ResourceGroupManager::resourceExistsInAnyGroupImpl(const Ogre::String
+    &) const
+- name: _ZNK4Ogre20ResourceGroupManager20resourceModifiedTimeEPNS0_13ResourceGroupERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: group
+    type: Ogre::ResourceGroupManager::ResourceGroup *
+  - name: filename
+    type: const Ogre::String &
+  return_type: time_t
+  signature: time_t Ogre::ResourceGroupManager::resourceModifiedTime(Ogre::ResourceGroupManager::ResourceGroup *, const Ogre::String
+    &) const
+- name: _ZNK4Ogre20ResourceGroupManager26_notifyAllResourcesRemovedEPNS_15ResourceManagerE
+  params:
+  - name: manager
+    type: Ogre::ResourceManager *
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::_notifyAllResourcesRemoved(Ogre::ResourceManager *) const
+- name: _ZNK4Ogre20ResourceGroupManager27_notifyResourceGroupChangedERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS_8ResourceE
+  params:
+  - name: oldGroup
+    type: const Ogre::String &
+  - name: res
+    type: Ogre::Resource *
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::_notifyResourceGroupChanged(const Ogre::String &, Ogre::Resource *) const
+- name: _ZNK4Ogre20ResourceGroupManager18addCreatedResourceERNS_9SharedPtrINS_8ResourceEEERNS0_13ResourceGroupE
+  params:
+  - name: res
+    type: Ogre::ResourcePtr &
+  - name: group
+    type: Ogre::ResourceGroupManager::ResourceGroup &
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::addCreatedResource(Ogre::ResourcePtr &, Ogre::ResourceGroupManager::ResourceGroup
+    &) const
+- name: _ZNK4Ogre20ResourceGroupManager18fireResourceRemoveERKNS_9SharedPtrINS_8ResourceEEE
+  params:
+  - name: resource
+    type: const Ogre::ResourcePtr &
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::fireResourceRemove(const Ogre::ResourcePtr &) const
+- name: _ZNK4Ogre20ResourceGroupManager19fireResourceCreatedERKNS_9SharedPtrINS_8ResourceEEE
+  params:
+  - name: resource
+    type: const Ogre::ResourcePtr &
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::fireResourceCreated(const Ogre::ResourcePtr &) const
+- name: _ZNK4Ogre20ResourceGroupManager22_notifyResourceCreatedERNS_9SharedPtrINS_8ResourceEEE
+  params:
+  - name: res
+    type: Ogre::ResourcePtr &
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::_notifyResourceCreated(Ogre::ResourcePtr &) const
+- name: _ZN4Ogre20ResourceGroupManager21_registerScriptLoaderEPNS_12ScriptLoaderE
+  params:
+  - name: su
+    type: Ogre::ScriptLoader *
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::_registerScriptLoader(Ogre::ScriptLoader *)
+- name: _ZN4Ogre20ResourceGroupManager24_registerResourceManagerERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS_15ResourceManagerE
+  params:
+  - name: resourceType
+    type: const Ogre::String &
+  - name: rm
+    type: Ogre::ResourceManager *
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::_registerResourceManager(const Ogre::String &, Ogre::ResourceManager *)
+- name: _ZN4Ogre20ResourceGroupManager13ResourceGroup15removeFromIndexERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS_7ArchiveE
+  params:
+  - name: filename
+    type: const Ogre::String &
+  - name: arch
+    type: Ogre::Archive *
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::ResourceGroup::removeFromIndex(const Ogre::String &, Ogre::Archive *)
+- name: _ZN4Ogre20ResourceGroupManager14createResourceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_bS8_
+  params:
+  - name: filename
+    type: const Ogre::String &
+  - name: groupName
+    type: const Ogre::String &
+  - name: overwrite
+    type: bool
+  - name: locationPattern
+    type: const Ogre::String &
+  return_type: Ogre::DataStreamPtr
+  signature: Ogre::DataStreamPtr Ogre::ResourceGroupManager::createResource(const Ogre::String &, const Ogre::String &, bool,
+    const Ogre::String &)
+- name: _ZN4Ogre20ResourceGroupManager13ResourceGroup10addToIndexERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS_7ArchiveE
+  params:
+  - name: filename
+    type: const Ogre::String &
+  - name: arch
+    type: Ogre::Archive *
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::ResourceGroup::addToIndex(const Ogre::String &, Ogre::Archive *)
+- name: _ZNK4Ogre20ResourceGroupManager16openResourceImplERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_bPNS_8ResourceEb
+  params:
+  - name: resourceName
+    type: const Ogre::String &
+  - name: groupName
+    type: const Ogre::String &
+  - name: searchGroupsIfNotFound
+    type: bool
+  - name: resourceBeingLoaded
+    type: Ogre::Resource *
+  - name: throwOnFailure
+    type: bool
+  return_type: Ogre::DataStreamPtr
+  signature: Ogre::DataStreamPtr Ogre::ResourceGroupManager::openResourceImpl(const Ogre::String &, const Ogre::String &,
+    bool, Ogre::Resource *, bool) const
+- name: _ZN4Ogre20ResourceGroupManager15declareResourceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_S8_PNS_20ManualResourceLoaderERKSt3mapIS6_S6_St4lessIS6_ESaISt4pairIS7_S6_EEE
+  params:
+  - name: name
+    type: const Ogre::String &
+  - name: resourceType
+    type: const Ogre::String &
+  - name: groupName
+    type: const Ogre::String &
+  - name: loader
+    type: Ogre::ManualResourceLoader *
+  - name: loadParameters
+    type: const Ogre::NameValuePairList &
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::declareResource(const Ogre::String &, const Ogre::String &, const Ogre::String
+    &, Ogre::ManualResourceLoader *, const Ogre::NameValuePairList &)
+- name: _ZN4Ogre20ResourceGroupManager13ResourceGroup15removeFromIndexEPNS_7ArchiveE
+  params:
+  - name: arch
+    type: Ogre::Archive *
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::ResourceGroup::removeFromIndex(Ogre::Archive *)
+- name: _ZN4Ogre20ResourceGroupManager19createResourceGroupERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: name
+    type: const Ogre::String &
+  - name: inGlobalPool
+    type: bool
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::createResourceGroup(const Ogre::String &, bool)
+- name: _ZN4Ogre20ResourceGroupManager17dropGroupContentsEPNS0_13ResourceGroupE
+  params:
+  - name: grp
+    type: Ogre::ResourceGroupManager::ResourceGroup *
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::dropGroupContents(Ogre::ResourceGroupManager::ResourceGroup *)
+- name: _ZN4Ogre20ResourceGroupManager11deleteGroupEPNS0_13ResourceGroupE
+  params:
+  - name: grp
+    type: Ogre::ResourceGroupManager::ResourceGroup *
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::deleteGroup(Ogre::ResourceGroupManager::ResourceGroup *)
+- name: _ZNK4Ogre20ResourceGroupManager26fireResourceGroupLoadEndedERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: groupName
+    type: const Ogre::String &
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::fireResourceGroupLoadEnded(const Ogre::String &) const
+- name: _ZNK4Ogre20ResourceGroupManager23fireResourceLoadStartedERKNS_9SharedPtrINS_8ResourceEEE
+  params:
+  - name: resource
+    type: const Ogre::ResourcePtr &
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::fireResourceLoadStarted(const Ogre::ResourcePtr &) const
+- name: _ZNK4Ogre20ResourceGroupManager28fireResourceGroupLoadStartedERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEm
+  params:
+  - name: groupName
+    type: const Ogre::String &
+  - name: resourceCount
+    type: int
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::fireResourceGroupLoadStarted(const Ogre::String &, int) const
+- name: _ZNK4Ogre20ResourceGroupManager29fireResourceGroupPrepareEndedERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: groupName
+    type: const Ogre::String &
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::fireResourceGroupPrepareEnded(const Ogre::String &) const
+- name: _ZNK4Ogre20ResourceGroupManager26fireResourcePrepareStartedERKNS_9SharedPtrINS_8ResourceEEE
+  params:
+  - name: resource
+    type: const Ogre::ResourcePtr &
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::fireResourcePrepareStarted(const Ogre::ResourcePtr &) const
+- name: _ZNK4Ogre20ResourceGroupManager31fireResourceGroupPrepareStartedERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEm
+  params:
+  - name: groupName
+    type: const Ogre::String &
+  - name: resourceCount
+    type: int
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::fireResourceGroupPrepareStarted(const Ogre::String &, int) const
+- name: _ZNK4Ogre20ResourceGroupManager25parseResourceGroupScriptsEPNS0_13ResourceGroupE
+  params:
+  - name: grp
+    type: Ogre::ResourceGroupManager::ResourceGroup *
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::parseResourceGroupScripts(Ogre::ResourceGroupManager::ResourceGroup *) const
+- name: _ZN4Ogre20ResourceGroupManager23createDeclaredResourcesEPNS0_13ResourceGroupE
+  params:
+  - name: grp
+    type: Ogre::ResourceGroupManager::ResourceGroup *
+  return_type: void
+  signature: void Ogre::ResourceGroupManager::createDeclaredResources(Ogre::ResourceGroupManager::ResourceGroup *)
+- name: _ZN4Ogre14ArchiveManager17addArchiveFactoryEPNS_14ArchiveFactoryE
+  params:
+  - name: factory
+    type: Ogre::ArchiveFactory *
+  return_type: void
+  signature: void Ogre::ArchiveManager::addArchiveFactory(Ogre::ArchiveFactory *)
+- name: _ZN4Ogre14ArchiveManager6unloadERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: filename
+    type: const Ogre::String &
+  return_type: void
+  signature: void Ogre::ArchiveManager::unload(const Ogre::String &)
+- name: _ZN4Ogre14ArchiveManager6unloadEPNS_7ArchiveE
+  params:
+  - name: arch
+    type: Ogre::Archive *
+  return_type: void
+  signature: void Ogre::ArchiveManager::unload(Ogre::Archive *)
+- name: _ZN4Ogre14ArchiveManager4loadERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_b
+  params:
+  - name: filename
+    type: const Ogre::String &
+  - name: archiveType
+    type: const Ogre::String &
+  - name: readOnly
+    type: bool
+  return_type: Ogre::Archive *
+  signature: Ogre::Archive * Ogre::ArchiveManager::load(const Ogre::String &, const Ogre::String &, bool)
+- name: _ZNK4Ogre8Resource9getHandleEv
+  params: []
+  return_type: Ogre::ResourceHandle
+  signature: Ogre::ResourceHandle Ogre::Resource::getHandle() const
+- name: _ZN4Ogre15ResourceManager6removeEm
+  params:
+  - name: handle
+    type: Ogre::ResourceHandle
+  return_type: void
+  signature: void Ogre::ResourceManager::remove(Ogre::ResourceHandle)
+- name: _ZNK4Ogre8Resource7getSizeEv
+  params: []
+  return_type: int
+  signature: int Ogre::Resource::getSize() const
+- name: _ZN4Ogre15ResourceManager4loadERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_bPNS_20ManualResourceLoaderEPKSt3mapIS6_S6_St4lessIS6_ESaISt4pairIS7_S6_EEEb
+  params:
+  - name: name
+    type: const Ogre::String &
+  - name: group
+    type: const Ogre::String &
+  - name: isManual
+    type: bool
+  - name: loader
+    type: Ogre::ManualResourceLoader *
+  - name: loadParams
+    type: const Ogre::NameValuePairList *
+  - name: backgroundThread
+    type: bool
+  return_type: Ogre::ResourcePtr
+  signature: Ogre::ResourcePtr Ogre::ResourceManager::load(const Ogre::String &, const Ogre::String &, bool, Ogre::ManualResourceLoader
+    *, const Ogre::NameValuePairList *, bool)
+- name: _ZN4Ogre15ResourceManager16createOrRetrieveERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_bPNS_20ManualResourceLoaderEPKSt3mapIS6_S6_St4lessIS6_ESaISt4pairIS7_S6_EEE
+  params:
+  - name: name
+    type: const Ogre::String &
+  - name: group
+    type: const Ogre::String &
+  - name: isManual
+    type: bool
+  - name: loader
+    type: Ogre::ManualResourceLoader *
+  - name: createParams
+    type: const Ogre::NameValuePairList *
+  return_type: Ogre::ResourceManager::ResourceCreateOrRetrieveResult
+  signature: Ogre::ResourceManager::ResourceCreateOrRetrieveResult Ogre::ResourceManager::createOrRetrieve(const Ogre::String
+    &, const Ogre::String &, bool, Ogre::ManualResourceLoader *, const Ogre::NameValuePairList *)
+- name: _ZN4Ogre15ResourceManager14createResourceERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_bPNS_20ManualResourceLoaderEPKSt3mapIS6_S6_St4lessIS6_ESaISt4pairIS7_S6_EEE
+  params:
+  - name: name
+    type: const Ogre::String &
+  - name: group
+    type: const Ogre::String &
+  - name: isManual
+    type: bool
+  - name: loader
+    type: Ogre::ManualResourceLoader *
+  - name: createParams
+    type: const Ogre::NameValuePairList *
+  return_type: Ogre::ResourcePtr
+  signature: Ogre::ResourcePtr Ogre::ResourceManager::createResource(const Ogre::String &, const Ogre::String &, bool, Ogre::ManualResourceLoader
+    *, const Ogre::NameValuePairList *)
+- name: _ZN4Ogre15ResourceManager7prepareERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_bPNS_20ManualResourceLoaderEPKSt3mapIS6_S6_St4lessIS6_ESaISt4pairIS7_S6_EEEb
+  params:
+  - name: name
+    type: const Ogre::String &
+  - name: group
+    type: const Ogre::String &
+  - name: isManual
+    type: bool
+  - name: loader
+    type: Ogre::ManualResourceLoader *
+  - name: loadParams
+    type: const Ogre::NameValuePairList *
+  - name: backgroundThread
+    type: bool
+  return_type: Ogre::ResourcePtr
+  signature: Ogre::ResourcePtr Ogre::ResourceManager::prepare(const Ogre::String &, const Ogre::String &, bool, Ogre::ManualResourceLoader
+    *, const Ogre::NameValuePairList *, bool)
+- name: _ZN4Ogre4Root23getMovableObjectFactoryERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: typeName
+    type: const Ogre::String &
+  return_type: Ogre::MovableObjectFactory *
+  signature: Ogre::MovableObjectFactory * Ogre::Root::getMovableObjectFactory(const Ogre::String &)
+- name: _ZNK4Ogre4Root23hasMovableObjectFactoryERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: typeName
+    type: const Ogre::String &
+  return_type: bool
+  signature: bool Ogre::Root::hasMovableObjectFactory(const Ogre::String &) const
+- name: _ZN4Ogre4Root34_allocateNextMovableObjectTypeFlagEv
+  params: []
+  return_type: Ogre::uint32
+  signature: Ogre::uint32 Ogre::Root::_allocateNextMovableObjectTypeFlag()
+- name: _ZN4Ogre4Root8getTimerEv
+  params: []
+  return_type: Ogre::Timer *
+  signature: Ogre::Timer * Ogre::Root::getTimer()
+- name: _ZN4Ogre4Root13installPluginEPNS_6PluginE
+  params:
+  - name: plugin
+    type: Ogre::Plugin *
+  return_type: void
+  signature: void Ogre::Root::installPlugin(Ogre::Plugin *)
+- name: _ZN4Ogre4Root15getRenderTargetERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: name
+    type: const Ogre::String &
+  return_type: Ogre::RenderTarget *
+  signature: Ogre::RenderTarget * Ogre::Root::getRenderTarget(const Ogre::String &)
+- name: _ZN4Ogre4Root19destroyRenderTargetEPNS_12RenderTargetE
+  params:
+  - name: target
+    type: Ogre::RenderTarget *
+  return_type: void
+  signature: void Ogre::Root::destroyRenderTarget(Ogre::RenderTarget *)
+- name: _ZN4Ogre4Root18detachRenderTargetEPNS_12RenderTargetE
+  params:
+  - name: pWin
+    type: Ogre::RenderTarget *
+  return_type: Ogre::RenderTarget *
+  signature: Ogre::RenderTarget * Ogre::Root::detachRenderTarget(Ogre::RenderTarget *)
+- name: _ZN4Ogre4Root21oneTimePostWindowInitEv
+  params: []
+  return_type: void
+  signature: void Ogre::Root::oneTimePostWindowInit()
+- name: _ZN4Ogre4Root18createRenderWindowERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEjjbPKSt3mapIS6_S6_St4lessIS6_ESaISt4pairIS7_S6_EEE
+  params:
+  - name: desc
+    type: const Ogre::RenderWindowDescription &
+  return_type: Ogre::RenderWindow *
+  signature: Ogre::RenderWindow * Ogre::Root::createRenderWindow(const Ogre::RenderWindowDescription &)
+- name: _ZN4Ogre4Root15shutdownPluginsEv
+  params: []
+  return_type: void
+  signature: void Ogre::Root::shutdownPlugins()
+- name: _ZN4Ogre4Root23_updateAllRenderTargetsERNS_10FrameEventE
+  params:
+  - name: evt
+    type: Ogre::FrameEvent &
+  return_type: bool
+  signature: bool Ogre::Root::_updateAllRenderTargets(Ogre::FrameEvent &)
+- name: _ZN4Ogre4Root25_fireFrameRenderingQueuedERNS_10FrameEventE
+  params:
+  - name: evt
+    type: Ogre::FrameEvent &
+  return_type: bool
+  signature: bool Ogre::Root::_fireFrameRenderingQueued(Ogre::FrameEvent &)
+- name: _ZNK4Ogre4Root16getSceneManagersB5cxx11Ev
+  params: []
+  return_type: const Ogre::SceneManagerInstanceMap &
+  signature: const Ogre::SceneManagerInstanceMap & Ogre::Root::getSceneManagers() const
+- name: _ZN4Ogre4Root31_syncAddedRemovedFrameListenersEv
+  params: []
+  return_type: void
+  signature: void Ogre::Root::_syncAddedRemovedFrameListeners()
+- name: _ZN4Ogre4Root18calculateEventTimeEmNS0_18FrameEventTimeTypeE
+  params:
+  - name: now
+    type: unsigned long
+  - name: type
+    type: Ogre::Root::FrameEventTimeType
+  return_type: Ogre::Real
+  signature: Ogre::Real Ogre::Root::calculateEventTime(unsigned long, Ogre::Root::FrameEventTimeType)
+- name: _ZN4Ogre4Root17_fireFrameStartedERNS_10FrameEventE
+  params:
+  - name: evt
+    type: Ogre::FrameEvent &
+  return_type: bool
+  signature: bool Ogre::Root::_fireFrameStarted(Ogre::FrameEvent &)
+- name: _ZN4Ogre4Root15_fireFrameEndedERNS_10FrameEventE
+  params:
+  - name: evt
+    type: Ogre::FrameEvent &
+  return_type: bool
+  signature: bool Ogre::Root::_fireFrameEnded(Ogre::FrameEvent &)
+- name: _ZN4Ogre4Root23_updateAllRenderTargetsEv
+  params: []
+  return_type: bool
+  signature: bool Ogre::Root::_updateAllRenderTargets()
+- name: _ZN4Ogre4Root25_fireFrameRenderingQueuedEv
+  params: []
+  return_type: bool
+  signature: bool Ogre::Root::_fireFrameRenderingQueued()
+- name: _ZN4Ogre4Root18populateFrameEventENS0_18FrameEventTimeTypeERNS_10FrameEventE
+  params:
+  - name: type
+    type: Ogre::Root::FrameEventTimeType
+  - name: evtToUpdate
+    type: Ogre::FrameEvent &
+  return_type: void
+  signature: void Ogre::Root::populateFrameEvent(Ogre::Root::FrameEventTimeType, Ogre::FrameEvent &)
+- name: _ZN4Ogre4Root14renderOneFrameEv
+  params: []
+  return_type: bool
+  signature: bool Ogre::Root::renderOneFrame()
+- name: _ZN4Ogre4Root17_fireFrameStartedEv
+  params: []
+  return_type: bool
+  signature: bool Ogre::Root::_fireFrameStarted()
+- name: _ZN4Ogre4Root15_fireFrameEndedEv
+  params: []
+  return_type: bool
+  signature: bool Ogre::Root::_fireFrameEnded()
+- name: _ZN4Ogre4Root15clearEventTimesEv
+  params: []
+  return_type: void
+  signature: void Ogre::Root::clearEventTimes()
+- name: _ZN4Ogre4Root16addFrameListenerEPNS_13FrameListenerE
+  params:
+  - name: newListener
+    type: Ogre::FrameListener *
+  return_type: void
+  signature: void Ogre::Root::addFrameListener(Ogre::FrameListener *)
+- name: _ZN4Ogre4Root18createSceneManagerERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_
+  params:
+  - name: typeName
+    type: const Ogre::String &
+  - name: instanceName
+    type: const Ogre::String &
+  return_type: Ogre::SceneManager *
+  signature: Ogre::SceneManager * Ogre::Root::createSceneManager(const Ogre::String &, const Ogre::String &)
+- name: _ZN4Ogre4Root25removeSceneManagerFactoryEPNS_19SceneManagerFactoryE
+  params:
+  - name: fact
+    type: Ogre::SceneManagerFactory *
+  return_type: void
+  signature: void Ogre::Root::removeSceneManagerFactory(Ogre::SceneManagerFactory *)
+- name: _ZN4Ogre4Root22addSceneManagerFactoryEPNS_19SceneManagerFactoryE
+  params:
+  - name: fact
+    type: Ogre::SceneManagerFactory *
+  return_type: void
+  signature: void Ogre::Root::addSceneManagerFactory(Ogre::SceneManagerFactory *)
+- name: _ZN4Ogre4Root18createRenderWindowERKNS_23RenderWindowDescriptionE
+  params:
+  - name: desc
+    type: const Ogre::RenderWindowDescription &
+  return_type: Ogre::RenderWindow *
+  signature: Ogre::RenderWindow * Ogre::Root::createRenderWindow(const Ogre::RenderWindowDescription &)
+- name: _ZN4Ogre4Root15getRenderSystemEv
+  params: []
+  return_type: Ogre::RenderSystem *
+  signature: Ogre::RenderSystem * Ogre::Root::getRenderSystem()
+- name: _ZN4Ogre4Root13restoreConfigEv
+  params: []
+  return_type: bool
+  signature: bool Ogre::Root::restoreConfig()
+- name: _ZN4Ogre4Root10saveConfigEv
+  params: []
+  return_type: void
+  signature: void Ogre::Root::saveConfig()
+- name: _ZN4Ogre4Root15setRenderSystemEPNS_12RenderSystemE
+  params:
+  - name: system
+    type: Ogre::RenderSystem *
+  return_type: void
+  signature: void Ogre::Root::setRenderSystem(Ogre::RenderSystem *)
+- name: _ZN4Ogre4Root21getAvailableRenderersEv
+  params: []
+  return_type: const Ogre::RenderSystemList &
+  signature: const Ogre::RenderSystemList & Ogre::Root::getAvailableRenderers()
+- name: _ZN4Ogre4Root21getRenderSystemByNameERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: name
+    type: const Ogre::String &
+  return_type: Ogre::RenderSystem *
+  signature: Ogre::RenderSystem * Ogre::Root::getRenderSystemByName(const Ogre::String &)
+- name: _ZN4Ogre4Root11loadPluginsERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: pluginsfile
+    type: const Ogre::String &
+  return_type: void
+  signature: void Ogre::Root::loadPlugins(const Ogre::String &)
+- name: _ZN4Ogre4Root23addMovableObjectFactoryEPNS_20MovableObjectFactoryEb
+  params:
+  - name: fact
+    type: Ogre::MovableObjectFactory *
+  - name: overrideExisting
+    type: bool
+  return_type: void
+  signature: void Ogre::Root::addMovableObjectFactory(Ogre::MovableObjectFactory *, bool)
+- name: _ZNK4Ogre3Any4typeEv
+  params: []
+  return_type: const std::type_info &
+  signature: const std::type_info & Ogre::Any::type() const
+- name: _ZNK4Ogre9ASTCCodec20getClosestBlockDim2dEfPiS1_
+  params:
+  - name: targetBitrate
+    type: float
+  - name: x
+    type: int *
+  - name: y
+    type: int *
+  return_type: void
+  signature: void Ogre::ASTCCodec::getClosestBlockDim2d(float, int *, int *) const
+- name: _ZN4Ogre10LogManager10logMessageENS_15LogMessageLevelERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: lml
+    type: Ogre::LogMessageLevel
+  - name: message
+    type: const Ogre::String &
+  - name: maskDebug
+    type: bool
+  return_type: void
+  signature: void Ogre::LogManager::logMessage(Ogre::LogMessageLevel, const Ogre::String &, bool)
+- name: _ZNK4Ogre10VectorBaseILi3EfE3ptrEv
+  params: []
+  return_type: const Ogre::Real *
+  signature: const Ogre::Real * Ogre::VectorBase::ptr() const
+- name: _ZNK4Ogre24RenderSystemCapabilities13hasCapabilityENS_12CapabilitiesE
+  params:
+  - name: c
+    type: const Ogre::Capabilities
+  return_type: bool
+  signature: bool Ogre::RenderSystemCapabilities::hasCapability(const Ogre::Capabilities) const
+- name: _ZN4Ogre12RenderSystem17isGpuProgramBoundENS_14GpuProgramTypeE
+  params:
+  - name: gptype
+    type: Ogre::GpuProgramType
+  return_type: bool
+  signature: bool Ogre::RenderSystem::isGpuProgramBound(Ogre::GpuProgramType)
+- name: _ZN4Ogre12RenderSystem20_notifyCameraRemovedEPKNS_6CameraE
+  params:
+  - name: cam
+    type: const Ogre::Camera *
+  return_type: void
+  signature: void Ogre::RenderSystem::_notifyCameraRemoved(const Ogre::Camera *)
+- name: _ZN4Ogre12RenderSystem22setInvertVertexWindingEb
+  params:
+  - name: invert
+    type: bool
+  return_type: void
+  signature: void Ogre::RenderSystem::setInvertVertexWinding(bool)
+- name: _ZN4Ogre12RenderSystem20_cleanupDepthBuffersEb
+  params:
+  - name: bCleanManualBuffers
+    type: bool
+  return_type: void
+  signature: void Ogre::RenderSystem::_cleanupDepthBuffers(bool)
+- name: _ZN4Ogre12RenderSystem15getRenderTargetERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: name
+    type: const Ogre::String &
+  return_type: Ogre::RenderTarget *
+  signature: Ogre::RenderTarget * Ogre::RenderSystem::getRenderTarget(const Ogre::String &)
+- name: _ZN4Ogre12RenderSystem33useCustomRenderSystemCapabilitiesEPNS_24RenderSystemCapabilitiesE
+  params:
+  - name: capabilities
+    type: Ogre::RenderSystemCapabilities *
+  return_type: void
+  signature: void Ogre::RenderSystem::useCustomRenderSystemCapabilities(Ogre::RenderSystemCapabilities *)
+- name: _ZNK4Ogre10VectorBaseILi2EfE3ptrEv
+  params: []
+  return_type: const Ogre::Real *
+  signature: const Ogre::Real * Ogre::VectorBase::ptr() const
+- name: _ZNK4Ogre6VectorILi3EfE10dotProductERKNS_10VectorBaseILi3EfEE
+  params:
+  - name: vec
+    type: const VectorBase<dims, T> &
+  return_type: T
+  signature: T Ogre::Vector::dotProduct(const VectorBase<dims, T> &) const
+- name: _ZN4Ogre10VectorBaseILi3EfE3ptrEv
+  params: []
+  return_type: Ogre::Real *
+  signature: Ogre::Real * Ogre::VectorBase::ptr()
+- name: _ZNK4Ogre24GpuSharedParametersUsage15getSharedParamsEv
+  params: []
+  return_type: Ogre::GpuSharedParametersPtr
+  signature: Ogre::GpuSharedParametersPtr Ogre::GpuSharedParametersUsage::getSharedParams() const
+- name: _ZNK4Ogre19GpuSharedParameters15getFloatPointerEm
+  params:
+  - name: pos
+    type: int
+  return_type: const float *
+  signature: const float * Ogre::GpuSharedParameters::getFloatPointer(int) const
+- name: _ZN4Ogre20GpuProgramParameters15getFloatPointerEm
+  params:
+  - name: pos
+    type: int
+  return_type: const float *
+  signature: const float * Ogre::GpuProgramParameters::getFloatPointer(int) const
+- name: _ZNK4Ogre19GpuSharedParameters13getIntPointerEm
+  params:
+  - name: pos
+    type: int
+  return_type: const int *
+  signature: const int * Ogre::GpuSharedParameters::getIntPointer(int) const
+- name: _ZN4Ogre20GpuProgramParameters13getIntPointerEm
+  params:
+  - name: pos
+    type: int
+  return_type: const int *
+  signature: const int * Ogre::GpuProgramParameters::getIntPointer(int) const
+- name: _ZNK4Ogre24GpuSharedParametersUsage7getNameB5cxx11Ev
+  params: []
+  return_type: const Ogre::String &
+  signature: const Ogre::String & Ogre::GpuSharedParametersUsage::getName() const
+- name: _ZN4Ogre20GpuProgramParameters19addSharedParametersENS_9SharedPtrINS_19GpuSharedParametersEEE
+  params:
+  - name: sharedParams
+    type: Ogre::GpuSharedParametersPtr
+  return_type: void
+  signature: void Ogre::GpuProgramParameters::addSharedParameters(Ogre::GpuSharedParametersPtr)
+- name: _ZNK4Ogre20GpuProgramParameters23isUsingSharedParametersERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: sharedParamsName
+    type: const Ogre::String &
+  return_type: bool
+  signature: bool Ogre::GpuProgramParameters::isUsingSharedParameters(const Ogre::String &) const
+- name: _ZN4Ogre20GpuProgramParameters13getRegPointerEm
+  params:
+  - name: pos
+    type: int
+  return_type: const int *
+  signature: const int * Ogre::GpuProgramParameters::getRegPointer(int) const
+- name: _ZNK4Ogre20GpuProgramParameters13getRegPointerEm
+  params:
+  - name: pos
+    type: int
+  return_type: const int *
+  signature: const int * Ogre::GpuProgramParameters::getRegPointer(int) const
+- name: _ZNK4Ogre20GpuProgramParameters16getDoublePointerEm
+  params:
+  - name: pos
+    type: int
+  return_type: const double *
+  signature: const double * Ogre::GpuProgramParameters::getDoublePointer(int) const
+- name: _ZN4Ogre20GpuProgramParameters16getDoublePointerEm
+  params:
+  - name: pos
+    type: int
+  return_type: const double *
+  signature: const double * Ogre::GpuProgramParameters::getDoublePointer(int) const
+- name: _ZNK4Ogre20GpuProgramParameters15getFloatPointerEm
+  params:
+  - name: pos
+    type: int
+  return_type: const float *
+  signature: const float * Ogre::GpuProgramParameters::getFloatPointer(int) const
+- name: _ZNK4Ogre20GpuProgramParameters21findAutoConstantEntryERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: paramName
+    type: const Ogre::String &
+  return_type: const Ogre::GpuProgramParameters::AutoConstantEntry *
+  signature: const Ogre::GpuProgramParameters::AutoConstantEntry * Ogre::GpuProgramParameters::findAutoConstantEntry(const
+    Ogre::String &) const
+- name: _ZN4Ogre20GpuProgramParameters24setNamedAutoConstantRealERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS0_16AutoConstantTypeEf
+  params:
+  - name: name
+    type: const Ogre::String &
+  - name: acType
+    type: Ogre::GpuProgramParameters::AutoConstantType
+  - name: rData
+    type: Ogre::Real
+  return_type: void
+  signature: void Ogre::GpuProgramParameters::setNamedAutoConstantReal(const Ogre::String &, Ogre::GpuProgramParameters::AutoConstantType,
+    Ogre::Real)
+- name: _ZN4Ogre20GpuProgramParameters20setNamedAutoConstantERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS0_16AutoConstantTypeEj
+  params:
+  - name: name
+    type: const Ogre::String &
+  - name: acType
+    type: Ogre::GpuProgramParameters::AutoConstantType
+  - name: extraInfo
+    type: Ogre::uint32
+  return_type: void
+  signature: void Ogre::GpuProgramParameters::setNamedAutoConstant(const Ogre::String &, Ogre::GpuProgramParameters::AutoConstantType,
+    Ogre::uint32)
+- name: _ZN4Ogre20GpuProgramParameters26getConstantLogicalIndexUseEmmtNS_16BaseConstantTypeE
+  params:
+  - name: logicalIndex
+    type: int
+  - name: requestedSize
+    type: int
+  - name: variability
+    type: Ogre::uint16
+  - name: type
+    type: Ogre::BaseConstantType
+  return_type: Ogre::GpuLogicalIndexUse *
+  signature: Ogre::GpuLogicalIndexUse * Ogre::GpuProgramParameters::getConstantLogicalIndexUse(int, int, Ogre::uint16, Ogre::BaseConstantType)
+- name: _ZN4OgreL15withArrayOffsetEPKNS_21GpuConstantDefinitionERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: def
+    type: const Ogre::GpuConstantDefinition *
+  - name: name
+    type: const Ogre::String &
+  return_type: int
+  signature: int Ogre::withArrayOffset(const Ogre::GpuConstantDefinition *, const Ogre::String &)
+- name: _ZN4Ogre20GpuProgramParameters19_setRawAutoConstantEmNS0_16AutoConstantTypeEjth
+  params:
+  - name: physicalIndex
+    type: int
+  - name: acType
+    type: Ogre::GpuProgramParameters::AutoConstantType
+  - name: extraInfo
+    type: Ogre::uint32
+  - name: variability
+    type: Ogre::uint16
+  - name: elementSize
+    type: Ogre::uint8
+  return_type: void
+  signature: void Ogre::GpuProgramParameters::_setRawAutoConstant(int, Ogre::GpuProgramParameters::AutoConstantType, Ogre::uint32,
+    Ogre::uint16, Ogre::uint8)
+- name: _ZN4Ogre20GpuProgramParameters23_setRawAutoConstantRealEmNS0_16AutoConstantTypeEfth
+  params:
+  - name: physicalIndex
+    type: int
+  - name: acType
+    type: Ogre::GpuProgramParameters::AutoConstantType
+  - name: rData
+    type: float
+  - name: variability
+    type: Ogre::uint16
+  - name: elementSize
+    type: Ogre::uint8
+  return_type: void
+  signature: void Ogre::GpuProgramParameters::_setRawAutoConstantReal(int, Ogre::GpuProgramParameters::AutoConstantType, float,
+    Ogre::uint16, Ogre::uint8)
+- name: _ZNK4Ogre20GpuProgramParameters21getConstantDefinitionERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: name
+    type: const Ogre::String &
+  return_type: const Ogre::GpuConstantDefinition &
+  signature: const Ogre::GpuConstantDefinition & Ogre::GpuProgramParameters::getConstantDefinition(const Ogre::String &) const
+- name: _ZNK4Ogre20GpuProgramParameters30_findRawAutoConstantEntryFloatEm
+  params:
+  - name: physicalIndex
+    type: int
+  return_type: const Ogre::GpuProgramParameters::AutoConstantEntry *
+  signature: const Ogre::GpuProgramParameters::AutoConstantEntry * Ogre::GpuProgramParameters::_findRawAutoConstantEntryFloat(int)
+    const
+- name: _ZN4Ogre20GpuProgramParameters17copyConstantsFromERKS0_
+  params:
+  - name: source
+    type: const Ogre::GpuProgramParameters &
+  return_type: void
+  signature: void Ogre::GpuProgramParameters::copyConstantsFrom(const Ogre::GpuProgramParameters &)
+- name: _ZN4Ogre20GpuProgramParameters23copySharedParamSetUsageERKSt6vectorINS_24GpuSharedParametersUsageESaIS2_EE
+  params:
+  - name: srcList
+    type: const Ogre::GpuProgramParameters::GpuSharedParamUsageList &
+  return_type: void
+  signature: void Ogre::GpuProgramParameters::copySharedParamSetUsage(const Ogre::GpuProgramParameters::GpuSharedParamUsageList
+    &)
+- name: _ZN4Ogre20GpuProgramParameters25_getConstantPhysicalIndexEmmtNS_16BaseConstantTypeE
+  params:
+  - name: logicalIndex
+    type: int
+  - name: requestedSize
+    type: int
+  - name: variability
+    type: Ogre::uint16
+  - name: type
+    type: Ogre::BaseConstantType
+  return_type: int
+  signature: int Ogre::GpuProgramParameters::_getConstantPhysicalIndex(int, int, Ogre::uint16, Ogre::BaseConstantType)
+- name: _ZN4Ogre20GpuProgramParameters15_writeRegistersEmPKim
+  params:
+  - name: index
+    type: int
+  - name: val
+    type: const int *
+  - name: count
+    type: int
+  return_type: void
+  signature: void Ogre::GpuProgramParameters::_writeRegisters(int, const int *, int)
+- name: _ZN4Ogre20GpuProgramParameters18_writeRawConstantsEmPKdm
+  params:
+  - name: physicalIndex
+    type: int
+  - name: val
+    type: const double *
+  - name: count
+    type: int
+  return_type: void
+  signature: void Ogre::GpuProgramParameters::_writeRawConstants(int, const double *, int)
+- name: _ZN4Ogre20GpuProgramParameters17_writeRawConstantEmRKNS_11ColourValueEm
+  params:
+  - name: physicalIndex
+    type: int
+  - name: colour
+    type: const Ogre::ColourValue &
+  - name: count
+    type: int
+  return_type: void
+  signature: void Ogre::GpuProgramParameters::_writeRawConstant(int, const Ogre::ColourValue &, int)
+- name: _ZNK4Ogre11ColourValue13gammaToLinearEv
+  params: []
+  return_type: Ogre::ColourValue
+  signature: Ogre::ColourValue Ogre::ColourValue::gammaToLinear() const
+- name: _ZN4Ogre11ColourValue3ptrEv
+  params: []
+  return_type: float *
+  signature: float * Ogre::ColourValue::ptr()
+- name: _ZNK4Ogre11ColourValue3ptrEv
+  params: []
+  return_type: const float *
+  signature: const float * Ogre::ColourValue::ptr() const
+- name: _ZN4Ogre20GpuProgramParameters17_writeRawConstantEmPKNS_17TransformBaseRealEm
+  params:
+  - name: physicalIndex
+    type: int
+  - name: colour
+    type: const Ogre::ColourValue &
+  - name: count
+    type: int
+  return_type: void
+  signature: void Ogre::GpuProgramParameters::_writeRawConstant(int, const Ogre::ColourValue &, int)
+- name: _ZN4Ogre20GpuProgramParameters17_writeRawConstantEmRKNS_7Matrix4Em
+  params:
+  - name: physicalIndex
+    type: int
+  - name: colour
+    type: const Ogre::ColourValue &
+  - name: count
+    type: int
+  return_type: void
+  signature: void Ogre::GpuProgramParameters::_writeRawConstant(int, const Ogre::ColourValue &, int)
+- name: _ZNK4Ogre11ColourValuemlERKS0_
+  params:
+  - name: rhs
+    type: const Ogre::ColourValue &
+  return_type: Ogre::ColourValue
+  signature: Ogre::ColourValue Ogre::ColourValue::operator*(const Ogre::ColourValue &) const
+- name: _ZNK4Ogre7Matrix39GetColumnEm
+  params:
+  - name: iCol
+    type: int
+  return_type: Ogre::Vector3
+  signature: Ogre::Vector3 Ogre::Matrix3::GetColumn(int) const
+- name: _ZNK4Ogre6VectorILi3EfE6lengthEv
+  params: []
+  return_type: Ogre::Real
+  signature: Ogre::Real Ogre::Vector::length() const
+- name: _ZN4OgremlERKNS_7Affine3ERKNS_6VectorILi3EfEE
+  params:
+  - name: m
+    type: const Ogre::Affine3 &
+  - name: v
+    type: const Ogre::Vector3 &
+  return_type: Ogre::Vector3
+  signature: Ogre::Vector3 Ogre::operator*(const Ogre::Affine3 &, const Ogre::Vector3 &)
+- name: _ZN4OgremlERKNS_7Matrix3ERKNS_6VectorILi3EfEE
+  params:
+  - name: m
+    type: const Ogre::Matrix3 &
+  - name: v
+    type: const Ogre::Vector3 &
+  return_type: Ogre::Vector3
+  signature: Ogre::Vector3 Ogre::operator*(const Ogre::Matrix3 &, const Ogre::Vector3 &)
+- name: _ZN4OgremlERKNS_7Affine3ERKNS_6VectorILi4EfEE
+  params:
+  - name: m
+    type: const Ogre::Affine3 &
+  - name: v
+    type: const Ogre::Vector4 &
+  return_type: Ogre::Vector4
+  signature: Ogre::Vector4 Ogre::operator*(const Ogre::Affine3 &, const Ogre::Vector4 &)
+- name: _ZN4Ogre20GpuProgramParameters17_updateAutoParamsEPKNS_19AutoParamDataSourceEt
+  params:
+  - name: source
+    type: const Ogre::AutoParamDataSource *
+  - name: variabilityMask
+    type: Ogre::uint16
+  return_type: void
+  signature: void Ogre::GpuProgramParameters::_updateAutoParams(const Ogre::AutoParamDataSource *, Ogre::uint16)
+- name: _ZN4Ogre20GpuProgramParameters17_writeRawConstantEmRKNS_7Matrix3Em
+  params:
+  - name: physicalIndex
+    type: int
+  - name: colour
+    type: const Ogre::ColourValue &
+  - name: count
+    type: int
+  return_type: void
+  signature: void Ogre::GpuProgramParameters::_writeRawConstant(int, const Ogre::ColourValue &, int)
+- name: _ZNK4Ogre7Matrix39transposeEv
+  params: []
+  return_type: Ogre::Matrix3
+  signature: Ogre::Matrix3 Ogre::Matrix3::transpose() const
+- name: _ZN4Ogre20GpuProgramParameters11setConstantEmPKfm
+  params:
+  - name: index
+    type: int
+  - name: val
+    type: const Ogre::uint *
+  - name: count
+    type: int
+  return_type: void
+  signature: void Ogre::GpuProgramParameters::setConstant(int, const Ogre::uint *, int)
+- name: _ZN4Ogre20GpuProgramParameters11setConstantEmRKNS_7Matrix4E
+  params:
+  - name: index
+    type: int
+  - name: val
+    type: const Ogre::uint *
+  - name: count
+    type: int
+  return_type: void
+  signature: void Ogre::GpuProgramParameters::setConstant(int, const Ogre::uint *, int)
+- name: _ZN4Ogre20GpuProgramParameters11setConstantEmRKNS_6VectorILi4EfEE
+  params:
+  - name: index
+    type: int
+  - name: val
+    type: const Ogre::uint *
+  - name: count
+    type: int
+  return_type: void
+  signature: void Ogre::GpuProgramParameters::setConstant(int, const Ogre::uint *, int)
+- name: _ZN4Ogre20GpuProgramParameters18_setNamedConstantsERKNS_9SharedPtrINS_17GpuNamedConstantsEEE
+  params:
+  - name: constantmap
+    type: const Ogre::GpuNamedConstantsPtr &
+  return_type: void
+  signature: void Ogre::GpuProgramParameters::_setNamedConstants(const Ogre::GpuNamedConstantsPtr &)
+- name: _ZN4Ogre19GpuSharedParameters16setNamedConstantERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPKjj
+  params:
+  - name: name
+    type: const Ogre::String &
+  - name: val
+    type: const Ogre::uint *
+  - name: count
+    type: Ogre::uint32
+  return_type: void
+  signature: void Ogre::GpuSharedParameters::setNamedConstant(const Ogre::String &, const Ogre::uint *, Ogre::uint32)
+- name: _ZN4Ogre19GpuSharedParameters16setNamedConstantERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPKij
+  params:
+  - name: name
+    type: const Ogre::String &
+  - name: val
+    type: const int *
+  - name: count
+    type: Ogre::uint32
+  return_type: void
+  signature: void Ogre::GpuSharedParameters::setNamedConstant(const Ogre::String &, const int *, Ogre::uint32)
+- name: _ZN4Ogre19GpuSharedParameters16setNamedConstantERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPKdj
+  params:
+  - name: name
+    type: const Ogre::String &
+  - name: val
+    type: const double *
+  - name: count
+    type: Ogre::uint32
+  return_type: void
+  signature: void Ogre::GpuSharedParameters::setNamedConstant(const Ogre::String &, const double *, Ogre::uint32)
+- name: _ZN4Ogre19GpuSharedParameters16setNamedConstantERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPKfj
+  params:
+  - name: name
+    type: const Ogre::String &
+  - name: val
+    type: const float *
+  - name: count
+    type: Ogre::uint32
+  return_type: void
+  signature: void Ogre::GpuSharedParameters::setNamedConstant(const Ogre::String &, const float *, Ogre::uint32)
+- name: _ZN4Ogre19GpuSharedParameters21addConstantDefinitionERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS_15GpuConstantTypeEj
+  params:
+  - name: name
+    type: const Ogre::String &
+  - name: constType
+    type: Ogre::GpuConstantType
+  - name: arraySize
+    type: Ogre::uint32
+  return_type: void
+  signature: void Ogre::GpuSharedParameters::addConstantDefinition(const Ogre::String &, Ogre::GpuConstantType, Ogre::uint32)
+- name: _ZN4Ogre27GpuNamedConstantsSerializer20exportNamedConstantsEPKNS_17GpuNamedConstantsENS_9SharedPtrINS_10DataStreamEEENS_10Serializer6EndianE
+  params:
+  - name: pConsts
+    type: const Ogre::GpuNamedConstants *
+  - name: stream
+    type: Ogre::DataStreamPtr
+  - name: endianMode
+    type: Ogre::Serializer::Endian
+  return_type: void
+  signature: void Ogre::GpuNamedConstantsSerializer::exportNamedConstants(const Ogre::GpuNamedConstants *, Ogre::DataStreamPtr,
+    Ogre::Serializer::Endian)
+- name: _ZN4Ogre27GpuNamedConstantsSerializer20importNamedConstantsERNS_9SharedPtrINS_10DataStreamEEEPNS_17GpuNamedConstantsE
+  params:
+  - name: stream
+    type: Ogre::DataStreamPtr &
+  - name: pDest
+    type: Ogre::GpuNamedConstants *
+  return_type: void
+  signature: void Ogre::GpuNamedConstantsSerializer::importNamedConstants(Ogre::DataStreamPtr &, Ogre::GpuNamedConstants *)
+- name: _ZN4Ogre17GpuNamedConstants4loadERNS_9SharedPtrINS_10DataStreamEEE
+  params:
+  - name: stream
+    type: Ogre::DataStreamPtr &
+  return_type: void
+  signature: void Ogre::GpuNamedConstants::load(Ogre::DataStreamPtr &)
+- name: _ZN4Ogre27GpuNamedConstantsSerializer20exportNamedConstantsEPKNS_17GpuNamedConstantsERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS_10Serializer6EndianE
+  params:
+  - name: pConsts
+    type: const Ogre::GpuNamedConstants *
+  - name: filename
+    type: const Ogre::String &
+  - name: endianMode
+    type: Ogre::Serializer::Endian
+  return_type: void
+  signature: void Ogre::GpuNamedConstantsSerializer::exportNamedConstants(const Ogre::GpuNamedConstants *, const Ogre::String
+    &, Ogre::Serializer::Endian)
+- name: _ZN4Ogre7Matrix39SetColumnEmRKNS_6VectorILi3EfEE
+  params:
+  - name: iCol
+    type: int
+  - name: vec
+    type: const Ogre::Vector3 &
+  return_type: void
+  signature: void Ogre::Matrix3::SetColumn(int, const Ogre::Vector3 &)
+- name: _ZN4Ogre7Matrix38FromAxesERKNS_6VectorILi3EfEES4_S4_
+  params:
+  - name: xAxis
+    type: const Ogre::Vector3 &
+  - name: yAxis
+    type: const Ogre::Vector3 &
+  - name: zAxis
+    type: const Ogre::Vector3 &
+  return_type: void
+  signature: void Ogre::Matrix3::FromAxes(const Ogre::Vector3 &, const Ogre::Vector3 &, const Ogre::Vector3 &)
+- name: _ZNK4Ogre6VectorILi3EfE14normalisedCopyEv
+  params: []
+  return_type: Vector<dims, T>
+  signature: Vector<dims, T> Ogre::Vector::normalisedCopy() const
+- name: _ZNK4Ogre10VectorBaseILi3EfE12crossProductERKNS_6VectorILi3EfEE
+  params:
+  - name: rkVector
+    type: const Ogre::Vector3 &
+  return_type: Ogre::Vector3
+  signature: Ogre::Vector3 Ogre::VectorBase::crossProduct(const Ogre::Vector3 &) const
+- name: _ZNK4Ogre19AutoParamDataSource29updateLightCustomGpuParameterERKNS_20GpuProgramParameters17AutoConstantEntryEPS1_
+  params:
+  - name: constantEntry
+    type: const GpuProgramParameters::AutoConstantEntry &
+  - name: params
+    type: Ogre::GpuProgramParameters *
+  return_type: void
+  signature: void Ogre::AutoParamDataSource::updateLightCustomGpuParameter(const GpuProgramParameters::AutoConstantEntry &,
+    Ogre::GpuProgramParameters *) const
+- name: _ZNK4Ogre19AutoParamDataSource8getLightEm
+  params:
+  - name: index
+    type: int
+  return_type: const Ogre::Light &
+  signature: const Ogre::Light & Ogre::AutoParamDataSource::getLight(int) const
+- name: _ZN4Ogre19AutoParamDataSource15setShadowColourERKNS_11ColourValueE
+  params:
+  - name: colour
+    type: const Ogre::ColourValue &
+  return_type: void
+  signature: void Ogre::AutoParamDataSource::setShadowColour(const Ogre::ColourValue &)
+- name: _ZNK4Ogre19AutoParamDataSource24getShadowSceneDepthRangeEm
+  params:
+  - name: index
+    type: int
+  return_type: const Ogre::Vector4 &
+  signature: const Ogre::Vector4 & Ogre::AutoParamDataSource::getShadowSceneDepthRange(int) const
+- name: _ZN4Ogre19AutoParamDataSource13setPassNumberEi
+  params:
+  - name: passNumber
+    type: const int
+  return_type: void
+  signature: void Ogre::AutoParamDataSource::setPassNumber(const int)
+- name: _ZNK4Ogre8Viewport15getActualHeightEv
+  params: []
+  return_type: int
+  signature: int Ogre::Viewport::getActualHeight() const
+- name: _ZNK4Ogre8Viewport14getActualWidthEv
+  params: []
+  return_type: int
+  signature: int Ogre::Viewport::getActualWidth() const
+- name: _ZNK4Ogre19AutoParamDataSource20getTime_0_2Pi_packedEf
+  params:
+  - name: x
+    type: Ogre::Real
+  return_type: Ogre::Vector4f
+  signature: Ogre::Vector4f Ogre::AutoParamDataSource::getTime_0_2Pi_packed(Ogre::Real) const
+- name: _ZNK4Ogre19AutoParamDataSource13getTime_0_2PiEf
+  params:
+  - name: x
+    type: Ogre::Real
+  return_type: Ogre::Real
+  signature: Ogre::Real Ogre::AutoParamDataSource::getTime_0_2Pi(Ogre::Real) const
+- name: _ZNK4Ogre19AutoParamDataSource11getTime_0_XEf
+  params:
+  - name: x
+    type: Ogre::Real
+  return_type: Ogre::Real
+  signature: Ogre::Real Ogre::AutoParamDataSource::getTime_0_X(Ogre::Real) const
+- name: _ZNK4Ogre19AutoParamDataSource16getTanTime_0_2PiEf
+  params:
+  - name: x
+    type: Ogre::Real
+  return_type: Ogre::Real
+  signature: Ogre::Real Ogre::AutoParamDataSource::getTanTime_0_2Pi(Ogre::Real) const
+- name: _ZNK4Ogre19AutoParamDataSource16getSinTime_0_2PiEf
+  params:
+  - name: x
+    type: Ogre::Real
+  return_type: Ogre::Real
+  signature: Ogre::Real Ogre::AutoParamDataSource::getSinTime_0_2Pi(Ogre::Real) const
+- name: _ZNK4Ogre19AutoParamDataSource16getCosTime_0_2PiEf
+  params:
+  - name: x
+    type: Ogre::Real
+  return_type: Ogre::Real
+  signature: Ogre::Real Ogre::AutoParamDataSource::getCosTime_0_2Pi(Ogre::Real) const
+- name: _ZNK4Ogre19AutoParamDataSource18getTime_0_1_packedEf
+  params:
+  - name: x
+    type: Ogre::Real
+  return_type: Ogre::Vector4f
+  signature: Ogre::Vector4f Ogre::AutoParamDataSource::getTime_0_1_packed(Ogre::Real) const
+- name: _ZNK4Ogre19AutoParamDataSource11getTime_0_1Ef
+  params:
+  - name: x
+    type: Ogre::Real
+  return_type: Ogre::Real
+  signature: Ogre::Real Ogre::AutoParamDataSource::getTime_0_1(Ogre::Real) const
+- name: _ZNK4Ogre19AutoParamDataSource14getTanTime_0_1Ef
+  params:
+  - name: x
+    type: Ogre::Real
+  return_type: Ogre::Real
+  signature: Ogre::Real Ogre::AutoParamDataSource::getTanTime_0_1(Ogre::Real) const
+- name: _ZNK4Ogre19AutoParamDataSource14getSinTime_0_1Ef
+  params:
+  - name: x
+    type: Ogre::Real
+  return_type: Ogre::Real
+  signature: Ogre::Real Ogre::AutoParamDataSource::getSinTime_0_1(Ogre::Real) const
+- name: _ZNK4Ogre19AutoParamDataSource14getCosTime_0_1Ef
+  params:
+  - name: x
+    type: Ogre::Real
+  return_type: Ogre::Real
+  signature: Ogre::Real Ogre::AutoParamDataSource::getCosTime_0_1(Ogre::Real) const
+- name: _ZNK4Ogre19AutoParamDataSource18getTime_0_X_packedEf
+  params:
+  - name: x
+    type: Ogre::Real
+  return_type: Ogre::Vector4f
+  signature: Ogre::Vector4f Ogre::AutoParamDataSource::getTime_0_X_packed(Ogre::Real) const
+- name: _ZNK4Ogre19AutoParamDataSource14getTanTime_0_XEf
+  params:
+  - name: x
+    type: Ogre::Real
+  return_type: Ogre::Real
+  signature: Ogre::Real Ogre::AutoParamDataSource::getTanTime_0_X(Ogre::Real) const
+- name: _ZNK4Ogre19AutoParamDataSource14getSinTime_0_XEf
+  params:
+  - name: x
+    type: Ogre::Real
+  return_type: Ogre::Real
+  signature: Ogre::Real Ogre::AutoParamDataSource::getSinTime_0_X(Ogre::Real) const
+- name: _ZNK4Ogre19AutoParamDataSource14getCosTime_0_XEf
+  params:
+  - name: x
+    type: Ogre::Real
+  return_type: Ogre::Real
+  signature: Ogre::Real Ogre::AutoParamDataSource::getCosTime_0_X(Ogre::Real) const
+- name: _ZN4Ogre13TransformBaseILi4EfE8setTransERKNS_6VectorILi3EfEE
+  params:
+  - name: v
+    type: const Vector<3, T> &
+  return_type: void
+  signature: void Ogre::TransformBase::setTrans(const Vector<3, T> &)
+- name: _ZN4OgremlERKNS_7Affine3ES2_
+  params:
+  - name: m
+    type: const Ogre::Affine3 &
+  - name: m2
+    type: const Ogre::Affine3 &
+  return_type: Ogre::Affine3
+  signature: Ogre::Affine3 Ogre::operator*(const Ogre::Affine3 &, const Ogre::Affine3 &)
+- name: _ZNK4Ogre19AutoParamDataSource13getViewMatrixEPKNS_6CameraE
+  params:
+  - name: cam
+    type: const Ogre::Camera *
+  return_type: Ogre::Affine3
+  signature: Ogre::Affine3 Ogre::AutoParamDataSource::getViewMatrix(const Ogre::Camera *) const
+- name: _ZN4OgremlERKNS_7Matrix4ES2_
+  params:
+  - name: m
+    type: const Ogre::Matrix4 &
+  - name: m2
+    type: const Ogre::Matrix4 &
+  return_type: Ogre::Matrix4
+  signature: Ogre::Matrix4 Ogre::operator*(const Ogre::Matrix4 &, const Ogre::Matrix4 &)
+- name: _ZNK4Ogre19AutoParamDataSource19getProjectionMatrixEPKNS_6CameraE
+  params:
+  - name: cam
+    type: const Ogre::Camera *
+  return_type: Ogre::Matrix4
+  signature: Ogre::Matrix4 Ogre::AutoParamDataSource::getProjectionMatrix(const Ogre::Camera *) const
+- name: _ZN4Ogre19AutoParamDataSource36setShadowPointLightExtrusionDistanceEf
+  params:
+  - name: dist
+    type: Ogre::Real
+  return_type: void
+  signature: void Ogre::AutoParamDataSource::setShadowPointLightExtrusionDistance(Ogre::Real)
+- name: _ZNK4Ogre19AutoParamDataSource25getTextureTransformMatrixEm
+  params:
+  - name: index
+    type: int
+  return_type: const Ogre::Matrix4 &
+  signature: const Ogre::Matrix4 & Ogre::AutoParamDataSource::getTextureTransformMatrix(int) const
+- name: _ZNK4Ogre4Pass23getNumTextureUnitStatesEv
+  params: []
+  return_type: int
+  signature: int Ogre::Pass::getNumTextureUnitStates() const
+- name: _ZNK4Ogre4Pass19getTextureUnitStateEm
+  params:
+  - name: name
+    type: const Ogre::String &
+  return_type: Ogre::TextureUnitState *
+  signature: Ogre::TextureUnitState * Ogre::Pass::getTextureUnitState(const Ogre::String &) const
+- name: _ZNK4Ogre19AutoParamDataSource31getSpotlightWorldViewProjMatrixEm
+  params:
+  - name: index
+    type: int
+  return_type: const Ogre::Matrix4 &
+  signature: const Ogre::Matrix4 & Ogre::AutoParamDataSource::getSpotlightWorldViewProjMatrix(int) const
+- name: _ZNK4Ogre19AutoParamDataSource26getSpotlightViewProjMatrixEm
+  params:
+  - name: index
+    type: int
+  return_type: const Ogre::Matrix4 &
+  signature: const Ogre::Matrix4 & Ogre::AutoParamDataSource::getSpotlightViewProjMatrix(int) const
+- name: _ZNK4Ogre5Light18getDerivedPositionEb
+  params:
+  - name: cameraRelativeIfSet
+    type: bool
+  return_type: Ogre::Vector3
+  signature: Ogre::Vector3 Ogre::Light::getDerivedPosition(bool) const
+- name: _ZNK4Ogre5Light19getDerivedDirectionEv
+  params: []
+  return_type: Ogre::Vector3
+  signature: Ogre::Vector3 Ogre::Light::getDerivedDirection() const
+- name: _ZN4Ogre4Math12lookRotationERKNS_6VectorILi3EfEES4_
+  params:
+  - name: direction
+    type: const Ogre::Vector3 &
+  - name: yaw
+    type: const Ogre::Vector3 &
+  return_type: Ogre::Matrix3
+  signature: Ogre::Matrix3 Ogre::Math::lookRotation(const Ogre::Vector3 &, const Ogre::Vector3 &)
+- name: _ZNK4Ogre19AutoParamDataSource29getTextureWorldViewProjMatrixEm
+  params:
+  - name: index
+    type: int
+  return_type: const Ogre::Matrix4 &
+  signature: const Ogre::Matrix4 & Ogre::AutoParamDataSource::getTextureWorldViewProjMatrix(int) const
+- name: _ZNK4Ogre19AutoParamDataSource24getTextureViewProjMatrixEm
+  params:
+  - name: index
+    type: int
+  return_type: const Ogre::Matrix4 &
+  signature: const Ogre::Matrix4 & Ogre::AutoParamDataSource::getTextureViewProjMatrix(int) const
+- name: _ZN4Ogre19AutoParamDataSource19setTextureProjectorEPKNS_7FrustumEm
+  params:
+  - name: frust
+    type: const Ogre::Frustum *
+  - name: index
+    type: int
+  return_type: void
+  signature: void Ogre::AutoParamDataSource::setTextureProjector(const Ogre::Frustum *, int)
+- name: _ZN4Ogre19AutoParamDataSource18setPointParametersEbRKNS_6VectorILi4EfEE
+  params:
+  - name: attenuation
+    type: bool
+  - name: params
+    type: const Ogre::Vector4f &
+  return_type: void
+  signature: void Ogre::AutoParamDataSource::setPointParameters(bool, const Ogre::Vector4f &)
+- name: _ZN4Ogre19AutoParamDataSource6setFogENS_7FogModeERKNS_11ColourValueEfff
+  params:
+  - name: mode
+    type: Ogre::FogMode
+  - name: colour
+    type: const Ogre::ColourValue &
+  - name: expDensity
+    type: Ogre::Real
+  - name: linearStart
+    type: Ogre::Real
+  - name: linearEnd
+    type: Ogre::Real
+  return_type: void
+  signature: void Ogre::AutoParamDataSource::setFog(Ogre::FogMode, const Ogre::ColourValue &, Ogre::Real, Ogre::Real, Ogre::Real)
+- name: _ZNK4Ogre4Pass10getDiffuseEv
+  params: []
+  return_type: const Ogre::ColourValue &
+  signature: const Ogre::ColourValue & Ogre::Pass::getDiffuse() const
+- name: _ZNK4Ogre4Pass19getSelfIlluminationEv
+  params: []
+  return_type: const Ogre::ColourValue &
+  signature: const Ogre::ColourValue & Ogre::Pass::getSelfIllumination() const
+- name: _ZNK4Ogre4Pass10getAmbientEv
+  params: []
+  return_type: const Ogre::ColourValue &
+  signature: const Ogre::ColourValue & Ogre::Pass::getAmbient() const
+- name: _ZNK4Ogre4Pass19getAlphaRejectValueEv
+  params: []
+  return_type: unsigned char
+  signature: unsigned char Ogre::Pass::getAlphaRejectValue() const
+- name: _ZNK4Ogre4Pass12getShininessEv
+  params: []
+  return_type: float
+  signature: float Ogre::Pass::getShininess() const
+- name: _ZNK4Ogre4Pass11getSpecularEv
+  params: []
+  return_type: const Ogre::ColourValue &
+  signature: const Ogre::ColourValue & Ogre::Pass::getSpecular() const
+- name: _ZNK4Ogre19AutoParamDataSource20getPackedTextureSizeEm
+  params:
+  - name: index
+    type: int
+  return_type: Ogre::Vector4f
+  signature: Ogre::Vector4f Ogre::AutoParamDataSource::getPackedTextureSize(int) const
+- name: _ZNK4Ogre19AutoParamDataSource14getTextureSizeEm
+  params:
+  - name: index
+    type: int
+  return_type: Ogre::Vector4f
+  signature: Ogre::Vector4f Ogre::AutoParamDataSource::getTextureSize(int) const
+- name: _ZNK4Ogre7Texture8getWidthEv
+  params: []
+  return_type: Ogre::uint32
+  signature: Ogre::uint32 Ogre::Texture::getWidth() const
+- name: _ZNK4Ogre7Texture9getHeightEv
+  params: []
+  return_type: Ogre::uint32
+  signature: Ogre::uint32 Ogre::Texture::getHeight() const
+- name: _ZNK4Ogre7Texture8getDepthEv
+  params: []
+  return_type: Ogre::uint32
+  signature: Ogre::uint32 Ogre::Texture::getDepth() const
+- name: _ZNK4Ogre7Texture13getNumMipmapsEv
+  params: []
+  return_type: Ogre::uint32
+  signature: Ogre::uint32 Ogre::Texture::getNumMipmaps() const
+- name: _ZNK4Ogre19AutoParamDataSource21getInverseTextureSizeEm
+  params:
+  - name: index
+    type: int
+  return_type: Ogre::Vector4f
+  signature: Ogre::Vector4f Ogre::AutoParamDataSource::getInverseTextureSize(int) const
+- name: _ZN4Ogre19AutoParamDataSource14setCurrentPassEPKNS_4PassE
+  params:
+  - name: pass
+    type: const Ogre::Pass *
+  return_type: void
+  signature: void Ogre::AutoParamDataSource::setCurrentPass(const Ogre::Pass *)
+- name: _ZNK4Ogre19AutoParamDataSource20getLightCastsShadowsEm
+  params:
+  - name: index
+    type: int
+  return_type: float
+  signature: float Ogre::AutoParamDataSource::getLightCastsShadows(int) const
+- name: _ZN4Ogre19AutoParamDataSource21setAmbientLightColourERKNS_11ColourValueE
+  params:
+  - name: ambient
+    type: const Ogre::ColourValue &
+  return_type: void
+  signature: void Ogre::AutoParamDataSource::setAmbientLightColour(const Ogre::ColourValue &)
+- name: _ZNK4Ogre19AutoParamDataSource22getWorldViewProjMatrixEm
+  params:
+  - name: index
+    type: int
+  return_type: Ogre::Matrix4
+  signature: Ogre::Matrix4 Ogre::AutoParamDataSource::getWorldViewProjMatrix(int) const
+- name: _ZN4Ogre19AutoParamDataSource22setCurrentSceneManagerEPKNS_12SceneManagerE
+  params:
+  - name: sm
+    type: const Ogre::SceneManager *
+  return_type: void
+  signature: void Ogre::AutoParamDataSource::setCurrentSceneManager(const Ogre::SceneManager *)
+- name: _ZN4Ogre19AutoParamDataSource20setMainCamBoundsInfoEPNS_24VisibleObjectsBoundsInfoE
+  params:
+  - name: info
+    type: Ogre::VisibleObjectsBoundsInfo *
+  return_type: void
+  signature: void Ogre::AutoParamDataSource::setMainCamBoundsInfo(Ogre::VisibleObjectsBoundsInfo *)
+- name: _ZNK4Ogre19AutoParamDataSource37getLightDiffuseColourPowerScaledArrayEm
+  params:
+  - name: size
+    type: int
+  return_type: const Ogre::ColourValue *
+  signature: const Ogre::ColourValue * Ogre::AutoParamDataSource::getLightDiffuseColourPowerScaledArray(int) const
+- name: _ZNK4Ogre19AutoParamDataSource30getLightDiffuseColourWithPowerEm
+  params:
+  - name: index
+    type: int
+  return_type: const Ogre::ColourValue
+  signature: const Ogre::ColourValue Ogre::AutoParamDataSource::getLightDiffuseColourWithPower(int) const
+- name: _ZNK4Ogre19AutoParamDataSource31getLightDirectionViewSpaceArrayEm
+  params:
+  - name: size
+    type: int
+  return_type: const Ogre::Vector4f *
+  signature: const Ogre::Vector4f * Ogre::AutoParamDataSource::getLightDirectionViewSpaceArray(int) const
+- name: _ZNK4Ogre19AutoParamDataSource17getLightDirectionEm
+  params:
+  - name: index
+    type: int
+  return_type: Ogre::Vector3
+  signature: Ogre::Vector3 Ogre::AutoParamDataSource::getLightDirection(int) const
+- name: _ZNK4Ogre19AutoParamDataSource23getSpotlightParamsArrayEm
+  params:
+  - name: size
+    type: int
+  return_type: const Ogre::Vector4f *
+  signature: const Ogre::Vector4f * Ogre::AutoParamDataSource::getSpotlightParamsArray(int) const
+- name: _ZNK4Ogre19AutoParamDataSource18getSpotlightParamsEm
+  params:
+  - name: index
+    type: int
+  return_type: Ogre::Vector4f
+  signature: Ogre::Vector4f Ogre::AutoParamDataSource::getSpotlightParams(int) const
+- name: _ZNK4Ogre19AutoParamDataSource24getLightAttenuationArrayEm
+  params:
+  - name: size
+    type: int
+  return_type: const Ogre::Vector4f *
+  signature: const Ogre::Vector4f * Ogre::AutoParamDataSource::getLightAttenuationArray(int) const
+- name: _ZNK4Ogre19AutoParamDataSource19getLightAttenuationEm
+  params:
+  - name: index
+    type: int
+  return_type: Ogre::Vector4f
+  signature: Ogre::Vector4f Ogre::AutoParamDataSource::getLightAttenuation(int) const
+- name: _ZNK4Ogre5Light14getAttenuationEv
+  params: []
+  return_type: const Ogre::Vector4f &
+  signature: const Ogre::Vector4f & Ogre::Light::getAttenuation() const
+- name: _ZNK4Ogre19AutoParamDataSource30getLightPositionViewSpaceArrayEm
+  params:
+  - name: size
+    type: int
+  return_type: const Ogre::Vector4f *
+  signature: const Ogre::Vector4f * Ogre::AutoParamDataSource::getLightPositionViewSpaceArray(int) const
+- name: _ZNK4Ogre19AutoParamDataSource18getLightAs4DVectorEm
+  params:
+  - name: index
+    type: int
+  return_type: Ogre::Vector4
+  signature: Ogre::Vector4 Ogre::AutoParamDataSource::getLightAs4DVector(int) const
+- name: _ZNK4Ogre19AutoParamDataSource18getLightPowerScaleEm
+  params:
+  - name: index
+    type: int
+  return_type: Ogre::Real
+  signature: Ogre::Real Ogre::AutoParamDataSource::getLightPowerScale(int) const
+- name: _ZNK4Ogre19AutoParamDataSource16getLightPositionEm
+  params:
+  - name: index
+    type: int
+  return_type: Ogre::Vector3
+  signature: Ogre::Vector3 Ogre::AutoParamDataSource::getLightPosition(int) const
+- name: _ZNK4Ogre19AutoParamDataSource31getLightSpecularColourWithPowerEm
+  params:
+  - name: index
+    type: int
+  return_type: const Ogre::ColourValue
+  signature: const Ogre::ColourValue Ogre::AutoParamDataSource::getLightSpecularColourWithPower(int) const
+- name: _ZNK4Ogre19AutoParamDataSource22getLightSpecularColourEm
+  params:
+  - name: index
+    type: int
+  return_type: const Ogre::ColourValue &
+  signature: const Ogre::ColourValue & Ogre::AutoParamDataSource::getLightSpecularColour(int) const
+- name: _ZNK4Ogre19AutoParamDataSource21getLightDiffuseColourEm
+  params:
+  - name: index
+    type: int
+  return_type: const Ogre::ColourValue &
+  signature: const Ogre::ColourValue & Ogre::AutoParamDataSource::getLightDiffuseColour(int) const
+- name: _ZNK4Ogre5Light16_getIndexInFrameEv
+  params: []
+  return_type: int
+  signature: int Ogre::Light::_getIndexInFrame() const
+- name: _ZNK4Ogre19AutoParamDataSource14getLightNumberEm
+  params:
+  - name: index
+    type: int
+  return_type: float
+  signature: float Ogre::AutoParamDataSource::getLightNumber(int) const
+- name: _ZN4Ogre19AutoParamDataSource14setCameraArrayESt6vectorIPKNS_6CameraESaIS4_EE
+  params:
+  - name: cameras
+    type: const int
+  return_type: void
+  signature: void Ogre::AutoParamDataSource::setCameraArray(const int)
+language: c++
+project: ogre
+target_name: image_fuzz
+target_path: /src/image_fuzz.cpp

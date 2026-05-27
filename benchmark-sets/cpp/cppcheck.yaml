@@ -1,40 +1,411 @@
 functions:
-- name: _ZN9simplecpp9TokenListaSERKS0_
+- name: _ZN9simplecpp5Macro11parseDefineEPKNS_5TokenE
   params:
-  - name: other
-    type: const simplecpp::TokenList &
-  return_type: simplecpp::TokenList &
-  signature: simplecpp::TokenList & simplecpp::TokenList::operator=(const simplecpp::TokenList &)
-- name: _ZN9simplecpp5MacroaSERKS0_
-  params:
-  - name: other
-    type: const simplecpp::Macro &
-  return_type: simplecpp::Macro &
-  signature: simplecpp::Macro & simplecpp::Macro::operator=(const simplecpp::Macro &)
-- name: _ZN12Preprocessor7getcodeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIS5_SaIS5_EEb
-  params:
-  - name: cfg
-    type: const std::string &
-  - name: files
-    type: int &
-  - name: writeLocations
-    type: bool
-  return_type: std::string
-  signature: std::string Preprocessor::getcode(const std::string &, int &, bool)
-- name: _ZL8samelinePKN9simplecpp5TokenES2_.104977
-  params:
-  - name: tok1
-    type: const simplecpp::Token *
-  - name: tok2
+  - name: nametoken
     type: const simplecpp::Token *
   return_type: bool
-  signature: bool sameline(const simplecpp::Token *, const simplecpp::Token *)
+  signature: bool simplecpp::Macro::parseDefine(const simplecpp::Token *)
+- name: _ZN9simplecpp9TokenList9push_backEPNS_5TokenE
+  params:
+  - name: tok
+    type: simplecpp::Token *
+  return_type: void
+  signature: void simplecpp::TokenList::push_back(simplecpp::Token *)
+- name: _ZNK9simplecpp8Location8samelineERKS0_
+  params:
+  - name: other
+    type: const simplecpp::Location &
+  return_type: bool
+  signature: bool simplecpp::Location::sameline(const simplecpp::Location &) const
 - name: _ZN9simplecpp5Token6setstrERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
   params:
   - name: s
     type: const std::string &
   return_type: void
   signature: void simplecpp::Token::setstr(const std::string &)
+- name: _ZNK9simplecpp9TokenList4fileB5cxx11ERKNS_8LocationE
+  params:
+  - name: loc
+    type: const simplecpp::Location &
+  return_type: const std::string &
+  signature: const std::string & simplecpp::TokenList::file(const simplecpp::Location &) const
+- name: _ZN9simplecpp9TokenList11deleteTokenEPNS_5TokenE
+  params:
+  - name: tok
+    type: simplecpp::Token *
+  return_type: void
+  signature: void simplecpp::TokenList::deleteToken(simplecpp::Token *)
+- name: _ZN9simplecpp5Macro15invalidHashHash20universalCharacterUBERKNS_8LocationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPKNS_5TokenESC_
+  params:
+  - name: loc
+    type: const simplecpp::Location &
+  - name: macroName
+    type: const std::string &
+  - name: tokenA
+    type: const simplecpp::Token *
+  - name: strAB
+    type: const std::string &
+  return_type: simplecpp::Macro::invalidHashHash
+  signature: simplecpp::Macro::invalidHashHash simplecpp::Macro::invalidHashHash::universalCharacterUB(const simplecpp::Location
+    &, const std::string &, const simplecpp::Token *, const std::string &)
+- name: _ZN9simplecpp5Macro15invalidHashHash13cannotCombineERKNS_8LocationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPKNS_5TokenESF_
+  params:
+  - name: loc
+    type: const simplecpp::Location &
+  - name: macroName
+    type: const std::string &
+  - name: tokenA
+    type: const simplecpp::Token *
+  - name: tokenB
+    type: const simplecpp::Token *
+  return_type: simplecpp::Macro::invalidHashHash
+  signature: simplecpp::Macro::invalidHashHash simplecpp::Macro::invalidHashHash::cannotCombine(const simplecpp::Location
+    &, const std::string &, const simplecpp::Token *, const simplecpp::Token *)
+- name: _ZN9simplecpp5Macro15invalidHashHash15unexpectedTokenERKNS_8LocationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPKNS_5TokenE
+  params:
+  - name: loc
+    type: const simplecpp::Location &
+  - name: macroName
+    type: const std::string &
+  - name: tokenA
+    type: const simplecpp::Token *
+  return_type: simplecpp::Macro::invalidHashHash
+  signature: simplecpp::Macro::invalidHashHash simplecpp::Macro::invalidHashHash::unexpectedToken(const simplecpp::Location
+    &, const std::string &, const simplecpp::Token *)
+- name: _ZNK9simplecpp5Token14isExpandedFromEPKNS_5MacroE
+  params:
+  - name: m
+    type: const simplecpp::Macro *
+  return_type: bool
+  signature: bool simplecpp::Token::isExpandedFrom(const simplecpp::Macro *) const
+- name: _ZNK9simplecpp5Macro9getArgNumERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: str
+    type: const simplecpp::TokenString &
+  return_type: unsigned int
+  signature: unsigned int simplecpp::Macro::getArgNum(const simplecpp::TokenString &) const
+- name: _ZNK9simplecpp5Macro12appendTokensERNS_9TokenListERKNS_8LocationEPKNS_5TokenERKSt13unordered_mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES0_St4hashISF_ESt8equal_toISF_ESaISt4pairIKSF_S0_EEERKSt3setISF_St4lessISF_ESaISF_EERKSt6vectorIS8_SaIS8_EE
+  params:
+  - name: tokens
+    type: simplecpp::TokenList &
+  - name: rawloc
+    type: const simplecpp::Location &
+  - name: lpar
+    type: const simplecpp::Token *const
+  - name: macros
+    type: const int &
+  - name: expandedmacros
+    type: const int &
+  - name: parametertokens
+    type: const int &
+  return_type: const simplecpp::Token *
+  signature: const simplecpp::Token * simplecpp::Macro::appendTokens(simplecpp::TokenList &, const simplecpp::Location &,
+    const simplecpp::Token *const, const int &, const int &, const int &) const
+- name: _ZNK9simplecpp5Macro14expandHashHashERNS_9TokenListERKNS_8LocationEPKNS_5TokenERKSt13unordered_mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES0_St4hashISF_ESt8equal_toISF_ESaISt4pairIKSF_S0_EEERKSt3setISF_St4lessISF_ESaISF_EERKSt6vectorIS8_SaIS8_EEb
+  params:
+  - name: output
+    type: simplecpp::TokenList &
+  - name: loc
+    type: const simplecpp::Location &
+  - name: tok
+    type: const simplecpp::Token *
+  - name: macros
+    type: const int &
+  - name: expandedmacros
+    type: const int &
+  - name: parametertokens
+    type: const int &
+  - name: expandResult
+    type: bool
+  return_type: const simplecpp::Token *
+  signature: const simplecpp::Token * simplecpp::Macro::expandHashHash(simplecpp::TokenList &, const simplecpp::Location &,
+    const simplecpp::Token *, const int &, const int &, const int &, bool) const
+- name: _ZNK9simplecpp5Macro10expandHashERNS_9TokenListERKNS_8LocationEPKNS_5TokenERKSt3setINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4lessISF_ESaISF_EERKSt6vectorIS8_SaIS8_EE
+  params:
+  - name: output
+    type: simplecpp::TokenList &
+  - name: loc
+    type: const simplecpp::Location &
+  - name: tok
+    type: const simplecpp::Token *
+  - name: expandedmacros
+    type: const int &
+  - name: parametertokens
+    type: const int &
+  return_type: const simplecpp::Token *
+  signature: const simplecpp::Token * simplecpp::Macro::expandHash(simplecpp::TokenList &, const simplecpp::Location &, const
+    simplecpp::Token *, const int &, const int &) const
+- name: _ZNK9simplecpp5Macro9expandArgERNS_9TokenListEPKNS_5TokenERKNS_8LocationERKSt13unordered_mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES0_St4hashISF_ESt8equal_toISF_ESaISt4pairIKSF_S0_EEERKSt3setISF_St4lessISF_ESaISF_EERKSt6vectorIS5_SaIS5_EE
+  params:
+  - name: output
+    type: simplecpp::TokenList &
+  - name: tok
+    type: const simplecpp::Token *
+  - name: loc
+    type: const simplecpp::Location &
+  - name: macros
+    type: const int &
+  - name: expandedmacros
+    type: const int &
+  - name: parametertokens
+    type: const int &
+  return_type: bool
+  signature: bool simplecpp::Macro::expandArg(simplecpp::TokenList &, const simplecpp::Token *, const simplecpp::Location
+    &, const int &, const int &, const int &) const
+- name: _ZNK9simplecpp5Macro6expandERNS_9TokenListERKNS_8LocationEPKNS_5TokenERKSt13unordered_mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES0_St4hashISF_ESt8equal_toISF_ESaISt4pairIKSF_S0_EEESt3setISF_St4lessISF_ESaISF_EE
+  params:
+  - name: output
+    type: simplecpp::TokenList &
+  - name: loc
+    type: const simplecpp::Location &
+  - name: nameTokInst
+    type: const simplecpp::Token *const
+  - name: macros
+    type: const int &
+  - name: expandedmacros
+    type: int
+  return_type: const simplecpp::Token *
+  signature: const simplecpp::Token * simplecpp::Macro::expand(simplecpp::TokenList &, const simplecpp::Location &, const
+    simplecpp::Token *const, const int &, int) const
+- name: _ZNK9simplecpp5Macro13newMacroTokenERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS_8LocationEbPKNS_5TokenE
+  params:
+  - name: str
+    type: const simplecpp::TokenString &
+  - name: loc
+    type: const simplecpp::Location &
+  - name: replaced
+    type: bool
+  - name: expandedFromToken
+    type: const simplecpp::Token *
+  return_type: simplecpp::Token *
+  signature: simplecpp::Token * simplecpp::Macro::newMacroToken(const simplecpp::TokenString &, const simplecpp::Location
+    &, bool, const simplecpp::Token *) const
+- name: _ZN9simplecpp5Token15setExpandedFromEPKS0_PKNS_5MacroE
+  params:
+  - name: tok
+    type: const simplecpp::Token *
+  - name: m
+    type: const simplecpp::Macro *
+  return_type: void
+  signature: void simplecpp::Token::setExpandedFrom(const simplecpp::Token *, const simplecpp::Macro *)
+- name: _ZNK9simplecpp5Macro18getMacroParametersEPKNS_5TokenEb
+  params:
+  - name: nameTokInst
+    type: const simplecpp::Token *
+  - name: calledInDefine
+    type: bool
+  return_type: int
+  signature: int simplecpp::Macro::getMacroParameters(const simplecpp::Token *, bool) const
+- name: _ZN9simplecpp5Macro15invalidHashHash17unexpectedNewlineERKNS_8LocationERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: loc
+    type: const simplecpp::Location &
+  - name: macroName
+    type: const std::string &
+  return_type: simplecpp::Macro::invalidHashHash
+  signature: simplecpp::Macro::invalidHashHash simplecpp::Macro::invalidHashHash::unexpectedNewline(const simplecpp::Location
+    &, const std::string &)
+- name: _ZNK9simplecpp5Macro11expandTokenERNS_9TokenListERKNS_8LocationEPKNS_5TokenERKSt13unordered_mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES0_St4hashISF_ESt8equal_toISF_ESaISt4pairIKSF_S0_EEERKSt3setISF_St4lessISF_ESaISF_EERKSt6vectorIS8_SaIS8_EE
+  params:
+  - name: output
+    type: simplecpp::TokenList &
+  - name: loc
+    type: const simplecpp::Location &
+  - name: tok
+    type: const simplecpp::Token *
+  - name: macros
+    type: const int &
+  - name: expandedmacros
+    type: const int &
+  - name: parametertokens
+    type: const int &
+  return_type: const simplecpp::Token *
+  signature: const simplecpp::Token * simplecpp::Macro::expandToken(simplecpp::TokenList &, const simplecpp::Location &, const
+    simplecpp::Token *, const int &, const int &, const int &) const
+- name: _ZNK9simplecpp5Macro9expandArgERNS_9TokenListEPKNS_5TokenERKSt6vectorIS5_SaIS5_EE
+  params:
+  - name: output
+    type: simplecpp::TokenList &
+  - name: tok
+    type: const simplecpp::Token *
+  - name: loc
+    type: const simplecpp::Location &
+  - name: macros
+    type: const int &
+  - name: expandedmacros
+    type: const int &
+  - name: parametertokens
+    type: const int &
+  return_type: bool
+  signature: bool simplecpp::Macro::expandArg(simplecpp::TokenList &, const simplecpp::Token *, const simplecpp::Location
+    &, const int &, const int &, const int &) const
+- name: _ZNK9simplecpp5Macro20recursiveExpandTokenERNS_9TokenListES2_RKNS_8LocationEPKNS_5TokenERKSt13unordered_mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES0_St4hashISF_ESt8equal_toISF_ESaISt4pairIKSF_S0_EEERKSt3setISF_St4lessISF_ESaISF_EERKSt6vectorIS8_SaIS8_EE
+  params:
+  - name: output
+    type: simplecpp::TokenList &
+  - name: temp
+    type: simplecpp::TokenList &
+  - name: loc
+    type: const simplecpp::Location &
+  - name: tok
+    type: const simplecpp::Token *
+  - name: macros
+    type: const int &
+  - name: expandedmacros
+    type: const int &
+  - name: parametertokens
+    type: const int &
+  return_type: const simplecpp::Token *
+  signature: const simplecpp::Token * simplecpp::Macro::recursiveExpandToken(simplecpp::TokenList &, simplecpp::TokenList
+    &, const simplecpp::Location &, const simplecpp::Token *, const int &, const int &, const int &) const
+- name: _ZN9simplecpp9TokenList10takeTokensERS0_
+  params:
+  - name: other
+    type: simplecpp::TokenList &
+  return_type: void
+  signature: void simplecpp::TokenList::takeTokens(simplecpp::TokenList &)
+- name: _ZNK9simplecpp5Token7isOneOfEPKc
+  params:
+  - name: ops
+    type: const char[]
+  return_type: bool
+  signature: bool simplecpp::Token::isOneOf(const char[]) const
+- name: _ZNK9simplecpp5Macro6expandERNS_9TokenListEPKNS_5TokenERKSt13unordered_mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES0_St4hashISC_ESt8equal_toISC_ESaISt4pairIKSC_S0_EEERSt6vectorISC_SaISC_EE
+  params:
+  - name: output
+    type: simplecpp::TokenList &
+  - name: loc
+    type: const simplecpp::Location &
+  - name: nameTokInst
+    type: const simplecpp::Token *const
+  - name: macros
+    type: const int &
+  - name: expandedmacros
+    type: int
+  return_type: const simplecpp::Token *
+  signature: const simplecpp::Token * simplecpp::Macro::expand(simplecpp::TokenList &, const simplecpp::Location &, const
+    simplecpp::Token *const, const int &, int) const
+- name: _ZNK9simplecpp9TokenList6Stream13makeUtf16CharEhh
+  params:
+  - name: ch
+    type: const unsigned char
+  - name: ch2
+    type: const unsigned char
+  return_type: int
+  signature: int simplecpp::TokenList::Stream::makeUtf16Char(const unsigned char, const unsigned char) const
+- name: _ZN9simplecpp9TokenList23constFoldUnaryNotPosNegEPNS_5TokenE
+  params:
+  - name: tok
+    type: simplecpp::Token *
+  return_type: void
+  signature: void simplecpp::TokenList::constFoldUnaryNotPosNeg(simplecpp::Token *)
+- name: _ZN9simplecpp9TokenList18constFoldMulDivRemEPNS_5TokenE
+  params:
+  - name: tok
+    type: simplecpp::Token *
+  return_type: void
+  signature: void simplecpp::TokenList::constFoldMulDivRem(simplecpp::Token *)
+- name: _ZN9simplecpp9TokenList15constFoldAddSubEPNS_5TokenE
+  params:
+  - name: tok
+    type: simplecpp::Token *
+  return_type: void
+  signature: void simplecpp::TokenList::constFoldAddSub(simplecpp::Token *)
+- name: _ZN9simplecpp9TokenList14constFoldShiftEPNS_5TokenE
+  params:
+  - name: tok
+    type: simplecpp::Token *
+  return_type: void
+  signature: void simplecpp::TokenList::constFoldShift(simplecpp::Token *)
+- name: _ZN9simplecpp9TokenList19constFoldComparisonEPNS_5TokenE
+  params:
+  - name: tok
+    type: simplecpp::Token *
+  return_type: void
+  signature: void simplecpp::TokenList::constFoldComparison(simplecpp::Token *)
+- name: _ZN9simplecpp9TokenList16constFoldBitwiseEPNS_5TokenE
+  params:
+  - name: tok
+    type: simplecpp::Token *
+  return_type: void
+  signature: void simplecpp::TokenList::constFoldBitwise(simplecpp::Token *)
+- name: _ZN9simplecpp9TokenList18constFoldLogicalOpEPNS_5TokenE
+  params:
+  - name: tok
+    type: simplecpp::Token *
+  return_type: void
+  signature: void simplecpp::TokenList::constFoldLogicalOp(simplecpp::Token *)
+- name: _ZN9simplecpp9TokenList19constFoldQuestionOpERPNS_5TokenE
+  params:
+  - name: tok1
+    type: simplecpp::Token *&
+  return_type: void
+  signature: void simplecpp::TokenList::constFoldQuestionOp(simplecpp::Token *&)
+- name: _ZNK9simplecpp5Token15startsWithOneOfEPKc
+  params:
+  - name: c
+    type: const char[]
+  return_type: bool
+  signature: bool simplecpp::Token::startsWithOneOf(const char[]) const
+- name: _ZN9simplecpp9TokenList8readfileERNS0_6StreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS3_4listINS_6OutputESaISC_EEE
+  params:
+  - name: stream
+    type: simplecpp::TokenList::Stream &
+  - name: filename
+    type: const std::string &
+  - name: outputList
+    type: int *
+  return_type: void
+  signature: void simplecpp::TokenList::readfile(simplecpp::TokenList::Stream &, const std::string &, int *)
+- name: _ZN9simplecpp9TokenList9fileIndexERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: filename
+    type: const std::string &
+  return_type: unsigned int
+  signature: unsigned int simplecpp::TokenList::fileIndex(const std::string &)
+- name: _ZNK9simplecpp9TokenList22isLastLinePreprocessorEi
+  params:
+  - name: maxsize
+    type: int
+  return_type: const simplecpp::Token *
+  signature: const simplecpp::Token * simplecpp::TokenList::isLastLinePreprocessor(int) const
+- name: _ZN9simplecpp9TokenList13lineDirectiveEjjRNS_8LocationE
+  params:
+  - name: fileIndex
+    type: unsigned int
+  - name: line
+    type: unsigned int
+  - name: location
+    type: simplecpp::Location &
+  return_type: void
+  signature: void simplecpp::TokenList::lineDirective(unsigned int, unsigned int, simplecpp::Location &)
+- name: _ZN9simplecpp8Location6adjustERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: str
+    type: const std::string &
+  return_type: void
+  signature: void simplecpp::Location::adjust(const std::string &)
+- name: _ZN9simplecpp9TokenList9readUntilERNS0_6StreamERKNS_8LocationEccPNSt7__cxx114listINS_6OutputESaIS8_EEE
+  params:
+  - name: stream
+    type: simplecpp::TokenList::Stream &
+  - name: location
+    type: const simplecpp::Location &
+  - name: start
+    type: const char
+  - name: end
+    type: const char
+  - name: outputList
+    type: int *
+  return_type: std::string
+  signature: std::string simplecpp::TokenList::readUntil(simplecpp::TokenList::Stream &, const simplecpp::Location &, const
+    char, const char, int *)
+- name: _ZNK9simplecpp9TokenList11lastLineTokEi
+  params:
+  - name: maxsize
+    type: int
+  return_type: const simplecpp::Token *
+  signature: const simplecpp::Token * simplecpp::TokenList::lastLineTok(int) const
 - name: _ZN9simplecpp10preprocessERNS_9TokenListERKS0_RSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISA_EERNS_13FileDataCacheERKNS_3DUIEPNS5_4listINS_6OutputESaISK_EEEPNSJ_INS_10MacroUsageESaISO_EEEPNSJ_INS_6IfCondESaISS_EEE
   params:
   - name: output
@@ -56,68 +427,6 @@ functions:
   return_type: void
   signature: void simplecpp::preprocess(simplecpp::TokenList &, const simplecpp::TokenList &, int &, simplecpp::FileDataCache
     &, const simplecpp::DUI &, int *, int *, int *)
-- name: _ZN9simplecpp9TokenList8readfileERNS0_6StreamERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS3_4listINS_6OutputESaISC_EEE
-  params:
-  - name: stream
-    type: simplecpp::TokenList::Stream &
-  - name: filename
-    type: const std::string &
-  - name: outputList
-    type: int *
-  return_type: void
-  signature: void simplecpp::TokenList::readfile(simplecpp::TokenList::Stream &, const std::string &, int *)
-- name: _ZL15preprocessTokenRN9simplecpp9TokenListERPKNS_5TokenERSt13unordered_mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS_5MacroESt4hashISC_ESt8equal_toISC_ESaISt4pairIKSC_SD_EEERSt6vectorISC_SaISC_EEPNS7_4listINS_6OutputESaIST_EEE
-  params:
-  - name: output
-    type: simplecpp::TokenList &
-  - name: tok1
-    type: const simplecpp::Token *&
-  - name: macros
-    type: int &
-  - name: files
-    type: int &
-  - name: outputList
-    type: int *
-  return_type: bool
-  signature: bool preprocessToken(simplecpp::TokenList &, const simplecpp::Token *&, int &, int &, int *)
-- name: _ZN9simplecpp9TokenList6Stream8readCharEv
-  params: []
-  return_type: unsigned char
-  signature: unsigned char simplecpp::TokenList::Stream::readChar()
-- name: _ZN16StdCharBufStreamC2EPKhm
-  params:
-  - name: str
-    type: const unsigned char *
-  - name: size
-    type: std::size_t
-  return_type: void
-  signature: void StdCharBufStream::StdCharBufStream(const unsigned char *, std::size_t)
-- name: _ZN9simplecpp7cleanupERNS_13FileDataCacheE
-  params:
-  - name: cache
-    type: simplecpp::FileDataCache &
-  return_type: void
-  signature: void simplecpp::cleanup(simplecpp::FileDataCache &)
-- name: _ZL8evaluateRN9simplecpp9TokenListERKNS_3DUIERKSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEmSt4lessISB_ESaISt4pairIKSB_mEEE
-  params:
-  - name: expr
-    type: simplecpp::TokenList &
-  - name: dui
-    type: const simplecpp::DUI &
-  - name: sizeOfType
-    type: const int &
-  return_type: long long
-  signature: long long evaluate(simplecpp::TokenList &, const simplecpp::DUI &, const int &)
-- name: _ZN9simplecpp9TokenList9constFoldEv
-  params: []
-  return_type: void
-  signature: void simplecpp::TokenList::constFold()
-- name: _ZN9simplecpp5MacroC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_RSt6vectorIS6_SaIS6_EE
-  params:
-  - name: other
-    type: const simplecpp::Macro &
-  return_type: void
-  signature: void simplecpp::Macro::Macro(const simplecpp::Macro &)
 - name: _ZN9simplecpp13FileDataCache3getERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_RKNS_3DUIEbRSt6vectorIS6_SaIS6_EEPNS1_4listINS_6OutputESaISH_EEE
   params:
   - name: sourcefile
@@ -135,66 +444,92 @@ functions:
   return_type: std::pair<simplecpp::FileData *, bool>
   signature: std::pair<simplecpp::FileData *, bool> simplecpp::FileDataCache::get(const std::string &, const std::string &,
     const simplecpp::DUI &, bool, int &, int *)
-- name: _ZN12Preprocessor10preprocessERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIS5_SaIS5_EERNS0_4listIN9simplecpp6OutputESaISE_EEE
+- name: _ZN9simplecpp13FileDataCache7tryloadERNSt8__detail14_Node_iteratorISt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPNS_8FileDataEELb0ELb1EEERKNS_3DUIERSt6vectorIS9_SaIS9_EEPNS4_4listINS_6OutputESaISO_EEE
   params:
-  - name: cfg
-    type: const std::string &
-  - name: files
+  - name: name_it
+    type: int &
+  - name: dui
+    type: const simplecpp::DUI &
+  - name: filenames
     type: int &
   - name: outputList
+    type: int *
+  return_type: std::pair<simplecpp::FileData *, bool>
+  signature: std::pair<simplecpp::FileData *, bool> simplecpp::FileDataCache::tryload(int &, const simplecpp::DUI &, int &,
+    int *)
+- name: _ZN9simplecpp4loadERKNS_9TokenListERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS9_EERKNS_3DUIEPNS4_4listINS_6OutputESaISH_EEENS_13FileDataCacheE
+  params:
+  - name: rawtokens
+    type: const simplecpp::TokenList &
+  - name: filenames
     type: int &
-  return_type: simplecpp::TokenList
-  signature: simplecpp::TokenList Preprocessor::preprocess(const std::string &, int &, int &)
-- name: _ZNK9simplecpp9TokenList4dumpEb
+  - name: dui
+    type: const simplecpp::DUI &
+  - name: outputList
+    type: int *
+  - name: cache
+    type: simplecpp::FileDataCache
+  return_type: simplecpp::FileDataCache
+  signature: simplecpp::FileDataCache simplecpp::load(const simplecpp::TokenList &, int &, const simplecpp::DUI &, int *,
+    simplecpp::FileDataCache)
+- name: _ZNK9simplecpp9TokenList9stringifyB5cxx11Eb
   params:
   - name: linenrs
     type: bool
+  return_type: std::string
+  signature: std::string simplecpp::TokenList::stringify(bool) const
+- name: _ZN8Analyzer6Result6updateES0_
+  params:
+  - name: rhs
+    type: Analyzer::Result
   return_type: void
-  signature: void simplecpp::TokenList::dump(bool) const
-- name: _ZN19AnalyzerInformation11analyzeFileERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_S7_mmRNS0_4listI12ErrorMessageSaIS9_EEE
+  signature: void Analyzer::Result::update(Analyzer::Result)
+- name: _ZN8Analyzer6Action3setEjb
   params:
-  - name: buildDir
-    type: const std::string &
-  - name: sourcefile
-    type: const std::string &
-  - name: cfg
-    type: const std::string &
-  - name: fsFileId
-    type: std::size_t
-  - name: hash
-    type: std::size_t
-  - name: errors
-    type: int &
-  return_type: bool
-  signature: bool AnalyzerInformation::analyzeFile(const std::string &, const std::string &, const std::string &, std::size_t,
-    std::size_t, int &)
-- name: _ZL22valueFlowContainerSizeRK9TokenListRK14SymbolDatabaseR11ErrorLoggerRK8SettingsRKSt3setIPK5ScopeSt4lessISD_ESaISD_EE
-  params:
-  - name: tokenlist
-    type: const TokenList &
-  - name: symboldatabase
-    type: const SymbolDatabase &
-  - name: errorLogger
-    type: ErrorLogger &
-  - name: settings
-    type: const Settings &
-  - name: skippedFunctions
-    type: const int &
+  - name: f
+    type: unsigned int
+  - name: state
+    type: bool
   return_type: void
-  signature: void valueFlowContainerSize(const TokenList &, const SymbolDatabase &, ErrorLogger &, const Settings &, const
-    int &)
-- name: _ZNK5Token16hasKnownIntValueEv
-  params: []
-  return_type: bool
-  signature: bool Token::hasKnownIntValue() const
-- name: _ZL16valueFlowForwardP5TokenPKS_S2_NSt7__cxx114listIN9ValueFlow5ValueESaIS6_EEERK9TokenListR11ErrorLoggerRK8Settings14SourceLocation
+  signature: void Analyzer::Action::set(unsigned int, bool)
+- name: _ZNK7Library9Container9getActionERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
   params:
-  - name: startToken
-    type: Token *
-  - name: exprTok
-    type: const Token *
+  - name: function
+    type: const std::string &
+  return_type: Library::Container::Action
+  signature: Library::Container::Action Library::Container::getAction(const std::string &) const
+- name: _ZNK17SimpleEnableGroupI8SeverityE9isEnabledES0_
+  params:
+  - name: value
+    type: const ValueFlow::Value *
+  - name: inconclusiveCheck
+    type: bool
+  return_type: bool
+  signature: bool Settings::isEnabled(const ValueFlow::Value *, bool) const
+- name: _ZNK8Analyzer6Action3getEj
+  params:
+  - name: f
+    type: unsigned int
+  return_type: bool
+  signature: bool Analyzer::Action::get(unsigned int) const
+- name: _ZN9ValueFlow12asImpossibleENS_5ValueE
+  params:
   - name: v
     type: ValueFlow::Value
+  return_type: ValueFlow::Value
+  signature: ValueFlow::Value ValueFlow::asImpossible(ValueFlow::Value)
+- name: _ZNK7Library18getArgIteratorInfoEPK5Tokeni
+  params:
+  - name: ftok
+    type: const Token *
+  - name: argnr
+    type: int
+  return_type: const ArgumentChecks::IteratorInfo *
+  signature: const ArgumentChecks::IteratorInfo * Library::getArgIteratorInfo(const Token *, int) const
+- name: _ZN13LifetimeStore5byRefEP5TokenRK9TokenListR11ErrorLoggerRK8Settings14SourceLocation
+  params:
+  - name: tok
+    type: Token *
   - name: tokenlist
     type: const TokenList &
   - name: errorLogger
@@ -203,285 +538,379 @@ functions:
     type: const Settings &
   - name: loc
     type: SourceLocation
-  return_type: Analyzer::Result
-  signature: Analyzer::Result valueFlowForward(Token *, const Token *, ValueFlow::Value, const TokenList &, ErrorLogger &,
-    const Settings &, SourceLocation)
-- name: _ZN8Analyzer6ActionoRES0_
-  params:
-  - name: a
-    type: Analyzer::Action
-  return_type: Analyzer::Action &
-  signature: Analyzer::Action & Analyzer::Action::operator|=(Analyzer::Action)
-- name: _ZL13mergeAdjacentRNSt7__cxx114listIN9ValueFlow5ValueESaIS2_EEE
-  params:
-  - name: values
-    type: int &
-  return_type: void
-  signature: void mergeAdjacent(int &)
-- name: _ZL15getInitListSizePK5TokenPK9ValueTypeRK8Settingsb
+  return_type: bool
+  signature: bool LifetimeStore::byRef(Token *, const TokenList &, ErrorLogger &, const Settings &, SourceLocation)
+- name: _ZN13LifetimeStore5byValEP5TokenRK9TokenListR11ErrorLoggerRK8Settings14SourceLocation
   params:
   - name: tok
-    type: const Token *
-  - name: valueType
-    type: const ValueType *
+    type: Token *
+  - name: tokenlist
+    type: const TokenList &
+  - name: errorLogger
+    type: ErrorLogger &
   - name: settings
     type: const Settings &
-  - name: known
+  - name: loc
+    type: SourceLocation
+  return_type: bool
+  signature: bool LifetimeStore::byVal(Token *, const TokenList &, ErrorLogger &, const Settings &, SourceLocation)
+- name: _ZNK13LifetimeStore11byDerefCopyEP5TokenRK9TokenListR11ErrorLoggerRK8Settings14SourceLocation
+  params:
+  - name: tok
+    type: Token *
+  - name: tokenlist
+    type: const TokenList &
+  - name: errorLogger
+    type: ErrorLogger &
+  - name: settings
+    type: const Settings &
+  - name: loc
+    type: SourceLocation
+  return_type: bool
+  signature: bool LifetimeStore::byDerefCopy(Token *, const TokenList &, ErrorLogger &, const Settings &, SourceLocation)
+    const
+- name: _ZN9ValueFlow13isOutOfBoundsERKNS_5ValueEPK5Tokenb
+  params:
+  - name: size
+    type: const ValueFlow::Value &
+  - name: indexTok
+    type: const Token *
+  - name: possible
     type: bool
   return_type: int
-  signature: int getInitListSize(const Token *, const ValueType *, const Settings &, bool)
-- name: _ZL21changePossibleToKnownRNSt7__cxx114listIN9ValueFlow5ValueESaIS2_EEEi
+  signature: int ValueFlow::isOutOfBounds(const ValueFlow::Value &, const Token *, bool)
+- name: _ZNK19ValueFlowPassRunner3runESt16initializer_listI8ValuePtrI13ValueFlowPassEE
   params:
-  - name: values
-    type: int &
-  - name: indirect
-    type: int
-  return_type: void
-  signature: void changePossibleToKnown(int &, int)
-- name: _ZL21changeKnownToPossibleRNSt7__cxx114listIN9ValueFlow5ValueESaIS2_EEEi
-  params:
-  - name: values
-    type: int &
-  - name: indirect
-    type: int
-  return_type: void
-  signature: void changeKnownToPossible(int &, int)
-- name: _ZNK8Analyzer6Action10isModifiedEv
-  params: []
+  - name: passes
+    type: std::initializer_list<ValuePtr<ValueFlowPass>>
   return_type: bool
-  signature: bool Analyzer::Action::isModified() const
-- name: _ZNK8Analyzer6Action14isInconclusiveEv
-  params: []
+  signature: bool ValueFlowPassRunner::run(std::initializer_list<ValuePtr<ValueFlowPass>>) const
+- name: _ZNK19ValueFlowPassRunner8run_onceESt16initializer_listI8ValuePtrI13ValueFlowPassEE
+  params:
+  - name: passes
+    type: std::initializer_list<ValuePtr<ValueFlowPass>>
   return_type: bool
-  signature: bool Analyzer::Action::isInconclusive() const
-- name: _ZN9ValueFlow12asImpossibleENS_5ValueE
-  params:
-  - name: v
-    type: ValueFlow::Value
-  return_type: ValueFlow::Value
-  signature: ValueFlow::Value ValueFlow::asImpossible(ValueFlow::Value)
-- name: _ZNK17ValueFlowAnalyzer10writeValueEPN9ValueFlow5ValueEPK5TokenN8Analyzer9DirectionE
-  params:
-  - name: value
-    type: ValueFlow::Value *
-  - name: tok
-    type: const Token *
-  - name: d
-    type: Analyzer::Direction
-  return_type: void
-  signature: void ValueFlowAnalyzer::writeValue(ValueFlow::Value *, const Token *, Analyzer::Direction) const
-- name: _ZL16removePointValueRNSt7__cxx114listIN9ValueFlow5ValueESaIS2_EEERSt14_List_iteratorIS2_E
-  params:
-  - name: values
-    type: int &
-  - name: x
-    type: int &
-  return_type: bool
-  signature: bool removePointValue(int &, int &)
-- name: _ZL14isSameLifetimePK5TokenS1_
-  params:
-  - name: tok1
-    type: const Token *const
-  - name: tok2
-    type: const Token *const
-  return_type: bool
-  signature: bool isSameLifetime(const Token *const, const Token *const)
-- name: _ZL28valueFlowLifetimeConstructorP5TokenRK9TokenListR11ErrorLoggerRK8Settings
-  params:
-  - name: tok
-    type: Token *
-  - name: tokenlist
-    type: const TokenList &
-  - name: errorLogger
-    type: ErrorLogger &
-  - name: settings
-    type: const Settings &
-  return_type: void
-  signature: void valueFlowLifetimeConstructor(Token *, const TokenList &, ErrorLogger &, const Settings &)
-- name: _ZL25valueFlowLifetimeFunctionP5TokenRK9TokenListR11ErrorLoggerRK8Settings
-  params:
-  - name: tok
-    type: Token *
-  - name: tokenlist
-    type: const TokenList &
-  - name: errorLogger
-    type: ErrorLogger &
-  - name: settings
-    type: const Settings &
-  return_type: void
-  signature: void valueFlowLifetimeFunction(Token *, const TokenList &, ErrorLogger &, const Settings &)
-- name: _ZN9ValueType14matchParameterEPKS_S1_
-  params:
-  - name: call
-    type: const ValueType *
-  - name: func
-    type: const ValueType *
-  return_type: ValueType::MatchResult
-  signature: ValueType::MatchResult ValueType::matchParameter(const ValueType *, const ValueType *)
-- name: _ZL17valueFlowLifetimeR9TokenListR11ErrorLoggerRK8Settings
-  params:
-  - name: tokenlist
-    type: TokenList &
-  - name: errorLogger
-    type: ErrorLogger &
-  - name: settings
-    type: const Settings &
-  return_type: void
-  signature: void valueFlowLifetime(TokenList &, ErrorLogger &, const Settings &)
-- name: _ZN6LambdaC2EPK5Token
-  params:
-  - name: tok
-    type: const Token *
-  return_type: void
-  signature: void Lambda::Lambda(const Token *)
-- name: _ZN13ProgramMemory7replaceES_b
-  params:
-  - name: pm
-    type: ProgramMemory
-  - name: skipUnknown
-    type: bool
-  return_type: void
-  signature: void ProgramMemory::replace(ProgramMemory, bool)
-- name: _ZN18ProgramMemoryState7replaceE13ProgramMemoryPK5Token
-  params:
-  - name: pm
-    type: ProgramMemory
-  - name: origin
-    type: const Token *
-  return_type: void
-  signature: void ProgramMemoryState::replace(ProgramMemory, const Token *)
-- name: _ZL22setAutoTokenPropertiesP5Token
-  params:
-  - name: autoTok
-    type: Token *const
-  return_type: void
-  signature: void setAutoTokenProperties(Token *const)
-- name: _ZN9ValueFlow9setValuesER9TokenListR14SymbolDatabaseR11ErrorLoggerRK8SettingsP16TimerResultsIntf
-  params:
-  - name: tokenlist
-    type: TokenList &
-  - name: symboldatabase
-    type: SymbolDatabase &
-  - name: errorLogger
-    type: ErrorLogger &
-  - name: settings
-    type: const Settings &
-  - name: timerResults
-    type: TimerResultsIntf *
-  return_type: void
-  signature: void ValueFlow::setValues(TokenList &, SymbolDatabase &, ErrorLogger &, const Settings &, TimerResultsIntf *)
-- name: _ZN9__gnu_cxx13new_allocatorISt10_List_nodeIZN9Tokenizer13simplifyUsingEvE5UsingEE9constructIS3_JRP5TokenS9_EEEvPT_DpOT0_
-  params: []
-  return_type: bool
-  signature: bool Tokenizer::simplifyUsing()
-- name: _ZN5Token19addAttributeAlignasERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  signature: bool ValueFlowPassRunner::run_once(std::initializer_list<ValuePtr<ValueFlowPass>>) const
+- name: _ZN5Token4Impl19addAttributeAlignasERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
   params:
   - name: a
     type: const std::string &
   return_type: void
-  signature: void Token::addAttributeAlignas(const std::string &)
-- name: _ZN9__gnu_cxx5__ops10_Iter_predIZN5Scope25findInNestedListRecursiveERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE4$_24EclINS_17__normal_iteratorIPKPS2_St6vectorISF_SaISF_EEEEEEbT_
+  signature: void Token::Impl::addAttributeAlignas(const std::string &)
+- name: _ZNK9ValueType7isConstEi
   params:
-  - name: name
-    type: const std::string &
-  return_type: Scope *
-  signature: Scope * Scope::findInNestedListRecursive(const std::string &)
-- name: _ZN9__gnu_cxx5__ops10_Iter_predIZNK14SymbolDatabase15findScopeByNameERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE4$_23EclISt20_List_const_iteratorI5ScopeEEEbT_
-  params:
-  - name: name
-    type: const std::string &
-  return_type: const Scope *
-  signature: const Scope * SymbolDatabase::findScopeByName(const std::string &) const
-- name: _ZN9__gnu_cxx5__ops10_Iter_predIZNK5Scope11getVariableERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE4$_15EclISt20_List_const_iteratorI8VariableEEEbT_
-  params:
-  - name: varname
-    type: const std::string &
-  return_type: const Variable *
-  signature: const Variable * Scope::getVariable(const std::string &) const
-- name: _ZL11getEnumTypePK5ScopeRK8Platform
-  params:
-  - name: scope
-    type: const Scope *
-  - name: platform
-    type: const Platform &
-  return_type: ValueType::Type
-  signature: ValueType::Type getEnumType(const Scope *, const Platform &)
-- name: _ZN9ValueType15fromLibraryTypeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERK8Settings
-  params:
-  - name: typestr
-    type: const std::string &
-  - name: settings
-    type: const Settings &
+  - name: indirect
+    type: int
   return_type: bool
-  signature: bool ValueType::fromLibraryType(const std::string &, const Settings &)
-- name: _ZN9ValueType12setDebugPathEPK5Token14SourceLocationRKS3_
+  signature: bool ValueType::isConst(int) const
+- name: _ZNK8Platform15isLongLongValueEy
   params:
-  - name: tok
-    type: const Token *
-  - name: ctx
-    type: SourceLocation
-  - name: local
-    type: const SourceLocation &
-  return_type: void
-  signature: void ValueType::setDebugPath(const Token *, SourceLocation, const SourceLocation &)
-- name: _ZNK9Tokenizer4dumpERSo
-  params:
-  - name: out
-    type: std::ostream &
-  return_type: void
-  signature: void Tokenizer::dump(std::ostream &) const
-- name: _ZN14SymbolDatabase23setValueTypeInTokenListEbP5Token
-  params:
-  - name: reportDebugWarnings
-    type: bool
-  - name: tokens
-    type: Token *
-  return_type: void
-  signature: void SymbolDatabase::setValueTypeInTokenList(bool, Token *)
-- name: _ZL28valueFlowIsSameContainerTypeRK9ValueTypePK5TokenbRK8Settings
-  params:
-  - name: contType
-    type: const ValueType &
-  - name: tok
-    type: const Token *
-  - name: isView
-    type: bool
-  - name: settings
-    type: const Settings &
+  - name: value
+    type: MathLib::biguint
   return_type: bool
-  signature: bool valueFlowIsSameContainerType(const ValueType &, const Token *, bool, const Settings &)
-- name: _ZNK5Scope12findFunctionEPK5Tokenb9Reference
+  signature: bool Platform::isLongLongValue(MathLib::biguint) const
+- name: _ZNK8Platform11isLongValueEy
   params:
-  - name: tok
-    type: const Token *
-  - name: requireConst
-    type: bool
-  - name: ref
-    type: Reference
-  return_type: const Function *
-  signature: const Function * Scope::findFunction(const Token *, bool, Reference) const
-- name: _ZN5Token7typeStrB5cxx11EPKS_
+  - name: value
+    type: MathLib::biguint
+  return_type: bool
+  signature: bool Platform::isLongValue(MathLib::biguint) const
+- name: _ZNK8Platform10isIntValueEy
   params:
-  - name: tok
-    type: const Token *
+  - name: value
+    type: MathLib::biguint
+  return_type: bool
+  signature: bool Platform::isIntValue(MathLib::biguint) const
+- name: _ZNK9ValueType11isTypeEqualEPKS_
+  params:
+  - name: that
+    type: const ValueType *
+  return_type: bool
+  signature: bool ValueType::isTypeEqual(const ValueType *) const
+- name: _ZN19AnalyzerInformation9reportErrERK12ErrorMessage
+  params:
+  - name: msg
+    type: const ErrorMessage &
+  return_type: void
+  signature: void AnalyzerInformation::reportErr(const ErrorMessage &)
+- name: _ZN19AnalyzerInformation12skipAnalysisERKN8tinyxml211XMLDocumentEmRNSt7__cxx114listI12ErrorMessageSaIS6_EEEb
+  params:
+  - name: analyzerInfoDoc
+    type: const tinyxml2::XMLDocument &
+  - name: hash
+    type: std::size_t
+  - name: errors
+    type: int &
+  return_type: bool
+  signature: bool AnalyzerInformation::skipAnalysis(const tinyxml2::XMLDocument &, std::size_t, int &)
+- name: _ZN5Check12getMessageIdB5cxx11ERKN9ValueFlow5ValueEPKc
+  params:
+  - name: value
+    type: const ValueFlow::Value &
+  - name: id
+    type: const char[]
   return_type: std::string
-  signature: std::string Token::typeStr(const Token *)
-- name: _ZNK9ValueFlow5Value10isNonValueEv
-  params: []
+  signature: std::string Check::getMessageId(const ValueFlow::Value &, const char[])
+- name: _ZN21Check64BitPortability31assignmentAddressToIntegerErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void Check64BitPortability::assignmentAddressToIntegerError(const Token *)
+- name: _ZN21Check64BitPortability31assignmentIntegerToAddressErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void Check64BitPortability::assignmentIntegerToAddressError(const Token *)
+- name: _ZN21Check64BitPortability18returnIntegerErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void Check64BitPortability::returnIntegerError(const Token *)
+- name: _ZN21Check64BitPortability18returnPointerErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void Check64BitPortability::returnPointerError(const Token *)
+- name: _ZN11CheckAssert23sideEffectInAssertErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: functionName
+    type: const std::string &
+  return_type: void
+  signature: void CheckAssert::sideEffectInAssertError(const Token *, const std::string &)
+- name: _ZN18CheckAutoVariables27errorAutoVariableAssignmentEPK5Tokenb
+  params:
+  - name: tok
+    type: const Token *
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckAutoVariables::errorAutoVariableAssignment(const Token *, bool)
+- name: _ZN18CheckAutoVariables20errorReturnReferenceEPK5TokenNSt7__cxx114listISt4pairIS2_NS3_12basic_stringIcSt11char_traitsIcESaIcEEEESaISB_EEEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: errorPath
+    type: int
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckAutoVariables::errorReturnReference(const Token *, int, bool)
+- name: _ZN18CheckAutoVariables24errorReturnTempReferenceEPK5TokenNSt7__cxx114listISt4pairIS2_NS3_12basic_stringIcSt11char_traitsIcESaIcEEEESaISB_EEEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: errorPath
+    type: int
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckAutoVariables::errorReturnTempReference(const Token *, int, bool)
+- name: _ZN18CheckAutoVariables26errorDanglingTempReferenceEPK5TokenNSt7__cxx114listISt4pairIS2_NS3_12basic_stringIcSt11char_traitsIcESaIcEEEESaISB_EEEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: errorPath
+    type: int
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckAutoVariables::errorDanglingTempReference(const Token *, int, bool)
+- name: _ZN18CheckAutoVariables24errorInvalidDeallocationEPK5TokenPKN9ValueFlow5ValueE
+  params:
+  - name: tok
+    type: const Token *
+  - name: val
+    type: const ValueFlow::Value *
+  return_type: void
+  signature: void CheckAutoVariables::errorInvalidDeallocation(const Token *, const ValueFlow::Value *)
+- name: _ZN18CheckAutoVariables25errorUselessAssignmentArgEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckAutoVariables::errorUselessAssignmentArg(const Token *)
+- name: _ZN18CheckAutoVariables28errorUselessAssignmentPtrArgEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckAutoVariables::errorUselessAssignmentPtrArg(const Token *)
+- name: _ZN18CheckAutoVariables27errorReturnDanglingLifetimeEPK5TokenPKN9ValueFlow5ValueE
+  params:
+  - name: tok
+    type: const Token *
+  - name: val
+    type: const ValueFlow::Value *
+  return_type: void
+  signature: void CheckAutoVariables::errorReturnDanglingLifetime(const Token *, const ValueFlow::Value *)
+- name: _ZN18CheckAutoVariables20errorInvalidLifetimeEPK5TokenPKN9ValueFlow5ValueE
+  params:
+  - name: tok
+    type: const Token *
+  - name: val
+    type: const ValueFlow::Value *
+  return_type: void
+  signature: void CheckAutoVariables::errorInvalidLifetime(const Token *, const ValueFlow::Value *)
+- name: _ZN18CheckAutoVariables20errorDanglngLifetimeEPK5TokenPKN9ValueFlow5ValueEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: val
+    type: const ValueFlow::Value *
+  - name: isStatic
+    type: bool
+  return_type: void
+  signature: void CheckAutoVariables::errorDanglngLifetime(const Token *, const ValueFlow::Value *, bool)
+- name: _ZN18CheckAutoVariables30errorDanglingTemporaryLifetimeEPK5TokenPKN9ValueFlow5ValueES2_
+  params:
+  - name: tok
+    type: const Token *
+  - name: val
+    type: const ValueFlow::Value *
+  - name: tempTok
+    type: const Token *
+  return_type: void
+  signature: void CheckAutoVariables::errorDanglingTemporaryLifetime(const Token *, const ValueFlow::Value *, const Token
+    *)
+- name: _ZN18CheckAutoVariables27checkAutoVariableAssignmentEPK5TokenbS2_
+  params:
+  - name: expr
+    type: const Token *
+  - name: inconclusive
+    type: bool
+  - name: startToken
+    type: const Token *
   return_type: bool
-  signature: bool ValueFlow::Value::isNonValue() const
-- name: _ZN9__gnu_cxx5__ops10_Iter_predIZN5CheckC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE3$_1EclISt14_List_iteratorIPS2_EEEbT_
+  signature: bool CheckAutoVariables::checkAutoVariableAssignment(const Token *, bool, const Token *)
+- name: _ZN18CheckAutoVariables21checkVarLifetimeScopeEPK5TokenS2_
   params:
-  - name: arg0
-    type: const Check &
+  - name: start
+    type: const Token *
+  - name: end
+    type: const Token *
   return_type: void
-  signature: void Check::Check(const Check &)
-- name: _ZN9__gnu_cxx5__ops10_Iter_predIZN5CheckC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE3$_0EclISt14_List_iteratorIPS2_EEEbT_
+  signature: void CheckAutoVariables::checkVarLifetimeScope(const Token *, const Token *)
+- name: _ZN18CheckAutoVariables4diagEPK5Token
   params:
-  - name: arg0
-    type: const Check &
+  - name: tokvalue
+    type: const Token *
+  return_type: bool
+  signature: bool CheckAutoVariables::diag(const Token *)
+- name: _ZN9CheckBool24assignBoolToPointerErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
   return_type: void
-  signature: void Check::Check(const Check &)
+  signature: void CheckBool::assignBoolToPointerError(const Token *)
+- name: _ZN9CheckBool22assignBoolToFloatErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckBool::assignBoolToFloatError(const Token *)
+- name: _ZN9CheckBool34comparisonOfFuncReturningBoolErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: expression
+    type: const std::string &
+  return_type: void
+  signature: void CheckBool::comparisonOfFuncReturningBoolError(const Token *, const std::string &)
+- name: _ZN9CheckBool38comparisonOfTwoFuncsReturningBoolErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_
+  params:
+  - name: tok
+    type: const Token *
+  - name: expression1
+    type: const std::string &
+  - name: expression2
+    type: const std::string &
+  return_type: void
+  signature: void CheckBool::comparisonOfTwoFuncsReturningBoolError(const Token *, const std::string &, const std::string
+    &)
+- name: _ZN9CheckBool29comparisonOfBoolWithBoolErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: expression
+    type: const std::string &
+  return_type: void
+  signature: void CheckBool::comparisonOfBoolWithBoolError(const Token *, const std::string &)
+- name: _ZN9CheckBool21incrementBooleanErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckBool::incrementBooleanError(const Token *)
+- name: _ZN9CheckBool21bitwiseOnBooleanErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_b
+  params:
+  - name: tok
+    type: const Token *
+  - name: expression
+    type: const std::string &
+  - name: op
+    type: const std::string &
+  - name: isCompound
+    type: bool
+  return_type: void
+  signature: void CheckBool::bitwiseOnBooleanError(const Token *, const std::string &, const std::string &, bool)
+- name: _ZN9CheckBool38comparisonOfBoolExpressionWithIntErrorEPK5Tokenb
+  params:
+  - name: tok
+    type: const Token *
+  - name: not0or1
+    type: bool
+  return_type: void
+  signature: void CheckBool::comparisonOfBoolExpressionWithIntError(const Token *, bool)
+- name: _ZN9CheckBool21pointerArithBoolErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckBool::pointerArithBoolError(const Token *)
+- name: _ZN9CheckBool37comparisonOfBoolWithInvalidComparatorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: expression
+    type: const std::string &
+  return_type: void
+  signature: void CheckBool::comparisonOfBoolWithInvalidComparator(const Token *, const std::string &)
+- name: _ZN9CheckBool20returnValueBoolErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckBool::returnValueBoolError(const Token *)
+- name: _ZN9CheckBool20pointerArithBoolCondEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckBool::pointerArithBoolCond(const Token *)
+- name: _ZN27CheckBufferOverrun_internal10MyFileInfoCI2N5Check8FileInfoEENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: f0
+    type: std::string
+  return_type: void
+  signature: void Check::FileInfo::FileInfo(std::string)
+- name: _ZN18CheckBufferOverrun22isCtuUnsafeBufferUsageERK8SettingsPK5TokenPN3CTU8FileInfo5ValueEi
+  params:
+  - name: settings
+    type: const Settings &
+  - name: argtok
+    type: const Token *
+  - name: offset
+    type: CTU::FileInfo::Value *
+  - name: type
+    type: int
+  return_type: bool
+  signature: bool CheckBufferOverrun::isCtuUnsafeBufferUsage(const Settings &, const Token *, CTU::FileInfo::Value *, int)
 - name: _ZN18CheckBufferOverrun15arrayIndexErrorEPK5TokenRKSt6vectorI9DimensionSaIS4_EERKS3_IN9ValueFlow5ValueESaISA_EE
   params:
   - name: tok
@@ -492,6 +921,439 @@ functions:
     type: const int &
   return_type: void
   signature: void CheckBufferOverrun::arrayIndexError(const Token *, const int &, const int &)
+- name: _ZN18CheckBufferOverrun22pointerArithmeticErrorEPK5TokenS2_PKN9ValueFlow5ValueE
+  params:
+  - name: tok
+    type: const Token *
+  - name: indexToken
+    type: const Token *
+  - name: indexValue
+    type: const ValueFlow::Value *
+  return_type: void
+  signature: void CheckBufferOverrun::pointerArithmeticError(const Token *, const Token *, const ValueFlow::Value *)
+- name: _ZN18CheckBufferOverrun18negativeIndexErrorEPK5TokenRKSt6vectorI9DimensionSaIS4_EERKS3_IN9ValueFlow5ValueESaISA_EE
+  params:
+  - name: tok
+    type: const Token *
+  - name: dimensions
+    type: const int &
+  - name: indexes
+    type: const int &
+  return_type: void
+  signature: void CheckBufferOverrun::negativeIndexError(const Token *, const int &, const int &)
+- name: _ZN18CheckBufferOverrun24arrayIndexThenCheckErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: indexName
+    type: const std::string &
+  return_type: void
+  signature: void CheckBufferOverrun::arrayIndexThenCheckError(const Token *, const std::string &)
+- name: _ZN18CheckBufferOverrun19bufferOverflowErrorEPK5TokenPKN9ValueFlow5ValueE9Certainty
+  params:
+  - name: tok
+    type: const Token *
+  - name: value
+    type: const ValueFlow::Value *
+  - name: certainty
+    type: Certainty
+  return_type: void
+  signature: void CheckBufferOverrun::bufferOverflowError(const Token *, const ValueFlow::Value *, Certainty)
+- name: _ZN18CheckBufferOverrun16objectIndexErrorEPK5TokenPKN9ValueFlow5ValueEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: v
+    type: const ValueFlow::Value *
+  - name: known
+    type: bool
+  return_type: void
+  signature: void CheckBufferOverrun::objectIndexError(const Token *, const ValueFlow::Value *, bool)
+- name: _ZN18CheckBufferOverrun33negativeMemoryAllocationSizeErrorEPK5TokenPKN9ValueFlow5ValueE
+  params:
+  - name: tok
+    type: const Token *
+  - name: value
+    type: const ValueFlow::Value *
+  return_type: void
+  signature: void CheckBufferOverrun::negativeMemoryAllocationSizeError(const Token *, const ValueFlow::Value *)
+- name: _ZN18CheckBufferOverrun22negativeArraySizeErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckBufferOverrun::negativeArraySizeError(const Token *)
+- name: _ZN18CheckBufferOverrun21terminateStrncpyErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckBufferOverrun::terminateStrncpyError(const Token *, const std::string &)
+- name: _ZNK18CheckBufferOverrun13getBufferSizeEPK5Token
+  params:
+  - name: bufTok
+    type: const Token *
+  return_type: ValueFlow::Value
+  signature: ValueFlow::Value CheckBufferOverrun::getBufferSize(const Token *) const
+- name: _ZNK7Library11argminsizesEPK5Tokeni
+  params:
+  - name: ftok
+    type: const Token *
+  - name: argnr
+    type: int
+  return_type: const int *
+  signature: const int * Library::argminsizes(const Token *, int) const
+- name: _ZNK7Library14isargformatstrEPK5Tokeni
+  params:
+  - name: ftok
+    type: const Token *
+  - name: argnr
+    type: int
+  return_type: bool
+  signature: bool Library::isargformatstr(const Token *, int) const
+- name: _ZNK19CheckClass_internal10MyFileInfo7NameLoc14isSameLocationERKS1_
+  params:
+  - name: other
+    type: const MyFileInfo::NameLoc &
+  return_type: bool
+  signature: bool CheckClass_internal::MyFileInfo::NameLoc::isSameLocation(const MyFileInfo::NameLoc &) const
+- name: _ZN19CheckClass_internal10MyFileInfoCI2N5Check8FileInfoEENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: f0
+    type: std::string
+  return_type: void
+  signature: void Check::FileInfo::FileInfo(std::string)
+- name: _ZN10CheckClass18noConstructorErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: classname
+    type: const std::string &
+  - name: isStruct
+    type: bool
+  return_type: void
+  signature: void CheckClass::noConstructorError(const Token *, const std::string &, bool)
+- name: _ZN10CheckClass26noExplicitConstructorErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: classname
+    type: const std::string &
+  - name: isStruct
+    type: bool
+  return_type: void
+  signature: void CheckClass::noExplicitConstructorError(const Token *, const std::string &, bool)
+- name: _ZN10CheckClass31copyConstructorShallowCopyErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckClass::copyConstructorShallowCopyError(const Token *, const std::string &)
+- name: _ZN10CheckClass14uninitVarErrorEPK5Tokenb12FunctionTypeRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESB_bb
+  params:
+  - name: tok
+    type: const Token *
+  - name: isprivate
+    type: bool
+  - name: functionType
+    type: FunctionType
+  - name: classname
+    type: const std::string &
+  - name: varname
+    type: const std::string &
+  - name: derived
+    type: bool
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckClass::uninitVarError(const Token *, bool, FunctionType, const std::string &, const std::string &,
+    bool, bool)
+- name: _ZN10CheckClass22missingMemberCopyErrorEPK5Token12FunctionTypeRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESB_
+  params:
+  - name: tok
+    type: const Token *
+  - name: functionType
+    type: FunctionType
+  - name: classname
+    type: const std::string &
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckClass::missingMemberCopyError(const Token *, FunctionType, const std::string &, const std::string &)
+- name: _ZN10CheckClass18operatorEqVarErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_b
+  params:
+  - name: tok
+    type: const Token *
+  - name: classname
+    type: const std::string &
+  - name: varname
+    type: const std::string &
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckClass::operatorEqVarError(const Token *, const std::string &, const std::string &, bool)
+- name: _ZN10CheckClass26unusedPrivateFunctionErrorEPK5TokenS2_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_
+  params:
+  - name: tok1
+    type: const Token *
+  - name: tok2
+    type: const Token *
+  - name: classname
+    type: const std::string &
+  - name: funcname
+    type: const std::string &
+  return_type: void
+  signature: void CheckClass::unusedPrivateFunctionError(const Token *, const Token *, const std::string &, const std::string
+    &)
+- name: _ZN10CheckClass20mallocOnClassWarningEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES2_
+  params:
+  - name: tok
+    type: const Token *
+  - name: memfunc
+    type: const std::string &
+  - name: classTok
+    type: const Token *
+  return_type: void
+  signature: void CheckClass::mallocOnClassWarning(const Token *, const std::string &, const Token *)
+- name: _ZN10CheckClass22virtualDestructorErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_b
+  params:
+  - name: tok
+    type: const Token *
+  - name: Base
+    type: const std::string &
+  - name: Derived
+    type: const std::string &
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckClass::virtualDestructorError(const Token *, const std::string &, const std::string &, bool)
+- name: _ZN10CheckClass20thisSubtractionErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckClass::thisSubtractionError(const Token *)
+- name: _ZN10CheckClass21operatorEqToSelfErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckClass::operatorEqToSelfError(const Token *)
+- name: _ZN10CheckClass15checkConstErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_bb
+  params:
+  - name: tok
+    type: const Token *
+  - name: classname
+    type: const std::string &
+  - name: funcname
+    type: const std::string &
+  - name: suggestStatic
+    type: bool
+  - name: foundAllBaseClasses
+    type: bool
+  return_type: void
+  signature: void CheckClass::checkConstError(const Token *, const std::string &, const std::string &, bool, bool)
+- name: _ZN10CheckClass20initializerListErrorEPK5TokenS2_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_SA_
+  params:
+  - name: tok1
+    type: const Token *
+  - name: tok2
+    type: const Token *
+  - name: classname
+    type: const std::string &
+  - name: varname
+    type: const std::string &
+  - name: argname
+    type: const std::string &
+  return_type: void
+  signature: void CheckClass::initializerListError(const Token *, const Token *, const std::string &, const std::string &,
+    const std::string &)
+- name: _ZN10CheckClass25suggestInitializationListEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckClass::suggestInitializationList(const Token *, const std::string &)
+- name: _ZN10CheckClass23selfInitializationErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckClass::selfInitializationError(const Token *, const std::string &)
+- name: _ZN10CheckClass26copyCtorAndEqOperatorErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEbb
+  params:
+  - name: tok
+    type: const Token *
+  - name: classname
+    type: const std::string &
+  - name: isStruct
+    type: bool
+  - name: hasCopyCtor
+    type: bool
+  return_type: void
+  signature: void CheckClass::copyCtorAndEqOperatorError(const Token *, const std::string &, bool, bool)
+- name: _ZN10CheckClass13overrideErrorEPK8FunctionS2_
+  params:
+  - name: funcInBase
+    type: const Function *
+  - name: funcInDerived
+    type: const Function *
+  return_type: void
+  signature: void CheckClass::overrideError(const Function *, const Function *)
+- name: _ZN10CheckClass20uselessOverrideErrorEPK8FunctionS2_b
+  params:
+  - name: funcInBase
+    type: const Function *
+  - name: funcInDerived
+    type: const Function *
+  - name: isSameCode
+    type: bool
+  return_type: void
+  signature: void CheckClass::uselessOverrideError(const Function *, const Function *, bool)
+- name: _ZN10CheckClass41pureVirtualFunctionCallInConstructorErrorEPK8FunctionRKNSt7__cxx114listIPK5TokenSaIS7_EEERKNS3_12basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: scopeFunction
+    type: const Function *
+  - name: tokStack
+    type: const int &
+  - name: purefuncname
+    type: const std::string &
+  return_type: void
+  signature: void CheckClass::pureVirtualFunctionCallInConstructorError(const Function *, const int &, const std::string &)
+- name: _ZN10CheckClass37virtualFunctionCallInConstructorErrorEPK8FunctionRKNSt7__cxx114listIPK5TokenSaIS7_EEERKNS3_12basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: scopeFunction
+    type: const Function *
+  - name: tokStack
+    type: const int &
+  - name: funcname
+    type: const std::string &
+  return_type: void
+  signature: void CheckClass::virtualFunctionCallInConstructorError(const Function *, const int &, const std::string &)
+- name: _ZN10CheckClass25unsafeClassRefMemberErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckClass::unsafeClassRefMemberError(const Token *, const std::string &)
+- name: _ZN10CheckClass16checkConstError2EPK5TokenS2_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_bb
+  params:
+  - name: tok1
+    type: const Token *
+  - name: tok2
+    type: const Token *
+  - name: classname
+    type: const std::string &
+  - name: funcname
+    type: const std::string &
+  - name: suggestStatic
+    type: bool
+  - name: foundAllBaseClasses
+    type: bool
+  return_type: void
+  signature: void CheckClass::checkConstError2(const Token *, const Token *, const std::string &, const std::string &, bool,
+    bool)
+- name: _ZN10CheckClass23getVirtualFunctionCallsERK8FunctionRSt3mapIPS1_NSt7__cxx114listIPK5TokenSaIS9_EEESt4lessIS4_ESaISt4pairIKS4_SB_EEE
+  params:
+  - name: function
+    type: const Function &
+  - name: virtualFunctionCallsMap
+    type: int &
+  return_type: const int &
+  signature: const int & CheckClass::getVirtualFunctionCalls(const Function &, int &)
+- name: _ZNK8Settings6hasLibERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: lib
+    type: const std::string &
+  return_type: bool
+  signature: bool Settings::hasLib(const std::string &) const
+- name: _ZN10CheckClass14uninitVarErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_
+  params:
+  - name: tok
+    type: const Token *
+  - name: classname
+    type: const std::string &
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckClass::uninitVarError(const Token *, const std::string &, const std::string &)
+- name: _ZN14CheckCondition13assignIfErrorEPK5TokenS2_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: tok1
+    type: const Token *
+  - name: tok2
+    type: const Token *
+  - name: condition
+    type: const std::string &
+  - name: result
+    type: bool
+  return_type: void
+  signature: void CheckCondition::assignIfError(const Token *, const Token *, const std::string &, bool)
+- name: _ZN14CheckCondition20badBitmaskCheckErrorEPK5Tokenb
+  params:
+  - name: tok
+    type: const Token *
+  - name: isNoOp
+    type: bool
+  return_type: void
+  signature: void CheckCondition::badBitmaskCheckError(const Token *, bool)
+- name: _ZN14CheckCondition15comparisonErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEExSA_xb
+  params:
+  - name: tok
+    type: const Token *
+  - name: bitop
+    type: const std::string &
+  - name: value1
+    type: MathLib::bigint
+  - name: op
+    type: const std::string &
+  - name: value2
+    type: MathLib::bigint
+  - name: result
+    type: bool
+  return_type: void
+  signature: void CheckCondition::comparisonError(const Token *, const std::string &, MathLib::bigint, const std::string &,
+    MathLib::bigint, bool)
+- name: _ZN14CheckCondition23duplicateConditionErrorEPK5TokenS2_NSt7__cxx114listISt4pairIS2_NS3_12basic_stringIcSt11char_traitsIcESaIcEEEESaISB_EEE
+  params:
+  - name: tok1
+    type: const Token *
+  - name: tok2
+    type: const Token *
+  - name: errorPath
+    type: int
+  return_type: void
+  signature: void CheckCondition::duplicateConditionError(const Token *, const Token *, int)
+- name: _ZN14CheckCondition31overlappingElseIfConditionErrorEPK5Tokeni
+  params:
+  - name: tok
+    type: const Token *
+  - name: line1
+    type: int
+  return_type: void
+  signature: void CheckCondition::overlappingElseIfConditionError(const Token *, int)
+- name: _ZN14CheckCondition22mismatchingBitAndErrorEPK5TokenxS2_x
+  params:
+  - name: tok1
+    type: const Token *
+  - name: num1
+    type: const MathLib::bigint
+  - name: tok2
+    type: const Token *
+  - name: num2
+    type: const MathLib::bigint
+  return_type: void
+  signature: void CheckCondition::mismatchingBitAndError(const Token *, const MathLib::bigint, const Token *, const MathLib::bigint)
 - name: _ZN14CheckCondition27incorrectLogicOperatorErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEbbNS3_4listISt4pairIS2_S8_ESaISD_EEE
   params:
   - name: tok
@@ -506,6 +1368,133 @@ functions:
     type: int
   return_type: void
   signature: void CheckCondition::incorrectLogicOperatorError(const Token *, const std::string &, bool, bool, int)
+- name: _ZN14CheckCondition23redundantConditionErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: text
+    type: const std::string &
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckCondition::redundantConditionError(const Token *, const std::string &, bool)
+- name: _ZN14CheckCondition26moduloAlwaysTrueFalseErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: maxVal
+    type: const std::string &
+  return_type: void
+  signature: void CheckCondition::moduloAlwaysTrueFalseError(const Token *, const std::string &)
+- name: _ZN14CheckCondition21clarifyConditionErrorEPK5Tokenbb
+  params:
+  - name: tok
+    type: const Token *
+  - name: assign
+    type: bool
+  - name: boolop
+    type: bool
+  return_type: void
+  signature: void CheckCondition::clarifyConditionError(const Token *, bool, bool)
+- name: _ZN14CheckCondition20alwaysTrueFalseErrorEPK5TokenS2_PKN9ValueFlow5ValueE
+  params:
+  - name: tok
+    type: const Token *
+  - name: condition
+    type: const Token *
+  - name: value
+    type: const ValueFlow::Value *
+  return_type: void
+  signature: void CheckCondition::alwaysTrueFalseError(const Token *, const Token *, const ValueFlow::Value *)
+- name: _ZN14CheckCondition22invalidTestForOverflowEPK5TokenPK9ValueTypeRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: valueType
+    type: const ValueType *
+  - name: replace
+    type: const std::string &
+  return_type: void
+  signature: void CheckCondition::invalidTestForOverflow(const Token *, const ValueType *, const std::string &)
+- name: _ZN14CheckCondition33pointerAdditionResultNotNullErrorEPK5TokenS2_
+  params:
+  - name: tok
+    type: const Token *
+  - name: calc
+    type: const Token *
+  return_type: void
+  signature: void CheckCondition::pointerAdditionResultNotNullError(const Token *, const Token *)
+- name: _ZN14CheckCondition31duplicateConditionalAssignErrorEPK5TokenS2_b
+  params:
+  - name: condTok
+    type: const Token *
+  - name: assignTok
+    type: const Token *
+  - name: isRedundant
+    type: bool
+  return_type: void
+  signature: void CheckCondition::duplicateConditionalAssignError(const Token *, const Token *, bool)
+- name: _ZN14CheckCondition21assignmentInConditionEPK5Token
+  params:
+  - name: eq
+    type: const Token *
+  return_type: void
+  signature: void CheckCondition::assignmentInCondition(const Token *)
+- name: _ZN14CheckCondition31compareValueOutOfTypeRangeErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEExb
+  params:
+  - name: comparison
+    type: const Token *
+  - name: type
+    type: const std::string &
+  - name: value
+    type: MathLib::bigint
+  - name: result
+    type: bool
+  return_type: void
+  signature: void CheckCondition::compareValueOutOfTypeRangeError(const Token *, const std::string &, MathLib::bigint, bool)
+- name: _ZN14CheckCondition4diagEPK5Tokenb
+  params:
+  - name: tok
+    type: const Token *
+  - name: insert
+    type: bool
+  return_type: bool
+  signature: bool CheckCondition::diag(const Token *, bool)
+- name: _ZN14CheckCondition4diagEPK5TokenS2_
+  params:
+  - name: tok1
+    type: const Token *
+  - name: tok2
+    type: const Token *
+  return_type: bool
+  signature: bool CheckCondition::diag(const Token *, const Token *)
+- name: _ZN14CheckCondition18assignIfParseScopeEPK5TokenS2_ibcx
+  params:
+  - name: assignTok
+    type: const Token *const
+  - name: startTok
+    type: const Token *const
+  - name: varid
+    type: const int
+  - name: islocal
+    type: const bool
+  - name: bitop
+    type: const char
+  - name: num
+    type: const MathLib::bigint
+  return_type: bool
+  signature: bool CheckCondition::assignIfParseScope(const Token *const, const Token *const, const int, const bool, const
+    char, const MathLib::bigint)
+- name: _ZNK14CheckCondition17isOverlappingCondEPK5TokenS2_b
+  params:
+  - name: cond1
+    type: const Token *const
+  - name: cond2
+    type: const Token *const
+  - name: pure
+    type: bool
+  return_type: bool
+  signature: bool CheckCondition::isOverlappingCond(const Token *const, const Token *const, bool) const
 - name: _ZN14CheckCondition28oppositeElseIfConditionErrorEPK5TokenS2_NSt7__cxx114listISt4pairIS2_NS3_12basic_stringIcSt11char_traitsIcESaIcEEEESaISB_EEE
   params:
   - name: ifCond
@@ -516,6 +1505,448 @@ functions:
     type: int
   return_type: void
   signature: void CheckCondition::oppositeElseIfConditionError(const Token *, const Token *, int)
+- name: _ZN20CheckExceptionSafety16destructorsErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *const
+  - name: className
+    type: const std::string &
+  return_type: void
+  signature: void CheckExceptionSafety::destructorsError(const Token *const, const std::string &)
+- name: _ZN20CheckExceptionSafety17deallocThrowErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *const
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckExceptionSafety::deallocThrowError(const Token *const, const std::string &)
+- name: _ZN20CheckExceptionSafety16rethrowCopyErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *const
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckExceptionSafety::rethrowCopyError(const Token *const, const std::string &)
+- name: _ZN20CheckExceptionSafety26catchExceptionByValueErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckExceptionSafety::catchExceptionByValueError(const Token *)
+- name: _ZN20CheckExceptionSafety18noexceptThrowErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *const
+  return_type: void
+  signature: void CheckExceptionSafety::noexceptThrowError(const Token *const)
+- name: _ZN20CheckExceptionSafety20entryPointThrowErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *const
+  return_type: void
+  signature: void CheckExceptionSafety::entryPointThrowError(const Token *const)
+- name: _ZN20CheckExceptionSafety36unhandledExceptionSpecificationErrorEPK5TokenS2_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok1
+    type: const Token *const
+  - name: tok2
+    type: const Token *const
+  - name: funcname
+    type: const std::string &
+  return_type: void
+  signature: void CheckExceptionSafety::unhandledExceptionSpecificationError(const Token *const, const Token *const, const
+    std::string &)
+- name: _ZN20CheckExceptionSafety30rethrowNoCurrentExceptionErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckExceptionSafety::rethrowNoCurrentExceptionError(const Token *)
+- name: _ZN14CheckFunctions23invalidFunctionArgErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiPKN9ValueFlow5ValueESA_
+  params:
+  - name: tok
+    type: const Token *
+  - name: functionName
+    type: const std::string &
+  - name: argnr
+    type: int
+  - name: invalidValue
+    type: const ValueFlow::Value *
+  - name: validstr
+    type: const std::string &
+  return_type: void
+  signature: void CheckFunctions::invalidFunctionArgError(const Token *, const std::string &, int, const ValueFlow::Value
+    *, const std::string &)
+- name: _ZN14CheckFunctions27invalidFunctionArgBoolErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi
+  params:
+  - name: tok
+    type: const Token *
+  - name: functionName
+    type: const std::string &
+  - name: argnr
+    type: int
+  return_type: void
+  signature: void CheckFunctions::invalidFunctionArgBoolError(const Token *, const std::string &, int)
+- name: _ZN14CheckFunctions26invalidFunctionArgStrErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi
+  params:
+  - name: tok
+    type: const Token *
+  - name: functionName
+    type: const std::string &
+  - name: argnr
+    type: int
+  return_type: void
+  signature: void CheckFunctions::invalidFunctionArgStrError(const Token *, const std::string &, int)
+- name: _ZN14CheckFunctions23ignoredReturnValueErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: function
+    type: const std::string &
+  return_type: void
+  signature: void CheckFunctions::ignoredReturnValueError(const Token *, const std::string &)
+- name: _ZN14CheckFunctions22ignoredReturnErrorCodeEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: function
+    type: const std::string &
+  return_type: void
+  signature: void CheckFunctions::ignoredReturnErrorCode(const Token *, const std::string &)
+- name: _ZN14CheckFunctions23mathfunctionCallWarningEPK5Tokeni
+  params:
+  - name: tok
+    type: const Token *
+  - name: numParam
+    type: const int
+  return_type: void
+  signature: void CheckFunctions::mathfunctionCallWarning(const Token *, const int)
+- name: _ZN14CheckFunctions23mathfunctionCallWarningEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_
+  params:
+  - name: tok
+    type: const Token *
+  - name: oldexp
+    type: const std::string &
+  - name: newexp
+    type: const std::string &
+  return_type: void
+  signature: void CheckFunctions::mathfunctionCallWarning(const Token *, const std::string &, const std::string &)
+- name: _ZN14CheckFunctions20memsetZeroBytesErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckFunctions::memsetZeroBytesError(const Token *)
+- name: _ZN14CheckFunctions16memsetFloatErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: var_value
+    type: const std::string &
+  return_type: void
+  signature: void CheckFunctions::memsetFloatError(const Token *, const std::string &)
+- name: _ZN14CheckFunctions26memsetValueOutOfRangeErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: value
+    type: const std::string &
+  return_type: void
+  signature: void CheckFunctions::memsetValueOutOfRangeError(const Token *, const std::string &)
+- name: _ZN14CheckFunctions18missingReturnErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckFunctions::missingReturnError(const Token *)
+- name: _ZN14CheckFunctions16copyElisionErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckFunctions::copyElisionError(const Token *)
+- name: _ZN14CheckFunctions23useStandardLibraryErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: expected
+    type: const std::string &
+  return_type: void
+  signature: void CheckFunctions::useStandardLibraryError(const Token *, const std::string &)
+- name: _ZNK7Library8validargB5cxx11EPK5Tokeni
+  params:
+  - name: ftok
+    type: const Token *
+  - name: argnr
+    type: int
+  return_type: const std::string &
+  signature: const std::string & Library::validarg(const Token *, int) const
+- name: _ZNK7Library12isboolargbadEPK5Tokeni
+  params:
+  - name: ftok
+    type: const Token *
+  - name: argnr
+    type: int
+  return_type: bool
+  signature: bool Library::isboolargbad(const Token *, int) const
+- name: _ZNK7Library9isargstrzEPK5Tokeni
+  params:
+  - name: ftok
+    type: const Token *
+  - name: argnr
+    type: int
+  return_type: bool
+  signature: bool Library::isargstrz(const Token *, int) const
+- name: _ZN7CheckIO21coutCerrMisusageErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: streamName
+    type: const std::string &
+  return_type: void
+  signature: void CheckIO::coutCerrMisusageError(const Token *, const std::string &)
+- name: _ZN7CheckIO24fflushOnInputStreamErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckIO::fflushOnInputStreamError(const Token *, const std::string &)
+- name: _ZN7CheckIO25ioWithoutPositioningErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckIO::ioWithoutPositioningError(const Token *)
+- name: _ZN7CheckIO22readWriteOnlyFileErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckIO::readWriteOnlyFileError(const Token *)
+- name: _ZN7CheckIO22writeReadOnlyFileErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckIO::writeReadOnlyFileError(const Token *)
+- name: _ZN7CheckIO18useClosedFileErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckIO::useClosedFileError(const Token *)
+- name: _ZN7CheckIO23seekOnAppendedFileErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckIO::seekOnAppendedFileError(const Token *)
+- name: _ZN7CheckIO25incompatibleFileOpenErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: filename
+    type: const std::string &
+  return_type: void
+  signature: void CheckIO::incompatibleFileOpenError(const Token *, const std::string &)
+- name: _ZN7CheckIO17invalidScanfErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckIO::invalidScanfError(const Token *)
+- name: _ZN7CheckIO30wrongPrintfScanfArgumentsErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEii
+  params:
+  - name: tok
+    type: const Token *
+  - name: functionName
+    type: const std::string &
+  - name: numFormat
+    type: int
+  - name: numFunction
+    type: int
+  return_type: void
+  signature: void CheckIO::wrongPrintfScanfArgumentsError(const Token *, const std::string &, int, int)
+- name: _ZN7CheckIO26invalidScanfArgTypeError_sEPK5TokeniRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPKNS_12ArgumentInfoE
+  params:
+  - name: tok
+    type: const Token *
+  - name: numFormat
+    type: int
+  - name: specifier
+    type: const std::string &
+  - name: argInfo
+    type: const CheckIO::ArgumentInfo *
+  return_type: void
+  signature: void CheckIO::invalidScanfArgTypeError_s(const Token *, int, const std::string &, const CheckIO::ArgumentInfo
+    *)
+- name: _ZN7CheckIO28invalidScanfArgTypeError_intEPK5TokeniRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPKNS_12ArgumentInfoEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: numFormat
+    type: int
+  - name: specifier
+    type: const std::string &
+  - name: argInfo
+    type: const CheckIO::ArgumentInfo *
+  - name: isUnsigned
+    type: bool
+  return_type: void
+  signature: void CheckIO::invalidScanfArgTypeError_int(const Token *, int, const std::string &, const CheckIO::ArgumentInfo
+    *, bool)
+- name: _ZN7CheckIO30invalidScanfArgTypeError_floatEPK5TokeniRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPKNS_12ArgumentInfoE
+  params:
+  - name: tok
+    type: const Token *
+  - name: numFormat
+    type: int
+  - name: specifier
+    type: const std::string &
+  - name: argInfo
+    type: const CheckIO::ArgumentInfo *
+  return_type: void
+  signature: void CheckIO::invalidScanfArgTypeError_float(const Token *, int, const std::string &, const CheckIO::ArgumentInfo
+    *)
+- name: _ZN7CheckIO27invalidPrintfArgTypeError_sEPK5TokeniPKNS_12ArgumentInfoE
+  params:
+  - name: tok
+    type: const Token *
+  - name: numFormat
+    type: int
+  - name: argInfo
+    type: const CheckIO::ArgumentInfo *
+  return_type: void
+  signature: void CheckIO::invalidPrintfArgTypeError_s(const Token *, int, const CheckIO::ArgumentInfo *)
+- name: _ZN7CheckIO27invalidPrintfArgTypeError_nEPK5TokeniPKNS_12ArgumentInfoE
+  params:
+  - name: tok
+    type: const Token *
+  - name: numFormat
+    type: int
+  - name: argInfo
+    type: const CheckIO::ArgumentInfo *
+  return_type: void
+  signature: void CheckIO::invalidPrintfArgTypeError_n(const Token *, int, const CheckIO::ArgumentInfo *)
+- name: _ZN7CheckIO27invalidPrintfArgTypeError_pEPK5TokeniPKNS_12ArgumentInfoE
+  params:
+  - name: tok
+    type: const Token *
+  - name: numFormat
+    type: int
+  - name: argInfo
+    type: const CheckIO::ArgumentInfo *
+  return_type: void
+  signature: void CheckIO::invalidPrintfArgTypeError_p(const Token *, int, const CheckIO::ArgumentInfo *)
+- name: _ZN7CheckIO30invalidPrintfArgTypeError_uintEPK5TokeniRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPKNS_12ArgumentInfoE
+  params:
+  - name: tok
+    type: const Token *
+  - name: numFormat
+    type: int
+  - name: specifier
+    type: const std::string &
+  - name: argInfo
+    type: const CheckIO::ArgumentInfo *
+  return_type: void
+  signature: void CheckIO::invalidPrintfArgTypeError_uint(const Token *, int, const std::string &, const CheckIO::ArgumentInfo
+    *)
+- name: _ZN7CheckIO30invalidPrintfArgTypeError_sintEPK5TokeniRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPKNS_12ArgumentInfoE
+  params:
+  - name: tok
+    type: const Token *
+  - name: numFormat
+    type: int
+  - name: specifier
+    type: const std::string &
+  - name: argInfo
+    type: const CheckIO::ArgumentInfo *
+  return_type: void
+  signature: void CheckIO::invalidPrintfArgTypeError_sint(const Token *, int, const std::string &, const CheckIO::ArgumentInfo
+    *)
+- name: _ZN7CheckIO31invalidPrintfArgTypeError_floatEPK5TokeniRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPKNS_12ArgumentInfoE
+  params:
+  - name: tok
+    type: const Token *
+  - name: numFormat
+    type: int
+  - name: specifier
+    type: const std::string &
+  - name: argInfo
+    type: const CheckIO::ArgumentInfo *
+  return_type: void
+  signature: void CheckIO::invalidPrintfArgTypeError_float(const Token *, int, const std::string &, const CheckIO::ArgumentInfo
+    *)
+- name: _ZN7CheckIO26invalidLengthModifierErrorEPK5TokeniRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: numFormat
+    type: int
+  - name: modifier
+    type: const std::string &
+  return_type: void
+  signature: void CheckIO::invalidLengthModifierError(const Token *, int, const std::string &)
+- name: _ZN7CheckIO43wrongPrintfScanfPosixParameterPositionErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEii
+  params:
+  - name: tok
+    type: const Token *
+  - name: functionName
+    type: const std::string &
+  - name: index
+    type: int
+  - name: numFunction
+    type: int
+  return_type: void
+  signature: void CheckIO::wrongPrintfScanfPosixParameterPositionError(const Token *, const std::string &, int, int)
+- name: _ZN7CheckIO17checkFormatStringEPK5TokenS2_S2_bb
+  params:
+  - name: tok
+    type: const Token *const
+  - name: formatStringTok
+    type: const Token *const
+  - name: argListTok
+    type: const Token *
+  - name: scan
+    type: const bool
+  - name: scanf_s
+    type: const bool
+  return_type: void
+  signature: void CheckIO::checkFormatString(const Token *const, const Token *const, const Token *, const bool, const bool)
+- name: _ZN16CheckLeakAutoVar18deallocReturnErrorEPK5TokenS2_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: deallocTok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckLeakAutoVar::deallocReturnError(const Token *, const Token *, const std::string &)
+- name: _ZN16CheckLeakAutoVar17configurationInfoEPK5TokenRKSt4pairIS2_N7VarInfo5UsageEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: functionUsage
+    type: const std::pair<const Token *, VarInfo::Usage> &
+  return_type: void
+  signature: void CheckLeakAutoVar::configurationInfo(const Token *, const std::pair<const Token *, VarInfo::Usage> &)
+- name: _ZN16CheckLeakAutoVar15doubleFreeErrorEPK5TokenS2_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi
+  params:
+  - name: tok
+    type: const Token *
+  - name: prevFreeTok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  - name: type
+    type: int
+  return_type: void
+  signature: void CheckLeakAutoVar::doubleFreeError(const Token *, const Token *, const std::string &, int)
 - name: _ZN16CheckLeakAutoVar10checkScopeEPK5TokenR7VarInfoSt3setIiSt4lessIiESaIiEEi
   params:
   - name: startToken
@@ -528,16 +1959,199 @@ functions:
     type: int
   return_type: bool
   signature: bool CheckLeakAutoVar::checkScope(const Token *const, VarInfo &, int, int)
-- name: _ZNK15CheckMemoryLeak17getAllocationTypeEPK5TokeniPNSt7__cxx114listIPK8FunctionSaIS7_EEE
+- name: _ZN16CheckLeakAutoVar26checkTokenInsideExpressionEPK5TokenR7VarInfob
+  params:
+  - name: tok
+    type: const Token *const
+  - name: varInfo
+    type: VarInfo &
+  - name: inFuncCall
+    type: bool
+  return_type: const Token *
+  signature: const Token * CheckLeakAutoVar::checkTokenInsideExpression(const Token *const, VarInfo &, bool)
+- name: _ZN16CheckLeakAutoVar15leakIfAllocatedEPK5TokenRK7VarInfo
+  params:
+  - name: vartok
+    type: const Token *
+  - name: varInfo
+    type: const VarInfo &
+  return_type: void
+  signature: void CheckLeakAutoVar::leakIfAllocated(const Token *, const VarInfo &)
+- name: _ZNK16CheckLeakAutoVar26changeAllocStatusIfReallocERSt3mapIiN7VarInfo9AllocInfoESt4lessIiESaISt4pairIKiS2_EEEPK5TokenSD_
+  params:
+  - name: alloctype
+    type: int &
+  - name: fTok
+    type: const Token *
+  - name: retTok
+    type: const Token *
+  return_type: void
+  signature: void CheckLeakAutoVar::changeAllocStatusIfRealloc(int &, const Token *, const Token *) const
+- name: _ZN16CheckLeakAutoVar12functionCallEPK5TokenS2_R7VarInfoRKNS3_9AllocInfoEPKN7Library9AllocFuncE
+  params:
+  - name: tokName
+    type: const Token *
+  - name: tokOpeningPar
+    type: const Token *
+  - name: varInfo
+    type: VarInfo &
+  - name: allocation
+    type: const VarInfo::AllocInfo &
+  - name: af
+    type: const Library::AllocFunc *
+  return_type: void
+  signature: void CheckLeakAutoVar::functionCall(const Token *, const Token *, VarInfo &, const VarInfo::AllocInfo &, const
+    Library::AllocFunc *)
+- name: _ZN7VarInfo4swapERS_
+  params:
+  - name: other
+    type: VarInfo &
+  return_type: void
+  signature: void VarInfo::swap(VarInfo &)
+- name: _ZN16CheckLeakAutoVar3retEPK5TokenR7VarInfob
+  params:
+  - name: tok
+    type: const Token *
+  - name: varInfo
+    type: VarInfo &
+  - name: isEndOfScope
+    type: const bool
+  return_type: void
+  signature: void CheckLeakAutoVar::ret(const Token *, VarInfo &, const bool)
+- name: _ZN16CheckLeakAutoVar17changeAllocStatusER7VarInfoRKNS0_9AllocInfoEPK5TokenS7_
+  params:
+  - name: varInfo
+    type: VarInfo &
+  - name: allocation
+    type: const VarInfo::AllocInfo &
+  - name: tok
+    type: const Token *
+  - name: arg
+    type: const Token *
+  return_type: void
+  signature: void CheckLeakAutoVar::changeAllocStatus(VarInfo &, const VarInfo::AllocInfo &, const Token *, const Token *)
+- name: _ZN7VarInfo16possibleUsageAllERKSt4pairIPK5TokenNS_5UsageEE
+  params:
+  - name: functionUsage
+    type: const std::pair<const Token *, Usage> &
+  return_type: void
+  signature: void VarInfo::possibleUsageAll(const std::pair<const Token *, Usage> &)
+- name: _ZNK16CheckLeakAutoVar13mismatchErrorEPK5TokenS2_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: deallocTok
+    type: const Token *
+  - name: allocTok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckLeakAutoVar::mismatchError(const Token *, const Token *, const std::string &) const
+- name: _ZNK16CheckLeakAutoVar9leakErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  - name: type
+    type: int
+  return_type: void
+  signature: void CheckLeakAutoVar::leakError(const Token *, const std::string &, int) const
+- name: _ZNK16CheckLeakAutoVar15deallocUseErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckLeakAutoVar::deallocUseError(const Token *, const std::string &) const
+- name: _ZN20CheckMemoryLeakNoVar16functionCallLeakEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_
+  params:
+  - name: loc
+    type: const Token *
+  - name: alloc
+    type: const std::string &
+  - name: functionCall
+    type: const std::string &
+  return_type: void
+  signature: void CheckMemoryLeakNoVar::functionCallLeak(const Token *, const std::string &, const std::string &)
+- name: _ZNK15CheckMemoryLeak19getReallocationTypeEPK5Tokeni
   params:
   - name: tok2
     type: const Token *
   - name: varid
     type: int
+  return_type: CheckMemoryLeak::AllocType
+  signature: CheckMemoryLeak::AllocType CheckMemoryLeak::getReallocationType(const Token *, int) const
+- name: _ZNK15CheckMemoryLeak18functionReturnTypeEPK8FunctionPNSt7__cxx114listIS2_SaIS2_EEE
+  params:
+  - name: func
+    type: const Function *
   - name: callstack
     type: int *
   return_type: CheckMemoryLeak::AllocType
-  signature: CheckMemoryLeak::AllocType CheckMemoryLeak::getAllocationType(const Token *, int, int *) const
+  signature: CheckMemoryLeak::AllocType CheckMemoryLeak::functionReturnType(const Function *, int *) const
+- name: _ZNK15CheckMemoryLeak17resourceLeakErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckMemoryLeak::resourceLeakError(const Token *, const std::string &) const
+- name: _ZNK15CheckMemoryLeak12memleakErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckMemoryLeak::memleakError(const Token *, const std::string &) const
+- name: _ZNK15CheckMemoryLeak9reportErrEPK5Token8SeverityRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESB_RK3CWE
+  params:
+  - name: callstack
+    type: const int &
+  - name: severity
+    type: Severity
+  - name: id
+    type: const std::string &
+  - name: msg
+    type: const std::string &
+  - name: cwe
+    type: const CWE &
+  return_type: void
+  signature: void CheckMemoryLeak::reportErr(const int &, Severity, const std::string &, const std::string &, const CWE &)
+    const
+- name: _ZNK15CheckMemoryLeak9reportErrERKNSt7__cxx114listIPK5TokenSaIS4_EEE8SeverityRKNS0_12basic_stringIcSt11char_traitsIcESaIcEEESG_RK3CWE
+  params:
+  - name: callstack
+    type: const int &
+  - name: severity
+    type: Severity
+  - name: id
+    type: const std::string &
+  - name: msg
+    type: const std::string &
+  - name: cwe
+    type: const CWE &
+  return_type: void
+  signature: void CheckMemoryLeak::reportErr(const int &, Severity, const std::string &, const std::string &, const CWE &)
+    const
+- name: _ZNK15CheckMemoryLeak20mismatchAllocDeallocERKNSt7__cxx114listIPK5TokenSaIS4_EEERKNS0_12basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: callstack
+    type: const int &
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckMemoryLeak::mismatchAllocDealloc(const int &, const std::string &) const
+- name: _ZNK15CheckMemoryLeak15deallocuseErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckMemoryLeak::deallocuseError(const Token *, const std::string &) const
 - name: _ZNK15CheckMemoryLeak30memleakUponReallocFailureErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_
   params:
   - name: tok
@@ -549,14 +2163,1202 @@ functions:
   return_type: void
   signature: void CheckMemoryLeak::memleakUponReallocFailureError(const Token *, const std::string &, const std::string &)
     const
-- name: _ZNK15CheckMemoryLeak20mismatchAllocDeallocERKNSt7__cxx114listIPK5TokenSaIS4_EEERKNS0_12basic_stringIcSt11char_traitsIcESaIcEEE
+- name: _ZN25CheckNullPointer_internal10MyFileInfoCI2N5Check8FileInfoEENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
   params:
-  - name: callstack
-    type: const int &
+  - name: f0
+    type: std::string
+  return_type: void
+  signature: void Check::FileInfo::FileInfo(std::string)
+- name: _ZN16CheckNullPointer16nullPointerErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPKN9ValueFlow5ValueEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  - name: value
+    type: const ValueFlow::Value *
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckNullPointer::nullPointerError(const Token *, const std::string &, const ValueFlow::Value *, bool)
+- name: _ZN16CheckNullPointer22pointerArithmeticErrorEPK5TokenPKN9ValueFlow5ValueEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: value
+    type: const ValueFlow::Value *
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckNullPointer::pointerArithmeticError(const Token *, const ValueFlow::Value *, bool)
+- name: _ZN16CheckNullPointer25redundantConditionWarningEPK5TokenPKN9ValueFlow5ValueES2_b
+  params:
+  - name: tok
+    type: const Token *
+  - name: value
+    type: const ValueFlow::Value *
+  - name: condition
+    type: const Token *
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckNullPointer::redundantConditionWarning(const Token *, const ValueFlow::Value *, const Token *, bool)
+- name: _ZN16CheckNullPointer16nullPointerErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckNullPointer::nullPointerError(const Token *)
+- name: _ZNK16CheckNullPointer14isPointerDeRefEPK5TokenRb
+  params:
+  - name: tok
+    type: const Token *
+  - name: unknown
+    type: bool &
+  return_type: bool
+  signature: bool CheckNullPointer::isPointerDeRef(const Token *, bool &) const
+- name: _ZN10CheckOther12zerodivErrorEPK5TokenPKN9ValueFlow5ValueE
+  params:
+  - name: tok
+    type: const Token *
+  - name: value
+    type: const ValueFlow::Value *
+  return_type: void
+  signature: void CheckOther::zerodivError(const Token *, const ValueFlow::Value *)
+- name: _ZN10CheckOther23misusedScopeObjectErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  - name: isAssignment
+    type: bool
+  return_type: void
+  signature: void CheckOther::misusedScopeObjectError(const Token *, const std::string &, bool)
+- name: _ZN10CheckOther23invalidPointerCastErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_bb
+  params:
+  - name: tok
+    type: const Token *
+  - name: from
+    type: const std::string &
+  - name: to
+    type: const std::string &
+  - name: inconclusive
+    type: bool
+  - name: toIsInt
+    type: bool
+  return_type: void
+  signature: void CheckOther::invalidPointerCastError(const Token *, const std::string &, const std::string &, bool, bool)
+- name: _ZN10CheckOther25negativeBitwiseShiftErrorEPK5Tokeni
+  params:
+  - name: tok
+    type: const Token *
+  - name: op
+    type: int
+  return_type: void
+  signature: void CheckOther::negativeBitwiseShiftError(const Token *, int)
+- name: _ZN10CheckOther34raceAfterInterlockedDecrementErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckOther::raceAfterInterlockedDecrementError(const Token *)
+- name: _ZN10CheckOther16invalidFreeErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: allocation
+    type: const std::string &
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckOther::invalidFreeError(const Token *, const std::string &, bool)
+- name: _ZN10CheckOther21overlappingWriteUnionEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckOther::overlappingWriteUnion(const Token *)
+- name: _ZN10CheckOther24overlappingWriteFunctionEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: funcname
+    type: const std::string &
+  return_type: void
+  signature: void CheckOther::overlappingWriteFunction(const Token *, const std::string &)
+- name: _ZN10CheckOther18redundantCopyErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
   - name: varname
     type: const std::string &
   return_type: void
-  signature: void CheckMemoryLeak::mismatchAllocDealloc(const int &, const std::string &) const
+  signature: void CheckOther::redundantCopyError(const Token *, const std::string &)
+- name: _ZN10CheckOther18redundantCopyErrorEPK5TokenS2_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckOther::redundantCopyError(const Token *, const std::string &)
+- name: _ZN10CheckOther47checkComparisonFunctionIsAlwaysTrueOrFalseErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_b
+  params:
+  - name: tok
+    type: const Token *
+  - name: functionName
+    type: const std::string &
+  - name: varName
+    type: const std::string &
+  - name: result
+    type: bool
+  return_type: void
+  signature: void CheckOther::checkComparisonFunctionIsAlwaysTrueOrFalseError(const Token *, const std::string &, const std::string
+    &, bool)
+- name: _ZN10CheckOther30checkCastIntToCharAndBackErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: strFunctionName
+    type: const std::string &
+  return_type: void
+  signature: void CheckOther::checkCastIntToCharAndBackError(const Token *, const std::string &)
+- name: _ZN10CheckOther15cstyleCastErrorEPK5Tokenb
+  params:
+  - name: tok
+    type: const Token *
+  - name: isPtr
+    type: bool
+  return_type: void
+  signature: void CheckOther::cstyleCastError(const Token *, bool)
+- name: _ZN10CheckOther22dangerousTypeCastErrorEPK5Tokenb
+  params:
+  - name: tok
+    type: const Token *
+  - name: isPtr
+    type: bool
+  return_type: void
+  signature: void CheckOther::dangerousTypeCastError(const Token *, bool)
+- name: _ZN10CheckOther21intToPointerCastErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: format
+    type: const std::string &
+  return_type: void
+  signature: void CheckOther::intToPointerCastError(const Token *, const std::string &)
+- name: _ZN10CheckOther32suspiciousFloatingPointCastErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckOther::suspiciousFloatingPointCastError(const Token *)
+- name: _ZN10CheckOther19constStatementErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: type
+    type: const std::string &
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckOther::constStatementError(const Token *, const std::string &, bool)
+- name: _ZN10CheckOther25signedCharArrayIndexErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckOther::signedCharArrayIndexError(const Token *)
+- name: _ZN10CheckOther30unknownSignCharArrayIndexErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckOther::unknownSignCharArrayIndexError(const Token *)
+- name: _ZN10CheckOther14charBitOpErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckOther::charBitOpError(const Token *)
+- name: _ZN10CheckOther18variableScopeErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckOther::variableScopeError(const Token *, const std::string &)
+- name: _ZN10CheckOther32redundantAssignmentInSwitchErrorEPK5TokenS2_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok1
+    type: const Token *
+  - name: tok2
+    type: const Token *
+  - name: var
+    type: const std::string &
+  return_type: void
+  signature: void CheckOther::redundantAssignmentInSwitchError(const Token *, const Token *, const std::string &)
+- name: _ZN10CheckOther27suspiciousCaseInSwitchErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: operatorString
+    type: const std::string &
+  return_type: void
+  signature: void CheckOther::suspiciousCaseInSwitchError(const Token *, const std::string &)
+- name: _ZN10CheckOther19selfAssignmentErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckOther::selfAssignmentError(const Token *, const std::string &)
+- name: _ZN10CheckOther23clarifyCalculationErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: op
+    type: const std::string &
+  return_type: void
+  signature: void CheckOther::clarifyCalculationError(const Token *, const std::string &)
+- name: _ZN10CheckOther21clarifyStatementErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckOther::clarifyStatementError(const Token *)
+- name: _ZN10CheckOther20duplicateBranchErrorEPK5TokenS2_NSt7__cxx114listISt4pairIS2_NS3_12basic_stringIcSt11char_traitsIcESaIcEEEESaISB_EEE
+  params:
+  - name: tok1
+    type: const Token *
+  - name: tok2
+    type: const Token *
+  - name: errors
+    type: int
+  return_type: void
+  signature: void CheckOther::duplicateBranchError(const Token *, const Token *, int)
+- name: _ZN10CheckOther30duplicateAssignExpressionErrorEPK5TokenS2_b
+  params:
+  - name: tok1
+    type: const Token *
+  - name: tok2
+    type: const Token *
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckOther::duplicateAssignExpressionError(const Token *, const Token *, bool)
+- name: _ZN10CheckOther23oppositeExpressionErrorEPK5TokenNSt7__cxx114listISt4pairIS2_NS3_12basic_stringIcSt11char_traitsIcESaIcEEEESaISB_EEE
+  params:
+  - name: opTok
+    type: const Token *
+  - name: errors
+    type: int
+  return_type: void
+  signature: void CheckOther::oppositeExpressionError(const Token *, int)
+- name: _ZN10CheckOther26duplicateValueTernaryErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckOther::duplicateValueTernaryError(const Token *)
+- name: _ZN10CheckOther31duplicateExpressionTernaryErrorEPK5TokenNSt7__cxx114listISt4pairIS2_NS3_12basic_stringIcSt11char_traitsIcESaIcEEEESaISB_EEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: errors
+    type: int
+  return_type: void
+  signature: void CheckOther::duplicateExpressionTernaryError(const Token *, int)
+- name: _ZN10CheckOther19duplicateBreakErrorEPK5Tokenb
+  params:
+  - name: tok
+    type: const Token *
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckOther::duplicateBreakError(const Token *, bool)
+- name: _ZN10CheckOther20unreachableCodeErrorEPK5TokenS2_b
+  params:
+  - name: tok
+    type: const Token *
+  - name: noreturn
+    type: const Token *
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckOther::unreachableCodeError(const Token *, const Token *, bool)
+- name: _ZN10CheckOther25unsignedLessThanZeroErrorEPK5TokenPKN9ValueFlow5ValueERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: v
+    type: const ValueFlow::Value *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckOther::unsignedLessThanZeroError(const Token *, const ValueFlow::Value *, const std::string &)
+- name: _ZN10CheckOther21unsignedPositiveErrorEPK5TokenPKN9ValueFlow5ValueERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: v
+    type: const ValueFlow::Value *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckOther::unsignedPositiveError(const Token *, const ValueFlow::Value *, const std::string &)
+- name: _ZN10CheckOther24pointerLessThanZeroErrorEPK5TokenPKN9ValueFlow5ValueE
+  params:
+  - name: tok
+    type: const Token *
+  - name: v
+    type: const ValueFlow::Value *
+  return_type: void
+  signature: void CheckOther::pointerLessThanZeroError(const Token *, const ValueFlow::Value *)
+- name: _ZN10CheckOther20pointerPositiveErrorEPK5TokenPKN9ValueFlow5ValueE
+  params:
+  - name: tok
+    type: const Token *
+  - name: v
+    type: const ValueFlow::Value *
+  return_type: void
+  signature: void CheckOther::pointerPositiveError(const Token *, const ValueFlow::Value *)
+- name: _ZN10CheckOther24suspiciousSemicolonErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckOther::suspiciousSemicolonError(const Token *)
+- name: _ZN10CheckOther24incompleteArrayFillErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_b
+  params:
+  - name: tok
+    type: const Token *
+  - name: buffer
+    type: const std::string &
+  - name: function
+    type: const std::string &
+  - name: boolean
+    type: bool
+  return_type: void
+  signature: void CheckOther::incompleteArrayFillError(const Token *, const std::string &, const std::string &, bool)
+- name: _ZN10CheckOther18varFuncNullUBErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckOther::varFuncNullUBError(const Token *)
+- name: _ZN10CheckOther30nanInArithmeticExpressionErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckOther::nanInArithmeticExpressionError(const Token *)
+- name: _ZN10CheckOther25commaSeparatedReturnErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckOther::commaSeparatedReturnError(const Token *)
+- name: _ZN10CheckOther23redundantPointerOpErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEbb
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  - name: inconclusive
+    type: bool
+  - name: addressOfDeref
+    type: bool
+  return_type: void
+  signature: void CheckOther::redundantPointerOpError(const Token *, const std::string &, bool, bool)
+- name: _ZN10CheckOther16unusedLabelErrorEPK5Tokenbb
+  params:
+  - name: tok
+    type: const Token *
+  - name: inSwitch
+    type: bool
+  - name: hasIfdef
+    type: bool
+  return_type: void
+  signature: void CheckOther::unusedLabelError(const Token *, bool, bool)
+- name: _ZN10CheckOther22unknownEvaluationOrderEPK5Tokenb
+  params:
+  - name: tok
+    type: const Token *
+  - name: isUnspecifiedBehavior
+    type: bool
+  return_type: void
+  signature: void CheckOther::unknownEvaluationOrder(const Token *, bool)
+- name: _ZN10CheckOther16accessMovedErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPKN9ValueFlow5ValueEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  - name: value
+    type: const ValueFlow::Value *
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckOther::accessMovedError(const Token *, const std::string &, const ValueFlow::Value *, bool)
+- name: _ZN10CheckOther21funcArgNamesDifferentERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiPK5TokenSA_
+  params:
+  - name: functionName
+    type: const std::string &
+  - name: index
+    type: int
+  - name: declaration
+    type: const Token *
+  - name: definition
+    type: const Token *
+  return_type: void
+  signature: void CheckOther::funcArgNamesDifferent(const std::string &, int, const Token *, const Token *)
+- name: _ZN10CheckOther38redundantBitwiseOperationInSwitchErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckOther::redundantBitwiseOperationInSwitchError(const Token *, const std::string &)
+- name: _ZN10CheckOther11shadowErrorEPK5TokenS2_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: var
+    type: const Token *
+  - name: shadowed
+    type: const Token *
+  - name: type
+    type: const std::string &
+  return_type: void
+  signature: void CheckOther::shadowError(const Token *, const Token *, const std::string &)
+- name: _ZN10CheckOther18knownArgumentErrorEPK5TokenS2_PKN9ValueFlow5ValueERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: ftok
+    type: const Token *
+  - name: value
+    type: const ValueFlow::Value *
+  - name: varexpr
+    type: const std::string &
+  - name: isVariableExpressionHidden
+    type: bool
+  return_type: void
+  signature: void CheckOther::knownArgumentError(const Token *, const Token *, const ValueFlow::Value *, const std::string
+    &, bool)
+- name: _ZN10CheckOther23knownPointerToBoolErrorEPK5TokenPKN9ValueFlow5ValueE
+  params:
+  - name: tok
+    type: const Token *
+  - name: value
+    type: const ValueFlow::Value *
+  return_type: void
+  signature: void CheckOther::knownPointerToBoolError(const Token *, const ValueFlow::Value *)
+- name: _ZN10CheckOther20comparePointersErrorEPK5TokenPKN9ValueFlow5ValueES6_
+  params:
+  - name: tok
+    type: const Token *
+  - name: v1
+    type: const ValueFlow::Value *
+  - name: v2
+    type: const ValueFlow::Value *
+  return_type: void
+  signature: void CheckOther::comparePointersError(const Token *, const ValueFlow::Value *, const ValueFlow::Value *)
+- name: _ZN10CheckOther24redundantAssignmentErrorEPK5TokenS2_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: tok1
+    type: const Token *
+  - name: tok2
+    type: const Token *
+  - name: var
+    type: const std::string &
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckOther::redundantAssignmentError(const Token *, const Token *, const std::string &, bool)
+- name: _ZN10CheckOther28redundantInitializationErrorEPK5TokenS2_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: tok1
+    type: const Token *
+  - name: tok2
+    type: const Token *
+  - name: var
+    type: const std::string &
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckOther::redundantInitializationError(const Token *, const Token *, const std::string &, bool)
+- name: _ZN10CheckOther22redundantContinueErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckOther::redundantContinueError(const Token *)
+- name: _ZN10CheckOther21funcArgOrderDifferentERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPK5TokenSA_RKSt6vectorISA_SaISA_EESF_
+  params:
+  - name: functionName
+    type: const std::string &
+  - name: declaration
+    type: const Token *
+  - name: definition
+    type: const Token *
+  - name: declarations
+    type: const int &
+  - name: definitions
+    type: const int &
+  return_type: void
+  signature: void CheckOther::funcArgOrderDifferent(const std::string &, const Token *, const Token *, const int &, const
+    int &)
+- name: _ZN10CheckOther21checkModuloOfOneErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckOther::checkModuloOfOneError(const Token *)
+- name: _ZN10CheckOther18unionZeroInitErrorEPK5TokenRK11UnionMember
+  params:
+  - name: tok
+    type: const Token *
+  - name: largestMember
+    type: const UnionMember &
+  return_type: void
+  signature: void CheckOther::unionZeroInitError(const Token *, const UnionMember &)
+- name: _ZN10CheckOther4diagEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: bool
+  signature: bool CheckOther::diag(const Token *)
+- name: _ZN10CheckOther33redundantAssignmentSameValueErrorEPK5TokenPKN9ValueFlow5ValueERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: val
+    type: const ValueFlow::Value *
+  - name: var
+    type: const std::string &
+  return_type: void
+  signature: void CheckOther::redundantAssignmentSameValueError(const Token *, const ValueFlow::Value *, const std::string
+    &)
+- name: _ZN20CheckPostfixOperator20postfixOperatorErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckPostfixOperator::postfixOperatorError(const Token *)
+- name: _ZN11CheckSizeof28sizeofForArrayParameterErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckSizeof::sizeofForArrayParameterError(const Token *)
+- name: _ZN11CheckSizeof21sizeofForPointerErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckSizeof::sizeofForPointerError(const Token *, const std::string &)
+- name: _ZN11CheckSizeof19divideBySizeofErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: memfunc
+    type: const std::string &
+  return_type: void
+  signature: void CheckSizeof::divideBySizeofError(const Token *, const std::string &)
+- name: _ZN11CheckSizeof30sizeofForNumericParameterErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckSizeof::sizeofForNumericParameterError(const Token *)
+- name: _ZN11CheckSizeof17sizeofsizeofErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckSizeof::sizeofsizeofError(const Token *)
+- name: _ZN11CheckSizeof22sizeofCalculationErrorEPK5Tokenb
+  params:
+  - name: tok
+    type: const Token *
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckSizeof::sizeofCalculationError(const Token *, bool)
+- name: _ZN11CheckSizeof19sizeofFunctionErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckSizeof::sizeofFunctionError(const Token *)
+- name: _ZN11CheckSizeof19multiplySizeofErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckSizeof::multiplySizeofError(const Token *)
+- name: _ZN11CheckSizeof17divideSizeofErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckSizeof::divideSizeofError(const Token *)
+- name: _ZN11CheckSizeof15sizeofVoidErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckSizeof::sizeofVoidError(const Token *)
+- name: _ZN11CheckSizeof34sizeofDereferencedVoidPointerErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckSizeof::sizeofDereferencedVoidPointerError(const Token *, const std::string &)
+- name: _ZN11CheckSizeof33arithOperationsOnVoidPointerErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  - name: vartype
+    type: const std::string &
+  return_type: void
+  signature: void CheckSizeof::arithOperationsOnVoidPointerError(const Token *, const std::string &, const std::string &)
+- name: _ZN8CheckStl16outOfBoundsErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPKN9ValueFlow5ValueESA_SE_
+  params:
+  - name: tok
+    type: const Token *
+  - name: containerName
+    type: const std::string &
+  - name: containerSize
+    type: const ValueFlow::Value *
+  - name: index
+    type: const std::string &
+  - name: indexValue
+    type: const ValueFlow::Value *
+  return_type: void
+  signature: void CheckStl::outOfBoundsError(const Token *, const std::string &, const ValueFlow::Value *, const std::string
+    &, const ValueFlow::Value *)
+- name: _ZN8CheckStl20invalidIteratorErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: iteratorName
+    type: const std::string &
+  return_type: void
+  signature: void CheckStl::invalidIteratorError(const Token *, const std::string &)
+- name: _ZN8CheckStl14iteratorsErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_
+  params:
+  - name: tok
+    type: const Token *
+  - name: containerTok
+    type: const Token *
+  - name: containerName
+    type: const std::string &
+  return_type: void
+  signature: void CheckStl::iteratorsError(const Token *, const Token *, const std::string &)
+- name: _ZN8CheckStl14iteratorsErrorEPK5TokenS2_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: containerTok
+    type: const Token *
+  - name: containerName
+    type: const std::string &
+  return_type: void
+  signature: void CheckStl::iteratorsError(const Token *, const Token *, const std::string &)
+- name: _ZN8CheckStl25invalidContainerLoopErrorEPK5TokenS2_NSt7__cxx114listISt4pairIS2_NS3_12basic_stringIcSt11char_traitsIcESaIcEEEESaISB_EEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: loopTok
+    type: const Token *
+  - name: errorPath
+    type: int
+  return_type: void
+  signature: void CheckStl::invalidContainerLoopError(const Token *, const Token *, int)
+- name: _ZN8CheckStl21invalidContainerErrorEPK5TokenS2_PKN9ValueFlow5ValueENSt7__cxx114listISt4pairIS2_NS7_12basic_stringIcSt11char_traitsIcESaIcEEEESaISF_EEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: arg1
+    type: const Token *
+  - name: val
+    type: const ValueFlow::Value *
+  - name: errorPath
+    type: int
+  return_type: void
+  signature: void CheckStl::invalidContainerError(const Token *, const Token *, const ValueFlow::Value *, int)
+- name: _ZN8CheckStl30invalidContainerReferenceErrorEPK5TokenS2_NSt7__cxx114listISt4pairIS2_NS3_12basic_stringIcSt11char_traitsIcESaIcEEEESaISB_EEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: contTok
+    type: const Token *
+  - name: errorPath
+    type: int
+  return_type: void
+  signature: void CheckStl::invalidContainerReferenceError(const Token *, const Token *, int)
+- name: _ZN8CheckStl33mismatchingContainerIteratorErrorEPK5TokenS2_S2_
+  params:
+  - name: containerTok
+    type: const Token *
+  - name: iterTok
+    type: const Token *
+  - name: containerTok2
+    type: const Token *
+  return_type: void
+  signature: void CheckStl::mismatchingContainerIteratorError(const Token *, const Token *, const Token *)
+- name: _ZN8CheckStl26mismatchingContainersErrorEPK5TokenS2_
+  params:
+  - name: tok1
+    type: const Token *
+  - name: tok2
+    type: const Token *
+  return_type: void
+  signature: void CheckStl::mismatchingContainersError(const Token *, const Token *)
+- name: _ZN8CheckStl35mismatchingContainerExpressionErrorEPK5TokenS2_
+  params:
+  - name: tok1
+    type: const Token *
+  - name: tok2
+    type: const Token *
+  return_type: void
+  signature: void CheckStl::mismatchingContainerExpressionError(const Token *, const Token *)
+- name: _ZN8CheckStl27sameIteratorExpressionErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckStl::sameIteratorExpressionError(const Token *)
+- name: _ZN8CheckStl22dereferenceErasedErrorEPK5TokenS2_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: erased
+    type: const Token *
+  - name: deref
+    type: const Token *
+  - name: itername
+    type: const std::string &
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckStl::dereferenceErasedError(const Token *, const Token *, const std::string &, bool)
+- name: _ZN8CheckStl19stlOutOfBoundsErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_b
+  params:
+  - name: tok
+    type: const Token *
+  - name: num
+    type: const std::string &
+  - name: var
+    type: const std::string &
+  - name: at
+    type: bool
+  return_type: void
+  signature: void CheckStl::stlOutOfBoundsError(const Token *, const std::string &, const std::string &, bool)
+- name: _ZN8CheckStl18negativeIndexErrorEPK5TokenRKN9ValueFlow5ValueE
+  params:
+  - name: tok
+    type: const Token *
+  - name: index
+    type: const ValueFlow::Value &
+  return_type: void
+  signature: void CheckStl::negativeIndexError(const Token *, const ValueFlow::Value &)
+- name: _ZN8CheckStl18stlBoundariesErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckStl::stlBoundariesError(const Token *)
+- name: _ZN8CheckStl12if_findErrorEPK5Tokenb
+  params:
+  - name: tok
+    type: const Token *
+  - name: str
+    type: bool
+  return_type: void
+  signature: void CheckStl::if_findError(const Token *, bool)
+- name: _ZN8CheckStl20checkFindInsertErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckStl::checkFindInsertError(const Token *)
+- name: _ZN8CheckStl17string_c_strErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckStl::string_c_strError(const Token *)
+- name: _ZN8CheckStl18string_c_strReturnEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckStl::string_c_strReturn(const Token *)
+- name: _ZN8CheckStl17string_c_strParamEPK5TokeniRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: number
+    type: int
+  - name: argtype
+    type: const std::string &
+  return_type: void
+  signature: void CheckStl::string_c_strParam(const Token *, int, const std::string &)
+- name: _ZN8CheckStl23string_c_strConstructorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: argtype
+    type: const std::string &
+  return_type: void
+  signature: void CheckStl::string_c_strConstructor(const Token *, const std::string &)
+- name: _ZN8CheckStl22string_c_strAssignmentEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: argtype
+    type: const std::string &
+  return_type: void
+  signature: void CheckStl::string_c_strAssignment(const Token *, const std::string &)
+- name: _ZN8CheckStl18string_c_strConcatEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckStl::string_c_strConcat(const Token *)
+- name: _ZN8CheckStl18string_c_strStreamEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckStl::string_c_strStream(const Token *)
+- name: _ZN8CheckStl22string_c_strThrowErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckStl::string_c_strThrowError(const Token *)
+- name: _ZN8CheckStl9sizeErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckStl::sizeError(const Token *)
+- name: _ZN8CheckStl22missingComparisonErrorEPK5TokenS2_
+  params:
+  - name: incrementToken1
+    type: const Token *
+  - name: incrementToken2
+    type: const Token *
+  return_type: void
+  signature: void CheckStl::missingComparisonError(const Token *, const Token *)
+- name: _ZN8CheckStl22redundantIfRemoveErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckStl::redundantIfRemoveError(const Token *)
+- name: _ZN8CheckStl28uselessCallsReturnValueErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  - name: function
+    type: const std::string &
+  return_type: void
+  signature: void CheckStl::uselessCallsReturnValueError(const Token *, const std::string &, const std::string &)
+- name: _ZN8CheckStl21uselessCallsSwapErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckStl::uselessCallsSwapError(const Token *, const std::string &)
+- name: _ZN8CheckStl23uselessCallsSubstrErrorEPK5TokenNS_15SubstrErrorTypeE
+  params:
+  - name: tok
+    type: const Token *
+  - name: type
+    type: CheckStl::SubstrErrorType
+  return_type: void
+  signature: void CheckStl::uselessCallsSubstrError(const Token *, CheckStl::SubstrErrorType)
+- name: _ZN8CheckStl28uselessCallsConstructorErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckStl::uselessCallsConstructorError(const Token *)
+- name: _ZN8CheckStl22uselessCallsEmptyErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckStl::uselessCallsEmptyError(const Token *)
+- name: _ZN8CheckStl23uselessCallsRemoveErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: function
+    type: const std::string &
+  return_type: void
+  signature: void CheckStl::uselessCallsRemoveError(const Token *, const std::string &)
+- name: _ZN8CheckStl31dereferenceInvalidIteratorErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: deref
+    type: const Token *
+  - name: iterName
+    type: const std::string &
+  return_type: void
+  signature: void CheckStl::dereferenceInvalidIteratorError(const Token *, const std::string &)
+- name: _ZN8CheckStl29eraseIteratorOutOfBoundsErrorEPK5TokenS2_PKN9ValueFlow5ValueE
+  params:
+  - name: ftok
+    type: const Token *
+  - name: itertok
+    type: const Token *
+  - name: val
+    type: const ValueFlow::Value *
+  return_type: void
+  signature: void CheckStl::eraseIteratorOutOfBoundsError(const Token *, const Token *, const ValueFlow::Value *)
+- name: _ZN8CheckStl20useStlAlgorithmErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: algoName
+    type: const std::string &
+  return_type: void
+  signature: void CheckStl::useStlAlgorithmError(const Token *, const std::string &)
+- name: _ZN8CheckStl24knownEmptyContainerErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: algo
+    type: const std::string &
+  return_type: void
+  signature: void CheckStl::knownEmptyContainerError(const Token *, const std::string &)
+- name: _ZN8CheckStl20globalLockGuardErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckStl::globalLockGuardError(const Token *)
+- name: _ZN8CheckStl15localMutexErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckStl::localMutexError(const Token *)
+- name: _ZN8CheckStl31outOfBoundsIndexExpressionErrorEPK5TokenS2_
+  params:
+  - name: tok
+    type: const Token *
+  - name: index
+    type: const Token *
+  return_type: void
+  signature: void CheckStl::outOfBoundsIndexExpressionError(const Token *, const Token *)
+- name: _ZN8CheckStl31dereferenceInvalidIteratorErrorEPK5TokenPKN9ValueFlow5ValueEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: value
+    type: const ValueFlow::Value *
+  - name: inconclusive
+    type: bool
+  return_type: void
+  signature: void CheckStl::dereferenceInvalidIteratorError(const Token *, const ValueFlow::Value *, bool)
+- name: _ZN8CheckStl17checkIteratorPairEPK5TokenS2_
+  params:
+  - name: tok1
+    type: const Token *
+  - name: tok2
+    type: const Token *
+  return_type: bool
+  signature: bool CheckStl::checkIteratorPair(const Token *, const Token *)
+- name: _ZNK8CheckStl17isContainerSizeGEEPK5TokenS2_
+  params:
+  - name: containerToken
+    type: const Token *
+  - name: expr
+    type: const Token *
+  return_type: bool
+  signature: bool CheckStl::isContainerSizeGE(const Token *, const Token *) const
+- name: _ZNK8CheckStl15isContainerSizeEPK5TokenS2_
+  params:
+  - name: containerToken
+    type: const Token *
+  - name: expr
+    type: const Token *
+  return_type: bool
+  signature: bool CheckStl::isContainerSize(const Token *, const Token *) const
+- name: _ZN11CheckString23stringLiteralWriteErrorEPK5TokenS2_
+  params:
+  - name: tok
+    type: const Token *
+  - name: strValue
+    type: const Token *
+  return_type: void
+  signature: void CheckString::stringLiteralWriteError(const Token *, const Token *)
+- name: _ZN11CheckString27sprintfOverlappingDataErrorEPK5TokenS2_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: funcTok
+    type: const Token *
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckString::sprintfOverlappingDataError(const Token *, const Token *, const std::string &)
+- name: _ZN11CheckString16strPlusCharErrorEPK5Token
+  params:
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void CheckString::strPlusCharError(const Token *)
+- name: _ZN11CheckString27incorrectStringCompareErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_
+  params:
+  - name: tok
+    type: const Token *
+  - name: func
+    type: const std::string &
+  - name: string
+    type: const std::string &
+  return_type: void
+  signature: void CheckString::incorrectStringCompareError(const Token *, const std::string &, const std::string &)
+- name: _ZN11CheckString28suspiciousStringCompareErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: var
+    type: const std::string &
+  - name: isLong
+    type: bool
+  return_type: void
+  signature: void CheckString::suspiciousStringCompareError(const Token *, const std::string &, bool)
+- name: _ZN11CheckString33suspiciousStringCompareError_charEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: var
+    type: const std::string &
+  return_type: void
+  signature: void CheckString::suspiciousStringCompareError_char(const Token *, const std::string &)
+- name: _ZN11CheckString27incorrectStringBooleanErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: string
+    type: const std::string &
+  return_type: void
+  signature: void CheckString::incorrectStringBooleanError(const Token *, const std::string &)
+- name: _ZN11CheckString33alwaysTrueFalseStringCompareErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_
+  params:
+  - name: tok
+    type: const Token *
+  - name: str1
+    type: const std::string &
+  - name: str2
+    type: const std::string &
+  return_type: void
+  signature: void CheckString::alwaysTrueFalseStringCompareError(const Token *, const std::string &, const std::string &)
+- name: _ZN11CheckString36alwaysTrueStringVariableCompareErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_
+  params:
+  - name: tok
+    type: const Token *
+  - name: str1
+    type: const std::string &
+  - name: str2
+    type: const std::string &
+  return_type: void
+  signature: void CheckString::alwaysTrueStringVariableCompareError(const Token *, const std::string &, const std::string
+    &)
+- name: _ZN11CheckString22overlappingStrcmpErrorEPK5TokenS2_
+  params:
+  - name: eq0
+    type: const Token *
+  - name: ne0
+    type: const Token *
+  return_type: void
+  signature: void CheckString::overlappingStrcmpError(const Token *, const Token *)
+- name: _ZN9CheckType23tooBigBitwiseShiftErrorEPK5TokeniRKN9ValueFlow5ValueE
+  params:
+  - name: tok
+    type: const Token *
+  - name: lhsbits
+    type: int
+  - name: rhsbits
+    type: const ValueFlow::Value &
+  return_type: void
+  signature: void CheckType::tooBigBitwiseShiftError(const Token *, int, const ValueFlow::Value &)
+- name: _ZN9CheckType29tooBigSignedBitwiseShiftErrorEPK5TokeniRKN9ValueFlow5ValueE
+  params:
+  - name: tok
+    type: const Token *
+  - name: lhsbits
+    type: int
+  - name: rhsbits
+    type: const ValueFlow::Value &
+  return_type: void
+  signature: void CheckType::tooBigSignedBitwiseShiftError(const Token *, int, const ValueFlow::Value &)
+- name: _ZN9CheckType20integerOverflowErrorEPK5TokenRKN9ValueFlow5ValueEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: value
+    type: const ValueFlow::Value &
+  - name: isOverflow
+    type: bool
+  return_type: void
+  signature: void CheckType::integerOverflowError(const Token *, const ValueFlow::Value &, bool)
+- name: _ZN9CheckType19signConversionErrorEPK5TokenPKN9ValueFlow5ValueEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: negativeValue
+    type: const ValueFlow::Value *
+  - name: constvalue
+    type: const bool
+  return_type: void
+  signature: void CheckType::signConversionError(const Token *, const ValueFlow::Value *, const bool)
+- name: _ZN9CheckType19longCastAssignErrorEPK5TokenPK9ValueTypeS5_
+  params:
+  - name: tok
+    type: const Token *
+  - name: src
+    type: const ValueType *
+  - name: tgt
+    type: const ValueType *
+  return_type: void
+  signature: void CheckType::longCastAssignError(const Token *, const ValueType *, const ValueType *)
+- name: _ZN9CheckType19longCastReturnErrorEPK5TokenPK9ValueTypeS5_
+  params:
+  - name: tok
+    type: const Token *
+  - name: src
+    type: const ValueType *
+  - name: tgt
+    type: const ValueType *
+  return_type: void
+  signature: void CheckType::longCastReturnError(const Token *, const ValueType *, const ValueType *)
+- name: _ZN9CheckType27floatToIntegerOverflowErrorEPK5TokenRKN9ValueFlow5ValueE
+  params:
+  - name: tok
+    type: const Token *
+  - name: value
+    type: const ValueFlow::Value &
+  return_type: void
+  signature: void CheckType::floatToIntegerOverflowError(const Token *, const ValueFlow::Value &)
 - name: _ZN9CheckType27checkFloatToIntegerOverflowEPK5TokenPK9ValueTypeS5_RKNSt7__cxx114listIN9ValueFlow5ValueESaIS9_EEE
   params:
   - name: tok
@@ -569,119 +3371,259 @@ functions:
     type: const int &
   return_type: void
   signature: void CheckType::checkFloatToIntegerOverflow(const Token *, const ValueType *, const ValueType *, const int &)
-- name: _ZN8CppCheck5checkERK12FileSettings
+- name: _ZN23CheckUninitVar_internal10MyFileInfoCI2N5Check8FileInfoEENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
   params:
-  - name: fs
-    type: const FileSettings &
-  return_type: unsigned int
-  signature: unsigned int CppCheck::check(const FileSettings &)
-- name: _ZN8CppCheck19analyseWholeProgramERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKNS0_4listI15FileWithDetailsSaIS9_EEERKNS8_I12FileSettingsSaISE_EEES7_
+  - name: f0
+    type: std::string
+  return_type: void
+  signature: void Check::FileInfo::FileInfo(std::string)
+- name: _ZN14CheckUninitVar14uninitvarErrorEPK5TokenRKN9ValueFlow5ValueE
   params:
-  - name: buildDir
-    type: const std::string &
-  - name: files
-    type: const int &
-  - name: fileSettings
-    type: const int &
-  - name: ctuInfo
-    type: const std::string &
-  return_type: unsigned int
-  signature: unsigned int CppCheck::analyseWholeProgram(const std::string &, const int &, const int &, const std::string &)
-- name: _ZN9Variables8writeAllEiPK5Token
-  params:
-  - name: varid
-    type: int
   - name: tok
     type: const Token *
+  - name: v
+    type: const ValueFlow::Value &
   return_type: void
-  signature: void Variables::writeAll(int, const Token *)
-- name: _ZL12doAssignmentR9VariablesPK5TokenbPK5Scope
+  signature: void CheckUninitVar::uninitvarError(const Token *, const ValueFlow::Value &)
+- name: _ZN14CheckUninitVar15uninitdataErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
   params:
-  - name: variables
-    type: Variables &
   - name: tok
     type: const Token *
-  - name: dereference
-    type: bool
-  - name: scope
-    type: const Scope *
-  return_type: const Token *
-  signature: const Token * doAssignment(Variables &, const Token *, bool, const Scope *)
-- name: _ZN9Variables8eraseAllEi
-  params:
-  - name: varid
-    type: int
-  return_type: void
-  signature: void Variables::eraseAll(int)
-- name: _ZN9Variables5aliasEiib
-  params:
-  - name: varid1
-    type: int
-  - name: varid2
-    type: int
-  - name: replace
-    type: bool
-  return_type: void
-  signature: void Variables::alias(int, int, bool)
-- name: _ZN8CppCheck13executeAddonsERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS6_
-  params:
-  - name: files
-    type: const int &
-  - name: file0
+  - name: varname
     type: const std::string &
   return_type: void
-  signature: void CppCheck::executeAddons(const int &, const std::string &)
-- name: _ZN9simplecpp9TokenListC2ENS_4ViewERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS8_EERKS8_PNS3_4listINS_6OutputESaISF_EEE
+  signature: void CheckUninitVar::uninitdataError(const Token *, const std::string &)
+- name: _ZN14CheckUninitVar4diagEPK5Token
   params:
-  - name: other
-    type: simplecpp::TokenList &&
-  return_type: void
-  signature: void simplecpp::TokenList::TokenList(simplecpp::TokenList &&)
-- name: _ZN18CheckBufferOverrun19analyseWholeProgramERKN3CTU8FileInfoERKNSt7__cxx114listIPN5Check8FileInfoESaIS8_EEERK8SettingsR11ErrorLogger
-  params:
-  - name: ctu
-    type: const CTU::FileInfo &
-  - name: fileInfo
-    type: const int &
-  - name: settings
-    type: const Settings &
-  - name: errorLogger
-    type: ErrorLogger &
+  - name: tok
+    type: const Token *
   return_type: bool
-  signature: bool CheckBufferOverrun::analyseWholeProgram(const CTU::FileInfo &, const int &, const Settings &, ErrorLogger
+  signature: bool CheckUninitVar::diag(const Token *)
+- name: _ZNK14CheckUninitVar26isMemberVariableAssignmentEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: membervar
+    type: const std::string &
+  return_type: bool
+  signature: bool CheckUninitVar::isMemberVariableAssignment(const Token *, const std::string &) const
+- name: _ZNK14CheckUninitVar15isVariableUsageEPK5TokenbNS_5AllocEi
+  params:
+  - name: vartok
+    type: const Token *
+  - name: pointer
+    type: bool
+  - name: alloc
+    type: CheckUninitVar::Alloc
+  - name: indirect
+    type: int
+  return_type: const Token *
+  signature: const Token * CheckUninitVar::isVariableUsage(const Token *, bool, CheckUninitVar::Alloc, int) const
+- name: _ZNK14CheckUninitVar18isFunctionParUsageEPK5TokenbNS_5AllocEi
+  params:
+  - name: vartok
+    type: const Token *
+  - name: pointer
+    type: bool
+  - name: alloc
+    type: CheckUninitVar::Alloc
+  - name: indirect
+    type: int
+  return_type: int
+  signature: int CheckUninitVar::isFunctionParUsage(const Token *, bool, CheckUninitVar::Alloc, int) const
+- name: _ZN14CheckUninitVar14uninitvarErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  - name: alloc
+    type: CheckUninitVar::Alloc
+  return_type: void
+  signature: void CheckUninitVar::uninitvarError(const Token *, const std::string &, CheckUninitVar::Alloc)
+- name: _ZN14CheckUninitVar14uninitvarErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS3_4listISt4pairIS2_S8_ESaISD_EEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  - name: alloc
+    type: CheckUninitVar::Alloc
+  return_type: void
+  signature: void CheckUninitVar::uninitvarError(const Token *, const std::string &, CheckUninitVar::Alloc)
+- name: _ZN14CheckUnusedVar19unusedVariableErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckUnusedVar::unusedVariableError(const Token *, const std::string &)
+- name: _ZN14CheckUnusedVar31allocatedButUnusedVariableErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckUnusedVar::allocatedButUnusedVariableError(const Token *, const std::string &)
+- name: _ZN14CheckUnusedVar19unreadVariableErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  - name: modified
+    type: bool
+  return_type: void
+  signature: void CheckUnusedVar::unreadVariableError(const Token *, const std::string &, bool)
+- name: _ZN14CheckUnusedVar23unassignedVariableErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckUnusedVar::unassignedVariableError(const Token *, const std::string &)
+- name: _ZN14CheckUnusedVar23unusedStructMemberErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_SA_
+  params:
+  - name: tok
+    type: const Token *
+  - name: structname
+    type: const std::string &
+  - name: varname
+    type: const std::string &
+  - name: prefix
+    type: const std::string &
+  return_type: void
+  signature: void CheckUnusedVar::unusedStructMemberError(const Token *, const std::string &, const std::string &, const std::string
     &)
-- name: _ZN3CTU8FileInfo11loadFromXmlEPKN8tinyxml210XMLElementE
+- name: _ZN9Variables5writeEiPK5Token
+  params:
+  - name: varid
+    type: int
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void Variables::write(int, const Token *)
+- name: _ZN9Variables3useEiPK5Token
+  params:
+  - name: varid
+    type: int
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void Variables::use(int, const Token *)
+- name: _ZN9Variables4findEi
+  params:
+  - name: varid
+    type: int
+  return_type: Variables::VariableUsage *
+  signature: Variables::VariableUsage * Variables::find(int)
+- name: _ZN9Variables12writeAliasesEiPK5Token
+  params:
+  - name: varid
+    type: int
+  - name: tok
+    type: const Token *
+  return_type: void
+  signature: void Variables::writeAliases(int, const Token *)
+- name: _ZN9Variables5eraseEi
+  params:
+  - name: varid
+    type: int
+  return_type: void
+  signature: void Variables::erase(int)
+- name: _ZN9Variables12eraseAliasesEi
+  params:
+  - name: varid
+    type: int
+  return_type: void
+  signature: void Variables::eraseAliases(int)
+- name: _ZN10CheckVaarg31wrongParameterTo_va_start_errorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_
+  params:
+  - name: tok
+    type: const Token *
+  - name: paramIsName
+    type: const std::string &
+  - name: paramShouldName
+    type: const std::string &
+  return_type: void
+  signature: void CheckVaarg::wrongParameterTo_va_start_error(const Token *, const std::string &, const std::string &)
+- name: _ZN10CheckVaarg26referenceAs_va_start_errorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: paramName
+    type: const std::string &
+  return_type: void
+  signature: void CheckVaarg::referenceAs_va_start_error(const Token *, const std::string &)
+- name: _ZN10CheckVaarg19va_end_missingErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckVaarg::va_end_missingError(const Token *, const std::string &)
+- name: _ZN10CheckVaarg30va_list_usedBeforeStartedErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckVaarg::va_list_usedBeforeStartedError(const Token *, const std::string &)
+- name: _ZN10CheckVaarg29va_start_subsequentCallsErrorEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: tok
+    type: const Token *
+  - name: varname
+    type: const std::string &
+  return_type: void
+  signature: void CheckVaarg::va_start_subsequentCallsError(const Token *, const std::string &)
+- name: _ZN3CTU26loadUnsafeUsageListFromXmlB5cxx11EPKN8tinyxml210XMLElementE
   params:
   - name: xmlElement
     type: const tinyxml2::XMLElement *
-  return_type: void
-  signature: void CTU::FileInfo::loadFromXml(const tinyxml2::XMLElement *)
+  return_type: int
+  signature: int CTU::loadUnsafeUsageListFromXml(const tinyxml2::XMLElement *)
+- name: _ZN3CTU8FileInfo12FunctionCall11loadFromXmlEPKN8tinyxml210XMLElementE
+  params:
+  - name: xmlElement
+    type: const tinyxml2::XMLElement *
+  return_type: bool
+  signature: bool CTU::FileInfo::FunctionCall::loadFromXml(const tinyxml2::XMLElement *)
 - name: _ZN3CTU8FileInfo10NestedCall11loadFromXmlEPKN8tinyxml210XMLElementE
   params:
   - name: xmlElement
     type: const tinyxml2::XMLElement *
   return_type: bool
   signature: bool CTU::FileInfo::NestedCall::loadFromXml(const tinyxml2::XMLElement *)
-- name: _ZN3CTU8toStringERKNSt7__cxx114listINS_8FileInfo11UnsafeUsageESaIS3_EEE
+- name: _ZN3CTU8FileInfo8CallBase15loadBaseFromXmlEPKN8tinyxml210XMLElementE
   params:
-  - name: unsafeUsage
-    type: const int &
-  return_type: std::string
-  signature: std::string CTU::toString(const int &)
-- name: _ZNK3CTU8FileInfo10NestedCall11toXmlStringB5cxx11Ev
-  params: []
-  return_type: std::string
-  signature: std::string CTU::FileInfo::NestedCall::toXmlString() const
-- name: _ZNK3CTU8FileInfo8toStringB5cxx11Ev
-  params: []
-  return_type: std::string
-  signature: std::string CTU::FileInfo::toString() const
-- name: _ZN19AnalyzerInformation9reportErrERK12ErrorMessage
+  - name: xmlElement
+    type: const tinyxml2::XMLElement *
+  return_type: bool
+  signature: bool CTU::FileInfo::CallBase::loadBaseFromXml(const tinyxml2::XMLElement *)
+- name: _ZNK12ErrorMessage8toStringEbRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_
   params:
-  - name: msg
-    type: const ErrorMessage &
-  return_type: void
-  signature: void AnalyzerInformation::reportErr(const ErrorMessage &)
+  - name: verbose
+    type: bool
+  - name: templateFormat
+    type: const std::string &
+  - name: templateLocation
+    type: const std::string &
+  return_type: std::string
+  signature: std::string ErrorMessage::toString(bool, const std::string &, const std::string &) const
+- name: _ZNK11FwdAnalysis15possiblyAliasedEPK5TokenS2_
+  params:
+  - name: expr
+    type: const Token *
+  - name: startToken
+    type: const Token *
+  return_type: bool
+  signature: bool FwdAnalysis::possiblyAliased(const Token *, const Token *) const
 - name: _ZN11FwdAnalysis11unusedValueEPK5TokenS2_S2_
   params:
   - name: expr
@@ -692,6 +3634,53 @@ functions:
     type: const Token *
   return_type: bool
   signature: bool FwdAnalysis::unusedValue(const Token *, const Token *, const Token *)
+- name: _ZN11FwdAnalysis5checkEPK5TokenS2_S2_
+  params:
+  - name: expr
+    type: const Token *
+  - name: startToken
+    type: const Token *
+  - name: endToken
+    type: const Token *
+  return_type: FwdAnalysis::Result
+  signature: FwdAnalysis::Result FwdAnalysis::check(const Token *, const Token *, const Token *)
+- name: _ZNK11FwdAnalysis13getExprVarIdsEPK5TokenPbS3_
+  params:
+  - name: expr
+    type: const Token *
+  - name: localOut
+    type: bool *
+  - name: unknownVarIdOut
+    type: bool *
+  return_type: int
+  signature: int FwdAnalysis::getExprVarIds(const Token *, bool *, bool *) const
+- name: _ZN11FwdAnalysis14checkRecursiveEPK5TokenS2_S2_RKSt3setIiSt4lessIiESaIiEEbbi
+  params:
+  - name: expr
+    type: const Token *
+  - name: startToken
+    type: const Token *
+  - name: endToken
+    type: const Token *
+  - name: exprVarIds
+    type: const std::set<int> &
+  - name: local
+    type: bool
+  - name: inInnerClass
+    type: bool
+  - name: depth
+    type: int
+  return_type: FwdAnalysis::Result
+  signature: FwdAnalysis::Result FwdAnalysis::checkRecursive(const Token *, const Token *, const Token *, const std::set<int>
+    &, bool, bool, int)
+- name: _ZNK11FwdAnalysis10hasOperandEPK5TokenS2_
+  params:
+  - name: tok
+    type: const Token *
+  - name: lhs
+    type: const Token *
+  return_type: bool
+  signature: bool FwdAnalysis::hasOperand(const Token *, const Token *) const
 - name: _ZN11FwdAnalysis8reassignEPK5TokenS2_S2_
   params:
   - name: expr
@@ -702,108 +3691,38 @@ functions:
     type: const Token *
   return_type: const Token *
   signature: const Token * FwdAnalysis::reassign(const Token *, const Token *, const Token *)
-- name: _ZN9__gnu_cxx5__ops10_Iter_predIZN13ImportProject14importVcxitemsERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKSt6vectorIS8_SaIS8_EERSB_INS2_18SharedItemsProjectESaISG_EEE3$_3EC2ESK_
-  params:
-  - name: filename
-    type: const std::string &
-  - name: fileFilters
-    type: const int &
-  - name: cache
-    type: int &
-  return_type: ImportProject::SharedItemsProject
-  signature: ImportProject::SharedItemsProject ImportProject::importVcxitems(const std::string &, const int &, int &)
-- name: _ZN9__gnu_cxx5__ops10_Iter_predIZN13ImportProject14importVcxitemsERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKSt6vectorIS8_SaIS8_EERSB_INS2_18SharedItemsProjectESaISG_EEE3$_3EclINS_17__normal_iteratorIPSG_SI_EEEEbT_
-  params:
-  - name: filename
-    type: const std::string &
-  - name: fileFilters
-    type: const int &
-  - name: cache
-    type: int &
-  return_type: ImportProject::SharedItemsProject
-  signature: ImportProject::SharedItemsProject ImportProject::importVcxitems(const std::string &, const int &, int &)
-- name: _ZN13ImportProject14importVcxitemsERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKSt6vectorIS5_SaIS5_EERS8_INS_18SharedItemsProjectESaISD_EE
-  params:
-  - name: filename
-    type: const std::string &
-  - name: fileFilters
-    type: const int &
-  - name: cache
-    type: int &
-  return_type: ImportProject::SharedItemsProject
-  signature: ImportProject::SharedItemsProject ImportProject::importVcxitems(const std::string &, const int &, int &)
-- name: _ZN9__gnu_cxx5__ops10_Iter_predIZN13ImportProject9parseArgsER12FileSettingsRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISB_EEE3$_1EclISt20_List_const_iteratorISB_EEEbT_
-  params:
-  - name: fs
-    type: FileSettings &
-  - name: args
-    type: const int &
-  return_type: void
-  signature: void ImportProject::parseArgs(FileSettings &, const int &)
-- name: _ZN13ImportProject9parseArgsER12FileSettingsRKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS8_EE
-  params:
-  - name: fs
-    type: FileSettings &
-  - name: args
-    type: const int &
-  return_type: void
-  signature: void ImportProject::parseArgs(FileSettings &, const int &)
-- name: _ZN9__gnu_cxx5__ops10_Iter_predIZNK7Library15hasAnyTypeCheckERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE3$_2EclISt17_Rb_tree_iteratorISt4pairIKSF_IS8_S8_ENS2_9TypeCheckEEEEEbT_
-  params:
-  - name: typeName
-    type: const std::string &
-  return_type: bool
-  signature: bool Library::hasAnyTypeCheck(const std::string &) const
-- name: _ZNK7Library13platform_typeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_
+- name: _ZNK7Library11LibraryData8Platform13platform_typeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
   params:
   - name: name
     type: const std::string &
-  - name: platform
-    type: const std::string &
   return_type: const Library::PlatformType *
-  signature: const Library::PlatformType * Library::platform_type(const std::string &, const std::string &) const
-- name: _ZNK7Library16isexportedsuffixERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_
+  signature: const Library::PlatformType * Library::LibraryData::Platform::platform_type(const std::string &) const
+- name: _ZNK7Library11LibraryData17ExportedFunctions8isSuffixERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: suffix
+    type: const std::string &
+  return_type: bool
+  signature: bool Library::LibraryData::ExportedFunctions::isSuffix(const std::string &) const
+- name: _ZNK7Library11LibraryData17ExportedFunctions8isPrefixERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
   params:
   - name: prefix
     type: const std::string &
-  - name: token
-    type: const std::string &
   return_type: bool
-  signature: bool Library::isexportedsuffix(const std::string &, const std::string &) const
-- name: _ZNK7Library16isexportedprefixERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_
-  params:
-  - name: prefix
-    type: const std::string &
-  - name: token
-    type: const std::string &
-  return_type: bool
-  signature: bool Library::isexportedprefix(const std::string &, const std::string &) const
-- name: _ZNK7Library14isSmartPointerEPK5Token
+  signature: bool Library::LibraryData::ExportedFunctions::isPrefix(const std::string &) const
+- name: _ZNK7Library18detectSmartPointerEPK5Tokenb
   params:
   - name: tok
     type: const Token *
-  return_type: bool
-  signature: bool Library::isSmartPointer(const Token *) const
-- name: _ZNK7Library22getContainerFromActionEPK5TokenNS_9Container6ActionE
-  params:
-  - name: tok
-    type: const Token *
-  - name: action
-    type: Container::Action
-  return_type: const Token *
-  signature: const Token * Library::getContainerFromAction(const Token *, Container::Action) const
+  - name: withoutStd
+    type: bool
+  return_type: const Library::SmartPointer *
+  signature: const Library::SmartPointer * Library::detectSmartPointer(const Token *, bool) const
 - name: _ZNK7Library11getFunctionEPK5Token
   params:
   - name: ftok
     type: const Token *
   return_type: const Library::Function *
   signature: const Library::Function * Library::getFunction(const Token *) const
-- name: _ZNK7Library15getFunctionNameB5cxx11EPK5Token
-  params:
-  - name: ftok
-    type: const Token *
-  return_type: std::string
-  signature: std::string Library::getFunctionName(const Token *) const
 - name: _ZNK7Library20isNotLibraryFunctionEPK5TokenPPKNS_8FunctionE
   params:
   - name: ftok
@@ -812,164 +3731,225 @@ functions:
     type: const Library::Function **
   return_type: bool
   signature: bool Library::isNotLibraryFunction(const Token *, const Library::Function **) const
-- name: _ZNK7Library8blockendERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+- name: _ZNK7Library15getFunctionNameB5cxx11EPK5Token
   params:
-  - name: file
-    type: const std::string &
-  return_type: const std::string &
-  signature: const std::string & Library::blockend(const std::string &) const
-- name: _ZNK7Library10blockstartERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  - name: ftok
+    type: const Token *
+  return_type: std::string
+  signature: std::string Library::getFunctionName(const Token *) const
+- name: _ZNK7Library15getFunctionNameB5cxx11EPK5TokenRb
   params:
-  - name: file
-    type: const std::string &
-  return_type: const std::string &
-  signature: const std::string & Library::blockstart(const std::string &) const
-- name: _ZNK7Library16blockstartoffsetERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  - name: ftok
+    type: const Token *
+  - name: error
+    type: bool &
+  return_type: std::string
+  signature: std::string Library::getFunctionName(const Token *, bool &) const
+- name: _ZNK7Library14matchArgumentsEPK5TokenRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPPKNS_8FunctionE
   params:
-  - name: file
+  - name: ftok
+    type: const Token *
+  - name: functionName
     type: const std::string &
-  return_type: int
-  signature: int Library::blockstartoffset(const std::string &) const
-- name: _ZNK7Library17isexecutableblockERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_
+  - name: func
+    type: const Library::Function **
+  return_type: bool
+  signature: bool Library::matchArguments(const Token *, const std::string &, const Library::Function **) const
+- name: _ZNK7Library11LibraryData9CodeBlock7isBlockERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
   params:
-  - name: file
-    type: const std::string &
-  - name: token
+  - name: blockName
     type: const std::string &
   return_type: bool
-  signature: bool Library::isexecutableblock(const std::string &, const std::string &) const
+  signature: bool Library::LibraryData::CodeBlock::isBlock(const std::string &) const
+- name: _ZNK7Library15hasAnyTypeCheckERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: typeName
+    type: const std::string &
+  return_type: bool
+  signature: bool Library::hasAnyTypeCheck(const std::string &) const
+- name: _ZNK7Library6getargEPK5Tokeni
+  params:
+  - name: ftok
+    type: const Token *
+  - name: argnr
+    type: int
+  return_type: const Library::ArgumentChecks *
+  signature: const Library::ArgumentChecks * Library::getarg(const Token *, int) const
+- name: _ZNK7Library18formatstr_functionEPK5Token
+  params:
+  - name: ftok
+    type: const Token *
+  return_type: bool
+  signature: bool Library::formatstr_function(const Token *) const
+- name: _ZNK7Library15formatstr_argnoEPK5Token
+  params:
+  - name: ftok
+    type: const Token *
+  return_type: int
+  signature: int Library::formatstr_argno(const Token *) const
+- name: _ZNK7Library14formatstr_scanEPK5Token
+  params:
+  - name: ftok
+    type: const Token *
+  return_type: bool
+  signature: bool Library::formatstr_scan(const Token *) const
+- name: _ZNK7Library9Container13getReturnTypeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: function
+    type: const std::string &
+  return_type: const std::string &
+  signature: const std::string & Library::Container::getReturnType(const std::string &) const
+- name: _ZNK7Library23detectContainerInternalEPK5TokenNS_15DetectContainerEPbb
+  params:
+  - name: typeStart
+    type: const Token *
+  - name: detect
+    type: Library::DetectContainer
+  - name: isIterator
+    type: bool *
+  - name: withoutStd
+    type: bool
+  return_type: const Library::Container *
+  signature: const Library::Container * Library::detectContainerInternal(const Token *, Library::DetectContainer, bool *,
+    bool) const
 - name: _ZNK7Library13isnotnoreturnEPK5Token
   params:
   - name: ftok
     type: const Token *
   return_type: bool
   signature: bool Library::isnotnoreturn(const Token *) const
-- name: _ZNK7Library14isuninitargbadEPK5TokeniiPb
+- name: _ZNK7Library10isnoreturnEPK5Token
   params:
   - name: ftok
     type: const Token *
-  - name: argnr
-    type: int
-  - name: indirect
-    type: int
-  - name: hasIndirect
-    type: bool *
   return_type: bool
-  signature: bool Library::isuninitargbad(const Token *, int, int, bool *) const
-- name: _ZNK7Library15getArgDirectionEPK5Tokenii
-  params:
-  - name: ftok
-    type: const Token *
-  - name: argnr
-    type: int
-  - name: indirect
-    type: int
-  return_type: ArgumentChecks::Direction
-  signature: ArgumentChecks::Direction Library::getArgDirection(const Token *, int, int) const
-- name: _ZNK7Library15returnValueTypeB5cxx11EPK5Token
-  params:
-  - name: ftok
-    type: const Token *
-  return_type: const std::string &
-  signature: const std::string & Library::returnValueType(const Token *) const
-- name: _ZNK7Library25detectContainerOrIteratorEPK5TokenPbb
-  params:
-  - name: typeStart
-    type: const Token *
-  - name: isIterator
-    type: bool *
-  - name: withoutStd
-    type: bool
-  return_type: const Library::Container *
-  signature: const Library::Container * Library::detectContainerOrIterator(const Token *, bool *, bool) const
-- name: _ZNK7Library15isScopeNoReturnEPK5TokenPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
-  params:
-  - name: end
-    type: const Token *
-  - name: unknownFunc
-    type: std::string *
-  return_type: bool
-  signature: bool Library::isScopeNoReturn(const Token *, std::string *) const
-- name: _ZNK7Library12getReallocIdEPK5Tokeni
+  signature: bool Library::isnoreturn(const Token *) const
+- name: _ZNK7Library18getReallocFuncInfoEPK5Token
   params:
   - name: tok
     type: const Token *
-  - name: arg
-    type: int
-  return_type: int
-  signature: int Library::getReallocId(const Token *, int) const
-- name: _ZNK7Library12getDeallocIdEPK5Tokeni
+  return_type: const Library::AllocFunc *
+  signature: const Library::AllocFunc * Library::getReallocFuncInfo(const Token *) const
+- name: _ZNK7Library18getDeallocFuncInfoEPK5Token
   params:
   - name: tok
     type: const Token *
-  - name: arg
-    type: int
-  return_type: int
-  signature: int Library::getDeallocId(const Token *, int) const
-- name: _ZNK7Library10getAllocIdEPK5Tokeni
+  return_type: const Library::AllocFunc *
+  signature: const Library::AllocFunc * Library::getDeallocFuncInfo(const Token *) const
+- name: _ZNK7Library16getAllocFuncInfoEPK5Token
   params:
   - name: tok
     type: const Token *
-  - name: arg
-    type: int
-  return_type: int
-  signature: int Library::getAllocId(const Token *, int) const
-- name: _ZNK7Library13isIntArgValidEPK5TokenixRK8Settings
+  return_type: const Library::AllocFunc *
+  signature: const Library::AllocFunc * Library::getAllocFuncInfo(const Token *) const
+- name: _ZNK7Library15isFloatArgValidEPK5TokenidRK8Settings
   params:
   - name: ftok
     type: const Token *
   - name: argnr
     type: int
   - name: argvalue
-    type: MathLib::bigint
+    type: double
   - name: settings
     type: const Settings &
   return_type: bool
-  signature: bool Library::isIntArgValid(const Token *, int, MathLib::bigint, const Settings &) const
-- name: _ZN7Library4loadEPKcS1_b
+  signature: bool Library::isFloatArgValid(const Token *, int, double, const Settings &) const
+- name: _ZNK7Library13platform_typeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_
   params:
-  - name: exename
-    type: const char[]
-  - name: path
-    type: const char[]
-  - name: debug
-    type: bool
-  return_type: Library::Error
-  signature: Library::Error Library::load(const char[], const char[], bool)
-- name: _ZN9PathMatch5matchERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_S7_NS_8FilemodeENS_6SyntaxE
+  - name: name
+    type: const std::string &
+  - name: platform
+    type: const std::string &
+  return_type: const Library::PlatformType *
+  signature: const Library::PlatformType * Library::platform_type(const std::string &, const std::string &) const
+- name: _ZN7Library11LibraryData9CodeBlock9setOffsetEi
   params:
-  - name: pattern
-    type: const std::string &
-  - name: path
-    type: const std::string &
-  - name: basepath
-    type: const std::string &
-  - name: mode
-    type: PathMatch::Filemode
-  - name: syntax
-    type: PathMatch::Syntax
-  return_type: bool
-  signature: bool PathMatch::match(const std::string &, const std::string &, const std::string &, PathMatch::Filemode, PathMatch::Syntax)
-- name: _ZN9PathMatch12PathIteratorppEv
-  params: []
+  - name: o
+    type: const int
   return_type: void
-  signature: void PathMatch::PathIterator::operator++()
-- name: _ZL9createDUIRK8SettingsRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9Standards8LanguageE
+  signature: void Library::LibraryData::CodeBlock::setOffset(const int)
+- name: _ZN7Library11LibraryData9CodeBlock6setEndEPKc
   params:
-  - name: mSettings
-    type: const Settings &
-  - name: cfg
+  - name: e
+    type: const char *
+  return_type: void
+  signature: void Library::LibraryData::CodeBlock::setEnd(const char *)
+- name: _ZN7Library11LibraryData9CodeBlock8setStartEPKc
+  params:
+  - name: s
+    type: const char *
+  return_type: void
+  signature: void Library::LibraryData::CodeBlock::setStart(const char *)
+- name: _ZN7Library11LibraryData9CodeBlock8addBlockEPKc
+  params:
+  - name: blockName
+    type: const char *
+  return_type: void
+  signature: void Library::LibraryData::CodeBlock::addBlock(const char *)
+- name: _ZN7Library11LibraryData17ExportedFunctions9addSuffixENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: suffix
+    type: std::string
+  return_type: void
+  signature: void Library::LibraryData::ExportedFunctions::addSuffix(std::string)
+- name: _ZN7Library11LibraryData17ExportedFunctions9addPrefixENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: prefix
+    type: std::string
+  return_type: void
+  signature: void Library::LibraryData::ExportedFunctions::addPrefix(std::string)
+- name: _ZN7Library12loadFunctionEPKN8tinyxml210XMLElementERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt3setIS9_St4lessIS9_ESaIS9_EE
+  params:
+  - name: node
+    type: const tinyxml2::XMLElement *
+  - name: name
     type: const std::string &
-  - name: lang
-    type: Standards::Language
-  return_type: int
-  signature: int createDUI(const Settings &, const std::string &, Standards::Language)
+  - name: unknown_elements
+    type: int &
+  return_type: Library::Error
+  signature: Library::Error Library::loadFunction(const tinyxml2::XMLElement *, const std::string &, int &)
+- name: _ZN7Library4loadERKN8tinyxml211XMLDocumentE
+  params:
+  - name: doc
+    type: const tinyxml2::XMLDocument &
+  return_type: Library::Error
+  signature: Library::Error Library::load(const tinyxml2::XMLDocument &)
+- name: _ZN9PathMatch12PathIterator6setposERKNS0_3PosE
+  params:
+  - name: pos
+    type: const PathMatch::PathIterator::Pos &
+  return_type: void
+  signature: void PathMatch::PathIterator::setpos(const PathMatch::PathIterator::Pos &)
+- name: _ZN9PathMatch12PathIterator5skipsEb
+  params:
+  - name: leadsep
+    type: bool
+  return_type: void
+  signature: void PathMatch::PathIterator::skips(bool)
+- name: _ZNK8Platform16getLimitsDefinesB5cxx11EN9Standards8cppstd_tE
+  params:
+  - name: cppstd
+    type: Standards::cppstd_t
+  return_type: std::string
+  signature: std::string Platform::getLimitsDefines(Standards::cppstd_t) const
+- name: _ZNK8Platform16getLimitsDefinesB5cxx11Eb
+  params:
+  - name: c99
+    type: bool
+  return_type: std::string
+  signature: std::string Platform::getLimitsDefines(bool) const
 - name: _ZNK8Platform16getLimitsDefinesB5cxx11EN9Standards6cstd_tE
   params:
   - name: cstd
     type: Standards::cstd_t
   return_type: std::string
   signature: std::string Platform::getLimitsDefines(Standards::cstd_t) const
+- name: _ZN8Platform19loadFromXmlDocumentEPKN8tinyxml211XMLDocumentE
+  params:
+  - name: doc
+    type: const tinyxml2::XMLDocument *
+  return_type: bool
+  signature: bool Platform::loadFromXmlDocument(const tinyxml2::XMLDocument *)
 - name: _ZN8Platform12loadFromFileERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS6_b
   params:
   - name: paths
@@ -980,151 +3960,160 @@ functions:
     type: bool
   return_type: bool
   signature: bool Platform::loadFromFile(const int &, const std::string &, bool)
-- name: _ZN8Platform3setERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERS5_RKSt6vectorIS5_SaIS5_EEb
+- name: _ZN12Preprocessor24simplifyPragmaAsmPrivateERN9simplecpp9TokenListE
   params:
-  - name: platformstr
+  - name: tokenList
+    type: simplecpp::TokenList &
+  return_type: void
+  signature: void Preprocessor::simplifyPragmaAsmPrivate(simplecpp::TokenList &)
+- name: _ZNK8Settings21configurationExcludedERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: file
     type: const std::string &
-  - name: errstr
-    type: std::string &
-  - name: paths
-    type: const int &
-  - name: debug
-    type: bool
   return_type: bool
-  signature: bool Platform::set(const std::string &, std::string &, const int &, bool)
-- name: _ZN12Preprocessor17simplifyPragmaAsmEv
-  params: []
-  return_type: void
-  signature: void Preprocessor::simplifyPragmaAsm()
-- name: _ZNK12Preprocessor17getRemarkCommentsEv
-  params: []
-  return_type: int
-  signature: int Preprocessor::getRemarkComments() const
-- name: _ZNK12Preprocessor16createDirectivesB5cxx11Ev
-  params: []
-  return_type: int
-  signature: int Preprocessor::createDirectives() const
-- name: _ZL32fillProgramMemoryFromAssignmentsR13ProgramMemoryPK5TokenRK8SettingsRKS_RKSt13unordered_mapI11ExprIdTokenN9ValueFlow5ValueENSA_4HashESt8equal_toISA_ESaISt4pairIKSA_SC_EEE
-  params:
-  - name: pm
-    type: ProgramMemory &
-  - name: tok
-    type: const Token *
-  - name: settings
-    type: const Settings &
-  - name: state
-    type: const ProgramMemory &
-  - name: vars
-    type: const int &
-  return_type: void
-  signature: void fillProgramMemoryFromAssignments(ProgramMemory &, const Token *, const Settings &, const ProgramMemory &,
-    const int &)
+  signature: bool Settings::configurationExcluded(const std::string &) const
 - name: _ZNK13ProgramMemory8hasValueEi
   params:
   - name: exprid
     type: int
   return_type: bool
   signature: bool ProgramMemory::hasValue(int) const
-- name: _ZNK13ProgramMemory11getIntValueEiRx
+- name: _ZNK13ProgramMemory4findEi
+  params:
+  - name: exprid
+    type: int
+  return_type: int
+  signature: int ProgramMemory::find(int) const
+- name: _ZNK13ProgramMemory8getValueEib
+  params:
+  - name: exprid
+    type: int
+  - name: impossible
+    type: bool
+  return_type: const ValueFlow::Value *
+  signature: const ValueFlow::Value * ProgramMemory::getValue(int, bool) const
+- name: _ZN13ProgramMemory21setContainerSizeValueEPK5Tokenxb
+  params:
+  - name: expr
+    type: const Token *
+  - name: value
+    type: MathLib::bigint
+  - name: isEqual
+    type: bool
+  return_type: void
+  signature: void ProgramMemory::setContainerSizeValue(const Token *, MathLib::bigint, bool)
+- name: _ZN13ProgramMemory11setIntValueEPK5Tokenxb
+  params:
+  - name: expr
+    type: const Token *
+  - name: value
+    type: MathLib::bigint
+  - name: impossible
+    type: bool
+  return_type: void
+  signature: void ProgramMemory::setIntValue(const Token *, MathLib::bigint, bool)
+- name: _ZN13ProgramMemory4findEi
+  params:
+  - name: exprid
+    type: int
+  return_type: int
+  signature: int ProgramMemory::find(int)
+- name: _ZN13ProgramMemory10setUnknownEPK5Token
+  params:
+  - name: expr
+    type: const Token *
+  return_type: void
+  signature: void ProgramMemory::setUnknown(const Token *)
+- name: _ZN13ProgramMemory7replaceES_b
+  params:
+  - name: pm
+    type: ProgramMemory
+  - name: skipUnknown
+    type: bool
+  return_type: void
+  signature: void ProgramMemory::replace(ProgramMemory, bool)
+- name: _ZN13ProgramMemory4swapERS_
+  params:
+  - name: pm
+    type: ProgramMemory &
+  return_type: void
+  signature: void ProgramMemory::swap(ProgramMemory &)
+- name: _ZNK13ProgramMemory22getContainerEmptyValueEiRx
   params:
   - name: exprid
     type: int
   - name: result
     type: MathLib::bigint &
   return_type: bool
-  signature: bool ProgramMemory::getIntValue(int, MathLib::bigint &) const
-- name: _ZN18ProgramMemoryState6assumeEPK5Tokenbb
+  signature: bool ProgramMemory::getContainerEmptyValue(int, MathLib::bigint &) const
+- name: _ZN17SimpleEnableGroupI9CertaintyE7disableES0_
   params:
-  - name: tok
-    type: const Token *
-  - name: b
-    type: bool
-  - name: isEmpty
-    type: bool
+  - name: group
+    type: SimpleEnableGroup<T>
   return_type: void
-  signature: void ProgramMemoryState::assume(const Token *, bool, bool)
-- name: _ZL27programMemoryParseConditionR13ProgramMemoryPK5TokenS3_RK8Settingsb
+  signature: void SimpleEnableGroup::disable(SimpleEnableGroup<T>)
+- name: _ZN17SimpleEnableGroupI9CertaintyE6enableES0_
   params:
-  - name: pm
-    type: ProgramMemory &
-  - name: tok
-    type: const Token *
-  - name: endTok
-    type: const Token *
-  - name: settings
-    type: const Settings &
-  - name: then
-    type: bool
+  - name: group
+    type: SimpleEnableGroup<T>
   return_type: void
-  signature: void programMemoryParseCondition(ProgramMemory &, const Token *, const Token *, const Settings &, bool)
-- name: _ZN13ProgramMemory8setValueEPK5TokenRKN9ValueFlow5ValueE
-  params:
-  - name: expr
-    type: const Token *
-  - name: value
-    type: const ValueFlow::Value &
-  return_type: void
-  signature: void ProgramMemory::setValue(const Token *, const ValueFlow::Value &)
-- name: _ZN13ProgramMemory2atEi
-  params:
-  - name: exprid
-    type: int
-  return_type: ValueFlow::Value &
-  signature: ValueFlow::Value & ProgramMemory::at(int)
-- name: _ZN18ProgramMemoryState18removeModifiedVarsEPK5Token
-  params:
-  - name: tok
-    type: const Token *
-  return_type: void
-  signature: void ProgramMemoryState::removeModifiedVars(const Token *)
-- name: _Z16getProgramMemoryPK5TokenS1_RKN9ValueFlow5ValueERK8Settings
-  params:
-  - name: tok
-    type: const Token *
-  - name: expr
-    type: const Token *
-  - name: value
-    type: const ValueFlow::Value &
-  - name: settings
-    type: const Settings &
-  return_type: ProgramMemory
-  signature: ProgramMemory getProgramMemory(const Token *, const Token *, const ValueFlow::Value &, const Settings &)
-- name: _ZL23valueFlowFunctionReturnR9TokenListR11ErrorLoggerRK8Settings
-  params:
-  - name: tokenlist
-    type: TokenList &
-  - name: errorLogger
-    type: ErrorLogger &
-  - name: settings
-    type: const Settings &
-  return_type: void
-  signature: void valueFlowFunctionReturn(TokenList &, ErrorLogger &, const Settings &)
-- name: _ZL17valueFlowForLoop2PK5TokenP13ProgramMemoryS3_S3_RK8Settings
-  params:
-  - name: tok
-    type: const Token *
-  - name: memory1
-    type: ProgramMemory *
-  - name: memory2
-    type: ProgramMemory *
-  - name: memoryAfter
-    type: ProgramMemory *
-  - name: settings
-    type: const Settings &
-  return_type: bool
-  signature: bool valueFlowForLoop2(const Token *, ProgramMemory *, ProgramMemory *, ProgramMemory *, const Settings &)
+  signature: void SimpleEnableGroup::enable(SimpleEnableGroup<T>)
 - name: _ZN17SimpleEnableGroupI6ChecksE7disableES1_
   params:
   - name: group
     type: SimpleEnableGroup<T>
   return_type: void
   signature: void SimpleEnableGroup::disable(SimpleEnableGroup<T>)
+- name: _ZN17SimpleEnableGroupI8SeverityE7disableES1_
+  params:
+  - name: group
+    type: SimpleEnableGroup<T>
+  return_type: void
+  signature: void SimpleEnableGroup::disable(SimpleEnableGroup<T>)
+- name: _ZN17SimpleEnableGroupI6ChecksE6enableES1_
+  params:
+  - name: group
+    type: SimpleEnableGroup<T>
+  return_type: void
+  signature: void SimpleEnableGroup::enable(SimpleEnableGroup<T>)
+- name: _ZN8Settings12applyEnabledERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  params:
+  - name: str
+    type: const std::string &
+  - name: enable
+    type: bool
+  return_type: std::string
+  signature: std::string Settings::applyEnabled(const std::string &, bool)
 - name: _ZN17SimpleEnableGroupI8SeverityE6enableES1_
   params:
   - name: group
     type: SimpleEnableGroup<T>
   return_type: void
   signature: void SimpleEnableGroup::enable(SimpleEnableGroup<T>)
+- name: _ZN17SimpleEnableGroupI8SeverityE6enableES0_
+  params:
+  - name: group
+    type: SimpleEnableGroup<T>
+  return_type: void
+  signature: void SimpleEnableGroup::enable(SimpleEnableGroup<T>)
+- name: _ZN17SimpleEnableGroupI8SeverityE7disableES0_
+  params:
+  - name: group
+    type: SimpleEnableGroup<T>
+  return_type: void
+  signature: void SimpleEnableGroup::disable(SimpleEnableGroup<T>)
+- name: _ZN17SimpleEnableGroupI6ChecksE6enableES0_
+  params:
+  - name: group
+    type: SimpleEnableGroup<T>
+  return_type: void
+  signature: void SimpleEnableGroup::enable(SimpleEnableGroup<T>)
+- name: _ZN8Settings13setCheckLevelENS_10CheckLevelE
+  params:
+  - name: level
+    type: Settings::CheckLevel
+  return_type: void
+  signature: void Settings::setCheckLevel(Settings::CheckLevel)
 - name: _ZN17SimpleEnableGroupI9CertaintyE10setEnabledES0_b
   params:
   - name: flag
@@ -1133,56 +4122,14 @@ functions:
     type: bool
   return_type: void
   signature: void SimpleEnableGroup::setEnabled(T, bool)
-- name: _ZN8Settings10addEnabledERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+- name: _ZN17SimpleEnableGroupI8SeverityE10setEnabledES0_b
   params:
-  - name: str
-    type: const std::string &
-  return_type: std::string
-  signature: std::string Settings::addEnabled(const std::string &)
-- name: _ZN8SettingsC2Ev
-  params: []
-  return_type: void
-  signature: void Settings::Settings()
-- name: _ZNK9polyspace6Parser5parseERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiS8_
-  params:
-  - name: comment
-    type: const std::string &
-  - name: line
-    type: int
-  - name: filename
-    type: const std::string &
-  return_type: int
-  signature: int polyspace::Parser::parse(const std::string &, int, const std::string &) const
-- name: _ZN9polyspace6ParserC2ERK8Settings
-  params:
-  - name: settings
-    type: const Settings &
-  return_type: void
-  signature: void polyspace::Parser::Parser(const Settings &)
-- name: _ZNK15SuppressionList11Suppression7isLocalEv
-  params: []
-  return_type: bool
-  signature: bool SuppressionList::Suppression::isLocal() const
-- name: _ZNK15SuppressionList29getUnmatchedLocalSuppressionsB5cxx11ERK15FileWithDetails
-  params:
-  - name: file
-    type: const FileWithDetails &
-  return_type: int
-  signature: int SuppressionList::getUnmatchedLocalSuppressions(const FileWithDetails &) const
-- name: _ZN8CppCheck5checkERK15FileWithDetails
-  params:
-  - name: file
-    type: const FileWithDetails &
-  return_type: unsigned int
-  signature: unsigned int CppCheck::check(const FileWithDetails &)
-- name: _ZN15SuppressionList22isSuppressedExplicitlyERKNS_12ErrorMessageEb
-  params:
-  - name: errmsg
-    type: const SuppressionList::ErrorMessage &
-  - name: global
+  - name: flag
+    type: T
+  - name: enabled
     type: bool
-  return_type: bool
-  signature: bool SuppressionList::isSuppressedExplicitly(const SuppressionList::ErrorMessage &, bool)
+  return_type: void
+  signature: void SimpleEnableGroup::setEnabled(T, bool)
 - name: _ZN15SuppressionList11Suppression7isMatchERKNS_12ErrorMessageE
   params:
   - name: errmsg
@@ -1196,163 +4143,96 @@ functions:
   return_type: SuppressionList::Suppression::Result
   signature: SuppressionList::Suppression::Result SuppressionList::Suppression::isSuppressed(const SuppressionList::ErrorMessage
     &) const
-- name: _ZN15SuppressionList12ErrorMessage16fromErrorMessageERK12ErrorMessageRKSt3setINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4lessISA_ESaISA_EE
+- name: _ZN15SuppressionList12ErrorMessage11setFileNameENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
   params:
-  - name: msg
-    type: const ::ErrorMessage &
-  - name: macroNames
-    type: const int &
-  return_type: SuppressionList::ErrorMessage
-  signature: SuppressionList::ErrorMessage SuppressionList::ErrorMessage::fromErrorMessage(const ::ErrorMessage &, const int
-    &)
-- name: _ZN15SuppressionList14addSuppressionB5cxx11ENS_11SuppressionE
-  params:
-  - name: suppression
-    type: SuppressionList::Suppression
-  return_type: std::string
-  signature: std::string SuppressionList::addSuppression(SuppressionList::Suppression)
-- name: _ZN8Settings15loadCppcheckCfgB5cxx11ERS_R12Suppressionsb
-  params:
-  - name: settings
-    type: Settings &
-  - name: suppressions
-    type: Suppressions &
-  - name: debug
-    type: bool
-  return_type: std::string
-  signature: std::string Settings::loadCppcheckCfg(Settings &, Suppressions &, bool)
-- name: _ZNK12TimerResults11showResultsE8ShowTime
-  params:
-  - name: mode
-    type: ShowTime
+  - name: s
+    type: std::string
   return_type: void
-  signature: void TimerResults::showResults(ShowTime) const
-- name: _ZN9__gnu_cxx5__ops10_Iter_predIZNK5Token21getContainerSizeValueExE4$_13EclISt14_List_iteratorIN9ValueFlow5ValueEEEEbT_
+  signature: void SuppressionList::ErrorMessage::setFileName(std::string)
+- name: _ZN15SuppressionList22isSuppressedExplicitlyERKNS_12ErrorMessageEb
   params:
-  - name: val
-    type: MathLib::bigint
-  return_type: const ValueFlow::Value *
-  signature: const ValueFlow::Value * Token::getContainerSizeValue(MathLib::bigint) const
-- name: _ZN9__gnu_cxx5__ops10_Iter_predIZNK5Token8getValueExE4$_11EclISt14_List_iteratorIN9ValueFlow5ValueEEEEbT_
-  params:
-  - name: val
-    type: MathLib::bigint
-  return_type: const ValueFlow::Value *
-  signature: const ValueFlow::Value * Token::getValue(MathLib::bigint) const
-- name: _ZN9__gnu_cxx5__ops10_Iter_predIZNK5Token13getKnownValueEN9ValueFlow5Value9ValueTypeEE4$_10EclISt14_List_iteratorIS4_EEEbT_
-  params:
-  - name: t
-    type: ValueFlow::Value::ValueType
-  return_type: const ValueFlow::Value *
-  signature: const ValueFlow::Value * Token::getKnownValue(ValueFlow::Value::ValueType) const
-- name: _ZN9__gnu_cxx5__ops10_Iter_predIZNK5Token13hasKnownValueEN9ValueFlow5Value9ValueTypeEE3$_8EclISt14_List_iteratorIS4_EEEbT_
-  params:
-  - name: t
-    type: ValueFlow::Value::ValueType
-  return_type: bool
-  signature: bool Token::hasKnownValue(ValueFlow::Value::ValueType) const
-- name: _ZN9__gnu_cxx5__ops12_Iter_negateIZN5Token6typeOfEPKS2_PS4_E3$_7EclINS_17__normal_iteratorIPKPK8VariableSt6vectorISC_SaISC_EEEEEEbT_
-  params:
-  - name: tok
-    type: const Token *
-  - name: typeTok
-    type: const Token **
-  return_type: const ::Type *
-  signature: const ::Type * Token::typeOf(const Token *, const Token **)
-- name: _ZN9__gnu_cxx5__ops10_Iter_predIZN5Token8addValueERKN9ValueFlow5ValueEE3$_6EclISt14_List_iteratorIS4_EEEbT_
-  params:
-  - name: value
-    type: const ValueFlow::Value &
-  return_type: bool
-  signature: bool Token::addValue(const ValueFlow::Value &)
-- name: _ZNSt7__cxx114listIN9ValueFlow5ValueESaIS2_EE9remove_ifIZN5Token8addValueERKS2_E3$_5EEvT_
-  params:
-  - name: value
-    type: const ValueFlow::Value &
-  return_type: bool
-  signature: bool Token::addValue(const ValueFlow::Value &)
-- name: _ZN9__gnu_cxx5__ops10_Iter_predIZNK5Token10getValueNEExE3$_4EclISt20_List_const_iteratorIN9ValueFlow5ValueEEEEbT_
-  params:
-  - name: val
-    type: MathLib::bigint
-  return_type: const ValueFlow::Value *
-  signature: const ValueFlow::Value * Token::getValueNE(MathLib::bigint) const
-- name: _ZN9__gnu_cxx5__ops12_Iter_negateIZNK5Token14printValueFlowERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS9_EEbRSoE3$_1EclISt20_List_const_iteratorIN9ValueFlow5ValueEEEEbT_
-  params:
-  - name: files
-    type: const int &
-  - name: xml
+  - name: errmsg
+    type: const SuppressionList::ErrorMessage &
+  - name: global
     type: bool
-  - name: out
-    type: std::ostream &
-  return_type: void
-  signature: void Token::printValueFlow(const int &, bool, std::ostream &) const
-- name: _ZNK5Token20getCppcheckAttributeENS_22CppcheckAttributesTypeERx
+  return_type: bool
+  signature: bool SuppressionList::isSuppressedExplicitly(const SuppressionList::ErrorMessage &, bool)
+- name: _ZNK5Token4Impl20getCppcheckAttributeENS_22CppcheckAttributesTypeERx
   params:
   - name: type
     type: Token::CppcheckAttributesType
   - name: value
     type: MathLib::bigint &
   return_type: bool
-  signature: bool Token::getCppcheckAttribute(Token::CppcheckAttributesType, MathLib::bigint &) const
-- name: _ZN5Token20setCppcheckAttributeENS_22CppcheckAttributesTypeEx
+  signature: bool Token::Impl::getCppcheckAttribute(Token::CppcheckAttributesType, MathLib::bigint &) const
+- name: _ZN5Token4Impl20setCppcheckAttributeENS_22CppcheckAttributesTypeEx
   params:
   - name: type
     type: Token::CppcheckAttributesType
   - name: value
     type: MathLib::bigint
   return_type: void
-  signature: void Token::setCppcheckAttribute(Token::CppcheckAttributesType, MathLib::bigint)
-- name: _ZN9__gnu_cxx5__ops10_Iter_predIZN9TokenList15appendFileIfNewENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE3$_0EclINS_17__normal_iteratorIPKS8_St6vectorIS8_SaIS8_EEEEEEbT_
+  signature: void Token::Impl::setCppcheckAttribute(Token::CppcheckAttributesType, MathLib::bigint)
+- name: _ZN9ValueFlow17setSourceLocationERNS_5ValueE14SourceLocationPK5TokenS2_
   params:
-  - name: fileName
-    type: std::string
-  return_type: int
-  signature: int TokenList::appendFileIfNew(std::string)
-- name: _ZN9TokenList12createTokensEON9simplecpp9TokenListE
-  params:
-  - name: tokenList
-    type: simplecpp::TokenList &&
-  return_type: void
-  signature: void TokenList::createTokens(simplecpp::TokenList &&)
-- name: _ZNK17ValueFlowAnalyzer16analyzeConditionEPK5Tokeni
-  params:
+  - name: v
+    type: ValueFlow::Value &
+  - name: ctx
+    type: SourceLocation
   - name: tok
     type: const Token *
-  - name: depth
-    type: int
-  return_type: ValueFlowAnalyzer::ConditionState
-  signature: ValueFlowAnalyzer::ConditionState ValueFlowAnalyzer::analyzeCondition(const Token *, int) const
-- name: _ZN9ValueFlowL17setTokenValueCastEP5TokenRK9ValueTypeRKNS_5ValueERK8Settings
+  - name: local
+    type: SourceLocation
+  return_type: void
+  signature: void ValueFlow::setSourceLocation(ValueFlow::Value &, SourceLocation, const Token *, SourceLocation)
+- name: _ZN9ValueFlow11debugStringB5cxx11ERKNS_5ValueE
   params:
-  - name: parent
-    type: Token *
-  - name: valueType
-    type: const ValueType &
+  - name: v
+    type: const ValueFlow::Value &
+  return_type: std::string
+  signature: std::string ValueFlow::debugString(const ValueFlow::Value &)
+- name: _ZN9ValueFlow9castValueENS_5ValueEN9ValueType4SignEi
+  params:
   - name: value
     type: ValueFlow::Value
-  - name: settings
-    type: const Settings &
-  return_type: void
-  signature: void ValueFlow::setTokenValueCast(Token *, const ValueType &, ValueFlow::Value, const Settings &)
-- name: _ZNK5Token14printValueFlowERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EEbRSo
+  - name: sign
+    type: ValueType::Sign
+  - name: bit
+    type: int
+  return_type: ValueFlow::Value
+  signature: ValueFlow::Value ValueFlow::castValue(ValueFlow::Value, ValueType::Sign, int)
+- name: _ZN9ValueFlow15getMinMaxValuesEPK9ValueTypeRK8PlatformRxS6_
   params:
-  - name: files
-    type: const int &
-  - name: xml
-    type: bool
-  - name: out
-    type: std::ostream &
-  return_type: void
-  signature: void Token::printValueFlow(const int &, bool, std::ostream &) const
-- name: _ZNK24IteratorConditionHandler5parseEPK5TokenRK8Settings
+  - name: vt
+    type: const ValueType *
+  - name: platform
+    type: const Platform &
+  - name: minValue
+    type: MathLib::bigint &
+  - name: maxValue
+    type: MathLib::bigint &
+  return_type: bool
+  signature: bool ValueFlow::getMinMaxValues(const ValueType *, const Platform &, MathLib::bigint &, MathLib::bigint &)
+- name: _ZN9ValueFlowL9isNumericERKNS_5ValueE
+  params:
+  - name: value
+    type: const ValueFlow::Value &
+  return_type: bool
+  signature: bool ValueFlow::isNumeric(const ValueFlow::Value &)
+- name: _ZN9ValueFlowL18isCompatibleValuesERKNS_5ValueES2_
+  params:
+  - name: value1
+    type: const ValueFlow::Value &
+  - name: value2
+    type: const ValueFlow::Value &
+  return_type: bool
+  signature: bool ValueFlow::isCompatibleValues(const ValueFlow::Value &, const ValueFlow::Value &)
+- name: _ZN9ValueFlow5Value15assumeConditionEPK5Token
   params:
   - name: tok
     type: const Token *
-  - name: arg1
-    type: const Settings &
-  return_type: int
-  signature: int IteratorConditionHandler::parse(const Token *, const Settings &) const
+  return_type: void
+  signature: void ValueFlow::Value::assumeCondition(const Token *)
 language: c++
 project: cppcheck
 target_name: oss-fuzz-client

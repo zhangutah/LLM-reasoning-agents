@@ -1,0 +1,663 @@
+functions:
+- name: _ZN6LibRaw3FCFEii
+  params:
+  - name: row
+    type: int
+  - name: col
+    type: int
+  return_type: int
+  signature: int LibRaw::FCF(int, int)
+- name: _ZN6LibRaw17canon_600_correctEv
+  params: []
+  return_type: void
+  signature: void LibRaw::canon_600_correct()
+- name: _ZN13libraw_memmgr7cleanupEv
+  params: []
+  return_type: void
+  signature: void libraw_memmgr::cleanup()
+- name: _ZN13libraw_memmgr7mem_ptrEPv
+  params:
+  - name: ptr
+    type: void *
+  return_type: void
+  signature: void libraw_memmgr::mem_ptr(void *)
+- name: _ZN12pana8_base_t5cloneEPKj
+  params:
+  - name: scoeff
+    type: const uint32_t *
+  return_type: void
+  signature: void pana8_base_t::clone(const uint32_t *)
+- name: _ZN13pana8_bufio_t8getQWordEj
+  params:
+  - name: offset
+    type: uint32_t
+  return_type: uint64_t
+  signature: uint64_t pana8_bufio_t::getQWord(uint32_t)
+- name: _ZN13pana8_bufio_t6refillEj
+  params:
+  - name: newoffset
+    type: uint32_t
+  return_type: void
+  signature: void pana8_bufio_t::refill(uint32_t)
+- name: _ZN13pana8_bufio_t4sizeEv
+  params: []
+  return_type: uint32_t
+  signature: uint32_t pana8_bufio_t::size()
+- name: _ZN6LibRaw16nikon_read_curveEv
+  params: []
+  return_type: void
+  signature: void LibRaw::nikon_read_curve()
+- name: _ZN7BitPump3getEj
+  params:
+  - name: num
+    type: uint32_t
+  return_type: uint32_t
+  signature: uint32_t BitPump::get(uint32_t)
+- name: _ZN9HuffTable3lenER7BitPump
+  params:
+  - name: pump
+    type: BitPump &
+  return_type: uint32_t
+  signature: uint32_t HuffTable::len(BitPump &)
+- name: _ZN9HuffTable4diffER7BitPumpj
+  params:
+  - name: pump
+    type: BitPump &
+  - name: hentry
+    type: uint32_t
+  return_type: int32_t
+  signature: int32_t HuffTable::diff(BitPump &, uint32_t)
+- name: _ZN9HuffTable12decode_slow1ER7BitPump
+  params:
+  - name: pump
+    type: BitPump &
+  return_type: int32_t
+  signature: int32_t HuffTable::decode_slow1(BitPump &)
+- name: _ZN27LibRaw_SonyYCC_Decompressor21decode_sony_ljpeg_420ERSt6vectorItSaItEEii
+  params:
+  - name: _dest
+    type: int &
+  - name: width
+    type: int
+  - name: height
+    type: int
+  return_type: bool
+  signature: bool LibRaw_SonyYCC_Decompressor::decode_sony_ljpeg_420(int &, int, int)
+- name: _ZN9HuffTable6decodeER7BitPump
+  params:
+  - name: pump
+    type: BitPump &
+  return_type: int32_t
+  signature: int32_t HuffTable::decode(BitPump &)
+- name: _ZN9HuffTable12decode_slow2ER7BitPumpRj
+  params:
+  - name: pump
+    type: BitPump &
+  - name: outlen
+    type: uint32_t &
+  return_type: int32_t
+  signature: int32_t HuffTable::decode_slow2(BitPump &, uint32_t &)
+- name: _ZN10PseudoPump3setEjj
+  params:
+  - name: _bits
+    type: uint32_t
+  - name: nb
+    type: uint32_t
+  return_type: void
+  signature: void PseudoPump::set(uint32_t, uint32_t)
+- name: _ZN24LibRaw_LjpegDecompressor16decode_ljpeg_422ERSt6vectorItSaItEEii
+  params:
+  - name: dest
+    type: std::vector<uint16_t> &
+  - name: width
+    type: int
+  - name: height
+    type: int
+  return_type: bool
+  signature: bool LibRaw_LjpegDecompressor::decode_ljpeg_422(std::vector<uint16_t> &, int, int)
+- name: _ZN12ByteStreamBE7get_u16Ev
+  params: []
+  return_type: uint16_t
+  signature: uint16_t ByteStreamBE::get_u16()
+- name: _ZN12ByteStreamBE6get_u8Ev
+  params: []
+  return_type: uint8_t
+  signature: uint8_t ByteStreamBE::get_u8()
+- name: _ZN9HuffTable7initvalEPjS0_b
+  params:
+  - name: bits
+    type: uint32_t[17]
+  - name: huffval
+    type: uint32_t[256]
+  - name: dng_bug
+    type: bool
+  return_type: void
+  signature: void HuffTable::initval(uint32_t[17], uint32_t[256], bool)
+- name: _ZN14LibRaw_SOFInfo9parse_sosER12ByteStreamBE
+  params:
+  - name: arg0
+    type: ByteStreamBE &
+  return_type: uint32_t
+  signature: uint32_t LibRaw_SOFInfo::parse_sos(ByteStreamBE &)
+- name: _ZN14LibRaw_SOFInfo9parse_sofER12ByteStreamBE
+  params:
+  - name: arg0
+    type: ByteStreamBE &
+  return_type: bool
+  signature: bool LibRaw_SOFInfo::parse_sof(ByteStreamBE &)
+- name: _ZN24LibRaw_LjpegDecompressor11next_markerEb
+  params:
+  - name: allowskip
+    type: bool
+  return_type: uint8_t
+  signature: uint8_t LibRaw_LjpegDecompressor::next_marker(bool)
+- name: _ZN12ByteStreamBE14skip_to_markerEv
+  params: []
+  return_type: bool
+  signature: bool ByteStreamBE::skip_to_marker()
+- name: _ZN24LibRaw_LjpegDecompressor10initializeEbb
+  params:
+  - name: dngbug
+    type: bool
+  - name: csfix
+    type: bool
+  return_type: void
+  signature: void LibRaw_LjpegDecompressor::initialize(bool, bool)
+- name: _ZN18buffered_bitpump_t4get2Ev
+  params: []
+  return_type: uint32_t
+  signature: uint32_t buffered_bitpump_t::get2()
+- name: _ZN18buffered_bitpump_t6refillEi
+  params:
+  - name: b
+    type: int
+  return_type: void
+  signature: void buffered_bitpump_t::refill(int)
+- name: _ZN18buffered_bitpump_t4get4Ev
+  params: []
+  return_type: uint32_t
+  signature: uint32_t buffered_bitpump_t::get4()
+- name: _ZN18buffered_bitpump_t8add_dataEv
+  params: []
+  return_type: uint32_t
+  signature: uint32_t buffered_bitpump_t::add_data()
+- name: _ZN18buffered_bitpump_t8skip_bitERj
+  params:
+  - name: vbits
+    type: uint32_t &
+  return_type: void
+  signature: void buffered_bitpump_t::skip_bit(uint32_t &)
+- name: _ZN18buffered_bitpump_t12replace_dataEv
+  params: []
+  return_type: void
+  signature: void buffered_bitpump_t::replace_data()
+- name: _ZN18buffered_bitpump_t7getbitsEj
+  params:
+  - name: wbits
+    type: unsigned int
+  return_type: uint32_t
+  signature: uint32_t buffered_bitpump_t::getbits(unsigned int)
+- name: _ZN15iiq_bitstream_t3getEc
+  params:
+  - name: len
+    type: char
+  return_type: uint64_t
+  signature: uint64_t iiq_bitstream_t::get(char)
+- name: _ZN15iiq_bitstream_t4peekEh
+  params:
+  - name: len
+    type: uint8_t
+  return_type: uint64_t
+  signature: uint64_t iiq_bitstream_t::peek(uint8_t)
+- name: _ZN15iiq_bitstream_t7consumeEh
+  params:
+  - name: len
+    type: uint8_t
+  return_type: void
+  signature: void iiq_bitstream_t::consume(uint8_t)
+- name: _ZN15iiq_bitstream_t4fillEv
+  params: []
+  return_type: void
+  signature: void iiq_bitstream_t::fill()
+- name: _ZN6LibRaw28parse_fuji_compressed_headerEv
+  params: []
+  return_type: void
+  signature: void LibRaw::parse_fuji_compressed_header()
+- name: _ZN6LibRaw17phase_one_correctEv
+  params: []
+  return_type: int
+  signature: int LibRaw::phase_one_correct()
+- name: _ZN6LibRaw8getrealfEi
+  params:
+  - name: type
+    type: int
+  return_type: float
+  signature: float LibRaw::getrealf(int)
+- name: _ZN6LibRaw20phase_one_flat_fieldEii
+  params:
+  - name: is_float
+    type: int
+  - name: nc
+    type: int
+  return_type: void
+  signature: void LibRaw::phase_one_flat_field(int, int)
+- name: _ZN6LibRaw24phase_one_fix_pixel_gradEjj
+  params:
+  - name: row
+    type: unsigned int
+  - name: col
+    type: unsigned int
+  return_type: void
+  signature: void LibRaw::phase_one_fix_pixel_grad(unsigned int, unsigned int)
+- name: _ZN6LibRaw27phase_one_fix_col_pixel_avgEjj
+  params:
+  - name: row
+    type: unsigned int
+  - name: col
+    type: unsigned int
+  return_type: void
+  signature: void LibRaw::phase_one_fix_col_pixel_avg(unsigned int, unsigned int)
+- name: _ZN6LibRaw12raw_was_readEv
+  params: []
+  return_type: int
+  signature: int LibRaw::raw_was_read()
+- name: _ZN6LibRaw16aahd_interpolateEv
+  params: []
+  return_type: void
+  signature: void LibRaw::aahd_interpolate()
+- name: _ZN4AAHD9nr_offsetEii
+  params:
+  - name: row
+    type: int
+  - name: col
+    type: int
+  return_type: int
+  signature: int AAHD::nr_offset(int, int)
+- name: _ZN4AAHD14refine_hv_dirsEii
+  params:
+  - name: i
+    type: int
+  - name: js
+    type: int
+  return_type: void
+  signature: void AAHD::refine_hv_dirs(int, int)
+- name: _ZN4AAHD15refine_ihv_dirsEi
+  params:
+  - name: i
+    type: int
+  return_type: void
+  signature: void AAHD::refine_ihv_dirs(int)
+- name: _ZN4AAHD14make_ahd_rb_hvEi
+  params:
+  - name: i
+    type: int
+  return_type: void
+  signature: void AAHD::make_ahd_rb_hv(int)
+- name: _ZN4AAHD16make_ahd_rb_lastEi
+  params:
+  - name: i
+    type: int
+  return_type: void
+  signature: void AAHD::make_ahd_rb_last(int)
+- name: _ZN4AAHD14make_ahd_glineEi
+  params:
+  - name: i
+    type: int
+  return_type: void
+  signature: void AAHD::make_ahd_gline(int)
+- name: _ZN4AAHD16illustrate_dlineEi
+  params:
+  - name: i
+    type: int
+  return_type: void
+  signature: void AAHD::illustrate_dline(int)
+- name: _ZN6LibRaw3dcbEii
+  params:
+  - name: iterations
+    type: int
+  - name: dcb_enhance
+    type: int
+  return_type: void
+  signature: void LibRaw::dcb(int, int)
+- name: _ZN6LibRaw4fbddEi
+  params:
+  - name: noiserd
+    type: int
+  return_type: void
+  signature: void LibRaw::fbdd(int)
+- name: _ZN6LibRaw15dht_interpolateEv
+  params: []
+  return_type: void
+  signature: void LibRaw::dht_interpolate()
+- name: _ZN3DHT9nr_offsetEii
+  params:
+  - name: row
+    type: int
+  - name: col
+    type: int
+  return_type: int
+  signature: int DHT::nr_offset(int, int)
+- name: _ZN3DHT11make_rbdiagEi
+  params:
+  - name: i
+    type: int
+  return_type: void
+  signature: void DHT::make_rbdiag(int)
+- name: _ZN3DHT9make_rbhvEi
+  params:
+  - name: i
+    type: int
+  return_type: void
+  signature: void DHT::make_rbhv(int)
+- name: _ZN3DHT15make_diag_dlineEi
+  params:
+  - name: i
+    type: int
+  return_type: void
+  signature: void DHT::make_diag_dline(int)
+- name: _ZN3DHT17refine_idiag_dirsEi
+  params:
+  - name: i
+    type: int
+  return_type: void
+  signature: void DHT::refine_idiag_dirs(int)
+- name: _ZN3DHT12get_diag_grbEiii
+  params:
+  - name: x
+    type: int
+  - name: y
+    type: int
+  - name: kc
+    type: int
+  return_type: int
+  signature: int DHT::get_diag_grb(int, int, int)
+- name: _ZN3DHT12get_diag_rbgEiii
+  params:
+  - name: x
+    type: int
+  - name: y
+    type: int
+  - name: arg2
+    type: int
+  return_type: int
+  signature: int DHT::get_diag_rbg(int, int, int)
+- name: _ZN3DHT10make_glineEi
+  params:
+  - name: i
+    type: int
+  return_type: void
+  signature: void DHT::make_gline(int)
+- name: _ZN3DHT13make_hv_dlineEi
+  params:
+  - name: i
+    type: int
+  return_type: void
+  signature: void DHT::make_hv_dline(int)
+- name: _ZN3DHT14refine_hv_dirsEii
+  params:
+  - name: i
+    type: int
+  - name: js
+    type: int
+  return_type: void
+  signature: void DHT::refine_hv_dirs(int, int)
+- name: _ZN3DHT15refine_ihv_dirsEi
+  params:
+  - name: i
+    type: int
+  return_type: void
+  signature: void DHT::refine_ihv_dirs(int)
+- name: _ZN3DHT10get_hv_grbEiii
+  params:
+  - name: x
+    type: int
+  - name: y
+    type: int
+  - name: kc
+    type: int
+  return_type: int
+  signature: int DHT::get_hv_grb(int, int, int)
+- name: _ZN3DHT10get_hv_rbgEiii
+  params:
+  - name: x
+    type: int
+  - name: y
+    type: int
+  - name: hc
+    type: int
+  return_type: int
+  signature: int DHT::get_hv_rbg(int, int, int)
+- name: _ZN3DHT16illustrate_dlineEi
+  params:
+  - name: i
+    type: int
+  return_type: void
+  signature: void DHT::illustrate_dline(int)
+- name: _ZN6LibRaw15ppg_interpolateEv
+  params: []
+  return_type: void
+  signature: void LibRaw::ppg_interpolate()
+- name: _ZN6LibRaw15vng_interpolateEv
+  params: []
+  return_type: void
+  signature: void LibRaw::vng_interpolate()
+- name: _ZN6LibRaw15pre_interpolateEv
+  params: []
+  return_type: void
+  signature: void LibRaw::pre_interpolate()
+- name: _ZN6LibRaw18xtrans_interpolateEi
+  params:
+  - name: arg0
+    type: int
+  return_type: void
+  signature: void LibRaw::xtrans_interpolate(int)
+- name: _ZN6LibRaw13parseCR3_FreeEv
+  params: []
+  return_type: void
+  signature: void LibRaw::parseCR3_Free()
+- name: _ZN6LibRaw8identifyEv
+  params: []
+  return_type: void
+  signature: void LibRaw::identify()
+- name: _ZN6LibRaw7stretchEv
+  params: []
+  return_type: void
+  signature: void LibRaw::stretch()
+- name: _ZNK6LibRaw20get_mem_image_formatEPiS0_S0_S0_
+  params:
+  - name: width
+    type: int *
+  - name: height
+    type: int *
+  - name: colors
+    type: int *
+  - name: bps
+    type: int *
+  return_type: void
+  signature: void LibRaw::get_mem_image_format(int *, int *, int *, int *) const
+- name: _ZN6LibRaw14copy_mem_imageEPvii
+  params:
+  - name: scan0
+    type: void *
+  - name: stride
+    type: int
+  - name: bgr
+    type: int
+  return_type: int
+  signature: int LibRaw::copy_mem_image(void *, int, int)
+- name: _ZN6LibRaw18recover_highlightsEv
+  params: []
+  return_type: void
+  signature: void LibRaw::recover_highlights()
+- name: _ZN6LibRaw16blend_highlightsEv
+  params: []
+  return_type: void
+  signature: void LibRaw::blend_highlights()
+- name: _ZN6LibRaw13median_filterEv
+  params: []
+  return_type: void
+  signature: void LibRaw::median_filter()
+- name: _ZN6LibRaw14green_matchingEv
+  params: []
+  return_type: void
+  signature: void LibRaw::green_matching()
+- name: _ZN6LibRaw12scale_colorsEv
+  params: []
+  return_type: void
+  signature: void LibRaw::scale_colors()
+- name: _ZN6LibRaw14convert_to_rgbEv
+  params: []
+  return_type: void
+  signature: void LibRaw::convert_to_rgb()
+- name: _ZN6LibRaw7exp_befEff
+  params:
+  - name: expos
+    type: float
+  - name: preser
+    type: float
+  return_type: void
+  signature: void LibRaw::exp_bef(float, float)
+- name: _ZN6LibRaw8subtractEPKc
+  params:
+  - name: arg0
+    type: const char *
+  return_type: void
+  signature: void LibRaw::subtract(const char *)
+- name: _ZN6LibRaw10bad_pixelsEPKc
+  params:
+  - name: arg0
+    type: const char *
+  return_type: void
+  signature: void LibRaw::bad_pixels(const char *)
+- name: _ZN6LibRaw12raw2image_exEi
+  params:
+  - name: do_subtract_black
+    type: int
+  return_type: int
+  signature: int LibRaw::raw2image_ex(int)
+- name: _ZN6LibRaw15raw2image_startEv
+  params: []
+  return_type: void
+  signature: void LibRaw::raw2image_start()
+- name: _ZN6LibRaw23subtract_black_internalEv
+  params: []
+  return_type: int
+  signature: int LibRaw::subtract_black_internal()
+- name: _ZN6LibRaw12cubic_splineEPKiS1_i
+  params:
+  - name: x_
+    type: const int *
+  - name: y_
+    type: const int *
+  - name: len
+    type: const int
+  return_type: void
+  signature: void LibRaw::cubic_spline(const int *, const int *, const int)
+- name: _ZN6LibRaw20libraw_openfile_tailEP26LibRaw_abstract_datastream
+  params:
+  - name: stream
+    type: LibRaw_abstract_datastream *
+  return_type: int
+  signature: int LibRaw::libraw_openfile_tail(LibRaw_abstract_datastream *)
+- name: _ZN6LibRaw24phase_one_subtract_blackEPtS0_
+  params:
+  - name: src
+    type: ushort *
+  - name: dest
+    type: ushort *
+  return_type: int
+  signature: int LibRaw::phase_one_subtract_black(ushort *, ushort *)
+- name: _ZN6LibRaw25phase_one_free_tempbufferEv
+  params: []
+  return_type: void
+  signature: void LibRaw::phase_one_free_tempbuffer()
+- name: _ZN6LibRaw29phase_one_allocate_tempbufferEv
+  params: []
+  return_type: void
+  signature: void LibRaw::phase_one_allocate_tempbuffer()
+- name: _ZN6LibRaw18kodak_thumb_loaderEv
+  params: []
+  return_type: void
+  signature: void LibRaw::kodak_thumb_loader()
+- name: _ZN6LibRaw22dng_ycbcr_thumb_loaderEv
+  params: []
+  return_type: void
+  signature: void LibRaw::dng_ycbcr_thumb_loader()
+- name: _ZN6LibRaw18crop_masked_pixelsEv
+  params: []
+  return_type: void
+  signature: void LibRaw::crop_masked_pixels()
+- name: _ZN6LibRaw13remove_zeroesEv
+  params: []
+  return_type: void
+  signature: void LibRaw::remove_zeroes()
+- name: _ZN6LibRaw8initdataEv
+  params: []
+  return_type: void
+  signature: void LibRaw::initdata()
+- name: _ZN6LibRaw4fcolEii
+  params:
+  - name: row
+    type: int
+  - name: col
+    type: int
+  return_type: int
+  signature: int LibRaw::fcol(int, int)
+- name: _ZN13libraw_memmgr10forget_ptrEPv
+  params:
+  - name: ptr
+    type: void *
+  return_type: void
+  signature: void libraw_memmgr::forget_ptr(void *)
+- name: _ZN16checked_buffer_t5sget2Ei
+  params:
+  - name: offset
+    type: int
+  return_type: ushort
+  signature: ushort checked_buffer_t::sget2(int)
+- name: _ZN16checked_buffer_t8sgetrealEii
+  params:
+  - name: type
+    type: int
+  - name: offset
+    type: int
+  return_type: double
+  signature: double checked_buffer_t::sgetreal(int, int)
+- name: _ZN6LibRaw9adjust_blEv
+  params: []
+  return_type: void
+  signature: void LibRaw::adjust_bl()
+- name: _ZN6LibRaw14adjust_maximumEv
+  params: []
+  return_type: int
+  signature: int LibRaw::adjust_maximum()
+- name: _ZN6LibRaw7reallocEPvm
+  params:
+  - name: p
+    type: void *
+  - name: s
+    type: int
+  return_type: void *
+  signature: void * LibRaw::realloc(void *, int)
+- name: _ZN6LibRaw6mallocEm
+  params:
+  - name: t
+    type: int
+  return_type: void *
+  signature: void * LibRaw::malloc(int)
+- name: _ZN6LibRaw14write_ppm_tiffEv
+  params: []
+  return_type: void
+  signature: void LibRaw::write_ppm_tiff()
+- name: _ZN6LibRaw10flip_indexEii
+  params:
+  - name: row
+    type: int
+  - name: col
+    type: int
+  return_type: int
+  signature: int LibRaw::flip_index(int, int)
+language: c++
+project: libraw
+target_name: libraw_fuzzer
+target_path: /src/libraw_fuzzer.cc

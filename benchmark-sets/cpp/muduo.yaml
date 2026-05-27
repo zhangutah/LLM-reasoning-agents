@@ -1,0 +1,595 @@
+functions:
+- name: _ZN5boost3anyaSERKS0_
+  params:
+  - name: rhs
+    type: const boost::any &
+  return_type: boost::any &
+  signature: boost::any & boost::any::operator=(const boost::any &)
+- name: _ZN5muduo11ProcessInfo8procnameERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: stat
+    type: const std::string &
+  return_type: muduo::StringPiece
+  signature: muduo::StringPiece muduo::ProcessInfo::procname(const std::string &)
+- name: _ZN5muduo12AsyncLogging6appendEPKci
+  params:
+  - name: logline
+    type: const char *
+  - name: len
+    type: int
+  return_type: void
+  signature: void muduo::AsyncLogging::append(const char *, int)
+- name: _ZN5muduo14MutexLockGuardC2ERNS_9MutexLockE
+  params:
+  - name: mutex
+    type: muduo::MutexLock &
+  return_type: void
+  signature: void muduo::MutexLockGuard::MutexLockGuard(muduo::MutexLock &)
+- name: _ZN5muduo3net10HttpServer12onConnectionERKSt10shared_ptrINS0_13TcpConnectionEE
+  params:
+  - name: conn
+    type: const muduo::net::TcpConnectionPtr &
+  return_type: void
+  signature: void muduo::net::HttpServer::onConnection(const muduo::net::TcpConnectionPtr &)
+- name: _ZN5muduo3net10HttpServer9onMessageERKSt10shared_ptrINS0_13TcpConnectionEEPNS0_6BufferENS_9TimestampE
+  params:
+  - name: conn
+    type: const muduo::net::TcpConnectionPtr &
+  - name: buf
+    type: muduo::net::Buffer *
+  - name: receiveTime
+    type: muduo::Timestamp
+  return_type: void
+  signature: void muduo::net::HttpServer::onMessage(const muduo::net::TcpConnectionPtr &, muduo::net::Buffer *, muduo::Timestamp)
+- name: _ZN5muduo3net10HttpServer9onRequestERKSt10shared_ptrINS0_13TcpConnectionEERKNS0_11HttpRequestE
+  params:
+  - name: conn
+    type: const muduo::net::TcpConnectionPtr &
+  - name: req
+    type: const muduo::net::HttpRequest &
+  return_type: void
+  signature: void muduo::net::HttpServer::onRequest(const muduo::net::TcpConnectionPtr &, const muduo::net::HttpRequest &)
+- name: _ZN5muduo3net10HttpServerC2EPNS0_9EventLoopERKNS0_11InetAddressERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS0_9TcpServer6OptionE
+  params:
+  - name: loop
+    type: muduo::net::EventLoop *
+  - name: listenAddr
+    type: const muduo::net::InetAddress &
+  - name: name
+    type: const std::string &
+  - name: option
+    type: TcpServer::Option
+  return_type: void
+  signature: void muduo::net::HttpServer::HttpServer(muduo::net::EventLoop *, const muduo::net::InetAddress &, const std::string
+    &, TcpServer::Option)
+- name: _ZN5muduo3net10PollPoller4pollEiPSt6vectorIPNS0_7ChannelESaIS4_EE
+  params:
+  - name: timeoutMs
+    type: int
+  - name: activeChannels
+    type: muduo::net::Poller::ChannelList *
+  return_type: muduo::Timestamp
+  signature: muduo::Timestamp muduo::net::PollPoller::poll(int, muduo::net::Poller::ChannelList *)
+- name: _ZN5muduo3net10TimerQueue10getExpiredENS_9TimestampE
+  params:
+  - name: now
+    type: muduo::Timestamp
+  return_type: int
+  signature: int muduo::net::TimerQueue::getExpired(muduo::Timestamp)
+- name: _ZN5muduo3net10TimerQueue12cancelInLoopENS0_7TimerIdE
+  params:
+  - name: timerId
+    type: muduo::net::TimerId
+  return_type: void
+  signature: void muduo::net::TimerQueue::cancelInLoop(muduo::net::TimerId)
+- name: _ZN5muduo3net10TimerQueue14addTimerInLoopEPNS0_5TimerE
+  params:
+  - name: timer
+    type: muduo::net::Timer *
+  return_type: void
+  signature: void muduo::net::TimerQueue::addTimerInLoop(muduo::net::Timer *)
+- name: _ZN5muduo3net10TimerQueue5resetERKSt6vectorISt4pairINS_9TimestampEPNS0_5TimerEESaIS7_EES4_
+  params:
+  - name: expired
+    type: const int &
+  - name: now
+    type: muduo::Timestamp
+  return_type: void
+  signature: void muduo::net::TimerQueue::reset(const int &, muduo::Timestamp)
+- name: _ZN5muduo3net11EPollPoller13updateChannelEPNS0_7ChannelE
+  params:
+  - name: channel
+    type: muduo::net::Channel *
+  return_type: void
+  signature: void muduo::net::EPollPoller::updateChannel(muduo::net::Channel *)
+- name: _ZN5muduo3net11EPollPoller4pollEiPSt6vectorIPNS0_7ChannelESaIS4_EE
+  params:
+  - name: timeoutMs
+    type: int
+  - name: activeChannels
+    type: muduo::net::Poller::ChannelList *
+  return_type: muduo::Timestamp
+  signature: muduo::Timestamp muduo::net::EPollPoller::poll(int, muduo::net::Poller::ChannelList *)
+- name: _ZN5muduo3net11EPollPoller6updateEiPNS0_7ChannelE
+  params:
+  - name: operation
+    type: int
+  - name: channel
+    type: muduo::net::Channel *
+  return_type: void
+  signature: void muduo::net::EPollPoller::update(int, muduo::net::Channel *)
+- name: _ZN5muduo3net11HttpContext12parseRequestEPNS0_6BufferENS_9TimestampE
+  params:
+  - name: buf
+    type: muduo::net::Buffer *
+  - name: receiveTime
+    type: muduo::Timestamp
+  return_type: bool
+  signature: bool muduo::net::HttpContext::parseRequest(muduo::net::Buffer *, muduo::Timestamp)
+- name: _ZN5muduo3net11HttpContext18processRequestLineEPKcS3_
+  params:
+  - name: begin
+    type: const char *
+  - name: end
+    type: const char *
+  return_type: bool
+  signature: bool muduo::net::HttpContext::processRequestLine(const char *, const char *)
+- name: _ZN5muduo3net11HttpRequest4swapERS1_
+  params:
+  - name: that
+    type: muduo::net::HttpRequest &
+  return_type: void
+  signature: void muduo::net::HttpRequest::swap(muduo::net::HttpRequest &)
+- name: _ZN5muduo3net11InetAddress7resolveENS_9StringArgEPS1_
+  params:
+  - name: hostname
+    type: muduo::StringArg
+  - name: result
+    type: muduo::net::InetAddress *
+  return_type: bool
+  signature: bool muduo::net::InetAddress::resolve(muduo::StringArg, muduo::net::InetAddress *)
+- name: _ZN5muduo3net13TcpConnection10handleReadENS_9TimestampE
+  params:
+  - name: receiveTime
+    type: muduo::Timestamp
+  return_type: void
+  signature: void muduo::net::TcpConnection::handleRead(muduo::Timestamp)
+- name: _ZN5muduo3net13TcpConnection13setTcpNoDelayEb
+  params:
+  - name: 'on'
+    type: bool
+  return_type: void
+  signature: void muduo::net::TcpConnection::setTcpNoDelay(bool)
+- name: _ZN5muduo3net13TcpConnection4sendEPKvi
+  params:
+  - name: message
+    type: const void *
+  - name: len
+    type: int
+  return_type: void
+  signature: void muduo::net::TcpConnection::send(const void *, int)
+- name: _ZN5muduo3net13TcpConnection4sendEPNS0_6BufferE
+  params:
+  - name: message
+    type: muduo::net::Buffer *
+  return_type: void
+  signature: void muduo::net::TcpConnection::send(muduo::net::Buffer *)
+- name: _ZN5muduo3net13TcpConnection4sendERKNS_11StringPieceE
+  params:
+  - name: message
+    type: const muduo::StringPiece &
+  return_type: void
+  signature: void muduo::net::TcpConnection::send(const muduo::StringPiece &)
+- name: _ZN5muduo3net13TcpConnectionC2EPNS0_9EventLoopERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiRKNS0_11InetAddressESE_
+  params:
+  - name: loop
+    type: muduo::net::EventLoop *
+  - name: name
+    type: const std::string &
+  - name: sockfd
+    type: int
+  - name: localAddr
+    type: const muduo::net::InetAddress &
+  - name: peerAddr
+    type: const muduo::net::InetAddress &
+  return_type: void
+  signature: void muduo::net::TcpConnection::TcpConnection(muduo::net::EventLoop *, const std::string &, int, const muduo::net::InetAddress
+    &, const muduo::net::InetAddress &)
+- name: _ZN5muduo3net25defaultConnectionCallbackERKSt10shared_ptrINS0_13TcpConnectionEE
+  params:
+  - name: conn
+    type: const muduo::net::TcpConnectionPtr &
+  return_type: void
+  signature: void muduo::net::defaultConnectionCallback(const muduo::net::TcpConnectionPtr &)
+- name: _ZN5muduo3net6Buffer13retrieveUntilEPKc
+  params:
+  - name: end
+    type: const char *
+  return_type: void
+  signature: void muduo::net::Buffer::retrieveUntil(const char *)
+- name: _ZN5muduo3net6Buffer19ensureWritableBytesEm
+  params:
+  - name: len
+    type: int
+  return_type: void
+  signature: void muduo::net::Buffer::ensureWritableBytes(int)
+- name: _ZN5muduo3net6Buffer6appendEPKcm
+  params:
+  - name: data
+    type: const void *
+  - name: len
+    type: int
+  return_type: void
+  signature: void muduo::net::Buffer::append(const void *, int)
+- name: _ZN5muduo3net6Buffer6appendERKNS_11StringPieceE
+  params:
+  - name: str
+    type: const muduo::StringPiece &
+  return_type: void
+  signature: void muduo::net::Buffer::append(const muduo::StringPiece &)
+- name: _ZN5muduo3net6Buffer8retrieveEm
+  params:
+  - name: len
+    type: int
+  return_type: void
+  signature: void muduo::net::Buffer::retrieve(int)
+- name: _ZN5muduo3net6Buffer9makeSpaceEm
+  params:
+  - name: len
+    type: int
+  return_type: void
+  signature: void muduo::net::Buffer::makeSpace(int)
+- name: _ZN5muduo3net6detail11readTimerfdEiNS_9TimestampE
+  params:
+  - name: timerfd
+    type: int
+  - name: now
+    type: muduo::Timestamp
+  return_type: void
+  signature: void muduo::net::detail::readTimerfd(int, muduo::Timestamp)
+- name: _ZN5muduo3net6detail16removeConnectionEPNS0_9EventLoopERKSt10shared_ptrINS0_13TcpConnectionEE
+  params:
+  - name: loop
+    type: muduo::net::EventLoop *
+  - name: conn
+    type: const muduo::net::TcpConnectionPtr &
+  return_type: void
+  signature: void muduo::net::detail::removeConnection(muduo::net::EventLoop *, const muduo::net::TcpConnectionPtr &)
+- name: _ZN5muduo3net6detail19defaultHttpCallbackERKNS0_11HttpRequestEPNS0_12HttpResponseE
+  params:
+  - name: arg0
+    type: const muduo::net::HttpRequest &
+  - name: resp
+    type: muduo::net::HttpResponse *
+  return_type: void
+  signature: void muduo::net::detail::defaultHttpCallback(const muduo::net::HttpRequest &, muduo::net::HttpResponse *)
+- name: _ZN5muduo3net6Socket12setReusePortEb
+  params:
+  - name: 'on'
+    type: bool
+  return_type: void
+  signature: void muduo::net::Socket::setReusePort(bool)
+- name: _ZN5muduo3net6Socket6acceptEPNS0_11InetAddressE
+  params:
+  - name: peeraddr
+    type: muduo::net::InetAddress *
+  return_type: int
+  signature: int muduo::net::Socket::accept(muduo::net::InetAddress *)
+- name: _ZN5muduo3net7Channel11handleEventENS_9TimestampE
+  params:
+  - name: receiveTime
+    type: muduo::Timestamp
+  return_type: void
+  signature: void muduo::net::Channel::handleEvent(muduo::Timestamp)
+- name: _ZN5muduo3net7Channel20handleEventWithGuardENS_9TimestampE
+  params:
+  - name: receiveTime
+    type: muduo::Timestamp
+  return_type: void
+  signature: void muduo::net::Channel::handleEventWithGuard(muduo::Timestamp)
+- name: _ZN5muduo3net7sockets13shutdownWriteEi
+  params:
+  - name: sockfd
+    type: int
+  return_type: void
+  signature: void muduo::net::sockets::shutdownWrite(int)
+- name: _ZN5muduo3net8AcceptorC2EPNS0_9EventLoopERKNS0_11InetAddressEb
+  params:
+  - name: loop
+    type: muduo::net::EventLoop *
+  - name: listenAddr
+    type: const muduo::net::InetAddress &
+  - name: reuseport
+    type: bool
+  return_type: void
+  signature: void muduo::net::Acceptor::Acceptor(muduo::net::EventLoop *, const muduo::net::InetAddress &, bool)
+- name: _ZN5muduo3net9Connector10connectingEi
+  params:
+  - name: sockfd
+    type: int
+  return_type: void
+  signature: void muduo::net::Connector::connecting(int)
+- name: _ZN5muduo3net9Connector5retryEi
+  params:
+  - name: sockfd
+    type: int
+  return_type: void
+  signature: void muduo::net::Connector::retry(int)
+- name: _ZN5muduo3net9EventLoop13removeChannelEPNS0_7ChannelE
+  params:
+  - name: channel
+    type: muduo::net::Channel *
+  return_type: void
+  signature: void muduo::net::EventLoop::removeChannel(muduo::net::Channel *)
+- name: _ZN5muduo3net9EventLoop6cancelENS0_7TimerIdE
+  params:
+  - name: timerId
+    type: muduo::net::TimerId
+  return_type: void
+  signature: void muduo::net::EventLoop::cancel(muduo::net::TimerId)
+- name: _ZN5muduo3net9EventLoop8runAfterEdSt8functionIFvvEE
+  params:
+  - name: delay
+    type: double
+  - name: cb
+    type: muduo::net::TimerCallback
+  return_type: muduo::net::TimerId
+  signature: muduo::net::TimerId muduo::net::EventLoop::runAfter(double, muduo::net::TimerCallback)
+- name: _ZN5muduo3net9EventLoop8runEveryEdSt8functionIFvvEE
+  params:
+  - name: interval
+    type: double
+  - name: cb
+    type: muduo::net::TimerCallback
+  return_type: muduo::net::TimerId
+  signature: muduo::net::TimerId muduo::net::EventLoop::runEvery(double, muduo::net::TimerCallback)
+- name: _ZN5muduo3net9TcpClient13newConnectionEi
+  params:
+  - name: sockfd
+    type: int
+  return_type: void
+  signature: void muduo::net::TcpClient::newConnection(int)
+- name: _ZN5muduo3net9TcpClientC2EPNS0_9EventLoopERKNS0_11InetAddressERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: loop
+    type: muduo::net::EventLoop *
+  - name: serverAddr
+    type: const muduo::net::InetAddress &
+  - name: nameArg
+    type: const std::string &
+  return_type: void
+  signature: void muduo::net::TcpClient::TcpClient(muduo::net::EventLoop *, const muduo::net::InetAddress &, const std::string
+    &)
+- name: _ZN5muduo3net9TcpServer12setThreadNumEi
+  params:
+  - name: numThreads
+    type: int
+  return_type: void
+  signature: void muduo::net::TcpServer::setThreadNum(int)
+- name: _ZN5muduo3net9TcpServer22removeConnectionInLoopERKSt10shared_ptrINS0_13TcpConnectionEE
+  params:
+  - name: conn
+    type: const muduo::net::TcpConnectionPtr &
+  return_type: void
+  signature: void muduo::net::TcpServer::removeConnectionInLoop(const muduo::net::TcpConnectionPtr &)
+- name: _ZN5muduo3net9TcpServerC2EPNS0_9EventLoopERKNS0_11InetAddressERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS1_6OptionE
+  params:
+  - name: loop
+    type: muduo::net::EventLoop *
+  - name: listenAddr
+    type: const muduo::net::InetAddress &
+  - name: nameArg
+    type: const std::string &
+  - name: option
+    type: muduo::net::TcpServer::Option
+  return_type: void
+  signature: void muduo::net::TcpServer::TcpServer(muduo::net::EventLoop *, const muduo::net::InetAddress &, const std::string
+    &, muduo::net::TcpServer::Option)
+- name: _ZN5muduo6detail11startThreadEPv
+  params:
+  - name: obj
+    type: void *
+  return_type: void *
+  signature: void * muduo::detail::startThread(void *)
+- name: _ZN5muduo6detail13readDataBlockERNS0_4FileEPNS_8TimeZone4DataEb
+  params:
+  - name: f
+    type: muduo::detail::File &
+  - name: data
+    type: struct TimeZone::Data *
+  - name: v1
+    type: bool
+  return_type: bool
+  signature: bool muduo::detail::readDataBlock(muduo::detail::File &, struct TimeZone::Data *, bool)
+- name: _ZN5muduo6detail14AtomicIntegerTIiE9addAndGetEi
+  params:
+  - name: x
+    type: T
+  return_type: T
+  signature: T muduo::detail::AtomicIntegerT::addAndGet(T)
+- name: _ZN5muduo6detail14AtomicIntegerTIlE9addAndGetEl
+  params:
+  - name: x
+    type: T
+  return_type: T
+  signature: T muduo::detail::AtomicIntegerT::addAndGet(T)
+- name: _ZN5muduo6detail16readTimeZoneFileEPKcPNS_8TimeZone4DataE
+  params:
+  - name: zonefile
+    type: const char *
+  - name: data
+    type: struct TimeZone::Data *
+  return_type: bool
+  signature: bool muduo::detail::readTimeZoneFile(const char *, struct TimeZone::Data *)
+- name: _ZN5muduo6Logger4ImplC2ENS0_8LogLevelEiRKNS0_10SourceFileEi
+  params:
+  - name: level
+    type: muduo::Logger::Impl::LogLevel
+  - name: old_errno
+    type: int
+  - name: file
+    type: const muduo::Logger::SourceFile &
+  - name: line
+    type: int
+  return_type: void
+  signature: void muduo::Logger::Impl::Impl(muduo::Logger::Impl::LogLevel, int, const muduo::Logger::SourceFile &, int)
+- name: _ZN5muduo7addTimeENS_9TimestampEd
+  params:
+  - name: timestamp
+    type: muduo::Timestamp
+  - name: seconds
+    type: double
+  return_type: muduo::Timestamp
+  signature: muduo::Timestamp muduo::addTime(muduo::Timestamp, double)
+- name: _ZN5muduo7LogFile15append_unlockedEPKci
+  params:
+  - name: logline
+    type: const char *
+  - name: len
+    type: int
+  return_type: void
+  signature: void muduo::LogFile::append_unlocked(const char *, int)
+- name: _ZN5muduo7LogFile6appendEPKci
+  params:
+  - name: logline
+    type: const char *
+  - name: len
+    type: int
+  return_type: void
+  signature: void muduo::LogFile::append(const char *, int)
+- name: _ZN5muduo7LogFileC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEElbii
+  params:
+  - name: basename
+    type: const std::string &
+  - name: rollSize
+    type: off_t
+  - name: threadSafe
+    type: bool
+  - name: flushInterval
+    type: int
+  - name: checkEveryN
+    type: int
+  return_type: void
+  signature: void muduo::LogFile::LogFile(const std::string &, off_t, bool, int, int)
+- name: _ZN5muduo8FileUtil10AppendFile6appendEPKcm
+  params:
+  - name: logline
+    type: const char *
+  - name: len
+    type: const int
+  return_type: void
+  signature: void muduo::FileUtil::AppendFile::append(const char *, const int)
+- name: _ZN5muduo8TimeZone11fromUtcTimeERKNS_8DateTimeE
+  params:
+  - name: arg0
+    type: const struct DateTime &
+  return_type: int64_t
+  signature: int64_t muduo::TimeZone::fromUtcTime(const struct DateTime &)
+- name: _ZN5muduo8TimeZoneC2EiPKc
+  params:
+  - name: data
+    type: int
+  return_type: void
+  signature: void muduo::TimeZone::TimeZone(int)
+- name: _ZN5muduo9LogStreamlsEc
+  params:
+  - name: v
+    type: char
+  return_type: muduo::LogStream::self &
+  signature: muduo::LogStream::self & muduo::LogStream::operator<<(char)
+- name: _ZN5muduo9LogStreamlsEi
+  params:
+  - name: arg0
+    type: int
+  return_type: muduo::LogStream::self &
+  signature: muduo::LogStream::self & muduo::LogStream::operator<<(int)
+- name: _ZN5muduo9LogStreamlsEj
+  params:
+  - name: arg0
+    type: unsigned int
+  return_type: muduo::LogStream::self &
+  signature: muduo::LogStream::self & muduo::LogStream::operator<<(unsigned int)
+- name: _ZN5muduo9LogStreamlsEl
+  params:
+  - name: arg0
+    type: long
+  return_type: muduo::LogStream::self &
+  signature: muduo::LogStream::self & muduo::LogStream::operator<<(long)
+- name: _ZN5muduo9LogStreamlsEm
+  params:
+  - name: arg0
+    type: unsigned long
+  return_type: muduo::LogStream::self &
+  signature: muduo::LogStream::self & muduo::LogStream::operator<<(unsigned long)
+- name: _ZN5muduo9LogStreamlsEx
+  params:
+  - name: arg0
+    type: long long
+  return_type: muduo::LogStream::self &
+  signature: muduo::LogStream::self & muduo::LogStream::operator<<(long long)
+- name: _ZN5muduo9LogStreamlsEy
+  params:
+  - name: arg0
+    type: unsigned long long
+  return_type: muduo::LogStream::self &
+  signature: muduo::LogStream::self & muduo::LogStream::operator<<(unsigned long long)
+- name: _ZN5muduolsERNS_9LogStreamERKNS_6Logger10SourceFileE
+  params:
+  - name: s
+    type: muduo::LogStream &
+  - name: v
+    type: const Logger::SourceFile &
+  return_type: muduo::LogStream &
+  signature: muduo::LogStream & muduo::operator<<(muduo::LogStream &, const Logger::SourceFile &)
+- name: _ZNK5boost9typeindex14stl_type_index5equalERKS1_
+  params:
+  - name: rhs
+    type: const boost::typeindex::stl_type_index &
+  return_type: bool
+  signature: bool boost::typeindex::stl_type_index::equal(const boost::typeindex::stl_type_index &) const
+- name: _ZNK5muduo3net11EPollPoller18fillActiveChannelsEiPSt6vectorIPNS0_7ChannelESaIS4_EE
+  params:
+  - name: numEvents
+    type: int
+  - name: activeChannels
+    type: muduo::net::Poller::ChannelList *
+  return_type: void
+  signature: void muduo::net::EPollPoller::fillActiveChannels(int, muduo::net::Poller::ChannelList *) const
+- name: _ZNK5muduo3net12HttpResponse14appendToBufferEPNS0_6BufferE
+  params:
+  - name: output
+    type: muduo::net::Buffer *
+  return_type: void
+  signature: void muduo::net::HttpResponse::appendToBuffer(muduo::net::Buffer *) const
+- name: _ZNK5muduo3net13TcpConnection10getTcpInfoEP8tcp_info
+  params:
+  - name: arg0
+    type: struct tcp_info *
+  return_type: bool
+  signature: bool muduo::net::TcpConnection::getTcpInfo(struct tcp_info *) const
+- name: _ZNK5muduo3net6Poller10hasChannelEPNS0_7ChannelE
+  params:
+  - name: channel
+    type: muduo::net::Channel *
+  return_type: bool
+  signature: bool muduo::net::Poller::hasChannel(muduo::net::Channel *) const
+- name: _ZNK5muduo8TimeZone11toLocalTimeElPi
+  params:
+  - name: secondsSinceEpoch
+    type: int64_t
+  - name: utcOffset
+    type: int *
+  return_type: struct DateTime
+  signature: struct DateTime muduo::TimeZone::toLocalTime(int64_t, int *) const
+- name: _ZNK5muduo8TimeZone13fromLocalTimeERKNS_8DateTimeEb
+  params:
+  - name: arg0
+    type: const struct DateTime &
+  - name: postTransition
+    type: bool
+  return_type: int64_t
+  signature: int64_t muduo::TimeZone::fromLocalTime(const struct DateTime &, bool) const
+language: c++
+project: muduo
+target_name: muduo_http_fuzzer
+target_path: /src/muduo_http_fuzzer.cpp

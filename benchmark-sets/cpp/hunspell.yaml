@@ -1,0 +1,1451 @@
+functions:
+- name: _ZN8SfxEntry8nextcharEPc
+  params:
+  - name: p
+    type: char *
+  return_type: char *
+  signature: char * SfxEntry::nextchar(char *)
+- name: _ZN8PfxEntry8nextcharEPc
+  params:
+  - name: p
+    type: char *
+  return_type: char *
+  signature: char * PfxEntry::nextchar(char *)
+- name: _ZN8PfxEntry7getFlagEv
+  params: []
+  return_type: unsigned short
+  signature: unsigned short PfxEntry::getFlag()
+- name: _ZN8PfxEntry8getMorphEv
+  params: []
+  return_type: const char *
+  signature: const char * PfxEntry::getMorph()
+- name: _ZN8SfxEntry18check_twosfx_morphERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiiiP8PfxEntryt
+  params:
+  - name: word
+    type: const std::string &
+  - name: start
+    type: int
+  - name: len
+    type: int
+  - name: optflags
+    type: int
+  - name: ppfx
+    type: PfxEntry *
+  - name: needflag
+    type: const unsigned short
+  return_type: std::string
+  signature: std::string SfxEntry::check_twosfx_morph(const std::string &, int, int, int, PfxEntry *, const unsigned short)
+- name: _ZN8SfxEntry14test_conditionEPKcS1_
+  params:
+  - name: st
+    type: const char *
+  - name: begin
+    type: const char *
+  return_type: int
+  signature: int SfxEntry::test_condition(const char *, const char *)
+- name: _ZN8SfxEntry12check_twosfxERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiiiP8PfxEntryt
+  params:
+  - name: word
+    type: const std::string &
+  - name: start
+    type: int
+  - name: len
+    type: int
+  - name: optflags
+    type: int
+  - name: ppfx
+    type: PfxEntry *
+  - name: needflag
+    type: const unsigned short
+  return_type: struct hentry *
+  signature: struct hentry * SfxEntry::check_twosfx(const std::string &, int, int, int, PfxEntry *, const unsigned short)
+- name: _ZN8SfxEntry9checkwordERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiiiP8PfxEntryttt
+  params:
+  - name: word
+    type: const std::string &
+  - name: start
+    type: int
+  - name: len
+    type: int
+  - name: optflags
+    type: int
+  - name: ppfx
+    type: PfxEntry *
+  - name: cclass
+    type: const unsigned short
+  - name: needflag
+    type: const unsigned short
+  - name: badflag
+    type: const unsigned short
+  return_type: struct hentry *
+  signature: struct hentry * SfxEntry::checkword(const std::string &, int, int, int, PfxEntry *, const unsigned short, const
+    unsigned short, const unsigned short)
+- name: _ZN8SfxEntry3addB5cxx11EPKcm
+  params:
+  - name: word
+    type: const char *
+  - name: len
+    type: int
+  return_type: std::string
+  signature: std::string SfxEntry::add(const char *, int)
+- name: _ZN8PfxEntry6getKeyEv
+  params: []
+  return_type: const char *
+  signature: const char * PfxEntry::getKey()
+- name: _ZN8PfxEntry11check_morphERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiict
+  params:
+  - name: word
+    type: const std::string &
+  - name: start
+    type: int
+  - name: len
+    type: int
+  - name: in_compound
+    type: char
+  - name: needflag
+    type: const unsigned short
+  return_type: std::string
+  signature: std::string PfxEntry::check_morph(const std::string &, int, int, char, const unsigned short)
+- name: _ZN8PfxEntry14test_conditionERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: st
+    type: const std::string &
+  return_type: int
+  signature: int PfxEntry::test_condition(const std::string &)
+- name: _ZN8PfxEntry18check_twosfx_morphERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiict
+  params:
+  - name: word
+    type: const std::string &
+  - name: start
+    type: int
+  - name: len
+    type: int
+  - name: in_compound
+    type: char
+  - name: needflag
+    type: const unsigned short
+  return_type: std::string
+  signature: std::string PfxEntry::check_twosfx_morph(const std::string &, int, int, char, const unsigned short)
+- name: _ZN8PfxEntry12check_twosfxERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiict
+  params:
+  - name: word
+    type: const std::string &
+  - name: start
+    type: int
+  - name: len
+    type: int
+  - name: in_compound
+    type: char
+  - name: needflag
+    type: const unsigned short
+  return_type: struct hentry *
+  signature: struct hentry * PfxEntry::check_twosfx(const std::string &, int, int, char, const unsigned short)
+- name: _ZN8PfxEntry9checkwordERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiict
+  params:
+  - name: word
+    type: const std::string &
+  - name: start
+    type: int
+  - name: len
+    type: int
+  - name: in_compound
+    type: char
+  - name: needflag
+    type: const unsigned short
+  return_type: struct hentry *
+  signature: struct hentry * PfxEntry::checkword(const std::string &, int, int, char, const unsigned short)
+- name: _ZN8PfxEntry3addB5cxx11EPKcm
+  params:
+  - name: word
+    type: const char *
+  - name: len
+    type: int
+  return_type: std::string
+  signature: std::string PfxEntry::add(const char *, int)
+- name: _ZN8AffixMgr16get_suffix_wordsEPtiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: suff
+    type: unsigned short *
+  - name: len
+    type: int
+  - name: root_word
+    type: const std::string &
+  return_type: int
+  signature: int AffixMgr::get_suffix_words(unsigned short *, int, const std::string &)
+- name: _ZN8SfxEntry7getFlagEv
+  params: []
+  return_type: unsigned short
+  signature: unsigned short SfxEntry::getFlag()
+- name: _ZN8SfxEntry8getAffixEv
+  params: []
+  return_type: const char *
+  signature: const char * SfxEntry::getAffix()
+- name: _ZN8SfxEntry7getNextEv
+  params: []
+  return_type: SfxEntry *
+  signature: SfxEntry * SfxEntry::getNext()
+- name: _ZNK8AffixMgr16get_sugswithdotsEv
+  params: []
+  return_type: int
+  signature: int AffixMgr::get_sugswithdots() const
+- name: _ZNK8AffixMgr15get_onlymaxdiffEv
+  params: []
+  return_type: int
+  signature: int AffixMgr::get_onlymaxdiff() const
+- name: _ZNK8AffixMgr11get_maxdiffEv
+  params: []
+  return_type: int
+  signature: int AffixMgr::get_maxdiff() const
+- name: _ZNK8AffixMgr16get_maxngramsugsEv
+  params: []
+  return_type: int
+  signature: int AffixMgr::get_maxngramsugs() const
+- name: _ZNK8AffixMgr11get_versionB5cxx11Ev
+  params: []
+  return_type: const std::string &
+  signature: const std::string & AffixMgr::get_version() const
+- name: _ZNK8AffixMgr18get_nongramsuggestEv
+  params: []
+  return_type: unsigned short
+  signature: unsigned short AffixMgr::get_nongramsuggest() const
+- name: _ZNK8AffixMgr19get_wordchars_utf16Ev
+  params: []
+  return_type: const int &
+  signature: const int & AffixMgr::get_wordchars_utf16() const
+- name: _ZNK8AffixMgr13get_wordcharsB5cxx11Ev
+  params: []
+  return_type: const std::string &
+  signature: const std::string & AffixMgr::get_wordchars() const
+- name: _ZNK8AffixMgr16get_ignore_utf16Ev
+  params: []
+  return_type: const int &
+  signature: const int & AffixMgr::get_ignore_utf16() const
+- name: _ZNK8AffixMgr10get_ignoreEv
+  params: []
+  return_type: const char *
+  signature: const char * AffixMgr::get_ignore() const
+- name: _ZNK8AffixMgr15get_checksharpsEv
+  params: []
+  return_type: int
+  signature: int AffixMgr::get_checksharps() const
+- name: _ZNK8AffixMgr14get_forbidwarnEv
+  params: []
+  return_type: int
+  signature: int AffixMgr::get_forbidwarn() const
+- name: _ZNK8AffixMgr8get_warnEv
+  params: []
+  return_type: unsigned short
+  signature: unsigned short AffixMgr::get_warn() const
+- name: _ZNK8AffixMgr14get_forceucaseEv
+  params: []
+  return_type: unsigned short
+  signature: unsigned short AffixMgr::get_forceucase() const
+- name: _ZNK8AffixMgr13get_fullstripEv
+  params: []
+  return_type: int
+  signature: int AffixMgr::get_fullstrip() const
+- name: _ZNK8AffixMgr14get_phonetableEv
+  params: []
+  return_type: struct phonetable *
+  signature: struct phonetable * AffixMgr::get_phonetable() const
+- name: _ZNK8AffixMgr14get_oconvtableEv
+  params: []
+  return_type: RepList *
+  signature: RepList * AffixMgr::get_oconvtable() const
+- name: _ZNK8AffixMgr14get_iconvtableEv
+  params: []
+  return_type: RepList *
+  signature: RepList * AffixMgr::get_iconvtable() const
+- name: _ZN8PfxEntry9getFlgNxtEv
+  params: []
+  return_type: PfxEntry *
+  signature: PfxEntry * PfxEntry::getFlgNxt()
+- name: _ZN8PfxEntry9getKeyLenEv
+  params: []
+  return_type: int
+  signature: int PfxEntry::getKeyLen()
+- name: _ZNK8PfxEntry10allowCrossEv
+  params: []
+  return_type: bool
+  signature: bool PfxEntry::allowCross() const
+- name: _ZNK8SfxEntry10allowCrossEv
+  params: []
+  return_type: bool
+  signature: bool SfxEntry::allowCross() const
+- name: _ZN8AffixMgr15expand_rootwordEP9guesswordiPKciPKttS3_iS3_
+  params:
+  - name: wlst
+    type: struct guessword *
+  - name: maxn
+    type: int
+  - name: ts
+    type: const char *
+  - name: wl
+    type: int
+  - name: ap
+    type: const unsigned short *
+  - name: al
+    type: unsigned short
+  - name: bad
+    type: const char *
+  - name: badl
+    type: int
+  - name: phon
+    type: const char *
+  return_type: int
+  signature: int AffixMgr::expand_rootword(struct guessword *, int, const char *, int, const unsigned short *, unsigned short,
+    const char *, int, const char *)
+- name: _ZN8SfxEntry9getKeyLenEv
+  params: []
+  return_type: int
+  signature: int SfxEntry::getKeyLen()
+- name: _ZN8SfxEntry7getContEv
+  params: []
+  return_type: const unsigned short *
+  signature: const unsigned short * SfxEntry::getCont()
+- name: _ZN8SfxEntry10getContLenEv
+  params: []
+  return_type: unsigned short
+  signature: unsigned short SfxEntry::getContLen()
+- name: _ZN8SfxEntry6getKeyEv
+  params: []
+  return_type: const char *
+  signature: const char * SfxEntry::getKey()
+- name: _ZN8SfxEntry9getFlgNxtEv
+  params: []
+  return_type: SfxEntry *
+  signature: SfxEntry * SfxEntry::getFlgNxt()
+- name: _ZN8SfxEntry8getMorphEv
+  params: []
+  return_type: const char *
+  signature: const char * SfxEntry::getMorph()
+- name: _ZN8AffixMgr18suffix_check_morphERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiiiP8PfxEntryttc
+  params:
+  - name: word
+    type: const std::string &
+  - name: start
+    type: int
+  - name: len
+    type: int
+  - name: sfxopts
+    type: int
+  - name: ppfx
+    type: PfxEntry *
+  - name: cclass
+    type: const unsigned short
+  - name: needflag
+    type: const unsigned short
+  - name: in_compound
+    type: char
+  return_type: std::string
+  signature: std::string AffixMgr::suffix_check_morph(const std::string &, int, int, int, PfxEntry *, const unsigned short,
+    const unsigned short, char)
+- name: _ZN8AffixMgr9debugflagERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEt
+  params:
+  - name: result
+    type: std::string &
+  - name: flag
+    type: unsigned short
+  return_type: std::string &
+  signature: std::string & AffixMgr::debugflag(std::string &, unsigned short)
+- name: _ZN8AffixMgr11isRevSubsetEPKcS1_i
+  params:
+  - name: s1
+    type: const char *
+  - name: end_of_s2
+    type: const char *
+  - name: len
+    type: int
+  return_type: int
+  signature: int AffixMgr::isRevSubset(const char *, const char *, int)
+- name: _ZN8SfxEntry9getNextEQEv
+  params: []
+  return_type: SfxEntry *
+  signature: SfxEntry * SfxEntry::getNextEQ()
+- name: _ZN8SfxEntry9getNextNEEv
+  params: []
+  return_type: SfxEntry *
+  signature: SfxEntry * SfxEntry::getNextNE()
+- name: _ZNK8AffixMgr11encode_flagB5cxx11Et
+  params:
+  - name: aflag
+    type: unsigned short
+  return_type: std::string
+  signature: std::string AffixMgr::encode_flag(unsigned short) const
+- name: _ZN8AffixMgr25suffix_check_twosfx_morphERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiiiP8PfxEntryt
+  params:
+  - name: word
+    type: const std::string &
+  - name: start
+    type: int
+  - name: len
+    type: int
+  - name: sfxopts
+    type: int
+  - name: ppfx
+    type: PfxEntry *
+  - name: needflag
+    type: const unsigned short
+  return_type: std::string
+  signature: std::string AffixMgr::suffix_check_twosfx_morph(const std::string &, int, int, int, PfxEntry *, const unsigned
+    short)
+- name: _ZN8AffixMgr17affix_check_morphERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiitc
+  params:
+  - name: word
+    type: const std::string &
+  - name: start
+    type: int
+  - name: len
+    type: int
+  - name: needflag
+    type: const unsigned short
+  - name: in_compound
+    type: char
+  return_type: std::string
+  signature: std::string AffixMgr::affix_check_morph(const std::string &, int, int, const unsigned short, char)
+- name: _ZN8AffixMgr18prefix_check_morphERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiict
+  params:
+  - name: word
+    type: const std::string &
+  - name: start
+    type: int
+  - name: len
+    type: int
+  - name: in_compound
+    type: char
+  - name: needflag
+    type: const unsigned short
+  return_type: std::string
+  signature: std::string AffixMgr::prefix_check_morph(const std::string &, int, int, char, const unsigned short)
+- name: _ZN8AffixMgr25prefix_check_twosfx_morphERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiict
+  params:
+  - name: word
+    type: const std::string &
+  - name: start
+    type: int
+  - name: len
+    type: int
+  - name: in_compound
+    type: char
+  - name: needflag
+    type: const unsigned short
+  return_type: std::string
+  signature: std::string AffixMgr::prefix_check_twosfx_morph(const std::string &, int, int, char, const unsigned short)
+- name: _ZN8AffixMgr8isSubsetEPKcS1_
+  params:
+  - name: s1
+    type: const char *
+  - name: s2
+    type: const char *
+  return_type: int
+  signature: int AffixMgr::isSubset(const char *, const char *)
+- name: _ZN8PfxEntry9getNextEQEv
+  params: []
+  return_type: PfxEntry *
+  signature: PfxEntry * PfxEntry::getNextEQ()
+- name: _ZN8PfxEntry9getNextNEEv
+  params: []
+  return_type: PfxEntry *
+  signature: PfxEntry * PfxEntry::getNextNE()
+- name: _ZN8AffixMgr15candidate_checkERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: word
+    type: const std::string &
+  return_type: int
+  signature: int AffixMgr::candidate_check(const std::string &)
+- name: _ZNK7HashMgr12get_reptableEv
+  params: []
+  return_type: const int &
+  signature: const int & HashMgr::get_reptable() const
+- name: _ZNK7HashMgr11encode_flagB5cxx11Et
+  params:
+  - name: f
+    type: unsigned short
+  return_type: std::string
+  signature: std::string HashMgr::encode_flag(unsigned short) const
+- name: _ZN7HashMgr14add_with_affixERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_
+  params:
+  - name: word
+    type: const std::string &
+  - name: example
+    type: const std::string &
+  return_type: int
+  signature: int HashMgr::add_with_affix(const std::string &, const std::string &)
+- name: _ZN7HashMgr21remove_forbidden_flagERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: word
+    type: const std::string &
+  return_type: void
+  signature: void HashMgr::remove_forbidden_flag(const std::string &)
+- name: _ZN7HashMgr20get_clen_and_captypeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPi
+  params:
+  - name: word
+    type: const std::string &
+  - name: captype
+    type: int *
+  return_type: int
+  signature: int HashMgr::get_clen_and_captype(const std::string &, int *)
+- name: _ZN7HashMgr27add_hidden_capitalized_wordERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiPtiPS6_i
+  params:
+  - name: word
+    type: const std::string &
+  - name: wcl
+    type: int
+  - name: flags
+    type: unsigned short *
+  - name: flagslen
+    type: int
+  - name: dp
+    type: const std::string *
+  - name: captype
+    type: int
+  return_type: int
+  signature: int HashMgr::add_hidden_capitalized_word(const std::string &, int, unsigned short *, int, const std::string *,
+    int)
+- name: _ZNK7HashMgr4hashEPKcm
+  params:
+  - name: word
+    type: const char *
+  - name: len
+    type: int
+  return_type: int
+  signature: int HashMgr::hash(const char *, int) const
+- name: _ZN7HashMgr14add_with_flagsERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_S7_
+  params:
+  - name: word
+    type: const std::string &
+  - name: flags
+    type: const std::string &
+  - name: desc
+    type: const std::string &
+  return_type: int
+  signature: int HashMgr::add_with_flags(const std::string &, const std::string &, const std::string &)
+- name: _ZN7HashMgr3addERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: word
+    type: const std::string &
+  return_type: int
+  signature: int HashMgr::add(const std::string &)
+- name: _ZN7HashMgr6removeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: word
+    type: const std::string &
+  return_type: int
+  signature: int HashMgr::remove(const std::string &)
+- name: _ZN12HunspellImpl6removeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: word
+    type: const std::string &
+  return_type: int
+  signature: int HunspellImpl::remove(const std::string &)
+- name: _ZN12HunspellImpl14add_with_affixERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_
+  params:
+  - name: word
+    type: const std::string &
+  - name: example
+    type: const std::string &
+  return_type: int
+  signature: int HunspellImpl::add_with_affix(const std::string &, const std::string &)
+- name: _ZN12HunspellImpl14add_with_flagsERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_S7_
+  params:
+  - name: word
+    type: const std::string &
+  - name: flags
+    type: const std::string &
+  - name: desc
+    type: const std::string &
+  return_type: int
+  signature: int HunspellImpl::add_with_flags(const std::string &, const std::string &, const std::string &)
+- name: _ZN12HunspellImpl3addERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: word
+    type: const std::string &
+  return_type: int
+  signature: int HunspellImpl::add(const std::string &)
+- name: _ZN12HunspellImpl8generateERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKSt6vectorIS5_SaIS5_EE
+  params:
+  - name: slst
+    type: char ***
+  - name: word
+    type: const char *
+  - name: pl
+    type: char **
+  - name: pln
+    type: int
+  return_type: int
+  signature: int HunspellImpl::generate(char ***, const char *, char **, int)
+- name: _ZN12HunspellImpl7analyzeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: slst
+    type: char ***
+  - name: word
+    type: const char *
+  return_type: int
+  signature: int HunspellImpl::analyze(char ***, const char *)
+- name: _ZN12HunspellImpl9cleanwordERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKS5_PiS9_
+  params:
+  - name: dest
+    type: std::string &
+  - name: src
+    type: const std::string &
+  - name: pcaptype
+    type: int *
+  - name: pabbrev
+    type: int *
+  return_type: void
+  signature: void HunspellImpl::cleanword(std::string &, const std::string &, int *, int *)
+- name: _ZN12HunspellImpl10cat_resultERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKS5_
+  params:
+  - name: result
+    type: std::string &
+  - name: st
+    type: const std::string &
+  return_type: void
+  signature: void HunspellImpl::cat_result(std::string &, const std::string &)
+- name: _ZN12HunspellImpl8mkallcapERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: u8
+    type: std::string &
+  return_type: void
+  signature: void HunspellImpl::mkallcap(std::string &)
+- name: _ZN12HunspellImpl9mkinitcapERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: u8
+    type: std::string &
+  return_type: void
+  signature: void HunspellImpl::mkinitcap(std::string &)
+- name: _ZN12HunspellImpl5spellERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIS5_SaIS5_EEPiPS5_
+  params:
+  - name: word
+    type: const char *
+  - name: info
+    type: int *
+  - name: root
+    type: char **
+  return_type: int
+  signature: int HunspellImpl::spell(const char *, int *, char **)
+- name: _ZN12HunspellImpl14spell_internalERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIS5_SaIS5_EEPiPS5_
+  params:
+  - name: word
+    type: const std::string &
+  - name: candidate_stack
+    type: int &
+  - name: info
+    type: int *
+  - name: root
+    type: std::string *
+  return_type: bool
+  signature: bool HunspellImpl::spell_internal(const std::string &, int &, int *, std::string *)
+- name: _ZN12HunspellImpl10cleanword2ERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorI6w_charSaIS8_EERKS5_PiPm
+  params:
+  - name: dest
+    type: std::string &
+  - name: dest_utf
+    type: int &
+  - name: src
+    type: const std::string &
+  - name: pcaptype
+    type: int *
+  - name: pabbrev
+    type: int *
+  return_type: int
+  signature: int HunspellImpl::cleanword2(std::string &, int &, const std::string &, int *, int *)
+- name: _ZN12HunspellImpl9checkwordERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPiPS5_
+  params:
+  - name: w
+    type: const std::string &
+  - name: info
+    type: int *
+  - name: root
+    type: std::string *
+  return_type: struct hentry *
+  signature: struct hentry * HunspellImpl::checkword(const std::string &, int *, std::string *)
+- name: _ZN12HunspellImpl11mkallsmall2ERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorI6w_charSaIS8_EE
+  params:
+  - name: u8
+    type: std::string &
+  - name: u16
+    type: int &
+  return_type: int
+  signature: int HunspellImpl::mkallsmall2(std::string &, int &)
+- name: _ZN12HunspellImpl10mkinitcap2ERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorI6w_charSaIS8_EE
+  params:
+  - name: u8
+    type: std::string &
+  - name: u16
+    type: int &
+  return_type: int
+  signature: int HunspellImpl::mkinitcap2(std::string &, int &)
+- name: _ZN12HunspellImpl11spellsharpsERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEmiiPiPS5_
+  params:
+  - name: base
+    type: std::string &
+  - name: n_pos
+    type: int
+  - name: n
+    type: int
+  - name: repnum
+    type: int
+  - name: info
+    type: int *
+  - name: root
+    type: std::string *
+  return_type: hentry *
+  signature: hentry * HunspellImpl::spellsharps(std::string &, int, int, int, int *, std::string *)
+- name: _ZN12HunspellImpl12sharps_u8_l1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: source
+    type: const std::string &
+  return_type: std::string
+  signature: std::string HunspellImpl::sharps_u8_l1(const std::string &)
+- name: _ZN12HunspellImpl12clean_ignoreERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKS5_
+  params:
+  - name: dest
+    type: std::string &
+  - name: src
+    type: const std::string &
+  return_type: void
+  signature: void HunspellImpl::clean_ignore(std::string &, const std::string &)
+- name: _ZN12HunspellImpl16analyze_internalERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: word
+    type: const std::string &
+  return_type: int
+  signature: int HunspellImpl::analyze_internal(const std::string &)
+- name: _ZN12HunspellImpl8generateERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_
+  params:
+  - name: slst
+    type: char ***
+  - name: word
+    type: const char *
+  - name: pl
+    type: char **
+  - name: pln
+    type: int
+  return_type: int
+  signature: int HunspellImpl::generate(char ***, const char *, char **, int)
+- name: _ZN12HunspellImpl4stemERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EE
+  params:
+  - name: slst
+    type: char ***
+  - name: desc
+    type: char **
+  - name: n
+    type: int
+  return_type: int
+  signature: int HunspellImpl::stem(char ***, char **, int)
+- name: _ZN12HunspellImpl4stemERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: slst
+    type: char ***
+  - name: desc
+    type: char **
+  - name: n
+    type: int
+  return_type: int
+  signature: int HunspellImpl::stem(char ***, char **, int)
+- name: _ZN12HunspellImpl14suffix_suggestERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: slst
+    type: char ***
+  - name: root_word
+    type: const char *
+  return_type: int
+  signature: int HunspellImpl::suffix_suggest(char ***, const char *)
+- name: _ZN12HunspellImpl7suggestERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: slst
+    type: char ***
+  - name: word
+    type: const char *
+  return_type: int
+  signature: int HunspellImpl::suggest(char ***, const char *)
+- name: _ZN12HunspellImpl7suggestERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIS5_SaIS5_EENSt6chrono10time_pointINSC_3_V212steady_clockENSC_8durationIlSt5ratioILl1ELl1000000000EEEEEE
+  params:
+  - name: slst
+    type: char ***
+  - name: word
+    type: const char *
+  return_type: int
+  signature: int HunspellImpl::suggest(char ***, const char *)
+- name: _ZN12HunspellImpl16suggest_internalERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIS5_SaIS5_EESB_RbRmRiNSt6chrono10time_pointINSF_3_V212steady_clockENSF_8durationIlSt5ratioILl1ELl1000000000EEEEEE
+  params:
+  - name: word
+    type: const std::string &
+  - name: spell_candidate_stack
+    type: int &
+  - name: suggest_candidate_stack
+    type: int &
+  - name: capwords
+    type: bool &
+  - name: abbv
+    type: int &
+  - name: captype
+    type: int &
+  return_type: int
+  signature: int HunspellImpl::suggest_internal(const std::string &, int &, int &, bool &, int &, int &)
+- name: _ZN12HunspellImpl7spellmlERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: in_word
+    type: const std::string &
+  return_type: int
+  signature: int HunspellImpl::spellml(const std::string &)
+- name: _ZN12HunspellImpl10insert_sugERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS6_
+  params:
+  - name: slst
+    type: int &
+  - name: word
+    type: const std::string &
+  return_type: void
+  signature: void HunspellImpl::insert_sug(int &, const std::string &)
+- name: _ZN12HunspellImpl12mkinitsmall2ERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorI6w_charSaIS8_EE
+  params:
+  - name: u8
+    type: std::string &
+  - name: u16
+    type: int &
+  return_type: int
+  signature: int HunspellImpl::mkinitsmall2(std::string &, int &)
+- name: _ZN12HunspellImpl13check_xml_parERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEmPKcS9_
+  params:
+  - name: q
+    type: const std::string &
+  - name: pos
+    type: int
+  - name: attr
+    type: const char *
+  - name: value
+    type: const char *
+  return_type: int
+  signature: int HunspellImpl::check_xml_par(const std::string &, int, const char *, const char *)
+- name: _ZN12HunspellImpl11get_xml_parERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEm
+  params:
+  - name: in_par
+    type: const std::string &
+  - name: pos
+    type: int
+  return_type: std::string
+  signature: std::string HunspellImpl::get_xml_par(const std::string &, int)
+- name: _ZN12HunspellImpl12get_xml_listERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEmPKc
+  params:
+  - name: list
+    type: const std::string &
+  - name: pos
+    type: int
+  - name: tag
+    type: const char *
+  return_type: int
+  signature: int HunspellImpl::get_xml_list(const std::string &, int, const char *)
+- name: _ZN12HunspellImpl11get_xml_posERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEmPKc
+  params:
+  - name: s
+    type: const std::string &
+  - name: pos
+    type: int
+  - name: attr
+    type: const char *
+  return_type: int
+  signature: int HunspellImpl::get_xml_pos(const std::string &, int, const char *)
+- name: _ZN12HunspellImpl7add_dicEPKcS1_
+  params:
+  - name: dpath
+    type: const char *
+  - name: key
+    type: const char *
+  return_type: int
+  signature: int HunspellImpl::add_dic(const char *, const char *)
+- name: _ZN12HunspellImpl10input_convEPKcPcm
+  params:
+  - name: word
+    type: const char *
+  - name: dest
+    type: char *
+  - name: destsize
+    type: int
+  return_type: int
+  signature: int HunspellImpl::input_conv(const char *, char *, int)
+- name: _ZN12HunspellImpl10input_convERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERS5_
+  params:
+  - name: word
+    type: const char *
+  - name: dest
+    type: char *
+  - name: destsize
+    type: int
+  return_type: int
+  signature: int HunspellImpl::input_conv(const char *, char *, int)
+- name: _ZNK12HunspellImpl11get_versionEv
+  params: []
+  return_type: const char *
+  signature: const char * HunspellImpl::get_version() const
+- name: _ZNK12HunspellImpl15get_version_cppB5cxx11Ev
+  params: []
+  return_type: const std::string &
+  signature: const std::string & HunspellImpl::get_version_cpp() const
+- name: _ZNK12HunspellImpl13get_wordcharsEv
+  params: []
+  return_type: const char *
+  signature: const char * HunspellImpl::get_wordchars() const
+- name: _ZNK12HunspellImpl17get_wordchars_cppB5cxx11Ev
+  params: []
+  return_type: const std::string &
+  signature: const std::string & HunspellImpl::get_wordchars_cpp() const
+- name: _ZNK12HunspellImpl11get_langnumEv
+  params: []
+  return_type: int
+  signature: int HunspellImpl::get_langnum() const
+- name: _ZNK12HunspellImpl10get_csconvEv
+  params: []
+  return_type: const struct cs_info *
+  signature: const struct cs_info * HunspellImpl::get_csconv() const
+- name: _ZNK12HunspellImpl19get_wordchars_utf16Ev
+  params: []
+  return_type: const int &
+  signature: const int & HunspellImpl::get_wordchars_utf16() const
+- name: _ZNK12HunspellImpl17get_dict_encodingB5cxx11Ev
+  params: []
+  return_type: const std::string &
+  signature: const std::string & HunspellImpl::get_dict_encoding() const
+- name: _ZN6Hunzip7getlineERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: dest
+    type: std::string &
+  return_type: bool
+  signature: bool Hunzip::getline(std::string &)
+- name: _ZN7RepList4convERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERS5_
+  params:
+  - name: word
+    type: const std::string &
+  - name: dest
+    type: std::string &
+  return_type: bool
+  signature: bool RepList::conv(const std::string &, std::string &)
+- name: _ZN7RepList4findEPKc
+  params:
+  - name: word
+    type: const char *
+  return_type: int
+  signature: int RepList::find(const char *)
+- name: _ZN7RepList7replaceB5cxx11Emib
+  params:
+  - name: wordlen
+    type: const int
+  - name: n
+    type: int
+  - name: atstart
+    type: bool
+  return_type: std::string
+  signature: std::string RepList::replace(const int, int, bool)
+- name: _ZN10SuggestMgr11suggest_genERKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS6_
+  params:
+  - name: pl
+    type: const int &
+  - name: pattern
+    type: const std::string &
+  return_type: std::string
+  signature: std::string SuggestMgr::suggest_gen(const int &, const std::string &)
+- name: _ZN10SuggestMgr13suggest_morphERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: word
+    type: const std::string &
+  return_type: std::string
+  signature: std::string SuggestMgr::suggest_morph(const std::string &)
+- name: _ZN10SuggestMgr6lcslenERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_
+  params:
+  - name: s
+    type: const std::string &
+  - name: s2
+    type: const std::string &
+  return_type: int
+  signature: int SuggestMgr::lcslen(const std::string &, const std::string &)
+- name: _ZN10SuggestMgr6lcslenEPKcS1_
+  params:
+  - name: s
+    type: const char *
+  - name: s2
+    type: const char *
+  return_type: int
+  signature: int SuggestMgr::lcslen(const char *, const char *)
+- name: _ZN10SuggestMgr24commoncharacterpositionsEPKcS1_Pi
+  params:
+  - name: s1
+    type: const char *
+  - name: s2
+    type: const char *
+  - name: is_swap
+    type: int *
+  return_type: int
+  signature: int SuggestMgr::commoncharacterpositions(const char *, const char *, int *)
+- name: _ZN10SuggestMgr5ngramEiRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_i
+  params:
+  - name: n
+    type: int
+  - name: s1
+    type: const std::string &
+  - name: s2
+    type: const std::string &
+  - name: opt
+    type: int
+  return_type: int
+  signature: int SuggestMgr::ngram(int, const std::string &, const std::string &, int)
+- name: _ZN10SuggestMgr19leftcommonsubstringEPKcS1_
+  params:
+  - name: s1
+    type: const char *
+  - name: s2
+    type: const char *
+  return_type: int
+  signature: int SuggestMgr::leftcommonsubstring(const char *, const char *)
+- name: _ZN10SuggestMgr5ngramEiRKSt6vectorI6w_charSaIS1_EES5_i
+  params:
+  - name: n
+    type: int
+  - name: s1
+    type: const std::string &
+  - name: s2
+    type: const std::string &
+  - name: opt
+    type: int
+  return_type: int
+  signature: int SuggestMgr::ngram(int, const std::string &, const std::string &, int)
+- name: _ZN10SuggestMgr19leftcommonsubstringERKSt6vectorI6w_charSaIS1_EES5_
+  params:
+  - name: s1
+    type: const char *
+  - name: s2
+    type: const char *
+  return_type: int
+  signature: int SuggestMgr::leftcommonsubstring(const char *, const char *)
+- name: _ZN10SuggestMgr9ngsuggestERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EEPKcRKS0_IP7HashMgrSaISD_EEi
+  params:
+  - name: slst
+    type: int &
+  - name: word
+    type: const char *
+  - name: rHMgr
+    type: const int &
+  - name: captype
+    type: int
+  return_type: void
+  signature: void SuggestMgr::ngsuggest(int &, const char *, const int &, int)
+- name: _ZN10SuggestMgr9checkwordERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiPiPl
+  params:
+  - name: word
+    type: const std::string &
+  - name: arg1
+    type: int
+  - name: arg2
+    type: int *
+  - name: arg3
+    type: clock_t *
+  return_type: int
+  signature: int SuggestMgr::checkword(const std::string &, int, int *, clock_t *)
+- name: _ZN10SuggestMgr8twowordsERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS6_ibRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const std::string &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: bool
+  - name: arg4
+    type: int &
+  return_type: bool
+  signature: bool SuggestMgr::twowords(int &, const std::string &, int, bool, int &)
+- name: _ZN10SuggestMgr14doubletwocharsERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS6_iRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const std::string &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: int
+  signature: int SuggestMgr::doubletwochars(int &, const std::string &, int, int &)
+- name: _ZN10SuggestMgr18doubletwochars_utfERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS0_I6w_charSaISA_EEiRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const int &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: int
+  signature: int SuggestMgr::doubletwochars_utf(int &, const int &, int, int &)
+- name: _ZN10SuggestMgr7badcharERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS6_iRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const std::string &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: int
+  signature: int SuggestMgr::badchar(int &, const std::string &, int, int &)
+- name: _ZN10SuggestMgr11badchar_utfERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS0_I6w_charSaISA_EEiRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const int &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: int
+  signature: int SuggestMgr::badchar_utf(int &, const int &, int, int &)
+- name: _ZN10SuggestMgr8movecharERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS6_iRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const std::string &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: int
+  signature: int SuggestMgr::movechar(int &, const std::string &, int, int &)
+- name: _ZN10SuggestMgr12movechar_utfERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS0_I6w_charSaISA_EEiRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const int &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: int
+  signature: int SuggestMgr::movechar_utf(int &, const int &, int, int &)
+- name: _ZN10SuggestMgr10forgotcharERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS6_iRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const std::string &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: int
+  signature: int SuggestMgr::forgotchar(int &, const std::string &, int, int &)
+- name: _ZN10SuggestMgr14forgotchar_utfERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS0_I6w_charSaISA_EEiRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const int &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: int
+  signature: int SuggestMgr::forgotchar_utf(int &, const int &, int, int &)
+- name: _ZN10SuggestMgr9extracharERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS6_iRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const std::string &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: int
+  signature: int SuggestMgr::extrachar(int &, const std::string &, int, int &)
+- name: _ZN10SuggestMgr13extrachar_utfERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS0_I6w_charSaISA_EEiRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const int &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: int
+  signature: int SuggestMgr::extrachar_utf(int &, const int &, int, int &)
+- name: _ZN10SuggestMgr10badcharkeyERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS6_iRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const std::string &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: int
+  signature: int SuggestMgr::badcharkey(int &, const std::string &, int, int &)
+- name: _ZN10SuggestMgr14badcharkey_utfERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS0_I6w_charSaISA_EEiRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const int &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: int
+  signature: int SuggestMgr::badcharkey_utf(int &, const int &, int, int &)
+- name: _ZN10SuggestMgr12longswapcharERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS6_iRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const std::string &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: int
+  signature: int SuggestMgr::longswapchar(int &, const std::string &, int, int &)
+- name: _ZN10SuggestMgr16longswapchar_utfERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS0_I6w_charSaISA_EEiRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const int &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: int
+  signature: int SuggestMgr::longswapchar_utf(int &, const int &, int, int &)
+- name: _ZN10SuggestMgr8swapcharERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS6_iRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const std::string &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: int
+  signature: int SuggestMgr::swapchar(int &, const std::string &, int, int &)
+- name: _ZN10SuggestMgr12swapchar_utfERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS0_I6w_charSaISA_EEiRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const int &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: int
+  signature: int SuggestMgr::swapchar_utf(int &, const int &, int, int &)
+- name: _ZN10SuggestMgr8mapcharsERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS6_iRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const std::string &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: int
+  signature: int SuggestMgr::mapchars(int &, const std::string &, int, int &)
+- name: _ZN10SuggestMgr9replcharsERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS6_iRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const std::string &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: int
+  signature: int SuggestMgr::replchars(int &, const std::string &, int, int &)
+- name: _ZN10SuggestMgr8capcharsERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS6_iRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const std::string &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: void
+  signature: void SuggestMgr::capchars(int &, const std::string &, int, int &)
+- name: _ZN10SuggestMgr12capchars_utfERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS0_I6w_charSaISA_EEiRi
+  params:
+  - name: arg0
+    type: int &
+  - name: arg1
+    type: const int &
+  - name: arg2
+    type: int
+  - name: arg3
+    type: int &
+  return_type: void
+  signature: void SuggestMgr::capchars_utf(int &, const int &, int, int &)
+- name: _ZN10TextParser7is_utf8Ev
+  params: []
+  return_type: int
+  signature: int TextParser::is_utf8()
+- name: _ZN11LaTeXParser12look_patternEi
+  params:
+  - name: col
+    type: int
+  return_type: int
+  signature: int LaTeXParser::look_pattern(int)
+- name: _ZN10TextParser7get_urlEmPm
+  params:
+  - name: token_pos
+    type: std::size_t
+  - name: hd
+    type: std::size_t *
+  return_type: int
+  signature: int TextParser::get_url(std::size_t, std::size_t *)
+- name: _ZN10TextParser12change_tokenEPKc
+  params:
+  - name: word
+    type: const char *
+  return_type: int
+  signature: int TextParser::change_token(const char *)
+- name: _ZN10TextParser11alloc_tokenEmPmRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+  params:
+  - name: token
+    type: int
+  - name: head
+    type: int *
+  - name: out
+    type: std::string &
+  return_type: bool
+  signature: bool TextParser::alloc_token(int, int *, std::string &)
+- name: _ZN10TextParser11is_wordcharEPKc
+  params:
+  - name: w
+    type: const char *
+  return_type: int
+  signature: int TextParser::is_wordchar(const char *)
+- name: _ZN10TextParser10get_latin1EPKc
+  params:
+  - name: s
+    type: const char *
+  return_type: const char *
+  signature: const char * TextParser::get_latin1(const char *)
+- name: _ZN10TextParser9next_charEPKcPm
+  params:
+  - name: ln
+    type: const char *
+  - name: pos
+    type: std::size_t *
+  return_type: int
+  signature: int TextParser::next_char(const char *, std::size_t *)
+- name: _ZNK10TextParser12get_prevlineB5cxx11Ei
+  params:
+  - name: n
+    type: int
+  return_type: std::string
+  signature: std::string TextParser::get_prevline(int) const
+- name: _ZN10TextParser10check_urlsEv
+  params: []
+  return_type: void
+  signature: void TextParser::check_urls()
+- name: _ZNK7HashMgr6lookupEPKcm
+  params:
+  - name: word
+    type: const char *
+  - name: len
+    type: int
+  return_type: struct hentry *
+  signature: struct hentry * HashMgr::lookup(const char *, int) const
+- name: _ZN7HashMgr8add_wordERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiPtiPS6_bi
+  params:
+  - name: in_word
+    type: const std::string &
+  - name: wcl
+    type: int
+  - name: aff
+    type: unsigned short *
+  - name: al
+    type: int
+  - name: in_desc
+    type: const std::string *
+  - name: onlyupcase
+    type: bool
+  - name: captype
+    type: int
+  return_type: int
+  signature: int HashMgr::add_word(const std::string &, int, unsigned short *, int, const std::string *, bool, int)
+- name: _ZNK8AffixMgr12get_keepcaseEv
+  params: []
+  return_type: unsigned short
+  signature: unsigned short AffixMgr::get_keepcase() const
+- name: _ZN8AffixMgr8morphgenB5cxx11EPKciPKttS1_S1_i
+  params:
+  - name: ts
+    type: const char *
+  - name: wl
+    type: int
+  - name: ap
+    type: const unsigned short *
+  - name: al
+    type: unsigned short
+  - name: morph
+    type: const char *
+  - name: targetmorph
+    type: const char *
+  - name: level
+    type: int
+  return_type: std::string
+  signature: std::string AffixMgr::morphgen(const char *, int, const unsigned short *, unsigned short, const char *, const
+    char *, int)
+- name: _ZN8AffixMgr19prefix_check_twosfxERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiict
+  params:
+  - name: word
+    type: const std::string &
+  - name: start
+    type: int
+  - name: len
+    type: int
+  - name: in_compound
+    type: char
+  - name: needflag
+    type: const unsigned short
+  return_type: struct hentry *
+  signature: struct hentry * AffixMgr::prefix_check_twosfx(const std::string &, int, int, char, const unsigned short)
+- name: _ZNK8AffixMgr12get_reptableEv
+  params: []
+  return_type: const int &
+  signature: const int & AffixMgr::get_reptable() const
+- name: _ZN6Hunzip6getbufEv
+  params: []
+  return_type: int
+  signature: int Hunzip::getbuf()
+- name: _ZN6Hunzip7is_openEv
+  params: []
+  return_type: bool
+  signature: bool Hunzip::is_open()
+- name: _ZN10SuggestMgr7suggestERSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS6_EERKS6_Pib
+  params:
+  - name: slst
+    type: int &
+  - name: word
+    type: const std::string &
+  - name: onlycmpdsug
+    type: int *
+  - name: test_simplesug
+    type: bool
+  return_type: bool
+  signature: bool SuggestMgr::suggest(int &, const std::string &, int *, bool)
+language: c++
+project: hunspell
+target_name: fuzzer
+target_path: /src/hunspell/src/tools/fuzzer.cxx
